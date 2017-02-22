@@ -1,0 +1,883 @@
+[/* Title: ActiveView Folder Browse View with flexible columns using JSON/AJAX and HTML Templates - Sample Template
+                Version: 1.00
+                Modified: January 9, 201
+                ------------------------------------------------------------------------------------------------------------------------       
+                - Designed to use the look and feel of CS 10.5.
+                - Dependent on new functionality added to WebReports 10.0.1 U03 and RKT Engine 10.0.0 U03.
+                - Uses INSERTJSON and HTML 'templates' to dynamically build the browse table and page-controls on each action (paging, sorting, filtering).
+                - Uses a fake script element as an HTML template with JSON key substitution to build the header and each row of the main browse table.
+                - Sorting is setup to switch between core and WebReports sorting dynamically based on the column header values.
+                - Requires pat100000980.txt if on RKTEngine 10.0.0 Update 3 or earlier.
+                - Requires pat79031.txt if on ActiveView 10.1.0 Update 2.
+                - A default parameter named 'AVUseNativePagination' with a string value of 'true' must be defined on Parameters Tab of this ActiveView template.
+                - If using IE10, make sure Active Scripting is enabled in Internet Options > Security Tab > Trusted Sites > Custom Level, and that the server is in your Trusted Sites list.
+                - Supports drag and drop without WebDAV (in core supported browsers).
+*/]
+ 
+[// Suppress to bypass error when the table is empty and the @DATA tag complains
+[LL_WEBREPORT_SUPPRESSERRORLOG /]
+ 
+<!-- ActiveView version: [LL_REPTAG_SUBVERSION /] -->
+ 
+[// browse table header row template:
+[//          This template controls the column header row.
+[//                          To add a new column, create its header here using HTML.
+[//          The 'sortKey' HTML attribute contains the sort key that will be used when the column header is clicked.
+[//                          If the column should not be sortable, leave the sortKey value blank (eg:  sortKey="").
+[//                          If WebReports sorting is required, the sortKey value should match the REF:'' value in the @PREDEFKEY entry of the SORT tag in the Row Section.
+[//          The 'WRSortActive' var in the <a> tag's onclick event defines which type of sorting is used; either core Content Server or WebReports sorting:
+[//                                          "WRSortActive=true;" uses WebReports sorting,
+[//                                          "WRSortActive=false;" uses core CS Sorting if available.
+ 
+<script id="headerRowTemplate" type="wr-js-tmpl">
+<tr class="browseListHeader">
+                <td scope="colgroup" style="width: 1%;" class="browseListHeaderType" sortKey="">
+                                <input type="checkbox" name="top_checkbox" value="checkbox" title="[LL_REPTAG_"WEBDOC_HTMLLABEL.SelectDeselectAll" XLATE /]" onclick="ToggleAll( this, &quot;nodeID&quot; );" ischecked="">
+                </td>
+                <td scope="colgroup" style="width: 1%;" class="browseListHeaderType" sortKey="subtype">
+                                <a onclick="WRSortActive=false;" href="#" class="sortLink">[LL_REPTAG_"HOME_HTMLLABEL.Type" XLATE /]</a>
+                </td>
+                <td colspan="2" scope="colgroup" style="width: 1%;" class="browseListHeaderName" sortKey="name">
+                                <a onclick="WRSortActive=false;" href="#" class="sortLink">[LL_REPTAG_"HOME_HTMLLABEL.Name" XLATE /]</a>
+                </td>
+                <td scope="colgroup" style="width: 1%;" class="browseListHeaderSize" sortKey="size">
+                                <a onclick="WRSortActive=false;" href="#" class="sortLink">[LL_REPTAG_"HOME_HTMLLABEL.Size" XLATE /]</a>
+                </td>
+                <td scope="colgroup" style="width: 1%;" class="browseListHeaderDate" sortKey="modifydate">
+                                <a onclick="WRSortActive=false;" href="#" class="sortLink">[LL_REPTAG_"HOME_HTMLLABEL.Modified" XLATE /]</a>
+                </td>   
+                [// Example column: 
+                [//                          The below will add a column named 'MIME Type'. 
+                [//                          When the column header is clicked, it will use 'mimeType' as the sortKey, and use WebReports sorting to do the actual sort:
+                [/*
+                <td scope="colgroup" style="width: 1%;" class="browseListHeaderType" sortKey="mimeType">
+                                <a onclick="WRSortActive=true;" href="#" class="sortLink">MIME Type</a>
+                </td>
+                */]
+</tr>
+</script>
+ 
+ 
+[// browse table row template:
+[//                          This template controls each row of content in the browse table.
+[//          To add a new column, add the HTML for each column here.
+[//          Values for each data source row can be accessed using a substitution tag that references the corresponding JSON element name.
+[//                                          The syntax for this is: {{fieldName}}
+[//                                          This syntax will resolve to the value of the 'fieldName' element from the JSON structure for each row.
+[//                                          NB: These references are case-sensitive.
+<script id="browseRowTemplate" type="wr-js-tmpl">
+<tr valign="CENTER" height="24" align="LEFT" class="{{$ if (r%2)}}browseRow1{{$else}}browseRow2{{$endif}}">
+                <td width="1%" align="CENTER" class="browseItemCheck">
+                                <input type="checkbox" onclick="javascript:Toggle( 'top_checkbox', this, 'nodeID' );" value="{{dataId}}" name="nodeID">
+                </td>
+                <td width="1%" align="CENTER" class="browseItemTypeRight">
+                                <span style="white-space:nowrap;">
+                                <a href="{{link}}" title="{{typeName}}" class="browseViewIcon">{{subtypegif}}</a>
+                                </span>
+                </td>
+                <td width="1%" align="CENTER" class="browseItemName">
+                                <a href="{{link}}" class="browseItemNameContainer">{{name}}</a>&nbsp;
+                                {{funcMenu}}&nbsp;{{modifiedImgs}}
+                </td>
+                <td width="1%" align="CENTER" class="promotedCmds">
+                                {{promotedCmds}}
+                </td>
+                <td width="1%" align="CENTER" class="browseItemSize">{{size}}</td>
+                <td width="1%" align="CENTER" class="browseItemDate">{{date}}</td>
+               
+                [// Example 1:  Create a column that displays the mimeType value from the JSON structure for each row:
+                [//<td width="1%" align="CENTER" class="browseItemText">{{mimeType}}</td>
+               
+                [// In addition to tag substitution, you can also include simple logical IF/ELSE statements.
+                [// These statements open with the "{{$ if (x==y)}}" marker and close with the "{{$endif}}" marker, both without the quotation marks.
+                [// "ELSE" statements are controlled by the "{{$else}}" marker, also without the quotation marks.
+                [// This is helpful if you want to add some simple logic to each row.
+                [// Any errors in the logical statement (parsed using JavaScript) will be returned with details in red.
+                [// Example 2:
+                [//          The following will create a new column.  If the node is a Document, a link will be displayed that points to another WebReport (defined by the $SubWR constant).
+                [//                          The node dataId will be passed into the WebReport as the InputLabel1 value.
+                [//                          If the current node is not a Document, the column will show 'no mime type available'.
+                [/*
+                <td width="1%" align="CENTER" class="browseItemText">
+                                {{$ if ({{type}} == 144)}}
+                                                {{mimeType}}
+                                {{$else}}
+                                                no mime type available
+                                {{$endif}}
+                </td>
+                */]         
+</tr>
+</script>
+ 
+<script>
+[// The following INSERTJSON tag builds the JSON structure that is returned by each Ajax request.
+[// New elements or fields can be added to the JSON structure by appending the field name and tag values after the @ROWCOLUMNS directive.
+[// Example:       oddEven:"[LL_REPTAG=DATAID ODDEVEN /]"
+[//                                          This will add a field named 'oddEven' to each row of the returned JSON structure, which will contain the resolved value of [LL_REPTAG=DATAID ODDEVEN /] for each node.
+[//                                                          This value can then be accessed in the "browseRowTemplate" above using the {{oddEven}} syntax.
+var WRData = [LL_WEBREPORT_INSERTJSON @BROWSECOLUMNS @EXCLUSIVE PARM:jsononly @FIELDS filteredCount:"[LL_REPTAG_@RESPONSEDATA.totalCount /]" @ROWCOLUMNS subtypegif:"[LL_REPTAG=DATAID LLURL:GIF /]" funcMenu:"[LL_REPTAG=DATAID LLURL:FUNCTIONMENU /]" /];
+ 
+</script>
+ 
+[// OT style progress div:
+[// This div is setup by default to appear like the core progress bar, but can be formatted to meet various requirements.
+[// The only DOM requirement is that it be in a containing DIV that has an ID of 'statusDiv'.
+[// The progress message will be placed into a SPAN that has an ID of 'statusDivMsg'.  If the progress message isn't required, this SPAN can be omitted.
+<style>
+#statusDiv {
+    position: absolute;
+    visibility: hidden;
+    z-index: 200;
+}
+</style>
+<div id="statusDiv" style="visibility: visible; top: 173px; left: 811px;">
+                <table width="150" cellspacing="0" cellpadding="2" bordercolor="black" border="1" bgcolor="white">
+                                <tbody>
+                                                <tr>
+                                                                <td>
+                                                                                <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                                                <tbody>
+                                                                                                                <tr>
+                                                                                                                                <td valign="MIDDLE"><img border="0" alt="" id="prgImg" src="[LL_REPTAG_SUPPORTDIR /]circleecm_progmeter40x40.gif"></td>
+                                                                                                                                <td valign="middle" nowrap="">&nbsp;<font size="2" color="black"><span id="statusDivMsg">&nbsp;[LL_REPTAG_"WEBSBROKER_HTMLLABEL.Loading" XLATE /]&nbsp;</span></font></td>
+                                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                </table>
+                                                                </td>
+                                                </tr>
+                                </tbody>
+                </table>
+</div>
+ 
+[// The following will only show the ActiveView if the &ViewType parameter is not 21. 
+[// A ViewType of 21 represents the screen that informs users there are nodes in the current folder that require additional info.
+[// (eg. category Attributes to add to a document added with WebDAV)
+[// Uncomment the following to disable the ActiveView override in this situation:
+[// [LL_WEBREPORT_RUNIF "[LL_REPTAG_&ViewType /]" != "21" /]
+ 
+[// Similarly, the following draws a div at the top of the page indicating there are items that need further information.
+[// This usually shows up after adding a node to a container via WebDAV, and the new node inherits mandatory attribute information from a parent container.
+[// Uncomment the following to display the DIV in these scenarios:
+[/*
+[LL_WEBREPORT_IF "[LL_REPTAG_@RESPONSEDATA.hasStagedContent /]" == "true" /]
+<p></p>
+<link rel="stylesheet" type="text/css" href="[LL_REPTAG_SUPPORTDIR /]webdav.css">
+<center>
+<table class="dragAndDropAlert" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td><img src="[LL_REPTAG_SUPPORTDIR /]required_big.gif" alt="[LL_REPTAG_'PSTAGE_HTMLLABEL.CompleteRequiredInformation' XLATE /]" title="[LL_REPTAG_'PSTAGE_HTMLLABEL.CompleteRequiredInformation' XLATE /]" border="0" hspace="6"></td>
+<td class="valueStatic" align="left" valign="top" width="100%">
+[LL_REPTAG_'PSTAGE_HTMLLABEL.YouAddedItemsThatRequireAdditionalInformation' XLATE /]. [LL_REPTAG_'PSTAGE_HTMLLABEL.ClickTheLinkToCompleteTheProcess' XLATE /].
+<br>
+<a href="[LL_REPTAG_URLPREFIX /]?func=ll&objid=[LL_REPTAG_OVERRIDEOBJID /]&objAction=browse&sort=name&viewtype=21">[LL_REPTAG_'PSTAGE_HTMLLABEL.ShowTheIncompleteItems' XLATE /]</a>
+</td>
+</tr>
+</tbody></table>
+</center>
+<p></p>
+[LL_WEBREPORT_ENDIF /]
+*/]
+ 
+[// Uncomment the following code to return the contents of a CustomView (GETCVID returns the ID of the CustomView, and GETTEXT returns the contents of that file):
+[// [LL_REPTAG_OVERRIDEOBJID GETCVID GETTEXT /]<br><br>
+ 
+[// Uncomment the LLURL:FEATURED subtag below to return the HTML for the featured items pane:
+[// [LL_REPTAG_OVERRIDEOBJID LLURL:FEATURED /]<br>
+ 
+[// Test to see if we have a drag and drop view set
+[LL_WEBREPORT_IF "[LL_REPTAG_$D&DVIEW /]" <> "[LL_REPTAG_$undefined /]" /]
+                [LL_REPTAG_$D&DVIEW SETVAR:DRAGDROP /]
+[LL_WEBREPORT_ELSE /]
+                [// No constant, just use a blank string
+                [LL_REPTAG_'' SETVAR:DRAGDROP /]
+[LL_WEBREPORT_ENDIF /]
+ 
+ 
+ 
+[// Build a version of the URL that includes any search names, subtype parms or page numbers
+[LL_REPTAG_MYCACHEURL SETVAR:BaseURL /] [// needed for setupContext
+[//[LL_REPTAG_%BaseURL CURRENTVAL SETVAR:FilterURL /][LL_REPTAG_'&searchname=' CONCATVAR:FilterURL /][LL_REPTAG_&SEARCHNAME CONCATVAR:FilterURL /][LL_REPTAG_'&objFilter=' CONCATVAR:FilterURL /][LL_REPTAG_&objFilter CONCATVAR:FilterURL /]
+[//[LL_REPTAG_&STARTROW PATCHANGE:'<?+>':'@&startrow=#1' CONCATVAR:FilterURL /]
+[//[LL_REPTAG_&NUMROWS PATCHANGE:'<?+>':'@&numrows=#1' CONCATVAR:FilterURL /]
+[LL_REPTAG_USERID USERPREF:GENERAL:SHOWITEMDESC SETVAR:ShowDescriptions /]
+[LL_REPTAG_@RESPONSEDATA.UsePagination SETVAR:UsePagination /]
+ 
+[LL_WEBREPORT_JSLIBS "BASICBROWSE" "BROWSE" "COREAJAX" /]
+ 
+ 
+[// CS105 DragAndDrop div:
+<div id="dndSkippedItems" title="Skipped Items Details">
+<p class="validateTips">This is the list of items that were skipped.</p>
+<div id="dndSkippedItemsSummary"></div>
+<div id="dndSkippedItemsDetails"></div>
+</div>
+<div id="dnd_progresstotal"><div class="dnd_progresstotal-label"></div></div>
+ 
+ 
+[// CS105 DragAndDrop files:
+<link rel="stylesheet" type="text/css" href="[LL_REPTAG_SUPPORTDIR /]webnode/dndfile.css?v=10">
+<SCRIPT TYPE="text/javascript" SRC="[LL_REPTAG_SUPPORTDIR /]webnode/dndfile_en_US.js?v=10"></script>
+<SCRIPT TYPE="text/javascript" SRC="[LL_REPTAG_SUPPORTDIR /]webnode/dndfile[LL_REPTAG_USERID USERPREF:GENERAL:LANGUAGE:CODE /].js?v=10"></script>
+<SCRIPT TYPE="text/javascript" SRC="[LL_REPTAG_SUPPORTDIR /]webnode/dndfile.js?v=10"></script>
+<script type="text/javascript">
+dnd_setup( "[LL_REPTAG_URLPREFIX /]", "[LL_REPTAG_SUPPORTDIR /]", "[LL_REPTAG_OVERRIDEOBJID /]", 144, true, 500, 100 );
+</script>
+ 
+ 
+ 
+<SCRIPT TYPE="text/javascript" SRC="[LL_REPTAG_LIBPATH /]browse.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" SRC="[LL_REPTAG_LIBPATH /]AVbrowse_en_US.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" SRC="[LL_REPTAG_LIBPATH /]AVbrowse[LL_REPTAG_USERID USERPREF:GENERAL:LANGUAGE:CODE /].js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" SRC="[LL_REPTAG_LIBPATH /]AVbrowse.js"></SCRIPT>
+ 
+ 
+<SCRIPT TYPE="text/javascript">
+ 
+                // base url used for AJAX requests
+                var JSONBaseUrl = "[LL_REPTAG_URLPREFIX /]?func=ll&objId=[LL_REPTAG_OVERRIDEOBJID /]&objAction=browse&jsononly=true";
+ 
+                var currentSortStr = '[LL_REPTAG_&sort DEF:'name' /]';
+                var currentSortDir = '[LL_REPTAG_&direction DEF:'ASC' /]';
+ 
+                // setup sort direction icons for header:
+                var arrowImg = {
+                                ASC:       '<img width="9" height="5" border="0" src="[LL_REPTAG_SUPPORTDIR /]sort-up.gif" alt="'+ lStr["Ascending Sort"]  +'" title="'+ lStr["Ascending Sort"] +'">',
+                                DESC:    '<img width="9" height="5" border="0" src="[LL_REPTAG_SUPPORTDIR /]sort-down.gif" alt="'+ lStr["Descending Sort"] +'" title="'+ lStr["Descending Sort"] +'">'
+                };
+                               
+                setAlertMsg( "[LL_REPTAG_'WebDsp_HTMLLabel.PleaseSelectAtLeastOneItem' XLATE /]" );
+                var defaultPageSize = [LL_REPTAG_@RESPONSEDATA.DefaultPageSize /];
+                var minimumPageSize = [LL_REPTAG_@RESPONSEDATA.MinimumPageSize /];
+                var pageSizeList = "[LL_REPTAG_@RESPONSEDATA.DefaultPageSizeChoices /]".replace( /\'/g, "" );
+                var defaultNmSrchLabel = "[LL_REPTAG_'WEBNODE_HTMLLABEL.FilterByName' XLATE /]";
+                var isIE = document.all ? 1 : 0;
+ 
+                var pageSize = parseInt( [LL_REPTAG_@RESPONSEDATA.PageSize /] );
+                [LL_REPTAG_@RESPONSEDATA.PageSize SETVAR:NUMROWS /]
+ 
+                var startRow = 1;
+                var totalRows = parseInt( [LL_REPTAG_@RESPONSEDATA.totalCount /] );
+                var usePagination = [LL_REPTAG_@RESPONSEDATA.UsePagination /];
+                var useCollectButton = [LL_REPTAG_@RESPONSEDATA.UseCollectButton /];
+                var useZipAndEmailButton = [LL_REPTAG_@RESPONSEDATA.NotificationEnabled /];
+                var showResultsPicker = usePagination && ( totalRows > minimumPageSize );
+                var actualRows = [LL_REPTAG_ACTUALROWS /];
+                var nameFld = 'AVsrch_fld';  // 3891
+                var totalPages = 1;
+               
+                var pageNum = [LL_REPTAG_&PAGE DEF:1 /];    // current page
+                var applySubtypeFilter = false; // 971 style filter.
+                var subtypeFilter = "[LL_REPTAG_&objFilter DEF:'' /]";
+                var searchName = "[LL_REPTAG_&filterValue /]";// 3891 This used to contain DEF:''
+                var filtered = false;
+                var topPickControlOpen = false;
+                var          imgSrc = "[LL_REPTAG_SUPPORTDIR /]";
+                var url = "[LL_REPTAG_%BASEURL /]";
+                var cookiepath = "[LL_REPTAG_URLPREFIX PATCHANGE:'?*</?+>/?*':#1 /]";   
+               
+ 
+                function refreshPage(action,value) {
+                               
+                                [// value may not be passed
+                                var url = "[LL_REPTAG_%BASEURL /]";
+                               
+                                currentAction = action;
+                               
+                                switch ( action) {
+                                                                // 971 subtype filter:
+                                                                case "subtypefilter":
+                                                                                loadingMsg = AVbrowseStr["Filtering on subtype:"] + value;
+                                                                                if (value) {
+                                                                                                subtypeFilter = value;
+                                                                                                applySubtypeFilter = true;
+                                                                                } else {
+                                                                                                subtypeFilter = '';
+                                                                                                applySubtypeFilter = false;
+                                                                                }
+                                                                                AVchangePage(1, pageSize);
+                                                                break;
+                                                                [// 'namesearch' from original refreshPage():
+                                                                case "namesearch":
+                                                                                searchName = value;
+                                                                                filterValue = value;
+                                                                                if (filtered) {
+                                                                                                loadingMsg = String.formatLoc(AVbrowseStr["Filtering on 1"], value);
+                                                                                } else {
+                                                                                                loadingMsg = AVbrowseStr["Removing name filter"];
+                                                                                }
+                                                                                AVchangePage(1, pageSize);
+                                                                break;
+                                                                case "resultchange":
+                                                                                pageNum = 1;
+                                                                                pageSize = parseInt(value);
+                                                                                document.cookie = "LLPageSizeCookie=" + escape(pageSize) + "; path=" + cookiepath;
+                                                                                loadingMsg = String.formatLoc(AVbrowseStr["Changing page size to"], value);
+                                                                                AVchangePage(1, pageSize);
+                                                                break;
+                                                                case "prev":
+                                                                                if (pageNum > 1) {
+                                                                                                pageNum -=1;
+                                                                                }
+                                                                                loadingMsg = String.formatLoc(AVbrowseStr["Retrieving page"], pageNum);
+                                                                                AVchangePage(pageNum, pageSize);
+                                                                break;
+                                                                case "next":
+                                                                                if (pageNum < totalPages) {
+                                                                                                pageNum +=1;
+                                                                                }
+                                                                                loadingMsg = String.formatLoc(AVbrowseStr["Retrieving page"], pageNum);
+                                                                                AVchangePage(pageNum, pageSize);
+                                                                break;
+                                                                case "gopage":
+                                                                                pageNum = value
+                                                                                loadingMsg = String.formatLoc(AVbrowseStr["Retrieving page"], pageNum);
+                                                                                AVchangePage(pageNum, pageSize);
+                                                                break;
+                                                }
+                                               
+ 
+                                                return false;
+                                               
+                                }
+ 
+                function ChangeBrowsePageObjectFilter(index,value,temp) {
+                                document.getElementById('selectedBrowsePageObjectFilter').innerHTML = document.getElementById('BrowsePageObjectFilter' + index + 'DivId').innerHTML;
+                                refreshPage('subtypefilter',value);
+                }
+ 
+                var containerName = "";
+                var newHTML = "";
+                var menuString = "";
+               
+               
+[// These now allow for more than one set of page controls (above and below the browse table):
+                function wr_createPageSizeMenu(selectionList,pick,controlID) {
+                               
+                                menuString = "";
+                                               
+                                menuString += '<TABLE WIDTH=100%><TR>';
+                                menuString += '<TD STYLE="color:#666666;padding:2px 0 2px 0;">Show';
+                                menuString += "<IMG SRC='[LL_REPTAG_SUPPORTDIR /]spacer.gif' TITLE='' WIDTH='4' HEIGHT='1' BORDER='0'>";
+                                menuString += '<TD NOWRAP>';
+                               
+                                menuString +=
+                                '<DIV STYLE="clear:none;" ID="BrowsePageSizeMenu'+controlID+'" CLASS="bcMenuSelect" ONCLICK="javascript:ShowBCDropDownMenu(\'showBrowsePageSize'+ controlID +'\');return false;">' +
+                                '               <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="100%">' +
+                                '                               <TR>' +
+                                '                                               <TD WIDTH="100%" ID="itemIDMenuSelectTitle'+ controlID +'" CLASS="bcselectTitle" >' +
+                                '                                                               <DIV ID="selectedBrowsePageSize'+ controlID +'" ONCLICK="javascript:showMenu( \'BrowsePageSizeMenu'+ controlID +'\', \'\' );return false">';
+ 
+                                menuString +=
+                                ' <A TITLE="Select number of items on page" HREF="javascript:showMenu( \'BrowsePageSizeMenu'+ controlID +'\', \'\'  );return false" STYLE="font-size:8pt; vertical-align:middle">' + pick + '</A>';
+ 
+                                menuString +=
+                                '                                                               </DIV>' +
+                                '                                               </TD>' +
+                                '                                               <TD><IMG TITLE="Select number of items on page" CLASS="bcselectArrow" ALT="" SRC="[LL_REPTAG_SUPPORTDIR /]bcselectarrow.png" WIDTH="17" HEIGHT="17"></TD>' +
+                                '                               </TR>' +
+                                '               </TABLE>';
+ 
+                                menuString += '<DIV STYLE="top:0px;" ID="showBrowsePageSize'+ controlID +'" CLASS="menu">';
+ 
+                                pageSizeArray = selectionList.split(',');
+ 
+                                for ( i = 0;i<pageSizeArray.length;i++) {
+                                                menuString +=
+                                                '<DIV ID="BrowsePageSize' + controlID + '_' + pageSizeArray[i] + 'DivId" CLASS="menuItem" WIDTH="100%" ' +
+                                                '               ONMOUSEOVER="javascript:hiLight( \'BrowsePageSize'  + controlID + '_'  + pageSizeArray[i] + 'DivId\' );" '+
+                                                '               ONMOUSEOUT="javascript:loLight( \'BrowsePageSize'  + controlID + '_'  + pageSizeArray[i] + 'DivId\' );" '+
+                                                '               ONCLICK="javascript:refreshPage( \'resultchange\',\''  + pageSizeArray[i] + '\');">'+
+                                                pageSizeArray[i] +
+                                                '</DIV>';
+                                }
+                                menuString += "</DIV>";
+                                menuString += "</DIV>";
+               
+                                menuString += '</TD>';
+                                menuString += '<TD NOWRAP STYLE="color:#666666;padding:2px 0 2px 0;">';
+                                menuString += "<IMG SRC='[LL_REPTAG_SUPPORTDIR /]spacer.gif' ALT='' WIDTH='10' HEIGHT='1' BORDER='0'>items";
+                                menuString += "<IMG SRC='[LL_REPTAG_SUPPORTDIR /]spacer.gif' TITLE='' WIDTH='4' HEIGHT='1' BORDER='0'>";
+                                menuString += '</TD></TR></TABLE>';
+                               
+                                $('#pageSizeList' + controlID).html(menuString);
+                               
+                }
+ 
+                function wr_createPageSelectIcons(id, thisPageNum) {
+                               
+                                pageNum = (thisPageNum) ? thisPageNum : pageNum;
+                               
+                                newHTML = "";
+                                containerName = '';
+                               
+                                newHTML = '<TD>';
+                                newHTML += '<DIV ID="PageSelectDiv'+ id +'" CLASS="activePicStyle">';
+                                newHTML += '<TABLE WIDTH="100%" cellpadding="0px" cellspacing="0px"><TBODY>';
+                                newHTML += '<TR>';
+                                if (pageNum > 1) {
+                                                newHTML += '<TD onmouseover="imageCell(this, \'page_previous16_mo.gif\', \'PagePrevImg'+id+'\', true); " ';
+                                                newHTML += 'onmouseout="imageCell(this, \'page_previous16.gif\', \'PagePrevImg'+id+'\', false);" ';
+                                                newHTML += 'onclick="refreshPage(\'prev\');" >';
+                                                newHTML += "<IMG SRC='" + imgSrc + "page_previous16.gif' Alt='" + lStr['Previous Page'] + "' Title='" + lStr['Previous Page'] + "' ID='PagePrevImg"+id+"' WIDTH='16' HEIGHT='16' BORDER='0'>";
+                                                newHTML += '</TD>';
+                                } else {
+                                                newHTML += "<TD><IMG SRC='" + imgSrc + "spacer.gif' ALT='' WIDTH='16' HEIGHT='16' BORDER='0'></TD>";
+                                }
+ 
+                                newHTML += '</TR>';
+                                newHTML += '</TBODY></TABLE>';
+                                newHTML += '</DIV></TD>';
+                                newHTML += "<TD><IMG SRC='" + imgSrc + "spacer.gif' ALT='' WIDTH='2' HEIGHT='4' BORDER='0'></TD>";
+ 
+                                [// Calculate the boundaries that the control will show
+                                var startAt = Math.max( pageNum - 2, 1 );
+                                var endAt = Math.min( totalPages + 1, startAt + 5 );
+ 
+                                if ( ( endAt - startAt ) < 5 ) {
+                                                [// Need to recalculate the startAt point if the calculated
+                                                [// start is less than 5 from the end
+                                                startAt = Math.max( endAt - 5, 1 );
+                                }
+ 
+                                for ( i = startAt; i < endAt; i++ ) {
+                                                newHTML += '<TD CLASS="pageSelectorReference" STYLE="margin: 0 4px 0 4px;padding: 0 2px 0 2px;color: #00609e;width: 1;" ';
+                                                newHTML += 'pageNumAccess="' + i + '" TITLE="Page ' + i + '" ';
+ 
+                                                if ( i !== pageNum ) {
+                                                                newHTML += 'onmouseover="colourCell(this); " ';
+                                                                newHTML += 'onmouseout="clearCell(this, true);" ';
+                                                                newHTML += 'style="border: solid 1px #F5F5F5;" ';
+                                                                newHTML += 'onclick="refreshPage( \'gopage\' ,' +  i + ');" ';
+                                                } else {
+                                                                newHTML += 'style="background-color: white; border: 1px solid #A9B7C6;" ';
+                                                }
+                                                newHTML += ">&nbsp;" + i + "&nbsp;</TD>";
+                                                newHTML += "<TD><IMG SRC='" + imgSrc + "spacer.gif' ALT='' WIDTH='2' HEIGHT='4' BORDER='0'>";
+                                }
+ 
+                                if ( pageNum < totalPages ) {
+                                                newHTML += '<TD ';
+                                                newHTML += 'onmouseover="imageCell(this, \'page_next16_mo.gif\', \'PageNextImg'+id+'\', true); " ';
+                                                newHTML += 'onmouseout="imageCell(this, \'page_next16.gif\', \'PageNextImg'+id+'\', false); " ';
+                                                newHTML += ' onclick="refreshPage( \'next\')" >';
+                                                newHTML += "<IMG SRC='" + imgSrc + "page_next16.gif' Alt='" + lStr['Next Page'] + "' Title='" + lStr['Next Page'] + "' ID='PageNextImg"+id+"' WIDTH='16' HEIGHT='16' BORDER='0'>";
+                                }
+                                else {
+                                                newHTML += '<TD>';
+                                                newHTML += "<IMG SRC='" + imgSrc + "page_next16_ds.gif' Title='' WIDTH='16' HEIGHT='16' BORDER='0'>";
+                                }
+                                newHTML += '</TD>';
+ 
+                                newHTML += '<TD ID="MiniPageTableCell'+ id +'" NOWRAP CLASS="miniPageTableCell">';
+                                newHTML += '   <TABLE ID="MiniPageTable'+ id +'" BORDER="0" CELLSPACING="0" CELLPADDING="0">';
+                                newHTML += '   </TABLE>';
+                                newHTML += '</TD>';
+                               
+                                $('#miniPageRow'+id).html(newHTML);               
+                               
+                                topPickControlOpen = false; // hide the goToPage selector when it refreshes
+                                createPageTable( totalPages, pageNum, id );
+                               
+                }
+ 
+                function imageCell( obj, imageName, idName, usePointer ) {
+                                var imgRef = document.getElementById( idName );
+                                if ( undefined !== imgRef ) {
+                                                imgRef.src = imgSrc + imageName;
+                                }
+                                if ( true === usePointer ) {
+                                                obj.style.cursor = "pointer";
+                                } else {
+                                                obj.style.cursor = "default";
+                                }
+                }
+ 
+                function colourCell( obj )              {
+                                obj.origColor=obj.style.backgroundColor;
+                                obj.style.backgroundColor = '#E2EBF3';
+                                obj.style.cursor = "pointer";
+                                obj.style.border = "solid 1px #A9B7C6";
+                }
+ 
+                function clearCell( obj, clearBorder ) {
+                                obj.style.backgroundColor=obj.origColor;
+                                obj.style.cursor = "default";
+ 
+                                if ( true === clearBorder ) {
+                                                obj.style.border = "";
+                                                obj.style.border = "solid 1px #F5F5F5";
+                                }
+                }
+ 
+                function createPageTable( totalPages, currentPageNum, controlID ) {
+                                var          miniPageTableCell;
+                                var          miniPageTable;
+                                var                          cell;
+                                var          cellCount = 0;
+                                var          pickControlOpen  = false;
+                               
+                                miniPageTableCell = document.getElementById( 'MiniPageTableCell' + controlID );
+ 
+                                if ( null != miniPageTableCell ) {
+                                                if ( totalPages <= 1 )        {
+                                                                miniPageTableCell.style.display = "none";
+                                                                return;
+                                                } else     {
+                                                                miniPageTableCell.style.display = "";
+                                                                miniPageTableCell.width = '10%';
+                                                }
+                                }
+ 
+                                miniPageTable = document.getElementById( 'MiniPageTable' + controlID );
+                                if ( null == miniPageTable ) {
+                                                return;
+                                }
+ 
+                                if( miniPageTable.getElementsByTagName( 'TD').length > 0 ) {
+                                                removeChildren( miniPageTable );
+                                }
+ 
+                                if( isIE ) {
+                                                miniPageTable.style.filter = "alpha(opacity=80)";
+                                } else {
+                                                miniPageTable.style.opacity =  ".80";
+                                }
+                                miniPageTable.style.height = "15px";
+ 
+                                this["miniPageRow"+controlID] = miniPageTable.insertRow( 0 );
+               
+                                if ( totalPages > 1 ) {
+                                                if ( false == topPickControlOpen ) {
+                                                                //cell = miniPageRow.insertCell( cellCount++ );
+                                                                cell = this["miniPageRow"+controlID].insertCell( cellCount++ );
+                                                                cell.onmouseover = function(){ imageCell(this, 'goto_page16_mo.gif', 'gotoPageMiniLinkImg'+controlID, true); };
+                                                                cell.onmouseout = function(){ imageCell(this, 'goto_page16.gif', 'gotoPageMiniLinkImg'+controlID, false); };
+                                                                cell.innerHTML = "<DIV ID='miniActivatePickDiv"+controlID+"' CLASS='activateMiniPickDivShow'><a href='javascript:void(0)'" +
+                                                                                                                                ' onclick="javascript:createPageEntryControl(\'miniPageRow\', '+ controlID +' );return false;"' + " TITLE='" + lStr[ 'Go to page...' ] + "'><IMG SRC='" + imgSrc + "goto_page16.gif' WIDTH='16' ID='gotoPageMiniLinkImg"+controlID+"' HEIGHT='16' BORDER='0' TITLE='" + lStr[ 'Go to page...' ] + "'></a></DIV>";
+                                                } else {
+                                                                createPageEntryControl('miniPageRow', controlID);
+                                                }
+                                }
+                               
+                }
+ 
+                function createPageEntryControl(rowname, controlID) {
+ 
+                                rowname = rowname + controlID;
+                               
+                                var cell;
+                                var theRow = eval('this.' + rowname);
+                                removeChildren( theRow );
+                               
+ 
+                                cell = theRow.insertCell( 0 );
+                                cell.style.whiteSpace = 'nowrap';
+                                cell.style.color = '#666666';
+                                cell.innerHTML = "&nbsp;&nbsp;&nbsp;";
+                                cell.innerHTML += lStr[ 'Go to page' ];
+                                cell.innerHTML += "&nbsp;&nbsp;<INPUT type='text' ID='miniPageInput"+ controlID +"' CLASS='browsePaginationBarEdit' SIZE='5' MAXLENGTH='20' LIMIT='20' autocomplete='off' onkeypress='pageNumEnter( this, event, "+controlID+" )'  />";
+ 
+                                cell = theRow.insertCell( 1 );
+                                cell.onmouseover = function(){ imageCell(this, 'goto_close1216_mo.gif', 'browsePageMiniLinkImg'+controlID, true);   };
+                                cell.onmouseout = function(){ imageCell(this, 'goto_close1216.gif', 'browsePageMiniLinkImg'+controlID, false); };
+                                cell.innerHTML = "<DIV ID='miniBbrowsePickDiv"+controlID+"' CLASS='browseMiniPickDivShow'><A HREF='javascript:void(0)' ONCLICK='javascript:topPickControlOpen=false;createPageTable( totalPages, pageNum, "+ controlID +" );return false;' TITLE='" + lStr[ 'Go to page...' ] + "'><IMG SRC='" + imgSrc + "goto_close1216.gif' ID='browsePageMiniLinkImg"+ controlID +"' WIDTH='16' HEIGHT='16' BORDER='0' ALT='" + lStr[ 'Go to page...' ] + "'></a></DIV>";
+ 
+                                topPickControlOpen = true;
+                                this.timer = setTimeout( "setFocus( 'miniPageInput"+controlID+"' )", 5 );
+                }
+ 
+                function pageNumEnter( theForm, ev, controlID ) {                        
+                                if ( !ev ) {
+                                                ev = window.event;
+                                }
+ 
+                                var ch = ( ev.charCode ) ? ev.charCode : ( ( ev.which ) ? ev.which : ev.keyCode );
+ 
+                                if ( ch === 13 || ch === 3 ) {
+                                                var          pickPageEdit = document.getElementById( 'pagePickEdit' + controlID );
+                                                var     miniPageInput = document.getElementById( 'miniPageInput' + controlID );
+ 
+                                                pickPageEdit = ( miniPageInput !== null ) ? miniPageInput : pickPageEdit ;
+ 
+                                                if ( pickPageEdit !== null ) {
+                                                                var pageNum = parseInt( pickPageEdit.value, 10 );
+                                                                if ( isNaN(pageNum) || isNaN(pickPageEdit.value) || pickPageEdit.value.indexOf('.') != -1) {
+                                                                                alert( String.formatLoc( lStr[ "Enter a page number between n and m" ] , 1, totalPages ) );
+                                                                                return false;
+                                                                } else if ( pageNum > totalPages ) {
+                                                                                pageNum = totalPages;
+                                                                } else if ( pageNum <= 0 ) {
+                                                                                pageNum = 1;
+                                                                }
+ 
+                                                                // IE10 has a problem losing focus on the input after hitting 'enter':
+                                                                miniPageInput.blur();
+                                                               
+                                                                refreshPage( 'gopage',pageNum  );
+ 
+                                                                if( miniPageInput !== null )
+                                                                {
+                                                                                cancelEvent( ev );
+                                                                }
+ 
+                                                                if ( null !== miniPageInput ) {
+                                                                                topPickControlOpen = true;
+                                                                }
+                                                                else {
+                                                                                btmPickControlOpen = true;
+                                                                }
+                                                }
+                                }
+                                else if ( ch === 27 )
+                                {
+                                                //flipPagePickBack();
+                                }
+                                return true;
+                }
+ 
+[// Updated page functions end.
+               
+                function checkForCR( e ) {
+                                var c = (e.which) ? e.which : e.keyCode;
+                                if ( c === 13 || c === 3 ) {
+                                                cancelEvent( e );
+                                                return true;
+                                }
+                                return false;
+                }
+ 
+                function executeNameSearch(sb) {
+                                if (sb){nameFld = 'srch_fld' };
+ 
+                                val = document.getElementById(nameFld).value;
+                               
+                                if (val == defaultNmSrchLabel) {
+                                                val = '';
+                                                filtered = false;
+                                                document.getElementById('srch_fld').value = '';
+                                };
+ 
+                                [// is this value different than the one we started with?
+                                if (searchName != val) {
+                                                filtered = (val != "");
+                                                refreshPage('namesearch',val);
+                                }
+                }
+ 
+                function initNameField(val) {
+                                if (val == defaultNmSrchLabel) {
+                                                return true;
+                                }
+                                return false;
+                }
+ 
+                function checkNameKeys(ev,fld) {
+                                fld.style.fontStyle = 'normal';
+                                fld.style.color = '';
+                                if (checkForCR( ev)) {executeNameSearch(  );}
+                }
+ 
+                [// If a Drag and Drop reportview has been specified, add the function to call the drag and drop page
+                [LL_WEBREPORT_IF "" <> "[LL_REPTAG_%DRAGDROP CURRENTVAL /]" /]
+                                function goToDragAndDrop() {
+                                                document.location = '[LL_REPTAG_MYURL /]&nexturl=[LL_REPTAG_MYURL ESCAPEURL /]&avid=[LL_REPTAG_$D&DVIEW /]';
+                                }
+                [LL_WEBREPORT_ENDIF /]
+ 
+                rkt_setBaseUrl ( "[LL_REPTAG_URLPREFIX /]" );
+</SCRIPT>
+<p>
+ 
+[// Facet Browsing Forms:
+<form method="get" name="BrowseViewFacetFrmStatic">
+                <input type="hidden" value="ll" name="func">
+                <input type="hidden" value="Browse" name="objAction">
+                <input type="hidden" value="900" name="objType">
+                <input type="hidden" value="[LL_REPTAG_OVERRIDEOBJID /]" name="id">
+                <input type="hidden" value="" name="nextUrl">
+</form>
+ 
+<form method="get" name="BrowseViewFacetFrm">
+                <input type="hidden" value="ll" name="func">
+                <input type="hidden" value="Browse" name="objAction">
+                <input type="hidden" value="900" name="objType">
+                <input type="hidden" value="[LL_REPTAG_OVERRIDEOBJID /]" name="id">
+                <input type="hidden" value="" name="nextUrl">
+</form>
+ 
+<FORM NAME="BrowseViewFrm" METHOD="post" ENCTYPE="multipart/form-data">
+<INPUT TYPE="HIDDEN" NAME="func" VALUE="">
+<INPUT TYPE="HIDDEN" NAME="objAction" VALUE="">
+<INPUT TYPE="HIDDEN" NAME="objId" VALUE="">
+<INPUT TYPE="HIDDEN" NAME="nextUrl" VALUE="[LL_REPTAG_MYCACHEURL /]">
+ 
+[// CS10 browse fields:
+<input type="HIDDEN" value="[LL_REPTAG_OVERRIDEOBJID NODEINFO:NAME /]" name="name">
+<input type="HIDDEN" value="" name="viewTab">
+<input type="HIDDEN" value="" name="viewType">
+<input type="HIDDEN" value="[LL_REPTAG_&viewType DEF:'' /]" name="saveViewType">
+ 
+ 
+ 
+[// Upper Pagination Controls:
+[/* Uncomment if page controls are wanted at the top and bottom of browse view.
+<script>wantTopPageControls = true;</script>
+<DIV ID="BrowsePageRowPagingSectionCell1" >
+                <TABLE BORDER=0 WIDTH=100% ID="BrowsePageRowPagingSectionCellTable1" CELLSPACING=0 CELLPADDING=0>
+                                <TR>
+                                                <TD WIDTH=10% ALIGN=LEFT>
+                                                                <TABLE>
+                                                                                <TR>
+                                                                                                <TD ID="pageSizeList1" NOWRAP WIDTH=20% ALIGN=LEFT>
+                                                                                                [// PageSize selector is drawn here
+                                                                                                </TD>
+                                                                                </TR>
+                                                                </TABLE>
+                                                </TD>
+                                                <TD>
+                                                                &nbsp;
+                                                </TD>
+                                                <TD WIDTH=10% ALIGN=RIGHT>
+                                                                <TABLE>
+                                                                               
+                                                                                <TR ID="miniPageRow1">                                                                           
+                                                                                                [// Paging table is drawn here
+                                                                                </TR>
+                                                                </TABLE>
+                                                </TD>
+                                </TR>
+                                <TR>
+                                                <TD WIDTH=10% ALIGN=LEFT>
+                                                                <TABLE>
+                                                                                <TR>
+                                                                                                <TD ID="itemCountLabel1" ALIGN=LEFT STYLE="color:#666666;whiteSpace:nowrap;" COLSPAN="5" WIDTH="5%">
+                                                                                                                [// ItemCount Label is drawn here.
+                                                                                                </TD>
+                                                                                </TR>
+                                                                </TABLE>
+                                                </TD>
+                                                <TD>
+                                                                &nbsp;
+                                                </TD>
+                                                <TD WIDTH=10% ALIGN=RIGHT>
+                                                                <TABLE>
+                                                                                <TR>
+                                                                                                <TD ALIGN=RIGHT ID="pageCounter1" STYLE="color:#666666;whiteSpace:nowrap;padding:2px 0 2px 0;" COLSPAN="5" WIDTH="5%">
+                                                                                                [// PageCount Label is drawn here.
+                                                                                                </TD>
+                                                                                </TR>
+                                                                </TABLE>
+                                                </TD>
+                                </TR>
+                </TABLE>
+</DIV>
+*/]
+ 
+[// Check to see if a Drag and Drop reportview has been specified
+[LL_WEBREPORT_IF "" <> "[LL_REPTAG_%DRAGDROP CURRENTVAL /]" /]
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" ALIGN="Right">
+                <TR>
+                                <TD>
+                                                <DIV id="browse-view-switcher">
+                                                                <DIV id="browseIcons" class="browseIcons">
+                                                                                <A HREF="#" onClick="return false;" CLASS="currentViewButtonHref" ><IMG SRC="[LL_REPTAG_SUPPORTDIR /]ico-list-on.gif" SI="ico-list.gif" SS="ico-list-on.gif" ID="BV_ViewDetailIcon" ALT="[LL_REPTAG_'ACTIVEVIEW_LABEL.ShowDetailView' XLATE /]" TITLE="[LL_REPTAG_'ACTIVEVIEW_LABEL.ShowDetailView' XLATE /]" HEIGHT="15px" WIDTH="15px" BORDER="0"></A>
+                                                                                <A HREF="#" onClick="javascript:goToDragAndDrop();" CLASS="currentViewButtonHref" ><IMG SRC="[LL_REPTAG_SUPPORTDIR /]ico-dav.gif" ALT="[LL_REPTAG_'ACTIVEVIEW_LABEL.ShowDragAndDropView' XLATE /]" TITLE="[LL_REPTAG_'ACTIVEVIEW_LABEL.ShowDragAndDropView' XLATE /]" HEIGHT="15px" WIDTH="15px" BORDER="0"></A>
+                                                                </DIV>
+                                                </DIV>
+                                </TD>
+                </TR>
+</TABLE>
+[LL_WEBREPORT_ENDIF /]
+ 
+               
+<DIV ID="browseAndSidebarContainer" class='hasSidebar' style="clear:both;">
+<DIV ID="sidebarSideIndicator" CLASS='sidebarOn[LL_REPTAG_USERID USERPREF:GENERAL:SBLOCATION /]'>
+<DIV ID="sidebarIndicator" [LL_REPTAG_USERID USERPREF:GENERAL:SIDEBAR DECODE:true:'CLASS="sidebarOpen"':'' /]>
+<DIV class="browseview-shim">&nbsp;</DIV>
+ 
+<TABLE WIDTH=100% BORDER="0" cellspacing="0" cellpadding="0">
+<TR>
+ 
+[// Draw Sidebar if on Left:
+[LL_WEBREPORT_IF "[LL_REPTAG_USERID USERPREF:GENERAL:SBLOCATION /]" == "left" /]
+[LL_REPTAG_OVERRIDEOBJID LLURL:SIDEBAR:FORCEALL /]
+[LL_WEBREPORT_ENDIF /]
+ 
+ 
+<TD valign="top" class="browseview-wrapper">
+[// CS10 changes below
+[// Main table containing everything
+<DIV ID="MainTableAndPaging">
+<DIV ID="MainOperationTable">
+<TABLE CELLPADDING="0" CELLSPACING="0" BORDER="0" ALIGN="CENTER" WIDTH="100%" ID='browseTableDefn1'>
+<TR VALIGN="top">
+<TD>
+<DIV CLASS="shadow-right">
+[// The copy/move/delete box
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="1" CELLPADDING="0" CLASS="tblBackground-BrowseView">
+ 
+<TR ID='MultiOperationBar1Row'>
+<TD>
+<DIV ID="MultiOperationBar1" CLASS="browseMultiSelectColor">
+<DIV ID="MultiDetailOperations" CLASS="MultiDetailOperations">
+[// Add the multi function buttons using the pre-made function
+<SCRIPT>
+                [// This function sets up the code used by various utility functions, e.g. for multi-function buttons.
+                [// Parameter Info:  support folder, urlPrefix, myURL, nextURL, current value of default sort column, sortDirection
+                setupContext(  "[LL_REPTAG_SUPPORTDIR /]",                "[LL_REPTAG_URLPREFIX /]",     "[LL_REPTAG_%BaseURL /]",         "[LL_REPTAG_NEXTURL ESCAPEURL /]",                "[LL_REPTAG_&SORT /]", "[LL_REPTAG_&DIRECTION /]");
+ 
+                rkt_MultiButtonPosition('[LL_REPTAG_SUPPORTDIR /]multifilebar.png', '0', '0', '-104', '0', 'Copy', '[LL_REPTAG_"WEB_NODECMD.Copy" XLATE /]', 'll.ProcessMultiCopy', 'copy', '0');
+                rkt_MultiButtonPosition('[LL_REPTAG_SUPPORTDIR /]multifilebar.png', '0', '-36', '-104', '-36', 'Move', '[LL_REPTAG_"WEB_NODECMD.Move" XLATE /]', 'll.ProcessMultiMove', 'move', '0');
+                rkt_MultiButtonPosition('[LL_REPTAG_SUPPORTDIR /]multifilebar.png', '0', '-72', '-104', '-72', 'Delete', '[LL_REPTAG_"WEB_NODECMD.Delete" XLATE /]', 'll.ProcessMultiDelete', 'delete', '0');
+                rkt_MultiButtonPosition('[LL_REPTAG_SUPPORTDIR /]multifilebar.png', '0', '-108', '-268', '-108', 'Zip &amp; Download', '[LL_REPTAG_"MULTIFILE_LABEL.Zip_And_Download" XLATE /]', 'multifile.zipdwnldmulti', 'zipdwnld', '0');
+                if ( useZipAndEmailButton ) {
+                                rkt_MultiButtonPosition('[LL_REPTAG_SUPPORTDIR /]multifilebar.png', '0', '-180', '-268', '-180', 'Zip &amp; E-mail', '[LL_REPTAG_"MULTIFILE_LABEL.Zip_And_Email" XLATE /]', 'multifile.zipemailmulti', 'zipemail', '0');
+                }
+                rkt_MultiButtonPositionClient('[LL_REPTAG_SUPPORTDIR /]multifilebar.png', '0', '-324', '-104', '-324', 'EmailLink', '[LL_REPTAG_"WEBNODE_HTMLLABEL.EmailLink" XLATE /]', 'emailLink', '0' );
+                rkt_MultiButtonPosition('[LL_REPTAG_SUPPORTDIR /]multifilebar.png', '0', '-144', '-134', '-144', 'Print', '[LL_REPTAG_"MULTIFILE_LABEL.Print" XLATE /]', 'multifile.printmulti', 'print', '0');
+                if ( useCollectButton )
+                {
+                                rkt_MultiButtonPosition('[LL_REPTAG_SUPPORTDIR /]multifilebar.png', '0', '-288', '-104', '-288', 'Collect', '[LL_REPTAG_"COLLECTIONS_COMMAND.Collect" XLATE /]', 'll.CollectStaging', 'collectItems', '1');
+                }
+ 
+                [// Display the 'More...' menu button
+                rkt_nm_setSupportPath("[LL_REPTAG_SUPPORTDIR /]");
+                rkt_nm_moreMenuStart();
+                rkt_nm_setParentID("[LL_REPTAG_OVERRIDEOBJID /]");
+                rkt_nm_setLocation("[LL_REPTAG_URLPREFIX /]");
+                rkt_nm_setNextUrl("[LL_REPTAG_MYCACHEURL /]");
+                var menuID = "moreMultiMenu" + $('.toolbar-more-button').size().toString();
+ 
+                rkt_nm_AddNewMoreMenuHead( "", menuID, String.formatLoc( "[LL_REPTAG_'WEBNODE_HTMLLABEL.SelectToAccess1Menu' XLATE /]", "[LL_REPTAG_'WEBNODE_HTMLLabel.More' XLATE /]" ), "[LL_REPTAG_'WEBNODE_HTMLLabel.More_' XLATE /]" );
+                rkt_nm_AddNewMoreMenuItem( "mm_1", "copy.gif", "Copy", '[LL_REPTAG_"WEB_NODECMD.Copy" XLATE /]', "ll.ProcessMultiCopy", "copy" );
+                rkt_nm_AddNewMoreMenuItem( "mm_2", "move.gif", "Move", '[LL_REPTAG_"WEB_NODECMD.Move" XLATE /]', "ll.ProcessMultiMove", "move" );
+                rkt_nm_AddNewMoreMenuItem( "mm_3", "del.gif", "Delete", '[LL_REPTAG_"WEB_NODECMD.Delete" XLATE /]', "ll.ProcessMultiDelete", "delete" );
+                rkt_nm_AddNewMoreMenuItem( "mm_4", "multifile/zipdwnld.gif", "Zip & Download", '[LL_REPTAG_"MULTIFILE_LABEL.Zip_And_Download" XLATE /]', "multifile.zipdwnldmulti", "zipdwnld" );
+                if ( useZipAndEmailButton ) {
+                                rkt_nm_AddNewMoreMenuItem( "mm_5", "multifile/zipemail.gif", "Zip & E-mail", '[LL_REPTAG_"MULTIFILE_LABEL.Zip_And_Email" XLATE /]', "multifile.zipemailmulti", "zipemail" );
+                }
+                rkt_nm_AddNewMoreMenuItemClient( "mm_6", "", "EmailLink", '[LL_REPTAG_"WEBNODE_HTMLLABEL.EmailLink" XLATE /]', "emailLink" )
+                rkt_nm_AddNewMoreMenuItem( "mm_7", "multifile/print.gif", "Print", '[LL_REPTAG_"MULTIFILE_LABEL.Print" XLATE /]', "multifile.printmulti", "print" );
+                if ( useCollectButton )
+                {
+                                rkt_nm_AddNewMoreMenuItem( "mm_8", "collections/collect.gif", "Collect", '[LL_REPTAG_"COLLECTIONS_COMMAND.Collect" XLATE /]', "ll.CollectStaging", "collectItems" );
+                }
+                rkt_nm_AddNewMenuEnd();
+</SCRIPT>
+</DIV>
+[// CS105:  dragAndDrop indicator:
+<div class="toolbar-menu-seperator" id="dndSupportEnabledIndicatorDiv">
+                <span class=".toolbar-additem-panel">
+                                <img width="16" height="16" title="Drag files to the browse area to add them to this location" id="dndsupportenabled" src="[LL_REPTAG_SUPPORTDIR /]drag_and_drop_16x16.png">
+                </span>
+</div>[LL_REPTAG_OVERRIDEOBJID LLURL:ADDITEM /]</DIV>
+</TD>
+</TR>
+<TR ID='BrowseCoreRow'>                          [//CLASS="browseMultiSelectColor"
+<TD CLASS="tblForeground">
+<DIV ID="browseCoreDiv"></DIV>
+ 
+ 
+[// Display the column headings (in blue)
+<TABLE ID="browseViewCoreTable" CLASS="browseTable updatedBrowse">
+<TBODY>

@@ -1,0 +1,358 @@
+
+<HTML>
+
+<HEAD>
+
+<script> 
+function init() { 
+    // get the set blocks ids and hide them
+    var blockTravel = document.getElementById('block1');
+	var blockTraining = document.getElementById('block2');
+	var blockEvent = document.getElementById('block3');
+    blockTravel.style.display = 'none';
+    blockTraining.style.display = 'none';
+    blockEvent.style.display = 'none';
+    
+  }  
+
+ function toggleblock(nBlock) {
+	// get the block
+	var blockNumb = "block" + nBlock;
+	var checkBoxNum = "checkbox" + nBlock;
+	var tBlock = document.getElementById (blockNumb);
+	
+	// get the current value of the block display property
+	var displaysetting = tBlock.style.display;
+	
+	// get the status of the checkbox
+	var checkbox = document.getElementById(checkBoxNum);
+	
+	// now toggle the visibility of the block if checked
+	 if (checkbox.checked) {
+	 tBlock.style.display = 'block';
+	 }
+	 else {
+	 tBlock.style.display = 'none';
+	 }
+ }
+  
+  window.onload=init;
+  
+</script>
+
+<META http-equiv="content-type" content="text/html; charset=UTF-8">
+<LINK REL="stylesheet" TYPE="text/css" HREF="/img/style/screen.css">
+<STYLE>
+ .browseRow1 { background-color: #FFFFFF;  } 
+ .browseRow2 { background-color: #FFFFFF;  } 
+</STYLE>
+
+<TITLE>Form</TITLE>
+</HEAD>
+
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="[LL_SUPPORTPATH /]core/ajax_dhtml_util.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="[LL_SUPPORTPATH /]webform/formssupport.js"></SCRIPT>
+<BODY Class="pageBody">
+<FORM NAME="myForm" ACTION="[LL_CGIPATH /]" ENCTYPE="multipart/form-data" METHOD="POST">
+
+<INPUT TYPE="HIDDEN" NAME="func" VALUE="[LL_FUNC /]">
+<INPUT TYPE="HIDDEN" NAME="LL_FUNC_VALUES" VALUE="[LL_FUNC_VALUES /]">
+<INPUT TYPE="HIDDEN" NAME="LL_AttrFieldName" VALUE="">
+<INPUT TYPE="HIDDEN" NAME="LL_AttrFieldIndex" VALUE="">
+<INPUT TYPE="HIDDEN" NAME="LL_WFATTURL" VALUE="[LL_WFATTURL /]">
+
+<TABLE BGCOLOR="#FFFFFF" BACKGROUND="[LL_SUPPORTPATH /]pattern.gif" CELLSPACING="0"CELLPADDING="0" WIDTH="100%">
+<TR>
+<TD VALIGN="TOP" HEIGHT="100%" CLASS="pageBody">
+
+<TABLE WIDTH="100%" ALIGN="CENTER" CELLSPACING="0" CELLPADDING="15" BORDER="0">
+<TR>
+<TD VALIGN="TOP">
+
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR>
+<TD CLASS="tblBackground">
+
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="1">
+
+<TR>
+<TD CLASS="tblBackground" WIDTH="100%">
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+
+<TR>
+<TD CLASS="tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR>
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Travel:
+&nbsp;
+</TD>
+<TD NOWRAP>
+<INPUT TYPE="CHECKBOX" NAME="_1_1_2_1" value="1" id="checkbox1"  ONCLICK="markDirty();" onchange="toggleblock(1);">
+
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Training:
+&nbsp;
+</TD>
+<TD NOWRAP>
+<INPUT TYPE="CHECKBOX" NAME="_1_1_3_1" value="1" id="checkbox2"  ONCLICK="markDirty();" onchange="toggleblock(2);">
+
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Event:
+&nbsp;
+</TD>
+<TD NOWRAP>
+<INPUT TYPE="CHECKBOX" NAME="_1_1_4_1" value="1" id="checkbox3"  ONCLICK="markDirty();" onchange="toggleblock(3);">
+
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD>
+<TABLE STYLE="background-repeat: repeat-x" BACKGROUND="/img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR>
+<TD WIDTH="1%"><IMG SRC="/img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
+<TD CLASS="browseBoxHeader">
+&nbsp;Travel details
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0" id="block1">
+
+[LL_LOOP_BEGIN_1_1_5 /]
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Reason for travel:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_5_8_1" NAME="_1_1_5_8_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Visit outside of town" >Visit outside of town</OPTION>
+<OPTION VALUE="Training" >Training</OPTION>
+<OPTION VALUE="Event" >Event</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Cost of travel:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_5_9_1" TITLE="Cost of travel" ID="_1_1_5_9_1" VALUE="[LL_FormTag_1_1_5_9_1 /]" SIZE="12" MAXLENGTH="11" ONCHANGE="markDirty();">
+</TD>
+</TR>
+[LL_LOOP_END_1_1_5 /]
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<TABLE STYLE="background-repeat: repeat-x" BACKGROUND="/img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR>
+<TD WIDTH="1%"><IMG SRC="/img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
+<TD CLASS="browseBoxHeader">
+&nbsp;Training details
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0" id="block2">
+
+[LL_LOOP_BEGIN_1_1_6 /]
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Reason of training:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_6_10_1" NAME="_1_1_6_10_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Personal improvement" >Personal improvement</OPTION>
+<OPTION VALUE="Required for job" >Required for job</OPTION>
+<OPTION VALUE="Technical training" >Technical training</OPTION>
+<OPTION VALUE="Internal training" >Internal training</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Cost of training:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_6_11_1" TITLE="Cost of training" ID="_1_1_6_11_1" VALUE="[LL_FormTag_1_1_6_11_1 /]" SIZE="12" MAXLENGTH="11" ONCHANGE="markDirty();">
+</TD>
+</TR>
+[LL_LOOP_END_1_1_6 /]
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<TABLE STYLE="background-repeat: repeat-x" BACKGROUND="/img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR>
+<TD WIDTH="1%"><IMG SRC="/img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
+<TD CLASS="browseBoxHeader">
+&nbsp;Event details
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0" id="block3">
+
+[LL_LOOP_BEGIN_1_1_7 /]
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Type of event:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_7_12_1" NAME="_1_1_7_12_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Internal" >Internal</OPTION>
+<OPTION VALUE="External" >External</OPTION>
+<OPTION VALUE="Promotional" >Promotional</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Cost of event:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_7_13_1" TITLE="Cost of event" ID="_1_1_7_13_1" VALUE="[LL_FormTag_1_1_7_13_1 /]" SIZE="12" MAXLENGTH="11" ONCHANGE="markDirty();">
+</TD>
+</TR>
+[LL_LOOP_END_1_1_7 /]
+</TABLE>
+</TD>
+</TR>
+
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<TABLE WIDTH="100%" CELLPADDING="0" CELLSPACING="0" BORDER="0" BACKGROUND="[LL_SUPPORTPATH /]fon-table-header-gray.gif" STYLE="background-repeat: repeat-x;">
+<TR>
+<TD><IMG SRC="[LL_SUPPORTPATH /]spacer.gif" HEIGHT="28" WIDTH="1"></TD>
+<TD ALIGN="LEFT">
+<INPUT CLASS="applyButton" TYPE="BUTTON" VALUE="Apply" NAME="IgnoreMe" ONCLICK="doFormSubmit( document.myForm );">
+<INPUT CLASS="resetButton" TYPE="RESET" VALUE="Reset">
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+
+</FORM>
+
+</BODY>
+
+</HTML>
