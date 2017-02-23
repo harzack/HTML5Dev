@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EDOCS number to file name converter</title>
+	<link rel="stylesheet" type="text/css" href="css/edocs.css">
+	<script src="javascript/edocsconvert.js"></script>
+</head>
+<body>
+	<div id="edocs">
+		Click on the "New number" button.
+		<noscript>
+			<div>! Javascript is not enabled.</div>
+		</noscript>
+		<script>
+			var docNumber = prompt("Please enter a document number");
+			var docVers = prompt("Please enter the version number");
+			var docExt = prompt("Please enter the extension of the document");
+			if (isNaN(docNumber)) {
+				alert("only numbers please...");
+			  }
+			else {
+			document.getElementById("edocs").innerHTML="The document file name for the document with number: " + docNumber + " is: "+Num2DOCSEnh(docNumber, docVers, docExt);
+		      }
+		</script>
+		<br><br>
+		<button type='button' onclick='location.reload();'>New number</button>
+	</div>
+</body>
+</html>

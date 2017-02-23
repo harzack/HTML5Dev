@@ -2,7 +2,7 @@ function reverse(s){
     return s.split("").reverse().join("");
 }
 
-function Num2DOCSEnh(docnum)
+function Num2DOCSEnh(docnum, docver, docext)
 {
     var filename = "";
     var numberinitial = docnum;
@@ -28,7 +28,7 @@ function Num2DOCSEnh(docnum)
         docnum = (docnum - mod36) / 36;
     }
     filename = filename.toLowerCase();
-    return reverse(filename)+"01!.ext";
+    return reverse(filename)+docver+"!"+docext;
 }
 
 function Num2DOCSunix(docnum)
