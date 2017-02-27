@@ -1,15 +1,12 @@
 function pad2(number) {
-   
      return (number < 10 ? '0' : '') + number
-   
 }
 
-function reverse(s){
+function reverse(s) {
     return s.split("").reverse().join("");
 }
 
-function Num2DOCSEnh(docnum, docver, docext)
-{
+function Num2DOCSEnh(docnum, docver, docext) {
     var filename = "";
     var numberinitial = docnum;
     
@@ -37,8 +34,7 @@ function Num2DOCSEnh(docnum, docver, docext)
     return reverse(filename)+docver+"!."+docext;
 }
 
-function Num2DOCSunix(docnum, docver, docext)
-{
+function Num2DOCSunix(docnum, docver, docext) {
     var filename = "";
     var numberinitial = docnum;
     
@@ -68,7 +64,7 @@ function Num2DOCSunix(docnum, docver, docext)
 
 
 // Convert DOCS filename to document number using enhanced filing scheme
-function DOCSEnh2Num(filename){
+function DOCSEnh2Num(filename) {
 	    var docnum = 0;
 	    var c = "";
 	    var numbersRegex = /[0-9]/;
@@ -144,7 +140,8 @@ function DOCSUnix2Num(filename) {
     return docnum;
 }
 
-// 5 fields, 4 changes possible: docN = Document Number, verN = version number, ext = extension, fileChange = filename added
+// 6 fields, 4 can be changed: docN = Document Number, verN = version number, ext = extension, fileChange = filename added
+// This function is called by each of the field that can be changed, and pass the change code documented above to switch
 function convert(fieldchanged) {
 	var docNumber = document.getElementById("docNumber").value;
 	var docVers = document.getElementById("docVers").value;
@@ -166,7 +163,9 @@ function convert(fieldchanged) {
 	switch(fieldchanged) {
 		case 'docN':
 			if (isNaN(docNumber)) 
-				{ document.getElementById("docNumberComment").value = "The document number has to be a number..."; }
+				{ document.getElementById("docNumberComment").value = "The document number has to be a number...";
+				document.getElementById("docNumber").value = 1;
+				}
 			else {
 				document.getElementById("fileNameEnh").value = Num2DOCSEnh(docNumber, docVers, docExt);
 				document.getElementById("fileNameUnix").value = Num2DOCSunix(docNumber, docVers, docExt);
@@ -174,8 +173,8 @@ function convert(fieldchanged) {
 			break;
 		case 'verN':
 			document.getElementById("docVers").value = pad2(docVers);
-			document.getElementById("fileNameEnh").value = Num2DOCSEnh(docNumber, docVers, docExt);
-			document.getElementById("fileNameUnix").value = Num2DOCSunix(docNumber, docVers, docExt);
+			document.getElementById("fileNameEnh").value = Num2DOCSEnh(docNumber, pad2(docVers), docExt);
+			document.getElementById("fileNameUnix").value = Num2DOCSunix(docNumber, pad2(docVers), docExt);
 			break;
 		case 'ext':
 			if (docExt.length < 2 || docExt.length > 4) 
