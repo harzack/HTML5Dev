@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EDOCS number to file name converter</title>
+	<link rel="stylesheet" type="text/css" href="css/edocs.css">
+	<script src="javascript/edocsconvert.js"></script>
+</head>
+<body>
+	<div id="edocs">
+		<noscript>
+			<div>! Javascript is not enabled.</div>
+		</noscript>
+		<form>
+			<fieldset>
+				<legend>eDOCS Document numbers to file name conversion: modify any of the fields below</legend>
+				eDOCS Document Number:&nbsp;
+				<input type="text" id="docNumber" value="1" onchange="convert('docN');">
+				<input type="text" class="alert" id="docNumberComment" readonly="readonly" size="50%" value=""><br>
+				Version Number:&nbsp;
+				<input type="number" id="docVers" value="01" min="1" max="99" step="1" onchange="convert('verN');">
+				<input type="text" class="alert" id="docVersComment" readonly="readonly" size="50%" value=""><br>
+				Extension (2 to 4 characters):&nbsp;
+				<input type="text" id="docExt" value="txt" onchange="convert('ext');">
+				<input type="text" class="alert" id="docExtComment" readonly="readonly" size="50%" value=""><br>
+				File name (enhanced, contains "!" before the extension):&nbsp;
+				<input type="text" class="readonly" id="fileNameEnh" value="enh" readonly="readonly"><br>
+				File name (UNIX, contains "_" before the extension):&nbsp;
+				<input type="text"  class="readonly" id="fileNameUnix" value="unix" readonly="readonly"><br>
+				File name (type or paste a file name here):&nbsp;
+				<input type="text" id="fileName" value="" onchange="convert('fileChange');">
+				<input type="text" class="alert" id="fileNameComment" readonly="readonly" size="50%" value="">
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>
