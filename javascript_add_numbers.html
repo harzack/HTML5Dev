@@ -3,33 +3,28 @@
 <head>
 	<meta charset="utf-8" />
 	<title>javascript_update_input_value</title>
+	<link rel="stylesheet" type="text/css" href="css/edocs.css">
 	
-	
-<script>
+	<script>
+	   function addNumbers() {
+		var number1 = document.getElementById("numb1").value;
+		var number2 = document.getElementById("numb2").value;
+		var numbTotal = document.getElementById("numbTotal");
 
-   function addNumbers() {
-    var number1 = document.getElementById("numb1").value;
-	var number2 = document.getElementById("numb2").value;
-	var numbTotal = document.getElementById("numbTotal");
-
-	numbTotal.value = +number1 * +number2;
-	
-   }
-   
-</script>
-
+		numbTotal.value = +number1 + +number2;	
+	   }
+	</script>
 </head>
 <body>
-
-<form id="addNumbers" action="#">
-First number: <input type="text" size="30" maxlength="30" name="numb1" id="numb1" onchange="addNumbers()" />
-<br>
-Second number: <input type="text" size="30" maxlength="30" name="numb2" id="numb2" onchange="addNumbers()"/>
-<br>
-Calculated total: <input type="text" size="30" maxlength="30" name="numb12" id="numbTotal" readonly />
-<br>
-<input type="button" name="submit" value="I do nothing" onclick="showElements(this.form);" />
-</form>
-
+	<div id="edocs">
+		<fieldset>
+			<legend>Simply type a number in the two fields and see the sum in the bottom field:&nbsp;</legend>
+			<form id="addNumbers" action="#">
+			First number:&nbsp;<input type="text" size="30" maxlength="30" name="numb1" id="numb1" onchange="addNumbers()" /><br>
+			Second number:&nbsp;<input type="text" size="30" maxlength="30" name="numb2" id="numb2" onchange="addNumbers()"/><br>
+			Calculated total:&nbsp;<input type="text" size="30" maxlength="30" name="numb12" id="numbTotal" readonly="readonly"/>
+			</form>
+		</fieldset>
+	</div>
 </body>
 </html>
