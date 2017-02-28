@@ -163,7 +163,7 @@ function convert(fieldchanged) {
 	switch(fieldchanged) {
 		case 'docN':
 			if (isNaN(docNumber)) 
-				{ document.getElementById("docNumberComment").value = "The document number has to be a number...";
+				{ document.getElementById("docNumberComment").value = "--> has to be a number";
 				document.getElementById("docNumber").value = 1;
 				}
 			else {
@@ -177,8 +177,10 @@ function convert(fieldchanged) {
 			document.getElementById("fileNameUnix").value = Num2DOCSunix(docNumber, pad2(docVers), docExt);
 			break;
 		case 'ext':
-			if (docExt.length < 2 || docExt.length > 4) 
-				{ document.getElementById("docExtComment").value = "The extension should be between 2 and 4 characters..."; }
+			if (docExt.length < 2 || docExt.length > 4 || docExt.lastIndexOf(".") != -1) 
+				{ document.getElementById("docExtComment").value = "--> between 2 and 4 characters and has no dots";
+				  document.getElementById("docExt").value = 'txt';
+				 }
 			else {
 			document.getElementById("fileNameEnh").value = Num2DOCSEnh(docNumber, docVers, docExt);
 			document.getElementById("fileNameUnix").value = Num2DOCSunix(docNumber, docVers, docExt);
@@ -189,8 +191,8 @@ function convert(fieldchanged) {
 			
 			extPos = fileName.lastIndexOf(".");
 			// extract method, version number and extension
-			if (extPos === "-1") {
-				document.getElementById("fileNameComment").value = "Not a valide file name: missing the dot...";
+			if (extPos === -1) {
+				document.getElementById("fileNameComment").value = "Not a valide file name: missing the dot";
 				break;
 			}
 			else {
