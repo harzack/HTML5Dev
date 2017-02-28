@@ -12,23 +12,33 @@
 		</noscript>
 		<form>
 			<fieldset>
-				<legend>eDOCS Document numbers to file name conversion: modify any of the fields below</legend>
-				eDOCS Document Number:&nbsp;
-				<input type="text" id="docNumber" value="1" onchange="convert('docN');">
-				<input type="text" class="alert" id="docNumberComment" readonly="readonly" size="50%" value=""><br>
-				Version Number:&nbsp;
-				<input type="number" id="docVers" value="01" min="1" max="99" step="1" onchange="convert('verN');">
-				<input type="text" class="alert" id="docVersComment" readonly="readonly" size="50%" value=""><br>
-				Extension (2 to 4 characters):&nbsp;
-				<input type="text" id="docExt" value="txt" onchange="convert('ext');">
-				<input type="text" class="alert" id="docExtComment" readonly="readonly" size="50%" value=""><br>
-				File name (enhanced, contains "!" before the extension):&nbsp;
-				<input type="text" class="readonly" id="fileNameEnh" value="enh" readonly="readonly"><br>
-				File name (UNIX, contains "_" before the extension):&nbsp;
-				<input type="text"  class="readonly" id="fileNameUnix" value="unix" readonly="readonly"><br>
-				File name (type or paste a file name here):&nbsp;
-				<input type="text" id="fileName" value="" onchange="convert('fileChange');">
-				<input type="text" class="alert" id="fileNameComment" readonly="readonly" size="50%" value="">
+				<legend>eDOCS Document # <--> file name</legend>
+				<p>
+					<label class="field" for="docNumber">eDOCS Document Number:</label><input type="text" class="textbox1" name="docNumber" id="docNumber" value="1" onchange="convert('docN');"><input type="text" class="alert" id="docNumberComment" readonly="readonly" value=""><br>
+				</p>
+				<p>
+					<label class="field" for="docVers">Version Number:</label>
+					<input type="number" class="numbox1" name="docVers" id="docVers" value="01" min="1" max="99" step="1" onchange="convert('verN');">
+					<input type="text" class="alert" id="docVersComment" readonly="readonly" value=""><br>
+				</p>
+				<p>
+					<label class="field" for="docExt">Extension (2 to 4 characters):</label>
+					<input type="text" class="textbox1" name="docExt" id="docExt" value="txt" onchange="convert('ext');">
+					<input type="text" class="alert" id="docExtComment" readonly="readonly" value=""><br>
+				</p>
+				<p>
+					<label class="field" for="fileNameEnh">File name (enhanced, "!"):</label>
+					<input type="text" class="readonly" name="fileNameEnh" id="fileNameEnh" value="enh" readonly="readonly"><br>
+				</p>
+				<p>
+					<label class="field" for="fileNameUnix">File name (UNIX, "_"):</label>
+					<input type="text"  class="readonly" name="fileNameUnix" id="fileNameUnix" value="unix" readonly="readonly"><br>
+				</p>
+				<p>
+					<label class="field" for="fileName">Type or paste a file name:</label>
+					<input type="text" class="textbox1" name="fileName" id="fileName" value="" onchange="convert('fileChange');">
+					<input type="text" class="alert" id="fileNameComment" readonly="readonly" value="">
+				</p>
 			</fieldset>
 		</form>
 	</div>

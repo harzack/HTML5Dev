@@ -163,7 +163,7 @@ function convert(fieldchanged) {
 	switch(fieldchanged) {
 		case 'docN':
 			if (isNaN(docNumber)) 
-				{ document.getElementById("docNumberComment").value = "--> has to be a number";
+				{ document.getElementById("docNumberComment").value = "--> must be a number";
 				document.getElementById("docNumber").value = 1;
 				}
 			else {
@@ -178,7 +178,7 @@ function convert(fieldchanged) {
 			break;
 		case 'ext':
 			if (docExt.length < 2 || docExt.length > 4 || docExt.lastIndexOf(".") != -1) 
-				{ document.getElementById("docExtComment").value = "--> between 2 and 4 characters and has no dots";
+				{ document.getElementById("docExtComment").value = "--> between 2 & 4 chars and no '.'";
 				  document.getElementById("docExt").value = 'txt';
 				 }
 			else {
@@ -192,7 +192,7 @@ function convert(fieldchanged) {
 			extPos = fileName.lastIndexOf(".");
 			// extract method, version number and extension
 			if (extPos === -1) {
-				document.getElementById("fileNameComment").value = "Not a valide file name: missing the dot";
+				document.getElementById("fileNameComment").value = "--> not a valid name: missing '.'";
 				break;
 			}
 			else {
@@ -218,7 +218,7 @@ function convert(fieldchanged) {
 				document.getElementById("fileNameUnix").value = "Unix";
 			}
 			else {
-				document.getElementById("fileNameComment").value = "Not a valide file name...";
+				document.getElementById("fileNameComment").value = "--> not a valid name";
 				}			
 			// file name to test: 2801!.docx = 80 | 5jp01!.wpd = 7189 | 7w201_.xls = 7490
 			break;
