@@ -10,8 +10,10 @@
 <STYLE>
  .browseRow1 { background-color: #FFFFFF;  } 
  .browseRow2 { background-color: #FFFFFF;  } 
+ .topSection { text-align: right; }
 </STYLE>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script> 
 // the functions below are added to improve the usability of the form, and are not part
 // of the standard form. They are associated with specific IDs and classes within the HTML code:
@@ -19,29 +21,8 @@
 
 // this function is called when the page loads, and hide the detail blocks by default
 function init() { 
-    // get the set blocks ids and hide them
-    var cTravel = document.getElementsByClassName("class1");
-	var cHospitality = document.getElementsByClassName("class2");
-	var cTraining = document.getElementsByClassName("class3");
-	var cConference = document.getElementsByClassName("class4");
-	var cEvent = document.getElementsByClassName("class5");
-	var i;
-	
-    for (i = 0; i < cTravel.length; i++) {
-        cTravel[i].style.display = "none";
-    }
-    for (i = 0; i < cHospitality.length; i++) {
-        cHospitality[i].style.display = "none";
-    }
-    for (i = 0; i < cTraining.length; i++) {
-        cTraining[i].style.display = "none";
-    }
-    for (i = 0; i < cConference.length; i++) {
-        cConference[i].style.display = "none";
-    }
-    for (i = 0; i < cEvent.length; i++) {
-        cEvent[i].style.display = "none";
-    }
+    // get the blocks with class starting by detail and hide them
+    $('[class^="detail"]').hide();
   }  
 
 // BEGINING OF CUSTOM SCRIPTS
@@ -54,8 +35,38 @@ function init() {
 	// get the block class name and checkbox ID based on the passed value of 1 to 5
 	// block have classes as one class can be set to multiple blocks,
 	// in this case we hide or show both the title and the detail block together
-	var classNumb = "class" + nBlock;
+	var classNumb = "detail" + nBlock;
 	var checkBoxNum = "checkbox" + nBlock;
+	// get the block based on its class (i.e. class1)
+	var tBlock = document.getElementsByClassName(classNumb);
+	var i;
+	
+	// get the status of the checkbox based on its ID (i.e. checkbox1)
+	var checkbox = document.getElementById(checkBoxNum);
+	
+	// now toggle the visibility of the blocks based on the checkbox status
+	 if (checkbox.checked) {
+	 	for (i = 0; i < tBlock.length; i++) {
+        	tBlock[i].style.display = "block";
+    		}
+    	// if hospitality details is displayed, hide hospitality details fields
+    	if ( nBlock === 2) {
+				$('[class^="hospitality"]').hide();
+			}
+	 	 }
+	 else {
+	 	for (i = 0; i < tBlock.length; i++) {
+        	tBlock[i].style.display = "none";
+    		}
+	 	 }
+	 }
+	 
+ function toggleHospitalityblock(nBlock) {
+	// get the block class name and checkbox ID based on the passed value of 1 to 5
+	// block have classes as one class can be set to multiple blocks,
+	// in this case we hide or show both the title and the detail block together
+	var classNumb = "hospitality" + nBlock;
+	var checkBoxNum = "checkboxh" + nBlock;
 	// get the block based on its class (i.e. class1)
 	var tBlock = document.getElementsByClassName(classNumb);
 	var i;
@@ -139,7 +150,7 @@ function init() {
 <TD CLASS="tblForeground">
 <TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
 <TR>
-<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+<TD CLASS="topSection label" NOWRAP VALIGN="MIDDLE">
 &nbsp;Travel:
 &nbsp;
 </TD>
@@ -147,7 +158,7 @@ function init() {
 <INPUT TYPE="CHECKBOX" NAME="_1_1_36_1" id="checkbox1" onchange="toggleblock(1)" value="1"  ONCLICK="markDirty();">
 
 </TD>
-<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+<TD CLASS="topSection label" NOWRAP VALIGN="MIDDLE">
 &nbsp;Hospitality:
 &nbsp;
 </TD>
@@ -155,7 +166,7 @@ function init() {
 <INPUT TYPE="CHECKBOX" NAME="_1_1_37_1" id="checkbox2" onchange="toggleblock(2)" value="1"  ONCLICK="markDirty();">
 
 </TD>
-<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+<TD CLASS="topSection label" NOWRAP VALIGN="MIDDLE">
 &nbsp;Training:
 &nbsp;
 </TD>
@@ -163,7 +174,7 @@ function init() {
 <INPUT TYPE="CHECKBOX" NAME="_1_1_38_1" id="checkbox3" onchange="toggleblock(3)" value="1"  ONCLICK="markDirty();">
 
 </TD>
-<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+<TD CLASS="topSection label" NOWRAP VALIGN="MIDDLE">
 &nbsp;Conference:
 &nbsp;
 </TD>
@@ -171,7 +182,7 @@ function init() {
 <INPUT TYPE="CHECKBOX" NAME="_1_1_39_1" id="checkbox4" onchange="toggleblock(4)" value="1"  ONCLICK="markDirty();">
 
 </TD>
-<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+<TD CLASS="topSection label" NOWRAP VALIGN="MIDDLE">
 &nbsp;Event:
 &nbsp;
 </TD>
@@ -989,14 +1000,14 @@ savedValue.value = nameField.value;
 &nbsp;
 </TD>
 <TD NOWRAP>
-<INPUT CLASS="valueEditable" TYPE="text" readonly NAME="_1_1_93_1" TITLE="Total cost (A+B+C+D+E)" ID="_1_1_93_1" VALUE="[LL_FormTag_1_1_93_1 /]" SIZE="20" MAXLENGTH="20">
+<INPUT CLASS="valueEditable" TYPE="text" readonly="readonly" NAME="_1_1_93_1" TITLE="Total cost (A+B+C+D+E)" ID="_1_1_93_1" VALUE="[LL_FormTag_1_1_93_1 /]" SIZE="20" MAXLENGTH="20">
 </TD>
 </TR>
 </TABLE>
 </TD>
 </TR>
 <TR>
-<TD CLASS="class1">
+<TD CLASS="detail1">
 <TABLE STYLE="background-repeat: repeat-x" BACKGROUND="/img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
 <TR>
 <TD WIDTH="1%"><IMG SRC="/img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
@@ -1009,7 +1020,7 @@ savedValue.value = nameField.value;
 </TR>
 
 <TR>
-<TD CLASS="tblForeground class1">
+<TD CLASS="detail1 tblForeground">
 <TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
 
 [LL_LOOP_BEGIN_1_1_20 /]
@@ -1281,7 +1292,7 @@ savedValue.value = nameField.value;
 </TR>
 
 <TR>
-<TD CLASS="class2">
+<TD CLASS="detail2">
 <TABLE STYLE="background-repeat: repeat-x" BACKGROUND="/img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
 <TR>
 <TD WIDTH="1%"><IMG SRC="/img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
@@ -1294,7 +1305,7 @@ savedValue.value = nameField.value;
 </TR>
 
 <TR>
-<TD CLASS="tblForeground class2">
+<TD CLASS="detail2 tblForeground">
 <TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
 
 [LL_LOOP_BEGIN_1_1_21 /]
@@ -1340,7 +1351,7 @@ savedValue.value = nameField.value;
 
 <TD NOWRAP>
 
-<INPUT TYPE="CHECKBOX" NAME="_1_1_21_69_1" value="1"  ONCLICK="markDirty();">
+<INPUT TYPE="CHECKBOX" id="checkboxh1" NAME="_1_1_21_69_1" value="1" onchange="toggleHospitalityblock(1);" ONCLICK="markDirty();">
 
 </TD>
 </TR>
@@ -1348,7 +1359,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR CLASS="hospitality1">
 
 
 
@@ -1368,7 +1379,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR CLASS="hospitality1">
 
 
 
@@ -1401,7 +1412,7 @@ savedValue.value = nameField.value;
 
 <TD NOWRAP>
 
-<INPUT TYPE="CHECKBOX" NAME="_1_1_21_70_1" value="1"  ONCLICK="markDirty();">
+<INPUT TYPE="CHECKBOX" id="checkboxh2" NAME="_1_1_21_70_1" value="1" onchange="toggleHospitalityblock(2);" ONCLICK="markDirty();">
 
 </TD>
 </TR>
@@ -1409,7 +1420,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR CLASS="hospitality2">
 
 
 
@@ -1429,7 +1440,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR  CLASS="hospitality2">
 
 
 
@@ -1462,7 +1473,7 @@ savedValue.value = nameField.value;
 
 <TD NOWRAP>
 
-<INPUT TYPE="CHECKBOX" NAME="_1_1_21_71_1" value="1"  ONCLICK="markDirty();">
+<INPUT TYPE="CHECKBOX" id="checkboxh3" NAME="_1_1_21_71_1" value="1"  onchange="toggleHospitalityblock(3);" ONCLICK="markDirty();">
 
 </TD>
 </TR>
@@ -1470,7 +1481,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR  CLASS="hospitality3">
 
 
 
@@ -1490,7 +1501,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR  CLASS="hospitality3">
 
 
 
@@ -1523,7 +1534,7 @@ savedValue.value = nameField.value;
 
 <TD NOWRAP>
 
-<INPUT TYPE="CHECKBOX" NAME="_1_1_21_72_1" value="1"  ONCLICK="markDirty();">
+<INPUT TYPE="CHECKBOX" id="checkboxh4" NAME="_1_1_21_72_1" value="1" onchange="toggleHospitalityblock(4);"  ONCLICK="markDirty();">
 
 </TD>
 </TR>
@@ -1531,7 +1542,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR  CLASS="hospitality4">
 
 
 
@@ -1551,7 +1562,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR  CLASS="hospitality4">
 
 
 
@@ -1584,7 +1595,7 @@ savedValue.value = nameField.value;
 
 <TD NOWRAP>
 
-<INPUT TYPE="CHECKBOX" NAME="_1_1_21_73_1" value="1"  ONCLICK="markDirty();">
+<INPUT TYPE="CHECKBOX" id="checkboxh5" NAME="_1_1_21_73_1" value="1" onchange="toggleHospitalityblock(5);"  ONCLICK="markDirty();">
 
 </TD>
 </TR>
@@ -1592,7 +1603,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR  CLASS="hospitality5">
 
 
 
@@ -1612,7 +1623,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR  CLASS="hospitality5">
 
 
 
@@ -1645,7 +1656,7 @@ savedValue.value = nameField.value;
 
 <TD NOWRAP>
 
-<INPUT TYPE="CHECKBOX" NAME="_1_1_21_74_1" value="1"  ONCLICK="markDirty();">
+<INPUT TYPE="CHECKBOX" id="checkboxh6" NAME="_1_1_21_74_1" value="1" onchange="toggleHospitalityblock(6);"  ONCLICK="markDirty();">
 
 </TD>
 </TR>
@@ -1653,7 +1664,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR  CLASS="hospitality6">
 
 
 
@@ -1673,7 +1684,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR  CLASS="hospitality6">
 
 
 
@@ -1706,7 +1717,7 @@ savedValue.value = nameField.value;
 
 <TD NOWRAP>
 
-<INPUT TYPE="CHECKBOX" NAME="_1_1_21_75_1" value="1"  ONCLICK="markDirty();">
+<INPUT TYPE="CHECKBOX" id="checkboxh7" NAME="_1_1_21_75_1" value="1" onchange="toggleHospitalityblock(7);"  ONCLICK="markDirty();">
 
 </TD>
 </TR>
@@ -1714,7 +1725,7 @@ savedValue.value = nameField.value;
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
-<TR>
+<TR  CLASS="hospitality7">
 
 
 
@@ -1736,7 +1747,7 @@ savedValue.value = nameField.value;
 </TR>
 
 <TR>
-<TD CLASS="class3">
+<TD CLASS="detail3">
 <TABLE STYLE="background-repeat: repeat-x" BACKGROUND="/img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
 <TR>
 <TD WIDTH="1%"><IMG SRC="/img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
@@ -1749,7 +1760,7 @@ savedValue.value = nameField.value;
 </TR>
 
 <TR>
-<TD CLASS="tblForeground class3">
+<TD CLASS="detail3 tblForeground">
 <TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
 
 [LL_LOOP_BEGIN_1_1_22 /]
@@ -1859,7 +1870,7 @@ savedValue.value = nameField.value;
 </TR>
 
 <TR>
-<TD CLASS="class4">
+<TD CLASS="detail4">
 <TABLE STYLE="background-repeat: repeat-x" BACKGROUND="/img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
 <TR>
 <TD WIDTH="1%"><IMG SRC="/img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
@@ -1872,7 +1883,7 @@ savedValue.value = nameField.value;
 </TR>
 
 <TR>
-<TD CLASS="tblForeground class4">
+<TD CLASS="detail4 tblForeground">
 <TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
 
 [LL_LOOP_BEGIN_1_1_23 /]
@@ -1983,7 +1994,7 @@ savedValue.value = nameField.value;
 </TR>
 
 <TR>
-<TD CLASS="class5">
+<TD CLASS="detail5">
 <TABLE STYLE="background-repeat: repeat-x" BACKGROUND="/img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
 <TR>
 <TD WIDTH="1%"><IMG SRC="/img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
@@ -1996,7 +2007,7 @@ savedValue.value = nameField.value;
 </TR>
 
 <TR>
-<TD CLASS="tblForeground class5">
+<TD CLASS="detail5 tblForeground">
 <TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
 
 [LL_LOOP_BEGIN_1_1_24 /]
