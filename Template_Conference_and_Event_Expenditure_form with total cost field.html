@@ -40,19 +40,30 @@ function init() {
 	// get the block based on its class (i.e. class1)
 	var tBlock = document.getElementsByClassName(classNumb);
 	var i;
+	var j;
 	
 	// get the status of the checkbox based on its ID (i.e. checkbox1)
 	var checkbox = document.getElementById(checkBoxNum);
+	var className = "";
 	
 	// now toggle the visibility of the blocks based on the checkbox status
 	 if (checkbox.checked) {
 	 	for (i = 0; i < tBlock.length; i++) {
         	tBlock[i].style.display = "block";
     		}
-    	// if hospitality details is displayed, hide hospitality details fields
+    	// if hospitality details is displayed, hide hospitality details fields when unchecked
     	if ( nBlock === 2) {
-				$('[class^="hospitality"]').hide();
-			}
+				checkboxh = $('[ID^="checkboxh"]');
+				for (k = 1; k < checkboxh.length+1; k++) {
+					if (checkboxh[k-1].checked === false) {
+						className = "hospitality"+k;
+						hospitalityd = document.getElementsByClassName(className);
+						for (j = 0; j < hospitalityd.length; j++) {
+        					hospitalityd[j].style.display = "none";
+    						}
+					}
+				}
+			} 
 	 	 }
 	 else {
 	 	for (i = 0; i < tBlock.length; i++) {
@@ -93,15 +104,20 @@ function init() {
    function totalCost() {
     //declare the total and set it to 0 by default
     var total = 0;
-    // extract each cost from their respective fields in the form
-    var travelCost = document.getElementById("_1_1_46_57_1").value;
-	var hospitalityCost = document.getElementById("_1_1_46_58_1").value;
-	var trainingCost = document.getElementById("_1_1_46_59_1").value;
-	var conferenceCost = document.getElementById("_1_1_46_60_1").value;
-	var eventCost = document.getElementById("_1_1_46_61_1").value;
+    var i = 0;
+    // extract each cost from their respective fields in the form only if they are numbers
+    // and add them to the total or set them to 0
+    var costsVals = document.getElementsByClassName("costsVal");
+    
+    for (i=0; i < costsVals.length ; i++) {
+    	if (!isNaN(+costsVals[i].value)) {
+    		total += +costsVals[i].value;
+    	}
+    	else {
+    		costsVals[i].value = 0;
+    	}
+    }
 
-	// calculate the total of all costs
-	total = +travelCost + +hospitalityCost + +trainingCost + +conferenceCost + +eventCost;
 	// set the value of the total cost to the total calculated above
 	document.getElementById("_1_1_93_1").value = total;
 	
@@ -704,7 +720,7 @@ nextText: "Next"
 
 <TD NOWRAP>
 
-<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_46_57_1" TITLE="Travel Costs (A)" ID="_1_1_46_57_1" VALUE="[LL_FormTag_1_1_46_57_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
+<INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_57_1" TITLE="Travel Costs (A)" ID="_1_1_46_57_1" VALUE="[LL_FormTag_1_1_46_57_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
 </TD>
 </TR>
 <TR CLASS="horizontalCellDivider" >
@@ -724,7 +740,7 @@ nextText: "Next"
 
 <TD NOWRAP>
 
-<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_46_58_1" TITLE="Hospitality Costs (B)" ID="_1_1_46_58_1" VALUE="[LL_FormTag_1_1_46_58_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
+<INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_58_1" TITLE="Hospitality Costs (B)" ID="_1_1_46_58_1" VALUE="[LL_FormTag_1_1_46_58_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
 </TD>
 </TR>
 <TR CLASS="horizontalCellDivider" >
@@ -744,7 +760,7 @@ nextText: "Next"
 
 <TD NOWRAP>
 
-<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_46_59_1" TITLE="Training Costs (C)" ID="_1_1_46_59_1" VALUE="[LL_FormTag_1_1_46_59_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
+<INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_59_1" TITLE="Training Costs (C)" ID="_1_1_46_59_1" VALUE="[LL_FormTag_1_1_46_59_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
 </TD>
 </TR>
 <TR CLASS="horizontalCellDivider" >
@@ -764,7 +780,7 @@ nextText: "Next"
 
 <TD NOWRAP>
 
-<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_46_60_1" TITLE="Conference Costs (D)" ID="_1_1_46_60_1" VALUE="[LL_FormTag_1_1_46_60_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
+<INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_60_1" TITLE="Conference Costs (D)" ID="_1_1_46_60_1" VALUE="[LL_FormTag_1_1_46_60_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
 </TD>
 </TR>
 <TR CLASS="horizontalCellDivider" >
@@ -784,7 +800,7 @@ nextText: "Next"
 
 <TD NOWRAP>
 
-<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_46_61_1" TITLE="Event Costs (E)" ID="_1_1_46_61_1" VALUE="[LL_FormTag_1_1_46_61_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
+<INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_61_1" TITLE="Event Costs (E)" ID="_1_1_46_61_1" VALUE="[LL_FormTag_1_1_46_61_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
 </TD>
 </TR>
 <TR CLASS="horizontalCellDivider" >
@@ -2272,7 +2288,7 @@ savedValue.value = nameField.value;
 <TR>
 <TD><IMG SRC="[LL_SUPPORTPATH /]spacer.gif" HEIGHT="28" WIDTH="1"></TD>
 <TD ALIGN="LEFT">
-<INPUT CLASS="applyButton" TYPE="BUTTON" VALUE="Apply" NAME="IgnoreMe" ONCLICK="doFormSubmit( document.myForm );">
+<INPUT CLASS="applyButton" TYPE="BUTTON" VALUE="Submit Request" NAME="IgnoreMe" ONCLICK="doFormSubmit( document.myForm );">
 <INPUT CLASS="resetButton" TYPE="RESET" VALUE="Reset">
 </TD>
 </TR>
