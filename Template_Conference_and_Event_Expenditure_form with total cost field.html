@@ -15,21 +15,21 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script> 
+// BEGINING OF CUSTOM SCRIPTS
+
 // the functions below are added to improve the usability of the form, and are not part
 // of the standard form. They are associated with specific IDs and classes within the HTML code:
 // class1~5 for the blocks to show and hide, and checkbox1~5 for the triggers.
 
 // this function is called when the page loads, and hide the detail blocks by default
 function init() { 
-    // get the blocks with class starting by detail and hide them
+    // get the blocks with class starting by detail with jquery selector and hide them
     $('[class^="detail"]').hide();
   }  
 
-// BEGINING OF CUSTOM SCRIPTS
-
 
 // this function show or hide the various detail blocks of the form
-// it is called by each checks for the 5 parts of the form
+// it is called by each checks boxes for the 5 parts of the form
 
  function toggleblock(nBlock) {
 	// get the block class name and checkbox ID based on the passed value of 1 to 5
@@ -37,7 +37,7 @@ function init() {
 	// in this case we hide or show both the title and the detail block together
 	var classNumb = "detail" + nBlock;
 	var checkBoxNum = "checkbox" + nBlock;
-	// get the block based on its class (i.e. class1)
+	// get the exact block based on its class and number (i.e. class1)
 	var tBlock = document.getElementsByClassName(classNumb);
 	var i;
 	var j;
@@ -51,11 +51,11 @@ function init() {
 	 	for (i = 0; i < tBlock.length; i++) {
         	tBlock[i].style.display = "block";
     		}
-    	// if hospitality details is displayed, hide hospitality details fields when unchecked
+    	// if hospitality details is displayed (#2), hide hospitality details fields when unchecked
     	if ( nBlock === 2) {
-				checkboxh = $('[ID^="checkboxh"]');
-				for (k = 1; k < checkboxh.length+1; k++) {
-					if (checkboxh[k-1].checked === false) {
+				$checkboxh = $('[ID^="checkboxh"]');
+				for (k = 1; k < $checkboxh.length+1; k++) {
+					if ($checkboxh[k-1].checked === false) {
 						className = "hospitality"+k;
 						hospitalityd = document.getElementsByClassName(className);
 						for (j = 0; j < hospitalityd.length; j++) {
@@ -101,6 +101,7 @@ function init() {
 	 
 // function used to calculate the total cost of the request to route the workflow
 // it is called whenever a new amount is entered in each cost field
+// if anything other than a number is entered, it resets the value to 0.
    function totalCost() {
     //declare the total and set it to 0 by default
     var total = 0;
@@ -125,9 +126,7 @@ function init() {
   
   window.onload=init;
   
-  
-  // END OF THE CUSTOM SCRIPTS
-  
+// END OF THE CUSTOM SCRIPTS
 </script>
 
 <TITLE>Form</TITLE>
