@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="NGDLLES100502-H-UGD-JA-1">
+<META name="pvScheme" content="010203">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="ngd">
+<META mancondkey="ngdcore-h-ugd -- lleswbb-h-ugd -- ngdcore-ugd -- lleswfp-h-ugd -- llescls-h-ugd -- llesrcm-igd -- lleswat-h-ugd -- llescl-h-ugd -- llesrt-h-ugd -- lleswbd-h-ugd"><title> マップ タイトル  を使用した正規表現式の操作 </title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ngdlles-lqlregex-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = '複合クエリを使用した検索';
+          header.title2 = '';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4611"></A>複合クエリで正規表現式を使用するには、正規表現式を引用符 (<TT CLASS="literal">"&nbsp;"</TT>) で囲み、<TT CLASS="literal">QLREGEX</TT> キーワードを先頭に付けます。</P>
+<P><A NAME="TMPID4614"></A>正規表現式は、特定のパターンと一致する文字列の集合です。これらのパターンを指定するには、特殊文字 $、^、.、*、+、?、[、]、(、)、\ を、特殊文字以外の通常の文字に対して演算子として機能させます。通常の文字は、その文字自体と一致する簡単な正規表現式です。例えば、<TT CLASS="literal">h</TT> が一致するのは <B CLASS="emphasis">h</B> だけです。特殊文字を通常の文字として表すには、円記号 (\) を前に付けます。例えば、<TT CLASS="literal">\$</TT> は <B CLASS="emphasis">$</B> と一致します。</P>
+<P class="before-ul"><A NAME="TMPID4619"></A>次のガイドラインでは、正規表現式を最も有効に使用する方法について説明します。</P><A NAME="AEN4338"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4339"></A><A NAME="TMPID4622"></A>検索で <TT CLASS="literal">QLREGEX</TT> キーワードとともに正規表現式を使用すると、指定された正規表現式はアイテムの単語の任意の場所から検索されます。例えば、<TT CLASS="literal">「QLREGEX "cat"」</TT>と入力すると、<B CLASS="emphasis">cat</B>、<B CLASS="emphasis">category</B>、<B CLASS="emphasis">concatenate</B> のような、<B CLASS="emphasis">cat </B>の付く単語が少なくとも 1 つ含まれているアイテムを検索します。</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4347"></A><A NAME="TMPID4630"></A>2 つの正規表現式 (<TT CLASS="literal"> &lt;x></TT> と <TT CLASS="literal">&lt;y></TT>) を結合して、文字列と一致する正規表現式を形成することができます (<TT CLASS="literal"> &lt;x></TT> が文字列の最初の文字と一致し <TT CLASS="literal">&lt;y></TT> が残りの文字列と一致する場合)。例えば、<TT CLASS="literal">h\$</TT> は <B CLASS="emphasis">h$</B> と一致します。</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4359"></A><A NAME="TMPID4642"></A>ほとんどの場合、フレーズ クエリで <TT CLASS="literal">QLREGEX</TT> キーワードと正規表現式を一緒に使用するよりも、<TT CLASS="literal">OR</TT> キーワードを使用して同じクエリを構築する方が効率的です。これは、正規表現式に処理演算が必要となるためです。</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4363"></A><A NAME="TMPID4646"></A>特に接頭辞検索では、検索を制限して絞り込むと時間を節約することができます。例えば、<B CLASS="emphasis">d</B> で始まる部品番号 1995 を検索するには、<TT CLASS="literal">QLREGEX "^d"</TT> を使用する検索の方が、<TT CLASS="literal">QLREGEX "^d1995"</TT> を使用する検索より時間がかかります。</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4368"></A><A NAME="TMPID4651"></A><B CLASS="emphasis">ed</B> などの短い接尾辞によって検索する場合は、正規表現式検索を使用しないでください。これは、検索エンジンはインデックス内のすべての単語を左から右に解析して接尾辞を検索するためです。代わりに、接尾辞と接頭辞を正規表現式で組み合わせるか、修飾語 [次で終わる単語] を使用して、検索範囲を絞り込みます。</P></LI></UL>
+<P><A NAME="TMPID4654"></A>正規表現式内で、次のリストの演算子を使用して文字列のセットを記述することができます。</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4373"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">演算子</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">説明</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">1 文字と一致します。<BR>例えば、<TT CLASS="literal">\a.2</TT> は、<B CLASS="emphasis">ab2z</B>、<B CLASS="emphasis">aa2</B>、<B CLASS="emphasis">aaa2zzz </B>のような、<B CLASS="emphasis">a</B> で始まり <B CLASS="emphasis">2</B> で終わる 3 文字の文字列が含まれている単語と一致します。</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">文字セットまたは範囲を囲みます。次の規則が適用されます。<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4679"></A>範囲と 1 文字を混在させることができます。</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4681"></A>文字セットにおいて、<TT CLASS="literal">]</TT>、<TT CLASS="literal">-</TT>、および <TT CLASS="literal">^</TT> には特別な意味があります。その他の文字はその文字自体を表します。</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4686"></A>マイナス記号 (<TT CLASS="literal">-</TT>) は、2 文字間の範囲演算子です。</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4689"></A><A NAME="AEN4328">キャレット (<TT CLASS="literal">^</TT>) は、文字セットの先頭でのみ使用されます。</P></TD></TR></TABLE>  例えば、<TT CLASS="literal">[abc]</TT> は、<B CLASS="emphasis">a</B>、<B CLASS="emphasis">b</B>、<B CLASS="emphasis">c</B> のいずれかと一致します。<TT CLASS="literal">[a-z]</TT> は、すべての小文字と一致します。<TT CLASS="literal">[-$a0-9]</TT> は、<B CLASS="emphasis">-</B>、<B CLASS="emphasis">$</B>、<B CLASS="emphasis">a</B>、または 1 桁の数字と一致します。</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[^]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">指定された文字セットを補足する文字セット (指定された文字以外の文字と一致します) を開始します。<TT CLASS="literal">-</TT> または <TT CLASS="literal">]</TT> が <TT CLASS="literal">[^</TT> に続いている場合、<TT CLASS="literal">-</TT> または <TT CLASS="literal">]</TT> は最初の文字として扱われます。<BR>例えば、<TT CLASS="literal">[^a-z]</TT> は、アルファベット以外の文字と一致します。<TT CLASS="literal">[^]^a-z0-9]</TT> は、<B CLASS="emphasis">]</B>、<B CLASS="emphasis">^</B>、英数字以外の文字と一致します。</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">^</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">単語の最初の空の文字列と一致します。<BR>例えば、<TT CLASS="literal">^sp</TT> は <B CLASS="emphasis">sp</B> で始まる単語のインスタンスと一致します。<B CLASS="emphasis">special</B> とは一致しても <B CLASS="emphasis">especially</B> とは一致しません。</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">*</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">最小の前正規表現式と 0 回以上一致します。ただし、単語の先頭として <TT CLASS="literal">^</TT> を持つ正規表現式の後に続く <TT CLASS="literal">*</TT> 演算子は、単語の後に任意の文字が現れる式として解釈されます。これはクエリのワイルドカード (*) と同じです。<BR>例えば、<TT CLASS="literal">ad*</TT> は、<B CLASS="emphasis">a</B>、<B CLASS="emphasis">ad</B>、<B CLASS="emphasis">add</B> などと一致します。</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">+</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">前正規表現式が 1 回以上発生している時は、最小の前正規表現式と一致します。<BR>例えば、<TT CLASS="literal">tr[ei]+</TT> は、<B CLASS="emphasis">tre</B>、<B CLASS="emphasis">tri</B>、<B CLASS="emphasis">tree</B>、<B CLASS="emphasis">trie</B>、<B CLASS="emphasis">triie</B> などと一致します。これは、<B CLASS="emphasis">tr</B> とは一致しません。.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">?</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">前正規表現式が 0 回または 1 回発生している時に、最小の前正規表現式と一致します。例えば、<TT CLASS="literal">se[ea]?</TT> は、<B CLASS="emphasis">se</B>、<B CLASS="emphasis">sea</B>、<B CLASS="emphasis">see</B> などと一致します。</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">$</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">単語の終わりの空の文字列と一致します。<BR>例えば、<TT CLASS="literal">the$</TT> は、文字 <B CLASS="emphasis">the</B> が単語または行の終わりに現れた時に一致します。</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">|</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">2 つの選択肢を分けます。<TT CLASS="literal">x</TT> と <TT CLASS="literal">y</TT> が正規表現式の場合、<TT CLASS="literal">x|y</TT> は <TT CLASS="literal">x</TT> または <TT CLASS="literal">y</TT> のどちらかが一致する単語と一致します。<BR>例えば、<TT CLASS="literal">sea|lake</TT> は、<B CLASS="emphasis">sea</B> と <B CLASS="emphasis">lake</B> のみと一致します。<TT CLASS="literal">[abc]</TT> は、<TT CLASS="literal">a|b|c</TT> と記述することもできます。</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">()</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">選択肢または複合正規表現式などのアイテムをグループ化して、他の正規表現式や演算子と組み合わせられるようにします。<BR>例えば、<TT CLASS="literal">(ro)?(co)+</TT> は、前に何も付いていないか、<B CLASS="emphasis">ro</B> が付いている 1 つ以上の <B CLASS="emphasis">co</B> 文字列 (<B CLASS="emphasis">co</B>、<B CLASS="emphasis">coco</B>、<B CLASS="emphasis">rococo</B> など) と一致します。</TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

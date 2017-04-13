@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Setting Up Admin Servers</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-settinguplladminserver-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Creating Indexes Using Templates';
+          header.title2 = 'Setting Up Admin Servers';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1051"></A>The way that you set up your Admin servers depends on the configuration of computers used to run your Content Server site. If you run Content Server in a clustered environment (that is, in an environment where Content Server is installed on more than one computer, allowing various Content Server operations to be distributed among those computers), you must designate an Admin server as the default, and then register all remote Admin servers with it. If you do not run Content Server in a clustered environment, you have only one Admin server, which is automatically designated as the default.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF27">Setting Up a Default Admin Server</A></P>
+<P><A NAME="TMPID1058"></A>If you are running Content Server in a clustered environment and, therefore, have more than one Admin server, you must designate one as the default. The default Admin server communicates with all other Admin servers at the site and is usually named <B CLASS="guilabel">Default</B>. It is also listed as the default Admin server for all data flow processes and Search Engines that you create in Content Server. If the default Admin server resides on a remote host, you must ensure that both the Server and Admin server are functioning correctly on that host.</P>
+<P><A NAME="TMPID1062"></A>If you select an existing Content Server database to connect to a Content Server installation, the host name, port number, or password recorded for the default Admin server in that database may not match those of the default Admin server in the installation. In this case, Content Server prompts you to specify the correct host name, port number, and password of the Admin server that you want to designate as the default.</P>
+<P><A NAME="TMPID1066"></A>You can provide <B CLASS="guilabel">Port Ranges</B> to specify a range of ports that are used in the automated creation of processes, such as those resulting from the execution of control rules and automated partition creation. The range is bound to this Admin server instance only and allows you to define different ranges when multiple Admin servers are configured. You can change the ports that are assigned to objects and no further range checking is performed.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF28">Registering with the Default Admin Server</A></P>
+<P><A NAME="TMPID1069"></A>Once you have designated an Admin server as the default, you must register all other Admin servers with it. Registering provides the Server on the computer where the default Admin server runs with the port number and password information that it needs to connect to the remote Admin server. To register with the default Admin server, a remote Admin server must be running.</P>
+<P><A NAME="TMPID1070"></A>If you no longer want to use a remote Admin server to manage data flow processes or Search Engines, you unregister it. If the Admin server that you want to unregister is currently managing some data flow processes or Search Engines, you must move them to another host before unregistering. For more information, see <span><A href="../websystemobj/wbs-movedflw-bg.htm">To Move Data Flow Components</A></span>. However, if there is an index residing on the Content Server host computer of the Admin server that you want to unregister, you can either leave the index where it is (you do not need to change its path to reflect how it is mapped or mounted on the replacement Admin server) or you can move the index. For more information, see <span><A href="../webotcindex/wbo-moveindx-bg.htm">Moving Indexes</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF29"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes: </B></P><A NAME="AEN1085"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1086"></A><A NAME="TMPID1077"></A>If you install a remote Admin server on any Microsoft Windows operating system, you must set up the Admin server to run as a particular Windows user, and then use the same Windows user name and password to run the Admin servers on all other hosts.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1088"></A><A NAME="TMPID1079"></A>If you install a remote Admin server on UNIX, do not set up the Admin server to run as the <TT CLASS="literal">root</TT> user. On UNIX, the Admin server runs as the user as whom it logs in. You then use the same UNIX user name and password to run the Admin servers on all other hosts.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF30">Enabling the Admin Server File Cache</A></P>
+<P><A NAME="TMPID1082"></A>An Admin server file cache is a storage folder that an Admin server manages. This file cache provides a file caching system, which improves the efficiency of certain Content Server operations, such as hit highlighting. For more information about enabling and setting up the file cache, see <span><A href="../otadmin/ota-settingupfilecache-rf.htm">Setting Up the Admin Server File Cache</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF31">Enabling the Document Conversion Service</A></P>
+<P><A NAME="TMPID1086"></A>An Admin server also manages a Document Conversion Service (DCS), which is the process that converts documents from their native format to HTML or text so that they can be viewed or hit highlighted. For more information about enabling and setting up the DCS, see <span><A href="../otadmin/ota-settingupdcs-bg.htm">Setting Up the Document Conversion Service</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

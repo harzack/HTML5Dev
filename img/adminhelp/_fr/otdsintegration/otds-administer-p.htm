@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESDSI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="otds">
+<META mancondkey="otds-agd"><title>Pour configurer l'administration de l'intégration Directory Services</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'otds-administer-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion de l\'intégration Directory Services';
+          header.title2 = 'Pour configurer l\'administration de l\'intégration Directory Services';
+           header.draw();
+  </script>
+  <A NAME="OTDSADMINISTER"></A>
+<DIV title="Pour configurer l'administration de l'intégration 'Directory Services'" CLASS="procedure">
+<P><B>Pour configurer l'administration de l'intégration Directory Services</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID140"></A>Dans la section <B CLASS="guilabel">Administration de l'intégration Directory Services</B> de la page <B CLASS="guilabel">Administration de Content Server</B>, cliquez sur le lien <B CLASS="guilabel">Configurer les paramètres d'intégration</B>.</P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Astuce" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID147"></A><B CLASS="tip">Astuce : </B><BR>Vous pouvez utiliser un raccourci pour accéder à cette page directement, <TT CLASS="literal">http://&lt;<I CLASS="varname">nom_serveur_complet</I>>/OTCS/livelink.exe?func=otdsintégration.paramètres</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID151"></A><SPAN class="boxed-optional">Facultatif</SPAN> Sélectionnez <B CLASS="guilabel">Authentification du serveur Web</B> pour récupérer les informations des utilisateurs authentifiés directement à partir de votre serveur Web.</P>
+<OL CLASS="substeps" TYPE="a">
+<LI>
+<P class="nr1"><A NAME="TMPID155"></A>Dans la zone <B CLASS="guilabel">Variable environnement</B>, saisissez la variable utilisée pour valider les informations d'authentification de l'utilisateur ou conservez la valeur par défaut <TT CLASS="literal">UTILISATEUR_DISTANT</TT>.</P>
+<P><A NAME="TMPID158"></A>Le paramètre <B CLASS="guilabel">Variable environnement</B> vous permet de choisir la variable à utiliser afin de déterminer le nom d'utilisateur. Par défaut, il est configuré sur <TT CLASS="literal">UTILISATEUR_DISTANT</TT>. D'autres schémas d'authentification peuvent définir Variable environnement sur une valeur différente, comme Siteminder, qui utilise la valeur <TT CLASS="literal">HTTP_UTILISATEUR_SM</TT>.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID163"></A>Dans la zone <B CLASS="guilabel">Format du nom d'utilisateur dans Content Server</B>, sélectionnez l'option correspondant aux noms de connexion des utilisateurs dans Content Server :</P><A NAME="AEN165"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN166"></A><A NAME="TMPID169"></A><B CLASS="guilabel">Nom d'utilisateur uniquement</B></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN169"></A><A NAME="TMPID172"></A><B CLASS="guilabel">Nom d'utilisateur de type NT</B></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN172"></A><A NAME="TMPID175"></A><B CLASS="guilabel">Résoudre dans OTDS</B></P></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID179"></A>Dans la zone <B CLASS="guilabel">Sensibilité à la casse du nom d'utilisateur</B>, cliquez sur <B CLASS="guilabel">Conserver la casse</B> pour conserver le nom d'utilisateur lorsque l'utilisateur se connecte à Content Server ou cliquez sur <B CLASS="guilabel">Minuscule</B> pour convertir le nom d'utilisateur en lettres minuscules lorsque l'utilisateur se connecte à Content Server.</P></LI></OL></LI>
+<LI>
+<P class="nr1"><A NAME="ST-CHOOSEAUTH"></A><A NAME="TMPID186"></A>Choisissez une méthode d'authentification à utiliser si <B CLASS="guilabel">Authentification du serveur Web</B> n'est pas sélectionnée ou si les informations d'authentification de l'utilisateur ne peuvent pas être authentifiées en utilisant le serveur Web. Choisissez l'une des options suivantes :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN186"></A>
+<TD SCOPE="COL" WIDTH="192" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Content Server Authentification</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Choisissez cette méthode si vous souhaitez que Content Server authentifie uniquement les utilisateurs internes.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="192" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">OTDS Authentification</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Choisissez cette méthode si vous souhaitez qu'OpenText Directory Services authentifie les utilisateurs internes et externes pour une authentification unique.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID205"></A>Si vous choisissez <B CLASS="guilabel">Authentification OTDS</B> dans <span><A HREF="otds-administer-p.htm#ST-CHOOSEAUTH"><NOBR>étape&nbsp;3</NOBR></A></span>, configurez vos paramètres d'intégration Directory Services </P>
+<OL CLASS="substeps" TYPE="a">
+<LI>
+<P class="nr1"><A NAME="ST-OTDSNAME"></A><A NAME="TMPID212"></A>Dans le champ <B CLASS="guilabel">URL du serveur OTDS</B>, saisissez l'URL du serveur Directory Services.</P>
+<P class="before-ul"><A NAME="TMPID216"></A>L'URL doit contenir le domaine complet et le numéro de port du serveur Directory Services. Voici quelques exemples d'URL :</P><A NAME="AEN220"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN221"></A><A NAME="TMPID220"></A><TT CLASS="literal">http://&lt;<I CLASS="varname">nom_serveur</I>>:&lt;<I CLASS="varname">numéro_port</I>></TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN226"></A><A NAME="TMPID225"></A><TT CLASS="literal">https://&lt;<I CLASS="varname">nom_serveur</I>>:&lt;<I CLASS="varname">numéro_port</I>></TT></P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID230"></A><B CLASS="note">Note : </B><BR>Si votre serveur Directory Services a été installé dans un cluster, vous devez saisir le domaine complet et le numéro de port du répartiteur de charge dans le champ <B CLASS="guilabel">URL du serveur OTDS</B>. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID235"></A>Dans le champ <B CLASS="guilabel">URL de connexion OTDS</B>,saisissez l'URL pour vous connecter à OTDS.</P>
+<P><A NAME="TMPID239"></A>Pour un exemple de convention URL, voir <span><A HREF="otds-administer-p.htm#ST-OTDSNAME"><NOBR>étape&nbsp;4.a</NOBR></A></span>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID242"></A>Dans le champ <B CLASS="guilabel">Identifiant de la ressource</B>, saisissez l'ID unique qui a été généré lorsque vous avez créé une ressource Content Server synchronisée dans Directory Services.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID247"></A>Dans le champ <B CLASS="guilabel">Vérifier les connexions</B>, cliquez sur <B CLASS="guilabel">Exécuter le test</B> pour confirmer que l'URL saisie dans le champ <B CLASS="guilabel">URL du serveur OTDS</B> est valide. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF2"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID253"></A><B CLASS="note">Note : </B><BR>Ce test de connexion ne vérifie pas si le <B CLASS="guilabel">Répertoire de serveur OpenText</B> est correctement configuré avec Content Server. Il vérifie uniquement si l'URL fournie dans le champ <B CLASS="guilabel">URL du serveur OTDS</B> est valide.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></OL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID260"></A>Cliquez sur <B CLASS="guilabel">Enregistrer</B>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF3"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID263"></A><B CLASS="note">Note : </B><BR>Attendez pour redémarrer Content Server.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID266"></A>Sur la page <B CLASS="guilabel">Administration de Content Server</B>, dans la section <B CLASS="guilabel">Configuration du serveur</B>, sélectionnez <B CLASS="guilabel">Configurer les paramètres de sécurité</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID272"></A>Sur la page <B CLASS="guilabel">Configurer les paramètres de sécurité</B>, dans la zone <B CLASS="guilabel">Sites Web de référence sécurisés</B>, assurez-vous que le nom <B CLASS="guilabel">Serveur OTDS</B> de <span><A HREF="otds-administer-p.htm#ST-OTDSNAME"><NOBR>étape&nbsp;4.a</NOBR></A></span> figure dans la liste.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID279"></A>Cliquez sur <B CLASS="guilabel">Enregistrer les modifications</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID282"></A>Redémarrez Content Server.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

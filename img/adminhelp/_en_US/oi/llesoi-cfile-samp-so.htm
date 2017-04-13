@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Object Importer Import Control File Examples</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-samp-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Object Importer: <NOBR>OpenText Content Server Admin Online Help</NOBR>';
+          header.title2 = 'Object Importer Import Control File Examples';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4462"></A>Several sample control files have been provided that enable you to create, update, or delete objects in Content Server with Object Importer. These files are made up of one or more <TT CLASS="LITERAL">&lt;node&gt;</TT> paragraphs, each paragraph describing actions against a particular object.</P>
+<P><A NAME="TMPID4466"></A>Several of the examples on the following pages refer to the “Add Title to Location” check box. This check box is found from the Content Server Administration pages, under <B CLASS="GUILABEL">Object Importer Administration</B>, by clicking <B CLASS="GUILABEL">Configure</B>. You will find the <B CLASS="GUILABEL">Add Title to Location</B> check box in the <B CLASS="GUILABEL">Advanced</B> section.&#13;</P>
+<table CLASS="CAUTION">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="ICONCELL">
+<P CLASS="CAUTION" ALIGN="CENTER"><IMG ALT="Caution" SRC="../../images/pi_caution.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID4478"></A><B CLASS="CAUTION">Caution</B><BR>The entire import control file, including comments, must be contained within the import tags, <TT CLASS="LITERAL">&lt;import&gt;&lt;/import&gt;</TT>, or else it will fail. It is very important that the control file be properly formatted.&#13;</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="General Example of an 'Object Importer' Import Control File" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF13"></A><B><IMG title="General Example of an 'Object Importer' Import Control File" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-1: General Example of an Object Importer Import Control File</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4263"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="create"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="en"&gt;Temp&lt;/title&gt;
+  &lt;/node&gt;
+
+  &lt;node type="document" action="create"&gt;
+    &lt;location&gt;Admin Home:My Documents&lt;/location&gt;
+    &lt;file&gt;c:\temp\photo.jpg&lt;/file&gt;
+    &lt;acl standard="world" permissions="000000000"&gt;&lt;/acl&gt;
+  &lt;/node&gt;
+
+  &lt;node type="url" action="update"&gt;
+    &lt;location&gt;Enterprise:Links:Opentext&lt;/location&gt;
+    &lt;url&gt;http://www.opentext.com&lt;/url&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="General Example of an 'Object Importer' Import Control File" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="llesoi-acl-bg.htm" revision="">acl Import Control File Examples</A></p></li>
+<li><p><A  HREF="llesoi-cfile-alisamp-rf.htm" revision="">alias Import Control File Examples</A></p></li>
+<li><p><A  HREF="llesoi-cfile-cdsamp-rf.htm" revision="">compounddoc Import Control File Examples</A></p></li>
+<li><p><A  HREF="llesoi-cfile-descsamp-rf.htm" revision="">description Import Control File Examples</A></p></li>
+<li><p><A  HREF="llesoi-cfile-docsamp-rf.htm" revision="">document Import Control File Examples</A></p></li>
+<li><p><A  HREF="llesoi-cfile-folsamp-rf.htm" revision="">folder Import Control File Examples</A></p></li>
+<li><p><A  HREF="llesoi-cfile-prosamp-rf.htm" revision="">project Import Control File Examples</A></p></li>
+<li><p><A  HREF="llesoi-cfile-tasksamp-rf.htm" revision="">task Import Control File Examples</A></p></li>
+<li><p><A  HREF="llesoi-cfile-titlsamp-rf.htm" revision="">title Import Control File Examples</A></p></li>
+<li><p><A  HREF="llesoi-cfile-urlsamp-rf.htm" revision="">url Import Control File Examples</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

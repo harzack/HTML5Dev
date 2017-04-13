@@ -1,0 +1,92 @@
+<!-- wr_processing_order_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Processing Reportviews</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_processing_order_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Processing Reportviews';
+        header.draw();
+
+</SCRIPT>
+
+<p class="body">
+For most WebReports development it is not necessary to understand the details of how reportviews are processed.  However, 
+for some specialized and advanced situations
+this information can be useful. For example, in order to determine what tags can be used as parameters for other tags there are some useful
+guidelines which will help to make these scenarios clearer. </p>
+<p class="body">
+In general, sub-tags can be used within data tags and data tags can be used within content control tags; however, there are also
+cases where you can use various types of data tags within other data tags. The success of this type of nesting is dependent on the order in 
+which each type of tag is processed.
+</p>
+
+<P class="gui">
+[LL_WEBREPORT_SORT "[LL_REPTAG=DATAID NODEINFO:<b>[LL_REPTAG_&nodefield /]</b> /]" <b>[LL_REPTAG_&direction /] </b>/]
+</P>
+<p class="body">
+In the example above, a parameter tag (nodefield) is substituted as a parameter for the NODEINFO sub-tag and the parameter tag (direction) is inserted as the direction parameter for [LL_WEBREPORT_SORT /].
+</p>
+<p class="body">
+Officially only parameters, constants and column name tags are supported for insertion in data tags, but other combinations should be possible subject to the processing
+order shown below.  These data tags can be substituted into the following components in the reportview:
+<ul class="body" type="disc">
+	<li>Parameters of content control tags (e.g. the sort direction parameter of a sort tag). "Content control tags" refers to any tag that has [LL_WEBREPORT_ as a prefix. </li>
+	<li>Parameters of sub-tags.</li>
+</ul>
+</p>
+<p class="body"><b><u>Advanced Notes</u></b></p>
+<p class="body">
+The following list describes the order in which the different tag types are processed. Understanding this processing order is useful to
+determine how tags may be used with each other. For example, passed parameters are processed before any sort tags are processed, therefore
+any information passed in the parameters can be used as part of the sort tag.
+
+ </p>
+	<ul>
+ 	<li>All passed parameter tag values are inserted from top to bottom of the reportview.</li>
+    <li>All constant tag values are inserted from top to bottom of the reportview.</li>
+	<li>All column name tag values are inserted from top to bottom of the reportview.</li>
+	<li>Any @DATA tags are resolved.</li>
+	<li>All static tag values are inserted from top to bottom of the reportview (e.g.  any tags which return static Content Server environment
+    information which is not returned from the data source).</li>
+    <li>All variables (that include the CURRENTVAL sub-tag) and conditionals (IF/ELSE/ENDIF) in the header section are processed from top to bottom of the header.</li>
+    <li>All Sort tags are processed and data manipulated. Sorts are performed in order of the sort tag appearance from top to bottom
+    of the reportview.</li>
+	<li>All report tag values (columns of data from the data source) are resolved from top to bottom of the row section
+    from first row to last row (according to the sort order).</li>
+	<li>The conditional row expressions are evaluated for each row to determine if the row should be included. Any Variables (which 
+	include CURRENTVAL as a sub-tag) in the conditional row expressions are resolved during this step.</li>
+	<li>All variables (that include the CURRENTVAL sub-tag) and conditionals (IF/ELSE/ENDIF)in the row section are processed from top to bottom of each row.</li>
+	<li>All Oscript calls are processed.</li>
+	<li>All functions (e.g. _@SUM) are inserted from top to bottom of the reportview.</li>
+	<li>All variables (that include the CURRENTVAL sub-tag) and conditionals (IF/ELSE/ENDIF) in the footer section are processed from top to bottom of the footer.</li>
+	<li>All final variable values in the output are inserted.</li>
+	<li>Any remaining IF/ELSE/ENDIF conditionals that were using variables are processed.</li>
+	<li>Any deferred actions (e.g. tags that had included SETFORM, SETWFFORM, SETWFATTR, SETWFCOMMENT, SETWFINFO or SETWFTASKINFO) are executed.</li>
+	<li>All sub-WebReports are invoked (and the resulting output inserted)from top to bottom of the reportview.</li>
+ 	</ul>
+<p class="body">
+The way in which tags are created and specified in the report view is validated each time that a new version is added to the WebReport. This
+validation is provided to aid in finding any syntax errors that may exist in the reportview; however, sometimes this validation may interfere
+with more complicated tag structures. Advanced users may want to disable the validation to allow complex scenarios to be used.  
+This should only be done after basic testing (with validation on) and preferably on a test system to avoid any possible run time errors
+that could be introduced. <br>
+Validation can be turned off using this tag:
+</p>
+<p class="gui">
+[LL_WEBREPORT_DEBUGON /]
+</P>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<title>Configuring Storage Rules</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/controlledviewing/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/recman/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/enterprisearchivesp/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/elservice/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/recmansecurity/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/classification/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-flexstorman-conf-rule-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Storage Providers and Storage Management';
+          header.title2 = 'Configuring Storage Rules';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID16786"></A>You can set individual binary rules and create an ordered association between the rules and Storage Providers to determine where Documents are stored. Modifying the Storage Providers, rules, and their associations does <I CLASS="emphasis">not</I> require you to restart the servers or the Web application server. </P>
+<P><A NAME="TMPID16788"></A>You can configure as many storage rules as you want, however, OpenText recommends that you keep the number of storage rules below 12. Storage rules are evaluated whenever a Document is added to Content Server or whenever a Content Move job is started. When a Document is added, the rules are evaluated in order from the top of the list to the bottom. If the Document does not meet any of the defined rules, it is stored in the <I CLASS="emphasis">default Storage Provider</I>, which always appears last on the list and cannot be configured or deleted. </P>
+<P><A NAME="TMPID16792"></A>A storage rule consists of a rule name, one or more conditions, and a storage target which is selected if all the conditions are true. After a rule is created, you can modify it, delete it, and change its order in the list. When you add a new rule, it will appear above the current rule by default. </P>
+<P><A NAME="TMPID16793"></A>For each rule type you add, you specify the value of the rule, represented below by the <B CLASS="highlight">?</B> in the <B CLASS="guilabel">Value</B> field. </P>
+<P class="before-ul"><A NAME="TMPID16796"></A>The following rules are available by default when Content Server is first installed: </P><A NAME="AEN15635"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15636"></A><A NAME="TMPID16800"></A><B CLASS="guilabel">Size of file in bytes is greater than '?'</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15639"></A><A NAME="TMPID16803"></A><B CLASS="guilabel">Category name is '?'</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15642"></A><A NAME="TMPID16806"></A><B CLASS="guilabel">Mime type is '?'</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15645"></A><A NAME="TMPID16809"></A><B CLASS="guilabel">Size of the file in bytes is less than '?'</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15648"></A><A NAME="TMPID16812"></A><B CLASS="guilabel">Node name contains '?'</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15651"></A><A NAME="TMPID16815"></A><B CLASS="guilabel">Always (value is ignored)</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15654"></A><A NAME="TMPID16818"></A><B CLASS="guilabel">Any additional node attribute value is '?'</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15657"></A><A NAME="TMPID16821"></A><B CLASS="guilabel">Non-specific attribute ? value is ?</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15660"></A><A NAME="TMPID16824"></A><B CLASS="guilabel">Attribute ? value is ?</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15663"></A><A NAME="TMPID16827"></A><B CLASS="guilabel">All Thumbnails</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15666"></A><A NAME="TMPID16830"></A><B CLASS="guilabel">Volume Free Space (MB)</B></P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF159"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID16833"></A><B CLASS="note">Note: </B><BR>When no rules are defined, the only icon that appears in the <B CLASS="guilabel">Modify</B> column of the <B CLASS="guilabel">Configure Storage Rules</B> page is the <B CLASS="guilabel">Add</B> icon.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID16837"></A>Additional rules are installed by the following Content Server optional modules:</P><A NAME="AEN15676"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15677"></A><A NAME="TMPID16841"></A>OpenText Archive Storage Provider</P>
+<P CLASS="otModuleHide if-casp-h-ise-showblock" id="TMPID16844"><A NAME="TMPID16844"></A>See <span><A href="../webadmin/wba-flexstorman-table.htm#WBA-FLEXSTORMAN-ARCHSRVR">Storage Rules Available for the OpenText Archive Storage Provider Module</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15683"></A><A NAME="TMPID16847"></A>OpenText Classifications</P>
+<P CLASS="otModuleHide if-llescls-h-agd-showblock" id="TMPID16850"><A NAME="TMPID16850"></A>See <span><A href="../webadmin/wba-flexstorman-table.htm#WBA-FLEXSTORMAN-CLASS">Storage Rules Available for the Classifications Module</A></span>  for more information.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15689"></A><A NAME="TMPID16853"></A>Controlled Viewing and Printing</P>
+<P CLASS="otModuleHide if-llescvp-h-agd-showblock" id="TMPID16855"><A NAME="TMPID16855"></A>See <span><A href="../webadmin/wba-flexstorman-table.htm#WBA-FLEXSTORMAN-CVPRULE-BG">Storage Rules Available for the Controlled Viewing and Printing Module</A></span> and <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/llescvp-h-agd.cvp-storagerule-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/controlledviewing/cvp-storagerule-bg.htm">Configuring a CVP Storage Rule</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/llescvp-h-agd.cvp-storagerule-bg" FMT=""></span> for more information.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15695"></A><A NAME="TMPID16859"></A>Enterprise Library</P>
+<P CLASS="otModuleHide if-lleselv-h-agd-showblock" id="TMPID16860"><A NAME="TMPID16860"></A>See <span><A href="../webadmin/wba-flexstorman-table.htm#WBA-FLEXSTORMAN-ENTLIBR">Storage Rules Available for the Enterprise Library Module</A></span> for more information.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15699"></A><A NAME="TMPID16863"></A>Records Management</P>
+<P CLASS="otModuleHide if-llesrcs-h-agd-showblock if-llesrcm-h-agd-showblock" id="TMPID16865"><A NAME="TMPID16865"></A>See <span><A href="../webadmin/wba-flexstorman-table.htm#RMSTORAGERULES">Storage Rules Available for the Records Management and Security Clearance Modules</A></span> for more information.</P></LI></UL>
+<P><A NAME="TMPID16867"></A>For more information, see <span><A href="../webadmin/wba-flexstorman-table.htm">Available Storage Rules</A></span> and <span><A href="../webadmin/wba-flexstorman-examples-bg.htm">Examples Showing How to Define Storage Rules</A></span>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-flexstorman-table.htm" revision="">Available Storage Rules</A></p></li>
+<li><p><A  href="../webadmin/wba-flexstorman-define-rule-p.htm" revision="">To Define a Storage Provider Rule</A></p></li>
+<li><p><A  href="../webadmin/wba-flexstorman-edit-rule-p.htm" revision="">To Edit a Storage Provider Rule</A></p></li>
+<li><p><A  href="../webadmin/wba-flexstorman-delete-rule-p.htm" revision="">To Delete a Storage Provider Rule</A></p></li>
+<li><p><A  href="../webadmin/wba-flexstorman-change-order-rules-p.htm" revision="">To Change the Order of a Storage Provider Rule</A></p></li>
+<li><p><A  href="../webadmin/wba-flexstorman-examples-bg.htm" revision="">Examples Showing How to Define Storage Rules</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

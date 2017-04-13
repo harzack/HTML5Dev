@@ -1,0 +1,442 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>task Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-task-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Control File Syntax';
+          header.title2 = 'task Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TASKTAG01">task</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TASKTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID2391"></A>Use <TT CLASS="LITERAL">type="task"</TT> on  the <TT CLASS="LITERAL">node</TT> tag to create, update, or delete a Task.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TASKTAG03">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2289"></A>&lt;node type="task" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TASKTAG04">Usage</A></P>
+<A NAME="AEN2291"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2292"></A><A NAME="TMPID2405"></A>Creating or updating a Task can include a number of subordinate tags: <span><A HREF="llesoi-cfile-task-rf.htm#ASSGTAG01">assigned Tag</A></span>, <span><A HREF="llesoi-cfile-task-rf.htm#COMMTAG1">comments Tag</A></span>, <span><A HREF="llesoi-cfile-task-rf.htm#DUEDTAG1">duedate Tag</A></span>, <span><A HREF="llesoi-cfile-task-rf.htm#INSTRTAG1">instructions Tag</A></span>, <span><A HREF="llesoi-cfile-task-rf.htm#MILSTTAG1">milestone Tag</A></span>, <span><A HREF="llesoi-cfile-task-rf.htm#PRIORTAG1">priority Tag</A></span>, <span><A HREF="llesoi-cfile-task-rf.htm#STARTTAG1">startdate Tag</A></span>, and <span><A HREF="llesoi-cfile-task-rf.htm#STATTAG1">status Tag</A></span>. These subordinate tags are detailed below.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2302"></A><A NAME="TMPID2415"></A>Creating, updating, or deleting a Task can also require a number of other subordinate tags, such as the <TT CLASS="LITERAL">location</TT> tag. These other subordinate tags are detailed in <span><A HREF="llesoi-cfilesamp-bg.htm">Object Importer Tag Descriptions and Syntax</A></span>.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TASKTAG05">Example</A></P>
+<P><A NAME="TMPID2420"></A>To create a Task called “New Task”, assigned to the “Admin” user, and attach it to the “New Task List” located in the Enterprise Workspace:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2311"></A>&#13;&lt;node type="task" action="create"&gt;&lt;/node&gt;
+   &lt;location&gt;Enterprise:New Task List&lt;/location&gt;
+   &lt;title language="en"&gt;New Task&lt;/title&gt;
+   &lt;assigned&gt;Admin&lt;/assigned&gt;
+   &lt;comments clear="true"&gt;&lt;/comments&gt;
+   &lt;duedate&gt;20110715180000&lt;/duedate&gt;
+   &lt;instructions clear="true"&gt;&lt;/instructions&gt;
+   &lt;milestone&gt;Enterprise:New Task List:New Milestone&lt;/milestone&gt;
+   &lt;priority&gt;High&lt;/priority&gt;
+   &lt;startdate&gt;20110104&lt;/startdate&gt;
+   &lt;status&gt;In Process&lt;/status&gt;
+&lt;/node&gt;</PRE
+>
+<P><A NAME="TMPID2425"></A>To view more <TT CLASS="LITERAL">task</TT> examples, see <span><A HREF="llesoi-cfile-tasksamp-rf.htm">task Import Control File Examples</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="ASSGTAG01">assigned Tag</A></P>
+<P><A NAME="TMPID2430"></A>The <TT CLASS="LITERAL">assigned</TT> tag assigns a user or group to a Task. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2318"></A>&lt;assigned&gt;Admin&lt;/assigned&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2319"></A>&lt;assigned clear="true"&gt;&lt;/assigned&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2320"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2447"></A>The <TT CLASS="LITERAL">assigned</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="task"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2451"></A>The <TT CLASS="LITERAL">assigned</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2454"></A>The <TT CLASS="LITERAL">assigned</TT> tag is optional when:</P><A NAME="AEN2342"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2343"></A><A NAME="TMPID2458"></A><TT CLASS="LITERAL">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2346"></A><A NAME="TMPID2461"></A><TT CLASS="LITERAL">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2349"></A><A NAME="TMPID2464"></A><TT CLASS="LITERAL">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2469"></A>If this tag is not specified during task creation, the task will not be assigned.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2471"></A>Any user or group must exist in Content Server before it can be referenced in an <TT CLASS="LITERAL">assigned</TT> tag. User names and group names are case sensitive.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2475"></A>Only users and groups who have at least write permission on the Task List can be assigned a Task. However, if, after being assigned to a Task, the assigned user or group has their permissions revoked on the Task List, the assignment still stands. Therefore, it is possible through Object Importer to assign a user or group to a Task even if they do not have at least write permission on the associated Task List. Under these circumstances, Content Server permissions will prevent the assigned user from being able to see or modify the Task.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">4. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2479"></A>To remove the assigned user or group, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="COMMTAG1">comments Tag</A></P>
+<P><A NAME="TMPID2483"></A>Use the <TT CLASS="LITERAL">comments</TT> tag to add a comment to a Task, or update a Task's comments. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2370"></A>&lt;comments&gt;&lt;![CDATA[Here is a comment.]]&gt;&lt;/comments&gt;
+&lt;comments clear="true"&gt;&lt;/comments&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2371"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2499"></A>The <TT CLASS="LITERAL">comments</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="task"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2503"></A>The <TT CLASS="LITERAL">comments</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2506"></A>The <TT CLASS="LITERAL">comments</TT> tag is optional when:</P><A NAME="AEN2393"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2394"></A><A NAME="TMPID2510"></A><TT CLASS="LITERAL">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2397"></A><A NAME="TMPID2513"></A><TT CLASS="LITERAL">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2400"></A><A NAME="TMPID2516"></A><TT CLASS="LITERAL">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">To clear the value, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="DUEDTAG1">duedate Tag</A></P>
+<P><A NAME="TMPID2523"></A>The <TT CLASS="LITERAL">duedate</TT> tag adds or updates the due date of a Task. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2409"></A>&lt;duedate&gt;20100601&lt;/duedate&gt;
+&lt;duedate&gt;20100601150000&lt;/duedate&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2410"></A>&lt;duedate clear="true"&gt;&lt;/duedate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2411"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2540"></A>The <TT CLASS="LITERAL">duedate</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="task"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2544"></A>The <TT CLASS="LITERAL">duedate</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2547"></A>The <TT CLASS="LITERAL">duedate</TT> tag is optional when:</P><A NAME="AEN2433"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2434"></A><A NAME="TMPID2551"></A><TT CLASS="LITERAL">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2437"></A><A NAME="TMPID2554"></A><TT CLASS="LITERAL">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2440"></A><A NAME="TMPID2557"></A><TT CLASS="LITERAL">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2562"></A>Dates must be in the format YYYYMMDD or YYYYMMDDHHMMSS, where HH refers to the 24-hour clock and is a value between 01 and 24. If YYYYMMDD is used, the time defaults to 000000.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2564"></A>To clear the value, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="INSTRTAG1">instructions Tag</A></P>
+<P><A NAME="TMPID2568"></A>The <TT CLASS="LITERAL">instructions</TT> tag adds instructions to a Task, or updates a Task's instructions. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2453"></A>&lt;instructions&gt;&lt;![CDATA[Here are some instructions.]]&gt;&lt;/instructions&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2454"></A>&lt;instructions clear="true"&gt;&lt;/instructions&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2455"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2585"></A>The <TT CLASS="LITERAL">instructions</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="task"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2589"></A>The <TT CLASS="LITERAL">instructions</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2592"></A>The <TT CLASS="LITERAL">instructions</TT> tag is optional when:</P><A NAME="AEN2477"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2478"></A><A NAME="TMPID2596"></A><TT CLASS="LITERAL">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2481"></A><A NAME="TMPID2599"></A><TT CLASS="LITERAL">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2484"></A><A NAME="TMPID2602"></A><TT CLASS="LITERAL">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">To clear the value, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="MILSTTAG1">milestone Tag</A></P>
+<P><A NAME="TMPID2609"></A>Use the <TT CLASS="LITERAL">milestone</TT> tag to add a Milestone to a Task, or update a Task's Milestone. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2493"></A>&lt;milestone&gt;Enterprise:New Task List:New Milestone&lt;/milestone&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2494"></A>&lt;milestone clear="true"&gt;&lt;/milestone&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2495"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2626"></A>The <TT CLASS="LITERAL">milestone</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="task"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2630"></A>The <TT CLASS="LITERAL">milestone</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2633"></A>The <TT CLASS="LITERAL">milestone</TT> tag is optional when:</P><A NAME="AEN2517"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2518"></A><A NAME="TMPID2637"></A><TT CLASS="LITERAL">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2521"></A><A NAME="TMPID2640"></A><TT CLASS="LITERAL">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2524"></A><A NAME="TMPID2643"></A><TT CLASS="LITERAL">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2648"></A>The Milestone must exist in Content Server before it can be assigned to a Task. If this tag is not specified during create, no milestone will be assigned to the Task.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2651"></A>To unassign the milestone, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PRIORTAG1">priority Tag</A></P>
+<P><A NAME="TMPID2655"></A>The <TT CLASS="LITERAL">priority</TT> tag adds or updates the priority of the Task. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2538"></A>&lt;priority&gt;High&lt;/priority&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2539"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2671"></A>The <TT CLASS="LITERAL">priority</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="task"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2675"></A>The <TT CLASS="LITERAL">priority</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2678"></A>The <TT CLASS="LITERAL">priority</TT> tag is optional when:</P><A NAME="AEN2561"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2562"></A><A NAME="TMPID2682"></A><TT CLASS="LITERAL">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2565"></A><A NAME="TMPID2685"></A><TT CLASS="LITERAL">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2568"></A><A NAME="TMPID2688"></A><TT CLASS="LITERAL">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2693"></A>Allowable values for the <TT CLASS="LITERAL">priority</TT> tag are any one of: <TT CLASS="LITERAL">Low</TT>, <TT CLASS="LITERAL">Medium</TT>, or <TT CLASS="LITERAL">High</TT>.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2699"></A>If the <TT CLASS="LITERAL">priority</TT> tag is not specified during the creation of the Task, the priority is set to <TT CLASS="LITERAL">Medium</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="STARTTAG1">startdate Tag</A></P>
+<P><A NAME="TMPID2704"></A>The <TT CLASS="LITERAL">startdate</TT> tag adds or updates the start date of a Task. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2586"></A>&lt;startdate&gt;20100601&lt;/startdate&gt;
+&lt;startdate&gt;20100601150000&lt;/startdate&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2587"></A>&lt;startdate clear="true"&gt;&lt;/startdate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2588"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2721"></A>The <TT CLASS="LITERAL">startdate</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="task"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2725"></A>The <TT CLASS="LITERAL">startdate</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2728"></A>The <TT CLASS="LITERAL">startdate</TT> tag is optional when:</P><A NAME="AEN2610"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2611"></A><A NAME="TMPID2732"></A><TT CLASS="LITERAL">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2614"></A><A NAME="TMPID2735"></A><TT CLASS="LITERAL">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2617"></A><A NAME="TMPID2738"></A><TT CLASS="LITERAL">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2743"></A>Dates must be in the format YYYYMMDD or YYYYMMDDHHMMSS, where HH refers to the 24-hour clock and is a value between 01 and 24. If YYYYMMDD is used, the time defaults to 000000. If the <TT CLASS="LITERAL">startdate</TT> tag is not specified during creation, the current system date is used.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2746"></A>To clear the value, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="STATTAG1">status Tag</A></P>
+<P><A NAME="TMPID2750"></A>The <TT CLASS="LITERAL">status</TT> tag adds or updates the status of a Task. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2631"></A>&lt;status&gt;On Hold&lt;/status&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2632"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2766"></A>The <TT CLASS="LITERAL">status</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="task"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2770"></A>The <TT CLASS="LITERAL">status</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2773"></A>The <TT CLASS="LITERAL">status</TT> tag is optional when:</P><A NAME="AEN2654"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2655"></A><A NAME="TMPID2777"></A><TT CLASS="LITERAL">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2658"></A><A NAME="TMPID2780"></A><TT CLASS="LITERAL">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2661"></A><A NAME="TMPID2783"></A><TT CLASS="LITERAL">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2788"></A>Allowable values for the <TT CLASS="LITERAL">status</TT> tag are any one of: <TT CLASS="LITERAL">Pending</TT>, <TT CLASS="LITERAL">In Process</TT>, <TT CLASS="LITERAL">Issue</TT>, <TT CLASS="LITERAL">On Hold</TT>, <TT CLASS="LITERAL">Completed</TT>, or <TT CLASS="LITERAL">Cancelled</TT>.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2797"></A>If this tag is not specified during creation of the Task, the status is set to <TT CLASS="LITERAL">Pending</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

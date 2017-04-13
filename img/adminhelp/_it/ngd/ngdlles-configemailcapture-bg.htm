@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="NGDLLES100502-H-AGD-EN-1">
+<META name="pvScheme" content="010203">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="ngd">
+<title>Configuring Settings for Capturing Email Attachments, Duplicate Emails, and Email Subtypes</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ngdlles-configemailcapture-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Enterprise Connect Email Settings';
+          header.title2 = 'Configuring Settings for Capturing Email Attachments, Duplicate Emails, and Email Subtypes';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1425"></A>You can specify which subtype should be applied to saved emails and how attachments should be handled when users add emails with attachments to Content Server. You can also specify how duplicate emails are identified and if users should be notified each time they add a duplicate email to a folder, or if duplicates should be ignored. The methods you select depend on your corporate processes for saving emails and attachments. </P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF19">Email Subtype</A></P>
+<P><A NAME="TMPID1428"></A>The email subtype option applies the email subtype (749) to all emails that users add to Content Server. By default, all emails are saved as the email subtype. You can then specify how attachments are handled. You can choose to not store separate copies of email attachments, or you can choose to add separate copies of the attachments as individual documents, in addition to the original email and attachments. If appropriate, you can permit users to decide, for each email, whether to add separate copies of the attachments, or to save the email and attachments as a single item. </P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1431"></A><B CLASS="tip">Tip: </B><BR>You can link emails and attachments using Cross-References if you have installed the OpenText Records Management module and have enabled this feature. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="ngdcore-igd.-" FMT="" NO1ST><i>OpenText Enterprise Connect - Installation Guide (NGDCORE-IGD)</i><XPROC NAME="ExtXrefEnd" HREF="ngdcore-igd.-" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF20">Duplicate Emails in Microsoft Outlook</A></P>
+<P><A NAME="TMPID1437"></A>By default, duplicate emails are detected by comparing the name of emails that are added to Content Server with emails that already reside in that folder. When you choose this option, users are notified each time Enterprise Connect identifies a duplicate email in the destination. Depending on the configuration, users may be asked to rename duplicate emails or provide metadata.</P>
+<P><A NAME="TMPID1440"></A>For example, assume you are using the default name comparison to identify duplicate emails. If a user has previously added an email to a folder, and then adds an email with the same name but different content to the same folder, it will be identified as a duplicate. Depending on your configuration, the user may be prompted to rename the email and provide metadata.</P>
+<P><A NAME="TMPID1441"></A>Optionally, you can specify that duplicate emails are detected by comparing the message ID that has been assigned to the email that users add to Content Server with emails that already reside in that folder. The message ID is different for each recipient. For example, if the same email is sent to two different users, each copy of the email has a unique ID. As a further option, you can specify that duplicate emails are detected by comparing the external message ID of the email that users are adding to Content Server with the external ID of emails that already reside in the folder. The external message ID applies only to emails that are received from outside of the user’s domain. When you choose the message ID comparison options, duplicate emails are not copied or moved to the destination, and users do not receive notification about duplicate emails. Only new emails are added and depending on your configuration, users may be prompted for metadata.</P>
+<P><A NAME="TMPID1444"></A>For example, assume that you have selected the <B CLASS="guilabel">Use message id to check for duplicate emails</B> check box. A user adds a batch of emails to a folder, and one of the emails already in that folder has the same message ID as one of the emails in the batch. The user will not receive a duplicate email notification about the duplicate email. Depending on the configuration, users may be asked to provide metadata for all of the new emails. In another case, assume that two users receive an email from the same sender. If both users copy the email to the same folder, the emails would not be considered duplicates because they have different IDs.</P>
+<P><A NAME="TMPID1446"></A>For example, assume that you selected the <B CLASS="guilabel">Use external message id to check for duplicate emails</B> check box. A user adds an email received from an external source to a folder. If a colleague who received the same email adds their copy of that email to the same folder, it will be identified as a duplicate and it will not be added. The user will not receive a duplicate email notification.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1449"></A><B CLASS="important">Important: </B><BR>It is important that as administrator, you decide how duplicate emails are identified when you are first setting up Enterprise Connect. Changing these settings after users have started to work with emails may cause problems.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF21"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes: </B></P><A NAME="AEN1311"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1312"></A><A NAME="TMPID1454"></A>This functionality only applies to Microsoft Outlook.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1314"></A><A NAME="TMPID1456"></A>This feature does not affect Compound Emails.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF22">Compound Email Subtype</A></P>
+<P><A NAME="TMPID1458"></A>The Compound Email option is only intended for OpenText Explorer users who are migrating to Enterprise Connect and who have been using the Compound Email subtype (subtype 557). When you select this option, all emails and associated attachments are added to Content Server as Compound Emails. A Compound Email combines the email message and any associated attachments into a single folder. Compound Emails only appear in the List Pane in Enterprise Connect and in the Easy Access pane, if it has been configured to display Documents. They are not visible in the Microsoft Outlook or Explorer Tree Pane, or in the Microsoft Office <B CLASS="guilabel">File Open</B> dialog box. Users can view Compound Emails in the Reading Pane. If you want users to be able to take Compound Emails offline, you must add the Compound Email subtype to the list of subtypes that can be taken offline. For more information, see <span><A HREF="ngdlles-configoffline-bg.htm">Specifying Which Subtypes Can Be Taken Offline</A></span>.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1469"></A><B CLASS="important">Important: </B><BR>The storage space required for Compound Emails is substantially larger than that required for the standard email subtype. Ensure that you have adequate disk space to accommodate this requirement if you apply the Compound Email subtype.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="ngdlles-configemailcapture-p.htm" revision="">To Configure Settings for Capturing Email Attachments</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

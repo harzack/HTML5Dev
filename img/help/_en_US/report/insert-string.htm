@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESREP100500-H-UGD-EN-1">
+<META PiXprocLocator="report">
+<META mancondkey="llesrt-h-ugd -- lleswbu-h-ugd"><title>Insert String</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="4">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'insert-string.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Enhanced Inputs and Substitution Parameters';
+          header.title2 = 'Insert String';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID275"></A>LiveReport Extensions provides a new Input Type called InsertString. This new Input Type allows any string to be passed as an input to the LiveReport and inserted directly into the SQL query without any conversion or modification, such as putting quotes around the string. Among other things this permits whole segments of SQL to be passed into the LiveReport as a parameter. This could, for example, be used to pass additional logical WHERE or AND conditions to the SQL query.</P>
+<P><A NAME="TMPID276"></A>To ensure that this flexibility can not be used to pass undesirable SQL terms into the SQL query (by accident or otherwise), LiveReport Extensions provides a Secure Mode option to analyze and block pre-defined strings. This secure mode is the default mode, but can be turned off if desired. Open Text does not recommend that the secure mode is turned off. Report designers who turn the secure mode off must take extra care to ensure they place the input substitution parameter at a point in the SQL were no unwanted commands could be constructed by malicious users.  Whether or not this feature or LiveReport Extensions itself is used, report designers must always take responsibility for the security of the LiveReports that they create.</P>
+<P><A NAME="TMPID277"></A>The SQL Template feature provides a secure and graceful alternative to controlling the make up of a SQL statement.  See the SQL Template section - section 8 - later in this document.</P>
+<P><A NAME="INSTRUSE"></A><B>Using the Insert String Input Type –  </B>To use this feature select InsertString under Type in the inputs box and set the corresponding Parameter % to the appropriate user input. Note the Secure Mode checkbox appears once InsertString has been selected. You should only uncheck this if you have read the notes above and understand the implications.</P>
+<P><A NAME="TMPID280"></A>If a user executing a LiveReport attempts to pass a term which is being disallowed by the secure mode feature, an error message will be displayed. For example:</P>
+<P><A NAME="TMPID281"></A><TT CLASS="LITERAL">[** Disallowed SQL Term(s): {;}{DROP} passed via parameters]</TT></P>
+<P><A NAME="TMPID283"></A>Carefully select where the string should be inserted by placing the substitution parameter %1 or %2 etc. at that point in the SQL. Even in Secure Mode LiveReport designers should consider carefully where such substitutions should be allowed and should always avoid placing these at the start or the end of the SQL. Typically this feature should be used where the string inserted is part of a “where” clause or within a particular logical condition inside the where clause.</P>
+<P><A NAME="TMPID285"></A>In the following example the Insert String substitution parameter %1 is contained within a string and surrounded by % wildcards. The effect of this query is to list all objects in Content Server with a name containing the input string. Note that the need to escape % symbols by repeating them like this: %% is removed by LiveReport Extensions. Also note that InsertStr does NOT add any quotes to the substituted parameter (unlike the String type).</P>
+<P><A NAME="INSTRCONF"></A><B>Configuring the Insert String Input Type –  </B>The InsertStr input type is normally disabled when the module is first installed. To enable it, the following entry should be added to the opentext.ini (INI) file (if [reportext] does not already exist this heading should be added).</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN290"></A>[reportext]
+InsertStrEnabled=true</PRE
+>
+<P><A NAME="TMPID289"></A>The secure mode actively screens all text passed to the LiveReport in any passed parameters, looking for any “banned terms”. By default, the following terms are blocked when secure mode is enabled:</P>
+<P><A NAME="TMPID291"></A><TT CLASS="LITERAL">;(semicolon),UPDATE,UPDATETEXT,WRITETEXT,REMOVE,DROP,CREATE,ALTER, INSERT, COMMIT,EXECUTE,FETCH,REVOKE,ROLLBACK,SAVE,TRUNCATE,UNION</TT></P>
+<P><A NAME="TMPID293"></A>If desired, this list of banned terms can be altered using an entry in the opentext.ini file which overrides the default list above. The following example shows an INI entry which would duplicate the default behavior:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN296"></A>[reportext]
+blockedSQLterms=;,UPDATE,UPDATETEXT,WRITETEXT,REMOVE,DROP,CREATE,
+ALTER,INSERT,COMMIT,EXECUTE,FETCH,REVOKE,ROLLBACK,SAVE,TRUNCATE,UNION</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

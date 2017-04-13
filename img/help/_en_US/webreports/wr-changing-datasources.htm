@@ -1,0 +1,241 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Data Source Configuration</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-changing-datasources.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working with WebReports';
+          header.title2 = 'Data Source Configuration';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID346"></A>WebReports supports several types of data sources. These data sources provide a WebReport with data when it runs. As an example, a Content Server search can be used. When the given WebReport runs, it executes the search query associated with it then uses these results to provide the underlying data that the reportview processes in order to create the output seen by the end user.</P>
+<P><A NAME="TMPID348"></A>To configure the data source for a WebReport, choose <B CLASS="guilabel">Properties</B> then <B CLASS="guilabel">Source</B> from the functions menu. The following table summarizes the data sources that are currently available.</P>
+<DIV title="Data Source Types" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="WR-CHANGE-DATSRC-T"></A><B>Table 1-1: Data Source Types</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Data Source Type</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Content Server Query</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This is used for any of the Content Server objects which provide data from either SQL or search index queries. The most common examples of this are LiveReports, Saved Queries, Form Templates, WebForms, Folders, Compound Documents, Task Lists, Task Groups, Channels, and Discussions. The only configuration required is to browse for the source object to be used.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Content Server File</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This allows files within Content Server that have HTML tables or delimited data to be used as data sources. It provides some configuration parameters to allow correct interpretation of the data file. These are:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID416"></A><B CLASS="highlight">Static File Location</B>: this allows the user to browse for a document in Content Server that will be used as the data source.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID420"></A><B CLASS="highlight">File Type</B>: this parameter allows the user to select which file type is being used as a data source. Currently the two choices are: Separated Values, examples include CSV and tab delimited, and HTML Table.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID423"></A><B CLASS="highlight">Content Type</B>: this parameter is only visible when the <B CLASS="highlight">Separated Values</B> file type has been selected. It allows the parsing of the data source to be optimized according to the content of the file. For example, most delimited formats, such as CSV, need some way to allow the delimiter to be stored in the data without confusing the parsing software. In the example of CSV, products like Microsoft Excel use quotes to enclose any data cells which have commas in them.</P>
+<P><A NAME="TMPID426"></A>If you know that a given file has no delimited cells with quotes, then select the <B CLASS="highlight">No Cells Are Quoted</B> option. If you know that a given file has all cells quoted, the <B CLASS="highlight">All Cells Are Quoted</B> option should be used. The <B CLASS="highlight">Some Cells Are Quoted</B> option is the most robust option to use, and is the best selection for Excel exports.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID431"></A><B CLASS="note">Note: </B><BR>The <B CLASS="highlight">No Cells Are Quoted</B> option has the fastest performance.</P>
+<P><A NAME="TMPID433"></A>The <B CLASS="highlight">Some Cells Are Quoted</B> option has the slowest performance.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID436"></A><B CLASS="highlight">Assume Strict Syntax</B>: this parameter allows the user to specify whether the data source has a strict and predictable syntax. For example, in a comma separated value file, the comma in between each cell will not normally be preceded or succeeded by any spaces. If you know this is the case, you should select the <B CLASS="highlight">Assume Strict Syntax</B> option. For separated value file types, for example CSV, the <B CLASS="highlight">Assume Strict Syntax</B> option is only available for <B CLASS="highlight">All Cells Are Quoted</B> and <B CLASS="highlight">Some Cells Are Quoted</B>.</P>
+<P><A NAME="TMPID442"></A>With HTML files, strict syntax specifies that all table/row/cell tags will be formed without any attributes and without any spaces. For example: &lt;<I CLASS="varname">TABLE</I>>, &lt;<I CLASS="varname">TR</I>>, &lt;<I CLASS="varname">TD</I>>. Regardless of which file type has been selected, this option should not be used where syntax is unpredictable or unknown.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID447"></A><B CLASS="highlight">Column Separator</B>: this parameter is only visible when the <B CLASS="highlight">Separated Values</B> file type has been selected. It is used to specify which character will separate each cell of data. For CSV files this character is always a comma. For tab delimited files this character is a tab. The tab link beside this field can be used to automatically insert a tab (<B CLASS="highlight">\t</B>).</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID452"></A><B CLASS="highlight">Row Separator</B>: this parameter is only visible when the <B CLASS="highlight">Separated Values</B> file type has been selected. It is used to specify which character will separate each row of data. For CSV files this character is always a carriage return, sometimes called end of line, or a combination of a carriage return and a linefeed. Different operating systems may use different variations of these characters. The links beside this field can be used to automatically insert characters that cannot be entered via the keyboard. The convention <B CLASS="highlight">\t</B> for tab, <B CLASS="highlight">\r</B> for carriage return/end of line and <B CLASS="highlight">\n</B> for new line/line feed is used.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID459"></A><B CLASS="highlight">Quote Character</B>: this parameter is only visible when the <B CLASS="highlight">Separated Values</B> file type has been selected. It is used to specify which character will quote cells. Cells are usually quoted when the cell data contains the character which is normally used to separate the data cells. For example, with CSV files, if the cell data includes a comma then the data is started and ended with a “double quote”. A double quote is the most likely character used for quoting, but this parameter allows the ability to use an alternative character.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID464"></A><B CLASS="highlight">Escape Quote Characters</B> - This parameter is only visible when the <B CLASS="highlight">Separated Values</B> file type has been selected. It is used to specify which characters represent a quote within a quoted cell. For example, in CSV files if a cell of data is quoted and a double quote is required within the quoted cell, then the data quote will be represented as “”. Doubling a quote character is the most common way of escaping it but this parameter allows the ability to use alternative methods.</P></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Column Headings Included</B> - This parameter is used for both <B CLASS="highlight">HTML Table</B> and <B CLASS="highlight">Separated Values</B>. It is selected when the first row in the data source includes the headings. When this is not selected, generic column names are used (Column1, column2 etc.)</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Content Server Category</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This allows <B CLASS="highlight">Content Server Categories</B> to be used as data sources. One or more Content Server Categories may be selected. The number of Content Server Categories that may be selected is limited by the Content Server Administrator.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">When a Content Server Category has been selected, the page will refresh and all of the <B CLASS="highlight">Category's Attributes</B> will be displayed on the page. Use the checkboxes to select one or more <B CLASS="highlight">Attributes</B> to be included in the report results.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Each record in the report data will include the item DataId, SubType and a value for each selected Category/Attribute. Multi-valued attributes will be concatenated using a value delimiter, as defined by the Content Server Administrator.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Select the <B CLASS="highlight">Filter Permissions</B> checkbox if you would like the report results to be limited based on user permissions to <I CLASS="emphasis">SEE</I> each node item.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Using the functions menu next to each selected Category/Attribute, choose a <B CLASS="highlight">Query Operator</B>. Selecting a Query Operator will activate the specified Category/Attribute to be used as a <B CLASS="highlight">WebReport Parameter</B>.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Select the <B CLASS="highlight">View SQL</B> button to view the SQL Query that will be performed to retrieve the Category/Attribute data.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">External File</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This allows files outside Content Server, typically in a folder that is visible to Content Server, to be used as data sources. These files must contain tabular or delimited data as per the <span><A HREF="wr-changing-datasources.htm#DST-CSFILE">Content Server File</A></span> data source type and the same configuration options are provided.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">FTP</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This allows files to be accessed by way of an FTP server. The configuration options are the same as for the <span><A HREF="wr-changing-datasources.htm#DST-CSFILE">Content Server File</A></span> data source type, with additional parameters to determine details of the the FTP server. The supported parameters are:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID513"></A><B CLASS="highlight">FTP Server</B>: the domain or server name to be used for FTP access.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID516"></A><B CLASS="highlight">FTP File Path</B>: the path to the data source file relative to the FTP Root Folder, for example, <TT CLASS="filename">/data.txt</TT>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID520"></A><B CLASS="highlight">FTP Port</B>: the server port configured for FTP access. The standard configuration is port 21.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID523"></A><B CLASS="highlight">Anonymous User Login</B>: select the <B CLASS="highlight">Anonymous User Login</B> box to use anonymous user authentication. With this option, the <B CLASS="highlight">Report User's Email Address</B> will be used as the authentication password. You should verify the FTP server is configured to allow anonymous user access prior to using this option.</P>
+<P class="compact"><A NAME="TMPID527"></A>Clear the <B CLASS="highlight">Anonymous User Login</B> box to display <B CLASS="highlight">FTP User Name</B> and <B CLASS="highlight">FTP Password</B> data input fields.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID532"></A><B CLASS="highlight">FTP User Name</B>: the FTP user name for authentication on the FTP Server. Use this option when not using the <B CLASS="highlight">Anonymous User Login</B> option.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID536"></A><B CLASS="highlight">FTP Password</B>: the FTP user password for authentication on the FTP Server. Use this option when not using the <B CLASS="highlight">Anonymous User Login</B> option.</P></TD></TR></TABLE>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID540"></A><B CLASS="important">Important: </B><BR>The FTP server should provide access to a file in the correct format. Depending on the source operating system and type of file being transferred, the Row Separator value may vary from “r\n” and “\n” for proper display of results.</P>
+<P><A NAME="TMPID543"></A>The FTP File Transfer is performed in <B CLASS="highlight"><I CLASS="emphasis">Binary Mode</I></B> using a <B CLASS="highlight"><I CLASS="emphasis">Passive FTP Connection</I></B>. Contact a system administrator to determine if this will require FTP Server and Firewall configuration.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">External Application</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This allows files to be accessed by way of an external server, usually a Web Server. The configuration options are the same as for the <span><A HREF="wr-changing-datasources.htm#DST-CSFILE">Content Server File</A></span> data source type, with additional parameters to determine details of the external server. The external server should either provide access to a file in the correct format, or to an appropriate server side script to invoke software necessary to return a file in the correct format. The supported parameters are:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID556"></A><B CLASS="highlight">Server</B>: the domain or server name to be used for accessing the external application.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID559"></A><B CLASS="highlight">Server Path</B>: the fully formed file path (can include URL parameters) to access the application.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID562"></A><B CLASS="highlight">Server Port</B>: the port used to access the server.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Search Query Launch</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This is used to define WebReports that can be invoked from the standard Content Server search launch screen. This is the screen that users normally see when they select <B CLASS="guilabel">Advanced Search</B> in Content Server. WebReports using Search Query Launch will be available and listed for any users that have the appropriate permissions. No additional parameters are required.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">None</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This is selected when no data source is required. No parameters are required.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Request Datasource</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This datasource cannot be selected from the <B CLASS="guilabel">Source</B> tab. It is implementented by providing data in predetermined parameters when a WebReport is invoked. More information on this data source can be found in <span><A HREF="wr-requestds-info.htm">Requests as Data Sources</A></span>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Mécanisme d'envoi de formulaires</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-formsubmission-mech.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Exécution de WebReports';
+          header.title2 = 'Mécanisme d\'envoi de formulaires';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID815"></A>WebReports fournit un mécanisme d'envoi de formulaires, <B CLASS="guilabel">Lancer WebReport</B>,similaire à la <B CLASS="guilabel">Table SQL</B>. Leur principale différence réside dans le fait que lorsque les données sont stockées dans la table SQL, la clé primaire, ou <TT CLASS="literal">SEQ</TT>, est identifiée et transmise à un WebReport lancé juste après l'envoi du formulaire. </P>
+<P><A NAME="TMPID819"></A>Les données stockées dans chaque méthode sont interchangeables. En d'autres termes, il est possible de modifier le mécanisme d'envoi de formulaires entre <B CLASS="guilabel">Lancer WebReport</B> et <B CLASS="guilabel">Table SQL</B> sans affecter les données existantes. </P>
+<P class="before-ul"><A NAME="TMPID822"></A><B CLASS="guilabel">Lancer WebReport</B> nécessite uniquement deux options de configuration qui sont définies sur l'onglet <B CLASS="guilabel">Spécifique</B> du formulaire : </P><A NAME="AEN808"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN809"></A><A NAME="TMPID827"></A>Vous devez définir le WebReport à exécuter immédiatement après l'envoi du formulaire.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN811"></A><A NAME="TMPID829"></A>Vous devez déterminer si le WebReport doit être exécuté de façon transparente ou présenté à l'utilisateur après l'envoi du formulaire.</P></LI></UL>
+<P><A NAME="TMPID830"></A>Dans chaque cas, le <TT CLASS="literal">SEQ</TT> du formulaire venant d'être envoyé est disponible en tant que paramètre <TT CLASS="literal">[LL_REPTAG_&amp;SEQ /]</TT>. Il peut être utilisé dans le WebReport en tant que clé afin de rechercher des données supplémentaires associées au formulaire venant d'être envoyé. Il peut aussi être transmis en tant que paramètre vers un sous-rapport WebReport séparé dont la destination est définie sur <B CLASS="guilabel">Renseigner le formulaire</B>. Des tables relationnelles de base peuvent alors être gérées dans une série de WebReports, car l'utilisation d'un WebReport pour exporter des données vers un formulaire entraîne le lancement d'un autre WebReport lorsque le mécanisme d'envoi est défini correctement. </P>
+<P><A NAME="TMPID834"></A>Le mécanisme d'envoi de formulaires <B CLASS="guilabel">Lancer WebReport</B> n'est pas visible tant que l'option <B CLASS="guilabel">Gérer la table relationnelle</B> n'a pas été utilisée afin de configurer une table SQL associée. </P>
+<P><A NAME="TMPID837"></A>Les balises de formulaire de type <TT CLASS="literal">[LL_FormTag_1_1_3_1 /]</TT> sont prises en charge uniquement lorsque <B CLASS="guilabel">Afficher l'objet WebReport</B> n'est <I CLASS="emphasis">pas</I> sélectionné. Vous pouvez avoir besoin de sélectionner <B CLASS="guilabel">Afficher l'objet WebReport</B> si vous devez par exemple afficher des données venant d'être envoyées. Dans ce cas, vous devez utiliser la balise <TT CLASS="literal">[LL_REPTAG_&amp;SEQ /]</TT> en tant que paramètre d'un sous-rapport WebReport et/ou de sous-rapport LiveReport pour récupérer les données envoyées. </P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

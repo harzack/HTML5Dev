@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Configuration de la vérification de l'index</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-verificationsched-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Maintenance des index';
+          header.title2 = 'Configuration de la vérification de l\'index';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID9451"></A>La page Configurer la vérification de l'index vous permet de contrôler le moment où la vérification d'index a lieu, de définir des règles d'identification et de correction des objets, de paramétrer les préférences des rapports et de sélectionner les messages envoyés aux administrateurs. Les options de chaque section de la page font l'objet d'une description en commençant par <span><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDSCHEDULE"><NOBR>Tableau 1-12</NOBR></A> a <A href="../otadmin/ota-verificationsched-p.htm">Configuration de la vérification de l'index</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="VERIFSCHEDDEPENDENCIES">Dépendances</A></P>
+<P><A NAME="TMPID9454"></A>Le vérificateur peut envoyer des alertes administrateur dans certaines conditions. Ces alertes utilisent le processus de Notification Content Server standard et impliquent que le système de notification est correctement configuré.</P>
+<P><A NAME="TMPID9456"></A>Certaines fonctionnalités du vérificateur exigent l'utilisation de la fonction de somme de contrôle de l'intégrité des métadonnées dans le moteur de recherche. Cette fonction ne dispose d'aucune interface d'administration dans Content Server. Dans la configuration par défaut du moteur de recherche, cette fonction est désactivée. Pour de plus amples informations sur la configuration de cette fonction, voir la documentation du moteur de recherche. Lorsqu'elle n'est pas activée, les fonctionnalités du vérificateur utilisant cette fonction peuvent être sélectionnées mais les erreurs ne seront pas identifiées comme prévu.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF182">Agent de vérification de l'index</A></P>
+<P><A NAME="TMPID9459"></A>Le processus de vérification d'index décompose cette tâche de vérification en plusieurs parties. Celles-ci sont programmées pour s'exécuter à un moment de la journée et de la semaine. Le processus de vérification est lié à l'Agent client 5 minutes Content Server standard. A chaque fois qu'un agent est exécuté, d'autres parties de la tâche de vérification sont réalisées.</P>
+<P><A NAME="TMPID9461"></A>Pour les index de taille réduite, le temps d'exécution global d'une analyse de l'index peut s'exprimer en minutes. Pour les index très volumineux, en fonction des options de programmation, un passage de vérification complet peut nécessiter plusieurs semaines.</P>
+<P><A NAME="TMPID9468"></A>Dans la section [loader], ajoutez une entrée verifyAgent :</P><A NAME="AEN8748"></A>
+<PRE 
+CLASS="screen"
+>[loader]
+load_verify=verifyAgent</PRE
+>
+<P><A NAME="TMPID9470"></A>Modifiez la section [agents] existante de manière à jouter l'ID verifyAgent (12568) à la liste des activités exclues, comme le montre la dernière ligne ci-dessous :</P><A NAME="AEN8750"></A>
+<PRE 
+CLASS="screen"
+>[agents]
+lib=.\bin\lljob.dll
+name=lljob
+prio=critical
+timeout=5000
+info=.\config\opentext.ini;agents
+StartScript=.\scripts\llfull.lxe
+JobScript=.\scripts\agent_run.e
+CRON=0,5,10,15,20,25,30,35,40,45,50,55 * * * *
+SleepIntervalSec=60
+ExcludeActivityIDs=3000,3501,5000,8999,9000,9001,9999,12568</PRE
+>
+<P><A NAME="TMPID9472"></A>Créez une nouvelle section pour verifyAgent en copiant la section [agents] et en modifiant lignes suivantes :</P><A NAME="AEN8752"></A>
+<PRE 
+CLASS="screen"
+>[verifyAgent]
+lib=.\bin\lljob.dll
+name=lljob
+prio=critical
+timeout=5000
+info=.\config\opentext.ini;verifyAgent
+StartScript=.\scripts\llfull.lxe
+JobScript=.\scripts\agent_run.e
+CRON=0,5,10,15,20,25,30,35,40,45,50,55 * * * *
+SleepIntervalSec=60
+ActivityIDs=12568</PRE
+>
+<P><A NAME="TMPID9474"></A>Les principales différences par rapport à la section agent standard figurent dans le nom de la section, les ActivityID de 12568 au lieu des ExcludeActivityID de la dernière ligne et l'attribution du nom verifyAgent sur la ligne info=.</P>
+<P><A NAME="TMPID9475"></A>Lorsque plusieurs instances de Content Server sont en cours d'exécution, il est essentiel que verifyAgent soit configuré de manière à n'être exécuté que sur une seule instance.</P>
+<P><A NAME="TMPID9477"></A>Le vérificateur d'index est capable de détecter et de corriger plusieurs types d'erreurs.  Toutefois, il ne se substitue pas aux utilitaires de validation d'index qui accompagnent le moteur de recherche OpenText. Les utilitaires de validation peuvent identifier les erreurs potentielles présentes dans les structures des données, au sein même des moteurs de recherche et d'indexation et doivent en ce sens être utilisés de façon régulière.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF183">Erreurs détectables</A></P>
+<P><A NAME="TMPID9480"></A>Le vérificateur est à même de détecter plusieurs types d'erreurs et d'avertissements qui, pour la plupart, peuvent faire l'objet de tests sélectifs. Le vérificateur compare l'index aux Sources de données Entreprise et aux Sources des bibliothèques Entreprise. En revanche, il ne vérifie pas les objets qui ne sont pas gérés par Content Server, notamment les fichiers importés dans l'index de recherche à l'aide de DirWalket ou XMLActivator.</P>
+<P><A NAME="TMPID9482"></A>Les <B CLASS="highlight">Objets manquants</B> sont des éléments gérés par Content Server et qui sont absents de l'index de recherche alors qu'ils devraient y figurer.</P>
+<P><A NAME="TMPID9485"></A>Les <B CLASS="highlight">Objets hors service</B> sont des éléments gérés par Content Server et qui sont présents dans l'index de recherche mais sont arrivés à expiration.  La distinction des objets hors service se base sur le champ OTModifyDate.</P>
+<P><A NAME="TMPID9488"></A>Les <B CLASS="highlight">Objets orphelins</B> sont indexés dans le moteur de recherche sans être associés à aucune entrée de la base de données. Il s'agit très probablement d'objets qui ont été supprimés de Content Server, et qui n'ont pas été supprimés de l'index de recherche.  Les tests sur les objets orphelins respectent les restrictions de partition et l'âge maximum de l'objet. Ils respectent également les restrictions de version lorsqu'il est possible de déterminer la version actuelle. Par exemple, si une version est orpheline mais que dataID est présent dans Content Server, le numéro de version actuel est contrôlé. Il est à noter que l'âge minimum de l'objet est ignoré pour les objets orphelins.</P>
+<P><A NAME="TMPID9492"></A>Les <B CLASS="highlight">Présentations orphelines</B> sont des objets qui ne peuvent pas être corrigés et qui restent donc dans l'index de recherche jusqu'à ce que l'index entier soit éliminé. Le code du statut est 9.</P>
+<P><A NAME="TMPID9494"></A>Des <B CLASS="highlight">Erreurs d'intégrité des métadonnées</B> surviennent lorsque le moteur de recherche estime qu'une ou que plusieurs valeurs de métadonnées ont été modifiées de façon inopinée après l'indexation de l'objet. Le moteur de recherche peut créer une somme de contrôle pour les métadonnées au moment de l'indexation, puis recalculer cette somme en tâche de fond.  Si la somme de contrôle recalculée ne correspond pas, une erreur est consignée pour l'objet.  Ce code d'erreur est testé pour vérification.  Cette fonction exige que le moteur de recherche soit configuré tel que cela est décrit dans la section <A href="../otadmin/ota-verificationsched-bg.htm#VERIFSCHEDDEPENDENCIES">Dépendances</A>.</P>
+<P><A NAME="TMPID9497"></A>Les <B CLASS="highlight">Avertissements relatifs au contenu</B> sont basés sur le champ métadonnée OTContentStatus. Le statut du contenu est généré pendant l'indexation de l'objet.  Chaque objet reçoit une note indiquant la qualité de son contenu.  Les objets ne présentant aucun problème d'indexation reçoivent une note basse. Les objets dont le contenu ne peut pas être indexé reçoivent une note élevée (notation sévère).  Le seuil d'avertissement relatif au contenu permet de sélectionner la gravité de la notation des problèmes d'indexation de contenu pour laquelle un avertissement doit être consigné. Il n'est pas possible de corriger les avertissements relatifs au contenu.</P>
+<P><A NAME="TMPID9499"></A>Les <B CLASS="highlight">Avertissements relatifs aux métadonnées</B> sont basés sur le nombre de champs de métadonnées qu'il n'a pas été possible d'indexer.  C'est le cas, par exemple, lorsque le format des dates ou des numéros est erroné.  La valeur du champ OTIndexError est incrémentée à chaque champ impossible à indexer.  Un avertissement relatif aux métadonnées est émis lorsque la valeur de ce champ dépasse un certain seuil pour un objet. Il n'est pas possible de corriger les métadonnées.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../otadmin/ota-verificationsched-p.htm" revision="">Configuration de la vérification de l'index</A></p></li>
+<li><p><A  href="../otadmin/ota-verificationsreport-bg.htm" revision="">Affichage des rapports de vérification de l'index</A></p></li>
+<li><p><A  href="../otadmin/ota-verificationsstatus-bg.htm" revision="">Affichage du Statut de la vérification de l'index</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

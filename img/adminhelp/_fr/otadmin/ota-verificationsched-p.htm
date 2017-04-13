@@ -1,0 +1,382 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Configuration de la vérification de l'index</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-verificationsched-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration de la vérification de l\'index';
+          header.title2 = 'Configuration de la vérification de l\'index';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID9504"></A>La page de configuration de la vérification de l'index de Content Server est accessible depuis la page Volume des objets système.</P>
+<P class="before-ul"><A NAME="TMPID9506"></A>Pour plus de facilité, les valeurs de configuration sont regroupées dans les sections suivantes :</P><A NAME="AEN8785"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8786"></A><A NAME="TMPID9509"></A><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDSCHEDULE">Planification de la vérification</A> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8789"></A><A NAME="TMPID9512"></A><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Règles de vérification</A> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8792"></A><A NAME="TMPID9515"></A><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDCORRECTION">Options de correction</A> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8795"></A><A NAME="TMPID9518"></A><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDREPORT">Rapport de vérification</A> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8798"></A><A NAME="TMPID9521"></A><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDNOTIFICATIONS">Notifications</A> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8801"></A><A NAME="TMPID9524"></A><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDCHECKSUM">Statut de l'intégrité de la somme de contrôle</A></P></LI></UL>
+<P><A NAME="TMPID9526"></A>Chacune de ces sections fait l'objet d'une description détaillée ci-dessous. Une fois que vous avez fini de consulter et de modifier les paramètres de configuration, cliquez sur le bouton <B CLASS="guilabel">Mettre à jour</B>, au bas de la page, pour démarrer le processus de vérification à l'heure définie dans la section Planification de la vérification.</P>
+<DIV title="Pour accéder à la page de vérification de la configuration de l'index :" CLASS="procedure">
+<P><B>Pour accéder à la page de vérification de la configuration de l'index :</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID9531"></A>Sur la page Administration, dans la section Administration de recherche, cliquez sur le lien <B CLASS="guilabel">Ouvrir le volume des objets système</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID9534"></A>Sur la page Volume des objets système, cliquez sur l'icône <B CLASS="guilabel">Fonctions</B> du dossier source de données Entreprise, puis sélectionnez <B CLASS="guilabel">Maintenance</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID9538"></A>Sur la page Maintenance des sources de données Content Server, cliquez sur le bouton radio <B CLASS="guilabel">Configurer la vérification de l'index de recherche</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID9542"></A>Cliquez sur le bouton <B CLASS="guilabel">OK</B>.</P></LI></OL></DIV>
+<P><A NAME="TMPID9544"></A>Une fois que vous avez terminé, cliquez sur le bouton <B CLASS="guilabel">Mettre à jour</B> pour démarrer le processus de vérification au moment défini dans la section <B CLASS="guilabel">Planification de la vérification</B>. Vous pouvez cliquer sur <B CLASS="guilabel">Rapports de vérification</B> pour ouvrir, télécharger ou envoyer par e-mail un rapport. Vous pouvez également cliquer sur <B CLASS="guilabel">Statut de la vérification</B> pour afficher l'activité de vérification actuelle ou précédente sur la page Statut de la vérification de l'index.</P>
+<P><A NAME="TMPID9549"></A>Vous pouvez réaliser la plupart des tâches administratives liées à la vérification des index sur la page Configurer la vérification de l'index contenant un certain nombre de sections et de champs, tel que décrits dans les tableaux suivants :</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF184">Planification de la vérification</A></P>
+<P><A NAME="TMPID9551"></A>La section Planification de la vérification de la page de configuration est utilisée pour contrôler l'exécution du vérificateur.  Il existe deux modes de fonctionnement de base : réaliser un passage sur l'index puis arrêter ; ou effectuer une vérification continue.</P>
+<P><A NAME="TMPID9552"></A>La vérification continue est généralement recommandée pour la plupart des applications. Ce dernier mode permet d'identifier les problèmes d'index de recherche en amont et, dans la mesure du possible, de les résoudre sans l'intervention de l'administrateur.</P>
+<P><A NAME="TMPID9553"></A>Ci-après, vous trouverez une description de tous les contrôles de la section Planification de la vérification :</P>
+<DIV title="Planification de la vérification" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="VERIFSCHEDSCHEDULE"></A><B>Tableau 1-12 : Planification de la vérification</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Champ</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Mode</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Sélectionnez la manière dont la vérification sera réalisée :<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9569"></A><B CLASS="guilabel">Désactivé</B> : aucune vérification n'est programmée.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9572"></A><B CLASS="guilabel">Exécuter une fois</B> : une vérification est programmée. Elle sera exécutée une fois pendant le processus de validation puis elle s'arrêtera.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9575"></A><B CLASS="guilabel">Exécuter en continu</B> : la vérification est programmée. La vérification reprend au début après chaque itération.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Interrompre la vérification</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Interrompt le processus de vérification et le reprend à l'emplacement actuel. L'interruption de la vérification est utile lorsque d'autres tâches d'administration exigeantes en ressources sont exécutées. Lors d'une interruption, le bouton devient <B CLASS="guilabel">Reprendre</B>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exécuter ces jours-là</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Sélectionnez les jours de la semaine où le processus de vérification doit être exécuté.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Aux heures suivantes</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Sélectionnez les heures de la journée où le processus de vérification doit être exécuté.  En règle générale, la vérification doit être programmée en dehors des heures de pointe, notamment entre minuit et 5 heures du matin.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Charge maximum</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le processus de vérification est conçu pour contrôler la charge qu'il impose au système. Le contrôle de pourcentage permet de déterminer le rapport entre le temps d'activité et le temps d'attente. Un pourcentage élevé se traduit par une exécution rapide et un accroissement de la charge du système. La vérification contrôlera un certain nombre d'objets puis observera une pause, en fonction de ce paramètre de charge. Il est à noter que cette valeur est une cible approximative, et non un chiffre exact.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Réinitialiser le nombre d'erreurs</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Contraint le vérificateur à rejeter tous les statuts et toutes les informations d'avancement, ce qui revient à le réinitialiser.  Les nouvelles tentatives de correction, les erreurs irrécupérables et les enregistrements sont rejetés. Après modification de la structure de la configuration de recherche, de l'extraction ou des règles de vérification, il est généralement recommandé d'effectuer une réinitialisation.</TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF185">Règles de vérification</A></P>
+<P><A NAME="TMPID9594"></A>La section Règles de vérification permet de contrôler les objets concernés par la vérification et de déterminer quels tests seront réalisés.</P>
+<P><A NAME="TMPID9595"></A>Le vérificateur hérite d'une définition de ce qui doit être indexé auprès de l'Extracteur Content Server. Les commandes de cette section ajoutent des contraintes à celles que l'Extracteur impose à la vérification.</P>
+<DIV title="Règles de vérification" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="VERIFSCHEDRULES"></A><B>Tableau 1-13 : Règles de vérification</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Champ</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Age maximum de l'objet</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">La vérification peut être limitée aux objets récents uniquement. L'âge est exprimé en mois. Il est mesuré à compter de la date à laquelle l'objet est testé. La notion de « récent » se base sur la Date de dernière modification de <B CLASS="guilabel">Content Server</B>. Par exemple, pour restreindre la vérification aux objets qui ont été modifiés dans Content Server au cours des deux dernières années, saisissez 24 mois.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Versions maximum par objet</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">La limite supérieure de nombre de versions de l'objet à corriger. Si les versions 20, 13, 10, 9, 4, 3, 1 d'un objet sont présentes, en saisissant 5, les versions 20, 13, 10, 9, 4 sont testées mais les versions inférieures à 4 ne le sont pas.<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF186"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9617"></A><B CLASS="note">Note : </B><BR>Selon le type d'objet, ce paramètre peut être limité au paramètre de l'Extracteur pour <B CLASS="guilabel">Nombre maximum de versions à extraire</B>. Les sous-types 144, 145 et 146 ne sont pas affectés par le paramètre de l'Extracteur.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Age minimum de l'objet</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Durant l'indexation et la mise à jour des objets du moteur de recherche, Content Server utilise des processus asynchrones et en lot. On observe donc un décalage entre la synchronisation du statut d'un objet dans Content Server et les mises à jour de cet objet dans le moteur de recherche.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">L'Age minimum de l'objet représente le délai de grâce. Tous les objets ajoutés ou modifiés dans cet intervalle ne sont PAS testés afin d'éviter tout « faux-positif » (les différences sur les objets qui n'ont pas encore été traités complètement ne sont pas signalées). Une valeur de 30 minutes est généralement suffisante mais des valeurs supérieures peuvent être requises pour des applications présentant un retard d'indexation considérable.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tester l'existence d'objets manquants</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification recherche les objets manquants dans l'index.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Lors du contrôle des objets manquants de l'index, le contenu de toutes les partitions est pris en compte, quels que soient leur mode et les paramètres définissant les types de partitions à vérifier.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tester l'existence d'objets orphelins</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification recherche les objets de l'index qui auraient dû être supprimés.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Le paramètre <B CLASS="guilabel">Versions maximum par objet</B> est utilisé dans les cas où le dataID existe dans Content Server, en d'autres termes, quand le numéro de version peut être déterminé. Il est considéré comme orphelin lorsqu'il est présent dans l'index et qu'aucun objet géré ne correspond dans Content Server.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tester l'existence d'objets hors service</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification recherche les objets présents dans l'index et dont la <B CLASS="guilabel">Date de dernière modification</B> est erronée.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tester l'existence d'erreurs d'intégrité des métadonnées</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification identifie les objets pour lesquels le moteur de recherche a identifié une erreur dans la somme de contrôle des métadonnées.  Pour être efficace, il peut être nécessaire de configurer le moteur de recherche. Voir la section <A href="../otadmin/ota-verificationsched-bg.htm#VERIFSCHEDDEPENDENCIES">Dépendances</A>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Seuil des avertissements relatifs au contenu</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsqu'il est nécessaire d'identifier les objets dont le contenu n'a pas été indexé correctement, sélectionnez le seuil d'avertissement approprié.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tester l'existence d'avertissements relatifs aux métadonnées</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsqu'il est nécessaire d'identifier les objets dont les champs de métadonnées n'ont pas pu être indexés, saisissez le seuil du nombre de champs pour un objet.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Vérifier les partitions en lecture/écriture</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification examine les objets dans toutes les partitions en lecture/écriture.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Vérifier les partitions en mise à jour seule</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification examine les objets dans toutes les partitions en mise à jour seule.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Vérifier les partitions en lecture seule</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification examine les objets dans toutes les partitions en lecture seule.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Sous-types d'objets</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Par défaut, tous les sous-types d'objets Content Server sont contrôlés. Il est ainsi possible de restreindre la vérification à un sous-ensemble de sous-types d'objets. Cliquez sur l'icône de modification pour afficher une liste de tous les sous-types disponibles dans le système, puis sélectionnez les sous-types à inclure ou exclure du test.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Types MIME d'objets</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Par défaut, tous les types MIME de documents Content Server sont contrôlés. Il est ainsi possible de restreindre la vérification à un sous-ensemble de types MIME. Cliquez sur l'icône de modification pour afficher une liste de tous les types MIME disponibles dans le système, puis sélectionnez les types MIME à inclure ou exclure du test.<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF187"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9672"></A><B CLASS="note">Note : </B><BR>Dans Content Server, il existe plusieurs champs de métadonnées susceptibles de contenir un Type MIME. Le champ de métadonnées OTLLMIMEType est utilisé ici.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>.</TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF188">Options de correction</A></P>
+<P><A NAME="TMPID9675"></A>Outre le signalement des objets corrects dans l'index à l'aide de règles de vérification, la fonctionnalité de correction peut être utilisée pour éliminer les différences entre l'index et les objets gérés dans Content Server.</P>
+<P><A NAME="TMPID9677"></A>Lorsque la correction est activée, les règles d'extraction actuelles sont appliquées, et non celles qui étaient en place au moment où l'objet a été indexé. Si les règles d'extraction ont été modifiées depuis l'indexation de l'objet, la correction tente de réaligner le contenu de l'index et les règles d'extraction actuelles.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF189"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9679"></A><B CLASS="note">Note : </B><BR>Le fait de modifier les règles d'extraction peut déclencher une activité de correction importante.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID9680"></A>La correction enregistre le nombre de tentatives de réparation d'un objet. Lorsqu'il n'est pas possible de réparer l'objet après trois passages consécutifs, celui-ci est signalé comme irréparable et ignoré lors des tentatives suivantes. La fonctionnalité de <B CLASS="guilabel">réinitialisation du nombre d'erreurs</B> de la section <B CLASS="guilabel">Planification de la vérification</B> peut être utilisée pour effacer ce suivi et reprendre la correction depuis le début. Les objets qui peuvent être corrigés sont un sous-ensemble des objets vérifiés. Les règles de vérification des objets sont appliquées, et d'autres contraintes de vérification du tableau ci-dessous peuvent être appliquées dans la section Options de correction.</P>
+<P><A NAME="TMPID9683"></A>Il n'est pas possible de corriger des objets se trouvant sur des partitions en lecture seule.</P>
+<DIV title="Options de correction " CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="VERIFSCHEDCORRECTION"></A><B>Tableau 1-14 : Options de correction </B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Champ</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Activer la correction</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, le processus de correction est activé.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Age maximum de l'objet</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le vérificateur limite la correction aux objets récents uniquement. L'âge est exprimé en mois. Il est mesuré à compter de la date à laquelle l'objet est testé. La notion de « récent » se base sur la Date de dernière modification de <B CLASS="guilabel">Content Server</B>. Par exemple, pour restreindre la correction aux objets qui ont été modifiés en dernier dans Content Server au cours des deux dernières années, saisissez 24 mois. Cette valeur peut être supérieure à celle de la section <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Règles de vérification</A>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Versions maximum par objet</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">La limite supérieure de nombre de versions de l'objet à corriger. Si les versions 20, 13, 10, 9, 4, 3, 1 d'un objet sont présentes, en saisissant 5, les versions 20, 13, 10, 9, 4 sont testées mais les versions inférieures à 4 ne le sont pas.<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF190"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9708"></A><B CLASS="note">Note : </B><BR>Cette valeur peut être supérieure à celle de la section <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Règles de vérification</A>.</P>
+<P><A NAME="TMPID9710"></A>Selon le type d'objet, ce paramètre peut être limité au paramètre de l'Extracteur pour <B CLASS="guilabel">Nombre maximum de versions à extraire</B>. Les sous-types 144, 145 et 146 ne sont pas affectés par le paramètre de l'Extracteur.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Ajouter les objets archivés manquants</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification tente d'ajouter les objets manquants qui sont actuellement stockés dans Archive Server. Le temps d'accès aux systèmes d'archivage peut être long ou leur bande passante d'accès peut être limitée. Cette fonctionnalité est destinée à limiter l'extraction de contenu à partir de sources d'archives.</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Lorsque les métadonnées ne sont pas correctes, toutes les corrections extraient l'intégralité du contenu. Le contenu n'est donc probablement pas correct. Lorsque cette option n'est pas sélectionnée, les objets présents sur les serveurs d'archivage ne sont pas corrigés.</TD></TR></TABLE> <table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF191"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9718"></A><B CLASS="note">Note : </B><BR>Cette commande n'est visible que lorsqu'Archive Server est installé.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Ajouter les objets manquants</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification tente d'ajouter les objets manquants dans l'index. Dans les <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Règles de vérification</A>, <B CLASS="guilabel">Tester l'existence d'objets manquants</B> doit être sélectionné.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Supprimer les objets orphelins</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification tente de supprimer les objets orphelins de l'index. Dans les <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Règles de vérification</A>, <B CLASS="guilabel">Tester l'existence d'objets orphelins</B> doit être sélectionné.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Mettre à jour les objets hors service</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification tente de corriger les objets dont la <B CLASS="guilabel">Date de dernière modification</B> est incorrecte dans l'index. Dans les <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Règles de vérification</A>, <B CLASS="guilabel">Tester l'existence d'objets hors service</B> doit être sélectionné.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Rectifier les erreurs d'intégrité des métadonnées</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, le contenu et les métadonnées de l'objet comportant des erreurs seront réindexés. Dans la section <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Règles de vérification</A>, <B CLASS="guilabel">Tester l'existence d'erreurs d'intégrité des métadonnées</B> doit être sélectionné.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Rectifier les partitions en lecture/écriture</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification tente de corriger les objets présents sur des partitions en mode lecture/écriture. Dans les <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Règles de vérification</A>, <B CLASS="guilabel">Vérifier les partitions en lecture/écriture</B> doit être sélectionné.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Rectifier les partitions en mise à jour seule</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, la vérification tente de corriger les objets présents sur des partitions en mode mise à jour seule. Dans les <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Règles de vérification</A>, <B CLASS="guilabel">Vérifier les partitions en mise à jour seule</B> doit être sélectionné.</TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF192">Rapport de vérification</A></P>
+<P><A NAME="TMPID9751"></A>La section Rapport de vérification permet de définir la façon dont les rapports sont créés.</P>
+<P><A NAME="TMPID9752"></A>Dès qu'une vérification d'index ou qu'une itération de correction se termine, un rapport est généré, reprenant un résumé et les informations détaillées des objets incorrects. Ce rapport est stocké dans le dossier Volume des objets système de Content Server. Le rapport est créé au format CSV (valeurs séparées par des virgules). Il pourra ensuite être importé dans des feuilles de calcul et d'autres applications pour révision et analyse. Vous trouverez davantage d'informations sur le contenu des rapports dans <span><A href="../otadmin/ota-verificationsreport-bg.htm">Affichage des rapports de vérification de l'index</A></span>. Cette section de la page de vérification vous permet de définir la façon dont le rapport doit être créé.</P>
+<DIV title="Rapport de vérification" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="VERIFSCHEDREPORT"></A><B>Tableau 1-15 : Rapport de vérification</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Champ</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Erreurs maximum dans le rapport détaillé</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le nombre maximal d'objets répertoriés comme étant incorrects à inclure dans une liste détaillée des objets contenant des erreurs. Le nombre d'entrées de la section du rapport est ainsi limité. Toutefois, le nombre d'erreurs détectées, corrigées ou incluses dans les statistiques du rapport reste inchangé.</TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF193">Notifications</A></P>
+<P><A NAME="TMPID9769"></A>La section Notifications définit les avertissements adressés aux administrateurs dans le cadre du processus de vérification.</P>
+<P><A NAME="TMPID9770"></A>Les notifications sont envoyées à l'aide du système de notification standard de Content Server. Pour chaque notification potentielle, il est possible de contrôler le degré de gravité et le message à inclure.</P>
+<DIV title="Notifications" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="VERIFSCHEDNOTIFICATIONS"></A><B>Tableau 1-16 : Notifications</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Champ</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Vérification terminée</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9787"></A><B CLASS="guilabel">Activé</B> : lorsque cette option est sélectionnée, les administrateurs reçoivent un avis dès qu'une itération de vérification se termine.</P></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID9791"></A><B CLASS="guilabel">Type de message</B> :</P><A NAME="AEN9071"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9072"></A><A NAME="TMPID9795"></A><B CLASS="guilabel">correction</B>, une erreur signalée précédemment a été rectifiée ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9075"></A><A NAME="TMPID9798"></A><B CLASS="guilabel">information</B>, statut général et d'autres informations système ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9078"></A><A NAME="TMPID9801"></A><B CLASS="guilabel">avertissement</B>, erreurs non critiques dans le système ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9081"></A><A NAME="TMPID9804"></A><B CLASS="guilabel">erreur</B>, messages d'erreurs et messages d'erreurs graves ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9084"></A><A NAME="TMPID9807"></A><B CLASS="guilabel">erreur grave</B>, les erreurs système critiques telles que la fermeture de la vérification d'index.</P></LI></UL></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9811"></A><B CLASS="guilabel">Message</B> : le texte à inclure dans l'e-mail de notification.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Seuil des erreurs</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9818"></A><B CLASS="guilabel">Activé</B> : lorsque cette option est sélectionnée, les administrateurs reçoivent un avis dès que le nombre d'erreurs détectées durant une itération de vérification dépasse le nombre d'erreurs spécifié. Cette notification est émise immédiatement, sans attendre la fin du processus de vérification.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9821"></A><B CLASS="guilabel">Notifier lorsque le nombre d'erreurs &gt;=</B> : le nombre d'erreurs est la somme d'objets manquants, orphelins ou incorrects. La notification est émise dès que cette valeur est dépassée.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9824"></A><B CLASS="guilabel">Type de message</B> : sélectionnez le type de message à envoyer : correction, information, avertissement, erreur, erreur grave.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9827"></A><B CLASS="guilabel">Message</B> : le texte à inclure dans l'e-mail de notification.</P></TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF194">Intégrité de la somme de contrôle</A></P>
+<P><A NAME="TMPID9830"></A><B CLASS="highlight"> Ce processus est exécuté indépendamment de l'agent de vérification et de correction.</B></P>
+<P><A NAME="TMPID9832"></A>La fonctionnalité Intégrité de la somme de contrôle interroge les moteurs de recherche à intervalles réguliers et émet les notifications d'administrateur en présence d'erreurs d'intégrité graves.</P>
+<P><A NAME="TMPID9833"></A>Le moteur de recherche est doté d'une fonctionnalité qui calcule les sommes de contrôle des régions de métadonnées à la première indexation d'un objet. Elle réalise ensuite un test continu pour s'assurer que la somme de contrôle est correcte. Cette tâche est exécutée en arrière-plan avec une priorité faible. Ce processus est destiné à détecter toute corruption des métadonnées qui pourrait survenir. La fonctionnalité Etat de l'intégrité, lorsqu'elle est activée, interroge les moteurs de recherche à intervalles réguliers pour obtenir le nombre d'erreurs de somme de contrôle. Lorsque le nombre d'erreurs augmente, l'administrateur reçoit une alerte et est invité à s'assurer du bon fonctionnement du matériel et de la configuration des moteurs de recherche. </P>
+<P><A NAME="TMPID9834"></A>La fonctionnalité d'intégrité de la somme de contrôle utilise la même configuration que l'intégrité de la somme de contrôle requise pour la vérification et la correction. Pour de plus amples informations, consultez la section <span><A href="../otadmin/ota-verificationsched-bg.htm#VERIFSCHEDDEPENDENCIES">Dépendances</A></span>.</P>
+<P><A NAME="TMPID9836"></A>Il n'existe aucun rapport distinct détaillant les objets présentant ces erreurs. Toutefois, le rapport de vérification capture les statistiques relatives à ces erreurs et identifie les objets présentant des erreurs d'intégrité de métadonnées.</P>
+<DIV title="Statut de l'intégrité de la somme de contrôle" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="VERIFSCHEDCHECKSUM"></A><B>Tableau 1-17 : Statut de l'intégrité de la somme de contrôle</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Champ</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Activé</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lorsque cette option est sélectionnée, l'intégrité de la somme de contrôle est activée.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Intégrité des métadonnées</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9855"></A><B CLASS="guilabel">Notifier lorsque le nombre total d'erreurs d'intégrité &gt;=</B> : le nombre total d'erreurs d'intégrité de somme de contrôle.</P>
+<P><A NAME="TMPID9857"></A>OpenText propose une valeur initiale de '1000'.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9860"></A><B CLASS="guilabel">ou lorsque le nombre des nouvelles erreurs d'intégrité &gt;=</B> : le nombre de nouvelles erreurs d'intégrité de somme de contrôle.</P>
+<P><A NAME="TMPID9862"></A>OpenText propose une valeur initiale de '100'.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID9865"></A><B CLASS="guilabel">Type de message</B> : sélectionnez le type de message à envoyer :</P><A NAME="AEN9145"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9146"></A><A NAME="TMPID9869"></A><B CLASS="guilabel">correction</B>, une erreur signalée précédemment a été rectifiée ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9149"></A><A NAME="TMPID9872"></A><B CLASS="guilabel">information</B>, statut général et d'autres informations système ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9152"></A><A NAME="TMPID9875"></A><B CLASS="guilabel">avertissement</B>, erreurs non critiques dans le système ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9155"></A><A NAME="TMPID9878"></A><B CLASS="guilabel">erreur</B>, messages d'erreurs et messages d'erreurs graves ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9158"></A><A NAME="TMPID9881"></A><B CLASS="guilabel">erreur grave</B>, les erreurs système critiques telles que la fermeture de la vérification d'index.</P>
+<P><A NAME="TMPID9883"></A>Les erreurs de somme de contrôle sont relativement graves. OpenText recommande donc un niveau de message d'erreur grave.</P></LI></UL></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9886"></A><B CLASS="guilabel">Message</B> : le texte à transmettre dans le message.</P></TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

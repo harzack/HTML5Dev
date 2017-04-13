@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<title>Ajout de rapports LiveReport</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/root/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'add-liverep.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Ajout et modification de rapports LiveReport';
+          header.title2 = 'Ajout de rapports LiveReport';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID117"></A>Lorsque vous ajoutez un rapport LiveReport, vous devez indiquer le nombre maximum de résultats à afficher, écrire une instruction SQL pour exécuter la recherche dans la base de données et choisir un format pour le rapport. Pour plus d'informations sur les options de formatage, reportez-vous à la rubrique <span><A HREF="lr-report-format-rt.htm">Formats des rapports LiveReport</A></span>. D'autres options LiveReport permettent de définir les critères renvoyant des résultats plus précis. Vous pouvez également utiliser les rapports LiveReport pour modifier le contenu d'une base de données, sauf si votre administrateur a activé la sécurité des rapports LiveReport pour empêcher la modification de la base de données à l'aide des rapports LiveReport. Par exemple, vous pouvez créer un rapport LiveReport qui réassigne les tâches non terminées à un utilisateur particulier. Pour obtenir une description détaillée des autres options LiveReport et afficher un exemple de rapport, reportez-vous à la rubrique <span><A HREF="lr-sample-report-rt.htm">Exemple de rapport LiveReport</A></span>. Lorsque vous ajoutez un rapport LiveReport, vous pouvez le décrire, modifier ses catégories et attributs et l'ajouter à un recueil différent. Pour en savoir plus, voir <span><XPROC NAME="ExtXrefStart" HREF="llesrt-h-ugd.ll-gen-items-bg" FMT="" NO1ST><A  HREF="../../../help/_fr/root/ll-gen-items-bg.htm">Utilisation des éléments généraux</A><XPROC NAME="ExtXrefEnd" HREF="llesrt-h-ugd.ll-gen-items-bg" FMT=""></span>. </P>
+<P><A NAME="TMPID121"></A>L'instruction SQL est l'élément le plus important d'un rapport LiveReport. Content Server fournit les paramètres qui seront utilisés par l'instruction SQL, soit en demandant à l'utilisateur de les fournir lorsqu'il ouvre un rapport, soit en utilisant les valeurs fournies par le système, comme la date actuelle. Le sous-rapport peut utiliser les valeurs qu'il hérite du rapport parent. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID124"></A><B CLASS="note">Note : </B><BR>Lorsque vous écrivez l'instruction SQL pour un rapport, n'oubliez pas que Content Server n'interprète pas le signe pourcentage (%) lorsqu'il est utilisé dans une clause <I CLASS="emphasis">like</I>. Par conséquent, utilisez dans ce cas deux signes pourcentage (%%). </P>
+<P><A NAME="TMPID127"></A>Par défaut, un rapport LiveReport ne vérifie pas les autorisations des éléments de la base de données. Il affiche tous les enregistrements, même si l'utilisateur exécutant le rapport n'a pas l'autorisation de les voir. Toutefois, vous pouvez restreindre les résultats aux éléments que l'utilisateur a l'autorisation de voir. Par exemple, si vous définissez <B CLASS="guilabel">Paramètre %1</B> en sélectionnant le type <TT CLASS="literal">Filtrer les autorisations</TT> et que vous ajoutez <TT CLASS="literal">AND %1</TT> à votre instruction SQL, les résultats de la recherche sont restreints aux éléments que l'utilisateur a l'autorisation de voir.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="param-liverep.htm" revision="">Types de paramètres et d'entrées</A></p></li>
+<li><p><A  HREF="lr-param-enhanc-bg.htm" revision="">Entrées améliorées et paramètres de substitution</A></p></li>
+<li><p><A  HREF="lr-use-transmode-bg.htm" revision="">Utilisation du mode Transaction</A></p></li>
+<li><p><A  HREF="lr-use-cursmode-bg.htm" revision="">Utilisation du mode Récupération du curseur</A></p></li>
+<li><p><A  HREF="lr-db-modfeat-bg.htm" revision="">Fonctions Autoriser les modifications de la base de données</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

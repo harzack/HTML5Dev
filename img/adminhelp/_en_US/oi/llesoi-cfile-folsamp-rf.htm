@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>folder Import Control File Examples</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-folsamp-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Import Control File Examples';
+          header.title2 = 'folder Import Control File Examples';
+           header.draw();
+  </script>
+
+<DIV title="To create a 'Documents' Folder in the 'Projects' Folder of the Enterprise Workspace, giving the 'Client' group 'See & See Contents' permissions, while removing permissions from the public group:   " CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF41"></A><B><IMG title="To create a 'Documents' Folder in the 'Projects' Folder of the Enterprise Workspace, giving the 'Client' group 'See & See Contents' permissions, while removing permissions from the public group:   " SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-29: To create a “Documents” Folder in the “Projects” Folder of the Enterprise Workspace, giving the “Client” group <I CLASS="EMPHASIS">See &amp; See Contents</I> permissions, while removing permissions from the public group: &#13;</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4460"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects&lt;/location&gt;
+    &lt;title language="en"&gt;Documents&lt;/title&gt;
+    &lt;description language="en"&gt;This folder is to store documents&lt;/description&gt;
+    &lt;acl group="Client" permissions="100000000"&gt;&lt;/acl&gt;
+    &lt;acl standard="world" permissions="000000000"&gt;&lt;/acl&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To create a 'Documents' Folder in the 'Projects' Folder of the Enterprise Workspace, giving the 'Client' group 'See & See Contents' permissions, while removing permissions from the public group:   " SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To update an existing Folder called 'Documents' located in the Enterprise Workspace, by adding a Nickname. In this example, the 'Add Title to Location' check box is selected:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF42"></A><B><IMG title="To update an existing Folder called 'Documents' located in the Enterprise Workspace, by adding a Nickname. In this example, the 'Add Title to Location' check box is selected:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-30: To update an existing Folder called “Documents” located in the Enterprise Workspace, by adding a Nickname. In this example, the “Add Title to Location” check box is selected:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4465"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="en"&gt;Documents&lt;/title&gt;
+    &lt;nickname&gt;docs&lt;/nickname&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To update an existing Folder called 'Documents' located in the Enterprise Workspace, by adding a Nickname. In this example, the 'Add Title to Location' check box is selected:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To update an existing Folder called 'Documents' located in the Enterprise Workspace, by adding a Nickname. In this example, the 'Add Title to Location' check box is cleared:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF43"></A><B><IMG title="To update an existing Folder called 'Documents' located in the Enterprise Workspace, by adding a Nickname. In this example, the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-31: To update an existing Folder called “Documents” located in the Enterprise Workspace, by adding a Nickname. In this example, the “Add Title to Location” check box is cleared:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4470"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise:Documents&lt;/location&gt;
+    &lt;nickname&gt;docs&lt;/nickname&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To update an existing Folder called 'Documents' located in the Enterprise Workspace, by adding a Nickname. In this example, the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To update an existing Folder by removing permissions from the public group, when the 'Add Title to Location' check box is selected:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF44"></A><B><IMG title="To update an existing Folder by removing permissions from the public group, when the 'Add Title to Location' check box is selected:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-32: To update an existing Folder by removing permissions from the public group, when the “Add Title to Location” check box is selected:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4474"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects&lt;/location&gt;
+    &lt;title language="en"&gt;Documents&lt;/title&gt;
+    &lt;acl standard="world" permissions="000000000"&gt;&lt;/acl&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To update an existing Folder by removing permissions from the public group, when the 'Add Title to Location' check box is selected:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To update an existing Folder by removing permissions from the public group, when the 'Add Title to Location' check box is cleared:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF45"></A><B><IMG title="To update an existing Folder by removing permissions from the public group, when the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-33: To update an existing Folder by removing permissions from the public group, when the “Add Title to Location” check box is cleared:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4478"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;acl standard="world" permissions="000000000"&gt;&lt;/acl&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To update an existing Folder by removing permissions from the public group, when the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To rename an existing Folder from 'Documents' to 'My Documents', when the 'Add Title to Location' check box is cleared:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF46"></A><B><IMG title="To rename an existing Folder from 'Documents' to 'My Documents', when the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-34: To rename an existing Folder from “Documents” to “My Documents”, when the “Add Title to Location” check box is cleared:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4484"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;My Documents&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To rename an existing Folder from 'Documents' to 'My Documents', when the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To delete a Folder called 'Temp' from the 'Enterprise Workspace', when the 'Add Title to Location' check box is selected:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF47"></A><B><IMG title="To delete a Folder called 'Temp' from the 'Enterprise Workspace', when the 'Add Title to Location' check box is selected:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-35: To delete a Folder called “Temp” from the “Enterprise Workspace”, when the “Add Title to Location” check box is selected:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4490"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="delete"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="en"&gt;Temp&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To delete a Folder called 'Temp' from the 'Enterprise Workspace', when the 'Add Title to Location' check box is selected:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To delete a Folder called 'Temp' from the 'Enterprise Workspace', when the 'Add Title to Location' check box is cleared:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF48"></A><B><IMG title="To delete a Folder called 'Temp' from the 'Enterprise Workspace', when the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-36: To delete a Folder called “Temp” from the “Enterprise Workspace”, when the “Add Title to Location” check box is cleared:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4496"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="delete"&gt;
+    &lt;location&gt;Enterprise:Temp&lt;/location&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To delete a Folder called 'Temp' from the 'Enterprise Workspace', when the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

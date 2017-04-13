@@ -1,0 +1,298 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESCLS100500-H-AGD-FR">
+<META name="PiXprocLocator" content="classification">
+<META mancondkey="llescor-pgd -- llescls-h-ugd -- llesrcm-igd -- lleswat-h-ugd -- llesrcm-h-ugd -- llescls-h-ggd -- lleswbs-h-agd -- llesrt-h-ugd -- llescl-h-ugd -- lleswba-h-agd -- llesrcm-h-agd -- llesapp-h-ugd"><title>Construction et importation d'une taxonomie XML</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'c-constxml-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Création de classements et d\'Arbre de classement';
+          header.title2 = 'Construction et importation d\'une taxonomie XML';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID141"></A>Si vous souhaitez élaborer une hiérarchie de classements, sans avoir à ajouter chaque classement à l'espace de travail Classement individuellement, vous pouvez créer un fichier XML définissant une hiérarchie de classements (une taxonomie de classement XML), puis l'importer.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF2">Construction d'une taxonomie XML</A></P>
+<P><A NAME="TMPID143"></A>Les taxonomies de classement XML se composent d'une série de balises XML définissant une hiérarchie de classements, incluant le nom de tous les classements et les informations de profil correspondantes. Si vous définissez une taxonomie de classement XML manuellement en vue de l'importer dans Content Server, la structure, les balises et les valeurs qu'elle contient doivent répondre à certains critères.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF3">Section d'en-tête</A></P>
+<P><A NAME="TMPID146"></A>La première partie d'une taxonomie de classement XML consiste en une section d'en-tête, qui définit le fichier XML et l'Arbre de classement en général. Cette section commence par la déclaration XML suivante, qui définit la version XML et le codage de caractères utilisé dans le fichier :</P>
+<P><A NAME="TMPID147"></A><TT CLASS="literal">&lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;ISO-8859-1&amp;quot;?&gt;</TT></P>
+<P><A NAME="TMPID149"></A>L'Arbre de classement doit ensuite être défini à l'aide de la balise de début <TT CLASS="literal">importexport</TT> :</P>
+<P><A NAME="TMPID151"></A><TT CLASS="literal">&lt;importexport applanguage='USA' appname='ContentServer' appversion='9.1.0' dtdversion='2.5' exportdate='&lt;<I CLASS="varname">date_and_time</I>>'&gt;</TT></P>
+<P><A NAME="TMPID154"></A><span><A HREF="c-constxml-bg.htm#TAB-AID12"><NOBR>Tableau&nbsp;1-1</NOBR></A></span> décrit les attributs de la balise de début <TT CLASS="literal">importexport</TT> :</P>
+<DIV title="Attributs de la balise de début 'importexport'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="TAB-AID12"></A><B>Tableau 1-1 : Attributs de la balise de début <NOBR>importexport</NOBR></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Attribut</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Valeur</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">applanguage</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Langue de l'application, par exemple, <TT CLASS="literal">FRA</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">appname</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom de l'application, par exemple, <TT CLASS="literal">Content Server</TT>. Cet attribut est obligatoire.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">appversion</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Numéro de version de l'application, par exemple, <TT CLASS="literal">9.6.0</TT>. Cet attribut est obligatoire.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">dtdversion</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Numéro de version du DTD qui définit les taxonomies de classement XML. La seule valeur possible est <TT CLASS="literal">2,5</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">exportdate</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date et heure d'exportation de l'Arbre de classement à partir d'Content Server. Cet attribut se présente sous la forme <TT CLASS="literal">&lt;<I CLASS="varname">aaaa</I>>-&lt;<I CLASS="varname">mm</I>>-&lt;<I CLASS="varname">jj</I>>T&lt;<I CLASS="varname">hh</I>>:&lt;<I CLASS="varname">mn</I>>:&lt;<I CLASS="varname">ss</I>></TT> (par exemple, <TT CLASS="literal">2002-04-12T21:31:48</TT>), où : <BR>&lt;<I CLASS="varname">aaaa</I>> représente l'année, <BR>&lt;<I CLASS="varname">mm</I>> le mois, <BR>&lt;<I CLASS="varname">jj</I>> le jour, <BR>&lt;<I CLASS="varname">hh</I>> l'heure, <BR>&lt;<I CLASS="varname">mn</I>> le nombre de minutes <BR>et &lt;<I CLASS="varname">ss</I>> le nombre de secondes. <BR>Cet attribut est facultatif. Lorsque vous construisez une taxonomie de classement XML manuellement, il est inutile d'inclure cet attribut.</TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF4">Section de hiérarchie des classements</A></P>
+<P><A NAME="TMPID209"></A>La seconde partie d'une taxonomie de classement XML définit la hiérarchie des classements et leurs paramètres. Cette section figure entre les balises de début et de fin de l'élément <TT CLASS="literal">importexport</TT> ; elle consiste en un ou plusieurs éléments <TT CLASS="literal">classificationtree</TT>, qui contiennent un ou plusieurs éléments <TT CLASS="literal">classification</TT>.</P>
+<P><A NAME="TMPID213"></A>Les éléments <TT CLASS="literal">classification</TT> définissent les classements comme suit :</P>
+<P><A NAME="TMPID215"></A><TT CLASS="literal">&lt;classification managementtype='&lt;<I CLASS="varname">type</I>>' name='&lt;<I CLASS="varname">nom</I>>' selectable='&lt;<I CLASS="varname">valeur booléenne</I>>' subtype='&lt;<I CLASS="varname">n</I>>'&gt;</TT><TT CLASS="literal">&lt;query&gt;SELECT &amp;quot;OTObject&amp;quot; ,&amp;quot;OTScore&amp;quot; WHERE "test" ORDEREDBY RankingExpression &amp;quot;test&amp;quot;&lt;/query&gt;</TT><TT CLASS="literal">&lt;/classification&gt;</TT></P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF5"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID225"></A><B CLASS="note">Note : </B><BR><TT CLASS="literal">&lt;<I CLASS="varname">n</I>></TT> dans <TT CLASS="literal">subtype='</TT><TT CLASS="literal">&lt;<I CLASS="varname">n</I>></TT><TT CLASS="literal">'</TT> représente un numéro valide de sous-type.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID232"></A><span><A HREF="c-constxml-bg.htm#TAB-AID13"><NOBR>Tableau&nbsp;1-2</NOBR></A></span> décrit les balises <TT CLASS="literal">classificationtree</TT>, <TT CLASS="literal">classification</TT> et <TT CLASS="literal">query</TT> :</P>
+<DIV title="Balises 'classificationtree', 'classification' et 'query'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="TAB-AID13"></A><B>Tableau 1-2 : Balises <NOBR>classificationtree</NOBR>, <NOBR>classification</NOBR> et <NOBR>query</NOBR></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Balise</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">classificationtree</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Cette balise définit une liste de classements. Ses attributs contiennent les paramètres de la liste de classements.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">classification</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Cette balise définit un classement. Ses attributs contiennent tous les paramètres du classement.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">requête</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Cette balise définit la Requête de profil correspondant à un classement lorsque celui-ci a été exporté à partir d'Content Server. N'entrez aucune valeur dans ce champ.</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID263"></A><span><A HREF="c-constxml-bg.htm#TAB-AID14"><NOBR>Tableau&nbsp;1-3</NOBR></A></span> décrit les attributs des balises de début <TT CLASS="literal">classificationtree</TT> et <TT CLASS="literal">classification</TT> :</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF6"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID268"></A><B CLASS="note">Note : </B><BR>Lors de la définition de l'attribut name de l'élément Arbre de classement ou classement, vous ne pouvez pas utiliser le symbole des deux points (<TT CLASS="literal">:</TT>).</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="Attributs des balises 'classificationtree' et 'classification'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="TAB-AID14"></A><B>Tableau 1-3 : Attributs des balises <NOBR>classificationtree</NOBR> et <NOBR>classification</NOBR></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Attribut</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Valeur</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">managementtype</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le type de gestion à attribuer à l'Arbre de classement ou au classement. Les valeurs valables sont : <TT CLASS="literal">manual</TT>, <TT CLASS="literal">automatic</TT> et <TT CLASS="literal">assisted</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">name</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le nom de l'Arbre de classement ou du classement. Cette valeur est une chaîne (<TT CLASS="literal">Rapports annuels</TT>, par exemple).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">selectable</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique si l'Arbre de classement ou le classement est sélectionnable ou pas. Les valeurs valides sont <TT CLASS="literal">true</TT> et <TT CLASS="literal">false</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">subtype</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le numéro de sous-type de l'objet Content Server. Les valeurs admises sont <TT CLASS="literal">196</TT> pour les balises Arbre de classement et <TT CLASS="literal">199</TT> pour les balises classification.</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID307"></A><span><A HREF="c-constxml-bg.htm#TAB-AID15"><NOBR>Tableau&nbsp;1-4</NOBR></A></span> décrit les attributs facultatifs des balises de début <TT CLASS="literal">classificationtree</TT> et <TT CLASS="literal">classification</TT> :</P>
+<DIV title="Attributs des balises 'classificationtree' et 'classification'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="TAB-AID15"></A><B>Tableau 1-4 : Attributs des balises <NOBR>classificationtree</NOBR> et <NOBR>classification</NOBR></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Attribut</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Valeur</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">score</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nombre saisi par l'utilisateur. Les valeurs admises sont comprises entre 1 et 100 (inclus).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">description</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description du nœud saisie par l'utilisateur.</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID331"></A>Dans cette section, la hiérarchie des classements est définie par l'imbrication d'éléments <TT CLASS="literal">classification</TT> à l'intérieur d'autres éléments <TT CLASS="literal">classification</TT>. Par exemple, si un classement nommé <I CLASS="emphasis">Classement1</I> en contient un autre nommé <I CLASS="emphasis">Classement2</I>, alors <I CLASS="emphasis">Classement2</I> sera imbriqué dans <I CLASS="emphasis">Classement1</I> de la manière suivante :</P><A NAME="AEN341"></A>
+<PRE 
+CLASS="screen"
+><TT
+CLASS="literal"
+>&lt;classification managementtype='manual' name='Classification1' selectable='true' subtype='199'&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&lt;classification managementtype='manual' name='Classification2' selectable='true' subtype='199'&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&lt;/classification&gt;</TT
+>
+<TT
+CLASS="literal"
+>&lt;/classification&gt;</TT
+></PRE
+>
+<P><A NAME="TMPID343"></A>La définition de la hiérarchie est soumise aux règles suivantes :</P>
+<A NAME="AEN347"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN348"></A><A NAME="TMPID346"></A>Un seul élément de <TT CLASS="literal">classificationtree</TT> peut figurer au niveau racine de la hiérarchie.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN351"></A><A NAME="TMPID349"></A>Chaque élément <TT CLASS="literal">classificationtree</TT> et <TT CLASS="literal">classification</TT> peut contenir d'autres éléments <TT CLASS="literal">classification</TT>.</P></LI></OL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF7"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID354"></A><B CLASS="note">Note : </B><BR>Chaque élément <TT CLASS="literal">classification</TT> et <TT CLASS="literal">classificationtree</TT> peut contenir un élément de requête <TT CLASS="literal">query</TT> (facultatif).</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID358"></A>A la fin de cette section, vous devez insérer la balise de fin de l'élément <TT CLASS="literal">classificationtree</TT>, à savoir : <TT CLASS="literal">&lt;/classificationtree&gt;</TT>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF8">Fichiers exemples</A></P>
+<P><A NAME="TMPID362"></A>L'exemple suivant porte sur un Arbre de classement vide nommé <I CLASS="emphasis"><TT CLASS="literal">Arbre de classement vide</TT></I>. Celui-ci n'est pas sélectionnable et son type de gestion est configuré sur automatique :</P><A NAME="AEN368"></A>
+<PRE 
+CLASS="screen"
+><TT
+CLASS="literal"
+>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;</TT
+>
+<TT
+CLASS="literal"
+>&lt;importexport applanguage='USA' appname='ContentServer' appversion='9.5.0' dtdversion='2.5' exportdate='2003-07-22T17:34:07'&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&lt;classificationtree managementtype="automatic" name="Test Classification Tree" selectable="true" subtype='196'&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;SELECT "OTObject" ,"OTScore" WHERE "test" ORDEREDBY RankingExpression "test"&lt;/query&gt;</TT
+><BR><TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&lt;/classificationtree&gt;</TT
+>
+<TT
+CLASS="literal"
+>&lt;/importexport&gt;</TT
+></PRE
+>
+<P><A NAME="TMPID372"></A>L'exemple suivant porte sur un Arbre de classement plus classique. Le nom de l'arbre est <TT CLASS="literal">Informations d'entreprise</TT> et celui-ci contient trois classements : <I CLASS="emphasis">A propos de l'entreprise</I>, <I CLASS="emphasis">Rapports annuels</I> et <I CLASS="emphasis">Nouvelles</I>. Le classement <I CLASS="emphasis">Nouvelles</I> contient deux autres classements : <I CLASS="emphasis">Communiqués de presse</I> et <I CLASS="emphasis">Bulletins d'information</I>. Au niveau racine, le classement <I CLASS="emphasis">Informations d'entreprise</I> n'est pas sélectionnable et son type de gestion est configuré sur manuel ; par contre, toutes les classements qu'il contient sont sélectionnables et leur type de gestion est configuré sur assisté.</P><A NAME="AEN384"></A>
+<PRE 
+CLASS="screen"
+><TT
+CLASS="literal"
+>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;</TT
+>
+<TT
+CLASS="literal"
+>&lt;importexport dtdversion='2.5' appname='ContentServer' appversion='9.5.0' applanguage='USA'&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&lt;classificationtree managementtype='manual' name='Corporate Information' selectable='false' subtype='196'&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;&lt;/query&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;classification managementtype='assisted' name='About Us' selectable='true' subtype='199'&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;&lt;/query&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/classification&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;classification managementtype='assisted' name='Annual Reports' selectable='true' subtype='199'&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;&lt;/query&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/classification&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;classification managementtype='assisted' name='News' selectable='true' subtype='199'&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;&lt;/query&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;classification managementtype='assisted' name='Press Releases' selectable='true' subtype='199'&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;&lt;/query&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/classification&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;classification managementtype='assisted' name='Newsletters' selectable='true' subtype='199'&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;&lt;/query&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/classification&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/classification&gt;</TT
+>
+<TT
+CLASS="literal"
+>&nbsp;&nbsp;&nbsp;&lt;/classificationtree&gt;</TT
+>
+<TT
+CLASS="literal"
+>&lt;/importexport&gt;</TT
+></PRE
+>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF9">Importation d'une taxonomie XML</A></P>
+<P><A NAME="TMPID404"></A>Une fois que vous avez créé une taxonomie XML, vous pouvez importer le fichier XML dans Content Server ; les classements sont alors créés automatiquement. Pour plus d'informations sur l'importation de taxonomies de classement, reportez-vous à la rubrique <span><A HREF="c-expimpclass-bg.htm">Exportation et importation de taxonomies de classement</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF10"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID408"></A><B CLASS="note">Note : </B><BR>Si vous n'avez pas activé la fonctionnalité Classement intelligent, le type de gestion est défini sur « manuel » lorsque vous importez des Arbre de classement. Pour plus d'informations sur Classement intelligent, consultez la section <span><A HREF="c-enableic-bg.htm">Activation de la fonctionnalité de Classement intelligent</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

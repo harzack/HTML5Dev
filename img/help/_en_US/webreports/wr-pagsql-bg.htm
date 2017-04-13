@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>SQL Approach</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-pagsql-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Pagination in WebReports';
+          header.title2 = 'SQL Approach';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID23810"></A>Generally speaking, although there are exceptions, it is best to do as much work as possible at the database. By doing this you are getting the results list down as small as possible before it goes across the network to Content Server. The more results, the longer this will take to transit the network. Assuming an Oracle database, and no filtering in the WebReport or client, we can use WebReports to pass a start and end row number which are used by Oracle to return a “slice” of data.</P>
+<P><A NAME="TMPID23814"></A>Imagine the following simplified LiveReport.</P><A NAME="AEN22490"></A>
+<PRE 
+CLASS="screen"
+>select * from (
+    select dt1.*, rownum rnum from (
+        select * from DTree
+    ) dt1
+where rownum &lt;= %2)
+where rnum &gt;= %1</PRE
+>
+<P><A NAME="TMPID23816"></A>Here we have an inline view which returns the DTree table plus the pseudo-column <TT CLASS="literal">RowNum</TT> as an alias <TT CLASS="literal">rnum</TT>. An outer statement then performs a <TT CLASS="literal">select</TT> from the inline view using a combination of the <TT CLASS="literal">rnum</TT> alias and the new RowNum pseudo-column to extract a slice of data. %1 and %2 represent LiveReport parameters of type Number and equate to the start and end row numbers respectively. When running the LiveReport these can be seen in the URL as <TT CLASS="literal">inputLabel1</TT> and <TT CLASS="literal">inputLabel2</TT>. The same technique can be applied to different queries by replacing the inner-most select statement, <TT CLASS="literal">select * from DTree</TT>, with your own.</P>
+<P><A NAME="TMPID23824"></A>The report can be executed by clicking the link and filling in the start and end prompts, or by manually issuing a URL. An example url is below where the start row parameter is “20” and the end row parameter is “30”.</P><A NAME="AEN22502"></A>
+<PRE 
+CLASS="screen"
+>?func=ll&amp;objId=xyz&amp;objAction=runReport&amp;inputLabel1=20&amp;inputLabel2=30</PRE
+>
+<P><A NAME="TMPID23828"></A>At this point it should be apparent that all we need is an interface to control these two parameter values. Here we can use WebReports to provide First, Previous, Next and Last buttons. Below is one possible implementation that shows a bare bones reportview with minimal formatting.</P><A NAME="AEN22504"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]page.js"&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT&gt;
+var wrurl = "[LL_REPTAG_MYID LLURL:REPORT /]";
+var myCnt = [LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$GETCOUNT /] /];
+var pageSize = [LL_REPTAG_$PAGESIZE /];
+var p1 = [LL_REPTAG_&amp;inputLabel1 /];
+var p2 = [LL_REPTAG_&amp;inputLabel2 /];
+&lt;/SCRIPT&gt;
+
+&lt;TABLE&gt;
+&lt;TR&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME1 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_STARTROW /]
+&lt;TR&gt;
+&lt;TD&gt;[LL_REPTAG_1 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_2 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_3 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_4 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_5 /]&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_ENDROW /]
+&lt;/TABLE&gt;
+
+&lt;INPUT TYPE=BUTTON ID=FIRST VALUE=&lt;&lt; ONCLICK="getPage(wrurl, 'first', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=PREVIOUS VALUE=&lt; ONCLICK="getPage(wrurl, 'prev', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=NEXT VALUE=&gt; ONCLICK="getPage(wrurl, 'next', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=LAST VALUE=&gt;&gt; ONCLICK="getPage(wrurl, 'last', myCnt, pageSize, p1, p2 );"&gt;</PRE
+>
+<P><A NAME="TMPID23830"></A>The header section contains several JavaScript declarations plus the HTML column headings which can be broken down as follows. A JavaScript library file, <TT CLASS="literal">page.js</TT>, that provides the function, getPage(), to assist with the mechanics of pagination. We make use of this function when the user clicks any of the First, Previous, Next, Last buttons. This function can be used in any WebReport or, equally, the user can develop their own function and include it inline.</P><A NAME="AEN22507"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]page.js"&gt;&lt;/SCRIPT&gt;</PRE
+>
+<P><A NAME="TMPID23833"></A>The base url of the report we want to run. The code below should result in <TT CLASS="literal">?func=ll&amp;objId=xyz&amp;objAction=RunReport</TT> being stored in the variable <TT CLASS="literal">wrurl</TT>. It would be possible to hard code this though a more flexible solution is being used where <TT CLASS="literal">MYID</TT> is the data ID of the current WebReport that is passed to the <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLLURL">LLURL</A></span> sub-tag to create a report URL based on this id. The benefit of this is that we can copy and paste the code between reportviews and Content Server instances without making changes.</P><A NAME="AEN22514"></A>
+<PRE 
+CLASS="screen"
+>var wrurl = "[LL_REPTAG_MYID LLURL:REPORT /]";</PRE
+>
+<P><A NAME="TMPID23840"></A>The JavaScript variable, <TT CLASS="literal">myCnt</TT> is set using a sub-WebReport. The sub-WebReport is used to find the total number of rows that we can paginate through. In our case we have a separate, and very simple, LiveReport which counts the number of rows in DTree: <TT CLASS="literal">select count(*) from DTree</TT></P>
+<P><A NAME="TMPID23843"></A>The sub-WebReport uses this as its data source. The sub-WebReport itself simply contains one tag, <TT CLASS="literal">[LL_REPTAG_1 /]</TT>, in the row section. All other characters, including spaces and carriage returns, must be removed from the reportview. This occurs in order to ensure we only have a number in the JavaScript variable. If you run the sub-WebReport on its own you should simply see a number and nothing else other than the Content Server headers. Remember that if you have a where clause or permission filtering in the main report, you must also have this in the count report otherwise the count will not be accurate. We use a constant, <TT CLASS="literal">[LL_REPTAG_$GETCOUNT /]</TT>, to point to the sub-WebReport. Remember to go to the <B CLASS="guilabel">Constants</B> tab and define it. To read information about why it's a good idea to use a constant, see <span><A HREF="wr-constant-info.htm">WebReports Constants</A></span>.</P><A NAME="AEN22524"></A>
+<PRE 
+CLASS="screen"
+>var myCnt = [LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$GETCOUNT /] /];</PRE
+>
+<P><A NAME="TMPID23850"></A>Next we set another JavaScript variable with an integer representing the number of rows we want to show on each page. Remember to define this constant on the <B CLASS="guilabel">Constants</B> page.</P><A NAME="AEN22527"></A>
+<PRE 
+CLASS="screen"
+>var pageSize = [LL_REPTAG_$PAGESIZE /];</PRE
+>
+<P><A NAME="TMPID23853"></A>In the final piece of JavaScript we set two variables representing the current start and end row numbers. In order to have the report run straight away, rather than prompting you for these values, you must use the WebReports <B CLASS="guilabel">Parameters</B> page to define a default value for each of them. Default values of 1 and 20 would result in the first 20 rows being displayed when the user runs the report.</P><A NAME="AEN22530"></A>
+<PRE 
+CLASS="screen"
+>var p1 = [LL_REPTAG_&amp;inputLabel1 /];
+var p2 = [LL_REPTAG_&amp;inputLabel2 /];</PRE
+>
+<P><A NAME="TMPID23856"></A>The rest of the header and the entire row section are just standard HTML and WebReports tags which display the column headings and the row data. The only remaining complexity in the First, Previous, Next and Last buttons in the footer section. As mentioned previously, these buttons use the function getPage() to build the URL for the next slice of data. This function is invoked when the user clicks any of the buttons. It accepts 7 parameters, 5 of which are mandatory. Hopefully the first five of these are clear from the prior description. The remaining two default to <TT CLASS="literal">inputLabel1</TT> and <TT CLASS="literal">inputLabel2</TT> respectively. As we are using the first two LiveReport parameters to perform the pagination we don't need to provide these. If, instead, we wanted to use the third and fourth parameters for filtering, we would need to pass the values <TT CLASS="literal">inputLabel3</TT> and <TT CLASS="literal">inputLabel4</TT>.</P><A NAME="AEN22536"></A>
+<PRE 
+CLASS="screen"
+>&lt;INPUT TYPE=BUTTON ID=FIRST VALUE=&lt;&lt; ONCLICK="getPage(wrurl, 'first', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=PREVIOUS VALUE=&lt; ONCLICK="getPage(wrurl, 'prev', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=NEXT VALUE=&gt; ONCLICK="getPage(wrurl, 'next', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=LAST VALUE=&gt;&gt; ONCLICK="getPage(wrurl, 'last', myCnt, pageSize, p1, p2 );"&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

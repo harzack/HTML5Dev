@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Administering Groups</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-groups-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Users and Groups';
+          header.title2 = 'Administering Groups';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID18917"></A>When Content Server is installed, there is only one group, called the DefaultGroup, which contains only one user, called Admin. The DefaultGroup is the <I CLASS="emphasis">Department</I> group of the Admin user. (A Department is the principal group of which a user is a member.) Once installation and initial setup of Content Server is complete, you must create users for each person using Content Server, and organize those users into groups.</P>
+<P><A NAME="TMPID18922"></A>For performance reasons, a group can contain no more than 1,000 users and subgroups (including the DefaultGroup). If your Content Server system supports a large number of users, you can get around this limit by creating Department groups, to which you can add subsets of users. Then, you can make each Department a members of a single, <I CLASS="emphasis">master group</I>. In this way, it becomes possible to work with every user in the system. For example, if you want to add every user in Content Server to a Project, you can simply add the master group to the Project.</P>
+<P><A NAME="TMPID18926"></A>If you delete a group that is the Department group for any user, Content Server automatically reassigns all users in the deleted group to the DefaultGroup.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-LISTGROUP-BG">Listing Groups</A></P>
+<P><A NAME="TMPID18930"></A>Content Server allows you to list all groups or a subset of groups based on a pattern-matching search against group names. By default, Content Server displays up to 30 groups per search result page. If your search result includes more than 30 items, the results page includes a <B CLASS="guilabel">More </B>button, allowing you to view the next page of results. You can change this default by modifying the MaxUsersToListPerPage parameter under the [general] heading of the <TT CLASS="filename">_home/config/opentext.ini</TT> file.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-PREVRECURSIVEGRP-BG">Preventing Recursive Groups</A></P>
+<P><A NAME="TMPID18937"></A>When creating a <I CLASS="glossterm">Subgroup</I> in Content Server, it is possible to form <I CLASS="emphasis">recursive groups</I>. For example, you could assign Group A as a member of Group B, and then assign Group B as a member of Group A. Because recursive groups can reduce system performance, you can choose to prevent the formation of recursive groups in Content Server.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-usersgroups-09-p.htm" revision="">To List Groups</A></p></li>
+<li><p><A  href="../webadmin/wba-usersgroups-recursive-p.htm" revision="">To Prevent Recursive Groups</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

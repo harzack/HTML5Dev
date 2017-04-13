@@ -1,0 +1,1067 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>PATCHANGE, PATFIND, PERMACTION, PERMCHECK, PERMINFO, POCOPY, PREV</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stfourteenth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sous-balises';
+          header.title2 = 'PATCHANGE, PATFIND, PERMACTION, PERMCHECK, PERMINFO, POCOPY, PREV';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID7642"></A>Cette section apporte des informations sur les sous-balises suivantes : <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATCHANGE">PATCHANGE</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATFIND">PATFIND</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMACTION">PERMACTION</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMCHECK">PERMCHECK</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMINFO">PERMINFO</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPOCOPY">POCOPY</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPOINFO">POINFO</A></span> et <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPREV">PREV</A></span>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPATCHANGE">PATCHANGE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATCHANGE-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGPATCHANGE"></A><B CLASS="highlight">PATCHANGE:&lt;<I CLASS="varname">modèle de recherche</I>>:&lt;<I CLASS="varname">nouveau modèle</I>></B></P>
+<P><A NAME="TMPID7659"></A>ou</P>
+<P><A NAME="TMPID7660"></A><B CLASS="highlight">PATCHANGE:&lt;<I CLASS="varname">modèle de recherche</I>>:&lt;<I CLASS="varname">nouveau modèle</I>>:&lt;<I CLASS="varname">ignorer la casse ?</I>></B> </P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATCHANGE-DESC">Description</A></P>
+<P><A NAME="TMPID7667"></A>Renvoie une version modifiée de la balise principale en fonction des modèles de recherche et remplacement spécifiés. </P>
+<P><A NAME="TMPID7668"></A>La variable &lt;<I CLASS="varname">modèle de recherche</I>> est indiquée à l'aide d'une série d'opérateurs spéciaux conformément au tableau ci-dessous. Il s'agit d'un sous-ensemble simplifié et légèrement modifié de correspondance de modèles d'expressions régulières UNIX. Pour les développeurs de Content Server, cette syntaxe s'appuie sur les paramètres intégrés <TT CLASS="literal">PATFIND</TT> et <TT CLASS="literal">PATCHANGE</TT> d'Oscript. Elle est presque identique à la syntaxe <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATFIND">PATFIND</A></span>, mais permet de spécifier les parties du modèle de recherche qui peuvent faire l'objet d'une substitution dans le modèle de remplacement. Si aucune correspondance n'est trouvée, <B CLASS="highlight">le contenu des balises d'origine reste inchangé.</B></P>
+<P><A NAME="TMPID7675"></A>La variable &lt;<I CLASS="varname">modèle de remplacement</I>> peut également inclure les caractères spéciaux présentés ci-dessous. Le modèle de remplacement est normalement un modèle de caractères fixe, mais les caractères issus du modèle de recherche sont compris dans les caractères &lt;<I CLASS="varname">...</I>> puis insérés dans le modèle de remplacement à l'aide du symbole dièse, #,. Par défaut, cette sous-balise ignore la casse des caractères en cas de correspondance. Si vous définissez le troisième paramètre sur <TT CLASS="literal">FALSE</TT>, l'opération de remplacement devient sensible à la casse.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATCHANGE-PARAM">Paramètres</A></P>
+<DIV title="Caractères spéciaux du modèle de recherche" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPATCH-TBL1"></A><B>Tableau 1-30 : Caractères spéciaux du modèle de recherche</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Caractère</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">c</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à un caractère exact. <B CLASS="highlight">c</B> représente ici n'importe quel caractère.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@c</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à un caractère d'échappement, tel que <B CLASS="highlight">@%</B>, <B CLASS="highlight">@[</B>, <B CLASS="highlight">@*</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">?</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à n'importe quel caractère à l'exception d'une fin de ligne.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">%</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à un début de ligne.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">$</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à une fin de ligne. Chaîne nulle avant la fin de ligne.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">[</B>...<B CLASS="highlight">]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à une classe de caractères. L'un de « ces » caractères, tels que [abc] ou [a-z].</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">[!</B>...<B CLASS="highlight">]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à une classe de caractères réfutée. Tout sauf ces caractères, tels que [! ] pour indiquer aucune espace.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">*</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à zéro ou plusieurs occurrences de l'élément précédent, tel que [0-9]* pour zéro ou plusieurs chiffres.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">+</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à zéro ou plusieurs occurrences de l'élément précédent, tel que [A-Za-z]* pour une ou plusieurs lettres.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">&lt;</B>...<B CLASS="highlight">&gt;</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les crochets indiquent un élément spécialement extrait à des fins de référence ou d'utilisation future.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Caractères spéciaux du modèle de remplacement" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPATCH-TBL2"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-31 : Caractères spéciaux du modèle de remplacement</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Caractère</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">&amp;</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Idem (chaîne entière).</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Caractère d'échappement, tel que @&amp;.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">#<I CLASS="emphasis">n</I></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Insertion d'une sous-chaîne balisée.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATCHANGE-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID7798"></A>Cet exemple de sous-balise <TT CLASS="literal">PATCHANGE</TT> suppose que la balise associée contient la chaîne : « This is a test sentence 123, end »</P>
+<P><A NAME="TMPID7801"></A><TT CLASS="literal">PATCHANGE:"?* &lt;<I CLASS="varname">t?+t</I>> *sen[!0-9]+&lt;<I CLASS="varname">[0-9]+</I>>?*":"Word:#1; Number: #2"</TT></P>
+<P><A NAME="TMPID7805"></A>renvoie :  Word: test; Number: 123</P>
+<P><A NAME="TMPID7806"></A>Dans l'exemple ci-dessus :</P>
+<A NAME="AEN7269"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7270"></A><A NAME="TMPID7809"></A>Les caractères correspondants, mais non compris entre des chevrons, &lt;<I CLASS="varname"></I>>, ne seront pas inclus dans le remplacement.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7273"></A><A NAME="TMPID7812"></A><TT CLASS="literal">&lt;<I CLASS="varname">t?+t</I>></TT> : trouve une correspondance avec le mot « test ». Comme il s'agit de la première « sous-chaîne balisée », ce mot remplace <TT CLASS="literal">#1</TT> dans la chaîne de remplacement.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7280"></A><A NAME="TMPID7819"></A><TT CLASS="literal">&lt;<I CLASS="varname">[0-9]+</I>></TT> : trouve une correspondance avec les numéros « 123 ». Comme il s'agit de la seconde « sous-chaîne balisée », ces caractères remplacent <TT CLASS="literal">#2</TT> dans la chaîne de remplacement.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7287"></A><A NAME="TMPID7826"></A>La partie du modèle de recherche : <TT CLASS="literal">sen[!0-9]+</TT> trouve les caractères « sen » suivis de 1 ou plusieurs caractères NON numériques.</P></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATCHANGE-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID7831"></A>Pour plus d'informations détaillées sur <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATFIND">PATFIND</A></span> ou <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATCHANGE">PATCHANGE</A></span>, voir la documentation du SDK Content Server.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPATFIND">PATFIND</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATFIND-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGPATFIND"></A><B CLASS="highlight">PATFIND:&lt;<I CLASS="varname">modèle de recherche</I>></B></P>
+<P><A NAME="TMPID7842"></A>ou</P>
+<P><A NAME="TMPID7843"></A><B CLASS="highlight">PATFIND:&lt;<I CLASS="varname">modèle de recherche</I>>:&lt;<I CLASS="varname">ignorer la casse ?</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATFIND-DESC">Description</A></P>
+<P><A NAME="TMPID7849"></A>Renvoie Vrai ou Faux si le modèle spécifié se trouve ou non dans la chaîne renvoyée par la balise principale. La variable &lt;<I CLASS="varname">modèle de recherche</I>> est indiquée à l'aide d'une série d'opérateurs spéciaux conformément au tableau ci-dessous. Il s'agit d'un sous-ensemble simplifié et légèrement modifié de correspondance de modèles d'expressions régulières UNIX. Pour les développeurs de Content Server, cette syntaxe s'appuie sur les paramètres intégrés <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATFIND">PATFIND</A></span> et <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATCHANGE">PATCHANGE</A></span> d'Oscript. Par défaut, cette sous-balise ignore la casse des caractères en cas de correspondance. Si vous définissez le second paramètre sur <TT CLASS="literal">FALSE</TT>, l'opération de recherche devient sensible à la casse. </P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATFIND-PARAM">Paramètres</A></P>
+<DIV title="Caractères spéciaux du modèle de recherche" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPATFND-TBL1"></A><B>Tableau 1-32 : Caractères spéciaux du modèle de recherche</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Caractère</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">c</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à un caractère exact. <B CLASS="highlight">c</B> représente ici n'importe quel caractère.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@c</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à un caractère d'échappement, tel que <B CLASS="highlight">@%</B>, <B CLASS="highlight">@[</B>, <B CLASS="highlight">@*</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">?</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à n'importe quel caractère à l'exception d'une fin de ligne.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">%</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à un début de ligne.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">$</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à une fin de ligne. Chaîne nulle avant la fin de ligne.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">[</B>...<B CLASS="highlight">]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à une classe de caractères. L'un de « ces » caractères, tels que [abc] ou [a-z].</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">[!</B>...<B CLASS="highlight">]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à une classe de caractères réfutée. Tout sauf ces caractères, tels que [! ] pour indiquer aucune espace.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">*</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à zéro ou plusieurs occurrences de l'élément précédent, tel que [0-9]* pour zéro ou plusieurs chiffres.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">+</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à zéro ou plusieurs occurrences de l'élément précédent, tel que [A-Za-z]* pour une ou plusieurs lettres.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATFIND-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID7934"></A>L'exemple de sous-balise <TT CLASS="literal">PATFIND</TT> suivant suppose que la balise associée contient la chaîne « This is a test sentence 123, end » :</P>
+<P><A NAME="TMPID7937"></A><TT CLASS="literal">PATFIND:"sen?+ *[0-9]+"</TT></P>
+<P><A NAME="TMPID7939"></A>renvoie « true ».</P>
+<P><A NAME="TMPID7941"></A>Ce modèle indique que les caractères spécifiques, « sen », suivis par un ou plusieurs caractères comme indiqué par « ?+ », et suivis par zéro ou plusieurs espaces comme indiqué par «  * », et suivis par un ou plusieurs chiffres comme indiqué par « [0-9]+ », trouvent une correspondance sur la chaîne « sentence 123 », et la balise renvoie donc <TT CLASS="literal">true</TT>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATFIND-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID7950"></A>Pour plus d'informations sur <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATFIND">PATFIND</A></span> ou <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATCHANGE">PATCHANGE</A></span>, voir la documentation du SDK Content Server.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPERMACTION">PERMACTION</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMACTION-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGPERMACTION"></A><B CLASS="highlight">PERMACTION:&lt;<I CLASS="varname">opération</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMACTION-DESC">Description</A></P>
+<P class="before-ul"><A NAME="TMPID7963"></A>Cette sous-balise fournit la flexibilité requise pour ajouter, supprimer et modifier des autorisations de contenu dans Content Server. En raison de la nature puissante de cette sous-balise, vous devez bien comprendre ses effets avant de l'utiliser. La sous-balise se comporte comme les autres sous-balises WebReport puisque vous ne pouvez pas modifier les autorisations des nœuds si vous n'êtes pas autorisé à le faire via l'interface standard. La différence principale est que l'utilisation de WebReports permet d'automatiser ces modifications de façon à les effectuer plus rapidement que via l'interface. Content Server prend en charge 3 modèles d'autorisation :</P><A NAME="AEN7418"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN7419"></A><A NAME="TMPID7968"></A>le modèle d'autorisation standard (SPM), par exemple les objets Content Server tels que les documents et dossiers ;</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN7422"></A><A NAME="TMPID7971"></A>le modèle d'autorisation des projets (PPM), par exemple, les projets ;</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN7424"></A><A NAME="TMPID7973"></A>et le modèle d'autorisation des éléments de travail (WPM), par exemple, les discussions, chaînes ou listes de tâches.</P></LI></UL>
+<P><A NAME="TMPID7974"></A>La sous-balise <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMACTION">PERMACTION</A></span> permet de mettre à jour les 3 modèles d'autorisation. Les tableaux ci-dessous décrivent l'utilisation de la sous-balise <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMACTION">PERMACTION</A></span> et ses répercussions sur les objets. Nous ferons référence au modèle d'autorisation et aux objets concernés.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMACTION-PARAM">Paramètres</A></P>
+<DIV title="'Action : ACL:'ID_utilisateur'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPERMACTION-T1"></A><B>Tableau 1-33 : <B CLASS="highlight">Action : ACL:&lt;<I CLASS="varname">ID_utilisateur</I>></B></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:ACL:&lt;<I CLASS="varname">ID_utilisateur</I>>:REMOVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprime l'utilisateur ou le groupe spécifié par &lt;<I CLASS="varname">ID_utilisateur</I>> d'une liste de contrôle d'accès des autorisations d'un objet Content Server. Cette opération est prise en charge par les objets <B CLASS="highlight">SPM</B> et <B CLASS="highlight">WPM</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:ACL:&lt;<I CLASS="varname">ID_utilisateur</I>>:UPDATE:&lt;<I CLASS="varname">autors</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Met à jour les autorisations spécifiées par &lt;<I CLASS="varname">autors</I>> pour l'utilisateur ou le groupe spécifié par &lt;<I CLASS="varname">ID_utilisateur</I>> dans une liste de contrôle d'accès des autorisations d'un objet Content Server. Si l'utilisateur ou le groupe spécifié ne se trouve pas dans la liste de contrôle d'accès, il y est ajouté. Cette opération est prise en charge par les objets <B CLASS="highlight">SPM</B> et <B CLASS="highlight">WPM</B>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="'Action : OWNER'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPERMACTION-T2"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-34 : <B CLASS="highlight">Action : OWNER</B></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:OWNER:UPDATE:&lt;<I CLASS="varname">autors</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Met à jour les autorisations spécifiées par &lt;<I CLASS="varname">autors</I>> pour le propriétaire actuel dans l'accès par défaut de l'objet Content Server. Cette opération est prise en charge par les objets <B CLASS="highlight">SPM</B> et <B CLASS="highlight">WPM</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:OWNER:CHANGE:&lt;<I CLASS="varname">ID_utilisateur</I>>:&lt;<I CLASS="varname">autors</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Définit la section du propriétaire de l'accès par défaut des autorisations d'un objet Content Server sur l'utilisateur spécifié par &lt;<I CLASS="varname">ID_utilisateur</I>> avec les autorisations spécifiées par &lt;<I CLASS="varname">autors</I>>. Cette opération est prise en charge par les objets <B CLASS="highlight">SPM</B> et <B CLASS="highlight">WPM</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:OWNER:REMOVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprime le propriétaire actuel de la section Accès par défaut des autorisations de l'objet Content Server. La section <TT CLASS="literal">OWNER</TT> de l'accès par défaut est alors définie sur « Pas de propriétaire ». Cette opération est prise en charge par les objets <B CLASS="highlight">SPM</B> et <B CLASS="highlight">WPM</B>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="'Action : OWNERGROUP'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPERMACTION-T3"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-35 : <B CLASS="highlight">Action : OWNERGROUP</B></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:OWNERGROUP:UPDATE:&lt;<I CLASS="varname">autors</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Met à jour les autorisations spécifiées par &lt;<I CLASS="varname">autors</I>> pour le groupe de propriétaires actuel dans l'accès par défaut de l'objet Content Server. Cette opération est prise en charge par les objets <B CLASS="highlight">SPM</B> et <B CLASS="highlight">WPM</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:OWNERGROUP:CHANGE:&lt;<I CLASS="varname">ID_utilisateur</I>>:&lt;<I CLASS="varname">autors</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Définit la section du groupe de propriétaires de l'accès par défaut des autorisations d'un objet Content Server sur le groupe spécifié par &lt;<I CLASS="varname">ID_utilisateur</I>> avec les autorisations spécifiées par &lt;<I CLASS="varname">autors</I>>. Cette opération est prise en charge par les objets <B CLASS="highlight">SPM</B> et <B CLASS="highlight">WPM</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:OWNERGROUP:REMOVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprime le groupe de propriétaires actuel de la section Accès par défaut des autorisations de l'objet Content Server. La section du groupe de propriétaires de l'accès par défaut est alors définie sur « Pas de groupe de propriétaires ». Cette opération est prise en charge par les objets <B CLASS="highlight">SPM</B> et <B CLASS="highlight">WPM</B>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="'Action : PUBLIC'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPERMACTION-T4"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-36 : <B CLASS="highlight">Action : PUBLIC</B></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:PUBLIC:UPDATE:&lt;<I CLASS="varname">autors</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Met à jour les autorisations spécifiées par &lt;<I CLASS="varname">autors</I>> pour l'accès public dans l'accès par défaut de l'objet Content Server. Cette opération est prise en charge par les objets <B CLASS="highlight">SPM</B>, <B CLASS="highlight">PPM</B> et <B CLASS="highlight">WPM</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:PUBLIC:REMOVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprime l'accès public de la section Accès par défaut des autorisations de l'objet Content Server. La section d'accès public de l'accès par défaut est alors définie sur « Pas d'accès public ». Cette opération est prise en charge par les objets <B CLASS="highlight">SPM</B> et <B CLASS="highlight">WPM</B>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P><A NAME="TMPID8155"></A>Le tableau suivant concerne uniquement les projets :</P>
+<DIV title="'Action : 'rôle'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPERMACTION-T5"></A><B>Tableau 1-37 : <B CLASS="highlight">Action : &lt;<I CLASS="varname">rôle</I>></B></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:&lt;<I CLASS="varname">rôle</I>>:UPDATE:&lt;<I CLASS="varname">ID_utilisateur</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Met à jour le rôle spécifié par &lt;<I CLASS="varname">rôle</I>> pour l'utilisateur ou le groupe spécifié par &lt;<I CLASS="varname">ID_utilisateur</I>> dans la page <B CLASS="guilabel">Intervenant</B> d'un projet. Si l'utilisateur ou le groupe spécifié n'est pas un intervenant du projet, il est ajouté. Cette opération est prise en charge uniquement par les objets <B CLASS="highlight">PPM</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:&lt;<I CLASS="varname">rôle</I>>:REMOVE:&lt;<I CLASS="varname">ID_utilisateur</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprime l'utilisateur ou le groupe spécifié par &lt;<I CLASS="varname">ID_utilisateur</I>> pour le rôle spécifié par &lt;<I CLASS="varname">rôle</I>> dans la page <B CLASS="guilabel">Intervenant</B> d'un projet. Cette opération est prise en charge uniquement par les objets <B CLASS="highlight">PPM</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:&lt;<I CLASS="varname">rôle</I>>:REMOVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprime tous les utilisateurs ou groupes avec le &lt;<I CLASS="varname">rôle</I>> spécifié dans la page <B CLASS="guilabel">Intervenant</B> d'un projet. Cette opération est prise en charge uniquement par les objets <B CLASS="highlight">PPM</B>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P><A NAME="TMPID8206"></A>Cette sous-balise attend le dataid du contenu de Content Server sur lequel l'utilisateur souhaite effectuer des actions d'autorisation, à spécifier dans la balise principale. Pour les objets <B CLASS="highlight">SPM</B>, par exemple des documents ou des dossiers, il existe deux façons de spécifier les autorisations d'une action qui exige une variable &lt;<I CLASS="varname">autors</I>> :</P>
+<A NAME="AEN7661"></A>
+<OL COMPACT="COMPACT" TYPE="1" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN7662"></A><A NAME="TMPID8212"></A>Vous pouvez utiliser un nombre décimal représentant un masque de bits binaires pour les autorisations Content Server. Même si certains développeurs connaissent cette méthode, elle est trop complexe pour être présentée ici.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN7665"></A><A NAME="TMPID8215"></A>Vous pouvez également spécifier une liste d'autorisations à l'aide d'une combinaison des mots-clés suivants :</P>
+<DIV title="Caractères spéciaux du modèle de recherche" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPRMACTN-TBL1"></A><B>Tableau 1-38 : Caractères spéciaux du modèle de recherche</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Mot clé</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Autorisation concernée</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">SEE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Voir</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">SEECONTENTS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Voir le contenu</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">MODIFY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Modifier</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EDITATTRS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Modifier les attributs</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">RESERVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Réserver ou Emprunter</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">DELETEVERS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprimer les versions</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">DELETE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprimer l'objet</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EDITPERMS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Modifier les autorisations</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ADDITEMS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Ajouter des éléments</TD></TR></TABLE></TD></TR></TABLE></DIV></LI></OL>
+<P class="before-ul"><A NAME="TMPID8284"></A>Notez que les autorisations spécifiées dans cette sous-balise suivent le modèle d'autorisation de l'interface Content Server, ce qui signifie que la sélection d'une autorisation permet de définir également les autres autorisations requises. Par exemple, si vous choisissez <TT CLASS="literal">MODIFY</TT>, vous définissez les autorisations « Voir », « Voir le contenu » et « Modifier » d'un objet. Pour spécifier les autorisations des objets <B CLASS="highlight">WPM</B>, par exemple, des discussions, chaînes ou listes de tâches, les mots-clés suivants peuvent remplacer &lt;<I CLASS="varname">autors</I>> dans l'une des opérations <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMACTION">PERMACTION</A></span> applicables :</P><A NAME="AEN7744"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN7745"></A><A NAME="TMPID8295"></A>NONE</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN7747"></A><A NAME="TMPID8297"></A>READ</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN7749"></A><A NAME="TMPID8299"></A>WRITE</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN7751"></A><A NAME="TMPID8301"></A>ADMINISTER</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID8302"></A>Pour spécifier des autorisations pour des objets <B CLASS="highlight">PPM</B>, par exemple des projets, le tableau suivant affiche les trois types de rôles qui peuvent remplacer la variable &lt;<I CLASS="varname">&lt;rôle&gt;</I>> dans les opérations <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMACTION">PERMACTION</A></span> applicables :</P><A NAME="AEN7757"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN7758"></A><A NAME="TMPID8308"></A>COORD : indique un coordinateur.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN7760"></A><A NAME="TMPID8310"></A>MEMBER</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN7762"></A><A NAME="TMPID8312"></A>GUEST</P></LI></UL>
+<P><A NAME="TMPID8313"></A>Pour le scénario dans lequel des autorisations <TT CLASS="literal">PUBLIC</TT> peuvent être mises à jour pour des objets PPM, <TT CLASS="literal">PERMACTION:PUBLIC:UPDATE:&lt;<I CLASS="varname">autors</I>></TT>, la valeur acceptable pour &lt;<I CLASS="varname">autors</I>> dans ce cas est <TT CLASS="literal">ENABLED</TT> ou <TT CLASS="literal">DISABLED</TT>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMACTION-EXAMP">Exemple</A></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN7772"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID8323"></A>Si un utilisateur qui crée un WebReport souhaite mettre à jouer les autorisations pour un utilisateur dont l'ID est <TT CLASS="literal">1234</TT> dans la liste de contrôle d'accès d'un document, ici <TT CLASS="literal">DATAID</TT>, avec les autorisations <TT CLASS="literal">See</TT> et <TT CLASS="literal">See contents</TT>, il peut utiliser l'une des balises suivantes :</P>
+<P><A NAME="TMPID8328"></A><TT CLASS="literal">[LL_REPTAG=DATAID PERMACTION:ACL:1234:UPDATE:"SEE,SEECONTENTS" /]</TT></P>
+<P><A NAME="TMPID8330"></A>qui utilise la liste de mots-clés pour spécifier les autorisations à mettre à jour ou :</P>
+<P><A NAME="TMPID8331"></A><TT CLASS="literal">[LL_REPTAG=DATAID PERMACTION:ACL:1234:UPDATE:36995 /]</TT></P>
+<P><A NAME="TMPID8333"></A>qui indique une représentation décimale du masque de bits binaires pour <TT CLASS="literal">See</TT> et <TT CLASS="literal">See Contents</TT>.</P>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN7786"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID8337"></A>Si un utilisateur qui crée un WebReport souhaite remplacer le propriétaire d'une liste de tâche par l'utilisateur administrateur, avec l'ID <TT CLASS="literal">1000</TT> et lui accorder un accès administratif, il peut utiliser la balise suivante :</P>
+<P><A NAME="TMPID8339"></A><TT CLASS="literal">[LL_REPTAG=DATAID PERMACTION:OWNER:CHANGE:1000:ADMINISTER /]</TT></P>
+<P><A NAME="TMPID8341"></A>Où <TT CLASS="literal">DATAID</TT> renvoie le dataID de la liste de tâches et <TT CLASS="literal">ADMINISTER</TT> est un mot-clé pour les objets WPM.</P>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN7794"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID8345"></A>Si un utilisateur qui crée un WebReport souhaite définir l'utilisateur administrateur, 1000, dans un projet sur un rôle de membre, il peut utiliser la balise suivante :</P>
+<P><A NAME="TMPID8346"></A><TT CLASS="literal">[LL_REPTAG=DATAID PERMACTION:MEMBER:UPDATE:1000 /]</TT></P>
+<P><A NAME="TMPID8348"></A>Où <TT CLASS="literal">DATAID</TT> renvoie le dataID du projet et <TT CLASS="literal">MEMBER</TT> est un mot-clé pour les objets PPM.</P>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPERMCHECK">PERMCHECK</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMCHECK-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGPERMCHECK"></A><B CLASS="highlight">PERMCHECK:&lt;<I CLASS="varname">param</I>></B></P>
+<P><A NAME="TMPID8358"></A>ou</P>
+<P><A NAME="TMPID8359"></A><B CLASS="highlight">PERMCHECK:&lt;<I CLASS="varname">param</I>>:&lt;<I CLASS="varname">ID groupe/utilisateur</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMCHECK-DESC">Description</A></P>
+<P><A NAME="TMPID8365"></A>Vérifie si l'utilisateur actuel ou spécifié est autorisé à effectuer l'action spécifiée pour l'objet. Renvoie la valeur Vrai ou Faux en fonction du résultat de cette vérification.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF16"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<A NAME="AEN7814"></A>
+<OL TYPE="1" class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7815"></A><A NAME="TMPID8369"></A>Lorsque cette balise est utilisée, la valeur normalement renvoyée par la balise principale est remplacée par Vrai ou Faux.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7817"></A><A NAME="TMPID8371"></A>Cette balise est valable uniquement lorsqu'elle est utilisée avec une balise qui renvoie normalement un ID d'objet Content Server valide. Par exemple, ID, DATAID et VOLUMEID. Une balise de rapport incorrecte renvoie la valeur Faux pour cette sous-balise.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7820"></A><A NAME="TMPID8374"></A>Les actions spécifiées correspondent aux autorisations de Content Server présentées dans le tableau ci-dessous. Pour utiliser ce tableau, trouvez le niveau supérieur d'autorisation Content Server que l'utilisateur s'attend à obtenir pour que la balise renvoie Vrai. Utilisez ensuite le paramètre répertorié sous Action vérification_autor.</P></LI></OL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMCHECK-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN7825"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Action vérification_autor</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Formulaires</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Objets DTree</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">NONE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SEE</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SEE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SEECONTENTS</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SEE</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SEE CONTENTS</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT STATIONERY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">MODIFY</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SQL SUBMIT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT ATTRIBUTES</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DELETE VERSIONS</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RESERVE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ADD ITEMS</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">MODIFY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">MODIFY</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDITATTRIBUTES</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT ATTRIBUTES</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RESERVE</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RESERVE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DELETE</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ADMINISTER</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DELETE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DELETE</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT PERMISSIONS</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DELETEVERSIONS</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DELETE VERSIONS</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDITPERMISSIONS</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT PERMISSIONS</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMCHECK-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID8457"></A>Si l'action <TT CLASS="literal">EDIT</TT> a été spécifiée par rapport à un dataid de formulaire, la balise renvoie Vrai uniquement si l'utilisateur possède au moins l'autorisation « Modifier les données préinsérées » pour le formulaire associé. Pour vérifier que seuls les utilisateurs disposant de l'autorisation « Gérer » sur un formulaire associé peuvent voir un bouton de suppression, la déclaration WebReport suivante peut être utilisée. Elle suppose le renvoi du dataid du formulaire dans les données de rapport sous-jacentes :</P>
+<P><A NAME="TMPID8461"></A><TT CLASS="literal">[LL_WEBREPORT_IF "[LL_REPTAG=DATAID PERMCHECK:DELETE /]" == "TRUE" /]</TT></P>
+<P><A NAME="TMPID8463"></A><TT CLASS="literal">&lt;<I CLASS="varname">INPUT TYPE=BUTTON NAME="del" VALUE="Delete" ONCLICK="deleteItem()"</I>></TT></P>
+<P><A NAME="TMPID8466"></A><TT CLASS="literal">[LL_WEBREPORT_ENDIF /]</TT></P>
+<P><A NAME="TMPID8468"></A>Cette opération est également possible à l'aide du code JavaScript ci-dessous ; toutefois, ce code reste visible si un utilisateur affiche la page HTML source dans son navigateur :</P>
+<P><A NAME="TMPID8469"></A><TT CLASS="literal">If ( "[LL_REPTAG=DATAID PERMCHECK:DELETE /]" == "TRUE" ) {document.write('&lt;<I CLASS="varname">INPUT TYPE=BUTTON NAME="delbutton" VALUE="Delete" ONCLICK="deleteItem();"</I>> ') ;} ;</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPERMINFO">PERMINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMINFO-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGPERMINFO"></A><B CLASS="highlight">PERMINFO:&lt;<I CLASS="varname">format</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMINFO-DESC">Description</A></P>
+<P><A NAME="TMPID8481"></A>Pour un ID de nœud valide, cette sous-balise renvoie une liste de propriétés Assoc contenant les données d'autorisation du nœud en fonction du paramètre de format fourni. Elle peut être associée en chaîne avec les sous-balises <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> et <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> pour renvoyer des informations plus spécifiques. Elle renvoie des données uniquement si l'utilisateur dispose d'<I CLASS="emphasis">autorisations de modification</I> sur le nœud, sinon elle renvoie une chaîne vide.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMINFO-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN7928"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Format</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMINFO</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une liste contenant les propriétés Assoc séparées pour le propriétaire, le groupe de propriétaires, l'accès public et les entrées Accès assigné. La première propriété Assoc contient les données d'autorisation du propriétaire. La deuxième propriété Assoc contient les données d'autorisation du groupe de propriétaires. La troisième propriété Assoc contient les données d'autorisation de l'accès public. S'il existe des entrées Accès assigné, une propriété Assoc distincte est fournie pour chaque entrée à partir de la quatrième entrée de liste.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMINFO:OWNER</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une liste contenant une propriété Assoc qui contient les données d'autorisation du propriétaire.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMINFO:OWNERGROUP</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une liste contenant une propriété Assoc qui contient les données d'autorisation du groupe de propriétaires.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMINFO:PUBLICACCESS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une liste contenant une propriété Assoc qui contient les données d'autorisation de l'accès public.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMINFO:ASSIGNEDACCESS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une liste contenant les propriétés Assoc distinctes pour chaque entrée Accès assigné.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMINFO-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID8531"></A><TT CLASS="literal">PERMINFO LIST:1 ASSOC:NAME</TT></P>
+<P><A NAME="TMPID8533"></A>Renvoie le nom du nœud Propriétaire.</P>
+<P><A NAME="TMPID8534"></A><TT CLASS="literal">PERMINFO:PUBLICACCESS LIST:1 ASSOC:PERMASSOC ASSOC:RESERVE</TT></P>
+<P><A NAME="TMPID8536"></A>Renvoie la valeur Vrai ou Faux si l'accès public comporte une autorisation <I CLASS="emphasis">Réserver</I> sur le nœud ou non.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPOCOPY">POCOPY</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOCOPY-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGPOCOPY"></A><B CLASS="highlight">POCOPY:&lt;<I CLASS="varname">param</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOCOPY-DESC">Description</A></P>
+<P><A NAME="TMPID8547"></A>Fournit l'accès aux données d'objets physiques associées à la copie principale de l'élément physique. Ces informations se trouvent généralement dans l'onglet Circulation des éléments physiques. Si le module Physical Objects n'est pas installé, cette sous-balise ne renvoie aucune valeur pour l'ensemble des options.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOCOPY-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN7986"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opérateur</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description dans l'interface Content Server</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:UNIQUEID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID unique</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:LOCATION</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Emplacement actuel</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:BORROWEDBY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID unique</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:OBTAINEDBY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Emprunté par</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:COMMENT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Commentaire</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:BORROWEDDATE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date d'emprunt</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:RETURNDATE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date de retour</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:BOXID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID de zone</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOCOPY-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID8613"></A>Voir également <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPOINFO">POINFO</A></span> pour d'autres informations sur le module Physical Objects.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPOINFO">POINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOINFO-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGPOINFO"></A><B CLASS="highlight">POINFO:&lt;<I CLASS="varname">param</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOINFO-DESC">Description</A></P>
+<P><A NAME="TMPID8624"></A>Fournit l'accès aux données d'objets physiques disponibles dans le module Physical Objects. Si le module Physical Objects n'est pas installé, cette sous-balise ne renvoie aucune valeur pour l'ensemble des options.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOINFO-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN8058"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opérateur</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description dans l'interface Content Server</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:ITEMTYPE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Type d'élément physique</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:HOMELOC</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Emplacement d'origine</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:KEYWORDS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Keywords</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:FROM</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">A partir du</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:TO</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Jusqu'au</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">INFO:LOCTYPE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Type de localisateur</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:REFRATE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Taux de réf</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:OFFSITEID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID de stockage hors site</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:FACILITY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Facility</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:AREA</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Zone</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:LOCATOR</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Localisateur</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:TXID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID de transfert</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:CLIENT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Client</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:TEMPID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID temporaire</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOINFO-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID8726"></A>Voir également <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPOCOPY">POCOPY</A></span> pour d'autres informations sur le module Physical Objects.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPREV">PREV</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPREV-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGPREV"></A><B CLASS="highlight">PREV</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPREV-DESC">Description</A></P>
+<P><A NAME="TMPID8736"></A>Renvoie la même colonne à partir de la ligne de données précédente. Si vous utilisez cette sous-balise dans la première ligne de données, une chaîne vide est renvoyée.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

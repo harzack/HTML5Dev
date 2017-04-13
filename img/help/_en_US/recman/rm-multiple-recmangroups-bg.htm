@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESRCM100500-H-UGD-EN">
+<META PiXprocLocator="recman">
+<META mancondkey="llesrt-h-ugd -- lleswbd-h-ugd -- lleswbb-h-ugd -- llesrnd-h-ugd -- lleswba-h-agd"><title>Assigning Multiple Records Management Groups</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'rm-multiple-recmangroups-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Records Management';
+          header.title2 = 'Assigning Multiple Records Management Groups';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1268"></A>You can designate more than one group with functionality at the level of Records Managers. Each group that is selected will have access to the Records Management Workspace. This functionality allows larger companies with many different divisions to have specialized Records Managers for each division. The model for this functionality is based on Content Server users and Groups.</P>
+<P>
+<DIV CLASS="INFORMALEXAMPLE">
+<P class="nr1"><A NAME="AEN1273"></A><B>Example: </B><A NAME="TMPID1271"></A>The Finance group may have a subgroup called RMFin, and this group may contain the users that have records-management duties. Similarly, the Human Resources group may have a subgroup called RMHR, which has users with records-management duties. When used in conjunction with the Mark Official end-user feature, the ability to designate multiple records-managers groups allows you to spread Records Management duties across departments and groups within your organization.</P>
+</DIV></P>
+<P><A NAME="TMPID1272"></A>The <B CLASS="GUILABEL">Records Detail</B> tab of a managed object shows what group is considered the Records Manager group for the object; however, by default, nothing is changed on the ACL list until the object is Marked Official. When an object is Marked Official, the system looks at the ACL list to determine who is listed as the Owner of the object; the system then determines the Default group of the owner. If multiple Records Manager groups are in use, the Records Manager group for the Default group of the Owner is applied to the object. That Records Manager group then has full rights to the object. If the Default group does not have a Records Manager group assigned, the default Records Manager group is added to the object with full permissions. The default Records Manager group is specified in the Records Management Administration pages.</P>
+<P class="before-ul"><A NAME="TMPID1274"></A>The following standard ACL Permissions will map to the read/write permissions:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1279"></A><A NAME="TMPID1277"></A>See – None</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1281"></A><A NAME="TMPID1279"></A>See\See Content – Read</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1283"></A><A NAME="TMPID1281"></A>Modify – Write</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1285"></A><A NAME="TMPID1283"></A>Edit – Administer</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID1284"></A>Organizations can change the default behavior of how Records Manager groups are applied to objects when they are Marked Official in the System Settings of the Records Management workspace. The following options are available:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1289"></A><A NAME="TMPID1287"></A><B CLASS="GUILABEL">Choosing Owner Department</B>, which is the default behavior. When this option is selected, the Records Manager group assigned to the Default group of the Owner of an object is applied to the object when it is Marked Official. This default functionality is described above.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1292"></A><A NAME="TMPID1290"></A><B CLASS="GUILABEL">Choosing Owner Group</B>, which uses the object’s Owner Group to determine which Records Manager group to assign to the object. If the Owner Group does not have a Records Manager group assigned, the default Records Manager group (as specified in the Records Management Administration pages), is added to the object with full permissions.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1295"></A><A NAME="TMPID1293"></A><B CLASS="GUILABEL">RM Classification</B>, which bases the Records Manager group on the object’s assigned primary RM Classification. When this option is selected, users can choose the Records Managers group when they create an RM Classification, on the Add Item page. A check box also appears on an existing RM Classification’s <B CLASS="GUILABEL">Specific</B> tab, allowing users to apply a Records Managers group to classified items that are already Marked Official. If multiple RM Classifications are enabled in the system, the check box does not appear and no changes are made to classified official items.</P></LI></UL>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="rm-multiple-recmangroups-p.htm" revision="">To Assign Multiple Records Management Groups to a Content Server Base Group</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

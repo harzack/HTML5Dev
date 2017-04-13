@@ -1,0 +1,257 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>TABS, TIMESINCE, TODATE, TOLIST, TOJSON, TRIM, TRUNC, TZOFFSET</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stseventeenth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sous-balises';
+          header.title2 = 'TABS, TIMESINCE, TODATE, TOLIST, TOJSON, TRIM, TRUNC, TZOFFSET';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID10774"></A>Cette section apporte des informations sur les sous-balises suivantes : <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTABS">TABS</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTIMESINCE">TIMESINCE</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTODATE">TODATE</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOLIST">TOLIST</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTRIM">TRIM</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTRUNC">TRUNC</A></span> et <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-TZOFFSET">TZOFFSET</A></span>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTABS">TABS</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TABS-NAME">Syntaxe</A></P>
+<P><A NAME="TABS"></A><B CLASS="highlight">TABS</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TABS-DESC">Description</A></P>
+<P><A NAME="TMPID10791"></A>Renvoie une représentation Oscript des onglets Content Server associés à un objet. Ce sont les mêmes onglets que vous voyez lorsque vous allez sur tout menu Fonctions de l'objet, puis que vous sélectionnez <B CLASS="guilabel">Propriétés</B>. Cette sous-balise attend un dataid valide dans la balise principale. Les onglets sont renvoyés dans l'ordre approprié, comme illustré dans l'interface Content Server.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="TABS-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID10797"></A>L'exemple suivant affiche la représentation Oscript des onglets Général et Spécifique d'un document. Exemple de sortie de la sous-balise TABS :</P>
+<P><A NAME="TMPID10798"></A><TT CLASS="literal"> {A&lt;<I CLASS="varname">1,?,'Name'=X,'URL'='/Livelink971/livelink.exe?func=ll&amp;objId=1389412&amp;objAction=properties&amp;nexturl=%2FLivelink971%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D1388531%26objAction%3Dbrowse%26sort%3Dname'</I>>, A&lt;<I CLASS="varname">1,?,'Name'=X,'URL'='/Livelink971/livelink.exe?func=ll&amp;objId=1389412&amp;objAction=info&amp;nexturl=%2FLivelink971%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D1388531%26objAction%3Dbrowse%26sort%3Dname'</I>>... </TT> </P>
+<P CLASS="bridgehead-subheading3"><A NAME="TABS-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID10804"></A>Voir l'aide avancée <span><A HREF="wr-requestds-info.htm">Requêtes en tant que sources de données</A></span> pour savoir comment utiliser cette sortie et les balises associées en tant que sources de données pour un autre WebReport. Voir la sous-balise <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span> pour savoir comment convertir cette fonction en une structure de données pouvant être interprétée par JavaScript au niveau du client. La structure <TT CLASS="literal">JSON</TT> peut ensuite être analysée et le format HTML approprié peut être appliqué pour afficher les onglets.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTIMESINCE">TIMESINCE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TIMESINCE-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGTIMESINCE"></A><B CLASS="highlight">TIMESINCE:&lt;<I CLASS="varname">date de réf</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TIMESINCE-DESC">Description</A></P>
+<P class="before-ul"><A NAME="TMPID10817"></A>Cette sous-balise attend une date dans la balise principale et renvoie l'écart de temps, &lt;<I CLASS="varname">date de réf</I>> moins &lt;<I CLASS="varname">date de la balise principale</I>>, dans un format facile à lire. Si aucune &lt;<I CLASS="varname">date de réf</I>> n'est spécifiée, la date actuelle est alors utilisée. Les valeurs négatives sont renvoyées si la &lt;<I CLASS="varname">date de réf</I>> se trouve devant la &lt;<I CLASS="varname">date de la balise principale</I>>. Les dates doivent être spécifiées dans l'un des formats suivants :</P><A NAME="AEN10155"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10156"></A><A NAME="TMPID10825"></A><TT CLASS="literal">'MMM DD YYYY'</TT>. Par exemple, 'Jan 12 2010'.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10159"></A><A NAME="TMPID10828"></A><TT CLASS="literal">'D/YYYY/MM/DD'</TT>. Par exemple, 'J/2009/12/16'.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10162"></A><A NAME="TMPID10831"></A><TT CLASS="literal">'DayOfWeek MMM DD HH:MM:SS YYYY'</TT>. Par exemple, 'Ven Jan 01 01:04:24 2010''.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10165"></A><A NAME="TMPID10834"></A><TT CLASS="literal">'YYYY-MM-DD HH:MM:SS'</TT>. Par exemple, '2038-01-19 03:14:07'.</P></LI></UL>
+<P><A NAME="TMPID10836"></A>La balise principale peut aussi contenir un entier représentant un intervalle de temps en secondes. Dans ce cas, le paramètre &lt;<I CLASS="varname">date de réf</I>> est ignoré et la valeur est renvoyée dans un format facile à lire </P>
+<P><A NAME="TMPID10838"></A>Un second paramètre, facultatif, indique le nombre d'unités de précision à renvoyer. Une valeur par défaut de 2 est utilisée lorsque ce paramètre facultatif est omis.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="TIMESINCE-EXAMP">Exemple</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10172"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Balise</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Sortie</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_'May 1 2010' TIMESINCE /]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">11 mois, 1 semaine</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_'May 1 2010' TIMESINCE:"May 2 2010" /]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1 jour</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_'2011-05-01 00:00:00' TIMESINCE:'2011-05-01 01:01:23':3 /]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1 heure, 1 minute, 23 secondes</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_'3661' TIMESINCE /]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1 heure, 1 minute</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_'3661' TIMESINCE:3 /]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1 heure, 1 minute, 1 seconde</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTODATE">TODATE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TODATE-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGTODATE"></A><B CLASS="highlight">TODATE:« &lt;<I CLASS="varname">liste de formats</I>> »</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TODATE-DESC">Description</A></P>
+<P><A NAME="TMPID10883"></A>Cette sous-balise convertit les informations formatées de date en chaîne au format de date Content Server. Cela signifie que la sortie peut être utilisée dans des expressions logiques comme pour comparer une date personnalisée avec un paramètre de date ou éventuellement avec la date actuelle. La sortie de <TT CLASS="literal">TODATE</TT> peut aussi être contenue dans la sous-balise <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span> pour plus de manipulation avant l'affichage.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="TODATE-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10220"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Opérateur</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%%</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Correspond à un signe de pourcentage</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%b</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Nom du mois abrégé avec trois caractères. Par exemple : « Jan » et « Fév ».</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%d</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les deux chiffres du jour du mois, de 01 à 31. Par exemple, « 05 » représente le cinquième jour du mois.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%m</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les deux chiffres du mois, de 01 à 12. Par exemple, « 05 » représente le mois de mai.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%p</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Matin ou soir (AM ou PM)</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%y</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Année à deux chiffres. Par exemple, « 93 » représente 1993 ou « 05 » représente 2005.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%B</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Le nom complet du mois, par exemple « Janvier ».</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%H</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les deux chiffres de l'heure sur 24 heures, de 00 à 23.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%I</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les deux chiffres de l'heure, de 01 à 12.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%M</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les minutes après les heures, de 00 à 59.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%S</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les secondes après les minutes, de 00 à 59.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%Y</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">L'année, incluant le siècle, par exemple 1993.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TODATE-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID10965"></A>Voici un exemple d'utilisation de <TT CLASS="literal">TODATE</TT> avec <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span> pour passer du format de date personnalisé au format de date court Content Server, comme défini dans les pages Administration Content Server :</P>
+<P><A NAME="TMPID10970"></A>Imaginez que vous commencez avec une date personnalisée stockée au format : « 2006-02-15T00:00:00 ». Utilisez <TT CLASS="literal">[LL_REPTAG=MY_DATE_COLUMN TODATE:"%Y-%m-%dT%H:%M:%S" /]</TT> pour mettre la date dans une représentation de type chaîne d'une date Content Server. A ce stade, la date est « Mer Fév 15 00:00:00 2006 », ce qui peut parfois être utile.</P>
+<P><A NAME="TMPID10975"></A>Utilisez maintenant la sous-balise <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span> <TT CLASS="literal">[LL_REPTAG=MY_DATE_COLUMN TODATE:"%Y-%m-%dT%H:%M:%S" DATE:SHORT /]</TT> pour changer la sortie afin que la date soit au même format que, par exemple, la date modifiée dans un navigateur de dossier Content Server. A ce stade, la date peut être « Février 15, 2006 », même si cela dépend de votre paramétrage système dans les pages Administration Content Server.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="TODATE-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID10983"></A>Pour le formatage de sortie, voir la sous-balise <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span>. Pour la date actuelle, voir les balises <span><A HREF="wr-tag-cdfourth.htm#WR-TAG-CDDATE">DATE</A></span> et <span><A HREF="wr-tag-cdfourth.htm#WR-TAG-CDDATETIME">DATETIME</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTOLIST">TOLIST</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOLIST-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGTOLIST"></A><B CLASS="highlight">TOLIST:&lt;<I CLASS="varname">délimiteur</I>> TOLIST:&lt;<I CLASS="varname">délimiteur</I>>:&lt;<I CLASS="varname">index</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOLIST-DESC">Description</A></P>
+<P><A NAME="TMPID10998"></A>Pour une chaîne ayant un délimiteur connu, comme une virgule, la chaîne peut être convertie en liste. Cette liste est semblable à un tableau de programmation et se trouve dans le formulaire : <TT CLASS="literal">{1,2,3}</TT> ou <TT CLASS="literal">{'one','two','three'}</TT>. Une liste dans ce format peut être utilisée par les sous-balises <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRANGE">RANGE</A></span>, toutefois, la sous-balise <TT CLASS="literal">TOLIST</TT> prend elle aussi en charge une valeur d'index facultative spécifiant l'élément à renvoyer dans la liste créée récemment.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOLIST-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID11006"></A>Si la première colonne d'une table de données renvoie la chaîne suivante :</P>
+<P><A NAME="TMPID11007"></A>'apple','orange','pear';</P>
+<P><A NAME="TMPID11008"></A>il faut utiliser la balise : <TT CLASS="literal">[LL_REPTAG_1 TOLIST:, /]</TT> pour renvoyer la liste :</P>
+<P><A NAME="TMPID11010"></A>{'apple','orange','pear'}</P>
+<P><A NAME="TMPID11011"></A>Si le paramètre d'index facultatif est lui aussi utilisé, la syntaxe :</P>
+<P><A NAME="TMPID11012"></A><TT CLASS="literal">[LL_REPTAG_1 TOLIST:,:2 /]</TT> renvoie seulement : orange</P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOLIST-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID11016"></A>Voir également <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRANGE">RANGE</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTOJSON">TOJSON</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOJSON-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGTOJSON"></A><B CLASS="highlight">TOJSON</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOJSON-DESC">Description</A></P>
+<P><A NAME="TMPID11027"></A>Pour une balise qui renvoie une structure de données de type OSCRIPT, cette balise convertit la structure en <TT CLASS="literal">JSON</TT>, JavaScript Object Notation, une structure qui peut être traitée par un interpréteur JavaScript. Cette sous-balise convertit les structures OSCRIPT comme suit :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10354"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Structure OSCRIPT</B></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Exemple OSCRIPT</B></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Structure JSON</B></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Exemple JSON</B></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">LIST</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">{'one','two'}</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tableau</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">[« un »,« deux »]</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ASSOC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">A&lt;<I CLASS="varname">1,?,'un'=1,'deux'=2</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Object</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">{« un »:1, « deux »:2}</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RECORD</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">R&lt;<I CLASS="varname">'un'=1,'deux'=2</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Object</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">{« un »:1, « deux »:2}</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RECARRAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">V{&lt;<I CLASS="varname">'fruit','couleur'&gt;&lt;'pomme','vert'&gt;&lt;'banane','jaune'</I>>}</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tableau des objets</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">[{« fruit »:« pomme », « couleur »:« vert »}, {« fruit »:« banane », « couleur »:« jaune »}]</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTRIM">TRIM</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TRIM-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGTRIM"></A><B CLASS="highlight">TRIM</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TRIM-DESC">Description</A></P>
+<P><A NAME="TMPID11091"></A>Supprime l'ensemble des espaces de début et de fin de la chaîne spécifiée. L'espace est définie de la même manière que les combinaisons d'espaces, les sauts de page, les nouvelles lignes, les retours chariot, et les onglets horizontaux ou verticaux.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTRUNC">TRUNC</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TRUNC-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGTRUNC"></A><B CLASS="highlight">TRUNC:&lt;<I CLASS="varname">largeur</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TRUNC-DESC">Description</A></P>
+<P><A NAME="TMPID11101"></A>Tronque le champ au nombre de caractères spécifié dans la largeur (en commençant par le premier caractère).</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-TZOFFSET">TZOFFSET</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TZOFFSET-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGTZOFFSET"></A><B CLASS="highlight">TZOFFSET</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TZOFFSET-DESC">Description</A></P>
+<P><A NAME="TMPID11110"></A>Applique un décalage horaire aux dates. Les balises de date comme <TT CLASS="literal">[LL_REPTAG_DATETIME /]</TT> et les colonnes de date <TT CLASS="literal">[LL_REPTAG=CREATEDATE /]</TT> renvoient le temps au serveur. La sous-balise <TT CLASS="literal">TZOFFSET</TT> peut être utilisée pour appliquer le décalage horaire approprié afin que l'utilisateur spécifique puisse afficher la sortie.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

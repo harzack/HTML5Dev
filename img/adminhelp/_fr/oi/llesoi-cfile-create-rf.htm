@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle des balises createby / createdby</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-create-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Descriptions et syntaxe des balises Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle des balises createby / createdby';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CREATETAG01">Description</A></P>
+<P class="nr1"><A NAME="TMPID3634"></A>Utilisez les balises <TT CLASS="literal">createby</TT> et <TT CLASS="literal">createdby</TT> pour spécifier un créateur différent pour l'objet.  </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CREATETAG02">Syntaxe</A></P><A NAME="AEN3480"></A>
+<PRE 
+CLASS="screen"
+>&lt;createby&gt;Admin&lt;/createby&gt;</PRE
+><A NAME="AEN3481"></A>
+<PRE 
+CLASS="screen"
+>&lt;createdby&gt;Admin&lt;/createdby&gt;</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CREATETAG03">Utilisation</A></P>
+<A NAME="AEN3483"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3484"></A><A NAME="TMPID3648"></A>La balise <TT CLASS="literal">createby</TT> ou <TT CLASS="literal">createdby</TT> n'est pas obligatoire.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3488"></A><A NAME="TMPID3652"></A>La balise <TT CLASS="literal">createby</TT> ou <TT CLASS="literal">createdby</TT> est facultative dans les cas suivants :</P><A NAME="AEN3492"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3493"></A><A NAME="TMPID3657"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3498"></A><A NAME="TMPID3662"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3503"></A><A NAME="TMPID3667"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="addversion"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3508"></A><A NAME="TMPID3672"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="sync"&gt;</TT></P></LI></UL></LI></OL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CREATETAG04">Notes</A></P>
+<A NAME="AEN3514"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3515"></A><A NAME="TMPID3680"></A>Pour modifier l'identité du créateur d'un objet, spécifiez le nom d'utilisateur de la personne qui va devenir le nouveau créateur. Le nom d'utilisateur est sensible à la casse.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3517"></A><A NAME="TMPID3682"></A>Pour des questions de compatibilité descendante, deux variantes peuvent être utilisées dans la syntaxe : <TT CLASS="literal">createby</TT> et <TT CLASS="literal">createdby</TT>, qui sont interchangeables.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3521"></A><A NAME="TMPID3686"></A>Pour les objets de type document, il y a deux champs « created by », un pour l'objet et un pour chaque version.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3524"></A><A NAME="TMPID3689"></A>Si cette balise est spécifiée lors d'une opération <TT CLASS="literal">action="create"</TT>, le créateur sera modifié au niveau de l'objet <I CLASS="emphasis">et</I> de la version.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3528"></A><A NAME="TMPID3693"></A>Lors de la mise à jour d'un document avec la balise <TT CLASS="literal">&lt;file&gt;</TT> présente, ou lors de l'ajout d'une nouvelle version, le créateur s'appliquera à la nouvelle version. Lors de la mise à jour d'un document avec la balise <TT CLASS="literal">&lt;file&gt;</TT> absente, le créateur s'appliquera au document.</P></LI></OL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CREATETAG05">Exemple</A></P><A NAME="AEN3533"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;My Guidelines&lt;/title&gt;
+    &lt;file&gt;c:\temp\guidelines.doc&lt;\file&gt;
+    &lt;createdby&gt;Admin&lt;/createdby&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

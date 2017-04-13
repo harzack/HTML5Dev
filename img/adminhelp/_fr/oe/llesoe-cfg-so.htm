@@ -1,0 +1,133 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOE100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="objectexporter">
+<title>Configuration de l'exportateur d'objet</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webnotify/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoe-cfg-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Object Exporter: <NOBR>OpenText Content Server Aide en ligne administrateur</NOBR>';
+          header.title2 = 'Configuration de l\'exportateur d\'objet';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID50"></A>OpenText Object Exporter permet d'exporter des objets depuis Content Server vers le système de fichiers. Il est possible de configurer le fichier de contrôle qui gère le processus d'exportation. Le fichier de contrôle permet de spécifier l'emplacement où se trouvent les objets à exporter dans Content Server ainsi que l'endroit du système de fichiers vers lequel seront exportés les objets. Les types d'objet Content Server suivants peuvent être exportés :   </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN61"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type d'objet</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Syntaxe de l'exportateur d'objet</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Raccourci</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">alias</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Document composite</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">compounddoc</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Vue personnalisée</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">customview</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Discussion</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">discussion</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Document</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">document</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Dossier</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">folder</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Projet</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">project</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Réponse</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">reply</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Sujet</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">topic</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">URL</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">url</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOE-CFG-BG">Utilisation de la configuration de l'exportateur d'objet</A></P>
+<P class="before-ul"><A NAME="TMPID102"></A>La page <B CLASS="guilabel">Configurer l'exportateur d'objet</B> permet de définir comment Object Exporter traite une exportation. Vous devez spécifier les chemins complets vers les répertoires de travail, des journaux et de destination sur la page <B CLASS="guilabel">Configurer Object Exporter</B>. Vous devez d'abord créer ces trois répertoires et vous assurer qu'ils soient visibles pour Content Server :     </P><A NAME="AEN124"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN125"></A><A NAME="TMPID127"></A>Le répertoire de travail est l'emplacement où le ou les fichiers de sortie sont créés et enregistrés temporairement avant d'être déplacés une fois le processus terminé. Voici un exemple de répertoire de fichier de travail valide :  <TT CLASS="filename">C:\OPENTEXT\object_exporter\working</TT>, où <TT CLASS="filename">C:\OPENTEXT</TT> est la valeur par défaut pour Content Server.  </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN132"></A><A NAME="TMPID134"></A>Le répertoire des journaux est l'emplacement où Object Exporter copiera les fichiers journaux. Pour afficher et supprimer des fichiers journaux de la page Object Exporter <B CLASS="guilabel">Afficher les fichiers journaux d'exportation</B>, le répertoire des fichiers journaux doit se trouver dans <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\object_exporter</TT>. Voici un exemple de répertoire de fichier journal valide :  <TT CLASS="filename">C:\OPENTEXT\object_exporter\log</TT>, où <TT CLASS="filename">C:\OPENTEXT</TT> est la valeur par défaut pour Content Server.  </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN145"></A><A NAME="TMPID147"></A>Le répertoire de destination est l'emplacement vers lequel Object Exporter déplacera le ou les fichiers de sortie une fois le processus terminé. Le ou les fichiers de sortie d'une exportation <I CLASS="emphasis">réussie</I> sont en réalité des fichiers de contrôle correspondant à cette exportation réussie. À l'aide de OpenText Object Importer, vous pouvez utiliser ce ou ces fichiers pour importer tous les objets que vous avez récemment exportés, puisque toutes les autorisations, titres, attributs et autres métadonnées de l'objet sont détaillés dans ces fichiers de contrôle de l'importation. Voici un exemple de répertoire de destination valide :  <TT CLASS="filename">C:\OPENTEXT\object_exporter\destination</TT>, où <TT CLASS="filename">C:\OPENTEXT</TT> est la valeur par défaut pour Content Server.  </P></LI></UL>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID158"></A><B CLASS="important">Important : </B><BR>Les répertoires de travail, des journaux et de destination doivent être créés et visibles pour Content Server. Vous devez les spécifier sur la page <B CLASS="guilabel">Configurer Object Exporter</B> pour que les exportations puissent avoir lieu.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID162"></A>En plus de la création des répertoires spécifiques à Object Exporter détaillée plus haut, vous devez également :</P><A NAME="AEN163"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN164"></A><A NAME="TMPID166"></A>Vous assurer que l'adresse e-mail de l'utilisateur Admin est définie dans la page du compte de l'utilisateur Admin. Vous accédez à cette page en sélectionnant <B CLASS="guilabel">Utilisateurs et groupes</B> dans le menu <B CLASS="guilabel">Entreprise</B>. Recherchez l'utilisateur Admin sur la page <B CLASS="guilabel">Utilisateurs et groupes</B>, puis cliquez sur <B CLASS="guilabel">Modifier</B> en regard du nom de l'utilisateur Admin. Entrez l'adresse e-mail de l'utilisateur Admin.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN170"></A><A NAME="TMPID172"></A>Complétez la page <B CLASS="guilabel">Notifications</B>. Il n'est pas nécessaire que la page <B CLASS="guilabel">Notifications</B> soit activée. Pour plus d'informations sur la page <B CLASS="guilabel">Notifications</B>, reportez-vous à la rubrique <I CLASS="emphasis">Configuration des notifications, des rapports, des événements et des paramètres</I> dans <span><XPROC NAME="ExtXrefStart" HREF="lleswbn-h-agd.wbn-config-report-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webnotify/wbn-config-report-bg.htm">Suppression des événements en suspens</A><XPROC NAME="ExtXrefEnd" HREF="lleswbn-h-agd.wbn-config-report-bg" FMT=""></span>. </P></LI></UL>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID179"></A><B CLASS="important">Important : </B><BR>Lorsque l'adresse e-mail de l'utilisateur Admin n'est pas définie ou lorsque la page <B CLASS="guilabel">Notifications</B> n'est pas complétée, les exportations n'ont pas lieu.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID181"></A>Sur la page <B CLASS="guilabel">Configurer Object Exporter</B>, vous devez déterminer la configuration du champ <B CLASS="guilabel">Objets par lot</B>. Le champ <B CLASS="guilabel">Objets par lot</B> vous permet de stipuler que les objets exportés doivent être divisés en plusieurs fichiers de sortie, pour éviter d'avoir un seul fichier de très grande taille. Ces fichiers de sortie sont ceux qui sont copiés dans le répertoire <B CLASS="guilabel">Destination</B> que vous avez créé plus haut. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOE-MANEXPORT-BG">Utilisation de l'exportation manuelle d'objet Object Exporter</A></P>
+<P><A NAME="TMPID190"></A>Les exportations d'objets sont lancées à partir de la page <B CLASS="guilabel">Exportation manuelle d'objet</B> à l'aide du bouton <B CLASS="guilabel">Démarrer l'exportation</B>. À partir de cette page, vous choisissez le fichier de contrôle de l'exportation que Object Exporter exécutera pour exporter vos données depuis Content Server vers votre système. Sur cette page, vous devez également indiquer le nom du fichier journal sur lequel Object Exporter enregistrera toutes les informations de l'exportation.   </P>
+<DIV title="Exemple de fichier de contrôle de l'exportation qui exclut les documents et dossiers de l'exportation :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF0"></A><B><IMG title="Exemple de fichier de contrôle de l'exportation qui exclut les documents et dossiers de l'exportation :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 1-1 : Exemple de fichier de contrôle de l'exportation qui exclut les documents et dossiers de l'exportation :</B></P><A NAME="AEN199"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;export&gt;
+  &lt;node&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;docstorage&gt;c:\docs&lt;/docstorage&gt;
+    &lt;exclude&gt;
+      &lt;object&gt;document&lt;/object&gt;
+      &lt;object&gt;folder&lt;/object&gt;
+    &lt;/exclude&gt;
+  &lt;/node&gt;
+&lt;/export&gt;</PRE
+><IMG title="Exemple de fichier de contrôle de l'exportation qui exclut les documents et dossiers de l'exportation :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOE-VIEWLOGS-BG">Utilisation des fichiers journaux Object Exporter</A></P>
+<P><A NAME="TMPID206"></A>Pour afficher et supprimer des fichiers journaux des pages d'administration Content Server, le répertoire de fichiers journaux doit se trouver dans : <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\object_exporter</TT>.   </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="llesoe-cfg-p.htm" revision="">Configurer l'exportateur d'objet</A></p></li>
+<li><p><A  HREF="llesoe-manexport-p.htm" revision="">Exporter un objet</A></p></li>
+<li><p><A  HREF="llesoe-viewlogs-p.htm" revision="">Afficher ou supprimer des fichiers journaux exportateur d'objet</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

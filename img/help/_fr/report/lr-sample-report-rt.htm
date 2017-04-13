@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<title>Exemple de rapport LiveReport</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/root/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-sample-report-rt.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation des rapports LiveReport';
+          header.title2 = 'Exemple de rapport LiveReport';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID576"></A>En prenant l'exemple du rapport LiveReport <I CLASS="emphasis">Eléments réservés par [Utilisateur]</I>, cette page décrit les champs propres au rapport LiveReport qui s'affichent lors de l'ajout ou de la modification d'un rapport LiveReport. Lors de l'ajout d'un rapport, des paramètres d'éléments généraux supplémentaires s'affichent. Pour en savoir plus, voir <span><XPROC NAME="ExtXrefStart" HREF="llesrt-h-ugd.ll-gen-items-bg" FMT="" NO1ST><A  HREF="../../../help/_fr/root/ll-gen-items-bg.htm">Utilisation des éléments généraux</A><XPROC NAME="ExtXrefEnd" HREF="llesrt-h-ugd.ll-gen-items-bg" FMT=""></span>.  </P>
+<P><A NAME="TMPID582"></A>Pour afficher la page contenant les champs mentionnés ci-dessous, dans la barre de menu générale, sélectionnez <B CLASS="guilabel">Rapports</B> dans le menu <B CLASS="guilabel">Personnel</B>. Sur la page <B CLASS="guilabel">Mes rapports</B>, sélectionnez l'onglet <B CLASS="guilabel">Rapports LiveReport</B>. Faites défiler la page jusqu'au rapport LiveReport <B CLASS="guilabel">Eléments réservés par [Utilisateur]</B>. Dans le menu Fonctions d'<B CLASS="guilabel">Eléments réservés par [Utilisateur]</B>, sélectionnez <B CLASS="guilabel">Modifier</B>. </P>
+<A NAME="AEN593"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN594"></A><A NAME="TMPID592"></A>Zone de texte <B CLASS="guilabel">Titre</B>, qui contient le titre du rapport LiveReport sélectionné. Dans cet exemple, le titre est : « Eléments réservés par [Utilisateur] ».</P>
+<P><A NAME="TMPID595"></A>Ce titre s'affiche sur la page des résultats du rapport LiveReport. La valeur entre crochets, <TT CLASS="literal">[Utilisateur]</TT>, est remplacée par le nom de l'utilisateur qui ouvre le document.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN600"></A><A NAME="TMPID598"></A>Champ numérique <B CLASS="guilabel">Limite d'enregistrement</B>, qui requiert un nombre entier positif. Ce champ contient la valeur par défaut <TT CLASS="literal"> 100</TT>.</P>
+<P><A NAME="TMPID601"></A>Ce chiffre représente le nombre maximum de résultats que le rapport LiveReport renvoie. Content Server n'a donc pas besoin de rechercher plus d'informations que nécessaire. Si la limite spécifiée est atteinte lors de l'ouverture d'un rapport LiveReport, un commentaire s'affiche sur la page de résultats.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN606"></A><A NAME="TMPID604"></A>Case à cocher <B CLASS="guilabel">Afficher les invites</B>.</P>
+<P><A NAME="TMPID606"></A>Si vous sélectionnez cette case à cocher, les utilisateurs doivent fournir des paramètres lorsque ce rapport LiveReport est utilisé en tant que sous-rapport. Cette case à cocher n'est <I CLASS="emphasis"> pas</I> sélectionnée par défaut, ce qui entraîne la transmission automatique de certaines valeurs de rapport aux sous-rapports.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN611"></A><A NAME="TMPID609"></A>Zone <B CLASS="guilabel">Entrées</B> contenant plusieurs lignes, chacune comprenant une liste <B CLASS="guilabel">Type</B> et une zone de texte <B CLASS="guilabel">Invite</B>.</P>
+<P><A NAME="TMPID613"></A>La liste <B CLASS="guilabel">Type</B> contient plusieurs types d'entrées. Pour plus d'informations sur les types d'entrées, voir <span><A HREF="param-liverep.htm#INPUT">Exigences relatives aux types d'entrées</A></span>. Si le type « Utilisateur » est sélectionné dans la liste <B CLASS="guilabel"> Type</B>, « Nom de l'utilisateur : » apparaît lorsque l'utilisateur ouvre un rapport. Le type d'entrée « Utilisateur » permet à l'utilisateur qui ouvre le rapport de rechercher le nom de l'utilisateur pour lequel il a besoin des informations.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN623"></A><A NAME="TMPID621"></A>Zone de texte <B CLASS="guilabel">SQL</B>.</P>
+<P><A NAME="TMPID623"></A>Cette zone de texte contient l'instruction SQL qui définit les paramètres et les valeurs d'entrée à partir du rapport. Un rapport LiveReport ne peut pas être exécuté sans instruction SQL valide. Dans cet exemple, l'instruction SQL requiert qu'un rapport LiveReport renvoie des informations pour les éléments réservés par un utilisateur particulier.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN627"></A><A NAME="TMPID625"></A>Case à cocher <B CLASS="guilabel">Autoriser les modifications de la base de données</B>.</P>
+<P><A NAME="TMPID627"></A>Par défaut, cette case à cocher n'est pas sélectionnée, ce qui empêche l'instruction SQL de modifier la base de données.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF6"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID629"></A><B CLASS="note">Note : </B><BR>La case à cocher <B CLASS="guilabel">Autoriser les modifications de la base de données</B> n'apparaît pas si votre administrateur a activé la sécurité des rapports LiveReport.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN634"></A><A NAME="TMPID632"></A>Listes <B CLASS="guilabel">Paramètre %&lt;<I CLASS="varname">n°</I>></B>.</P>
+<P><A NAME="TMPID635"></A>Les paramètres que vous choisissez dans ces listes doivent être définis dans l'instruction SQL. Dans cet exemple, la liste <B CLASS="guilabel">Paramètre %1</B> sélectionnée par défaut est <B CLASS="guilabel">Entrée utilisateur 1</B>. Cela signifie que la valeur affichée dans le rapport LiveReport est déterminée à son ouverture, en fonction de l'entrée utilisateur. La liste <B CLASS="guilabel">Paramètre %2</B> sélectionnée par défaut est <B CLASS="guilabel">Filtrer les autorisations</B>. Cela signifie que le rapport LiveReport renvoie uniquement les résultats des éléments que l'utilisateur est autorisé à <I CLASS="emphasis">voir</I>. La liste <B CLASS="guilabel">Paramètre %3</B> sélectionnée par défaut est <B CLASS="guilabel">Champs du rapport</B>. Ce type de paramètre est requis par le format du rapport LiveReport, sauf si votre instruction SQL contient une clause <TT CLASS="literal">SELECT * FROM DTree</TT>. Pour plus d'informations sur les paramètres, voir <span><A HREF="param-liverep.htm">Types de paramètres et d'entrées</A></span> et <span><A HREF="lr-report-format-rt.htm#LIVEREPORT">Rapports LiveReport et rapports LiveReport automatiques</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN649"></A><A NAME="TMPID647"></A>Liste <B CLASS="guilabel">Format du rapport</B> et bouton <B CLASS="guilabel">Configurer</B>.</P>
+<P><A NAME="TMPID650"></A>Dans cet exemple, les résultats de l'instruction SQL s'affichent dans le format du rapport « LiveReport », à savoir une liste. Il est judicieux de commencer par sélectionner le format de rapport LiveReport automatique, afin de pouvoir vérifier les résultats dans une liste avant de modifier votre instruction SQL pour obtenir un format graphique plus spécifique.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN655"></A><A NAME="TMPID653"></A>Zone de texte <B CLASS="guilabel">Sélectionner le sous-rapport</B> et bouton <B CLASS="guilabel">Parcourir Content Server...</B>.</P>
+<P><A NAME="TMPID657"></A>Le bouton <B CLASS="guilabel">Parcourir Content Server...</B> vous permet de sélectionner un sous-rapport à associer au rapport LiveReport. Dans cet exemple, aucun sous-rapport n'est associé au rapport LiveReport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN663"></A><A NAME="TMPID661"></A>Zones de texte <B CLASS="guilabel">Paramètre du sous-rapport &lt;<I CLASS="varname">n°</I>></B>.</P>
+<P><A NAME="TMPID664"></A>Si, dans la zone de texte <B CLASS="guilabel">Sélectionner le sous-rapport</B>, vous avez associé un sous-rapport à ce rapport LiveReport, vous devez saisir le nom d'un paramètre à transmettre au sous-rapport dans ces champs. Ces paramètres de sous-rapport doivent correspondre aux paramètres d'entrée du sous-rapport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN669"></A><A NAME="TMPID667"></A>Zone <B CLASS="guilabel">Afficher les colonnes</B> contenant plusieurs lignes, chacune comprenant une zone de texte <B CLASS="guilabel">Champ</B> et une zone de texte <B CLASS="guilabel">Titre de la colonne</B>.</P>
+<P><A NAME="TMPID671"></A>Ainsi, Content Server, lorsqu'il affiche les résultats du rapport LiveReport, affiche la valeur saisie dans la zone de texte <B CLASS="guilabel">Titre de la colonne</B> comme titre de la colonne identifiée dans la zone de texte <B CLASS="guilabel">Champ</B>, au lieu d'utiliser la terminologie de la table de base de données.</P></LI></OL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

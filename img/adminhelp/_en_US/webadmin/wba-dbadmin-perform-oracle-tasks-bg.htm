@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Performing Oracle Maintenance Tasks</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-dbadmin-perform-oracle-tasks-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Maintaining an Existing Database';
+          header.title2 = 'Performing Oracle Maintenance Tasks';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID14454"></A>You use the <B CLASS="guilabel">Oracle Server Maintenance</B> page to perform the following tasks:</P><A NAME="AEN13380"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13381"></A><A NAME="TMPID14458"></A>Create a New Tablespace</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13383"></A><A NAME="TMPID14460"></A>Create an Oracle User Account</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13385"></A><A NAME="TMPID14462"></A>Extend a Tablespace</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13387"></A><A NAME="TMPID14464"></A>Delete an Oracle User Account and/or its Tables</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID14465"></A>You use the <B CLASS="guilabel">Oracle Server Maintenance</B> page under the following two circumstances:</P><A NAME="AEN13391"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13392"></A><A NAME="TMPID14469"></A>When you are administering an existing Content Server database. In this case you access the <B CLASS="guilabel">Oracle Server Maintenance</B> page by clicking the <B CLASS="guilabel">Oracle Server Maintenance Tasks</B> link on the <B CLASS="guilabel">Maintain Current Database</B> page.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13398"></A><A NAME="TMPID14475"></A>When you are creating a new Content Server database to connect to a new or existing Content Server installation. In this case, you access the <B CLASS="guilabel">Oracle Server Maintenance</B> page by clicking the <B CLASS="guilabel">Oracle Server Maintenance</B> link on the <B CLASS="guilabel">Create Content Server Tables</B> page.</P></LI></UL>
+<P><A NAME="TMPID14482"></A>Under either of the preceding circumstances, you click the <B CLASS="guilabel">Return to previous page</B> link on the <B CLASS="guilabel">Oracle Server Maintenance</B> page to return to the page (<B CLASS="guilabel">Maintain Current Database</B> or <B CLASS="guilabel">Create Content Server Tables</B>) from which you accessed the Oracle Server Maintenance page. </P>
+<P class="before-ul"><A NAME="TMPID14488"></A>If you access the <B CLASS="guilabel">Oracle Server Maintenance</B> page as part of the process of creating a new Content Server database, perform the following two tasks in the order shown before clicking the <B CLASS="guilabel">Return to previous page</B> link:</P><A NAME="AEN13416"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13417"></A><A NAME="TMPID14494"></A><span><A href="../webadmin/wba-dbadmin-perform-oracle-tasks-bg.htm#WBA-DBADMIN-CRTTBLESP">Creating a New Tablespace</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13420"></A><A NAME="TMPID14497"></A><span><A href="../webadmin/wba-dbadmin-perform-oracle-tasks-bg.htm#WBA-DBADMIN-CRTORUS">Creating a New Oracle User</A></span>. </P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-DBADMIN-CRTTBLESP">Creating a New Tablespace</A></P>
+<P><A NAME="TMPID14501"></A>Content Server uses an Oracle <I CLASS="emphasis">tablespace</I> to contain the tables of the Content Server database. Since a tablespace can contain tables owned by multiple Oracle users, it is not necessary to create a new tablespace if one with sufficient available space already exists. </P>
+<P><A NAME="TMPID14505"></A>Since a tablespace is created as part of the Content Server database creation procedure, it is normally not necessary to create one apart from that procedure. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-DBADMIN-CRTORUS">Creating a New Oracle User</A></P>
+<P><A NAME="TMPID14509"></A>All of the tables in a tablespace are owned by Oracle users. A particular Oracle user owns the tables of the Content Server database. Content Server uses this Oracle user name and the corresponding password to connect to the Content Server database, which the Oracle Server manages. </P>
+<P><A NAME="TMPID14513"></A>An Oracle user is created as part of the Content Server database creation procedure, so it is normally not necessary to create a user apart from that procedure. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-DBADMIN-EXTTBLSP">Extending a Tablespace</A></P>
+<P><A NAME="TMPID14517"></A>A tablespace consists of one or more datafiles. As the amount of data in your Content Server database grows, these datafiles may become full. You can increase the size of a tablespace by adding a new datafile to it. </P>
+<P><A NAME="TMPID14519"></A>Some versions of Oracle Server can be configured to extend tablespaces automatically when they run low on free space. For more information, consult the documentation that accompanied your Oracle Server software. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-DBADMIN-DELORUS">Deleting an Oracle User and/or the Tables It Owns</A></P>
+<P><A NAME="TMPID14522"></A>If a Content Server database becomes corrupt, the only way to recover it may be to delete its tables (and perhaps even the database user) and then restore the database from backup. </P>
+<P><A NAME="TMPID14524"></A>If you delete the tables only, tables created for custom categories are not removed. Therefore, you may want to delete both the user and its tables, which will remove the custom tables. </P>
+<P class="before-ul"><A NAME="TMPID14525"></A>The <B CLASS="guilabel">Oracle Server Administrator</B> Log-in page appears under the following two circumstances:</P><A NAME="AEN13447"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13448"></A><A NAME="TMPID14529"></A>You are creating a new Content Server database. The page appears after you click the <B CLASS="guilabel">Continue</B> button on the <B CLASS="guilabel">Select RDBMS Type</B> page.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13453"></A><A NAME="TMPID14534"></A>You clicked the <B CLASS="guilabel">Oracle Server Maintenance Task</B> link on the <B CLASS="guilabel">Maintain Current Database</B> page. </P></LI></UL>
+<P><A NAME="TMPID14537"></A>The purpose of this page is to prompt you to specify the user name and password of an RDBMS account that has administrator privileges. </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-dbadmin-create-tblspc-oracle-p.htm" revision="">To Create a New Tablespace</A></p></li>
+<li><p><A  href="../webadmin/wba-dbadmin-create-oracle-acct-p.htm" revision="">To Create an Oracle User</A></p></li>
+<li><p><A  href="../webadmin/wba-dbadmin-extend-oracle-acct-p.htm" revision="">To Extend an Oracle Tablespace</A></p></li>
+<li><p><A  href="../webadmin/wba-dbadmin-delete-oracle-users-tables-p.htm" revision="">To Delete Oracle Users and Tables</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

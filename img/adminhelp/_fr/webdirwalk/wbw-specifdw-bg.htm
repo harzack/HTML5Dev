@@ -1,0 +1,143 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Configuration d'un processus Directory Walker</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbw-specifdw-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des processus de flux de données';
+          header.title2 = 'Configuration d\'un processus Directory Walker';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4791"></A>Les processus Directory Walker permettent d'extraire des données d'un ensemble de fichiers stocké sur votre système de fichiers et de les écrire dans un flux de données où elles sont indexées.</P>
+<P><A NAME="TMPID4792"></A>Après avoir créé un processus Directory Walker, vous pouvez modifier les paramètres de navigation et les répertoires parcourus par le processus Directory Walker. Si vous modifiez ces informations, vous devez relancer le processus Directory Walker afin qu'il parcoure une nouvelle fois votre système de fichiers avec les nouvelles informations. La relance du processus Directory Walker permet de mettre à jour l'index en ajoutant de nouveaux fichiers, en mettant à jour les fichiers existants et en enlevant les fichiers supprimés.</P>
+<P><A NAME="TMPID4793"></A>Pour parcourir à nouveau les répertoires spécifiés sans modifier les paramètres du processus Directory Walker, cliquez sur l'icône <B CLASS="guilabel">Fonctions</B> du gestionnaire de flux de données correspondant, puis sélectionnez <B CLASS="guilabel">Reprendre</B>. Vous pouvez également parcourir à nouveau les répertoires en cliquant sur l'icône <B CLASS="guilabel">Fonctions</B> du processus Directory Walker, puis en sélectionnant <B CLASS="guilabel">Démarrer</B>.</P>
+<P><A NAME="TMPID4798"></A>Le tableau suivant décrit les éléments de l'onglet <B CLASS="guilabel">Infos spécifiques</B> de la page Propriétés du processus Directory Walker.</P>
+<P><A NAME="TMPID4800"></A>Onglet Infos spécifiques de la page Propriétés du processus Directory Walker</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4170"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Elément</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Etat</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie si le processus Directory Walker est exécuté ou non. Vous ne pouvez pas modifier ce champ.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Serveur d'administration</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie le raccourci du serveur d'administration sur lequel réside l'hôte qui exécute le processus Directory Walker. En modifiant cette valeur, vous devrez probablement exécuter aussi une des opérations suivantes :<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4818"></A>Modifier le chemin du répertoire d'écriture.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4820"></A>déplacer le répertoire d'écriture. Si vous le déplacez, vous devez aussi modifier le répertoire de lecture du processus Conversion de documents du flux de données.</P></TD></TR></TABLE>Ne modifiez pas le raccourci du serveur d'administration destiné au processus Directory Walker sauf en cas de nécessité (par exemple, si l'hôte du serveur d'administration n'est plus disponible).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Activer la gestion du système</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Détermine si Content Server contrôle ce processus pour détecter le retour de messages d'erreur. S'il retourne un message d'erreur, Content Server l'enregistre dans la base de données. La gestion du système est activée par défaut. Pour plus d'informations sur la configuration de Content Server en vue de l'envoi d'e-mails d'alerte lorsqu'un processus de flux de données rencontre des erreurs, reportez-vous à la rubrique <span><A href="../websovmgmt/sov-cnfsoaed-p.htm">Pour activer la recherche d'erreurs et l'envoi d'e-mails</A></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Modèle de commande</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie le modèle utilisé pour générer la ligne de commande du processus Directory Walker. Ne modifiez pas cette valeur, sauf si le service d'assistance clientèle d'OpenText vous le demande.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Ligne de commande</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie la ligne de commande utilisée par Content Server pour exécuter le processus Directory Walker. Vous ne pouvez pas modifier la valeur de ce champ.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Répertoire de démarrage</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie le répertoire dans lequel le processus Directory Walker est exécuté. Le processus Directory Walker doit toujours être exécuté dans le répertoire <TT CLASS="literal"> Content Server_accueil</TT>/config. Ne modifiez pas cette valeur, sauf si le service d'assistance clientèle d'OpenText vous le demande.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">IPools</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Vous permet d'accéder aux informations sur le répertoire d'écriture du processus Directory Walker. Le répertoire d'écriture est le répertoire dans lequel le processus Directory Walker enregistre les données. Ne modifiez pas le répertoire d'écriture sauf si vous avez déplacé l'IPool ou si le service d'assistance clientèle d'OpenText vous le demande.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Fichier journal</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie le chemin d'accès absolu au fichier journal dans lequel Content Server enregistre les activités du processus Directory Walker. Si le champ est vide, la fonction de journalisation est désactivée.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Niveau de consignation</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie le niveau de consignation (<B CLASS="guilabel">Valeur par défaut</B>, <B CLASS="guilabel">Détaillé</B> ou <B CLASS="guilabel">Déboguer</B>) appliqué si le journal est activé.<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4858"></A><B CLASS="guilabel">Par défaut</B> pour enregistrer uniquement les erreurs dans le journal. Il s'agit du niveau de consignation minimum.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4861"></A><B CLASS="guilabel">Détaillé</B> pour enregistrer le statut des messages acheminés à travers les processus et les IPools du flux de données dans le journal. Les erreurs sont également enregistrées.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4864"></A><B CLASS="guilabel">Déboguer</B> pour enregistrer des informations détaillées au sujet du statut du flux de données et des erreurs dans le journal. Compte tenu de l'importante quantité de données générées, OpenText recommande de choisir ce niveau uniquement si vous devez déboguer des problèmes graves sur le flux de données.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Emplacement de la base de données Historique des fichiers parcourus</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie le chemin d'accès aux fichiers de la base de données Historique des fichiers parcourus qui enregistrent des informations au sujet des répertoires que doit parcourir le processus Directory Walker. Lorsqu'un processus Directory Walker parcourt une nouvelle fois un ensemble de répertoires, il compare les fichiers de la base de données Historique des fichiers parcourus aux fichiers stockés dans le répertoire pour identifier les nouveaux fichiers, ainsi que les fichiers mis à jour ou supprimés. Le processus Directory Walker extrait des informations relatives aux fichiers ajoutés, remplacés ou supprimés dans le flux de données. Il n'extrait pas une nouvelle fois la totalité du jeu de fichiers. Ainsi, la mise à jour de l'index s'en trouve plus efficace.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Groupes de répertoires</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie les groupes de répertoires parcourus par le processus Directory Walker. Chaque groupe de répertoires contient le nom des répertoires parcourus par le processus Directory Walker. Il définit aussi les types de fichiers que le processus Directory Walker doit inclure et/ou exclure en parcourant les répertoires, les sous-répertoires à parcourir, ainsi que les intervalles de dates et de tailles des fichiers correspondant aux critères. Vous pouvez ajouter, modifier ou supprimer des groupes de répertoires après avoir créé un processus Directory Walker.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Options de démarrage</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Détermine les options de lancement du processus Directory Walker. En démarrant, le processus parcourt les répertoires spécifiés pour ajouter des données et les mettre à jour en fonction du contenu actuel des répertoires. <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4878"></A><B CLASS="guilabel">Manuel</B>, option par défaut permettant de lancer manuellement le processus Directory Walker à chaque fois que vous souhaitez parcourir à nouveau les répertoires spécifiés.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4881"></A><B CLASS="guilabel">Programmé</B> pour programmer le jour et l'heure d'exécution du processus Directory Walker. Si les répertoires parcourus par le processus changent fréquemment, vous pouvez programmer le jour et l'heure auxquels le processus devra parcourir régulièrement les répertoires.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4884"></A><B CLASS="guilabel">Continuel</B> pour exécuter le processus Directory Walker en continu.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Options d'arrêt</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Détermine les options d'arrêt du processus Directory Walker. Trois options d'arrêt sont disponibles :<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4891"></A><B CLASS="guilabel">Terminer</B> arrête le processus immédiatement—sans lui laisser le choix.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4894"></A><B CLASS="guilabel">Port de message d’arrêt</B> pour obliger le serveur d'administration par défaut à envoyer un message d'arrêt au port sur lequel le processus Directory Walker s'exécute. Ce message d'arrêt indique au processus Directory Walker de s'achever normalement. La valeur que vous spécifiez dans ce champ est ajoutée à la ligne de commande lorsque vous mettez à jour les paramètres de l'onglet <B CLASS="guilabel">Infos spécifiques</B> de la page Propriétés du processus Directory Walker. Il s'agit de l'option d'arrêt par défaut du processus Directory Walker.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4898"></A><B CLASS="guilabel">Exécutable d'arrêt</B> pour spécifier un fichier exécutable demandant au processus de s'arrêter</P></TD></TR></TABLE>Le champ <B CLASS="guilabel">Valeur maximale du code de sortie correcte</B> définit le numéro de code d'erreur le plus élevé pour lequel le serveur d'administration relancera automatiquement le processus Directory Walker en présence d'une erreur. OpenText vous recommande de définir la <B CLASS="guilabel">Valeur maximale du code de sortie correcte</B> pour un processus Directory Walker sur 99. Ne modifiez pas la <B CLASS="guilabel">Valeur maximale du code de sortie correcte</B>, sauf si le service d'assistance clientèle d'OpenText vous le demande.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Démarrer/Arrêter</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Cet élément vous permet de gérer des flux de données, selon son état courant. Si le processus est en cours d'exécution ou programmé pour être exécuté, le bouton <B CLASS="guilabel">Arrêter</B> s'affiche. Si le processus est arrêté, le bouton <B CLASS="guilabel">Démarrer</B> s'affiche.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Resynchroniser</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Cet élément resynchronise les informations relatives à ce processus (dans le fichier <TT CLASS="filename"> otadmin.cfg</TT> du serveur d'administration du processus) avec les informations de la base de données Content Server.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Mettre à jour</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Permet de soumettre au serveur Content Server les modifications que vous avez apportées à cette page.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Réinitialiser</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Rétablit les informations de cette page à l'état qui était le leur à l'ouverture de la page.</TD></TR></TABLE>
+</DIV></P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webdirwalk/wbw-specifdw-p.htm" revision="">Pour configurer un processus Directory Walker</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

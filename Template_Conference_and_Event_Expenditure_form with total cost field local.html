@@ -1,0 +1,2341 @@
+<HTML>
+
+<HEAD>
+
+
+
+<META http-equiv="content-type" content="text/html; charset=UTF-8">
+<LINK REL="stylesheet" TYPE="text/css" HREF="img/style/screen.css?v=2139">
+<link rel="shortcut icon" href="http://gcdocsimg/favicon.ico" type="image/x-icon">
+<STYLE>
+ .browseRow1 { background-color: #FFFFFF;  } 
+ .browseRow2 { background-color: #FFFFFF;  } 
+ .topSection { text-align: right; }
+</STYLE>
+
+<TITLE>Form</TITLE>
+</HEAD>
+
+<LINK REL="stylesheet" TYPE="text/css" HREF="img/style/jquery-ui-1.9.2.custom.min.css">
+<script type="text/javascript" src="img/core/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="img/core/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="img/core/ajax_dhtml_util.js?v=1483"></script>
+<script type="text/javascript" src="img/menu_en_US.js?v=1483"></script>
+<script type="text/javascript" src="img/menu.js?v=1483"></script>
+
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="img/core/ajax_dhtml_util.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="img/webform/formssupport.js"></SCRIPT>
+
+<script> 
+// BEGINING OF CUSTOM SCRIPTS
+
+// the functions below are added to improve the usability of the form, and are not part
+// of the standard form. They are associated with specific IDs and classes within the HTML code:
+// class1~5 for the blocks to show and hide, and checkbox1~5 for the triggers.
+
+// this function is called when the page loads, and hide the detail blocks by default
+function init() { 
+    // get the blocks with class starting by detail and hide them
+    $('[class^="detail"]').hide();
+    /*
+    var l;
+    var m;
+    for (l = 1; l < 6; l++) {
+    	var detailClass = "detail"+l;
+    	var detailBlocks = document.getElementsByClassName(detailClass);
+    	for (m = 0; m < detailBlocks.length; m++) {
+    		detailBlocks[m].style.display = "none";
+    	}
+     }
+     */
+  }  
+
+
+// this function show or hide the various detail blocks of the form
+// it is called by each checks boxes for the 5 parts of the form
+
+ function toggleblock(nBlock) {
+	// get the block class name and checkbox ID based on the passed value of 1 to 5
+	// block have classes as one class can be set to multiple blocks,
+	// in this case we hide or show both the title and the detail block together
+	var classNumb = "detail" + nBlock;
+	var checkBoxNum = "checkbox" + nBlock;
+	// get the exact block based on its class and number (i.e. class1)
+	var tBlock = document.getElementsByClassName(classNumb);
+	var i;
+	var j;
+	
+	// get the status of the checkbox based on its ID (i.e. checkbox1)
+	var checkbox = document.getElementById(checkBoxNum);
+	var className = "";
+	
+	// now toggle the visibility of the blocks based on the checkbox status
+	 if (checkbox.checked) {
+	 	for (i = 0; i < tBlock.length; i++) {
+        	tBlock[i].style.display = "table-row";
+    		}
+    	// if hospitality details is displayed (#2), hide hospitality details fields when unchecked
+    	if ( nBlock === 2) {
+    			$checkboxh = $('[ID^="checkboxh"]');
+				for (k = 1; k < $checkboxh.length+1; k++) {
+					if ($checkboxh[k-1].checked === false) {
+    /*		for (n = 1; n < 8; n++) {
+    			checkNum = "checkboxh" + n;
+    			console.log(checkNum);
+				checkboxh = document.getElementById(checkNum);
+				for (k = 1; k < checkboxh.length+1; k++) {
+					if (checkboxh[k-1].checked === false) {  */
+						className = "hospitality"+k;
+						hospitalityd = document.getElementsByClassName(className);
+						for (j = 0; j < hospitalityd.length; j++) {
+        					hospitalityd[j].style.display = "none";
+    						}
+					}
+				}
+		/*	  } */
+			} 
+	 	 }
+	 else {
+	 	for (i = 0; i < tBlock.length; i++) {
+        	tBlock[i].style.display = "none";
+    		}
+	 	 }
+	 }
+	 
+ function toggleHospitalityblock(nBlock) {
+	// get the block class name and checkbox ID based on the passed value of 1 to 5
+	// block have classes as one class can be set to multiple blocks,
+	// in this case we hide or show both the title and the detail block together
+	var classNumb = "hospitality" + nBlock;
+	var checkBoxNum = "checkboxh" + nBlock;
+	// get the block based on its class (i.e. class1)
+	var tBlock = document.getElementsByClassName(classNumb);
+	var i;
+	
+	
+	// get the status of the checkbox based on its ID (i.e. checkbox1)
+	var checkbox = document.getElementById(checkBoxNum);
+	
+	// now toggle the visibility of the blocks based on the checkbox status
+	 if (checkbox.checked) {
+	 	for (i = 0; i < tBlock.length; i++) {
+        	tBlock[i].style.display = "table-row";
+    		}
+	 	 }
+	 else {
+	 	for (i = 0; i < tBlock.length; i++) {
+        	tBlock[i].style.display = "none";
+    		}
+	 	 }
+	 }
+	 
+// function used to calculate the total cost of the request to route the workflow
+// it is called whenever a new amount is entered in each cost field
+// if anything other than a number is entered, it resets the value to 0.
+   function totalCost() {
+    //declare the total and set it to 0 by default
+    var total = 0;
+    var i = 0;
+    // extract each cost from their respective fields in the form only if they are numbers
+    // and add them to the total or set them to 0
+    var costsVals = document.getElementsByClassName("costsVal");
+    
+    for (i=0; i < costsVals.length ; i++) {
+    	if (!isNaN(+costsVals[i].value)) {
+    		total += +costsVals[i].value;
+    	}
+    	else {
+    		costsVals[i].value = 0;
+    	}
+    }
+
+	// set the value of the total cost to the total calculated above
+	document.getElementById("_1_1_93_1").value = total;
+	
+   }
+  
+  window.onload=init;
+  
+// END OF THE CUSTOM SCRIPTS
+</script>
+
+<BODY Class="pageBody">
+<FORM NAME="myForm" ACTION="[LL_CGIPATH /]" ENCTYPE="multipart/form-data" METHOD="POST">
+
+<INPUT TYPE="HIDDEN" NAME="func" VALUE="[LL_FUNC /]">
+<INPUT TYPE="HIDDEN" NAME="LL_FUNC_VALUES" VALUE="[LL_FUNC_VALUES /]">
+<INPUT TYPE="HIDDEN" NAME="LL_AttrFieldName" VALUE="">
+<INPUT TYPE="HIDDEN" NAME="LL_AttrFieldIndex" VALUE="">
+<INPUT TYPE="HIDDEN" NAME="LL_WFATTURL" VALUE="[LL_WFATTURL /]">
+
+<TABLE BGCOLOR="#FFFFFF" BACKGROUND="img/pattern.gif" CELLSPACING="0"CELLPADDING="0" WIDTH="100%">
+<TR>
+<TD VALIGN="TOP" HEIGHT="100%" CLASS="pageBody">
+
+<TABLE WIDTH="100%" ALIGN="CENTER" CELLSPACING="0" CELLPADDING="15" BORDER="0">
+<TR>
+<TD VALIGN="TOP">
+
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+<TR>
+<TD CLASS="tblBackground">
+
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="1">
+
+<TR>
+<TD CLASS="tblBackground" WIDTH="100%">
+<TABLE WIDTH="100%" BORDER="0" CELLPADDING="0" CELLSPACING="0">
+
+<TR>
+<TD CLASS="tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR>
+<TD CLASS="topSection label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Travel:
+&nbsp;
+</TD>
+<TD NOWRAP>
+<INPUT TYPE="CHECKBOX" NAME="_1_1_36_1" id="checkbox1" onchange="toggleblock(1)" value="1"  ONCLICK="markDirty();">
+
+</TD>
+<TD CLASS="topSection label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Hospitality:
+&nbsp;
+</TD>
+<TD NOWRAP>
+<INPUT TYPE="CHECKBOX" NAME="_1_1_37_1" id="checkbox2" onchange="toggleblock(2)" value="1"  ONCLICK="markDirty();">
+
+</TD>
+<TD CLASS="topSection label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Training:
+&nbsp;
+</TD>
+<TD NOWRAP>
+<INPUT TYPE="CHECKBOX" NAME="_1_1_38_1" id="checkbox3" onchange="toggleblock(3)" value="1"  ONCLICK="markDirty();">
+
+</TD>
+<TD CLASS="topSection label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Conference:
+&nbsp;
+</TD>
+<TD NOWRAP>
+<INPUT TYPE="CHECKBOX" NAME="_1_1_39_1" id="checkbox4" onchange="toggleblock(4)" value="1"  ONCLICK="markDirty();">
+
+</TD>
+<TD CLASS="topSection label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Event:
+&nbsp;
+</TD>
+<TD NOWRAP>
+<INPUT TYPE="CHECKBOX" NAME="_1_1_40_1" id="checkbox5" onchange="toggleblock(5)" value="1"  ONCLICK="markDirty();">
+
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD>
+<TABLE STYLE="background-repeat: repeat-x" BACKGROUND="img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR>
+<TD WIDTH="1%"><IMG SRC="img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
+<TD CLASS="browseBoxHeader">
+&nbsp;Details
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+
+[LL_LOOP_BEGIN_1_1_46 /]
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="TOP">
+&nbsp;Description:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<TEXTAREA CLASS="valueEditable multiline" ID="_1_1_46_47_1" NAME="_1_1_46_47_1" TITLE="Description" WRAP="soft" ROWS="5" COLS="80" ONFOCUS="" ONCHANGE="markDirty();">[LL_FormTag_1_1_46_47_1 /]</TEXTAREA>
+
+
+
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Start Date:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<!-- File: datefield.html (Begin - _1_1_46_48_1) -->
+
+<input type="hidden" id="_1_1_46_48_1" name="_1_1_46_48_1" value="[LL_FormTag_1_1_46_48_1 /]" />
+<input type="hidden" name="_1_1_46_48_1_dirtyFlag" value="0" />
+
+<script>
+
+
+
+function __1_1_46_48_1_updateMinuteHour( form, newDate )
+{
+form._1_1_46_48_1_hour.value = newDate.getHours();
+form._1_1_46_48_1_minute.value = newDate.getMinutes();
+form._1_1_46_48_1_second.value = newDate.getSeconds();
+}
+
+</script>
+
+<script>
+
+
+
+
+var __1_1_46_48_1_jsDate = new Date( 2017, 1, 10, 0, 0, 0 );
+
+function __1_1_46_48_1_update( changedField, form, newDate )
+{
+var		t;
+var 	fieldType;
+var		regExp;
+
+
+form._1_1_46_48_1_dirtyFlag.value = '1';
+
+if ( null == changedField )
+{
+t = form;
+}
+else
+{
+t = changedField.form;
+}
+
+if ( ( changedField != null ) && ( changedField.selectedIndex == 0 ) )
+{
+
+__1_1_46_48_1_noSelection( t )
+}
+else
+{
+var		year;
+var		theDate = newDate;
+
+if ( newDate == null )
+{
+theDate = __1_1_46_48_1_jsDate;
+}
+
+
+
+
+if ( form._datepicker__1_1_46_48_1.value == "" )
+{
+
+__1_1_46_48_1_jsDate = new Date("02/10/2017") ;
+form._datepicker__1_1_46_48_1.value = "2017-02-10";
+__1_1_46_48_1_scriptDate( form, theDate.getFullYear(), theDate.getMonth() + 1, theDate.getDate() );
+form._1_1_46_48_1.value += '0:0:0';
+}
+
+__1_1_46_48_1_updateMinuteHour( t, theDate );
+__1_1_46_48_1__constructOScriptDate( t );
+}
+
+if ( typeof( window.markDirty ) != "undefined" )
+{
+markDirty();
+}
+
+}
+
+function __1_1_46_48_1__constructOScriptDate( form )
+{
+
+var jsDate = new Date( __1_1_46_48_1_jsDate );
+__1_1_46_48_1_constructDate( form, jsDate )
+
+}
+
+function __1_1_46_48_1_constructTime( form )
+{
+
+var timeArray = new Array("0","0","0");
+
+
+return timeArray;
+
+}
+
+function __1_1_46_48_1_constructDate( form, jsDate )
+{
+
+var		timeSegment;
+
+__1_1_46_48_1_scriptDate( form, jsDate.getFullYear(), jsDate.getMonth() + 1, jsDate.getDate() );
+
+timeArray = __1_1_46_48_1_constructTime( form );
+
+
+form._1_1_46_48_1.value = form._1_1_46_48_1.value + timeArray[0] + ':' + timeArray[1] + ':' + timeArray[2];
+
+
+__1_1_46_48_1_jsDate = new Date( jsDate.getFullYear(), jsDate.getMonth(), jsDate.getDate(), timeArray[0], timeArray[1], timeArray[2], 0);
+
+form._1_1_46_48_1_dirtyFlag.value = '1';
+
+}
+
+function __1_1_46_48_1_scriptDate( form, year, month, day )
+{
+var 	val;
+
+form._1_1_46_48_1.value = 'D/' + year + '/';
+form._1_1_46_48_1.value = form._1_1_46_48_1.value + month + '/';
+form._1_1_46_48_1.value = form._1_1_46_48_1.value + day + ':';
+
+}
+
+function _1_1_46_48_1_getDate( form )
+{
+return __1_1_46_48_1_jsDate;
+}
+
+function _1_1_46_48_1_clearDate( form )
+{
+$( "#_datepicker__1_1_46_48_1" ).datepicker( "setDate", "" );
+form._datepicker__1_1_46_48_1.value = "";
+document.getElementsByName("_1_1_46_48_1")[0].value = "";
+
+document.getElementsByName("_1_1_46_48_1_dirtyFlag")[0].value = "1";
+
+if ( typeof( window.markDirty ) != "undefined" )
+{
+markDirty();
+}
+
+}
+
+function __1_1_46_48_1_noSelection( form )
+{
+_1_1_46_48_1_clearDate( form );
+
+if ( typeof( form._1_1_46_48_1_hour ) != "undefined" )
+{
+form._1_1_46_48_1_hour.selectedIndex = 0;
+}
+
+if ( typeof( form._1_1_46_48_1_minute ) != "undefined" )
+{
+form._1_1_46_48_1_minute.selectedIndex = 0;
+}
+
+if ( typeof( form._1_1_46_48_1_second ) != "undefined" )
+{
+form._1_1_46_48_1_second.selectedIndex = 0;
+}
+
+if ( typeof( form._1_1_46_48_1_ampm ) != "undefined" )
+{
+form._1_1_46_48_1_ampm.selectedIndex = 0;
+}
+form._1_1_46_48_1.value = "?";
+}
+
+$(function() {
+$( "#_datepicker__1_1_46_48_1" ).datepicker({
+numberOfMonths: 2,
+showButtonPanel: false,
+showAnim: "show",
+dateFormat: "yy-mm-dd",
+showOn: "both",
+changeMonth:true,
+changeYear:true,
+buttonImage: "img/datepicker.gif",
+buttonImageOnly: true,
+autoSize: true,
+minDate: new Date(0, 0, 1),
+maxDate: new Date(9999, 11, 31),
+monthNamesShort:[ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+monthNames:[ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
+dayNamesMin:[ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
+dayNamesShort:[ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
+dayNames:[ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
+prevText: "Previous",
+nextText: "Next"
+});
+});
+</script>
+
+<input readonly="true" class="valueEditable" type="text" id="_datepicker__1_1_46_48_1" value ="" onChange='__1_1_46_48_1_update(this, this.form, null);__1_1_46_48_1_constructDate( this.form, $( "#_datepicker__1_1_46_48_1" ).datepicker( "getDate" ) )' style="position: relative; z-index: 4;">&nbsp;
+
+<input type="hidden" name="_1_1_46_48_1_hour" value="11" />
+<input type="hidden" name="_1_1_46_48_1_minute" value="8" />
+<input type="hidden" name="_1_1_46_48_1_second" value="0" />
+<input type="hidden" name="_1_1_46_48_1_ampm" value="0" />
+
+<input class="button" type="BUTTON" value="Clear"  name="_clearDate__1_1_46_48_1" id="_clearDate__1_1_46_48_1" title="Clear Date" onclick='_1_1_46_48_1_clearDate( this.form )' />
+
+<!-- End File: datefield.html (End - _1_1_46_48_1) -->
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;End Date:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<!-- File: datefield.html (Begin - _1_1_46_49_1) -->
+
+<input type="hidden" id="_1_1_46_49_1" name="_1_1_46_49_1" value="[LL_FormTag_1_1_46_49_1 /]" />
+<input type="hidden" name="_1_1_46_49_1_dirtyFlag" value="0" />
+
+<script>
+
+
+
+function __1_1_46_49_1_updateMinuteHour( form, newDate )
+{
+form._1_1_46_49_1_hour.value = newDate.getHours();
+form._1_1_46_49_1_minute.value = newDate.getMinutes();
+form._1_1_46_49_1_second.value = newDate.getSeconds();
+}
+
+</script>
+
+<script>
+
+
+
+
+var __1_1_46_49_1_jsDate = new Date( 2017, 1, 10, 0, 0, 0 );
+
+function __1_1_46_49_1_update( changedField, form, newDate )
+{
+var		t;
+var 	fieldType;
+var		regExp;
+
+
+form._1_1_46_49_1_dirtyFlag.value = '1';
+
+if ( null == changedField )
+{
+t = form;
+}
+else
+{
+t = changedField.form;
+}
+
+if ( ( changedField != null ) && ( changedField.selectedIndex == 0 ) )
+{
+
+__1_1_46_49_1_noSelection( t )
+}
+else
+{
+var		year;
+var		theDate = newDate;
+
+if ( newDate == null )
+{
+theDate = __1_1_46_49_1_jsDate;
+}
+
+
+
+
+if ( form._datepicker__1_1_46_49_1.value == "" )
+{
+
+__1_1_46_49_1_jsDate = new Date("02/10/2017") ;
+form._datepicker__1_1_46_49_1.value = "2017-02-10";
+__1_1_46_49_1_scriptDate( form, theDate.getFullYear(), theDate.getMonth() + 1, theDate.getDate() );
+form._1_1_46_49_1.value += '0:0:0';
+}
+
+__1_1_46_49_1_updateMinuteHour( t, theDate );
+__1_1_46_49_1__constructOScriptDate( t );
+}
+
+if ( typeof( window.markDirty ) != "undefined" )
+{
+markDirty();
+}
+
+}
+
+function __1_1_46_49_1__constructOScriptDate( form )
+{
+
+var jsDate = new Date( __1_1_46_49_1_jsDate );
+__1_1_46_49_1_constructDate( form, jsDate )
+
+}
+
+function __1_1_46_49_1_constructTime( form )
+{
+
+var timeArray = new Array("0","0","0");
+
+
+return timeArray;
+
+}
+
+function __1_1_46_49_1_constructDate( form, jsDate )
+{
+
+var		timeSegment;
+
+__1_1_46_49_1_scriptDate( form, jsDate.getFullYear(), jsDate.getMonth() + 1, jsDate.getDate() );
+
+timeArray = __1_1_46_49_1_constructTime( form );
+
+
+form._1_1_46_49_1.value = form._1_1_46_49_1.value + timeArray[0] + ':' + timeArray[1] + ':' + timeArray[2];
+
+
+__1_1_46_49_1_jsDate = new Date( jsDate.getFullYear(), jsDate.getMonth(), jsDate.getDate(), timeArray[0], timeArray[1], timeArray[2], 0);
+
+form._1_1_46_49_1_dirtyFlag.value = '1';
+
+}
+
+function __1_1_46_49_1_scriptDate( form, year, month, day )
+{
+var 	val;
+
+form._1_1_46_49_1.value = 'D/' + year + '/';
+form._1_1_46_49_1.value = form._1_1_46_49_1.value + month + '/';
+form._1_1_46_49_1.value = form._1_1_46_49_1.value + day + ':';
+
+}
+
+function _1_1_46_49_1_getDate( form )
+{
+return __1_1_46_49_1_jsDate;
+}
+
+function _1_1_46_49_1_clearDate( form )
+{
+$( "#_datepicker__1_1_46_49_1" ).datepicker( "setDate", "" );
+form._datepicker__1_1_46_49_1.value = "";
+document.getElementsByName("_1_1_46_49_1")[0].value = "";
+
+document.getElementsByName("_1_1_46_49_1_dirtyFlag")[0].value = "1";
+
+if ( typeof( window.markDirty ) != "undefined" )
+{
+markDirty();
+}
+
+}
+
+function __1_1_46_49_1_noSelection( form )
+{
+_1_1_46_49_1_clearDate( form );
+
+if ( typeof( form._1_1_46_49_1_hour ) != "undefined" )
+{
+form._1_1_46_49_1_hour.selectedIndex = 0;
+}
+
+if ( typeof( form._1_1_46_49_1_minute ) != "undefined" )
+{
+form._1_1_46_49_1_minute.selectedIndex = 0;
+}
+
+if ( typeof( form._1_1_46_49_1_second ) != "undefined" )
+{
+form._1_1_46_49_1_second.selectedIndex = 0;
+}
+
+if ( typeof( form._1_1_46_49_1_ampm ) != "undefined" )
+{
+form._1_1_46_49_1_ampm.selectedIndex = 0;
+}
+form._1_1_46_49_1.value = "?";
+}
+
+$(function() {
+$( "#_datepicker__1_1_46_49_1" ).datepicker({
+numberOfMonths: 2,
+showButtonPanel: false,
+showAnim: "show",
+dateFormat: "yy-mm-dd",
+showOn: "both",
+changeMonth:true,
+changeYear:true,
+buttonImage: "img/datepicker.gif",
+buttonImageOnly: true,
+autoSize: true,
+minDate: new Date(0, 0, 1),
+maxDate: new Date(9999, 11, 31),
+monthNamesShort:[ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ],
+monthNames:[ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
+dayNamesMin:[ 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa' ],
+dayNamesShort:[ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
+dayNames:[ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ],
+prevText: "Previous",
+nextText: "Next"
+});
+});
+</script>
+
+<input readonly="true" class="valueEditable" type="text" id="_datepicker__1_1_46_49_1" value ="" onChange='__1_1_46_49_1_update(this, this.form, null);__1_1_46_49_1_constructDate( this.form, $( "#_datepicker__1_1_46_49_1" ).datepicker( "getDate" ) )' style="position: relative; z-index: 4;">&nbsp;
+
+<input type="hidden" name="_1_1_46_49_1_hour" value="11" />
+<input type="hidden" name="_1_1_46_49_1_minute" value="8" />
+<input type="hidden" name="_1_1_46_49_1_second" value="0" />
+<input type="hidden" name="_1_1_46_49_1_ampm" value="0" />
+
+<input class="button" type="BUTTON" value="Clear"  name="_clearDate__1_1_46_49_1" id="_clearDate__1_1_46_49_1" title="Clear Date" onclick='_1_1_46_49_1_clearDate( this.form )' />
+
+<!-- End File: datefield.html (End - _1_1_46_49_1) -->
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR CLASS="detail1">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Travel Costs:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_57_1" TITLE="Travel Costs (A)" ID="_1_1_46_57_1" VALUE="[LL_FormTag_1_1_46_57_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider detail1" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR CLASS="detail2">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Hospitality Costs:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_58_1" TITLE="Hospitality Costs (B)" ID="_1_1_46_58_1" VALUE="[LL_FormTag_1_1_46_58_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider detail2" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR CLASS="detail3">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Training Costs:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_59_1" TITLE="Training Costs (C)" ID="_1_1_46_59_1" VALUE="[LL_FormTag_1_1_46_59_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider detail3" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR CLASS="detail4">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Conference Costs:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_60_1" TITLE="Conference Costs (D)" ID="_1_1_46_60_1" VALUE="[LL_FormTag_1_1_46_60_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider detail4" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR CLASS="detail5">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Event Costs (E):
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_61_1" TITLE="Event Costs (E)" ID="_1_1_46_61_1" VALUE="[LL_FormTag_1_1_46_61_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider detail5" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Claimant:
+<IMG SRC="img/required.gif" ALT="Required" TITLE="Required" BORDER="0">
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SCRIPT LANGUAGE="JavaScript">
+function chooseUser_1_1_46_50_1()
+{
+var		url;
+var		w;
+
+url = '/otcs/llisapi.dll?func=user.SelectUserDlg&formname=myForm&fieldprefix=_1_1_46_50_1&title=Select%20User&DisplayUserName&NoGroups=FALSE';
+
+url = url + '&NoGroupsSelectable=TRUE'
+w = window.open(url,"","height=340,width=680,scrollbars=yes,resizable=yes,menubar=no,toolbar=yes,status=yes");
+
+if ( w.focus )
+{
+w.focus();
+}
+}
+
+function KeepFieldSet_1_1_46_50_1( nameField, savedValue )
+{
+if ( nameField.value != '' )
+{
+alert( "You can't enter text in by hand. Use the link to the right." );
+nameField.value = savedValue;
+}
+else if ( markDirty != null )
+{
+markDirty();
+}
+
+if ( nameField.value == savedValue.value )
+{
+savedValue.value = nameField.value;
+}
+}
+</SCRIPT>
+
+<INPUT TYPE="HIDDEN" NAME="_1_1_46_50_1_ID" VALUE="[LL_FormTag_1_1_46_50_1 /]">
+<INPUT TYPE="HIDDEN" NAME="_1_1_46_50_1_SavedName" VALUE="[LL_FormTag_1_1_46_50_1_SavedName /]">
+
+<LABEL FOR="_1_1_46_50_1_Name"></LABEL>
+<INPUT CLASS="valueEditable" TYPE="TEXT" NAME="_1_1_46_50_1_Name" ID="_1_1_46_50_1_Name" VALUE="[LL_FormTag_1_1_46_50_1_SavedName /]" ALT="Select User" SIZE="23" ONCHANGE="KeepFieldSet_1_1_46_50_1( this, this.form._1_1_46_50_1_SavedName.value )">
+<A HREF="javascript:chooseUser_1_1_46_50_1()"><IMG SRC="img/guy_select.gif" ALT="Select User" BORDER="0"></A>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Location:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_46_51_1" TITLE="Location" ID="_1_1_46_51_1" VALUE="[LL_FormTag_1_1_46_51_1 /]" SIZE="80" MAXLENGTH="80" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Number of Government of Canada employee(s) attending:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_46_52_1" TITLE="Number of Government of Canada employee(s) attending" ID="_1_1_46_52_1" VALUE="[LL_FormTag_1_1_46_52_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Number of other attendees:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_46_53_1" TITLE="Number of other attendees" ID="_1_1_46_53_1" VALUE="[LL_FormTag_1_1_46_53_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Responsibility Center Code:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_46_54_1" TITLE="Responsibility Center Code" ID="_1_1_46_54_1" VALUE="[LL_FormTag_1_1_46_54_1 /]" SIZE="32" MAXLENGTH="32" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Certified within the spending budget of the Responsibility Centre.:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT TYPE="CHECKBOX" NAME="_1_1_46_55_1" value="1"  ONCLICK="markDirty();">
+
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="TOP">
+&nbsp;Justification:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<TEXTAREA CLASS="valueEditable multiline" ID="_1_1_46_56_1" NAME="_1_1_46_56_1" TITLE="Justification" WRAP="soft" ROWS="5" COLS="80" ONFOCUS="" ONCHANGE="markDirty();">[LL_FormTag_1_1_46_56_1 /]</TEXTAREA>
+
+
+
+</TD>
+</TR>
+[LL_LOOP_END_1_1_46 /]
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="tabForeground">
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+<TR>
+<TD><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD CLASS="tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Total cost:
+&nbsp;
+</TD>
+<TD NOWRAP>
+<INPUT CLASS="valueEditable" TYPE="text" readonly="readonly" NAME="_1_1_93_1" TITLE="Total cost (A+B+C+D+E)" ID="_1_1_93_1" VALUE="[LL_FormTag_1_1_93_1 /]" SIZE="20" MAXLENGTH="20">
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD CLASS="detail1">
+<TABLE STYLE="background-repeat: repeat-x" BACKGROUND="img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR>
+<TD WIDTH="1%"><IMG SRC="img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
+<TD CLASS="browseBoxHeader">
+&nbsp;A) Travel details
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="detail1 tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+
+[LL_LOOP_BEGIN_1_1_20 /]
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Travel reason:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_20_41_1" NAME="_1_1_20_41_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Foreign" >Foreign</OPTION>
+<OPTION VALUE="Domestic" >Domestic</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="TOP">
+&nbsp;Objective:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<TEXTAREA CLASS="valueEditable multiline" ID="_1_1_20_32_1" NAME="_1_1_20_32_1" TITLE="Objective" WRAP="soft" ROWS="3" COLS="80" ONFOCUS="" ONCHANGE="markDirty();">[LL_FormTag_1_1_20_32_1 /]</TEXTAREA>
+
+
+
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Category:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_20_33_1" NAME="_1_1_20_33_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Core Mandate" >Core Mandate</OPTION>
+<OPTION VALUE="Sound Internal Governance" >Sound Internal Governance</OPTION>
+<OPTION VALUE="Training" >Training</OPTION>
+<OPTION VALUE="Key Stakeholders Engagement" >Key Stakeholders Engagement</OPTION>
+<OPTION VALUE="Other (Explanation is required)" >Other (Explanation is required)</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Reason for Other category:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_20_34_1" TITLE="Reason for Other category" ID="_1_1_20_34_1" VALUE="[LL_FormTag_1_1_20_34_1 /]" SIZE="80" MAXLENGTH="80" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Traveller as...:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_20_35_1" NAME="_1_1_20_35_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Public Servant" >Public Servant</OPTION>
+<OPTION VALUE="Non-Public Servant" >Non-Public Servant</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Virtual presence or other remote meeting solutions:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_20_62_1" TITLE="Virtual presence or other remote meeting solutions" ID="_1_1_20_62_1" VALUE="[LL_FormTag_1_1_20_62_1 /]" SIZE="80" MAXLENGTH="80" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Mode of transportation and cost:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_20_63_1" TITLE="Mode of transportation and cost" ID="_1_1_20_63_1" VALUE="[LL_FormTag_1_1_20_63_1 /]" SIZE="80" MAXLENGTH="80" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Class of travel:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_20_64_1" NAME="_1_1_20_64_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Economy" >Economy</OPTION>
+<OPTION VALUE="Business" >Business</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Reason if Business class:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_20_65_1" TITLE="Reason if Business class" ID="_1_1_20_65_1" VALUE="[LL_FormTag_1_1_20_65_1 /]" SIZE="80" MAXLENGTH="80" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Accommodations and Cost:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_20_66_1" TITLE="Accommodations and Cost" ID="_1_1_20_66_1" VALUE="[LL_FormTag_1_1_20_66_1 /]" SIZE="80" MAXLENGTH="80" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Meals:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_20_67_1" TITLE="Meals" ID="_1_1_20_67_1" VALUE="[LL_FormTag_1_1_20_67_1 /]" SIZE="80" MAXLENGTH="80" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Incidentals and other costs:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_20_68_1" TITLE="Incidentals and other costs" ID="_1_1_20_68_1" VALUE="[LL_FormTag_1_1_20_68_1 /]" SIZE="80" MAXLENGTH="80" ONCHANGE="markDirty();">
+</TD>
+</TR>
+[LL_LOOP_END_1_1_20 /]
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="detail2">
+<TABLE STYLE="background-repeat: repeat-x" BACKGROUND="img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR>
+<TD WIDTH="1%"><IMG SRC="img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
+<TD CLASS="browseBoxHeader">
+&nbsp;B) Hospitality
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="detail2 tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+
+[LL_LOOP_BEGIN_1_1_21 /]
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Hospitality reason:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_21_42_1" NAME="_1_1_21_42_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Below Standard Cost per Person" >Below Standard Cost per Person</OPTION>
+<OPTION VALUE="Over Standard Cost per Person" >Over Standard Cost per Person</OPTION>
+<OPTION VALUE="Over Maximum Cost per Person" >Over Maximum Cost per Person</OPTION>
+<OPTION VALUE="Bellow $1,500" >Bellow $1,500</OPTION>
+<OPTION VALUE="From $1,500 to $5,000" >From $1,500 to $5,000</OPTION>
+<OPTION VALUE="Total above $5,000" >Total above $5,000</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Breakfast allowed?:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT TYPE="CHECKBOX" id="checkboxh1" NAME="_1_1_21_69_1" value="1" onchange="toggleHospitalityblock(1);" ONCLICK="markDirty();">
+
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR CLASS="hospitality1">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Breakfast - Standard cost per person:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_80_1" TITLE="Breakfast - Standard cost per person" ID="_1_1_21_80_1" VALUE="[LL_FormTag_1_1_21_80_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider hospitality1" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR CLASS="hospitality1">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Breakfast - Maximum cost per person:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_81_1" TITLE="Breakfast - Maximum cost per person" ID="_1_1_21_81_1" VALUE="[LL_FormTag_1_1_21_81_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider hospitality1" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Lunch allowed?:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT TYPE="CHECKBOX" id="checkboxh2" NAME="_1_1_21_70_1" value="1" onchange="toggleHospitalityblock(2);" ONCLICK="markDirty();">
+
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR CLASS="hospitality2">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Lunch - Standard cost per person:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_82_1" TITLE="Lunch - Standard cost per person" ID="_1_1_21_82_1" VALUE="[LL_FormTag_1_1_21_82_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider hospitality2" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR  CLASS="hospitality2">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Lunch - Maximum cost per person:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_83_1" TITLE="Lunch - Maximum cost per person" ID="_1_1_21_83_1" VALUE="[LL_FormTag_1_1_21_83_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider hospitality2" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Dinner allowed?:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT TYPE="CHECKBOX" id="checkboxh3" NAME="_1_1_21_71_1" value="1"  onchange="toggleHospitalityblock(3);" ONCLICK="markDirty();">
+
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR  CLASS="hospitality3">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Dinner - Standard cost per person:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_84_1" TITLE="Dinner - Standard cost per person" ID="_1_1_21_84_1" VALUE="[LL_FormTag_1_1_21_84_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider hospitality3" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR  CLASS="hospitality3">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Dinner - Maximum cost per person:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_85_1" TITLE="Dinner - Maximum cost per person" ID="_1_1_21_85_1" VALUE="[LL_FormTag_1_1_21_85_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider hospitality3" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Refreshments AM allowed?:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT TYPE="CHECKBOX" id="checkboxh4" NAME="_1_1_21_72_1" value="1" onchange="toggleHospitalityblock(4);"  ONCLICK="markDirty();">
+
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR  CLASS="hospitality4">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Refreshments AM - Standard cost per person:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_86_1" TITLE="Refreshments AM - Standard cost per person" ID="_1_1_21_86_1" VALUE="[LL_FormTag_1_1_21_86_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider hospitality4" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR  CLASS="hospitality4">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Refreshments AM - Maximum cost per person:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_87_1" TITLE="Refreshments AM - Maximum cost per person" ID="_1_1_21_87_1" VALUE="[LL_FormTag_1_1_21_87_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider hospitality4" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Refreshments PM allowed?:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT TYPE="CHECKBOX" id="checkboxh5" NAME="_1_1_21_73_1" value="1" onchange="toggleHospitalityblock(5);"  ONCLICK="markDirty();">
+
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR  CLASS="hospitality5">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Refreshments PM - Standard cost per person:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_88_1" TITLE="Refreshments PM - Standard cost per person" ID="_1_1_21_88_1" VALUE="[LL_FormTag_1_1_21_88_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider hospitality5" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR  CLASS="hospitality5">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Refreshments PM - Maximum cost per person:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_89_1" TITLE="Refreshments PM - Maximum cost per person" ID="_1_1_21_89_1" VALUE="[LL_FormTag_1_1_21_89_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider hospitality5" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Reception allowed?:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT TYPE="CHECKBOX" id="checkboxh6" NAME="_1_1_21_74_1" value="1" onchange="toggleHospitalityblock(6);"  ONCLICK="markDirty();">
+
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR  CLASS="hospitality6">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Reception - Standard cost per person:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_90_1" TITLE="Reception - Standard cost per person" ID="_1_1_21_90_1" VALUE="[LL_FormTag_1_1_21_90_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider hospitality6" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR  CLASS="hospitality6">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Reception - Maximum cost per person:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_91_1" TITLE="Reception - Maximum cost per person" ID="_1_1_21_91_1" VALUE="[LL_FormTag_1_1_21_91_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider hospitality6" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Alcohol included?:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT TYPE="CHECKBOX" id="checkboxh7" NAME="_1_1_21_75_1" value="1" onchange="toggleHospitalityblock(7);"  ONCLICK="markDirty();">
+
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR  CLASS="hospitality7">
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Alcohol - amount if included:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_92_1" TITLE="Alcohol - amount if included" ID="_1_1_21_92_1" VALUE="[LL_FormTag_1_1_21_92_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+[LL_LOOP_END_1_1_21 /]
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="detail3">
+<TABLE STYLE="background-repeat: repeat-x" BACKGROUND="img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR>
+<TD WIDTH="1%"><IMG SRC="img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
+<TD CLASS="browseBoxHeader">
+&nbsp;C) Training
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="detail3 tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+
+[LL_LOOP_BEGIN_1_1_22 /]
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Training reason:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_22_43_1" NAME="_1_1_22_43_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Below $2,500" >Below $2,500</OPTION>
+<OPTION VALUE="Over $2,500" >Over $2,500</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Training type:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_22_29_1" NAME="_1_1_22_29_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Required training" >Required training</OPTION>
+<OPTION VALUE="Job specific" >Job specific</OPTION>
+<OPTION VALUE="Career Development" >Career Development</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Specify the training provider:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_22_30_1" NAME="_1_1_22_30_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="TBS/PSC" >TBS/PSC</OPTION>
+<OPTION VALUE="Departmental" >Departmental</OPTION>
+<OPTION VALUE="Interdepartmental" >Interdepartmental</OPTION>
+<OPTION VALUE="University/College" >University/College</OPTION>
+<OPTION VALUE="Other" >Other</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Time of training:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_22_31_1" NAME="_1_1_22_31_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Outside working hours" >Outside working hours</OPTION>
+<OPTION VALUE="During working hours" >During working hours</OPTION>
+</SELECT>
+</TD>
+</TR>
+[LL_LOOP_END_1_1_22 /]
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="detail4">
+<TABLE STYLE="background-repeat: repeat-x" BACKGROUND="img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR>
+<TD WIDTH="1%"><IMG SRC="img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
+<TD CLASS="browseBoxHeader">
+&nbsp;D) Conference
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="detail4 tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+
+[LL_LOOP_BEGIN_1_1_23 /]
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Conference reason:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_23_44_1" NAME="_1_1_23_44_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Below $2,500" >Below $2,500</OPTION>
+<OPTION VALUE="Over $2,500" >Over $2,500</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Attendance:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_23_26_1" NAME="_1_1_23_26_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Attend" >Attend</OPTION>
+<OPTION VALUE="Sponsor" >Sponsor</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Specify the type of conference:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_23_27_1" NAME="_1_1_23_27_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="International" >International</OPTION>
+<OPTION VALUE="Federal-Provincial" >Federal-Provincial</OPTION>
+<OPTION VALUE="Departmental" >Departmental</OPTION>
+<OPTION VALUE="Regional" >Regional</OPTION>
+<OPTION VALUE="Non-Government" >Non-Government</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;If attending, check the appropriate box:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_23_28_1" NAME="_1_1_23_28_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Represent Federal Government in an official capacity" >Represent Federal Government in an official capacity</OPTION>
+<OPTION VALUE="Advise official government representatives" >Advise official government representatives</OPTION>
+<OPTION VALUE="Establish essential contacts with organizations" >Establish essential contacts with organizations</OPTION>
+<OPTION VALUE="Facilitate recruiting activities" >Facilitate recruiting activities</OPTION>
+</SELECT>
+</TD>
+</TR>
+[LL_LOOP_END_1_1_23 /]
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="detail5">
+<TABLE STYLE="background-repeat: repeat-x" BACKGROUND="img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR>
+<TD WIDTH="1%"><IMG SRC="img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
+<TD CLASS="browseBoxHeader">
+&nbsp;E) Event
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="detail5 tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+
+[LL_LOOP_BEGIN_1_1_24 /]
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Event reason:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SELECT CLASS="selectMenu" ID="_1_1_24_45_1" NAME="_1_1_24_45_1" ONCHANGE="markDirty();">
+<OPTION VALUE="" >&lt;None&gt;</OPTION>
+
+<OPTION VALUE="Below $5,000" >Below $5,000</OPTION>
+<OPTION VALUE="From $5,000 to $25,000" >From $5,000 to $25,000</OPTION>
+<OPTION VALUE="Over $25,000 (Memo to Minister required)" >Over $25,000 (Memo to Minister required)</OPTION>
+<OPTION VALUE="Exempted" >Exempted</OPTION>
+</SELECT>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Other costs (room rental, equipment, telepresence, etc...):
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_24_25_1" TITLE="Other costs (room rental, equipment, telepresence, etc...)" ID="_1_1_24_25_1" VALUE="[LL_FormTag_1_1_24_25_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
+</TD>
+</TR>
+[LL_LOOP_END_1_1_24 /]
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<TABLE STYLE="background-repeat: repeat-x" BACKGROUND="img/fon-table-header-yellow.gif" WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+<TR>
+<TD WIDTH="1%"><IMG SRC="img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
+<TD CLASS="browseBoxHeader">
+&nbsp;Signatures
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD CLASS="tblForeground">
+<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+
+[LL_LOOP_BEGIN_1_1_76 /]
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Requested by:
+<IMG SRC="img/required.gif" ALT="Required" TITLE="Required" BORDER="0">
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SCRIPT LANGUAGE="JavaScript">
+function chooseUser_1_1_76_77_1()
+{
+var		url;
+var		w;
+
+url = '/otcs/llisapi.dll?func=user.SelectUserDlg&formname=myForm&fieldprefix=_1_1_76_77_1&title=Select%20User&DisplayUserName&NoGroups=FALSE';
+
+url = url + '&NoGroupsSelectable=TRUE'
+w = window.open(url,"","height=340,width=680,scrollbars=yes,resizable=yes,menubar=no,toolbar=yes,status=yes");
+
+if ( w.focus )
+{
+w.focus();
+}
+}
+
+function KeepFieldSet_1_1_76_77_1( nameField, savedValue )
+{
+if ( nameField.value != '' )
+{
+alert( "You can't enter text in by hand. Use the link to the right." );
+nameField.value = savedValue;
+}
+else if ( markDirty != null )
+{
+markDirty();
+}
+
+if ( nameField.value == savedValue.value )
+{
+savedValue.value = nameField.value;
+}
+}
+</SCRIPT>
+
+<INPUT TYPE="HIDDEN" NAME="_1_1_76_77_1_ID" VALUE="[LL_FormTag_1_1_76_77_1 /]">
+<INPUT TYPE="HIDDEN" NAME="_1_1_76_77_1_SavedName" VALUE="[LL_FormTag_1_1_76_77_1_SavedName /]">
+
+<LABEL FOR="_1_1_76_77_1_Name"></LABEL>
+<INPUT CLASS="valueEditable" TYPE="TEXT" NAME="_1_1_76_77_1_Name" ID="_1_1_76_77_1_Name" VALUE="[LL_FormTag_1_1_76_77_1_SavedName /]" ALT="Select User" SIZE="23" ONCHANGE="KeepFieldSet_1_1_76_77_1( this, this.form._1_1_76_77_1_SavedName.value )">
+<A HREF="javascript:chooseUser_1_1_76_77_1()"><IMG SRC="img/guy_select.gif" ALT="Select User" BORDER="0"></A>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Recommended by:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SCRIPT LANGUAGE="JavaScript">
+function chooseUser_1_1_76_78_1()
+{
+var		url;
+var		w;
+
+url = '/otcs/llisapi.dll?func=user.SelectUserDlg&formname=myForm&fieldprefix=_1_1_76_78_1&title=Select%20User&DisplayUserName&NoGroups=FALSE';
+
+url = url + '&NoGroupsSelectable=TRUE'
+w = window.open(url,"","height=340,width=680,scrollbars=yes,resizable=yes,menubar=no,toolbar=yes,status=yes");
+
+if ( w.focus )
+{
+w.focus();
+}
+}
+
+function KeepFieldSet_1_1_76_78_1( nameField, savedValue )
+{
+if ( nameField.value != '' )
+{
+alert( "You can't enter text in by hand. Use the link to the right." );
+nameField.value = savedValue;
+}
+else if ( markDirty != null )
+{
+markDirty();
+}
+
+if ( nameField.value == savedValue.value )
+{
+savedValue.value = nameField.value;
+}
+}
+</SCRIPT>
+
+<INPUT TYPE="HIDDEN" NAME="_1_1_76_78_1_ID" VALUE="[LL_FormTag_1_1_76_78_1 /]">
+<INPUT TYPE="HIDDEN" NAME="_1_1_76_78_1_SavedName" VALUE="[LL_FormTag_1_1_76_78_1_SavedName /]">
+
+<LABEL FOR="_1_1_76_78_1_Name"></LABEL>
+<INPUT CLASS="valueEditable" TYPE="TEXT" NAME="_1_1_76_78_1_Name" ID="_1_1_76_78_1_Name" VALUE="[LL_FormTag_1_1_76_78_1_SavedName /]" ALT="Select User" SIZE="23" ONCHANGE="KeepFieldSet_1_1_76_78_1( this, this.form._1_1_76_78_1_SavedName.value )">
+<A HREF="javascript:chooseUser_1_1_76_78_1()"><IMG SRC="img/guy_select.gif" ALT="Select User" BORDER="0"></A>
+</TD>
+</TR>
+<TR CLASS="horizontalCellDivider" >
+<TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
+<TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
+</TR>
+<TR>
+
+
+
+<TD CLASS="label" NOWRAP VALIGN="MIDDLE">
+&nbsp;Approved by:
+&nbsp;
+</TD>
+
+
+
+<TD NOWRAP>
+
+<SCRIPT LANGUAGE="JavaScript">
+function chooseUser_1_1_76_79_1()
+{
+var		url;
+var		w;
+
+url = '/otcs/llisapi.dll?func=user.SelectUserDlg&formname=myForm&fieldprefix=_1_1_76_79_1&title=Select%20User&DisplayUserName&NoGroups=FALSE';
+
+url = url + '&NoGroupsSelectable=TRUE'
+w = window.open(url,"","height=340,width=680,scrollbars=yes,resizable=yes,menubar=no,toolbar=yes,status=yes");
+
+if ( w.focus )
+{
+w.focus();
+}
+}
+
+function KeepFieldSet_1_1_76_79_1( nameField, savedValue )
+{
+if ( nameField.value != '' )
+{
+alert( "You can't enter text in by hand. Use the link to the right." );
+nameField.value = savedValue;
+}
+else if ( markDirty != null )
+{
+markDirty();
+}
+
+if ( nameField.value == savedValue.value )
+{
+savedValue.value = nameField.value;
+}
+}
+</SCRIPT>
+
+<INPUT TYPE="HIDDEN" NAME="_1_1_76_79_1_ID" VALUE="[LL_FormTag_1_1_76_79_1 /]">
+<INPUT TYPE="HIDDEN" NAME="_1_1_76_79_1_SavedName" VALUE="[LL_FormTag_1_1_76_79_1_SavedName /]">
+
+<LABEL FOR="_1_1_76_79_1_Name"></LABEL>
+<INPUT CLASS="valueEditable" TYPE="TEXT" NAME="_1_1_76_79_1_Name" ID="_1_1_76_79_1_Name" VALUE="[LL_FormTag_1_1_76_79_1_SavedName /]" ALT="Select User" SIZE="23" ONCHANGE="KeepFieldSet_1_1_76_79_1( this, this.form._1_1_76_79_1_SavedName.value )">
+<A HREF="javascript:chooseUser_1_1_76_79_1()"><IMG SRC="img/guy_select.gif" ALT="Select User" BORDER="0"></A>
+</TD>
+</TR>
+[LL_LOOP_END_1_1_76 /]
+</TABLE>
+</TD>
+</TR>
+
+</TABLE>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<TABLE WIDTH="100%" CELLPADDING="0" CELLSPACING="0" BORDER="0" BACKGROUND="img/fon-table-header-gray.gif" STYLE="background-repeat: repeat-x;">
+<TR>
+<TD><IMG SRC="img/spacer.gif" HEIGHT="28" WIDTH="1"></TD>
+<TD ALIGN="LEFT">
+<INPUT CLASS="applyButton" TYPE="BUTTON" VALUE="Submit Request" NAME="IgnoreMe" ONCLICK="doFormSubmit( document.myForm );">
+<INPUT CLASS="resetButton" TYPE="RESET" VALUE="Reset">
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+
+</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+
+</TD>
+</TR>
+</TABLE>
+
+</FORM>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Passing Parameters</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="4">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-server-passparam.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Passing Data to a Script';
+          header.title2 = 'Passing Parameters';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID21926"></A>When calling a script you may explicitly pass any number of parameters. For example the following passes three parameters: <TT CLASS="literal">[LL_WEBREPORT_CALL NAME:myFunc PARM:1234:"a string with spaces":more_data /]</TT></P>
+<P><A NAME="TMPID21928"></A>Parameters containing spaces can be delimited with double or single quotes. The parameters are passed to the first function declared in the myFunc script. They appear as an Oscript List of values in the second parameter, after the Context Assoc. For example:</P>
+<DIV title="The following will return '1234-a string with spaces-more_data' to the reportview:" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF71"></A><B><IMG title="The following will return '1234-a string with spaces-more_data' to the reportview:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-34: The following will return <NOBR>1234-a string with spaces-more_data</NOBR> to the reportview:</B></P><A NAME="AEN20652"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_STARTSCRIPT NAME:myFunc /]
+function String anyName(Dynamic context, List args)
+  String s
+  s = args[1] + "-" + args[2] + "-" + args[3]
+  return s
+end
+[LL_WEBREPORT_ENDSCRIPT /]</PRE
+><IMG title="The following will return '1234-a string with spaces-more_data' to the reportview:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="The following example reportview illustrates how to access the data in the Context Assoc and also how to explicitly pass a parameter to a script" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF72"></A><B><IMG title="The following example reportview illustrates how to access the data in the Context Assoc and also how to explicitly pass a parameter to a script" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-35: The following example reportview illustrates how to access the data in the Context Assoc and also how to explicitly pass a parameter to a script</B></P>
+<P class="nr1"><A NAME="TMPID21935"></A>This report will display all the data from a data source regardless of how many columns that data source might return.</P><A NAME="AEN20656"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_STARTSCRIPT NAME:doRow /]
+Function String doRow (Dynamic c, List args)
+  Integer row, col
+  String s =''
+  row = Str.StringToInteger(args[1])
+  if isDefined(row)
+    for col=1 to length(c.data[1])
+      s+= Str.Format( '&lt;<I
+CLASS="varname"
+>TD</I
+>>%1&lt;<I
+CLASS="varname"
+>/TD</I
+>>', c.data[row][col])
+    end
+  end
+  return s
+end
+[LL_WEBREPORT_ENDSCRIPT /]
+
+[LL_WEBREPORT_STARTSCRIPT NAME:doRowHeader /]
+Function String doRowHeader (Dynamic c, List args)
+  String field
+  String s =''
+  List fields
+  if isDefined(c.data)  // check there is data
+    fields = RecArray.FieldNames(c.data)
+    for field in fields
+      s+= Str.Format( '&lt;<I
+CLASS="varname"
+>TD</I
+>>%1&lt;<I
+CLASS="varname"
+>/TD</I
+>>', field)
+    end
+  end
+  return s
+end
+[LL_WEBREPORT_ENDSCRIPT /]
+
+&lt;<I
+CLASS="varname"
+>TABLE</I
+>>
+&lt;<I
+CLASS="varname"
+>TR</I
+>>
+[LL_WEBREPORT_CALL NAME:doRowHeader /]
+&lt;<I
+CLASS="varname"
+>/TR</I
+>>
+
+[LL_WEBREPORT_STARTROW /]
+&lt;<I
+CLASS="varname"
+>TR CLASS="[LL_REPTAG_ROWNUM ODDEVEN:Browserow1:Browserow2 /]" VALIGN="CENTER" NOWRAP ALIGN="LEFT"</I
+>>
+[LL_WEBREPORT_CALL NAME:doRow PARM:[LL_REPTAG_ROWNUM /] /]
+&lt;<I
+CLASS="varname"
+>/TR</I
+>>
+[LL_WEBREPORT_ENDROW /]
+
+&lt;<I
+CLASS="varname"
+>/TABLE</I
+>></PRE
+><IMG title="The following example reportview illustrates how to access the data in the Context Assoc and also how to explicitly pass a parameter to a script" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

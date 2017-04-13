@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWDV100500-H-UGD-EN">
+<META PiXprocLocator="webdav">
+<META mancondkey="lleswbd-h-ugd"><title>Understanding WebDAV Clients on Windows XP</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wd-clientsonxp-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Using WebDAV for Authoring';
+          header.title2 = 'Understanding WebDAV Clients on Windows XP';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID617"></A>There are two separate WebDAV clients on Windows XP. While both clients let you drag-and-drop files and folders in Content Server from Windows Explorer, accessing WebDAV from Windows XP is a different experience, depending on which client you are using. The following are the WebDAV clients available on Windows XP:</P><A NAME="AEN592"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN593"></A><A NAME="TMPID624"></A><TT CLASS="LITERAL">WebDAV redirector</TT>, which is a file system driver that allows you to access WebDAV servers with UNC paths, like \\myhost\livelinkdav. To the rest of the system, the WebDAV server looks just like a network drive. You can map drive letters to it, and you can access your WebDAV server from applications that know nothing at all about WebDAV.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN600"></A><A NAME="TMPID631"></A><TT CLASS="LITERAL">WebFolders</TT>, which is a WebDAV client identical to the one provided in Windows 2000, Office 2003/2007/2010/2013. It allows you to browse your WebDAV server in Windows Explorer or Internet Explorer. Instead of letting you access to the WebDAV server with UNC paths, it uses WebDAV HTTP URLs.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF13">Working with the WebDAV Redirector</A></P>
+<P class="before-ul"><A NAME="TMPID639"></A>The following should be taken into consideration when choosing the WebDAV redirector as your WebDAV client:</P><A NAME="AEN612"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN613"></A><A NAME="TMPID644"></A>It provides WebDAV access to all applications.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN616"></A><A NAME="TMPID647"></A>It has bugs that inhibit its compatibility with many WebDAV servers. While WebDAV 3.1.0 includes explicit work-arounds whenever possible, certain sequences of operations may still fail and have to be retried.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN620"></A><A NAME="TMPID651"></A>When you open a document using the WebDAV redirector, the application accesses the document as if it were on a local disk or a network drive and does not know that the document is really in a remote location. This may cause inappropriate actions to be performed, like creating temporary files in the same directory.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN623"></A><A NAME="TMPID654"></A>Microsoft Office applications and some other third-party applications have good built-in WebDAV support. They can communicate with WebDAV servers using the HTTP URLs and know how to behave appropriately in these remote locations. For example, they will reserve a document when you are editing it. When you open a document with the WebDAV redirector, these features are not enabled because the application does not know that the document is located on a WebDAV server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN629"></A><A NAME="TMPID660"></A>When the WebDAV redirector is used, background operations, such as examining the contents of all the documents in a folder to generate thumbnail views, can cause poor response times because they must be performed across the network.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF14">Working with WebFolders</A></P>
+<P class="before-ul"><A NAME="TMPID663"></A>The following should be taken into consideration when choosing WebFolders as your WebDAV client:</P><A NAME="AEN635"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN636"></A><A NAME="TMPID667"></A>Although the WebFolders client does not provide WebDAV capabilities to all applications, it is a mature client with few bugs and integrates very well with Microsoft Office applications.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN639"></A><A NAME="TMPID670"></A>When you open a Microsoft Office document through WebFolders, WebFolders tells the application to open the HTTP URL. Because the application knows that the document is located on a WebDAV server, it will reserve it while you are editing it and will refrain from creating temporary files in the same folder.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN642"></A><A NAME="TMPID673"></A>Browsing using WebFolders is efficient. Because Windows Explorer knows that the folders are remote, it minimizes accesses to the folder contents to reduce network traffic. Operations that it would normally perform in the background, like examining the contents of all the documents in the folder to generate thumbnail views, are not performed by the WebFolders client.</P></LI></UL>
+<P><A NAME="TMPID674"></A>For most purposes, the WebFolder client is more appropriate than the WebDAV redirector for accessing WebDAV.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF15">How a WebDAV client is chosen</A></P>
+<P><A NAME="TMPID679"></A>When you open a Microsoft Office document for editing using the WebDAV Edit function from Content Server, the application is invoked with the HTTP URL in the same way that it would be invoked from the WebFolders client. The application knows that the document is remote and behaves appropriately in Content Server.</P>
+<P class="before-ul"><A NAME="TMPID683"></A>When you click a WebDAV link, activate a WebDAV Folder View from Content Server, or explicitly open a WebDAV location in Windows Explorer, Windows Explorer will use the WebDAV redirector if possible and convert the HTTP URL to a UNC path. You cannot explicitly tell Windows Explorer to use WebFolders instead, but there are situations in which it will choose WebFolders automatically:</P><A NAME="AEN659"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN660"></A><A NAME="TMPID691"></A>The WebDAV redirector only works with HTTP (not HTTPS) on the default port 80. When you connect to a folder on a secure server or a server that uses a different port, Windows Explorer uses the WebFolders client.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN663"></A><A NAME="TMPID694"></A>The WebDAV redirector is implemented by the WebClient service in Windows XP. If this service is disabled, the WebDAV redirector is not available for use, and Windows Explorer uses the WebFolders client instead.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF16">Disabling the WebClient Service</A></P>
+<P><A NAME="TMPID698"></A>The domain administrator can set up a script to disable the WebClient Service for all users. However, some applications may require the WebClient service for complete and proper operation. For example, the Microsoft Sharepoint Web Client explicitly requests the WebDAV redirector to generate its Explorer View of shared folders wherever possible. This view is unavailable if the WebClient service is disabled.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

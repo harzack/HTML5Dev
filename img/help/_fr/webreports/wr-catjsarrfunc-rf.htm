@@ -1,0 +1,181 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Référence des fonctions CAT:JSARRAY</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-catjsarrfunc-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'JSARRAY de catégories';
+          header.title2 = 'Référence des fonctions CAT:JSARRAY';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID13796"></A>Vous pouvez utiliser dans vos applications de production de rapports des fonctions supplémentaires présentées ici et permettant de récupérer des données de catégories. Ce guide de référence fournit des informations détaillées sur les fonctions, leurs paramètres et les types renvoyés, et il présente de simples exemples d'utilisation. Dans vos applications de production de rapports, ces fonctions sont très pratiques pour récupérer des données de catégories. </P>
+<DIV title="Utilisation simple et réelle de CAT:JSARRAY et de ses fonctions" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-CATJSARRFNC-EX"></A><B><IMG title="Utilisation simple et réelle de CAT:JSARRAY et de ses fonctions" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 1-8 : Utilisation simple et réelle de CAT:JSARRAY et de ses fonctions</B></P>
+<P class="nr1"><A NAME="TMPID13799"></A>Notez que cet exemple ne comporte pas de formatage de la sortie. Il montre aux utilisateurs comment accéder à des éléments clés de la structure de données et comment les afficher. L'ajout du formatage devrait être relativement simple. En outre, un LiveReport (non illustré) a été créé et lié à ce WebReport, qui récupère une liste de documents auxquels une catégorie a été appliquée. Dans cet exemple, le LiveReport récupère les colonnes DataID, Name et CreateDate du document. </P><A NAME="AEN13076"></A>
+<PRE 
+CLASS="screen"
+>&lt;style type="text/css"&gt;
+.note {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background: #ffc;
+            padding: 10px;
+            border: 1px solid #000;
+            z-index: 1;
+            width:300;
+            visibility: hidden;
+            font: 11px "Verdana", Arial, Helvetica, sans-serif;
+            color: #000;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+
+var theDivId;
+
+// simple function to make a DIV visible - this is where the category data will appear
+function showNote(event, noteid){
+	note=document.getElementById(noteid);
+	note.style.left=event.clientX + document.body.scrollLeft;
+	note.style.top=event.clientY + document.body.scrollTop;
+	note.style.visibility='visible';
+}
+
+// opposite to the above function, just hide the DIV
+function hideNote(event, noteid){
+	note=document.getElementById(noteid);
+	note.style.visibility='hidden';
+}
+
+// Function used to determine if the passed parameter is an array or not
+// Returns true if its an array, false if its not
+function isArray(obj) {
+   if (obj.constructor.toString().indexOf("Array") == -1)
+	  return false;
+   else
+	  return true;
+}
+
+// function that will populate the note with all category data associated with the node
+function showCatData(nodeId) {
+
+	theDivId = 'note' + nodeId;
+	theDiv = document.getElementById(theDivId);
+	theDiv.innerHTML = '';
+
+	// Retrieve category data structure for this particular node
+	var thisNode = cat_data.nodes[nodeId];
+
+	// Iterate thru the data strucutre to display all category fields and data
+	for (catid in thisNode) {
+
+		// Display the category name
+		theDiv.innerHTML += '&lt;TABLE&gt;&lt;TR&gt;&lt;TD CLASS="browseBoxHeader" WIDTH="100%"&gt;' + cat_data.getCatName(catid, nodeId)  + '&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;';
+
+			// cycle through the attributes
+			for ( attid in thisNode[catid].attr_data ) {
+
+				// just look at regular attributes and multi-value attributes
+				if (thisNode[catid].attr_data[attid].set == false){
+
+					// display the attribute name and corresponding value using the CAT:JSARRAY functions
+					theDiv.innerHTML += '&lt;b&gt;&lt;font color="#2B3856"&gt;' + cat_data.getAttrName(catid, attid, nodeId) + ':&lt;/font&gt;&lt;/b&gt; ';
+					theDiv.innerHTML += '&lt;font color="#5E5A80"&gt;' + cat_data.getAttrValue(catid, attid, nodeId)  + '&lt;/font&gt;';
+					theDiv.innerHTML += "&lt;br&gt;";
+
+				// Here we have a set or a multi-value set
+				} else {
+					// display the set name
+					theDiv.innerHTML += '&lt;b&gt;&lt;font color="#2B3856"&gt;' + cat_data.getAttrName(catid, attid, nodeId)  + '&lt;/font&gt;&lt;/b&gt; ';
+					theDiv.innerHTML += "&lt;br&gt;";
+
+					// cycle through the sets - one iteration for a regular set and multiple for multi-value sets
+					for ( row in thisNode[catid].attr_data[attid].attr_data ){
+
+						// cycle through the attributes in the set
+						for ( rowAttr in thisNode[catid].attr_data[attid].attr_data[row] ){
+
+							// Retrieve the value of the set attribute
+							var attrValue = cat_data.getAttrValue(catid, rowAttr, nodeId);
+							var theValue = "";
+
+							// Check to see how the data is wrapped
+							if ( isArray(attrValue) ) {
+
+								// Data is wrapped in an array. Return the value based on the row we are on. For example [ [row1 values], [row2 values], [row3 values], ... ]
+								theValue = attrValue[row];
+
+							} else {
+
+								// Just a single value is returned. For example A string, number, ... 
+								theValue = attrValue;
+
+							}
+
+							// display the attribute name and corresponding value within the set
+							theDiv.innerHTML += '&lt;b&gt;&lt;font color="#2B3856"&gt;' + cat_data.getAttrName(catid, rowAttr, nodeId)  + ':&lt;/font&gt;&lt;/b&gt; ';
+							theDiv.innerHTML += '&lt;font color="#5E5A80"&gt;' + theValue  + '&lt;/font&gt;';
+							theDiv.innerHTML += "&lt;br&gt;";
+
+						}
+					}
+				}
+			}
+
+		theDiv.innerHTML += "&lt;br&gt;";
+
+	}
+
+}
+
+&lt;/script&gt;
+
+&lt;table border=1&gt;
+&lt;tr&gt;
+	&lt;td&gt;&lt;b&gt;Name&lt;/b&gt;&lt;/td&gt;
+	&lt;td&gt;&lt;b&gt;Create Date&lt;/b&gt;&lt;/td&gt;
+	&lt;td&gt;&lt;b&gt;Cat data&lt;/b&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+[LL_WEBREPORT_STARTROW /]
+
+[LL_REPTAG=DataId CAT:JSARRAY /]
+
+&lt;tr&gt;
+	&lt;td&gt;[LL_REPTAG=Name /] [LL_REPTAG=DataId LLURL:FUNCTIONMENU /]&lt;/td&gt;
+	&lt;td&gt;[LL_REPTAG=CreateDate DATE:SHORT /]&lt;/td&gt;
+	&lt;td&gt;
+		&lt;IMG height=14 width=14 SRC="[LL_REPTAG_SUPPORTDIR /]webattribute/16category.gif" BORDER="0" STYLE="decoration:none;" ONMOUSEOVER="showNote(event, 'note[LL_REPTAG=DataId /]');showCatData([LL_REPTAG=DataId /]);return false;" ONMOUSEOUT="hideNote(event, 'note[LL_REPTAG=DataId /]');return false;"&gt;
+		&lt;div id="note[LL_REPTAG=DataId /]" class="note" ONMOUSEOUT="hideNote(event, 'note[LL_REPTAG=DataId /]');return false;"&gt;&lt;nobr&gt;&lt;center&gt;Aquiring Category Data&lt;/center&gt;&lt;/nobr&gt;&lt;br&gt;&lt;br&gt;&lt;nobr&gt;&lt;center&gt;please wait&lt;/center&gt;&lt;/nobr&gt;&lt;/div&gt;
+	&lt;/td&gt;
+&lt;/tr&gt;
+
+[LL_WEBREPORT_ENDROW /]
+
+&lt;/table&gt;</PRE
+>
+<P><A NAME="TMPID13801"></A><B CLASS="highlight">Exemple de sortie produite par le code ci-dessus en utilisant les données du premier exemple :</B></P>
+<P><IMG SRC="image035.png"></P><IMG title="Utilisation simple et réelle de CAT:JSARRAY et de ses fonctions" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

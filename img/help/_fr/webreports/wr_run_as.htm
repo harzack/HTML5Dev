@@ -1,0 +1,51 @@
+<HTML>
+<!-- wr_run_as.htm -->
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Run As</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_run_as.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Run As';
+	header.draw();
+			  
+	function makeTagWindow (posn) {
+		var url = 'wr_run_as.htm';
+		var tw = window.open(url,'ContentTagBrowser',"width=800,height=665,resizable=yes,menubar=no,scrollbars=yes,toolbar=no");
+	}
+</SCRIPT>
+
+<p class="body">  
+This feature enables a WebReport developer to specify which user the WebReport should run as.  Everytime the report is run, it will be executed using the specified user's permissions and UserID.
+</p>
+
+<p class="body">As an example, any files that the Run As user doesn't have permissions to "See" will not show up in the output, regardless of who executes the WebReport.  Each WebReport can have its own "Run As" setting, which can be set on the Specific tab of any WebReport (Function Menu > Properties > Specific).  For security reasons, this feature can only be enabled by a user with Admin privileges.  
+</p>
+
+<p class="gui"><u>Enabling the Feature</u><p>
+
+<p class="body">
+On the Specific tab of the WebReport, click the user icon (<img src="../../../guy_select.gif" alt="User select icon" width="16px" height="16px" border="0">) next to the "Run As" field:<p>
+<img src="specifictab.jpg" border="0" width="578px" height="73px">
+</p>
+
+<p class="body">
+In the User selection window, choose the user that will be used to run this report.  Click the Update button to save your changes.
+</p>
+
+<p class="body">
+The next time this report is run, it will be run as if the user in the Run As field executed it.  All permissions and any tags within the WebReport will be run like it was executed by the Run As user.  This includes tags like [LL_REPTAG_USERID /] - no matter who runs the report, this tag will always resolve to the USERID of the Run As user for that WebReport.
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

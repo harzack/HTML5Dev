@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWDV100500-H-AGD-FR">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webdav">
+<title>Configuration de l'authentification Kerberos</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wd-configkerbauth-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration Authentification WebDAV';
+          header.title2 = 'Configuration de l\'authentification Kerberos';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID707"></A>L'authentification Kerberos correspond à la norme MIT V5 Kerberos. Il s'agit de la méthode d'authentification réseau par défaut sur les systèmes Windows 2000 ou ultérieurs. Elle est également utilisée sur les hôtes UNIX.</P>
+<P><A NAME="TMPID708"></A>Là où l'authentification Basique/Content Server demande que le client envoie un nom d'utilisateur et un mot de passe dans sa demande HTTP vers un serveur cible, un client utilisant l'authentification Kerberos envoie des jetons dans le cadre de sa demande au serveur cible. Le client communique avec un intermédiaire (le serveur Kerberos) pour obtenir ses jetons et le serveur cible communique avec le serveur Kerberos pour les vérifier. Le service d'annuaire Active Directory Windows 2000, 2003 ou ultérieur (contrôleur de domaine Windows) ou un autre serveur Kerberos (par exemple, sur un hôte UNIX) peut contenir le serveur Kerberos.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF15"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes : </B></P><A NAME="AEN699"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN700"></A><A NAME="TMPID713"></A>La configuration Kerberos nécessite que le module WebDAV possède un compte de service dans Active Directory, ce qui fait du service WebDAV le destinataire des demandes HTTP envoyées à son serveur. Sur les serveurs Windows, le compte d'ordinateur du serveur représente généralement ce compte de service.?Il faut toutefois savoir qu'IIS utilise également ce compte pour effectuer sa propre authentification. C'est pourquoi OpenText déconseille d'utiliser l'authentification WebDAV Kerberos sur les serveurs Windows intégrant IIS. Il est préférable d'utiliser le module Directory Services.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN706"></A><A NAME="TMPID719"></A>Le module WebDAV ne prend pas en charge l'authentification Kerberos pour les configurations avec BEA WebLogic Server, Apache Tomcat Server ou Sun Java System Application Server. OpenText a déterminé que ce serveur, utilisé dans ce type de configuration, est défaillant dans l'une de ses fonctions principales.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID722"></A>Avec l'authentification Kerberos, les clients Microsoft tels qu'Internet Explorer peuvent accéder aux ressources WebDAV disposant de la fonction d'authentification unique (SSO, Single Sign-On). SSO réduit la fréquence à laquelle les utilisateurs doivent fournir leur nom d'utilisateur et leur mot de passe.</P>
+<P class="before-ul"><A NAME="TMPID723"></A>Sur les clients Microsoft, SSO nécessite la configuration suivante :</P><A NAME="AEN712"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN713"></A><A NAME="TMPID726"></A>Les clients doivent s'exécuter sous Windows 2000 Professionnel SP2 ou version ultérieure.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN715"></A><A NAME="TMPID728"></A>Internet Explorer doit être correctement configuré.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN717"></A><A NAME="TMPID730"></A>Tous les utilisateurs doivent être membres d'un domaine Active Directory.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN719"></A><A NAME="TMPID732"></A>WebDAV doit disposer d'un compte de service approprié dans ce même domaine ou dans un domaine accrédité.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID734"></A>Pour configurer l'authentification des utilisateurs avec Kerberos dans WebDAV, vous devez :</P><A NAME="AEN724"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN725"></A><A NAME="TMPID738"></A>configurer le serveur Kerberos en créant un compte de service ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN727"></A><A NAME="TMPID740"></A>configurer Content Server ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN730"></A><A NAME="TMPID743"></A>configurer Internet Explorer.</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF16"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID745"></A><B CLASS="note">Note : </B><BR>Pour des informations détaillées sur la configuration de l'authentification Kerberos, voir « Configuring Kerberos Authentication (Configuration de l'authentification Kerberos) » dans <I CLASS="emphasis">OpenText WebDAV Installation and Administration Guide</I> (Manuel d'installation et d'administration de OpenText WebDAV).</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wd-configkerbauth1-p.htm" revision="">Pour activer l'authentification Kerberos</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

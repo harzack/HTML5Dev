@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Testing or Repairing Known Database Issues</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-dbadmin-testreptsk-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Maintaining an Existing Database';
+          header.title2 = 'Testing or Repairing Known Database Issues';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID14805"></A>The <B CLASS="guilabel">Test or Repair Known Database Issues</B> page may contain links to Content Server database test and repair utilities. These utilities can be added by hotfixes that address specific problems. Any correction utilities should be used with caution, and only once you have confidence that they are targeted at specific errors detected during Database Verification.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-DBADMIN-IDCC-BG">Identify Document Class Cycles</A></P>
+<P><A NAME="TMPID14810"></A>Dependency cycles can be created, accidentally, in the <B CLASS="guilabel">Document Class</B> definitions that are used to build Facets. These cycles can cause recursion problems when building Document Class facets, and can cause an error indicating that the maximum recursion limit has been exceeded.</P>
+<P><A NAME="TMPID14812"></A>The <B CLASS="guilabel">Identify Document Class Cycles</B> option has been included on the <B CLASS="guilabel">Test or Repair Known Database Issues </B> page to check for these dependency cycles.</P>
+<DIV title="To check for dependency cycles in document class definitions:" CLASS="procedure">
+<P><B><A NAME="AEN13730ttl"></A>To check for dependency cycles in document class definitions:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID14818"></A>On the Content Server admin page, under <B CLASS="guilabel">Database Administration</B>, click <B CLASS="guilabel">Maintain Current Database</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14823"></A>On the <B CLASS="guilabel">Maintain Current Database</B>, click <B CLASS="guilabel">Test or Repair Known Database Issues</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14827"></A>On the <B CLASS="guilabel">Test or Repair Known Database Issues</B> page, click <B CLASS="guilabel">Identify Document Class Cycles</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14831"></A>The <B CLASS="guilabel">Content Server Database Verification Report</B> page appears. It will either confirm that the diagnostic test found no document class cycles, or it will inform you of the number of document class cycles found in your database.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14835"></A>If document class cycles have been found, select the links provided in the report to fix the records in the database:</P>
+<OL CLASS="substeps" TYPE="a">
+<LI>
+<P class="nr1"><A NAME="TMPID14838"></A>Identify which relationship should be removed for each loop. Each link will take you to the page where the relationship is defined. You will only need to remove one.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14840"></A>Next to the relationship you need to remove, either clear the associated box, or click '-'.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14842"></A>Click <B CLASS="guilabel">Update</B>.</P></LI></OL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14847"></A>Re-run the <B CLASS="guilabel">Identify Document Class Cycles</B> diagnostic tool.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Portée d'un script et appel d'un script à partir d'un autre script</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-server-scrsco.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Ecriture de script côté serveur';
+          header.title2 = 'Portée d\'un script et appel d\'un script à partir d\'un autre script';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID17380"></A>WebReports prend en charge la définition de scripts multiples dans un même affichage de rapport, sous réserve que le nom de chaque script soit unique au sein de l'affichage de rapport. Un script peut appeler un autre script dans le même affichage de rapport, mais non un script défini dans un autre affichage de rapport. Il est donc inutile que les noms de scripts soient uniques dans tous les affichages de rapports de Content Server. </P>
+<P><A NAME="TMPID17383"></A>Notez que des fonctions oscript multiples peuvent également être déclarées dans la même section de script. Par exemple, entre <TT CLASS="literal">[LL_WEBREPORT_STARTSCRIPT /]</TT> et <TT CLASS="literal">[LL_WEBREPORT_ENDSCRIPT /]</TT>. Les fonctions présentes dans la même section de script peuvent s'appeler l'une l'autre. Cependant, seule la première fonction déclarée dans une section de script peut être appelée à partir d'une autre section de script ou à partir de l'affichage de rapport au moyen de <TT CLASS="literal">[LL_WEBREPORT_CALL /]</TT>. Une section de script peut être considérée comme une fonction oscript distincte dans le générateur Content Server qui se comporte de la même façon sous cet aspect. Les lecteurs qui connaissent JavaScript peuvent remarquer que les règles décrites ici sont très différentes de celles s'appliquant à JavaScript. </P>
+<P><A NAME="TMPID17388"></A>Pour appeler un autre script dans l'affichage de rapport, placez un point « . » juste devant le nom de la section de script. </P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN16643"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID17391"></A>Cela est illustré dans l'exemple suivant, un peu forcé, qui effectue un échappement HTML sur chaque élément de donnée dans la colonne <TT CLASS="literal">Name</TT>, puis les concatène en les séparant par des points-virgules : </P><A NAME="AEN16646"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_STARTSCRIPT NAME:escape /]
+function String escape(String input = '')
+   return Web.EscapeHTML(input)
+end
+[LL_WEBREPORT_ENDSCRIPT /]
+
+[LL_WEBREPORT_STARTSCRIPT NAME:Main /]
+function String anyName(Dynamic context)
+   String s
+   Integer i
+   if isDefined (context.data)  // check there is a data source
+      for i = 1 to length (context.data)
+         s += .escape(context.data[i].Name) + '; '
+      end
+   end
+   return s
+end
+[LL_WEBREPORT_ENDSCRIPT /]
+
+[LL_WEBREPORT_CALL NAME:Main /]</PRE
+>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Script Scope and Calling a Script From Within a Script</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-server-scrsco.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Server Side Scripting';
+          header.title2 = 'Script Scope and Calling a Script From Within a Script';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID22113"></A>WebReports supports defining multiple scripts within the same reportview so long as each script has a unique name within the reportview. A script can call another script from the same reportview, but not a script defined in another reportview. Therefore script names do not need to be unique across all reportviews in Content Server.</P>
+<P><A NAME="TMPID22116"></A>Note that multiple oscript functions may also be declared within a single script block. For example, between <TT CLASS="literal">[LL_WEBREPORT_STARTSCRIPT /]</TT> and <TT CLASS="literal">[LL_WEBREPORT_ENDSCRIPT /]</TT>. Functions within the same script block may call each other. However, only the first function declared in any script block can be called from another script block, or from the reportview using <TT CLASS="literal">[LL_WEBREPORT_CALL /]</TT>. One can think of a script block as a discrete oscript feature within the Content Server builder which behaves the same way in this respect. Readers familiar with JavaScript should note that the rules described here are quite different from those that apply to JavaScript.</P>
+<P><A NAME="TMPID22121"></A>To call another script in the reportview simply preface the name of the script block with a “.” dot.</P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN20843"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID22124"></A>This is illustrated in the following, somewhat contrived, example that performs an HTML escape on every item of data in the <TT CLASS="literal">Name</TT> column and concatenates them together separated by semi colons:</P><A NAME="AEN20846"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_STARTSCRIPT NAME:escape /]
+function String escape(String input = '')
+   return Web.EscapeHTML(input)
+end
+[LL_WEBREPORT_ENDSCRIPT /]
+
+[LL_WEBREPORT_STARTSCRIPT NAME:Main /]
+function String anyName(Dynamic context)
+   String s
+   Integer i
+   if isDefined (context.data)  // check there is a data source
+      for i = 1 to length (context.data)
+         s += .escape(context.data[i].Name) + '; '
+      end
+   end
+   return s
+end
+[LL_WEBREPORT_ENDSCRIPT /]
+
+[LL_WEBREPORT_CALL NAME:Main /]</PRE
+>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

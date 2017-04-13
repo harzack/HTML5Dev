@@ -1,0 +1,322 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Setting Extractor General Settings</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-setextrgenset-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Data Flow Processes';
+          header.title2 = 'Setting Extractor General Settings';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3904"></A>An Enterprise Extractor process is a data flow process that extracts objects and metadata from Content Server and writes it to a data flow, to update the Content Server index.</P>
+<P><A NAME="TMPID3907"></A>You configure most Enterprise Extractor settings on the <B CLASS="guilabel">Set Extractor General Settings</B> page, which controls how objects are added to the search index.  There are other settings that may affect Extractor behavior, such as MIME Type exclusions that are defined in the <TT CLASS="literal">opentext.ini</TT> file.</P>
+<P><A NAME="TMPID3910"></A>The <B CLASS="guilabel">Set Extractor General Settings</B> page contains the following controls:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3282"></A>
+<TH SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Element</TH>
+<TH SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP"><B CLASS="highlight">General Settings</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Log Level</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Specifies the logging level for Enterprise Extractor data extraction and indexing. The logging data is written to the Content Server thread logs:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3931"></A><B CLASS="guilabel">Normal</B> – Specifies the Default logging level, which means that minimal Extractor progress is logged.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3934"></A><B CLASS="guilabel">Information</B> – Specifies the Verbose logging level.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3937"></A><B CLASS="guilabel">Detailed</B> – Specifies the Debug logging level, which produces a detailed log for debugging purposes.</P></TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF87"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3940"></A><B CLASS="note">Note: </B><BR>Content Server Debug Level must be 2 or greater for Extractor logging to function.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Maximum Items per Extraction</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Specifies the maximum number of search index update requests the Extractor will process when each individual type of iterator runs:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3948"></A><B CLASS="guilabel">Re-extract</B> – Handles extracting Enterprise data in order to create the initial search index, or when a re-index operation has been requested using the Dataflow Manager's Maintenance page for the Enterprise data source.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3951"></A><B CLASS="guilabel">Targeted Updates</B> – Handles updating Enterprise data in a focused manner, where only data that pertains to a change is extracted, rather than all. For example, extracting only the Relevance scores for an item, when that information changes. OpenText Customer Support recommends you leave this type set at <B CLASS="guilabel">Normal Extraction</B>, to ensure an updated index.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3956"></A><B CLASS="guilabel">Add / Modify</B> – Handles extracting Enterprise data for newly added or updated items. OpenText Customer Support recommends you leave this type set at <B CLASS="guilabel">Normal Extraction</B>, to ensure an updated index.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3961"></A><B CLASS="guilabel">Initiated Workflows</B> – Handles extracting the task information for Workflows steps that are in progress. This information exists in the 	search index for the duration of the Workflow steps, then is automatically removed.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3964"></A><B CLASS="guilabel">All others</B> – The Extraction Types in Content Server are extensible. This is a catch-all setting for any older or optional types that may not appear on this page.</P></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">For each type of iterator use the drop-down list to select a processing option:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3970"></A><B CLASS="guilabel">Normal Extraction</B> – Extraction proceeds as normal.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3973"></A><B CLASS="guilabel">Pause Extraction</B> – Extraction for this iterator will not occur. Items in the iterator's queue will remain, and the queue will be allowed to grow.</P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3976"></A><B CLASS="tip">Tip: </B><BR>This option should only be used temporarily, for example, to allow other iterators to process more data.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3978"></A><B CLASS="guilabel">Discard Indexing Requests</B> – Extraction for this iterator will not occur. 	Items in the iterator's queue will be cleared periodically to prevent it from filling up. (Not available for <B CLASS="guilabel">Re-extract</B>.)</P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3982"></A><B CLASS="tip">Tip: </B><BR>This option can be used on an ongoing basis.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The default for each is <TT CLASS="literal">5000</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Maximum Versions to Extract</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Specifies the  maximum number of versions per document that should be processed in an extraction request.  It is possible that more versions may be in the search index.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF88"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3990"></A><B CLASS="note">Note: </B><BR>If this setting is too low, it may lead to incorrect information stored for older versions, most notably two different versions being marked as the current version. The extraction of older versions is required in order to update common information across all versions of items, like modified dates, user information, and the current version. Values below <TT CLASS="literal">10</TT> are not recommended.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Include Access Control Lists</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">When selected, Access Control List (ACL) permission information is added to the dataflow and search index.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF89"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3997"></A><B CLASS="note">Note: </B><BR>Including ACL information is generally not recommended. ACL extraction reduces indexing performance, and usually does not provide value for typical installations.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">EFS Object Content</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">There are two ways that objects stored in the Enterprise File System can be presented to the Document Conversion Server for indexing:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4004"></A>allowing DCS to directly read from the EFS is usually faster. The files are not deleted.  Best practice is to ensure that the Admin Server has <I CLASS="emphasis">read-only</I> permission to the EFS.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4007"></A>embedding a copy of the file is preferred when security must be maximized, or when DCS does not have read access to the EFS</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Non-EFS Object Content</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The most common non-EFS storage systems are Enterprise Library or Archive Server. Objects extracted from these sources for indexing by DCS can be embedded in iPool messages, or placed in a temporary work area.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">If selecting a temporary work area, the <TT CLASS="literal">File Path</TT> specified must be accessible by each Admin Server, and Content Server, and the Document Conversion Server. For details, see <span><A href="../websystemobj/wbs-setextrgenset-rf.htm">Passing object content through data flows</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP"><B CLASS="highlight">IPool Limits</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Total Size</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Specifies a limit, in MB, on the maximum total size for all embedded object contents included in an IPool. This setting does not specify an IPool size limit for the iPool message itself.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">IPools can have a total size of more than 2 GB, and the DCS can process IPool messages that are larger than 2 GB on 64–bit systems.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Any positive integer is valid, and there is no maximum value for this parameter. The default is <TT CLASS="literal">1999</TT> MB.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF90"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID4027"></A><B CLASS="note">Note: </B><BR>If an object that exceeds the limit is written to the IPool, the Extractor closes the IPool message and proceeds to the next message.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Single Item Content Size</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Specifies a limit, in MB, on the maximum size for single embedded object contents that will be written to an IPool. This setting does not specify an IPool size limit for the IPool message itself.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">IPools can have a total size of more than 2 GB, and the DCS can process individual items in IPool messages that are larger than 2 GB on 64–bit systems.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Any positive integer is valid, and there is no maximum value for this parameter. The default is <TT CLASS="literal">1024</TT> MB.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF91"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID4036"></A><B CLASS="note">Note: </B><BR>If an object that exceeds the limit is written to the IPool, the Extractor closes the IPool message, and proceeds to the next message.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Number of Items</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Specifies the maximum number of extracted items that the Enterprise Extractor process groups into a single IPool message. IPool messages contain the information that an index needs to remain up-to-date. For example, requests to update or delete indexed items. Typically, values in the range of <TT CLASS="literal">100</TT> to <TT CLASS="literal">500</TT> are recommended.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">If you set the number of items too low, the overhead for IPool management and indexing transactions can slow down the indexing process. If this value is too high, the size limits for IPool messages are likely to be exceeded.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Exclusion Settings</B></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">There are a number of settings available to control which objects should be extracted and represented in the search index. Objects that are excluded will have neither their content nor metadata indexed.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The number of Objects currently excluded are shown for each type.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Item Types</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Click the <B CLASS="guilabel">edit / review list</B> link to access <span><A href="../websystemobj/wbs-confextrexclitm-p.htm">Configuring Excluded Item Types</A></span> to see or add other items, and for more information about item types.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Volume Types</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Click the <B CLASS="guilabel">edit / review list</B> link to access <span><A href="../websystemobj/wbs-confextrexclvol-p.htm">Configuring Excluded Volume Types</A></span> to see or add other items, and for more information about volume types.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Locations</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Click the <B CLASS="guilabel">edit / review list</B> link to access <span><A href="../websystemobj/wbs-confextrexclloc-p.htm">Configuring Excluded Locations</A></span> to see or add other locations, and for more information about locations.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Rendition Types</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Click the <B CLASS="guilabel">edit / review list</B> link to access <span><A href="../websystemobj/wbs-confextrexclrend-p.htm">Configuring Rendition Types</A></span> to see or add other rendition types, and for more information about rendition types.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF92"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID4075"></A><B CLASS="note">Note: </B><BR>This setting is only displayed when a Renditions module is installed on your Content Server system.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Statistics Gathering Settings</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Enable Statistics Gathering</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">When selected, information about the Enterprise Extractor data extraction and indexing  processes is collected as they are running. Statistics Gathering is enabled by default. This information will be available on the <B CLASS="guilabel">Indexing Data Flow Performance Overview</B> page. For details, see <span><A href="../websystemobj/wbs-confextrexclperf-p.htm">Monitoring Extractor Performance</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">Days to Keep Statistics</TD>
+<TD SCOPE="COL" WIDTH="250" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Specifies the number of days over which to collect data. The default is <TT CLASS="literal">7</TT> days.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-setextrgenset-rf.htm" revision="">Passing object content through data flows</A></p></li>
+<li><p><A  href="../websystemobj/wbs-setextrgenset-p.htm" revision="">To Set Extractor General Settings</A></p></li>
+<li><p><A  href="../websystemobj/wbs-confextrexclitm-p.htm" revision="">Configuring Excluded Item Types</A></p></li>
+<li><p><A  href="../websystemobj/wbs-confextrexclvol-p.htm" revision="">Configuring Excluded Volume Types</A></p></li>
+<li><p><A  href="../websystemobj/wbs-confextrexclloc-p.htm" revision="">Configuring Excluded Locations</A></p></li>
+<li><p><A  href="../websystemobj/wbs-confextrexclrend-p.htm" revision="">Configuring Rendition Types</A></p></li>
+<li><p><A  href="../websystemobj/wbs-confextrexclperf-p.htm" revision="">Monitoring Extractor Performance</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

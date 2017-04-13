@@ -1,0 +1,232 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESRCM100500-H-UGD-EN">
+<META PiXprocLocator="recman">
+<title>Managing Records Series Identifier Schedules</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/renditions/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'rm-manrsischedule-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Retaining And Disposing of Electronic Records';
+          header.title2 = 'Managing Records Series Identifier Schedules';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1634"></A>RSI schedules help you to design the lifecycle of an object. You can create an RSI schedule for RM Classifications or RM managed objects. Once you create an RSI schedule, you can edit the RSI schedule's properties or delete the RSI schedule from the RSI.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF25"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1636"></A><B CLASS="NOTE">Note: </B><BR>You cannot edit an IRCH schedule in Content Server.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID1638"></A>If an IRCH Retention Manager import has been performed, you can apply an IRCH schedule to an RSI.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF26"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1640"></A><B CLASS="NOTE">Note: </B><BR>The Records Manager can disable the <B CLASS="GUILABEL">Maximum Retention</B> field that appears when you apply a schedule to a classified item. If it is disabled, the field will not appear on Disposition searches and for RSI Schedules.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID1642"></A>The following sections describe the processes and rules for creating an RSI Schedule.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="RMCLASSDEFAULTPROCESS">Default Processes for Classified Objects and RM Classifications</A></P>
+<P class="before-ul"><A NAME="TMPID1644"></A>When you apply a schedule to a classified item, the possible default processes are:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1649"></A><A NAME="TMPID1647"></A>Delete Electronic Format</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1651"></A><A NAME="TMPID1649"></A>Destroy </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1653"></A><A NAME="TMPID1651"></A>Export </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1655"></A><A NAME="TMPID1653"></A>Change Status</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1657"></A><A NAME="TMPID1655"></A>Mark Official </P>
+<P CLASS="otModuleHide if-llesrnd-h-ugd-showblock" id="TMPID1656"><A NAME="TMPID1656"></A>You can also select the <B CLASS="GUILABEL">Make Rendition</B> check box for the <B CLASS="GUILABEL">Mark Official</B> action to create a Rendition of the item when it is marked official.</P></LI>
+<LI class="otModuleHide if-llesrnd-h-ugd-showblock vlli" >
+<P class="nr1"><A NAME="AEN1662"></A><A NAME="TMPID1660"></A>Make Rendition</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1664"></A><A NAME="TMPID1662"></A>Update Storage Provider</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF27"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1664"></A><B CLASS="NOTE">Note: </B><BR>This option places an entry into one of the storage provider tables to reevaluate the storage provider rules for the object, which then determines whether the object needs to move to a new storage provider. The option is only available if the Storage Provider module is installed.</P>
+<P><A NAME="TMPID1665"></A>The Update Storage Provider will queue the objects in the Content Move module to reevaluate them and move them to a different storage device. For example, if you provide a rule that says any records with an INA (inactive) status get moved to Storage Provider A, when you process the results of a disposition search, the items with the INA status will be moved to Storage Provider A. However, if there is another rule with a higher priority set on the document you are attempting to move, that rule is obeyed and the document will not be moved. You should always check the order and priority of the rules set up for Content Move. For more information about configuring storage providers and rules, see <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-flexstorman-so" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-flexstorman-so.htm">Storage Providers and Storage Management</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-flexstorman-so" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P class="before-ul"><A NAME="TMPID1667"></A>When you apply a schedule to an RM Classification, the possible default processes are:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1672"></A><A NAME="TMPID1670"></A>Destroy</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1674"></A><A NAME="TMPID1672"></A>Export</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1676"></A><A NAME="TMPID1674"></A>Close</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1678"></A><A NAME="TMPID1676"></A>Change Status</P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF28"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1678"></A><B CLASS="NOTE">Note: </B><BR>When you choose <I CLASS="EMPHASIS">Delete Electronic Format</I>, <I CLASS="EMPHASIS">Export</I>, <I CLASS="EMPHASIS">Close</I>, <I CLASS="EMPHASIS">Update Storage Provider</I>, <I CLASS="EMPHASIS">Mark Official</I>, or <I CLASS="EMPHASIS">Change Status</I> as the action to perform, a list of available Status codes appear. When you select a new status code, it will be applied to the object after it is deleted, exported, or closed. The new status appears for the item on the <B CLASS="GUILABEL">Specific</B> tab and the <B CLASS="GUILABEL">Record Detail</B> tab of the item on which the action was performed. If you chose Change Status as the action to perform, you must choose a new status.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF29">RSI Rule Types</A></P>
+<P class="before-ul"><A NAME="TMPID1688"></A>You can base an RSI schedule on one of the following five rule types:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1693"></A><A NAME="TMPID1691"></A><B CLASS="GUILABEL">Calculated Date</B>, which lets you create an RSI schedule that uses a <A HREF="rm-manrsischedule-bg.htm#CALCDATE">specified date</A> and period to calculate the retention period. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1697"></A><A NAME="TMPID1695"></A><B CLASS="GUILABEL">Calendar Calculation</B>, which lets you create an RSI schedule that uses a <A HREF="rm-manrsischedule-bg.htm#CALCDATE">specified date</A> and definition of year end to calculate the retention period. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1701"></A><A NAME="TMPID1699"></A><B CLASS="GUILABEL">Event Based</B>, which lets you create an RSI schedule that uses a specified event condition to calculate the retention period. You cannot create Event Based RSI Schedules for RSIs that have a Fixed Retention period specified. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1704"></A><A NAME="TMPID1702"></A><B CLASS="GUILABEL">Fixed Date</B>, which lets you create an RSI schedule that uses a specified fixed date to calculate the retention period.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1707"></A><A NAME="TMPID1705"></A><B CLASS="GUILABEL">Permanent</B>, which lets you create an RSI schedule with no associated action to perform.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CALCDATE">Calculated Date and Calendar Calculation Rule Types</A></P>
+<P class="before-ul"><A NAME="TMPID1708"></A>The date types you can choose for Calculated Date and Calendar Calculation depend on whether you create an RSI Schedule for RM Classifications or classified objects.</P>
+<P><B>For RM Classifications, the following date types are available:</B></P>
+<UL title="For RM Classifications, the following date types are available:">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1714"></A><A NAME="TMPID1712"></A><B CLASS="GUILABEL">Category Date</B>, which allows you to use the date attributes specified by a Category that you choose. If you choose <B CLASS="GUILABEL">Category Date</B> as the date option, you must click the <B CLASS="GUILABEL">Select Category</B> link that appears to choose a Category.  If the Category has date attributes, a list of the date attribute names appears; if there are no date attributes for the selected Category, you will receive a message stating that the selected Category does not contain date attributes. You must choose a Category with date attributes to continue.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1719"></A><A NAME="TMPID1717"></A><B CLASS="GUILABEL">Create Date</B>, which uses the date the object was created.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1722"></A><A NAME="TMPID1720"></A><B CLASS="GUILABEL">Last Addition Date</B>, which uses the date the last time a managed object was added to the RM Classification. If the RSI schedule is based on an RM Classification, this option does not appear.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1725"></A><A NAME="TMPID1723"></A><B CLASS="GUILABEL">Modification Date</B>, which uses the date the object was last modified.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1728"></A><A NAME="TMPID1726"></A><B CLASS="GUILABEL">Status Date</B>, which uses the date based on status date of the object.</P></LI></UL>
+<P><B>For classified objects, the following date types are available:</B></P>
+<UL title="For classified objects, the following date types are available:">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1733"></A><A NAME="TMPID1731"></A><B CLASS="GUILABEL">Create Date</B>, which uses the date the object was created</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1736"></A><A NAME="TMPID1734"></A><B CLASS="GUILABEL">Last Version Added Date</B>, which uses the date the last version of the object was added</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1739"></A><A NAME="TMPID1737"></A><B CLASS="GUILABEL">Modification Date</B>, which uses the date the object was last changed</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1742"></A><A NAME="TMPID1740"></A><B CLASS="GUILABEL">Physical Container From Dates</B>, which uses the From date of a Physical Object container</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1745"></A><A NAME="TMPID1743"></A><B CLASS="GUILABEL">Physical Container To Dates</B>, which uses the To date of a Physical Object container</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1748"></A><A NAME="TMPID1746"></A><B CLASS="GUILABEL">Record Date</B>, which uses the date the Records Management item was created by default. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1751"></A><A NAME="TMPID1749"></A><B CLASS="GUILABEL">Reserved Date</B>, which uses the date the item was last reserved</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1754"></A><A NAME="TMPID1752"></A><B CLASS="GUILABEL">Status Date</B>, which uses the date specified by the status</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1757"></A><A NAME="TMPID1755"></A><B CLASS="GUILABEL">Version Create Date</B>, which uses the date a version was created. This date can be used in conjunction with the <I CLASS="EMPHASIS">Purge Superseded Versions</I> option, and allows versions older than this date to be purged after a specified amount of time. The Purge Versions action is the only action available with this date type.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF30"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1759"></A><B CLASS="NOTE">Note: </B><BR>The Purge Superseded Versions option only appears if it is enabled in the Records Management workspace.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P><A NAME="TMPID1760"></A>When you create any of these types of RSI schedules, you can specify a Fixed Retention period, which prevents records from being destroyed prior to the specified Fixed Retention period. Only one Fixed Retention schedule per RSI is allowed. </P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF31"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1762"></A><B CLASS="NOTE">Note: </B><BR>If your administrator has not enabled Fixed Retention, the Fixed Retention section will not appear in the Retention Schedule creation wizard. You can only enable Fixed Retention for Classified objects.</P>
+<P><A NAME="TMPID1763"></A>If you enable Fixed Retention for Classified objects and the schedule type is <I CLASS="EMPHASIS">permanent</I>, the item can <I CLASS="EMPHASIS">never</I> be deleted. All other schedule types allow for deletion, but not prior to the specified date in the future.</P>
+<P><A NAME="TMPID1766"></A>You cannot mix Fixed Retention schedules and Event Based schedules.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="RSISCHEDULEACTIONS">RSI Schedule Actions </A></P>
+<P class="before-ul"><A NAME="TMPID1768"></A>On the RSI Schedule Action to Perform page, you must specify a default process for what happens to RM Classifications or classified objects when the dates or times specified in the RSI Schedule are met. The default processes are:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1773"></A><A NAME="TMPID1771"></A><B CLASS="GUILABEL">None</B>, which does not define a default action process.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1776"></A><A NAME="TMPID1774"></A><B CLASS="GUILABEL">Delete Electronic Format</B>, which deletes the electronic format.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1779"></A><A NAME="TMPID1777"></A><B CLASS="GUILABEL">Destroy</B>, which destroys the objects.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1782"></A><A NAME="TMPID1780"></A><B CLASS="GUILABEL">Export</B>, which exports the objects. By default, when a Disposition action of Export is performed, only the current version of the item is exported. You can change this setting to include all versions in the export action on the Disposition Search’s <B CLASS="GUILABEL">Settings</B> tab.</P>
+<P CLASS="otModuleHide if-llesrnd-h-ugd-showblock" id="TMPID1783"><A NAME="TMPID1783"></A>You can include Renditions of an item when you perform the Export action by selecting the <B CLASS="GUILABEL">Include Rendition(s)</B> check box on the Disposition Search’s <B CLASS="GUILABEL">Settings</B> tab.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1789"></A><A NAME="TMPID1787"></A><B CLASS="GUILABEL">Close</B>, which closes the objects if they are RM Classification object types.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1792"></A><A NAME="TMPID1790"></A><B CLASS="GUILABEL">Change Status</B>, which changes the status of the objects to the status that you specify in the corresponding <B CLASS="GUILABEL">New Status</B> drop-down list.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1796"></A><A NAME="TMPID1794"></A><B CLASS="GUILABEL">Mark Official</B>, which removes all permissions except See and See Contents if they are RM classified objects.</P>
+<P CLASS="otModuleHide if-llesrnd-h-ugd-showblock" id="TMPID1796"><A NAME="TMPID1796"></A>You can select the <B CLASS="GUILABEL">Make Rendition</B> check box for the <B CLASS="GUILABEL">Mark Official</B> action to create a Rendition of the item when it is marked official. If do not select the <B CLASS="GUILABEL">Make Rendition</B> check box, the search results will return only those items for which a Rendition was <I CLASS="EMPHASIS">not</I> created.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1804"></A><A NAME="TMPID1802"></A>Mark Official </P></LI>
+<LI class="otModuleHide if-llesrnd-h-ugd-showblock vlli" >
+<P class="nr1"><A NAME="AEN1806"></A><A NAME="TMPID1804"></A><B CLASS="GUILABEL">Make Rendition</B>, which makes a Rendition of the item when the Disposition Search is performed. Using a Rendition allows you to convert versionable items to a long term storage format. You can create a new status code for the Rendition at the same time you select <B CLASS="GUILABEL">Make Rendition</B> as the default process.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1810"></A><A NAME="TMPID1808"></A><B CLASS="GUILABEL">Update Storage Provider</B>, which marks the object to be evaluated again when RM Metadata included in the storage provider rules changes. </P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF32"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1811"></A><B CLASS="NOTE">Note: </B><BR>The <B CLASS="GUILABEL">Update Storage Rules</B> radio button is only available if the Content Move module has been installed.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1816"></A><A NAME="TMPID1814"></A><B CLASS="GUILABEL">Purge Versions</B>, which allows you to enter the minimum number of versions to keep. This action only appears when <I CLASS="EMPHASIS">Version Create Date</I> is chosen as the <I CLASS="EMPHASIS">Date to Use</I>. The number of versions specified will be retained, regardless of when versions were added or if the specified amount of time before versions are purged has passed. If you perform a Purge Version action, the versions are deleted, unless the item has locked versions or generations. If there is a version that cannot be deleted, for any reason including having a locked version or generation, the node will not be processed.</P>
+<P><A NAME="TMPID1818"></A>If the Display Purge Versions Options is set to <I CLASS="EMPHASIS">Yes</I> by your Records Manager, you can choose whether to purge major versions based on the version age or when the version was superseded by a newer version. </P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF33"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1821"></A><B CLASS="NOTE">Note: </B><BR>The <I CLASS="EMPHASIS">Delete Electronic Format</I>, <I CLASS="EMPHASIS">Close</I>, <I CLASS="EMPHASIS">Export</I>, <I CLASS="EMPHASIS">Mark Official</I> and <I CLASS="EMPHASIS">Reevaluate Storage Rules</I> actions allow you to specify a New Status for the object after the action has been performed. You can do so by clicking a status in the <B CLASS="GUILABEL">New Status</B> drop-down list beside the corresponding default process.</P>
+<P><A NAME="TMPID1828"></A>When you edit an RSI Schedule, you can provide a reason why you made the change in the <B CLASS="GUILABEL">Reason for Update</B> field. The information entered into this field is tracked in the audit trail.</P>
+<P><A NAME="TMPID1830"></A>If there are any errors, an error log is placed in the <TT CLASS="LITERAL"><I CLASS="EMPHASIS">content_server_location</I>\logs\dispositions</TT> directory. The error log is specific to the snapshot and uses the Disposition’s node ID and the snapshot date/time in the form <TT CLASS="LITERAL">nodeID_YYYMMDD_HHmmss.log</TT>. You can also view the error log by clicking on the Snapshot’s <B CLASS="GUILABEL">Functions</B> icon, and choosing <B CLASS="GUILABEL">View Error Log</B>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="rm-creatersischeddaterule-p.htm" revision="">To Create an RSI Schedule</A></p></li>
+<li><p><A  HREF="rm-viewrsischedule-p.htm" revision="">To View an RSI Schedule</A></p></li>
+<li><p><A  HREF="rm-modifyrsisched-p.htm" revision="">To Modify an RSI Schedule</A></p></li>
+<li><p><A  HREF="rm-applyirchschedtorsi-p.htm" revision="">To Apply an IRCH Schedule to an RSI</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

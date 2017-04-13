@@ -1,0 +1,263 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBB100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websbroker">
+<META mancondkey="llesrcm-h-ugd -- llespob-h-ugd -- llesprj-h-ugd -- ngdlles-h-ugd -- llesrcs-h-ugd -- llesrec-h-ugd -- llesapp-h-ugd -- llescl-h-ugd -- llesrt-h-ugd -- llesels-h-ugd -- lleselv-h-agd -- lleswat-h-ugd"><title>Didacticiel de requête dans la barre de recherche</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'sr-lql-tutorial.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Recherche Content Server';
+          header.title2 = 'Didacticiel de requête dans la barre de recherche';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID2702"></A>OpenText Content Server fournit un langage de requête permettant aux utilisateurs de formuler des requêtes de recherche pouvant être traitées par le moteur de recherche OpenText. Ce « langage de requête dynamique » est communément appelé « LQL ». Ce didacticiel explique comment utiliser le langage LQL pour formuler des requêtes de recherche avancée dans Content Server.</P>
+<P><A NAME="TMPID2709"></A>Dans OpenText Content Server 10, le langage de requête de recherche décrit dans ce didacticiel est utilisé lors de la saisie du texte dans la barre de recherche. Content Server fusionnera votre requête de recherche avec les paramètres par défaut et d'autres fonctionnalités de recherche telles que les vues de recherche, affectant ainsi vos résultats de recherche. L'utilisation du langage LQL dans la barre de recherche est similaire au mode de recherche « Requête complexe » de la page Recherche avancée, mais pas identique.</P>
+<P class="before-ul"><A NAME="TMPID2714"></A>La recherche peut être effectuée dans l'intégralité du contenu texte d'un objet, dans les métadonnées ou dans une combinaison des deux. Dans Content Server, l'administrateur configure le comportement par défaut. Les causes les plus courantes de résultats inattendus avec le langage LQL sont :</P><A NAME="AEN2579"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2580"></A><A NAME="TMPID2718"></A>la configuration des régions de recherche par défaut ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2582"></A><A NAME="TMPID2720"></A>les paramètres du système ou du langage personnel ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2584"></A><A NAME="TMPID2722"></A>la définition des champs de métadonnées (par exemple, nombres entiers et chaînes) ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2586"></A><A NAME="TMPID2724"></A>la configuration des propriétés de recherche (par exemple, l'activation ou non de « <I CLASS="emphasis">la recherche de radical</I> ») ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2590"></A><A NAME="TMPID2728"></A>les erreurs dans l'ordre des opérations et l'utilisation des parenthèses.</P></LI></UL>
+<P><A NAME="TMPID2729"></A>Le langage LQL définit principalement les termes intéressants, la logique de connexion des termes de recherche, les modificateurs spécifiques et les interprétations des termes de recherche, ainsi que les parties de texte ou des métadonnées devant être prises en compte dans la recherche.</P>
+<P class="before-ul"><A NAME="TMPID2730"></A>Quelques exemples de requêtes de recherche LQL :</P><A NAME="AEN2594"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2595"></A><A NAME="TMPID2733"></A><TT CLASS="literal"><B CLASS="highlight">Lune rover Apollo</B></TT> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2599"></A><A NAME="TMPID2737"></A><TT CLASS="literal"><B CLASS="highlight">« machine à remonter le temps » and-not dinosaures</B> </TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2604"></A><A NAME="TMPID2742"></A><TT CLASS="literal"><B CLASS="highlight">Mars lune QLPHONETIC déimos</B> </TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2608"></A><A NAME="TMPID2746"></A><TT CLASS="literal"><B CLASS="highlight">[qlregion « OTDescription »] « beatles »</B> </TT></P></LI></UL>
+<P><A NAME="TMPID2751"></A>Une requête de recherche est constituée de termes de recherche (tels que « <TT CLASS="literal"><B CLASS="highlight">Apollo</B></TT> ») connectés par des opérateurs facultatifs (tels que « <TT CLASS="literal"><B CLASS="highlight">and-not</B>"</TT> ») avec des modificateurs facultatifs (tels que « <TT CLASS="literal"><B CLASS="highlight">QLPHONETIC</B></TT> ») et des restrictions facultatives (telles qu'une recherche limitée au champ « <TT CLASS="literal"><B CLASS="highlight">OTDescription</B></TT> »).</P>
+<P><A NAME="TMPID2764"></A>Lorsque vous formulez une requête de recherche, n'oubliez pas que les moteurs de recherche ne conservent pas la forme exacte de toutes les informations provenant des documents originaux. Ceci peut affecter la recherche.</P>
+<P class="before-ul"><A NAME="TMPID2765"></A>Certaines informations clés pouvant affecter la recherche :</P><A NAME="AEN2629"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2630"></A><A NAME="TMPID2768"></A>Le texte figurant dans le corps ou le contenu d'un document est converti en lettres minuscules, et la plupart des accents, caractères spéciaux et signes de ponctuation sont supprimés.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2632"></A><A NAME="TMPID2770"></A>Le texte contenu dans les champs de métadonnées est conservé dans son intégralité pour obtenir des correspondances de chaînes exactes.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2634"></A><A NAME="TMPID2772"></A>Les champs de métadonnées peuvent être définis en tant que texte, nombres ou autres types de données spécifiques. Dans ces cas, l'interprétation des requêtes de recherche peut varier.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-SRCHTERMS">Termes de la recherche</A></P>
+<P><A NAME="TMPID2775"></A>Les termes de recherche sont les valeurs principales utilisées par le moteur de recherche pour formuler la requête de recherche.</P>
+<P><A NAME="TMPID2776"></A>Les termes de recherche sont les valeurs principales utilisées par le moteur de recherche pour formuler la requête de recherche. Notez que les termes saisis ne sont pas toujours utilisés sous leur forme exacte par le moteur de recherche lorsque celui-ci exécute la requête. En fonction de différents paramètres de configuration, le moteur de recherche est susceptible d'amener des transformations comme la suppression de la ponctuation, la prise en compte du singulier ou du pluriel des mots, ou le renvoi vers un thésaurus pour déterminer quels objets doivent correspondre à une requête donnée.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-BASICTERMS">Termes de base</A></P>
+<P><A NAME="TMPID2779"></A>Dans le premier exemple ci-dessus, <TT CLASS="literal"><B CLASS="highlight">lune</B> </TT>, <TT CLASS="literal"><B CLASS="highlight">rover</B></TT> et <TT CLASS="literal"> <B CLASS="highlight">Apollo</B></TT> sont tous des termes de recherche.</P>
+<P><A NAME="TMPID2786"></A>Pour être techniquement précis, chaque terme doit être placé entre guillemets (par exemple, <TT CLASS="literal"><B CLASS="highlight">« lune »</B></TT> <TT CLASS="literal"> <B CLASS="highlight">« rover »</B></TT> <TT CLASS="literal"><B CLASS="highlight">« apollo »</B> </TT>). Vous devez utiliser les guillemets standard figurant sur votre clavier (code ASCII décimal 34 ou hexadécimal 0x22). Si vous copiez/collez du texte à partir d'une application de traitement de texte, assurez-vous que les guillemets sont corrects.</P>
+<P><A NAME="TMPID2796"></A>Pour plus de facilité, les guillemets ne sont pas nécessaires pour les cas simples. L'ajout des guillemets aux termes de recherche peut être nécessaire en cas d'ambiguïté, ou bien en cas d'utilisation de caractères spéciaux ou de signes de ponctuation. Par exemple, ci-dessus, si l'objectif avait été de rechercher le terme <TT CLASS="literal"><B CLASS="highlight">and-not</B></TT> dans l'index, les guillemets auraient garanti son traitement en tant que terme de recherche. Sans les guillemets, il est reconnu comme mot-clé LQL.</P>
+<P><A NAME="TMPID2799"></A>En général, les termes de recherche ne sont pas sensibles à la casse.  Il n'y a aucune différence entre lune, <TT CLASS="literal"><B CLASS="highlight">Lune</B> </TT>, <TT CLASS="literal"><B CLASS="highlight">LUNE</B></TT> ou <TT CLASS="literal"> <B CLASS="highlight">LuNe</B></TT>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-PHRASES">Locutions</A></P>
+<P><A NAME="TMPID2808"></A>Une chaîne exacte (communément appelée locution) peut être traitée en tant que simple terme de recherche si elle est placée entre guillemets. <TT CLASS="literal"> <B CLASS="highlight">Dans l'exemple ci-dessus, « machine à remonter le temps »</B></TT> est un simple terme.  Une recherche de <TT CLASS="literal"><B CLASS="highlight">« machine à remonter le temps »</B></TT> ne correspondrait pas à « temps nécessaire pour la réparation de la machine » ni à « temps machine ». Elle correspondrait uniquement à une chaîne contenant l'expression exacte. La plupart des modificateurs (comme <TT CLASS="literal"><B CLASS="highlight">QLPHONETIC</B></TT>) ne s'appliquent pas aux locutions.</P>
+<P><A NAME="TMPID2819"></A>Il existe des cas particuliers pour les locutions. Si la recherche de radical est activée par défaut, la forme singulier ou pluriel du dernier mot dans une locution va correspondre. Pour désactiver cette fonction, utilisez l'opérateur Egal (<TT CLASS="literal"><B CLASS="highlight">=« grande roue »</B></TT>). Vous pouvez également utiliser des caractères génériques au début ou à la fin d'une locution : <TT CLASS="literal"><B CLASS="highlight">« pommes et banane* »</B></TT>.</P>
+<P><A NAME="TMPID2826"></A>Les termes de recherche sont modifiés par le système de requête de la même façon que le contenu original a été modifié au moment de l'indexation. Si votre système est optimisé pour convertir les caractères accentués comme é ou õ en e et o, le même traitement est alors appliqué à la requête de recherche afin de garantir une correspondance. Les requêtes sont construites à l'aide du codage UTF-8. Ainsi les caractères de la plupart des langues peuvent être utilisés dans une requête de recherche.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-BACKSLASHESCCHAR">Caractères d'échappement : antislash</A></P>
+<P><A NAME="TMPID2829"></A>L'antislash ('\', code ASCII décimal 92 ou hexadécimal 0x5C) nécessite une prise en compte particulière. Dans le langage LQL, un simple antislash est utilisé pour indiquer que le caractère suivant doit faire partie du terme de recherche. Par exemple, pour rechercher la chaîne exacte <TT CLASS="literal"><B CLASS="highlight">« étrange &lt; magique&gt; »</B></TT> dans un champ de métadonnées, utilisez l'antislash pour indiquer que les chevrons font partie de la chaîne, mais pas les séparateurs, comme ci-dessous :</P>
+<P><A NAME="TMPID2833"></A><TT CLASS="literal"><B CLASS="highlight">« étrange\&lt;magique\&gt; »</B></TT> </P>
+<P><A NAME="TMPID2837"></A>Sans les antislashs, les chevrons sont rejetés. Ceci ne sert habituellement que dans les champs de métadonnées, l'indexation du texte intégral du corps des documents rejetant les caractères spéciaux.</P>
+<P><A NAME="TMPID2838"></A>Afin de prendre en compte cette fonction, l'antislash doit également être utilisé comme caractère d'échappement. Utilisez deux antislashs pour rechercher un antislash dans une chaîne. Pour rechercher le texte <TT CLASS="literal">c:\docs\monfichier</TT>, le terme de recherche doit être :</P>
+<P><A NAME="TMPID2840"></A><TT CLASS="literal"><B CLASS="highlight">c\:\\docs\\monfichier</B></TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-COMPARATORS">Comparateurs</A></P>
+<P><A NAME="TMPID2845"></A>En plus de rechercher les correspondances, le langage LQL prend en charge les opérations d'inégalité. L'opérateur par défaut est Egal, même si la recherche de radical est généralement activée et qu'elle remplace cet opérateur.</P>
+<P><A NAME="TMPID2846"></A>Les opérations supérieur à, inférieur à, et différent de sont également possibles <TT CLASS="literal"><B CLASS="highlight">(&gt;a, &lt;b, &gt;=c, &lt;=d, !=e)</B></TT>. Si votre requête porte uniquement sur les vols spatiaux spécifiques, vous devez rechercher :</P>
+<P><A NAME="TMPID2849"></A><TT CLASS="literal"><B CLASS="highlight">Lune &gt;1969 and &lt;1972</B></TT> </P>
+<P><A NAME="TMPID2852"></A>Bien entendu, cette recherche ne serait pas utile. Le texte <TT CLASS="literal"> <B CLASS="highlight">« 2 000 000 de personnes veulent se rendre sur la lune, et 0 l'ont fait »</B></TT> correspondrait puisque le texte comprend une valeur supérieure à 1969 et une valeur inférieure à 1972. En général, l'utilisation des comparateurs n'est utile que lorsqu'elle est limitée aux champs de métadonnées ou lorsqu'un intervalle est appliqué à un seul terme. Pour de nombreuses applications, le modificateur <TT CLASS="literal"> <B CLASS="highlight">QLRANGE</B></TT> s'applique davantage (ce didacticiel le décrit plus loin).</P>
+<P><A NAME="TMPID2858"></A>Lors de l'utilisation des comparateurs, il est important de comprendre la représentation des valeurs. Considérez les valeurs 512 et 3 650. S'il s'agit de nombres entiers, il est relativement clair que 512 &lt; 3 650. Si votre recherche est effectuée dans des champs de métadonnées déterminés, comme une heure ou une date, elle se comportera comme prévu.</P>
+<P><A NAME="TMPID2859"></A>Cependant, les nombres se trouvent souvent dans le texte et ils sont indexés en tant que valeurs texte. Dans ce cas, une comparaison est effectuée à l'aide de méthodes alphanumériques. Donc 3 650 est INFERIEUR A 512 puisque 3 &lt; 5. Quelques exemples supplémentaires illustrant la comparaison des chaînes de texte :</P>
+<P><A NAME="TMPID2860"></A><TT CLASS="literal"><B CLASS="highlight">abcdd</B></TT> est inférieur à &lt; <TT CLASS="literal"><B CLASS="highlight">abcde</B></TT></P>
+<P><A NAME="TMPID2865"></A><TT CLASS="literal"><B CLASS="highlight">98 665</B></TT> est inférieur à &lt; <TT CLASS="literal"><B CLASS="highlight">a</B></TT></P>
+<P><A NAME="TMPID2870"></A><TT CLASS="literal"><B CLASS="highlight">abcde</B></TT> est inférieur à &lt; <TT CLASS="literal"><B CLASS="highlight">abcde1</B></TT></P>
+<P><A NAME="TMPID2875"></A><TT CLASS="literal"><B CLASS="highlight">Harry</B></TT> est inférieur à &lt; <TT CLASS="literal"><B CLASS="highlight">sally</B></TT></P>
+<P><A NAME="TMPID2880"></A><TT CLASS="literal"><B CLASS="highlight">1 129 467</B></TT> est inférieur à &lt; <TT CLASS="literal"><B CLASS="highlight">25</B></TT></P>
+<P><A NAME="TMPID2885"></A>Dans l'exemple <TT CLASS="literal"><B CLASS="highlight">lune &gt;1969</B></TT>, la plupart des mots dans le texte correspondraient au critère <TT CLASS="literal"> <B CLASS="highlight">&gt;1969</B></TT>.</P>
+<P><A NAME="TMPID2890"></A>Lorsque les caractères codés UTF-8 étendus sont utilisés (en général pour des langues autres que l'anglais), les valeurs Unicode sont utilisées pour déterminer l'ordre de comparaison des chaînes. Pour certaines langues, les résultats produits peuvent sembler incorrects en fonction des attentes de la langue locale. Dans de nombreux cas, les règles d'indexation modifient également le texte (par exemple en supprimant les accents des caractères), ce qui rend les comparaisons Egal quelque peu différentes de celles attendues.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-OPERATORS">Opérateurs</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-AND">ET</A></P>
+<P><A NAME="TMPID2895"></A>Les opérateurs de recherche sont utilisés pour contrôler la logique qui connecte les termes de recherche. Les opérateurs ne sont pas sensibles à la casse. L'opérateur AND est le connecteur par défaut entre les termes de recherche. Les options suivantes sont équivalentes :</P>
+<P><A NAME="TMPID2896"></A><TT CLASS="literal"><B CLASS="highlight">Lune rover Apollo</B></TT></P>
+<P><A NAME="TMPID2899"></A><TT CLASS="literal"><B CLASS="highlight">Lune AND rover AND Apollo</B></TT> </P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-OR">OR</A></P>
+<P><A NAME="TMPID2904"></A>L'opérateur OR est utilisé pour la correspondance à un certain nombre d'éléments. Dans notre exemple, nous voulons peut-être vérifier d'autres noms pour le vaisseau spatial Apollo :</P>
+<P><A NAME="TMPID2905"></A><TT CLASS="literal"><B CLASS="highlight">Lune AND rover AND Apollo OR Columbia OR eagle</B></TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-BRACKETS">Parenthèses et priorité</A></P>
+<P><A NAME="TMPID2910"></A>Dans le langage LQL, l'ordre des opérations va toujours de droite à gauche, tous les opérateurs ayant la même priorité.  Pour formuler des recherches plus faciles à comprendre, le langage LQL prend en charge l'utilisation des parenthèses. L'exemple ci-dessus est traité ainsi :</P>
+<P><A NAME="TMPID2911"></A><TT CLASS="literal"><B CLASS="highlight">Lune (and rover and (Apollo (or Columbia or eagle)))</B></TT></P>
+<P><A NAME="TMPID2914"></A>L'utilisation des parenthèses permet de contrôler l'exécution des recherches et d'améliorer la lisibilité. Cette même requête pourrait donc être correctement formulée de manières différentes pour obtenir les résultats attendus, notamment :</P>
+<P><A NAME="TMPID2915"></A><TT CLASS="literal"><B CLASS="highlight">Lune and rover and (Apollo or Columbia or eagle)</B></TT></P>
+<P><A NAME="TMPID2918"></A><TT CLASS="literal"><B CLASS="highlight">(apollo or Columbia or eagle) and lune and rover</B></TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-ANDNOT">AND-NOT (NOT)</A></P>
+<P><A NAME="TMPID2923"></A>L'opérateur AND-NOT est utilisé pour exclure certains termes. Si vous ne voulez pas exclure les informations concernant la fusée Saturn 5, utilisez l'opérateur and-not :</P>
+<P><A NAME="TMPID2924"></A><TT CLASS="literal"><B CLASS="highlight">Lune AND (rover AND (Apollo OR (Columbia OR eagle)))</B></TT><BR><TT CLASS="literal"><B CLASS="highlight"> AND-NOT (« Saturn 5 » or « Saturn V »)</B></TT></P>
+<P><A NAME="TMPID2931"></A>L'interprète de la barre de recherche traitera l'opérateur not de la même manière que l'opérateur and-not.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-EXCLUSIVE">Exclusive Or (XOR)</A></P>
+<P><A NAME="TMPID2934"></A>L'opérateur exclusive-or (XOR) permet de préciser une correspondance avec A ou B, mais non A et B. Par exemple :</P>
+<P><A NAME="TMPID2935"></A><TT CLASS="literal"><B CLASS="highlight">(Recherche XOR requête) and langage</B> </TT></P>
+<P><A NAME="TMPID2938"></A>La recherche de texte correspondra à langage, ou requête de langage, mais pas langage de requête de recherche.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-SYNONYM">Synonym Or (SOR)</A></P>
+<P><A NAME="TMPID2941"></A>Pour les moteurs de recherche, il existe également l'opérateur « synonym or » (SOR). D'un point de vue fonctionnel, il se comporte comme l'opérateur OR. Cependant, il demande au moteur de recherche de calculer la pertinence d'une autre façon. Fondamentalement, le moteur traitera les termes SOR comme des synonymes, ce qui modifie la façon dont la pertinence d'une opération est déterminée. Considérez le texte « le rover lunaire s'est posé sur la lune grâce au module d'exploration lunaire (LEM) ».</P>
+<P><A NAME="TMPID2944"></A><TT CLASS="literal"><B CLASS="highlight">Lune and rover and (LEM SOR « module d'exploration lunaire »)</B></TT></P>
+<P><A NAME="TMPID2948"></A>En utilisant l'opérateur SOR, <TT CLASS="literal"><B CLASS="highlight">LEM</B></TT> et « <TT CLASS="literal"><B CLASS="highlight">module d'exploration lunaire</B></TT>  » sont des synonymes. Ils ne sont comptés qu'une fois. Avec un opérateur OR, le moteur obtiendrait un résultat différent puisqu'il considérerait que deux termes différents ont été trouvés dans le résultat.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-PROXIMITY">Proximité (PROX, QLNEAR)</A></P>
+<P><A NAME="TMPID2956"></A>En général, si vous recherchez des documents relatifs à des tapis rouges, le moteur de recherche attribuera des taux de pertinence supérieurs aux objets pour lesquels les termes se trouvent proches l'un de l'autre. Par exemple, si votre requête de recherche est <TT CLASS="literal"><B CLASS="highlight">tapis rouges</B> </TT>, « dérouler les tapis rouges » donnerait davantage de résultats que « les tapis existent en différentes couleurs, y compris rouge ».</P>
+<P><A NAME="TMPID2961"></A>Vous pouvez également demander que les termes de recherche soient proches l'un de l'autre pour être considérés comme une correspondance en utilisant l'opérateur de proximité.</P>
+<P><A NAME="TMPID2962"></A><TT CLASS="literal"><B CLASS="highlight">Tapis PROX[3] rouges</B></TT> </P>
+<P><A NAME="TMPID2965"></A>Ceci demanderait que les mots tapis et rouges soient compris dans un intervalle de trois mots l'un par rapport à l'autre. Ceci correspond à « tapis verts et rouges » ou « tapis avec du rouge » mais pas à « les tapis sont disponibles en plusieurs couleurs, y compris rouge ».</P>
+<P><A NAME="TMPID2969"></A>Si l'ordre est important, ceci peut également être précisé. Un second paramètre facultatif de l'opérateur PROX est un indicateur vrai/faux (T ou F) qui nécessite l'application de l'ordre. L'exemple suivant ne correspondrait plus à « tapis avec du rouge ».</P>
+<P><A NAME="TMPID2971"></A><TT CLASS="literal"><B CLASS="highlight">Tapis PROX[2, T] rouges</B></TT> </P>
+<P><A NAME="TMPID2974"></A>Pour plus de facilité, la configuration relativement commune <TT CLASS="literal"><B CLASS="highlight"> PROX[10, F]</B></TT> est accessible grâce à <TT CLASS="literal"> <B CLASS="highlight">QLNEAR</B></TT>.</P>
+<P><A NAME="TMPID2979"></A><TT CLASS="literal"><B CLASS="highlight">Saut QLNEAR « jack flash »</B></TT> </P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-SRCHOPERATORS">Recherche d'opérateurs</A></P>
+<P><A NAME="TMPID2985"></A>Pour rechercher des opérateurs, placer les opérateurs entre guillemets pour qu'ils soient traités comme des mots. La requête de recherche :</P>
+<P><A NAME="TMPID2986"></A><TT CLASS="literal"><B CLASS="highlight">« Roi » « or » « Reine »</B></TT> </P>
+<P><A NAME="TMPID2992"></A>Sera interprétée comme suit :</P>
+<P><A NAME="TMPID2993"></A><TT CLASS="literal"><B CLASS="highlight">« roi » AND « or » AND « reine »</B></TT> </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-MODIFIERS-INTRO">Modificateurs</A></P>
+<P><A NAME="TMPID3001"></A>Le langage de requête expose un certain nombre de modificateurs utiles qui permettent un meilleur contrôle des recherches. Les modificateurs s'appliquent au terme de recherche simple qui suit le modificateur (et non aux locutions exactes).</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-MODIFIERS-STEMMING">Recherche de radical</A></P>
+<P><A NAME="TMPID3004"></A>La recherche de radical permet de trouver les correspondances selon le radical d'un mot. Par défaut, la configuration de recherche de radical dans Content Server consiste à faire correspondre les formes singulier et pluriel des mots. L'algorithme de la recherche de radical est basé sur votre langue de préférence et prend en charge l'anglais, le français, l'allemand, l'espagnol et l'italien.</P>
+<P><A NAME="TMPID3006"></A>Le mot-clé <TT CLASS="literal"><B CLASS="highlight">QLSTEM</B></TT> est utilisé pour demander que la recherche de radical soit appliquée à un terme. L'exemple ci-dessous correspondra à « tapis rouge » ou à « tapis rouges ».</P>
+<P><A NAME="TMPID3011"></A><TT CLASS="literal"><B CLASS="highlight">Tapis AND QLSTEM rouge</B></TT> </P>
+<P><A NAME="TMPID3014"></A>La recherche de radical est souvent activée par défaut. Par conséquent, l'utilisation du modificateur QLSTEM peut ne pas être nécessaire.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-MODIFIERS-SOUNDSLIKE">Recherche phonétique</A></P>
+<P><A NAME="TMPID3017"></A>L'un des mécanismes de correspondance des termes est basé sur la prononciation similaire des mots. Cet algorithme est conçu spécifiquement pour la correspondance avec les noms de famille. Les noms ne suivent pas nécessairement les conventions et corrections orthographiques. Considérez le cas dans lequel le nom est pris en compte oralement et enregistré sous Dupont. En pratique, l'orthographe de ce nom peut avoir un certain nombre de variantes, y compris Dupond, du Pont, Dupon, etc.</P>
+<P><A NAME="TMPID3018"></A>Utilisez l'opérateur <TT CLASS="literal"><B CLASS="highlight">QLPHONETIC</B></TT> pour rechercher ces variantes d'un nom.</P>
+<P><A NAME="TMPID3021"></A><TT CLASS="literal"><B CLASS="highlight">(Jules OR Jacques) AND QLPHONETIC dupont</B> </TT></P>
+<P><A NAME="TMPID3024"></A>Il peut y avoir un grand nombre de correspondances phonétiques potentielles.  L'utilisation d'une recherche phonétique sur un grand ensemble de données peut être longue. Et s'il est fortement probable d'obtenir la plupart des correspondances possibles, la précision d'une telle recherche est relativement faible.</P>
+<P><A NAME="TMPID3025"></A>L'algorithme actuel mis en œuvre pour l'opérateur QLPHONETIC est une version modifiée de l'algorithme américain Soundex. Cet algorithme fonctionne pour la plupart des langues d'Europe occidentale, bien que la précision diminue lorsque la langue est moins proche de l'anglais.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-MODIFIERS-THESAURUS">Thésaurus</A></P>
+<P><A NAME="TMPID3028"></A>Le moteur de recherche peut utiliser un thésaurus pour étendre une requête de recherche et rechercher également les synonymes d'un mot. Un thésaurus est spécifique à une langue. Content Server est compatible avec des thésaurus pour plusieurs langues : anglais, français, espagnol et allemand. De plus, il existe un thésaurus multilingue qui combine toutes les langues ci-dessus, offrant une grande facilité de recherche mais diminuant légèrement la précision, selon les mots. Le choix du thésaurus à utiliser est déterminé par l'administrateur au cours de la configuration du système et des préférences de langue.</P>
+<P><A NAME="TMPID3030"></A>Pour demander l'utilisation du thésaurus durant une recherche, utilisez le modificateur <TT CLASS="literal"> <B CLASS="highlight">QLTHESAURUS</B></TT> sur un terme :</P>
+<P><A NAME="TMPID3033"></A><TT CLASS="literal"><B CLASS="highlight">Tapis QLTHESAURUS rouge</B></TT> </P>
+<P><A NAME="TMPID3036"></A>La recherche est effectuée à la fois sur « carpette rouge » et « tapis rouge ».</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-MODIFIERS-RANGES">Intervalles</A></P>
+<P><A NAME="TMPID3041"></A>L'une des fonctionnalités les plus puissantes dans le langage de requête est la capacité à spécifier des intervalles pour une valeur. Dans l'exemple précédent, <TT CLASS="literal"> <B CLASS="highlight">(Lune rover &gt;1969 AND &lt;1972)</B></TT>, nous avons vu que l'utilisation d'un intervalle n'était pas efficace. La fonction intervalle correspondrait à nos besoins dans les cas suivants :</P>
+<P><A NAME="TMPID3044"></A><TT CLASS="literal"><B CLASS="highlight">Lune AND rover AND QLRANGE « 1969~1972 »</B> </TT></P>
+<P><A NAME="TMPID3048"></A>L'opérateur QLRANGE correspondra à un terme donné dans l'intervalle de 1969 à 1972 inclus (ce qui signifie que 1969 et 1972 correspondraient).  Les valeurs d'intervalle doivent être indiquées entre guillemets. Comme indiqué dans la rubrique opérateurs, les résultats seront différents si les valeurs sont du texte (plus courant) ou des valeurs numériques (ce qui peut être le cas pour les métadonnées).</P>
+<P><A NAME="TMPID3049"></A>L'ordre des objets dans les intervalles est important. <TT CLASS="literal"><B CLASS="highlight"> QLRANGE « 1972~1969 »</B></TT>, ne donnerait aucun résultat.</P>
+<P><A NAME="TMPID3053"></A>Il existe une autre forme de <TT CLASS="literal"><B CLASS="highlight">QLRANGE</B> </TT> conçue pour faciliter la recherche d'ensembles d'objets :</P>
+<P><A NAME="TMPID3056"></A><TT CLASS="literal"><B CLASS="highlight">Voiture and QLRANGE « noir|marron|gris|noir charbon »</B> </TT></P>
+<P><A NAME="TMPID3060"></A>Cette recherche doit être formulée de façon à rechercher les documents faisant référence aux voitures de couleur foncée. D'un point de vue fonctionnel, cette forme est équivalente à :</P>
+<P><A NAME="TMPID3061"></A><TT CLASS="literal"><B CLASS="highlight">Voiture and (noir or marron or gris or noir charbon)</B> </TT></P>
+<P><A NAME="TMPID3064"></A>Le moteur de recherche peut traiter la requête de manière plus efficace sous la forme <TT CLASS="literal"><B CLASS="highlight">QLRANGE</B></TT>. Celle-ci est donc recommandée lors de la formulation de requêtes très complexes sur de vastes ensembles de données. Cependant, cette forme n'accepte pas les caractères spéciaux. L'exemple ci-dessous ne donnerait donc pas les résultats attendus :</P>
+<P><A NAME="TMPID3067"></A><TT CLASS="literal"><B CLASS="highlight">QLRANGE « bernard.dupont|henri-martin »</B> </TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-MODIFIERS-WILDCARDS">Caractères génériques, modèles et expressions régulières</A></P>
+<P><A NAME="TMPID3073"></A>Le langage LQL prend en charge un certain nombre de modèles correspondant à des fonctionnalités de recherche avancée.  Les caractères ne sont pas sensibles à la casse.</P>
+<P><A NAME="TMPID3074"></A>La troncature à droite est l'utilisation de caractères génériques pour obtenir une correspondance à tout mot commençant par le terme fourni. Pour plus de facilité, utilisez un astérisque. L'exemple suivant donnerait des correspondances avec des mots comme téléphone, téléphones, téléphérique ou téléphériques.</P>
+<P><A NAME="TMPID3075"></A><TT CLASS="literal"><B CLASS="highlight">Téléph*</B></TT></P>
+<P><A NAME="TMPID3078"></A><TT CLASS="literal"><B CLASS="highlight">QLRIGHT-TRUNCATION téléph</B></TT> </P>
+<P><A NAME="TMPID3081"></A>La troncature à gauche est utilisée pour obtenir une correspondance à tout mot se terminant par le terme fourni. Pour plus de facilité, utilisez un astérisque au début du terme. L'exemple suivant donnerait des correspondances avec imagination, expiration ou machination :</P>
+<P><A NAME="TMPID3082"></A><TT CLASS="literal"><B CLASS="highlight">*ation</B></TT></P>
+<P><A NAME="TMPID3085"></A><TT CLASS="literal"><B CLASS="highlight">QLLEFT-TRUNCATION ation</B></TT> </P>
+<P><A NAME="TMPID3088"></A>Le modèle de mécanisme de correspondance le plus flexible est appelé expressions régulières :</P>
+<P><A NAME="TMPID3089"></A><TT CLASS="literal"><B CLASS="highlight">QLREGEX « ^ch([0-9])+(.)*r$ »</B></TT> </P>
+<P><A NAME="TMPID3093"></A>Le modèle qui nous intéresse doit figurer entre guillemets. Cette requête à l'aspect complexe rechercherait les mots commençant par ch (le caractère ^ correspond au début du mot), suivi de tout ensemble de caractères entre 0 et 9 (les ensembles sont entre des crochets) une ou plusieurs fois (signe +), suivi de tout caractère (.) se terminant par r ($ correspond à la fin d'un mot). En d'autres mots, cela correspondrait à :</P>
+<P><A NAME="TMPID3094"></A><TT CLASS="literal"><B CLASS="highlight">Ch0094r</B></TT></P>
+<P><A NAME="TMPID3097"></A><TT CLASS="literal"><B CLASS="highlight">Ch1bdh7cgr</B></TT></P>
+<P><A NAME="TMPID3100"></A>Mais pas à</P>
+<P><A NAME="TMPID3101"></A><TT CLASS="literal"><B CLASS="highlight">Aach0034r</B></TT></P>
+<P><A NAME="TMPID3104"></A><TT CLASS="literal"><B CLASS="highlight">Ch1rzzz</B></TT></P>
+<P><A NAME="TMPID3107"></A><TT CLASS="literal"><B CLASS="highlight">chr</B></TT></P>
+<P><A NAME="TMPID3110"></A>L'action des expressions régulières peut être très lente. Lorsque c'est possible, identifiez le début de la chaîne à l'aide de l'accent circonflexe pour l'optimisation des performances.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2954"></A>
+<TH SCOPE="COL" WIDTH="122" ALIGN="LEFT" VALIGN="TOP">Caractère Regex</TH>
+<TH SCOPE="COL" WIDTH="410" ALIGN="LEFT" VALIGN="TOP">Signification</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="122" ALIGN="LEFT" VALIGN="TOP">.</TD>
+<TD SCOPE="COL" WIDTH="410" ALIGN="LEFT" VALIGN="TOP">Un point correspond à tout caractère unique.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="122" ALIGN="LEFT" VALIGN="TOP">[   ]</TD>
+<TD SCOPE="COL" WIDTH="410" ALIGN="LEFT" VALIGN="TOP">Utilisés pour définir un ensemble ou un intervalle de caractères. [aeiou] serait l'ensemble des voyelles de la langue française. [0-9] représenterait des chiffres. La troncature négative peut être définie à l'aide de l'accent circonflexe (^) en première position. [^0-9.$€£¥] correspondrait donc à tout SAUF aux caractères communément utilisés pour définir des tarifs.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="122" ALIGN="LEFT" VALIGN="TOP">(  )</TD>
+<TD SCOPE="COL" WIDTH="410" ALIGN="LEFT" VALIGN="TOP">Utilisées pour créer un groupe ou un ensemble.  Principalement utilisées lors de la création de valeurs récurrentes ou d'alternatives. Par exemple (abc)+ correspondrait à abc, abcabc, abcabcabc, etc.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="122" ALIGN="LEFT" VALIGN="TOP">^</TD>
+<TD SCOPE="COL" WIDTH="410" ALIGN="LEFT" VALIGN="TOP">Correspond au début d'un mot. En cas d'utilisation, il doit par conséquent être le premier caractère de l'expression régulière.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="122" ALIGN="LEFT" VALIGN="TOP">$</TD>
+<TD SCOPE="COL" WIDTH="410" ALIGN="LEFT" VALIGN="TOP">Correspond à la fin d'un mot.  En cas d'utilisation, il doit par conséquent être le dernier caractère de l'expression.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="122" ALIGN="LEFT" VALIGN="TOP">?</TD>
+<TD SCOPE="COL" WIDTH="410" ALIGN="LEFT" VALIGN="TOP">Correspond à l'expression qui précède l'opérateur 0 ou 1 fois.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="122" ALIGN="LEFT" VALIGN="TOP">*</TD>
+<TD SCOPE="COL" WIDTH="410" ALIGN="LEFT" VALIGN="TOP">Correspond à l'expression qui précède l'opérateur zéro fois ou plus.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="122" ALIGN="LEFT" VALIGN="TOP">+</TD>
+<TD SCOPE="COL" WIDTH="410" ALIGN="LEFT" VALIGN="TOP">Correspond à l'expression qui précède l'opérateur une fois ou plus.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="122" ALIGN="LEFT" VALIGN="TOP">|</TD>
+<TD SCOPE="COL" WIDTH="410" ALIGN="LEFT" VALIGN="TOP">Opération OR.  A|b correspond à a ou à b.  (jules)|(jacques)</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID3147"></A>Vous pouvez utiliser les expressions régulières pour comparer les chaînes ayant des formats spécifiques, comme des numéros de pièces ou des adresses e-mail. Par exemple, lorsque vous recherchez « henri dupont » dans une adresse e-mail chez superzoom, de format inconnu, vous devez utiliser quelque chose comme :</P>
+<P><A NAME="TMPID3149"></A><TT CLASS="literal"><B CLASS="highlight">qlregex « ^h(enri)?.?d(upont)?@super(-)?zoom.(com|net|org) »</B> </TT></P>
+<P><A NAME="TMPID3153"></A>Ce qui correspondrait à des possibilités comme :</P>
+<P><A NAME="TMPID3154"></A><TT CLASS="literal"><B CLASS="highlight">hdupont@superzoom.com</B></TT> </P>
+<P><A NAME="TMPID3157"></A><TT CLASS="literal"><B CLASS="highlight">henrid@super-zoom.net</B></TT> </P>
+<P><A NAME="TMPID3160"></A><TT CLASS="literal"><B CLASS="highlight">henri.dupont@superzoom.org</B></TT> </P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-MODIFIERS-CAUTION">Attention !</A></P>
+<P><A NAME="TMPID3165"></A>La troncature et les expressions régulières sont des opérations coûteuses en ressources avec un traitement parfois très long et une importante exploitation du système. Parfois, selon les paramètres de configuration du système et la taille de l'index de recherche, les opérations de recherche peuvent être interrompues.</P>
+<P><A NAME="TMPID3166"></A>La troncature à gauche (<TT CLASS="literal"><B CLASS="highlight">*mot</B></TT> ) est toujours coûteuse. Le coût des expressions régulières peut être limité grâce à des termes ancrés avec autant de caractères en tête que possible (commencez par <TT CLASS="literal"><B CLASS="highlight">^mo</B></TT>). La troncature à droite (<TT CLASS="literal"><B CLASS="highlight">mot*</B></TT>) est la meilleure solution si vous disposez d'autant de caractères en tête que possible (<TT CLASS="literal"> <B CLASS="highlight">a*</B></TT> est bien plus coûteuse que <TT CLASS="literal"> <B CLASS="highlight">appl*</B></TT>).</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-SRCHMETADATAFLDS">Recherche dans les champs de métadonnées</A></P>
+<P><A NAME="TMPID3179"></A>Par défaut, le langage LQL effectue les recherches dans un ensemble défini de champs de métadonnées (ou régions) et dans l'intégralité du contenu texte. Pour affiner les recherches dans les métadonnées, vous pouvez restreindre les recherches de termes à des champs spécifiques.</P>
+<P><A NAME="TMPID3180"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION « OTDComment »] = « tapis rouge »</B> </TT></P>
+<P><A NAME="TMPID3185"></A>Dans ce cas, le moteur de recherche doit rechercher les occurrences de <TT CLASS="literal"><B CLASS="highlight">« tapis rouge »</B></TT> dans le champ de métadonnées OTDComment. Les noms de champs de métadonnées sont sensibles à la casse.</P>
+<P><A NAME="TMPID3189"></A>Si plusieurs termes de recherche suivent la restriction de région, vous devez utiliser les parenthèses pour spécifier clairement que tous les termes s'appliquent à la région. Par exemple, selon vos objectifs, vous pouvez utiliser :</P>
+<P><A NAME="TMPID3190"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION « OTName »] (« tapis » AND QLSTEM « rouge »)</B> </TT></P>
+<P><A NAME="TMPID3196"></A><TT CLASS="literal"><B CLASS="highlight">qlstem tapis and [QLREGION « OTName »] « rouge »</B> </TT></P>
+<P><A NAME="TMPID3201"></A>Si vous utilisez la forme ci-dessous, la signification n'est pas évidente et le langage LQL peut ne pas l'interpréter comme vous le souhaitez :</P>
+<P><A NAME="TMPID3202"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION « OTName »] (« tapis » AND QLSTEM « rouge »)</B> </TT></P>
+<P><A NAME="TMPID3208"></A>Vous pouvez créer des requêtes complexes à l'aide de régions multiples. Envisagez la requête suivante pour rechercher des documents dont la taille de fichier est environ 1 Mo, rédigés par bernard dupont et faisant référence aux smartphones :</P>
+<P><A NAME="TMPID3209"></A><TT CLASS="literal"><B CLASS="highlight">([QLREGION « OTSize »] QLRANGE « 750000~1250000 »)</B> </TT></P>
+<P><A NAME="TMPID3214"></A><TT CLASS="literal"><B CLASS="highlight">    		and ([QLREGION « OTCreatedByName »] « dupont »)</B></TT></P>
+<P><A NAME="TMPID3219"></A><TT CLASS="literal"><B CLASS="highlight">    	 	and ([QLREGION « OTData »] QLRANGE « blackberry|iphone »)</B></TT></P>
+<P><A NAME="TMPID3224"></A><TT CLASS="literal"><B CLASS="highlight">     		and (« téléphone »)</B></TT> </P>
+<P><A NAME="TMPID3228"></A>Les valeurs indexées dans les champs de métadonnées peuvent avoir des attributs. Le plus souvent, les attributs sont utilisés pour les langues, permettant d'obtenir le nom ou la description d'un objet en plusieurs langues. Il est de plus possible de limiter la recherche aux attributs :</P>
+<P><A NAME="TMPID3229"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION « OTName »][QLATTRIBUTE « lang »=« fr »] « rouge »</B></TT></P>
+<P><A NAME="TMPID3236"></A>Cette requête correspondrait aux objets dans lesquels le champ OTName comprend le terme rouge, mais seulement si celui-ci est contenu dans un champ doté de l'attribut/de la paire de valeur de langue/français. Il existe un cas spécifique pour tester un attribut non défini :</P>
+<P><A NAME="TMPID3237"></A><TT CLASS="literal"><B CLASS="highlight">[qlregion « OTName »][QLATTRIBUTE « lang » EST NUL] *</B></TT></P>
+<P><A NAME="TMPID3242"></A>Ceci permet d'obtenir une correspondance seulement si aucun attribut de langage n'existe. Il n'est PAS nécessaire de préciser le modificateur QLATTRIBUTE si vous souhaitez rechercher toutes les combinaisons attribut/valeur.</P>
+<P><A NAME="TMPID3243"></A>En interne, les champs indexés sont contenus dans une large vue de recherche de métadonnées ou de texte intégral. Implicitement, toutes les régions de métadonnées dans Content Server sont contenues dans la vue de recherche « <TT CLASS="literal"><B CLASS="highlight">OTMeta</B></TT> ». Vous pouvez explicitement indiquer la vue de recherche dans la définition du champ, mais ce n'est généralement pas nécessaire.</P>
+<P><A NAME="TMPID3248"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION « OTMeta »:« OTName »] « tapis rouge »</B> </TT></P>
+<P><A NAME="TMPID3254"></A>Il existe une vue de recherche réservée au texte intégral : "<TT CLASS="literal"><B CLASS="highlight"> OTData</B></TT>". Vous pouvez utiliser la fonctionnalité <TT CLASS="literal"><B CLASS="highlight"> QLREGION</B></TT> pour limiter une recherche aux seules données de texte intégral :</P>
+<P><A NAME="TMPID3259"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION « OTName »] (« tapis » AND QLSTEM « rouge »)</B> </TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-SRCHINXMLFLDS">Recherche dans les champs XML</A></P>
+<P><A NAME="TMPID3267"></A>Il existe un cas spécifique pour les documents XML indexés dans Content Server. Supposez que vous recherchez tout document XML qui contient « crayon violet » dans la balise XML de « hector ». Vous pouvez effectuer votre recherche à l'aide de la syntaxe :</P>
+<P><A NAME="TMPID3270"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION « OTData »:« hector »] « crayon violet »</B> </TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-SRCHINBOOLFLDS"> Recherche dans les champs booléens</A></P>
+<P><A NAME="TMPID3278"></A>Un champ de métadonnées peut être de type booléen. Pour vos recherches dans les champs booléens, vous devez limiter vos recherches à la correspondance « true » ou « false ».</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-EXISTEMPTYFLDS">Existence et champs vides</A></P>
+<P><A NAME="TMPID3283"></A>Un ensemble relativement courant de cas spécifiques se produit lorsque vous voulez simplement inclure un terme de recherche qui vérifie l'existence d'un champ de métadonnées, sans prendre en compte sa valeur. Par exemple, si vous recherchez les objets pour lesquels une date de création de la version existe, le terme de recherche suivant peut être utilisé :</P>
+<P><A NAME="TMPID3284"></A><TT CLASS="literal"><B CLASS="highlight">Quelque chose and [QLREGION « OTVerCDate »] *</B> </TT></P>
+<P><A NAME="TMPID3288"></A>Inversement, si vous recherchez uniquement les objets sans cette date, vous utilisez au choix :</P>
+<P><A NAME="TMPID3289"></A><TT CLASS="literal"><B CLASS="highlight">Quelque chose and [QLREGION « OTVerCDate »] *</B> </TT></P>
+<P><A NAME="TMPID3293"></A><TT CLASS="literal"><B CLASS="highlight">Quelque chose and [QLREGION « OTVerCDate »] != *</B></TT></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

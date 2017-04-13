@@ -1,0 +1,47 @@
+<HTML>
+	<HEAD>
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+		<TITLE>Manage Search Query Integration</TITLE>
+		<link rel="stylesheet" href="../../ix21.css" type="text/css">
+		<script language="JavaScript" src="../../llhelp.js"></script>
+	</HEAD>
+
+	<BODY ONLOAD="checkFrame( 'webrep_managesearchinteg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+		<A NAME="TopOfPage"> </A><A NAME="P8_93"></A>
+		<SCRIPT LANGUAGE="JavaScript">
+			var header = new AdminHeader();
+			header.title1 = 'WebReports Administration: OpenText Content Server Admin Online Help';
+			header.title2 = 'Manage Search Query Integration';
+			header.draw();
+		</SCRIPT>
+		<P CLASS="body">   
+		This <b>Manage Search Query Integration</b> page allows the search integration feature to be enabled and configured. It also provides a facility where the Administrator can manage all of the WebReports 
+		that have been set with a data source of <b>Search Launch</b> on the system. When this feature has been enabled correctly, certain users will see a new button on the standard search launch screen. The following conditions determine the availability of this feature. 
+		<ul>
+		<li>The enable checkbox must be ticked, and a name for the search button filled in (A server restart must also be performed when the state is changed from 
+		enabled to disabled or vice versa)</li>
+		<li>One or more WebReports must have their data source set to <b>Search Launch</b></li> 
+		<li>One or more of the WebReports listed on this page must be set to "Active"</li>  
+		<li>For any user to see the search button (assuming the other conditions have been met), they must have at least See Contents permission to at least one of the
+		active WebReports</li>
+		</ul>
+		</p>
+		<P CLASS="body"><b>Technical notes</b>   
+		Where multiple Content Servers are being used, the following points should be noted:
+		<ul>
+		<li>The enable option is server specific (stored in the Opentext.ini file) so this feature could be restricted to specific Content Servers. Conversely, if the same behavior
+		is required for all servers in a cluster, the feature must be enabled (and the button text set) for all servers. This could also be achieved by copying the Opentext.ini
+		file</li>
+		<li>The activation/deactivation of individual WebReports is system-wide so any disabled WebReports will not be available on any Content Servers</li>
+		<li>If this page is being viewed on a server where the feature is disabled, the list of active/inactive WebReports is not visible. To make this list available
+		the Search Integration must be enabled,  a name provided for the button, and then Apply selected. As noted above, this will not actually activate the feature
+		unless the server is subsequently restarted
+		</li>
+		</ul>
+		</p>
+
+		<SCRIPT LANGUAGE="JavaScript">
+			new AdminFooter().draw();
+		</SCRIPT>
+	</BODY>
+</HTML>

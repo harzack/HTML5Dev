@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Création individuelle de composants d'index</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-creindexindiv-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion de la recherche';
+          header.title2 = 'Création individuelle de composants d\'index';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1115"></A>OpenText vous recommande de créer des index à l'aide des modèles d'index fournis par Content Server. Pour plus d'informations sur la création des index à l'aide de modèles, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-creindextempl-so.htm">Création des index à l'aide de modèles</A></span>. Vous pouvez également créer un index de données en créant individuellement les objets système associés à une source de données. Vous créez aussi des objets système individuels lorsque vous voulez personnaliser un système d'indexation et de recherche.</P>
+<P class="before-ul"><A NAME="TMPID1119"></A>Lors de la création individuelle de composants d'index, OpenText vous recommande vivement d'ajouter les objets système dans l'ordre suivant :</P><A NAME="AEN1130"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1131"></A><A NAME="TMPID1123"></A>Ajoutez un dossier source de données à la page Administration système.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1133"></A><A NAME="TMPID1125"></A>Ajoutez un gestionnaire de flux de données au dossier source de données.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1135"></A><A NAME="TMPID1127"></A>Ajoutez un gestionnaire de recherche au dossier source de données.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1137"></A><A NAME="TMPID1129"></A>Ajoutez un <I CLASS="emphasis">schéma de partition</I> au dossier source de données. Un schéma de partition est une représentation d'un système d'indexation et de recherche d'une source de données. Il affiche tous les composants du système (partitions, moteurs de recherche, fédérateurs de recherche et moteurs d'indexation). Pour plus d'informations sur les schémas de partition, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-understandingpartmaps-bg.htm">Utilisation des schémas de partition</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1141"></A><A NAME="TMPID1133"></A>Ajoutez une <I CLASS="emphasis">partition</I> au système d'indexation et de recherche. Lorsque vous ajoutez plusieurs partitions, vous autorisez la distribution des données dans d'autres index de plus petite taille (chaque partition gère son propre index de données, qui constitue une portion de l'ensemble de l'index de données).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1144"></A><A NAME="TMPID1136"></A>Ajoutez un processus producteur de flux de données au gestionnaire de flux de données. Un processus producteur est un processus qui localise ou extrait des données (par exemple, le processus Extracteur Entreprise, Directory Walker ou XML Activator).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1146"></A><A NAME="TMPID1138"></A>Ajoutez un processus Conversion de documents au gestionnaire de flux de données, ce qui convertit les données de leur format natif au format HTML ou texte brut.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1148"></A><A NAME="TMPID1140"></A>Ajoutez un processus Distributeur de mise à jour au gestionnaire de flux de données, ce qui ajoute également un moteur d'indexation pour chaque partition existante. Pour plus d'informations sur les processus du distributeur de mise à jour et les moteurs d'indexation, voir <span><A href="../websystemobj/wbs-configindexeng-so.htm">Configuration des processus d'indexation</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1151"></A><A NAME="TMPID1143"></A>Ajoutez un fédérateur de recherche au gestionnaire de recherche, ce qui ajoute également un moteur de recherche à chaque partition existante. L'ajout d'un fédérateur de recherche ajoute également des moteurs de recherche au système d'indexation et de recherche. Pour plus d'informations sur les gestionnaires de recherche, les fédérateurs de recherche et les moteurs de recherche, voir <span><A href="../webotcindex/wbo-specindx-bg.htm">Gestion des processus de recherche</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1154"></A><A NAME="TMPID1146"></A>Ajoutez un processus de recherche à distance pour ouvrir une connexion entre les systèmes Content Server en ajoutant un système Content Server à distance au serveur d'administration ou au dossier de la source de données Entreprise. Pour en savoir plus sur les processus de recherche à distance, voir <span><A href="../webotcindex/wbs-configinrls-bg.htm">Configuration d'une recherche à distance</A></span>.</P></LI></UL>
+<P><A NAME="TMPID1150"></A>Lors de l'ajout d'un schéma de partition, de partitions ou de fédérateurs de recherche, vous configurez le système d'indexation et de recherche associé à la source de données d'un index. Pour créer un système efficace, vous pouvez ajouter autant de partitions et/ou fédérateurs de recherche que vous le souhaitez. Après avoir créé un index, vous pouvez gérer les objets système qui lui sont associés (par exemple, les processus de recherche et d'indexation et les processus de flux de données). Pour plus d'informations sur la gestion des flux de données, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-datafwfd-so.htm">Gestion des flux de données</A></span>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-addindexcomp-bg.htm" revision="">Ajout de composants d'index</A></p></li>
+<li><p><A  href="../websystemobj/wbs-addanyprocs-bg.htm" revision="">Ajout de processus de flux de données</A></p></li>
+<li><p><A  href="../webdirwalk/wbw-adddirwk-bg.htm" revision="">Ajout d'un processus Directory Walker</A></p></li>
+<li><p><A  href="../webxmlactivator/xma-compxmlproc-bg.htm" revision="">Configuration finale d'un processus producteur XML Activator</A></p></li>
+<li><p><A  href="../xmlsearch/xml-indexoverview-bg.htm" revision="">Indexation des données XML</A></p></li>
+<li><p><A  href="../websystemobj/wbs-statusdf-rf.htm" revision="">Statut de la création d'un flux de données</A></p></li>
+<li><p><A  href="../webxmlactivator/xma-admxmla-rf.htm" revision="">Gestion des processus de flux de données XML Activator</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

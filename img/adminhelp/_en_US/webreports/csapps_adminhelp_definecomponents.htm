@@ -1,0 +1,73 @@
+﻿<HTML>
+	<HEAD>
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+		<TITLE>Define Special Components</TITLE>
+		<link rel="stylesheet" href="../../ix21.css" type="text/css">
+		<script language="JavaScript" src="../../llhelp.js"></script>
+	</HEAD>
+	<BODY ONLOAD="checkFrame( 'csapps_adminhelp_definecomponents.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+		<SCRIPT LANGUAGE="JavaScript">
+			var header = new AdminHeader();
+			header.title1 = 'Applciations Management';
+			header.title2 = 'Define Special Components';
+			header.addTab( AdminHeader.PROCEDURES, 'none' );  // 'none' indicates unavailable tab
+			header.addTab( AdminHeader.BACKGROUND, 'none' );  // null indicates selected tab
+			header.addTab( AdminHeader.RELATED, 'none' ); // give relative path to file for linked tab
+			header.draw();
+		</SCRIPT>
+
+		<P CLASS="body">
+			The <B>Define Special Components</B> form will list all the WebReports that are part of the application.<BR>
+			<BR>
+			The form can be used to:
+			<UL>
+				<LI>Define a default launch component for the application</LI>
+				<LI>Define an initialize component for the application</LI>
+				<LI>Assign unique nicknames to WebReports that are part of the application</LI>
+			</UL>
+			<B><U>Default Launch Component</U></B><BR>
+			<BR>
+			An application can be launched using the URL:
+			<blockquote>
+				?func=csapps.launchapp&appname=<I>&lt;application name&gt;</I>
+			</blockquote>
+			Calling this URL will run the WebReport defined as the default launch component.<BR>
+			<BR>
+			<B><U>Initialize Component</U></B><BR>
+			<BR>
+			A WebReport defined as the initialize component will be run immediately after the application is installed.<BR>
+			<BR>
+			<B><U>Unique Nicknames</U></B><BR>
+			<BR>
+			WebReports can be given unique nicknames within an application and run using the URL:
+			<blockquote>
+				?func=csapps.launchapp&appname=<I>&lt;application name&gt;</I>&nickname=<I>&lt;unique nickname&gt;</I>
+			</blockquote>
+			<B><U>Form Usage</U></B><BR>
+			<BR>
+			The form will list all the WebReports that are part of the application.<BR>
+			<BR>
+			Click on the radio button to the left of a WebReport to define it as the default launch component for the application.<BR>
+			<BR>
+			If you don't want to define a launch component for the application then click on the radio button next to "No Component selected for this function", which is the default option.<BR>
+			<BR>
+			Click on the radio button to the left of a WebReport to define it as the default launch component for the application.<BR>
+			<BR>
+			If you don't want to define a launch component for the application then click on the radio button next to "No Component selected for this function", which is the default option.<BR>
+			<BR>
+			Enter unique nicknames in the field to the right of each WebReport.<BR>
+			<BR>
+			The nicknames will be validated on submission of the form, and an error will be thrown if a nickname is not unique within the application. Note that nickname comparisons are case-insensitive.
+		</P>
+
+		<P CLASS="body">
+			Click the <B>Submit</B> button to submit the form.<BR>
+			Click the <B>Reset</B> button to clear any changes made since the page was loaded.<BR>
+			Click the <B>Cancel</B> button to cancel and return to the <A HREF="csapps_adminhelp_applicationmanagement.html">Content Server Application Management</A> page.
+		</P>
+
+		<SCRIPT LANGUAGE="JavaScript">
+			new AdminFooter().draw();
+		</SCRIPT>
+	</BODY>
+</HTML>

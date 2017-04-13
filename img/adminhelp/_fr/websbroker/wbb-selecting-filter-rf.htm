@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Filtres de conversion de documents</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbb-selecting-filter-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des processus de flux de données';
+          header.title2 = 'Filtres de conversion de documents';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID7174"></A>La plupart des éléments stockés dans Content Server ne sont pas indexables en soi, ce qui signifie qu'il est nécessaire de les exécuter via un filtre de conversion. Les filtres de conversion convertissent des éléments de leur type MIME natif (par exemple, Microsoft Word, Adobe, PDF ou texte ASCII) en un format pouvant être indexé : HTML ou texte brut. Ce processus de conversion se produit dans les flux de données et s'appelle un processus de conversion de documents. Lorsque les éléments sont convertis pour être affichés ou pour la mise en évidence des résultats, le processus de conversion, appelé service de conversion de documents ou DCS, est géré par un serveur d'administration. Pour plus d'informations sur le service de conversion de documents, reportez-vous à la rubrique <span><A href="../otadmin/ota-settingupdcs-bg.htm">Configuration du service de conversion de documents</A></span>.</P>
+<P class="before-ul"><A NAME="TMPID7177"></A>Content Server offre trois types de filtres de conversion :</P><A NAME="AEN6465"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6466"></A><A NAME="TMPID7181"></A>Document Filters (IM Filter) d'OpenText</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6469"></A><A NAME="TMPID7184"></A>QDF (Quality Document Filter).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6471"></A><A NAME="TMPID7186"></A>XPDF</P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF136">Document Filters (IM Filter) d'OpenText</A></P>
+<P><A NAME="TMPID7189"></A>Les filtres de document OpenText utilisent des packages de filtre pour convertir des éléments de leur format de fichier natif (par exemple, Microsoft Word, Microsoft Excel ou Adobe PDF) en format texte simple (par exemple, HTML ou text) à des fins d'affichage ou d'indexation dans Content Server. IM Filter est utilisé pour afficher les éléments Content Server.</P>
+<P><A NAME="TMPID7193"></A>IM Filter convertit des documents au format HTML ou texte brut pour permettre leur affichage et indexation. La plupart des documents convertis peuvent être affichés en utilisant la fonction Afficher en tant que page Web, en tant qu'images tramées. Les fichiers au format Word, Excel ou RTF sont affichés en tant que textes pouvant être recherchés et indexés.</P>
+<P><A NAME="TMPID7194"></A>IM Filter est la bibliothèque qui communique avec DCS afin de permettre l'extraction de texte et de métadonnées. La bibliothèque transmet les requêtes de détection TextExtraction et MIMEtype de DCS à DCSIm via l'utilisation des noms de fichier ou du contenu de la mémoire tampon. Tout le texte extrait par DCSIm est renvoyé vers DCS à l'aide du codage UTF-8.</P>
+<P><A NAME="TMPID7195"></A>Etant donné que DCSIm n'est pas encore configuré pour gérer les requêtes d'extraction sur le contenu de la mémoire tampon pour la plupart des formats, il crée un fichier temporaire stocké sur disque, sauf pour les documents Microsoft Office au format 95-2010.</P>
+<P><A NAME="TMPID7196"></A>Pour configurer IM Filter, modifiez la section [DCSIm] du fichier opentext.ini. Pour plus d'informations, voir <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-dcsim-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-ini-dcsim-rf.htm">[DCSIm]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-dcsim-rf" FMT=""></span> et OpenText Document Filters Administrator's Guide (Manuel administrateur Document Filters d'OpenText) dans la OpenText Knowledge Center OpenText : <A HREF="https://knowledge.opentext.com/knowledge/piroot/llescf/v100000/llescf-agd/en/docovw.xml" TARGET="_blank">https://knowledge.opentext.com/knowledge/piroot/llescf/v100000/llescf-agd/en/docovw.xml</A> .</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF137">QDF</A></P>
+<P><A NAME="TMPID7205"></A>Par défaut, Content Server utilise des filtres QDF pour convertir les données. Les QDF sont des filtres de conversion personnalisés pour filtrer rapidement des éléments car ils génèrent du texte brut plutôt qu'un format HTML, en supprimant toute la mise en forme. Les filtres QDF ont été conçus pour être exécutés en mémoire plutôt que pour être lus à partir du disque, ce qui contribue aussi à accroître leur vitesse.</P>
+<P><A NAME="TMPID7207"></A>Pour configurer des filtres QDF, modifiez la section <TT CLASS="literal">[QDF]</TT> du fichier opentext.ini. Pour en savoir plus, voir <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-qdf-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-ini-qdf-rf.htm">[QDF]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-qdf-rf" FMT=""></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

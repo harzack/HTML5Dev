@@ -1,0 +1,260 @@
+<!-- wr_catjsarray_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>CAT:JSARRAY</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_catjsarray_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'CAT:JSARRAY';
+        header.draw();
+
+</SCRIPT>
+<p class="body"><b>Example Category definition:</b><br></p>
+<img src="./cat_jsarray.png" border=0><br><br>
+<p class="body"><b>Example Category data:</b><br></p>
+<img src="./cat_jsarray_data.png" border=0><br><br>
+
+<p class="body">Category data can be returned in a JavaScript data structure by using the JSARRAY parameter with the CAT or VERSIONCAT subtags, for example <b>[LL_REPTAG=DATAID CAT:JSARRAY /]</b><BR>
+will return data for the current version of a node.  The data returned
+is shown below with the addition of comments which have been added in <font color=green>green</font> to aid reading.<BR>
+The values shown in the image above can be clearly seen in <font color=red>red</font> in the
+JavaScript data structure below.
+</p>
+<p class="body">
+It should be noted that a JavaScript prototype approach was used to store the category data. The '<b>new catData()</b>' statement refers to a constructor function and <br>
+'<b>cat_data.newNode(...)</b>' is a method of the catData object used to store the category.
+</p>
+
+<p class="body"><u><SPAN class="gui">Example JavaScript from above definition and data</SPAN></u></p>
+<p class="body">
+The following code is produced when calling [LL_REPTAG=DATAID CAT:JSARRAY /]
+<PRE>
+&lt;script&gt;<br>
+<font color=green>/* Call to catData constructor function to instantiate a object. */</font>
+var cat_data = new catData();
+
+<font color=green>/* newNode is a method to store the category data into the object. */</font>
+<font color=green>/* 108158 is the objectid of the node the categories are applied to */</font>
+cat_data.newNode(108158,{
+
+	<font color=green>/* 108157 is the objectid of the first category applied to node 108158 */</font>
+	<font color=green>/ * 'Type Testing Category' is the name of the first category applied to the node */</font>
+	"108157":{"id":108157, "name":"Type Testing Category", "req":false, "catver":1, "nodever":1,
+
+	<font color=green>/* attr_data is where all the attribute data is stored */</font>
+	"attr_data":{
+		<font color=green>/* 2 is the id of the first attribute in the category */</font>
+		<font color=green>/* 'Date of Test' is the name of the first attribute */</font>
+		<font color=green>/* -7 is the internal Content Server representation of the attribute type */</font>
+		<font color=green>/* multi is set to true if the attribute is a multi value attribute */</font>
+		<font color=green>/* set is set to true if the attribute is a set */</font>
+		"2":{"id":2, "name":"Date of Test", "req":false, "type":-7, "len":null, "maxlen":null, "rows":null, "maxrows":null, "multi":false, "set":false, "values":[["_1_1_2_1", <font color=red>"2008/2/5:0:0:0"</font>]]},
+		"3":{"id":3, "name":"Pass or Fail", "req":false, "type":5, "len":null, "maxlen":null, "rows":null, "maxrows":null, "multi":false, "set":false, "values":[["_1_1_3_1", <font color=red>true</font>]]},
+		"4":{"id":4, "name":"Value", "req":false, "type":2, "len":null, "maxlen":null, "rows":null, "maxrows":null, "multi":false, "set":false, "values":[["_1_1_4_1", <font color=red>453</font>]]},
+
+		"5":{"id":5, "name":"Tester Details", "req":false, "type":-18, "len":null, "maxlen":null, "rows":null, "maxrows":null, "multi":true, "set":true,
+			<font color=green>/* here the structure gets a little more complex because we are looking at a multi value set */</font>
+			"attr_data":{
+				"0":{
+					"6":{"id":6, "name":"First Name", "req":false, "type":-1, "len":32, "maxlen":32, "rows":1, "maxrows":1, "multi":false, "values":[["_1_1_5_1_6_1", <font color=red>"Lee"</font>]]},
+					"7":{"id":7, "name":"Last Name", "req":false, "type":-1, "len":32, "maxlen":32, "rows":1, "maxrows":1, "multi":false, "values":[["_1_1_5_1_7_1", <font color=red>"Butler"</font>]]},
+					"8":{"id":8, "name":"Phone Number", "req":false, "type":-1, "len":20, "maxlen":20, "rows":1, "maxrows":1, "multi":false, "values":[["_1_1_5_1_8_1", <font color=red>"44556677"</font>]]},
+					<font color=green>/* here we are adding multi value attributes into a multi value set */</font>
+					"9":{"id":9, "name":"Associates", "req":false, "type":-1, "len":32, "maxlen":32, "rows":1, "maxrows":3, "multi":true, "values":[["_1_1_5_1_9_1", <font color=red>"Greg Petti"</font>], ["_1_1_5_1_9_2", <font color=red>"Steve Osborn"</font>], ["_1_1_5_1_9_3", <font color=red>"Darren Hodder"</font>]]}
+				},
+
+				"1":{
+					<font color=green>/* here we defined the second element of the multi-value set */</font>
+					"6":{"id":6, "name":"First Name", "req":false, "type":-1, "len":32, "maxlen":32, "rows":1, "maxrows":1, "multi":false, "values":[["_1_1_5_2_6_1", <font color=red>"James"</font>]]},
+					"7":{"id":7, "name":"Last Name", "req":false, "type":-1, "len":32, "maxlen":32, "rows":1, "maxrows":1, "multi":false, "values":[["_1_1_5_2_7_1", <font color=red>"Brown"</font>]]},
+					"8":{"id":8, "name":"Phone Number", "req":false, "type":-1, "len":20, "maxlen":20, "rows":1, "maxrows":1, "multi":false, "values":[["_1_1_5_2_8_1", <font color=red>"77441199"</font>]]},
+					"9":{"id":9, "name":"Associates", "req":false, "type":-1, "len":32, "maxlen":32, "rows":1, "maxrows":3, "multi":true, "values":[["_1_1_5_2_9_1", <font color=red>"Brian Howson"</font>], ["_1_1_5_2_9_2", <font color=red>"Peter Brown"</font>]]}
+				}
+			}
+		}
+	}
+	}
+})
+&lt;/script&gt;
+</PRE>
+</p>
+
+<p class="body"><u><SPAN class="gui">CAT:JSARRAY Function Reference</SPAN></u></p>
+
+<p class="body">
+Additional functions to retrieve category data are available <a href="wr_catjsarray_functions.htm">here</a> to use in your reporting applications. This reference guide provides detailed information on the functions, <br>
+function parameters, return types, and simple example usage. These functions can be conveniently used in your reporting applications to retrieve category data.
+</p>
+
+<p class="body"><u><SPAN class="gui">A simple real world usage of CAT:JSARRAY and its functions</SPAN></u></p>
+
+<p class="body">
+Please note that this example contains no formatting of the output. It is illustrated here to show users how to access and display the key elements of the data structure. <br>
+It should be relatively simple task to add formatting. In addition a LiveReport (not shown) was created and linked to this WebReport which retrieves a list of documents with <br>
+a category applied. For this example, the LiveReport retrieves the columns DataID, Name, and CreateDate of the document.
+</p>
+
+<p class="body">
+<PRE>
+&lt;style type="text/css"&gt;
+.note {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background: #ffc;
+            padding: 10px;
+            border: 1px solid #000;
+            z-index: 1;
+            width:300;
+            visibility: hidden;
+            font: 11px "Verdana", Arial, Helvetica, sans-serif;
+            color: #000;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+
+var theDivId;
+
+// simple function to make a DIV visible - this is where the category data will appear
+function showNote(event, noteid){
+	note=document.getElementById(noteid);
+	note.style.left=event.clientX + document.body.scrollLeft;
+	note.style.top=event.clientY + document.body.scrollTop;
+	note.style.visibility='visible';
+}
+
+// opposite to the above function, just hide the DIV
+function hideNote(event, noteid){
+	note=document.getElementById(noteid);
+	note.style.visibility='hidden';
+}
+
+// Function used to determine if the passed parameter is an array or not
+// Returns true if its an array, false if its not
+function isArray(obj) {
+   if (obj.constructor.toString().indexOf("Array") == -1)
+	  return false;
+   else
+	  return true;
+}
+
+// function that will populate the note with all category data associated with the node
+function showCatData(nodeId) {
+
+	theDivId = 'note' + nodeId;
+	theDiv = document.getElementById(theDivId);
+	theDiv.innerHTML = '';
+
+	// Retrieve category data structure for this particular node
+	var thisNode = cat_data.nodes[nodeId];
+
+	// Iterate thru the data strucutre to display all category fields and data
+	for (catid in thisNode) {
+
+		// Display the category name
+		theDiv.innerHTML += '&lt;TABLE&gt;&lt;TR&gt;&lt;TD CLASS="browseBoxHeader" WIDTH="100%"&gt;' + cat_data.getCatName(catid, nodeId)  + '&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;';
+
+			// cycle through the attributes
+			for ( attid in thisNode[catid].attr_data ) {
+
+				// just look at regular attributes and multi-value attributes
+				if (thisNode[catid].attr_data[attid].set == false){
+
+					// display the attribute name and corresponding value using the CAT:JSARRAY functions
+					theDiv.innerHTML += '&lt;b&gt;&lt;font color="#2B3856"&gt;' + cat_data.getAttrName(catid, attid, nodeId) + ':&lt;/font&gt;&lt;/b&gt; ';
+					theDiv.innerHTML += '&lt;font color="#5E5A80"&gt;' + cat_data.getAttrValue(catid, attid, nodeId)  + '&lt;/font&gt;';
+					theDiv.innerHTML += "&lt;br&gt;";
+
+				// Here we have a set or a multi-value set
+				} else {
+					// display the set name
+					theDiv.innerHTML += '&lt;b&gt;&lt;font color="#2B3856"&gt;' + cat_data.getAttrName(catid, attid, nodeId)  + '&lt;/font&gt;&lt;/b&gt; ';
+					theDiv.innerHTML += "&lt;br&gt;";
+
+					// cycle through the sets - one iteration for a regular set and multiple for multi-value sets
+					for ( row in thisNode[catid].attr_data[attid].attr_data ){
+
+						// cycle through the attributes in the set
+						for ( rowAttr in thisNode[catid].attr_data[attid].attr_data[row] ){
+
+							// Retrieve the value of the set attribute
+							var attrValue = cat_data.getAttrValue(catid, rowAttr, nodeId);
+							var theValue = "";
+
+							// Check to see how the data is wrapped
+							if ( isArray(attrValue) ) {
+
+								// Data is wrapped in an array. Return the value based on the row we are on. E.g. [ [row1 values], [row2 values], [row3 values], etc... ]
+								theValue = attrValue[row];
+
+							} else {
+
+								// Just a single value is returned. E.g. A string, number, etc.
+								theValue = attrValue;
+
+							}
+
+							// display the attribute name and corresponding value within the set
+							theDiv.innerHTML += '&lt;b&gt;&lt;font color="#2B3856"&gt;' + cat_data.getAttrName(catid, rowAttr, nodeId)  + ':&lt;/font&gt;&lt;/b&gt; ';
+							theDiv.innerHTML += '&lt;font color="#5E5A80"&gt;' + theValue  + '&lt;/font&gt;';
+							theDiv.innerHTML += "&lt;br&gt;";
+
+						}
+					}
+				}
+			}
+
+		theDiv.innerHTML += "&lt;br&gt;";
+
+	}
+
+}
+
+&lt;/script&gt;
+
+&lt;table border=1&gt;
+&lt;tr&gt;
+	&lt;td&gt;&lt;b&gt;Name&lt;/b&gt;&lt;/td&gt;
+	&lt;td&gt;&lt;b&gt;Create Date&lt;/b&gt;&lt;/td&gt;
+	&lt;td&gt;&lt;b&gt;Cat data&lt;/b&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+[LL_WEBREPORT_STARTROW /]
+
+[LL_REPTAG=DataId CAT:JSARRAY /]
+
+&lt;tr&gt;
+	&lt;td&gt;[LL_REPTAG=Name /] [LL_REPTAG=DataId LLURL:FUNCTIONMENU /]&lt;/td&gt;
+	&lt;td&gt;[LL_REPTAG=CreateDate DATE:SHORT /]&lt;/td&gt;
+	&lt;td&gt;
+		&lt;IMG height=14 width=14 SRC="[LL_REPTAG_SUPPORTDIR /]webattribute/16category.gif" BORDER="0" STYLE="decoration:none;" ONMOUSEOVER="showNote(event, 'note[LL_REPTAG=DataId /]');showCatData([LL_REPTAG=DataId /]);return false;" ONMOUSEOUT="hideNote(event, 'note[LL_REPTAG=DataId /]');return false;"&gt;
+		&lt;div id="note[LL_REPTAG=DataId /]" class="note" ONMOUSEOUT="hideNote(event, 'note[LL_REPTAG=DataId /]');return false;"&gt;&lt;nobr&gt;&lt;center&gt;Aquiring Category Data&lt;/center&gt;&lt;/nobr&gt;&lt;br&gt;&lt;br&gt;&lt;nobr&gt;&lt;center&gt;please wait&lt;/center&gt;&lt;/nobr&gt;&lt;/div&gt;
+	&lt;/td&gt;
+&lt;/tr&gt;
+
+[LL_WEBREPORT_ENDROW /]
+
+&lt;/table&gt;
+</PRE>
+
+
+
+<p class="body"><b><U>Example output from above using data from first example</U></b><br></p>
+<img src="./cat_jsarray_wrservice.png" border=0>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

@@ -1,0 +1,166 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Using User Input Values to Control Template Insertion</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-example2-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Template Examples';
+          header.title2 = 'Using User Input Values to Control Template Insertion';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1262"></A>Besides using unique URL parameters to control the insertion of templates, it is possible simply to specify that a template will be inserted, or not, based on the value of one or more User Input parameters that are used in the template. Consider the following template:</P><A NAME="AEN1264"></A>
+<PRE 
+CLASS="screen"
+>NAME = %1 AND DATAID &gt; %2</PRE
+>
+<P><A NAME="TMPID1264"></A>When the template is setup we can specify a flag value that will be used to determine whether the template is included or not. For example, a value of empty string could be set.</P>
+<P><A NAME="TMPID1265"></A>We could either specify that if one of the flags is set to empty string then the template is not used, or we could specify that the template will be excluded if both of the parameters are set to empty string.</P>
+<P><A NAME="TMPID1266"></A>Most commonly the specified flag will be an empty string. This allows templates to be excluded if one or more of the parameters used are not used.</P>
+<DIV title="Excluding a template if one of the parameters is empty" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXEXLTEM-EX"></A><B><IMG title="Excluding a template if one of the parameters is empty" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-4: Excluding a template if one of the parameters is empty</B></P>
+<P class="nr1"><A NAME="TMPID1269"></A>For this example, two different URLs are shown to illustrate how different input settings affect the SQL source that is executed. The template is setup to use a single User input (%1). The <B CLASS="guilabel">Include IF</B> condition is set to <B CLASS="guilabel">No Inputs set to flag</B> which means that if the user input is set to the specified Flag Value then the template will NOT be included. The <B CLASS="guilabel">Flag Value</B> in this case is an empty string so in specific terms, if <TT CLASS="literal">&amp;inputlabel1</TT> is not included in the URL or <TT CLASS="literal">&amp;inputlabel1=</TT> is set to nothing, for example set to an empty string, then the template will not be included. If <TT CLASS="literal">inputlabel1</TT> is set to anything else then the template will be included. In URL 1 a value has been specified for <TT CLASS="literal">&amp;inputlabel1</TT> so the template is included. In URL 2 <TT CLASS="literal">&amp;inputlabel1</TT> has been left blank so the template is not included. Note that the parameters section of this LiveReport has not been shown, but %1 has been set to coincide with User Input 1.</P>
+<A NAME="AEN1279"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1280"></A><A NAME="TMPID1280"></A>In the <B CLASS="guilabel">Main SQL Source</B>, in the <B CLASS="guilabel">SQL</B> field, type:</P><A NAME="AEN1284"></A>
+<PRE 
+CLASS="screen"
+>select * from DTREE
+~1</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1285"></A><A NAME="TMPID1285"></A>In the <B CLASS="guilabel">Template Setup</B>, in the <B CLASS="guilabel">Templates</B> area, define <B CLASS="guilabel">~1</B>:</P><A NAME="AEN1290"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1291"></A><A NAME="TMPID1291"></A>Do not select the <B CLASS="guilabel">Auto-Where</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1294"></A><A NAME="TMPID1294"></A>In the <B CLASS="guilabel">SQL Source</B> field, type “where name = %1”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1298"></A><A NAME="TMPID1298"></A>Do not select the <B CLASS="guilabel">Auto-Comma</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1301"></A><A NAME="TMPID1301"></A>From the <B CLASS="guilabel">Include IF</B> list, select “No Inputs set to flag”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1305"></A><A NAME="TMPID1305"></A>In the <B CLASS="guilabel">Options</B> field, leave the <B CLASS="guilabel">Flag Value</B> field empty. Note that no text specified in this field means that the flag value is an empty string.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1309"></A><A NAME="TMPID1309"></A>In the <B CLASS="guilabel">Inputs</B> area, include some generic inputs. For example, include an input of type <TT CLASS="literal">STRING</TT> with a <B CLASS="guilabel">Prompt</B> called “name”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1315"></A><A NAME="TMPID1315"></A>In the <B CLASS="guilabel">Parameters</B> area, include a user input field.</P></LI></OL>
+<P><A NAME="TMPID1317"></A>If you access the following sample URL1:</P><A NAME="AEN1319"></A>
+<PRE 
+CLASS="screen"
+>...&amp;inputLabel1=New WebReport&amp;nextURL=...</PRE
+>
+<P><A NAME="TMPID1319"></A>Note that with this type of condition it is not necessary to include any additional parameters as the template's inclusion is purely based on the contents of normal User Input parameters.</P>
+<P><A NAME="TMPID1320"></A>The URL1 resulting SQL will contain, in the <B CLASS="guilabel">SQL Source</B> field, “select * from DTREE where name = 'New Web Report'”.</P>
+<P><A NAME="TMPID1323"></A>If you access the following sample URL2:</P><A NAME="AEN1325"></A>
+<PRE 
+CLASS="screen"
+>...&amp;inputLabel1=&amp;nextURL=...</PRE
+>
+<P><A NAME="TMPID1325"></A>Note that when no text is specified between the equals (=) sign and the next parameter start (&amp;) or the end of the URL then the parameter is set to an empty string.</P>
+<P><A NAME="TMPID1326"></A>The URL2 resulting SQL will contain, in the <B CLASS="guilabel">SQL Source</B> field, “select * from DTREE”.</P><IMG title="Excluding a template if one of the parameters is empty" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Excluding  a template if any of multiple parameters are set to the flag" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXPARFLAG-EX"></A><B><IMG title="Excluding  a template if any of multiple parameters are set to the flag" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-5: Excluding  a template if any of multiple parameters are set to the flag</B></P>
+<P class="nr1"><A NAME="TMPID1331"></A>This example is similar to the previous one except that there are multiple User Input parameters in this template. In this case, we want the template to be excluded if any of these User Inputs are set to the flag, “null” in this case. To achieve this we again use the <B CLASS="guilabel">Include IF</B> condition of <B CLASS="guilabel">No inputs set to flag</B> but for this example we are using the text characters “null” as the <B CLASS="guilabel">Flag Value</B>. In this case if any of <TT CLASS="literal">&amp;inputlabel1</TT>, <TT CLASS="literal">&amp;inputlabel2</TT> or <TT CLASS="literal">&amp;inputlabel3</TT> are set to the text string “null” then the template will not be included. In our sample URL <TT CLASS="literal">&amp;inputlabel1</TT> is set to “null” so this template is not included in the resulting SQL.</P>
+<A NAME="AEN1344"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1345"></A><A NAME="TMPID1345"></A>In the <B CLASS="guilabel">Main SQL Source</B>, in the <B CLASS="guilabel">SQL</B> field, type:</P><A NAME="AEN1349"></A>
+<PRE 
+CLASS="screen"
+>select * from sampleTable
+~1</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1350"></A><A NAME="TMPID1350"></A>In the <B CLASS="guilabel">Template Setup</B>, in the <B CLASS="guilabel">Templates</B> area, define <B CLASS="guilabel">~1</B>:</P><A NAME="AEN1355"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1356"></A><A NAME="TMPID1356"></A>Do not select the <B CLASS="guilabel">Auto-Where</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1359"></A><A NAME="TMPID1359"></A>In the <B CLASS="guilabel">SQL Source</B> field, type:</P><A NAME="AEN1362"></A>
+<PRE 
+CLASS="screen"
+>where color LIKE %1
+and type LIKE %2
+and subtype LIKE %3</PRE
+></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1363"></A><A NAME="TMPID1363"></A>Do not select the <B CLASS="guilabel">Auto-Comma</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1366"></A><A NAME="TMPID1366"></A>From the <B CLASS="guilabel">Include IF</B> list, select “No Inputs set to flag”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1370"></A><A NAME="TMPID1370"></A>In the <B CLASS="guilabel">Options</B> field, in the <B CLASS="guilabel">Flag Value</B> field, type “null”.</P></LI></UL></LI></OL>
+<P><A NAME="TMPID1374"></A>If you access the following URL:</P><A NAME="AEN1376"></A>
+<PRE 
+CLASS="screen"
+>...&amp;inputLabel1=null&amp;inputLabel2=widget&amp;inputLabel3=grommet&amp;nextURL=...</PRE
+>
+<P><A NAME="TMPID1376"></A>The resulting SQL will contain, in the <B CLASS="guilabel">SQL Source</B> field, “select * from sampleTable”.</P><IMG title="Excluding  a template if any of multiple parameters are set to the flag" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Including a template if any of the parameters are not empty" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXTEMPEM-EX"></A><B><IMG title="Including a template if any of the parameters are not empty" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-6: Including a template if any of the parameters are not empty</B></P>
+<P class="nr1"><A NAME="TMPID1381"></A>This example demonstrates one of the lesser used conditions. In this simplistic example, we have a situation where the number of selectable columns is variable. If at least one of these User Input parameters is not empty, then we want to include the template. By using the <B CLASS="guilabel">Include IF</B> condition <B CLASS="guilabel">Not all inputs set to flag</B> we specify that the template will be included unless all of the User Input parameters are set to the flag value, which, in this example, is an empty string. Note that we are also using the <B CLASS="guilabel">Auto Comma</B> feature in this example to ensure that the number of commas in the select list is syntactically correct. This feature is explained more fully in <span><A HREF="lr-autcomm-bg.htm">Using the Auto Comma feature</A></span> and in the “Auto Comma” row in <span><A HREF="lr-sqlfield-bg.htm">SQL Template Fields</A></span>. In this example we also use a second template that will only be inserted if the first template is not included. The <B CLASS="guilabel">Include IF</B> condition is explained further in the “Include IF” row in <span><A HREF="lr-sqlfield-bg.htm">SQL Template Fields</A></span> and <span><A HREF="lr-sqlfield-bg.htm#LR-SQLINCLIF">Include IF</A></span>.</P>
+<A NAME="AEN1393"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1394"></A><A NAME="TMPID1394"></A>In the <B CLASS="guilabel">Main SQL Source</B>, in the <B CLASS="guilabel">SQL</B> field, type:</P><A NAME="AEN1398"></A>
+<PRE 
+CLASS="screen"
+>select ~1~2
+from sampleTable</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1399"></A><A NAME="TMPID1399"></A>In the <B CLASS="guilabel">Template Setup</B>, in the <B CLASS="guilabel">Templates</B> area, define <B CLASS="guilabel">~1</B>:</P><A NAME="AEN1404"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1405"></A><A NAME="TMPID1405"></A>Do not select the <B CLASS="guilabel">Auto-Where</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1408"></A><A NAME="TMPID1408"></A>In the <B CLASS="guilabel">SQL Source</B> field, type: “%1, %2, %3”</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1412"></A><A NAME="TMPID1412"></A>Select the <B CLASS="guilabel">Auto-Comma</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1415"></A><A NAME="TMPID1415"></A>From the <B CLASS="guilabel">Include IF</B> list, select “Not all inputs set to flag”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1419"></A><A NAME="TMPID1419"></A>In the <B CLASS="guilabel">Options</B> field, ensure the <B CLASS="guilabel">Flag Value</B> field is empty.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1423"></A><A NAME="TMPID1423"></A>In the <B CLASS="guilabel">Template Setup</B>, in the <B CLASS="guilabel">Templates</B> area, define <B CLASS="guilabel">~2</B>:</P><A NAME="AEN1428"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1429"></A><A NAME="TMPID1429"></A>Do not select the <B CLASS="guilabel">Auto-Where</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1432"></A><A NAME="TMPID1432"></A>In the <B CLASS="guilabel">SQL Source</B> field, type: “*”</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1436"></A><A NAME="TMPID1436"></A>Select the <B CLASS="guilabel">Auto-Comma</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1439"></A><A NAME="TMPID1439"></A>From the <B CLASS="guilabel">Include IF</B> list, select “Template condition false”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1443"></A><A NAME="TMPID1443"></A>In the <B CLASS="guilabel">Options</B> field, in the <B CLASS="guilabel">Template #</B> field, type “1”.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1448"></A><A NAME="TMPID1448"></A>In the <B CLASS="guilabel">Inputs</B> area, include some generic inputs. For example, include three inputs of type <TT CLASS="literal">STRING</TT> with <B CLASS="guilabel">Prompt</B>s called “name”, “type” and “subtype”.</P></LI></OL>
+<P><A NAME="TMPID1455"></A>If you access the following URL:</P><A NAME="AEN1457"></A>
+<PRE 
+CLASS="screen"
+>...&amp;inputLabel1=Parts&amp;inputLabel2=&amp;inputLabel3=grommet&amp;nextURL=...</PRE
+>
+<P><A NAME="TMPID1457"></A>The resulting SQL will contain, in the <B CLASS="guilabel">SQL Source</B> field, “select Parts,grommet from sampleTable”.</P><IMG title="Including a template if any of the parameters are not empty" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

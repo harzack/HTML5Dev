@@ -1,0 +1,131 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Configuring the Enterprise Extractor Process</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-specexpr-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Data Flow Processes';
+          header.title2 = 'Configuring the Enterprise Extractor Process';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3771"></A>An Enterprise Extractor process is a data flow process that extracts data from the Content Server database and writes it to a data flow, where it is indexed.</P>
+<P><A NAME="TMPID3773"></A>You configure Enterprise Extractor processes on their Properties pages. For example, you can change the Admin server on whose host the Enterprise Extractor process runs. You can also enable system object management, modify the start and destination directories, administer start and stop options, or resynchronize the process.</P>
+<P><A NAME="TMPID3774"></A>You can also configure the Enterprise Extractor process by modifying parameters in the <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-livelinkextractor-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-livelinkextractor-rf.htm">[LivelinkExtractor]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-livelinkextractor-rf" FMT=""></span> section of the <TT CLASS="filename">opentext.ini</TT> file.</P>
+<P><A NAME="TMPID3777"></A>The Specific tab of the Enterprise Extractor Properties page</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3148"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Element</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Status</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indicates whether the Enterprise Extractor process is running. You cannot edit this field.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Admin Server</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the shortcut of the Admin server on whose host computer the Enterprise Extractor process runs. Do not change the Admin server shortcut for the Enterprise Extractor process. The Enterprise Extractor process must run on an Admin server host where the Server runs. This is always the primary Content Server host where the default (primary) Admin server is running.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Enable System Management</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Controls whether Content Server monitors this process to detect when it returns error messages. If the process returns an error message, Content Server records the message in the database. System management is enabled by default. For more information about configuring Content Server to send you email alerts when this or other data flow processes encounter errors, see <span><A href="../websovmgmt/sov-cnfsoaed-p.htm">To Enable Error-Checking and E-Mail Delivery</A></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Last Update</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indicates the last date and time that Content Server ran the Enterprise Extractor process. You cannot edit this field.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Full Extraction Progress</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Provides the status of the Enterprise Extraction process. Prior to running a full extraction process, the status is empty. While the process is running, it provides the ID of the last node that was processed and the order of the process – ascending or descending. The status changes to complete when the extraction process is finished.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Resume Full Extraction at</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Specifies the node ID at which the Enterprise Extraction process will resume.</TD></TR></TABLE>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3813"></A><B CLASS="tip">Tip: </B><BR>This element does not usually need to be edited, except in special cases:</P><A NAME="AEN3184"></A>
+<UL class="tip">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3185"></A><A NAME="TMPID3816"></A>An Extractor can skip a particular node ID, known to be problematic, if you enter the next ID after it. For example, if 5440 was a problematic node ID, entering 5439 would skip it, but 5439 does not need to be a valid node ID.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3187"></A><A NAME="TMPID3818"></A>Specifying <TT CLASS="literal">-1</TT> will only cancel the full extraction process for the Extractor being edited. On a system with multiple Extractors, you must edit them all to cancel the extraction completely.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF86"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3821"></A><B CLASS="note">Note: </B><BR>This parameter is only available when the Extractor is stopped.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Command Template</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the Template used to generate the command line for the Enterprise Extractor process. Do not change this value unless you are instructed to do so by OpenText Customer Support.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Command Line</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indicates the command line that Content Server uses to run the Enterprise Extractor process. You cannot change the value of this field.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Start Directory</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the directory in which the Enterprise Extractor process runs. The Enterprise Extractor process must always run in the <TT CLASS="literal">Content Server_home</TT>/bin directory. Do not change this value unless you are instructed to do so by OpenText Customer Support.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Information button</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Loads the Data Flow Link Management page, which specifies the directory to which the Enterprise Extractor process writes data. Do not change this value unless you have moved an IPool, or you are instructed to do so by OpenText Customer Support.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Start Options</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the start settings for the Enterprise Extractor process. When the Enterprise Extractor process starts, it crawls the Content Server database, adding and updating data as necessary. <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3846"></A><B CLASS="guilabel">Manual</B>, the default option which lets you start the Enterprise Extractor process manually whenever you want to recrawl the Content Server database</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3850"></A><B CLASS="guilabel">Scheduled</B>, which lets you schedule the day and time on which the Enterprise Extractor process runs</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3853"></A><B CLASS="guilabel">Persistent</B>, which causes the Enterprise Extractor process to run continuously </P></TD></TR></TABLE>By default, the Enterprise Extractor process is scheduled to run each minute to process changes that are made to the Content Server database on a continuous basis. Depending on your Content Server System, you may want to change the scheduling interval.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Stop Options</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the stop settings for the Enterprise Extractor process. By default, the stop option is set to <B CLASS="guilabel">Terminate</B>. This is the most appropriate stop option for the Enterprise Extractor process. The <B CLASS="guilabel">Maximum Good Exit Code</B> field specifies the maximum error code number for which the Admin server will automatically restart the Enterprise Extractor process, if it fails. By default, the value of the <B CLASS="guilabel">Maximum Good Exit Code</B> field is set to -1, meaning that the Admin server will not restart this process if it fails. Do not modify the <B CLASS="guilabel">Maximum Good Exit Code</B> value unless you are instructed to do so by OpenText Customer Support.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Start/Stop</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Allows you to maintain Data Flows, depending on its current state. If the process is running or scheduled to run, the <B CLASS="guilabel">Stop</B> button appears. If the process is stopped, the <B CLASS="guilabel">Start</B> button appears.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Resynchronize</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Resynchronizes information regarding this process (in the <TT CLASS="filename">otadmin.cfg</TT> file of the process's Admin Server) with the information in the Content Server database.</TD></TR></TABLE>
+</DIV></P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-specexpr-p.htm" revision="">To Configure the Enterprise Extractor Process</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

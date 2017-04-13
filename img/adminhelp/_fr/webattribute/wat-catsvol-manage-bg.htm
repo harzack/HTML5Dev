@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWAT100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webattribute">
+<title>Gestion des catégories</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wat-catsvol-manage-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation du volume Catégories';
+          header.title2 = 'Gestion des catégories';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="ADMINCATS">Gestion des catégories</A></P>
+<P class="nr1"><A NAME="TMPID298"></A>Seul l'administrateur ou un utilisateur disposant des privilèges d'administration système peut créer des catégories. OpenText vous recommande de restreindre les droits des utilisateurs pour créer des catégories.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CATPERMS">Autorisations et privilèges de catégories</A></P>
+<P class="before-ul"><A NAME="TMPID302"></A>Une catégorie est un élément basé sur les autorisations :</P><A NAME="AEN301"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN302"></A><A NAME="TMPID305"></A>Pour créer une catégorie, un utilisateur doit disposer du privilège <I CLASS="emphasis">Création d'objet</I> pour l'élément de la catégorie, ainsi que de l'autorisation <I CLASS="emphasis">Ajouter des éléments</I> dans la zone où le modèle de catégorie va être stocké. Le volume des catégories est l'emplacement de stockage par défaut des modèles de catégories dans Content Server. Par défaut, seul l'administrateur système est en mesure de créer et gérer des catégories. Il est toutefois possible de créer un groupe spécial Créateur de catégorie et d'y ajouter des utilisateurs spécifiques. Ces utilisateurs pourront ensuite définir de nouvelles catégories et les ajouter aux espaces de travail dans lesquels ils disposent des autorisations nécessaires. De tels utilisateurs doivent disposer d'une autorisation Administration système pour ajouter une catégorie à l'espace de travail Entreprise ou au volume Catégories. Tout utilisateur peut modifier une catégorie à condition de disposer d'une autorisation <I CLASS="emphasis">En écriture</I> sur celle-ci.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN308"></A><A NAME="TMPID311"></A>Pour associer une catégorie à un élément, un utilisateur doit disposer au moins de l'autorisation <I CLASS="emphasis">Voir et Voir le contenu</I>, ou <I CLASS="emphasis">En lecture</I> pour pouvoir accéder à la catégorie.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN312"></A><A NAME="TMPID315"></A>Pour modifier les valeurs d'attribut d'une catégorie associée à un élément, un utilisateur doit disposer de l'autorisation <I CLASS="emphasis">Modifier l'attribut</I> sur cet élément.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="USECATS">Utilisation des catégories</A></P>
+<P><A NAME="TMPID319"></A>Un type d'élément Catégorie, comme tout autre type d'élément dans Content Server, notamment les dossiers ou documents, peut être indexé, faire l'objet d'une recherche, avoir une version et être inclus dans l'audit.</P>
+<P><A NAME="TMPID321"></A>Le contrôle de version de catégorie vous permet de créer une catégorie et de la modifier par la suite. Les modifications apportées à une définition de catégorie risquent cependant de provoquer une perte de données puisque chaque attribut de la catégorie représente un élément d'information spécifique au sujet de l'élément Content Server auquel il est associé. De ce fait, si un attribut est supprimé ou modifié dans la catégorie (par exemple, une séquence différente dans la disposition), cette information devient inexistante pour la catégorie, ce qui risque d'affecter les recherches dans la base de données et la précision des informations extraites.</P>
+<P><A NAME="TMPID323"></A>Avec le contrôle de version, les versions précédentes de la catégorie peuvent continuer à être utilisées et demeurer valides pour les éléments auxquels elles sont associées, alors que d'autres éléments utilisent la nouvelle version modifiée de la catégorie. Par exemple, supposons qu'une <I CLASS="emphasis">Catégorie X</I> soit attribuée à un document et que l'administrateur, ou un utilisateur autorisé, supprime un ou plusieurs attributs ou change leur ordre par la suite. Les éléments actuellement associés à la catégorie ne sont pas affectés jusqu'à ce que l'administrateur ne les mette à niveau à l'aide de la nouvelle version de catégorie. Le contrôle de version des données d'attributs ne s'applique cependant qu'aux éléments de Content Server ayant une version normale, comme les documents, les documents composites et autres catégories.</P>
+<P><A NAME="TMPID326"></A>Les catégories Content Server peuvent également être incluses dans l'audit pour contrôler les modifications apportées à leur définition.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID329"></A><B CLASS="note">Note : </B><BR>La page <B CLASS="guilabel">Audit de catégorie</B> assure le suivi des modifications apportées aux champs Catégorie. Pour que l'audit porte sur les champs Catégorie, le centre d'intérêt <I CLASS="emphasis">Catégorie ajoutée</I> doit être activé. Pour plus d'informations sur la définition des centres d'intérêt de l'audit, reportez-vous à la rubrique <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-audit-manage-int-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-audit-manage-int-bg.htm">Gestion des centres d`intérêt de l`audit</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-audit-manage-int-bg" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID333"></A>Tout élément Content Server peut être associé à une ou plusieurs catégories (même le volume des catégories et la catégorie), en plus des attributs d'objets supplémentaires automatiquement associés à tous les éléments ajoutés à la base de données Content Server.</P>
+<P><A NAME="TMPID336"></A>Lorsqu'une catégorie s'applique à un élément de recueil, comme un dossier, un document composite, une liste de tâches, un projet, un workflow, une chaîne ou une discussion, tous les nouveaux sous-éléments héritent de la catégorie et de ses attributs.</P>
+<P><A NAME="TMPID337"></A>Lorsque des utilisateurs assignent une catégorie à un élément, la boîte de dialogue de sélection adopte par défaut le volume des catégories. Normalement, seul l'administrateur ou un utilisateur autorisé peut accéder à ce volume dès lors que son lien apparaît uniquement sur la page Administration. Les utilisateurs généraux ne peuvent modifier la catégorie que s'ils disposent de l'autorisation appropriée. Vous pouvez également copier des catégories à partir du volume des catégories vers un autre emplacement dans Content Server, un dossier par exemple, et leur attribuer des autorisations d'accès uniques.</P>
+<P><A NAME="TMPID339"></A>En tant qu'administrateur Livelink, vous pouvez créer et modifier des catégories sans avoir à redémarrer le serveur dans la mesure où les catégories sont des éléments ayant une version dans Content Server.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wat-catsvol-add-cat-p.htm" revision="">Pour ajouter une catégorie</A></p></li>
+<li><p><A  HREF="wat-catsvol-add-cat-fold-p.htm" revision="">Pour ajouter un dossier de catégorie</A></p></li>
+<li><p><A  HREF="wat-catsvol-edit-cat-p.htm" revision="">Pour modifier une catégorie</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

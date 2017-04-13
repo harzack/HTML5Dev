@@ -1,0 +1,143 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Configuring a Directory Walker Process</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbw-specifdw-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Data Flow Processes';
+          header.title2 = 'Configuring a Directory Walker Process';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4888"></A>Directory Walker processes extract data from a set of files on your file system and write the data to a data flow, where it is indexed.</P>
+<P><A NAME="TMPID4889"></A>After you create a Directory Walker process, you can modify the crawling parameters and directories that the Directory Walker process scans. If you modify this information, you must rerun the Directory Walker process to walk your file system again using the new information. Rerunning the Directory Walker process updates the index by adding new files, updating existing files, and removing deleted files.</P>
+<P><A NAME="TMPID4890"></A>To walk the specified directories again without modifying the parameters of the Directory Walker process, click the <B CLASS="guilabel">Functions</B> icon of the corresponding data flow manager, and then choose <B CLASS="guilabel">Resume</B>. You can also walk directories again by clicking the <B CLASS="guilabel">Functions</B> icon of the Directory Walker process, and then choosing <B CLASS="guilabel">Start</B>.</P>
+<P><A NAME="TMPID4895"></A>The following table describes the elements on the <B CLASS="guilabel">Specific</B> tab of the Directory Walker Properties page.</P>
+<P><A NAME="TMPID4897"></A>The Specific tab of the Directory Walker Properties page</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4268"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Element</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Status</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies whether the Directory Walker process is running or not running. You cannot edit this field.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Admin Server</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the shortcut of the Admin server on whose host computer the Directory Walker process runs. If you change this value, you may also have to perform one of the following operations:<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4915"></A>Modify the write directory path.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4917"></A>Move the write directory. If you move the write directory, you must also change the read directory of the data flow's Document Conversion process.</P></TD></TR></TABLE>Do not change the Admin server shortcut for the Directory Walker process unless necessary (for example, if the Admin server host is no longer available).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Enable System Management</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Controls whether Content Server monitors this process to detect when it returns error messages. If it returns an error message, Content Server records the message in the database. System management is enabled by default. For more information about configuring Content Server to send you email alerts when this or other data flow processes encounter errors, see<span><A href="../websovmgmt/sov-cnfsoaed-p.htm">To Enable Error-Checking and E-Mail Delivery</A></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Command Template</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the Template used to generate the command line for the Directory Walker process. Do not change this value unless you are instructed to do so by OpenText Customer Support.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Command Line</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the command line that Content Server uses to run the Directory Walker process. You cannot change the value of this field.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Start Directory</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the directory in which the Directory Walker process runs. The Directory Walker process must always run in the <TT CLASS="literal">Content Server_home</TT>/config directory. Do not change this value unless you are instructed to do so by OpenText Customer Support.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">IPools</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Allows you to access information about the write directory of the Directory Walker process. The write directory is the directory to which the Directory Walker process writes data. Do not change the write directory unless you move the location of the IPool or you are instructed to do so by OpenText Customer Support.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Log File</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the absolute path of the log file, where Content Server records the activity of the Directory Walker process. If this field is empty, logging is turned off.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Log Level</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the level of logging (<B CLASS="guilabel">Default</B>, <B CLASS="guilabel">Verbose</B>, or <B CLASS="guilabel">Debug</B>) that is applied if logging is turned on.<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4955"></A><B CLASS="guilabel">Default</B>, which specifies that the log file only records errors. This is the minimum log level.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4958"></A><B CLASS="guilabel">Verbose</B>, which specifies that the log file records the status of messages that are flowing through the processes and data interchange pools (IPools) of the data flow. It also records errors.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4961"></A><B CLASS="guilabel">Debug</B>, which specifies that the log file records detailed information about data flow status and errors. Due to the large amount of data that is generated, OpenText recommends that you only use the Debug level when you are diagnosing serious problems with the data flow.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Crawl History Database Location</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the path of the crawl history database files, which store information about the directories that the Directory Walker process scans. When a Directory Walker process walks a set of directories that were previously walked, it compares the crawl history database files to the files that are currently stored in the directory to locate new, updated, or deleted files. The Directory Walker process extracts information about added, replaced, or deleted files to the data flow. It does not extract the entire file set again, which makes index updating more efficient.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Directory Groups</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the directory groups that the Directory Walker process scans. Each directory group contains the names of the directories that the Directory Walker process scans. It also contains the types of files that the Directory Walker includes and/or excludes when scanning the directories, the subdirectories that the Directory Walker process scans, as well as the date and size range of the corresponding files. You can add, modify, or remove directory groups after a Directory Walker process is created.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Start Options</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the start options for the Directory Walker process. When the Directory Walker process starts, it crawls the directories that you specified, adding and updating data according to the current content of the directories. <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4975"></A><B CLASS="guilabel">Manual</B>, the default option, which lets you start the Directory Walker process manually whenever you want to recrawl the specified directories.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4978"></A><B CLASS="guilabel">Scheduled</B>, which lets you schedule the day and time on which the Directory Walker process runs. If you expect the directories that the process scans to change frequently, you can schedule the day and time on which the Directory Walker process regularly recrawls the directories.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4981"></A><B CLASS="guilabel">Persistent</B>, which causes the Directory Walker process to run continuously.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Stop Options</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the stop options for the Directory Walker process. There are three stop options:<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4988"></A><B CLASS="guilabel">Terminate</B>, which shuts down the process immediately—without allowing it to stop gracefully.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4991"></A><B CLASS="guilabel">Stop Message Port</B>, which causes the default Admin server to send a shutdown message to the port on which the Directory Walker process runs. This shutdown message instructs the Directory Walker process to stop gracefully. The value that you specify in this field is appended to the command line when you update the settings on the <B CLASS="guilabel">Specific</B> tab of the Directory Walker Properties page. This is the default stop option for the Directory Walker process.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4995"></A><B CLASS="guilabel">Stop Executable</B>, which specifies an executable file that instructs the process to stop.</P></TD></TR></TABLE>The <B CLASS="guilabel">Maximum Good Exit Code</B> field specifies the maximum error code number for which the Admin server will automatically restart the Directory Walker process if the process fails. OpenText recommends that you set the <B CLASS="guilabel">Maximum Good Exit Code</B> for a Directory Walker process to 99. Do not modify the <B CLASS="guilabel">Maximum Good Exit Code</B> value unless you are instructed to do so by OpenText Customer Support.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Start/Stop</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Allows you to maintain Data Flows, depending on its current state. If the process is running or scheduled to run, the <B CLASS="guilabel">Stop</B> button appears. If the process is stopped, the <B CLASS="guilabel">Start</B> button appears.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Resynchronize</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Resynchronizes the information about this process (in the <TT CLASS="filename">otadmin.cfg</TT> file of the process's Admin server) with the information in the Content Server database.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Update</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Submits the changes that you make on this page to the Content Server server.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Reset</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Resets the information on this page to its state when opened.</TD></TR></TABLE>
+</DIV></P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webdirwalk/wbw-specifdw-p.htm" revision="">To Configure a Directory Walker Process</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

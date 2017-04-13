@@ -1,0 +1,206 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWBD100500-H-UGD-EN-1">
+<META PiXprocLocator="webdoc">
+<title>Working with the Facets Volume</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/classification/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'fb-cust-fb-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Using Faceted Browsing';
+          header.title2 = 'Working with the Facets Volume';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1736"></A>   The Facets Volume is available to your administrator and Knowledge Managers. If the link to access the Facets Volume is not available to you, then you do not have the necessary privileges. Contact your administrator for access to the Facets Volume. </P>
+<P><A NAME="TMPID1746"></A>From the Facets Volume, you can add <I CLASS="EMPHASIS">columns</I>, <I CLASS="EMPHASIS">facets</I>, <I CLASS="EMPHASIS">facet folders</I> and <I CLASS="EMPHASIS">facet trees</I>. OpenText recommends that, prior to creating a column, facet or facet tree, you first create a facet folder to store your custom items. Creating a facet folder for your custom items aids in future maintenance for faceted browsing. </P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="COLUMN">Column</A></P>
+<P><A NAME="TMPID1754"></A>   In the Browse View of any location, items are viewed in a list. Each item is displayed in the list according to the columns defined for the Browse View. If a column is sortable, then clicking a column's name will organize the browse list. </P>
+<P><A NAME="TMPID1764"></A>  Knowledge Managers can create new columns that can display to users. The only columns that appear in the Browse View by default are the Fixed System Columns: <I CLASS="EMPHASIS">Type</I>, <I CLASS="EMPHASIS">Name</I>, <I CLASS="EMPHASIS">Size</I> and <I CLASS="EMPHASIS">Modified</I>. </P>
+<P><A NAME="TMPID1774"></A> Creating a custom column requires you to select a data source for your column. Your administrator is responsible for managing your available data sources. In the event that you want to create new data sources for your column, for example a Records Management field, then a solution developer will be required to write the code to make that available. A data source will not display in the list if it is in use by another column. </P>
+<P class="before-ul"><A NAME="TMPID1778"></A> After you add a column, you will need to configure that column. A custom column is configured from the column's functions menu by selecting <B CLASS="GUILABEL">Properties</B>. The fields in a column's <B CLASS="GUILABEL">Properties</B> dialog box are:</P><A NAME="AEN1811"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1812"></A><A NAME="TMPID1786"></A><B CLASS="HIGHLIGHT">Column data source</B>: a read-only field that lists the data source that was selected when the column was created. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1815"></A><A NAME="TMPID1789"></A><B CLASS="HIGHLIGHT">Status</B>: a read-only field that lists the current status for the column and provides a button to rebuild the column, if necessary.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1818"></A><A NAME="TMPID1792"></A><B CLASS="HIGHLIGHT">Sortable</B>: a read-only field that indicates whether the column can be sorted by users.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1821"></A><A NAME="TMPID1795"></A><B CLASS="HIGHLIGHT">Width</B>: a numeric input box that allows you to set the width of the custom column in characters. The default setting is 20. Allowable values range from 1 to 250. This field is required.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF37"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1798"></A><B CLASS="NOTE">Note: </B><BR>A custom column displays a maximum of 64 characters of data. If the length of the data to be displayed in the column exceeds 64 characters, the text is truncated and suspension points (...) appear to represent the missing data. Setting the column width to a value greater than 64 characters does not affect this limitation.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1826"></A><A NAME="TMPID1800"></A><B CLASS="HIGHLIGHT">Alignment</B>: a list box that allows you to select whether the column text will <I CLASS="EMPHASIS">align left</I>, <I CLASS="EMPHASIS">align center</I> or <I CLASS="EMPHASIS">align right</I>. The default setting is <I CLASS="EMPHASIS">align center</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1833"></A><A NAME="TMPID1807"></A><B CLASS="HIGHLIGHT">Long Text</B>: a list box that allows you to select whether the column text will <I CLASS="EMPHASIS">wrap</I>, <I CLASS="EMPHASIS">not wrap</I> or <I CLASS="EMPHASIS">truncate</I>. The default setting is <I CLASS="EMPHASIS">wrap</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1840"></A><A NAME="TMPID1814"></A><B CLASS="HIGHLIGHT">Display as link?</B>: a check box that allows you to select whether to allow the column value to display as a hypertext link.</P>
+<P><A NAME="TMPID1816"></A>This box appears checked by default if the column data source is a user-type data source. If this box is not checked, the next four options will not be selectable. If this box is checked, the <B CLASS="GUILABEL">Link URL</B> and <B CLASS="GUILABEL">Display value</B> fields below are required.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1846"></A><A NAME="TMPID1820"></A><B CLASS="HIGHLIGHT">Link URL</B>: an input box to enter the URL to which the column value will link.</P>
+<P><A NAME="TMPID1822"></A>You will only be able to enter information to this field if you have first checked the <B CLASS="GUILABEL">Display as link?</B> box. This field is required if you have checked the <B CLASS="GUILABEL">Display as link?</B> box.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1852"></A><A NAME="TMPID1826"></A><B CLASS="HIGHLIGHT">Display value</B>: an input box to enter the value to be displayed in the column. The default value is <I CLASS="EMPHASIS">%value%</I>, which will display the value for the column. Other options are:</P><A NAME="AEN1856"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1857"></A><A NAME="TMPID1831"></A><B CLASS="HIGHLIGHT">%objid%</B>: this will display the ID of the object itself.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1860"></A><A NAME="TMPID1834"></A><B CLASS="HIGHLIGHT">%nexturl%</B>: this is the URL the browser will be directed to after the original action has been completed. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1863"></A><A NAME="TMPID1837"></A><B CLASS="HIGHLIGHT">%value%</B>: this will display the value for the column. This is the default value.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1866"></A><A NAME="TMPID1840"></A><B CLASS="HIGHLIGHT">%rawvalue%</B>: this will display the raw value for the object.</P></LI></UL>
+<P><A NAME="TMPID1842"></A>You will only be able to enter information to this field if you have first checked the <B CLASS="GUILABEL">Display as link?</B> box. This field is required if you have checked the <B CLASS="GUILABEL">Display as link?</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1872"></A><A NAME="TMPID1846"></A><B CLASS="HIGHLIGHT">Alt-text</B>: an input box to enter the alt-text for the link. You can choose to use the values: %objid%, %nexturl%, %value% or %rawvalue%.</P>
+<P><A NAME="TMPID1848"></A>You will only be able to enter information to this field if you have first checked the <B CLASS="GUILABEL">Display as link?</B> box. This field is optional.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1877"></A><A NAME="TMPID1851"></A><B CLASS="HIGHLIGHT">Link Target</B>: a check box that allows you to select whether the link will open in a new browser window.</P>
+<P><A NAME="TMPID1853"></A>You will only be able to enter information to this field if you have first checked the <B CLASS="GUILABEL">Display as link?</B> box. This field is optional.</P></LI></UL>
+<P><A NAME="TMPID1855"></A> Before your column can be accessed by users, you must make your column available and give your users permission to see, edit or administer the column.</P>
+<P><A NAME="TMPID1859"></A>The availability options for your column are <I CLASS="EMPHASIS">Not available</I>, <I CLASS="EMPHASIS">Available everywhere</I> or <I CLASS="EMPHASIS">Only available in specific locations</I>. By default, the custom column's availability setting is <I CLASS="EMPHASIS">Not available</I>. </P>
+<P class="before-ul"><A NAME="TMPID1864"></A>Allowable permissions are <I CLASS="EMPHASIS">Administer</I>, <I CLASS="EMPHASIS">Read</I>, <I CLASS="EMPHASIS">Write</I> and <I CLASS="EMPHASIS">None</I>. By default, the custom column is given a Public Access permission of <I CLASS="EMPHASIS">Read</I>. It is advised that you keep this setting. In order for a column to show up in a user's Browse View, it needs to be selected in one of: </P><A NAME="AEN1897"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1898"></A><A NAME="TMPID1872"></A>global columns,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1900"></A><A NAME="TMPID1874"></A>at the folder level, or</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1902"></A><A NAME="TMPID1876"></A>on a user's personal settings.</P></LI></UL>
+<P><A NAME="TMPID1877"></A>For information about setting permissions for your column, see <span><XPROC NAME="ExtXrefStart" HREF="../webdoc/lleswba-h-agd.wba-permissions-so" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-permissions-so.htm">Administering Permissions</A><XPROC NAME="ExtXrefEnd" HREF="../webdoc/lleswba-h-agd.wba-permissions-so" FMT=""></span>. </P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="FACET">Facet</A></P>
+<P><A NAME="TMPID1881"></A>  In the <B CLASS="GUILABEL">Content Filter</B> sidebar, the facet panel displays the facets and facet values relevant to the items found in that location. Metadata are values that describe an item. Facets are groupings of metadata to which values are assigned. </P>
+<P><A NAME="TMPID1888"></A>Knowledge Managers create and edit facets in the <B CLASS="GUILABEL">Facets Volume</B>. The only facets that appear in the Browse View by default are the System Default Facets: <I CLASS="EMPHASIS">Owner</I>, <I CLASS="EMPHASIS">Content Type</I>, <I CLASS="EMPHASIS">Document Type</I>, and <I CLASS="EMPHASIS">Modified Date</I>. </P>
+<P class="before-ul"><A NAME="TMPID1894"></A>A facet will display if all of the following is true:</P><A NAME="AEN1921"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1922"></A><A NAME="TMPID1897"></A>The facet's status is <I CLASS="EMPHASIS">Ready</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1925"></A><A NAME="TMPID1900"></A>The setting for <B CLASS="GUILABEL">Display in sidebar</B> is set to <B CLASS="HIGHLIGHT">On</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1929"></A><A NAME="TMPID1904"></A>The user has permission to access the facet.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1931"></A><A NAME="TMPID1906"></A>The user has permission to access the facet's data source. Currently, this only applies to Categories.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1933"></A><A NAME="TMPID1908"></A>The facet is in a facet tree.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1935"></A><A NAME="TMPID1910"></A>The user has permission to access the facet tree.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1937"></A><A NAME="TMPID1912"></A>The facet tree is available for that location.</P></LI></UL>
+<P><A NAME="TMPID1913"></A>The data sources available for your facets in the list consist of the active and unused facet data sources only. Once a data source is in use, it no longer appears in the list. Your administrator is responsible for managing your available data sources. If your administrator has created a category in the Categories Volume, that category can be available as a data source. </P>
+<P><A NAME="TMPID1914"></A>In the event that a category, and its associated attributes, are available as a data source, they will display in the list as:  <I CLASS="EMPHASIS">Category: {cat name}:{attr name}</I>, or, if the attribute is in a set category, they will display as: <I CLASS="EMPHASIS">Category: {cat name}:{set name}:{attr name}</I>. </P>
+<P CLASS="otModuleHide if-llescls-h-ugd-showblock" id="TMPID1917"><A NAME="TMPID1917"></A>In the event that a classification, and its associated child classfications, are available as a data source, you can choose that classification to define a facet. Once a facet has been defined using a classification data source, and once you make that facet available to users, Content Server users can select that facet to filter Content Server content to display all items that have that classification assigned to them. For more information about classifications, see <span><XPROC NAME="ExtXrefStart" HREF="../webdoc/llescls-h-ugd.c-class-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/classification/c-class-bg.htm">Using Classifications</A><XPROC NAME="ExtXrefEnd" HREF="../webdoc/llescls-h-ugd.c-class-bg" FMT=""></span>. </P>
+<P><A NAME="TMPID1921"></A>The data source field list is alphabetically listed, followed by a separator, and then all available attributes. </P>
+<P><A NAME="TMPID1922"></A>A facet that is used in the definition of a facet tree cannot be deleted. The facet must first be removed from the definition of a facet tree before it can be deleted. </P>
+<P class="before-ul"><A NAME="TMPID1923"></A> After you add a facet, you will need to configure that facet. A custom facet is configured from the facet's functions menu by selecting <B CLASS="GUILABEL">Properties</B>. The fields in a facet's <B CLASS="GUILABEL">Properties</B> dialog box are: </P><A NAME="AEN1955"></A>
+<UL>
+<LI class="vlli">
+<P><A NAME="AEN1956"></A><B>Facet data source</B></P>
+<P class="nr1"><A NAME="TMPID1932"></A>A read-only field that lists the data source which was selected when the facet was created.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN1959"></A><B>Status</B></P>
+<P class="nr1"><A NAME="TMPID1935"></A>A read-only field that lists the current status for the facet and provides a button to rebuild the facet, if necessary. Possible values include:  <I CLASS="EMPHASIS">Building</I>, <I CLASS="EMPHASIS">Ready</I>, or <I CLASS="EMPHASIS">Error</I>.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN1965"></A><B>Show in sidebar</B></P>
+<P class="nr1"><A NAME="TMPID1941"></A>A check box that allows you to select whether the facet will be displayed in the sidebar. The box is checked by default. Clearing this check box will remove the facet from the sidebar even though it is still found in the facet tree definition.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN1968"></A><B>Minimum unique values</B></P>
+<P class="nr1"><A NAME="TMPID1944"></A>A list box that allows you to specify the minimum number of unique values required before the facet may appear. The default setting is <B CLASS="HIGHLIGHT">2</B>.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN1972"></A><B>Maximum values to display</B></P>
+<P class="nr1"><A NAME="TMPID1948"></A>A list box that allows you to specify the maximum number of unique values permitted to appear in the facet. The default setting is <B CLASS="HIGHLIGHT">5</B>.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN1976"></A><B>Display mode</B></P>
+<P class="nr1"><A NAME="TMPID1952"></A>A list box that specifies the order in which facet values are displayed. The default setting is <B CLASS="HIGHLIGHT">Ranked list</B>.</P>
+<P class="before-ul"><A NAME="TMPID1954"></A>The available options depend on the type of the Facet. Generally, the options available are:</P><A NAME="AEN1981"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN1982"></A><A NAME="TMPID1957"></A>Ranked list: the default, which will sort by the count for each value.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN1984"></A><A NAME="TMPID1959"></A>Alphabetical list: which will sort by the values themselves.</P></LI></UL>
+<P><A NAME="TMPID1960"></A>Date-type facets do not support display mode.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN1987"></A><B>Display priority</B></P>
+<P class="nr1"><A NAME="TMPID1963"></A>A list box that specifies the presentation format for facet values. The default setting is <B CLASS="HIGHLIGHT">Medium</B>.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN1991"></A><B>Count accuracy</B></P>
+<P class="nr1"><A NAME="TMPID1967"></A>A list box that specifies the level of accuracy for the facet item count. The default setting is <B CLASS="HIGHLIGHT">Precise</B>.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN1995"></A><B>Show lookup in 'More...'</B></P>
+<P class="nr1"><A NAME="TMPID1971"></A>A check box that adds a <B CLASS="GUILABEL">Type ahead</B> look up box to the <B CLASS="GUILABEL">More</B> dialog box if there are more than 50 unique values in the facet. The box is checked by default.</P></LI></UL>
+<P><A NAME="TMPID1974"></A> You must now decide on the permissions for your facet. Allowable permissions are <I CLASS="EMPHASIS">Administer</I>, <I CLASS="EMPHASIS">Read</I>, <I CLASS="EMPHASIS">Write</I>, and <I CLASS="EMPHASIS">None</I>. By default, the custom facet is given a Public Access permission of <B CLASS="HIGHLIGHT">Read</B>. It is advised that you keep this setting. </P>
+<P><A NAME="TMPID1983"></A>The public access permission value is being cached with the facet and facet tree definitions. This results in a significantly faster browse time because Content Server does not have to check user permissions on the facets and facet trees. </P>
+<P><A NAME="TMPID1985"></A>For information about setting permissions for your facet, see <span><XPROC NAME="ExtXrefStart" HREF="../webdoc/lleswba-h-agd.wba-permissions-so" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-permissions-so.htm">Administering Permissions</A><XPROC NAME="ExtXrefEnd" HREF="../webdoc/lleswba-h-agd.wba-permissions-so" FMT=""></span>. </P>
+<P><A NAME="TMPID1987"></A>The final step is to include your new facet in a facet tree. Your facet will not be available until it is included in a facet tree. For information about including your facet in a facet tree, see <span><A HREF="../webdoc/fb-config-facettree-p.htm">To Configure a Facet Tree</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="FACET-FOLDER">Facet Folders</A></P>
+<P><A NAME="TMPID1991"></A>  Creating Facet Folders provides a way to manage and organize your custom environment. Columns, Facets, and Facet Trees can have their permissions set so that they are only accessible by certain groups in Content Server. When creating custom items in the Facets Volume, you should consider first creating a Facet Folder to store the new custom item. For example, if you are creating custom Facet Volume items for your Financial Department, you should first create a Facet Folder called “Financial Dept”. This will help with future maintenance for your custom items.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="FACET-TREE">Facet Tree</A></P>
+<P><A NAME="TMPID2001"></A>  The Facet Tree is used to list the facets whose values will be displayed in the <B CLASS="GUILABEL">Content Filter</B> sidebar. Facet Trees allow the Knowledge Manager to control who sees the facets and where they appear. </P>
+<P><A NAME="TMPID2008"></A> Before your facet tree can be accessed by users, you must make your facet tree available and give your users permission to see the facet tree. </P>
+<P><A NAME="TMPID2012"></A>You make your facet tree available from your facet tree's <B CLASS="GUILABEL">Properties</B> dialog box, <B CLASS="GUILABEL">Availability</B> tab. </P>
+<P class="before-ul"><A NAME="TMPID2015"></A>The availability options for your facet tree are <I CLASS="EMPHASIS">Never displayed</I>, <I CLASS="EMPHASIS">Display in all facet sidebars</I>, or <I CLASS="EMPHASIS">Only available in specific locations</I>. By default, the custom facet tree's availability setting is <B CLASS="HIGHLIGHT">Never displayed</B>. </P><A NAME="AEN2044"></A>
+<UL>
+<LI class="vlli">
+<P><A NAME="AEN2045"></A><B>Never displayed</B></P>
+<P class="nr1"><A NAME="TMPID2023"></A>The facet tree is never displayed in the sidebar.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN2048"></A><B>Display in all facet sidebars</B></P>
+<P class="nr1"><A NAME="TMPID2026"></A>The facet tree is always displayed in the sidebar, provided the user has sufficient permission to see the facet tree.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN2051"></A><B>Only available in specific locations</B></P>
+<P class="nr1"><A NAME="TMPID2029"></A>The facet tree is only displayed in the facet sidebar panel in the locations selected in the <B CLASS="GUILABEL">Locations</B> field(s). Users must also have sufficient permissions to see the facet tree.</P></LI></UL>
+<P><A NAME="TMPID2031"></A>The only valid locations you can select in the <B CLASS="GUILABEL">Locations</B> field in the <B CLASS="GUILABEL">Availability</B> tab are the Enterprise Workspace, Folders, and Projects.</P>
+<P><A NAME="TMPID2034"></A>Allowable permissions are <I CLASS="EMPHASIS">Administer</I>, <I CLASS="EMPHASIS">Read</I>, <I CLASS="EMPHASIS">Write</I>, and <I CLASS="EMPHASIS">None</I>. By default, the custom facet tree is given a Public Access permission of <I CLASS="EMPHASIS">Read</I>. It is advised that you keep this setting. For information about setting permissions for your facet tree, see <span><XPROC NAME="ExtXrefStart" HREF="../webdoc/lleswba-h-agd.wba-permissions-so" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-permissions-so.htm">Administering Permissions</A><XPROC NAME="ExtXrefEnd" HREF="../webdoc/lleswba-h-agd.wba-permissions-so" FMT=""></span>. </P>
+<P class="before-ul"><A NAME="TMPID2041"></A>It is possible to select the Facet Tree location from any folder's properties dialog box. The fields in a folder's <B CLASS="GUILABEL">Properties</B> dialog box, <B CLASS="GUILABEL">Presentation</B> tab, are: </P><A NAME="AEN2068"></A>
+<UL>
+<LI class="vlli">
+<P><A NAME="AEN2069"></A><B>Global Trees</B></P>
+<P class="nr1"><A NAME="TMPID2047"></A> Displays a list of the facet trees that are available globally. The trees are displayed in ascending alphabetical order by facet tree name. Each tree is displayed as a link which, when clicked, takes the user to the Availability tab for the related facet tree in the facet volume.</P>
+<P><A NAME="TMPID2051"></A>If there are no trees to display for this field, the text “No global facet trees found.” is displayed.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN2077"></A><B>Inherited Trees</B></P>
+<P class="nr1"><A NAME="TMPID2055"></A> Displays a list of the facet trees that are available at the current folder and that are inherited from a parent object. The facet trees are displayed in ascending alphabetical order by facet tree name. Each tree is displayed as a link which, when clicked, takes the user to the Availability tab for the related facet tree in the facet volume. Additionally, the name of the location from which the tree is inherited, is displayed in light-gray text to the right of the facet tree link. The name of the location is not displayed if the user does not have permission to view the object. If there are no trees to display for this field, the text “No inherited facet trees found.” is displayed.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN2084"></A><B>Local Trees</B></P>
+<P class="nr1"><A NAME="TMPID2062"></A> Contains an editable list of facet trees that are specifically made available to the current folder, displayed in ascending alphabetical order.</P>
+<P><A NAME="TMPID2066"></A>Clicking the associated <B CLASS="GUILABEL">Select...</B> button opens the targeted browse popup and allows the Knowledge Manager to select facet trees from the Facet Volume to add to the list of Local Trees. When a facet tree is selected from the popup, it is added to the list of Local Trees but not saved until the page's changes are saved in the next step. Facet trees that already appear in the list of Local Trees for the current folder are not added if they are selected again. The associated <B CLASS="GUILABEL">Remove</B> button is disabled until at least one facet tree is selected in the list of Local Trees. Clicking it removes the selected facet trees from the list of Local Trees, but the changes are not saved until the page's changes are saved.</P></LI></UL>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="../webdoc/fb-add-column-p.htm" revision="">To Add a Column</A></p></li>
+<li><p><A  HREF="../webdoc/fb-config-column-p.htm" revision="">To Configure a Column</A></p></li>
+<li><p><A  HREF="../webdoc/fb-add-facet-p.htm" revision="">To Add a Facet</A></p></li>
+<li><p><A  HREF="../webdoc/fb-config-facet-p.htm" revision="">To Configure a Facet</A></p></li>
+<li><p><A  HREF="../webdoc/fb-add-facetfldr-p.htm" revision="">To Add a Facet Folder</A></p></li>
+<li><p><A  HREF="../webdoc/fb-add-facettree-p.htm" revision="">To Add a Facet Tree</A></p></li>
+<li><p><A  HREF="../webdoc/fb-config-facettree-p.htm" revision="">To Configure a Facet Tree</A></p></li>
+<li><p><A  HREF="../webdoc/fb-conf-facettree-p.htm" revision="">To Select the Facet Tree Location from a Folder</A></p></li>
+<li><p><A  HREF="../webdoc/fb-facet-examples-bg.htm" revision="">Examples Adding Facets</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

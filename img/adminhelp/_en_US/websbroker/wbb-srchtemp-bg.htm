@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Administering Search Templates</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/websbroker/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbb-srchtemp-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Searching';
+          header.title2 = 'Administering Search Templates';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID14989"></A>Search templates allow you to define the default appearance of the Search page in Content Server. You can configure specific fields and values that you want to appear by default when users perform a search using a search form. For example, if users frequently search on documents that they created, you can add the <B CLASS="guilabel">Created By</B> system attribute to the Search page and save it as a search form so that <B CLASS="guilabel">Created By</B> appears by default when using this search form.</P>
+<P><A NAME="TMPID14993"></A>You can perform search template administration tasks when you log in to Content Server as the <TT CLASS="literal">Admin</TT> user. You can modify or delete system templates as well as all of the personal templates that Content Server users have created. When you modify a search form to change its appearance, the changes that you make are immediately available to those users who can access the search form. If you no longer want a search form to be available to Content Server users, you can delete it. You can also perform other standard Content Server functions (such as changing permissions, setting notification, and viewing general or specific information) on all of the search templates in the system.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF313"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID15000"></A><B CLASS="note">Note: </B><BR>If you have enabled domains and you delete all search templates and then reset the system default template, you must reapply the Add Item and Delete permissions for the Personal Search Templates folder.</P>
+<P><A NAME="TMPID15001"></A>If you modify the name of a User's Personal Search Template folder, this will delete that User's saved templates. Your User will not be able to use the existing templates because they no longer appear on the drop-down list.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID15002"></A>When you create a search form, you can also configure the search results display options to be associated with that search form. For more information, see <span><A href="../websbroker/wbs-configdisplay-bg.htm">Configuring Search Results Display Options</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF314">System Search Templates</A></P>
+<P><A NAME="TMPID15005"></A>You can create up to 100 system search templates to allow for different Search page configurations for different user needs. You can set permissions on each search template so that they only appear for the designated users and groups. Users can then select a search template from the list available to them for easy access to search configurations that are relevant to them. When you create a search template when logged in as the Admin user, the search template is automatically saved as a system search template. For more information on creating and using search templates in Content Server, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswbb-h-ugd.sr-srchtemp" FMT="" NO1ST><A  HREF="../../../help/_en_US/websbroker/sr-srchtemp.htm">Working with Search Forms</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswbb-h-ugd.sr-srchtemp" FMT=""></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF315">System Default Search Template</A></P>
+<P><A NAME="TMPID15009"></A>When logged in as a user with <TT CLASS="literal">Admin</TT> user permissions, you can also modify or reset the system default search template. When you log in for the first time, Content Server generates a system template named <I CLASS="emphasis">Admin-Default</I>. This template is a copy of the original system default template and is available to all Content Server users. The system default search template defines the appearance of the Content Server Search page when Content Server users access the page for the first time, when no other search templates exist in the system, or when Content Server users choose not to use personal or system search templates to perform a search. You can modify the system default search template to specify the appearance of the Content Server Search page in these cases. If you want to delete the changes that you have made to the system default template, you can reset the template. Resetting deletes and then recreates the system default template in its original configuration. For more information, see <span><A href="../websbroker/wbs-resdfsrchtemp-p.htm">To Reset Search Templates</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF316"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID15020"></A><B CLASS="note">Note: </B><BR>Because a Content Server site must always contain a system default template, Content Server automatically resets the <TT CLASS="filename">Admin-Default</TT> template if you attempt to delete it.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF317">Personal Search Templates</A></P>
+<P><A NAME="TMPID15025"></A>By default, each Content Server User can create 20 personal Search Forms; however, if you want to allow Content Server Users to create more or less than 20, you can change this value. This allows you to regulate the number of personal Search Forms at your Content Server site (between 0 and 100 per user) and can make Search Template administration more manageable. You can delete or modify Users personal Search Forms from the Administration pages.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF318"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID15030"></A><B CLASS="note">Note: </B><BR>If you modify the name of a User's Personal Search Template folder, this will delete that User's saved templates. Your User will not be able to use the existing templates because they no longer appear on the drop-down list.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF319">Search Results Templates</A></P>
+<P><A NAME="TMPID15032"></A>By default, each Content Server User can create 20 personal Search Results Templates; however, if you want to allow Content Server Users to create more or less than 20, you can change this value. This allows you to regulate the number of personal Search Results Templates at your Content Server site (between 0 and 100 per user) and can make Search Template administration more manageable. You can delete or modify Users personal Search Results Templates from the Administration pages.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websbroker/wbb-modsrchtemp-p.htm" revision="">To Modify a Search Form</A></p></li>
+<li><p><A  href="../websbroker/wbb-delsrchtemp-p.htm" revision="">To Delete a Search Form</A></p></li>
+<li><p><A  href="../websbroker/wbs-resdfsrchtemp-p.htm" revision="">To Reset Search Templates</A></p></li>
+<li><p><A  href="../websbroker/wbs-setdfsrchtemp-p.htm" revision="">To Manage the Number of Search Forms and Search Templates</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

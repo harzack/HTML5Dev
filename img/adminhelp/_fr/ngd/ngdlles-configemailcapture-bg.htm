@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="NGDLLES100502-H-AGD-FR-1">
+<META name="pvScheme" content="010203">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="ngd">
+<title>Configuration des paramètres pour la capture des pièces jointes des e-mails, des doublons d'e-mails et des sous-types d'e-mails</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ngdlles-configemailcapture-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des paramètres de messagerie Enterprise Connect';
+          header.title2 = 'Configuration des paramètres pour la capture des pièces jointes des e-mails, des doublons d\'e-mails et des sous-types d\'e-mails';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1391"></A>Vous pouvez spécifier le sous-type à appliquer aux e-mails enregistrés et la façon selon laquelle les pièces jointes doivent être gérées lorsque les utilisateurs ajoutent des e-mails avec des pièces jointes à Content Server. Vous pouvez également spécifier la méthode d'identification des doublons d'e-mails et définir si les utilisateurs doivent être informés chaque fois qu'ils ajoutent un doublon d'e-mail à un dossier ou si les doublons peuvent être ignorés. Les méthodes que vous sélectionnez dépendent des processus de votre entreprise concernant l'enregistrement des e-mails et des pièces jointes. </P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF19">Sous-type d'e-mail</A></P>
+<P><A NAME="TMPID1394"></A>L'option relative au sous-type d'e-mail applique le sous-type d'e-mail (749) à tous les e-mails que les utilisateurs ajoutent à Content Server. Par défaut, tous les e-mails sont enregistrés sous le sous-type d'e-mail. Vous pouvez ensuite spécifier la méthode de gestion des pièces jointes. Vous avez la possibilité de ne pas stocker de copies distinctes des pièces jointes ou d'ajouter des copies distinctes des pièces jointes en tant que documents individuels, en plus de l'e-mail et des pièces jointes d'origine. Si nécessaire, vous pouvez autoriser les utilisateurs à, pour chaque e-mail, soit ajouter des copies séparées des pièces jointes, soit enregistrer l'e-mail et les pièces jointes en tant qu'élément unique. </P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Astuce" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1397"></A><B CLASS="tip">Astuce : </B><BR>Vous pouvez associer les e-mails et les pièces jointes en utilisant des renvois si vous avez installé le module OpenText Records Management et activé cette fonctionnalité. Pour plus d'informations, consultez la section <span><XPROC NAME="ExtXrefStart" HREF="ngdcore-igd.-" FMT="" NO1ST><i>OpenText Enterprise Connect - Installation Guide (NGDCORE-IGD)</i><XPROC NAME="ExtXrefEnd" HREF="ngdcore-igd.-" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF20">Dupliquer des e-mails dans Microsoft Outlook</A></P>
+<P><A NAME="TMPID1403"></A>Par défaut, les doublons d'e-mails sont détectés par un processus de comparaison du nom des e-mails ajoutés à Content Server avec celui des e-mails déjà présents dans ce dossier. Lorsque vous sélectionnez cette option, les utilisateurs sont informés chaque fois qu'Enterprise Connect identifie un doublon d'e-mail dans la destination. Selon la configuration, les utilisateurs peuvent être invités à renommer les doublons d'e-mails ou à fournir des métadonnées.</P>
+<P><A NAME="TMPID1406"></A>Imaginons, par exemple, que vous utilisiez ce processus de comparaison de noms par défaut pour identifier les doublons d'e-mails. Si un utilisateur a préalablement ajouté un e-mail à un dossier, puis s'il ajoute dans ce même dossier un e-mail possédant le même nom mais un contenu différent, cet e-mail sera considéré comme un doublon. Selon votre configuration, l'utilisateur peut être invité à renommer l'e-mail et à fournir des métadonnées.</P>
+<P><A NAME="TMPID1407"></A>Vous pouvez également spécifier que la détection des doublons d'e-mails s'effectue par le biais de la comparaison de l'ID de message attribué à l'e-mail que l'utilisateur ajoute à Content Server avec les ID des e-mails déjà présents dans ce dossier. L'ID de message diffère pour chaque destinataire. Par exemple, si un même e-mail est envoyé à deux utilisateurs différents, chaque copie de l'e-mail présente un ID unique. Vous pouvez également spécifier que la détection des doublons d'e-mails s'effectue par le biais de la comparaison de l'ID de message externe de l'e-mail ajouté par l'utilisateur à Content Server avec l'ID externe des e-mails déjà présents dans le dossier. L'ID de message externe s'applique uniquement aux e-mails provenant de l'extérieur du domaine de l'utilisateur. Si vous choisissez les options de comparaison basées sur l'ID des messages, les doublons d'e-mails ne sont pas copiés ou déplacés vers la destination, et les utilisateurs ne reçoivent pas de notifications relatives aux doublons d'e-mails. Seuls les nouveaux e-mails sont ajoutés et, selon votre configuration, les utilisateurs peuvent être invités à fournir des métadonnées.</P>
+<P><A NAME="TMPID1410"></A>Imagions par exemple que vous ayez activé la case <B CLASS="guilabel">Utiliser l'ID de message pour rechercher les e-mails en double</B>. Un utilisateur ajoute un lot d'e-mails à un dossier ; or, l'un des e-mails déjà présents dans ce dossier possède le même ID de message que l'un des e-mails du lot. L'utilisateur ne recevra pas de notification relative à la présence d'un doublon d'e-mail. Selon votre configuration, les utilisateurs peuvent être invités à fournir des métadonnées pour tous les nouveaux e-mails. Autre situation : imaginons que deux utilisateurs reçoivent un e-mail d'un même expéditeur. Si les deux utilisateurs copient cet e-mail dans un même dossier, ces e-mails ne seront pas considérés comme des doublons car ils possèdent des ID distincts.</P>
+<P><A NAME="TMPID1412"></A>Imagions par exemple que vous ayez activé la case <B CLASS="guilabel">Utiliser l'ID des messages externes pour rechercher les e-mails en double</B>. Un utilisateur ajoute dans un dossier un e-mail provenant d'une source externe. Si un collègue ayant reçu le même message ajoute sa copie du message dans le même dossier, le message sera considéré comme un doublon et ne sera pas ajouté. L'utilisateur ne reçoit pas de notification relative à la présence d'un doublon d'e-mail.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1415"></A><B CLASS="important">Important : </B><BR>En tant qu'administrateur, il est primordial que vous définissiez une méthode d'identification des doublons d'e-mails lorsque vous configurez Enterprise Connect pour la première fois. Modifier ces paramètres alors que les utilisateurs ont déjà commencé à utiliser leur messagerie électronique peut entraîner des problèmes.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF21"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes : </B></P><A NAME="AEN1308"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1309"></A><A NAME="TMPID1420"></A>Cette fonctionnalité s'applique uniquement à Microsoft Outlook.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1311"></A><A NAME="TMPID1422"></A>Cette fonctionnalité n'affecte pas les e-mails composites.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF22">Sous-type d'e-mails composites</A></P>
+<P><A NAME="TMPID1424"></A>L'option relative aux e-mails composites concerne uniquement les utilisateurs d'OpenText Explorer qui migrent vers Enterprise Connect et qui utilisent le sous-type d'e-mails composites (sous-type 557). Si vous sélectionnez cette option, tous les e-mails et pièces jointes associées sont ajoutés à Content Server en tant qu'e-mails composites. Un e-mail composite regroupe l'e-mail et toutes les pièces jointes associées au sein d'un seul et même dossier. Les e-mails composites apparaissent uniquement dans le Volet Liste dans Enterprise Connect et dans le volet Accès rapide, si celui-ci a été configuré pour afficher les documents. Ils ne sont pas visibles dans le volet d'arborescence de Microsoft Outlook ou de l'Explorateur, ou dans la boîte de dialogue <B CLASS="guilabel">Ouvrir le fichier</B> de Microsoft Office. Les utilisateurs peuvent afficher les e-mails composites dans le volet de lecture. Si vous souhaitez que les utilisateurs puissent utiliser les e-mails composites hors ligne, vous devez ajouter le sous-type des e-mails composites à la liste des sous-types pouvant être utilisés hors ligne. Pour plus d'informations, consultez la section <span><A HREF="ngdlles-configoffline-bg.htm">Définition des sous-types pouvant être récupérés hors ligne</A></span>.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1433"></A><B CLASS="important">Important : </B><BR>L'espace de stockage nécessaire pour les e-mails composites est beaucoup plus important que celui requis pour le sous-type d'e-mails standard. Si vous appliquez le sous-type d'e-mails composites, assurez-vous de disposer de l'espace disque suffisant.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="ngdlles-configemailcapture-p.htm" revision="">Pour configurer les paramètres de capture des pièces jointes d'e-mails</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

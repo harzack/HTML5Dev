@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>JSARRAY de catégories</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-catjsarray-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'JSARRAY de catégories';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID13781"></A><B CLASS="highlight">Exemple de définition de catégorie :</B></P>
+<P><IMG SRC="image001.png"></P>
+<P><A NAME="TMPID13784"></A><B CLASS="highlight">Exemple de données de catégorie :</B></P>
+<P><IMG SRC="image002.png"></P>
+<P><A NAME="TMPID13787"></A>Des données de catégories peuvent être renvoyées dans une structure de données JavaScript au moyen du paramètre JSARRAY avec les sous-balises CAT ou VERSIONCAT. Par exemple, <TT CLASS="literal">[LL_REPTAG=DATAID CAT:JSARRAY /]</TT> renvoie des données pour la version actuelle d'un nœud. Les données renvoyées sont présentées ci-dessous, complétées de commentaires. Les valeurs illustrées dans l'image ci-dessus sont visibles dans la structure de données JavaScript ci-dessous. </P>
+<P><A NAME="TMPID13789"></A>Notez qu'une approche de prototype JavaScript a été utilisée pour stocker les données de catégories. L'instruction 'new catData()' fait référence à une fonction de constructeur et 'cat_data.newNode(...)' est une méthode de l'objet catData utilisé pour stocker la catégorie. </P>
+<DIV title="Exemple de JavaScript à partir des définitions et données ci-dessus" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-CATJSARR-EX"></A><B><IMG title="Exemple de JavaScript à partir des définitions et données ci-dessus" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 1-7 : Exemple de JavaScript à partir des définitions et données ci-dessus</B></P>
+<P class="nr1"><A NAME="TMPID13792"></A>Le code ci-dessous est produit lors de l'appel de [LL_REPTAG=DATAID CAT:JSARRAY /] </P><A NAME="AEN13069"></A>
+<PRE 
+CLASS="screen"
+>&lt;script&gt;
+/* Call to catData constructor function to instantiate a object. */
+var cat_data = new catData();
+
+/* newNode is a method to store the category data into the object. */
+/* 108158 is the objectid of the node the categories are applied to */
+cat_data.newNode(108158,{
+
+	/* 108157 is the objectid of the first category applied to node 108158 */
+	/ * 'Type Testing Category' is the name of the first category applied to the node */
+	"108157":{"id":108157, "name":"Type Testing Category", "req":false, "catver":1, "nodever":1,
+
+	/* attr_data is where all the attribute data is stored */
+	"attr_data":{
+		/* 2 is the id of the first attribute in the category */
+		/* 'Date of Test' is the name of the first attribute */
+		/* -7 is the internal Content Server representation of the attribute type */
+		/* multi is set to true if the attribute is a multi value attribute */
+		/* set is set to true if the attribute is a set */
+		"2":{"id":2, "name":"Date of Test", "req":false, "type":-7, "len":null, "maxlen":null, "rows":null, "maxrows":null, "multi":false, "set":false, "values":[["_1_1_2_1", "2008/2/5:0:0:0"]]},
+		"3":{"id":3, "name":"Pass or Fail", "req":false, "type":5, "len":null, "maxlen":null, "rows":null, "maxrows":null, "multi":false, "set":false, "values":[["_1_1_3_1", true]]},
+		"4":{"id":4, "name":"Value", "req":false, "type":2, "len":null, "maxlen":null, "rows":null, "maxrows":null, "multi":false, "set":false, "values":[["_1_1_4_1", 453]]},
+
+		"5":{"id":5, "name":"Tester Details", "req":false, "type":-18, "len":null, "maxlen":null, "rows":null, "maxrows":null, "multi":true, "set":true,
+			/* here the structure gets a little more complex because we are looking at a multi value set */
+			"attr_data":{
+				"0":{
+					"6":{"id":6, "name":"First Name", "req":false, "type":-1, "len":32, "maxlen":32, "rows":1, "maxrows":1, "multi":false, "values":[["_1_1_5_1_6_1", "Lee"]]},
+					"7":{"id":7, "name":"Last Name", "req":false, "type":-1, "len":32, "maxlen":32, "rows":1, "maxrows":1, "multi":false, "values":[["_1_1_5_1_7_1", "Butler"]]},
+					"8":{"id":8, "name":"Phone Number", "req":false, "type":-1, "len":20, "maxlen":20, "rows":1, "maxrows":1, "multi":false, "values":[["_1_1_5_1_8_1", "44556677"]]},
+					/* here we are adding multi value attributes into a multi value set */
+					"9":{"id":9, "name":"Associates", "req":false, "type":-1, "len":32, "maxlen":32, "rows":1, "maxrows":3, "multi":true, "values":[["_1_1_5_1_9_1", "Greg Petti"], ["_1_1_5_1_9_2", "Steve Osborn"], ["_1_1_5_1_9_3", "Darren Hodder"]]}
+				},
+
+				"1":{
+					/* here we defined the second element of the multi-value set */
+					"6":{"id":6, "name":"First Name", "req":false, "type":-1, "len":32, "maxlen":32, "rows":1, "maxrows":1, "multi":false, "values":[["_1_1_5_2_6_1", "James"]]},
+					"7":{"id":7, "name":"Last Name", "req":false, "type":-1, "len":32, "maxlen":32, "rows":1, "maxrows":1, "multi":false, "values":[["_1_1_5_2_7_1", "Brown"]]},
+					"8":{"id":8, "name":"Phone Number", "req":false, "type":-1, "len":20, "maxlen":20, "rows":1, "maxrows":1, "multi":false, "values":[["_1_1_5_2_8_1", "77441199"]]},
+					"9":{"id":9, "name":"Associates", "req":false, "type":-1, "len":32, "maxlen":32, "rows":1, "maxrows":3, "multi":true, "values":[["_1_1_5_2_9_1", "Brian Howson"], ["_1_1_5_2_9_2", "Peter Brown"]]}
+				}
+			}
+		}
+	}
+	}
+})
+&lt;/script&gt;</PRE
+><IMG title="Exemple de JavaScript à partir des définitions et données ci-dessus" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-catjsarrfunc-rf.htm" revision="">Référence des fonctions CAT:JSARRAY</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

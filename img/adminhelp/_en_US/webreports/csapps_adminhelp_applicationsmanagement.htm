@@ -1,0 +1,511 @@
+<HTML>
+	<HEAD>
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+		<TITLE>Applications Management</TITLE>
+		<link rel="stylesheet" href="../../ix21.css" type="text/css">
+		<script language="JavaScript" src="../../llhelp.js"></script>
+	</HEAD>
+	<BODY ONLOAD="checkFrame( 'csapps_adminhelp_applicationsmanagement.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+		<SCRIPT LANGUAGE="JavaScript">
+			var header = new AdminHeader();
+			header.title1 = 'Applications Management Administration: OpenText Content Server Admin Online Help';
+			header.title2 = 'Applications Management';
+			header.addTab( AdminHeader.PROCEDURES, 'none' );  // 'none' indicates unavailable tab
+			header.addTab( AdminHeader.BACKGROUND, 'none' );  // null indicates selected tab
+			header.addTab( AdminHeader.RELATED, 'none' ); // give relative path to file for linked tab
+			header.draw();
+		</SCRIPT>
+
+		<P CLASS="body">
+			The Applications Management page can be used to build, rebuild, install, upgrade, uninstall and delete applications, and define a launch or initialization component for existing applications.<BR>
+			<BR>
+			An application is a collection of Content Server nodes, support files, sub-tag files and properties files.<BR>
+			<BR>
+			Installed applications will have a folder in the [LIVELINK_HOME]&#92;csapplications directory on the server.<BR>
+			Each application folder can contain the following:<BR>
+			<UL>
+				<LI>manifest file, detailing the Content Server nodes and support files that make up the application.</LI>
+				<LI>XML dump file, which contains an export of the Content Server nodes included in the application. If the application doesn't contain any Content Server nodes then the application will not contain an XML dump file.</LI>
+				<LI>applicationfiles (called "support" in older applications) folder, containing the application's support files. Will only be included if the application contains application support files.</LI>
+				<LI>supportcollateral folder, containing the support files from other support paths on the Content Server. Will only be included if the application contains such support files.</LI>
+				<LI>subtags folder, containing the application's sub-tag drop-in files. Will only be included if the application contains sub-tag drop-in files.</LI>
+				<LI>properties folder, containing the application's properties files. Will only be included if the application contains properties files.</LI>
+			</UL>
+		</P>
+		<P CLASS="body">
+			The Applications Management page will display details of any installed or installable applications, along with options to perform various actions.<BR>
+			<BR>
+			Click on the <B>Application Name</B> link to display more details about an application.<BR>
+			Click on the <B>Show Application Nodes</B> link to display details about the Content Server nodes associated with an installed application.
+		</P>
+		
+		<!-- ***************** -->
+		<!-- BUILD APPLICATION -->
+		<!-- ***************** -->
+
+		<P CLASS="body">
+			<B><U>Build Application</U></B><BR>
+			<BR>
+			Click on the <B>Click to build a new application</B> link to open the Build Application form, which can be used to build an application.  The form contains the following fields:<BR>
+			<BR>
+			<TABLE CELLSPACING="1" CELLPADDING="1" BORDER="1">
+				<TR STYLE="background-color:lightgray;font-weight:bold;">
+					<TH ALIGN="LEFT">
+						Field Name
+					</TH>
+					<TH ALIGN="CENTER">
+						Mandatory
+					</TH>
+					<TH ALIGN="LEFT">
+						Description
+					</TH>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						Application Name
+					</TD>
+					<TD ALIGN="CENTER" style="white-space: nowrap">
+						Yes
+					</TD>
+					<TD ALIGN="LEFT">
+						Used to give your application a name. Only alphanumeric characters (A-Z and 0-9) are allowed. All non-alphanumeric characters, such as hyphens, underscores and spaces are not allowed.
+					</TD>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						Application Description
+					</TD>
+					<TD ALIGN="CENTER" style="white-space: nowrap">
+						No
+					</TD>
+					<TD ALIGN="LEFT">
+						Used to give your application a description.
+					</TD>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						Version Number
+					</TD>
+					<TD ALIGN="CENTER" style="white-space: nowrap">
+						Yes
+					</TD>
+					<TD ALIGN="LEFT">
+						Used to give your application a version number, e.g. 1.0.
+					</TD>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						Content Server Source Objects
+					</TD>
+					<TD ALIGN="CENTER" style="white-space: nowrap">
+						No
+					</TD>
+					<TD ALIGN="LEFT">
+						Optionally add Content Server nodes to your application.<BR>
+						Use the <B>Browse For Source Object</B> button to browse to a Content Server source object.<BR>
+						The Content Server source object will be exported, and will be imported into the target system during the installation process.<BR>
+						If the Content Server source object is a container, all children of the object will also be included in the application.<BR>
+						The <IMG SRC="..\..\..\add-row.gif"> button allows additional Content Server source objects to be selected.<BR>
+						The <IMG SRC="..\..\..\delete-row.gif"> button allows additional Content Server source object rows to be deselected.
+					</TD>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						Application Files
+					</TD>
+					<TD ALIGN="CENTER" style="white-space: nowrap">
+						No
+					</TD>
+					<TD ALIGN="LEFT">
+						Optionally add application files to your application.<BR>
+						Use the <B>Browse...</B> button to browse for files.<BR>
+						The <IMG SRC="..\..\..\add-row.gif"> button allows additional application files to be selected.<BR>
+						The <IMG SRC="..\..\..\delete-row.gif"> button allows additional application file rows to be deselected.
+					</TD>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						Support Paths
+					</TD>
+					<TD ALIGN="CENTER" style="white-space: nowrap">
+						No
+					</TD>
+					<TD ALIGN="LEFT">
+						Optionally add support paths to your application.<BR>
+						Enter a support path, e.g. <i>foldername</i> or <i>filename.txt</i>. The path should be under the support directory on the Content Server, so if you enter "foldername", the /img/foldername folder will be included in the application.<BR>
+						Paths can point to either folders or files.<BR>
+						If a folder is selected then the folder and all of its contents will be added to the application.<BR>
+						The <IMG SRC="..\..\..\add-row.gif"> button allows additional server paths to be selected.<BR>
+						The <IMG SRC="..\..\..\delete-row.gif"> button allows additional server path rows to be deselected.
+					</TD>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						Sub-tags
+					</TD>
+					<TD ALIGN="CENTER" style="white-space: nowrap">
+						No
+					</TD>
+					<TD ALIGN="LEFT">
+						Optionally add sub-tag files to your application.<BR>
+						Use the <B>Browse...</B> button to browse for files.<BR>
+						Each sub-tag should consist of two files, a <I>subtagname</I>.txt file and a <I>subtagname</I>.txt.json file.<BR>
+						If the <B>Tick to overwrite the existing sub-tag if present</B> checkbox is ticked, then when the application is installed the sub-tag files attached to the application will be used, overwriting existing sub-tags if they already exist on the system the application is being installed on.<BR>
+						If the checkbox is not ticked then the sub-tag files will not be installed if the sub-tag already exists on the target system.<BR>
+						If any sub-tags attached to the application are disabled on the target system, they will be enabled during the installation process.<BR>
+						The <IMG SRC="..\..\..\add-row.gif"> button allows additional sub-tags to be selected.<BR>
+						The <IMG SRC="..\..\..\delete-row.gif"> button allows additional sub-tag rows to be deselected.
+					</TD>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						Module Dependencies
+					</TD>
+					<TD ALIGN="CENTER" style="white-space: nowrap">
+						No
+					</TD>
+					<TD ALIGN="LEFT">
+						Optionally add module dependencies to your application.<BR>
+						Enter the name of a module, e.g. <i>RECMAN</i>.<BR>
+						This will define the name of a module that must exist on the target system before the application can be installed.<BR>
+						Module names should correspond to the folder name in the module folder of your Content Server directory, for example enter "recman" instead of "Records Management".<BR>
+						If any module dependencies are missing on the target system, then an error will be thrown when attempting to install the application.<BR>
+						The <IMG SRC="..\..\..\add-row.gif"> button allows additional module dependencies to be selected.<BR>
+						The <IMG SRC="..\..\..\delete-row.gif"> button allows additional module dependency rows to be deselected.
+					</TD>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						Tag / Sub-tag Dependencies
+					</TD>
+					<TD ALIGN="CENTER" style="white-space: nowrap">
+						No
+					</TD>
+					<TD ALIGN="LEFT">
+						Optionally add tag / sub-tag dependencies to your application.<BR>
+						Enter the name of a tag or sub-tag, e.g. <i>LL_WEBREPORT_INSERTJSON</i> or <i>WFTASKINFO</i>.<BR>
+						This will define the name of a WebReports tag or sub-tag that must exist on the target system before the application can be installed.<BR>
+						If the tag / sub-tag exists on the target system but is disabled, then it will be enabled during the installation process.<BR>
+						If the tag / sub-tag is not found then an error will be thrown when attempting to install the application.<BR>
+						The <IMG SRC="..\..\..\add-row.gif"> button allows additional tag / sub-tag dependencies to be selected.<BR>
+						The <IMG SRC="..\..\..\delete-row.gif"> button allows additional tag / sub-tag dependency rows to be deselected.
+					</TD>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						ActiveView Override Type Dependencies
+					</TD>
+					<TD ALIGN="CENTER" style="white-space: nowrap">
+						No
+					</TD>
+					<TD ALIGN="LEFT">
+						Optionally add ActiveView override type dependencies to your application.<BR>
+						Select an ActiveView override type from the drop-down list, e.g. <i>Folder Browse</i>.<BR>
+						This will define an ActiveView override type that must exist and be enabled on the target system before the application can be installed.<BR>
+						If the ActiveView override type exists on the target system but is disabled, then it will be enabled during the installation process.<BR>
+						If the ActiveView override type is not found then an error will be thrown when attempting to install the application.<BR>
+						The <IMG SRC="..\..\..\add-row.gif"> button allows additional ActiveView override type dependencies to be selected.<BR>
+						The <IMG SRC="..\..\..\delete-row.gif"> button allows additional ActiveView override type dependency rows to be deselected.
+					</TD>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						INI Settings
+					</TD>
+					<TD ALIGN="CENTER" style="white-space: nowrap">
+						No
+					</TD>
+					<TD ALIGN="LEFT">
+						Optionally add INI settings to your application. These will be added to the opentext.ini file on the target system during the installation process.<BR>
+						Select a Section from the drop-down list, e.g. <i>CSApps</i>, then enter a Key and Value.<BR>
+						This will define an INI Setting which will be written to the opentext.ini file.<BR>
+						For example, if you select Section=CSApps, Key=MyKey, Value=x, <B>MyKey=x</B> will be added to the <B>[CSApps]</B> section of the opentext.ini file.<BR>
+						If the INI Setting key already exists on the target system, then its value will be overwritten by the application's value during the installation process.<BR>
+						The <IMG SRC="..\..\..\add-row.gif"> button allows additional INI settings to be selected.<BR>
+						The <IMG SRC="..\..\..\delete-row.gif"> button allows additional INI setting rows to be deselected.
+					</TD>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						Properties Files
+					</TD>
+					<TD ALIGN="CENTER" style="white-space: nowrap">
+						No
+					</TD>
+					<TD ALIGN="LEFT">
+						Optionally add properties files to your application.<BR>
+						An application can include properties files for different metadata languages.<BR>
+						The naming convention of any properties files must be of the form <i>&lt;application name&gt;_&lt;language code&gt;.properties</i>, e.g. <i>myapplication_en_US.properties</i>.
+						If any properties files are included, then one of them must be for en_US.<BR>
+						Use the <B>Browse...</B> button to browse for files.<BR>
+						The <IMG SRC="..\..\..\add-row.gif"> button allows additional properties files to be selected.<BR>
+						The <IMG SRC="..\..\..\delete-row.gif"> button allows additional properties file rows to be deselected.
+					</TD>
+				</TR>
+			</TABLE>
+		</P>
+		<P CLASS="body">
+			Click the <B>Submit</B> button to submit the form. On submission, the following actions will occur:<BR>
+			<UL>
+				<LI>A folder for the application will be created in the [LIVELINK_HOME]&#92;csapplications directory on the server.</LI>
+				<LI>If the application contains application files then they will be copied to a folder in the support directory at support&#92;csapplications&#92;<I>&lt;application name&gt;</I>.
+				<LI>If the application contains properties files then they will be copied to a folder in the support directory at support&#92;csapplications&#92;<I>&lt;application name&gt;</I>&#92;properties.
+			</UL>
+		</P>
+		
+		<!-- ******************* -->
+		<!-- REBUILD APPLICATION -->
+		<!-- ******************* -->
+
+		<P CLASS="body">
+			<B><U>Rebuild Application</U></B><BR>
+			<BR>
+			Tick the <B>Rebuild</B> checkbox to select an application to be installed.<BR>
+			The Rebuild Application form will be displayed for the application. The fields will be pre-populated with data from the existing build of the application.<BR>
+			The form is very similar to the Build Application Form (see above), with the following additions:<BR>
+			<UL>
+				<LI>Application files that are already present in the application will be listed under <B>Existing Application Files</B> within in the <B>Application Files</B> section.<BR>
+				Use the <IMG SRC="..\..\..\delete-row.gif"> button to remove existing application files from the application.
+				</LI>
+				<LI>Support paths that are already present in the application will be listed under <B>Existing Support Paths</B> within in the <B>Support Paths</B> section.<BR>
+				Use the <IMG SRC="..\..\..\delete-row.gif"> button to remove existing support paths from the application.
+				</LI>
+				<LI>Sub-tags that are already present in the application will be listed under <B>Existing Sub-tags</B> within the <B>Sub-tags</B> section.<BR>
+				Use the <IMG SRC="..\..\..\delete-row.gif"> button to remove existing sub-tags from the application.
+				</LI>
+				<LI>Properties files that are already present in the application will be listed under <B>Existing Properties Files</B> within the <B>Properties Files</B> section.<BR>
+				Use the <IMG SRC="..\..\..\delete-row.gif"> button to remove existing properties files from the application.
+				</LI>
+			</UL>
+			Click the <B>Submit</B> button to submit the form. On submission, the following actions will occur:<BR>
+			<UL>
+				<LI>The folder for the application in the [LIVELINK_HOME]&#92;csapplications directory on the server will be deleted and replaced with a new version reflecting the entries on the Rebuild Application form.</LI>
+				<LI>The folder for the application in the support directory on the server will be deleted (if it exists) and replaced with a new version reflecting the entries on the Rebuild Application form.</LI>
+			</UL>
+		</P>
+		
+		<!-- ******************* -->
+		<!-- INSTALL APPLICATION -->
+		<!-- ******************* -->
+		
+		<P CLASS="body">
+			<B><U>Install Application</U></B><BR>
+			<BR>
+			To install an application, copy the application folder to the [LIVELINK_HOME]&#92;csapplicationsstaging directory on the server.<BR>
+			It will be listed on the Applications Management page with an install option.<BR>
+			Tick the <B>Install</B> checkbox to select an application to be installed.<BR>
+			The Install Application form will be displayed for the application. If the application contains Content Server nodes then the form contains the following field:<BR>
+			<BR>
+			<TABLE CELLSPACING="1" CELLPADDING="1" BORDER="1">
+				<TR STYLE="background-color:lightgray;font-weight:bold;">
+					<TH ALIGN="LEFT">
+						Field Name
+					</TH>
+					<TH ALIGN="LEFT">
+						Description
+					</TH>
+				</TR>
+				<TR VALIGN="TOP">
+					<TD ALIGN="LEFT" style="white-space: nowrap">
+						Target Container
+					</TD>
+					<TD ALIGN="LEFT">
+						Use the <B>Browse For Container</B> button to browse to a Content Server source object where the application's Content Server nodes will be installed.
+					</TD>
+				</TR>
+			</TABLE>
+		</P>
+		<P CLASS="body">
+			Click the <B>Preview</B> button to see details of actions which will be performed on the target system by the installation process.
+		</P>
+		<P CLASS="body">
+			Click the <B>Submit</B> button to submit the form. On submission, the following actions will occur:<BR>
+			<UL>
+				<LI>If the application contains Content Server nodes then the application's XML dump file will be imported, creating the application's Content Server nodes in the selected target container.</LI>
+				<LI>If the application contains application files then they will be copied to a folder in the support directory at support&#92;csapplications&#92;<I>&lt;application name&gt;</I>.
+				<LI>If the application contains support paths then the files will be copied to equivalent locations in the support directory. Only files that do not already exist in the support directory will be copied. Any files that are already present will not be overwritten with the files included in the application.
+				<LI>If the application contains properties files then they will be copied to a folder in the support directory at support&#92;csapplications&#92;<I>&lt;application name&gt;</I>&#92;properties.
+				<LI>Other actions will be performed depending on the application definition. Use the Preview option for more details.</LI>
+				<LI>The application's manifest file will be replaced with a new version. If the application contains Content Server nodes then the manifest file will contain the node IDs that have been created on the target system.</LI>
+				<LI>The application folder will be moved from [LIVELINK_HOME]&#92;csapplicationsstaging to [LIVELINK_HOME]&#92;csapplications.</LI>
+			</UL>
+		</P>
+
+		<!-- ******************* -->
+		<!-- UPGRADE APPLICATION -->
+		<!-- ******************* -->
+		
+		<P CLASS="body">
+			<B><U>Upgrade Application</U></B><BR>
+			<BR>
+			To upgrade an existing application, copy a higher version of the application folder than is already installed to the [LIVELINK_HOME]&#92;csapplicationsstaging directory on the server.<BR>
+			The application will be listed on the Applications Management page with an upgrade option.<BR>
+			Tick the <B>Upgrade</B> checkbox to select an application to be upgraded.<BR>
+			The Upgrade Application form will be displayed for the application. The form will display data reflecting the current state of the application, in the following three sections:<BR>
+			<UL>
+				<LI>
+					<B>Nodes that have been altered since the application was installed.</B><BR>
+					This lists any nodes that have been renamed, moved or had a new version added to them since the application was installed.<BR>
+					If there are no altered nodes then the section will be hidden.<BR>
+					The section includes a delete checkbox. If ticked then the nodes will be deleted when the application is upgraded. Untick the checkbox to keep any nodes that you don't want to be deleted.
+				</LI>
+			</UL>
+			<UL>
+				<LI>
+					<B>Nodes that have been unaltered since the application was installed.</B><BR>
+					This lists any nodes that have been unaltered since the application was installed.<BR>
+					If there are no unaltered nodes then the section will be hidden.<BR>
+					The section includes a delete checkbox. If ticked then the nodes will be deleted when the application is upgraded. Untick the checkbox to keep any nodes that you don't want to be deleted.
+				</LI>
+			</UL>
+			<UL>
+				<LI>
+					<B>Nodes that have been deleted since the application was installed.</B><BR>
+					This lists any nodes that have been deleted since the application was installed.<BR>
+					If there are no deleted nodes then the section will be hidden.
+				</LI>
+			</UL>
+		</P>
+		<P CLASS="body">
+			Tick the <B>Tick to install a new version of the application in a different location</B> checkbox to select a target location for the new version of the application.<BR>
+			If the checkbox is unticked then the application will be installed to the same location that the application is currently installed in.
+		</P>
+		<P CLASS="body">
+			Click the <B>Preview</B> button to see details of actions which will be performed on the target system by the installation part of the upgrade process.
+		</P>
+		<P CLASS="body">
+			Click the <B>Submit</B> button to submit the form. On submission, the following actions will occur:<BR>
+			<UL>
+				<LI>
+					The application folder for the currently-installed version of the application will be deleted from [LIVELINK_HOME]&#92;csapplications.
+				</LI>
+				<LI>
+					The Content Server nodes for the existing application will be deleted, except for any nodes that have been specified not to be deleted.
+				</LI>
+				<LI>
+					If the application contains Content Server nodes then the application's XML dump file will be imported, creating the application's Content Server nodes in the selected target container (will default to the same location the application was originally installed in unless a different location is selected).<BR>
+					Note that this process will fail if the import process attempts to create any nodes with the same name as nodes that already exist in the target container.<BR>
+				</LI>
+				<LI>If the application contains application files then they will be copied to a folder in the support directory at support&#92;csapplications&#92;<I>&lt;application name&gt;</I>.
+				<LI>If the application contains support paths then the files will be copied to equivalent locations in the support directory. Only files that do not already exist in the support directory will be copied. Any files that are already present will not be overwritten with the files included in the application.
+				<LI>If the application contains properties files then they will be copied to a folder in the support directory at support&#92;csapplications&#92;<I>&lt;application name&gt;</I>&#92;properties.
+				<LI>Other actions will be performed depending on the application definition. Use the Preview option for more details.</LI>
+				<LI>
+					The application's manifest file will be replaced with a new version. If the application contains Content Server nodes then the manifest file will contain the node IDs that have been created on the target system.</LI>
+				</LI>
+				<LI>
+					The application folder for the new version of the application will be moved from [LIVELINK_HOME]&#92;csapplicationsstaging to [LIVELINK_HOME]&#92;csapplications.
+				</LI>
+			</UL>
+		</P>
+		
+		<P CLASS="body">
+			<B><U>Removing an application</U></B><BR>
+			<BR>
+			The <B>Uninstall Application</B> and <B>Delete Application</B> options can be used to remove an application.
+			The difference between the two is that the Uninstall option will place the application folder for the removed application into the [LIVELINK_HOME]&#92;csapplicationsstaging folder after the application has been removed (in a similar way that uninstalling a Content Server module will place the module folder in the [LIVELINK_HOME]&#92;staging folder), whereas the Delete Application option will delete the application folder completely after the application has been removed.<BR>
+			<BR>
+			Full details of the two options are found below:
+		</P>
+		
+		<!-- ********************* -->
+		<!-- UNINSTALL APPLICATION -->
+		<!-- ********************* -->
+		
+		<P CLASS="body">
+			<B><U>Uninstall Application</U></B><BR>
+			<BR>
+			To uninstall an application, tick the <B>Uninstall</B> checkbox to select an application to be uninstalled.<BR>
+			The Uninstall Application form will be displayed for the application. The form will display data reflecting the current state of the application, in the following three sections:<BR>
+			<UL>
+				<LI>
+					<B>Nodes that have been altered since the application was installed.</B><BR>
+					This lists any nodes that have been renamed, moved or had a new version added to them since the application was installed.<BR>
+					If there are no altered nodes then the section will be hidden.<BR>
+					The section includes a delete checkbox. If ticked then the nodes will be deleted when the application is uninstalled.  Untick the checkbox to keep any nodes that you don't want to be deleted.
+				</LI>
+			</UL>
+			<UL>
+				<LI>
+					<B>Nodes that have been unaltered since the application was installed.</B><BR>
+					This lists any nodes that have been unaltered since the application was installed.<BR>
+					If there are no unaltered nodes then the section will be hidden.<BR>
+					The section includes a delete checkbox.  If ticked then the nodes will be deleted when the application is uninstalled.  Untick the checkbox to keep any nodes that you don't want to be deleted.
+				</LI>
+			</UL>
+			<UL>
+				<LI>
+					<B>Nodes that have been deleted since the application was installed.</B><BR>
+					This lists any nodes that have been deleted since the application was installed.<BR>
+					If there are no deleted nodes then the section will be hidden.
+				</LI>
+			</UL>
+		</P>
+		<P CLASS="body">
+			Click the <B>Submit</B> button to submit the form.  On submission, the following actions will occur:<BR>
+			<UL>
+				<LI>
+					The application folder will be moved from [LIVELINK_HOME]&#92;csapplications to [LIVELINK_HOME]&#92;csapplicationsstaging.
+				</LI>
+				<LI>
+					The support folder for the application will be deleted (if one exists).
+				</LI>
+				<LI>
+					The Content Server nodes for the application will be deleted, except for any nodes that have been specified not to be deleted.
+				</LI>
+			</UL>
+		</P>
+
+		<!-- ****************** -->
+		<!-- DELETE APPLICATION -->
+		<!-- ****************** -->
+		
+		<P CLASS="body">
+			<B><U>Delete Application</U></B><BR>
+			<BR>
+			To delete an application, tick the <B>Delete</B> checkbox to select an application to be deleted.<BR>
+			The Delete Application form will be displayed for the application. The form will display data reflecting the current state of the application, in the following three sections:<BR>
+			<UL>
+				<LI>
+					<B>Nodes that have been altered since the application was installed.</B><BR>
+					This lists any nodes that have been renamed, moved or had a new version added to them since the application was installed.<BR>
+					If there are no altered nodes then the section will be hidden.
+					The section includes a delete checkbox.  If ticked then the nodes will be deleted when the application is deleted.  Untick the checkbox to keep any nodes that you don't want to be deleted.<BR>
+				</LI>
+			</UL>
+			<UL>
+				<LI>
+					<B>Nodes that have been unaltered since the application was installed.</B><BR>
+					This lists any nodes that have been unaltered since the application was installed.<BR>
+					If there are no unaltered nodes then the section will be hidden.<BR>
+					The section includes a delete checkbox.  If ticked then the nodes will be deleted when the application is deleted.  Untick the checkbox to keep any nodes that you don't want to be deleted.<BR>
+				</LI>
+			</UL>
+			<UL>
+				<LI>
+					<B>Nodes that have been deleted since the application was installed.</B><BR>
+					This lists any nodes that have been deleted since the application was installed.<BR>
+					If there are no deleted nodes then the section will be hidden.
+				</LI>
+			</UL>
+		</P>
+		<P CLASS="body">
+			Click the <B>Submit</B> button to submit the form. On submission, the following actions will occur:<BR>
+			<UL>
+				<LI>
+					The application folder will be deleted from [LIVELINK_HOME]&#92;csapplications.
+				</LI>
+				<LI>
+					The support folder for the application will be deleted (if one exists).
+				</LI>
+				<LI>
+					The Content Server nodes for the application will be deleted, except for any nodes that have been specified not to be deleted.
+				</LI>
+			</UL>
+		</P>
+
+		<SCRIPT LANGUAGE="JavaScript">
+			new AdminFooter().draw();
+		</SCRIPT>
+	</BODY>
+</HTML>

@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Pre-defined Sort Parameters</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-sort-presort.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sorting Results';
+          header.title2 = 'Pre-defined Sort Parameters';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID22274"></A>This feature allows complex sort keys to be associated with simple references that can be passed in the URL. This feature is particularly useful when setting up reports that are sorting using WebReports tags and sub-tags. When the user selects a column for sorting, it can be difficult to pass the necessary tag syntax in the URL in order for the <TT CLASS="literal">SORT</TT> tag to execute. To solve this problem, this feature provides the ability to specify:</P><A NAME="AEN20996"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN20997"></A><A NAME="TMPID22279"></A>The name of one or more parameters that should be checked in the URL.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN20999"></A><A NAME="TMPID22281"></A>A series of reference words and their associated tag syntax.</P></LI></UL>
+<P><A NAME="TMPID22282"></A>When this is set up correctly, each specified parameter is checked to see if one of the predefined reference words has been found. If a specified reference word is found in the URL parm then the corresponding syntax for this word is inserted into the <TT CLASS="literal">SORT</TT> tag.</P>
+<P><A NAME="TMPID22284"></A>In order to provide this functionality, two “directives” are provided that can be included within the <TT CLASS="literal">SORT</TT> tag. The concept of a “directive” exists in other content control tags such as the <TT CLASS="literal">INSERTJSON</TT> tag. It refers to a syntax command preceded by an @ symbol. Each directive may have one or more additional pieces of information. The two directives supported by <TT CLASS="literal">SORT</TT> are <TT CLASS="literal">@PARMNAMES</TT> and <TT CLASS="literal">@PREDEFKEY</TT>. These directives are explained in depth below.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN21011"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Directive</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@PARMNAMES</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">SORTCOL:&lt;<I CLASS="varname">sortcolname</I>></TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">DIRCOL:&lt;<I CLASS="varname">directioncolname</I>></TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">One or more of these directives can optionally be specified. If none of these directives are specified, and a predefined key - as below - is specified, then it is assumed that the parameters <TT CLASS="literal">&amp;sort</TT> and <TT CLASS="literal">&amp;direction</TT> will be used to pass any sort or directional references. For each <TT CLASS="literal">@PARMNAME</TT> directive that is supplied, an alternative URL parameter name can be specified for either the sort column or the sort direction. The ability to specify more than one <TT CLASS="literal">@PARMNAME</TT> directive allows multiple sort columns to be specified. These parameters are used in the order of the <TT CLASS="literal">@PARMNAME</TT> directives specified in the <TT CLASS="literal">SORT</TT> tag. For example, given the following set of directives:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@PARMNAMES SORTCOL:sortcol1 DIRCOL:coldir1</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@PARMNAMES SORTCOL:sortcol2 DIRCOL:coldir2</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@PARMNAMES SORTCOL:sortcol3 DIRCOL:coldir3</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">If the URL contained:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">&amp;sortcol3=parentid&amp;sortcol1=Name&amp;sortcol2=dataid</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">the <TT CLASS="literal">SORT</TT> would execute based on: Name, DataID and then ParentID, in that sequence.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF77"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID22334"></A><B CLASS="note">Note: </B><BR>Normally, the value of each of these parameters will specify one of the predefined keys as setup by the <TT CLASS="literal">PREDEFKEY</TT> directive below.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@PREDEFKEY</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">REF:&lt;<I CLASS="varname">reference key</I>></TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">PARM:&lt;<I CLASS="varname">tag/sub-tag syntax</I>></TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This directive is used to set up a simple identifier that can be used to reference a complex tag/sub-tag type sort key. This allows the client application to specify a simple key as a sort parameter rather than a large chunk of WebReports tag and sub-tag information. For example, if a particular column contains the following syntax: <TT CLASS="literal">[LL_REPTAG=DATAID CAT:somecat:attr1:DISPLAY /]</TT> and we want to be able to sort using this data, we could setup a key as follows:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@PREDEFKEY REF:col3 PARM:"[LL_REPTAG=DATAID CAT:somecat:attr1:DISPLAY /]"</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">With this definition in place, <TT CLASS="literal">&amp;sort=col3</TT> in the URL, or POST request, would tell the <TT CLASS="literal">SORT</TT> tag to use <TT CLASS="literal">[LL_REPTAG=DATAID CAT:somecat:attr1:DISPLAY /]</TT> as a <TT CLASS="literal">SORT</TT> key. Several such predefined keys can be created, one for each and every column that could be sorted. Usually this feature is only used where the sort key is complex, such as in the example above.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

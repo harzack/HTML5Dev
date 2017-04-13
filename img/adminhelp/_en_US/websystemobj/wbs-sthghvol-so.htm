@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Setting Up High-Volume Indexing</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-sthghvol-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Search';
+          header.title2 = 'Setting Up High-Volume Indexing';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID2843"></A>Normally, Content Server requires only one Extractor process in a single Enterprise data source to extract data from the Content Server database; Content Server is configured this way by default. However, there are cases when the volume of objects being indexed is so large that data sources and data flows must be customized to allow high-volume indexing. For example, if a large organization wants to store and index all its email in Content Server, the volume of email may require high-volume indexing customized to the particular needs of the site.</P>
+<P class="before-ul"><A NAME="TMPID2848"></A>High-volume indexing consists of setting up one or more of the following:</P><A NAME="AEN2219"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2220"></A><A NAME="TMPID2851"></A>Multiple Enterprise Extractor processes in an Enterprise data source</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2222"></A><A NAME="TMPID2853"></A>Multiple Document Conversion processes in an Enterprise data source</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2224"></A><A NAME="TMPID2855"></A>Multiple Enterprise data sources</P></LI></UL>
+<P><A NAME="TMPID2856"></A>For more information about adding Enterprise Extractor and Document Conversion processes, see <span><A href="../websystemobj/wbs-addanyprocs-bg.htm">Adding Data Flow Processes</A></span>.</P>
+<P><A NAME="TMPID2858"></A>Multiple Enterprise data sources are only available if you have set the opentext.ini parameter <TT CLASS="literal">wantMultipleEnterprise</TT> in the <B CLASS="guilabel">[SearchOptions]</B> section to <TT CLASS="literal">true</TT>. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-searchoptions-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-searchoptions-rf.htm">[SearchOptions]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-searchoptions-rf" FMT=""></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF63">Considerations When Setting Up High-Volume Indexing</A></P>
+<P><A NAME="TMPID2864"></A>The combination of processes and data sources required for an installation depends on the data being indexed. OpenText recommends contacting Global Services or Customer Support for an analysis of your system before implementing high-volume indexing. Also, OpenText recommends that you plan your usage of ports and shared directories for IPool subareas before implementation. The test data flow function is useful in this regard, including determining if IPool subareas have been specified properly. For more information about the test data flow function, see <span><A href="../websystemobj/wbs-specdflw-bg.htm">Maintaining Data Flows</A></span>. For more information about viewing port numbers on your system, see <span><A href="../otadmin/ota-maintainlladminserver-rf.htm">Maintaining Admin servers</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF64">Re-Extracting Enterprise Data</A></P>
+<P><A NAME="TMPID2870"></A>When you add an Enterprise data source to Content Server, you can choose to re-extract Enterprise data from the database upon its creation. If your database is not very large, the re-extraction command may be useful as it will redistribute the Enterprise data across the Enterprise data sources, balancing the load more efficiently. However, if your database is very large, re-extraction may not be useful as it may take considerable time. For more information, contact OpenText Customer Support.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-addprocenterdsrc-bg.htm" revision="">Adding Multiple Processes in an Enterprise Data Source</A></p></li>
+<li><p><A  href="../otadmin/ota-maintainlladminserver-rf.htm" revision="">Maintaining Admin servers</A></p></li>
+<li><p><A  href="../otadmin/ota-configsrchlocmods-rf.htm" revision="">Configuring Search Location Modifiers</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="NGDLLES100502-H-UGD-NL-1">
+<META name="pvScheme" content="010203">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="ngd">
+<META mancondkey="ngdcore-h-ugd -- lleswbb-h-ugd -- ngdcore-ugd -- lleswfp-h-ugd -- llescls-h-ugd -- llesrcm-igd -- lleswat-h-ugd -- llescl-h-ugd -- llesrt-h-ugd -- lleswbd-h-ugd"><title>Werken met reguliere expressies via  Live Query Language  </title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ngdlles-lqlregex-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Zoeken met behulp van complexe query\'s';
+          header.title2 = 'Werken met reguliere expressies via ';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4657"></A>U kunt reguliere expressies gebruiken in complexe query's als u deze tussen dubbele aanhalingstekens (<TT CLASS="literal">"&nbsp;"</TT>) plaatst en laat voorafgaan door het trefwoord <TT CLASS="literal">QLREGEX</TT>.</P>
+<P><A NAME="TMPID4660"></A>Een reguliere expressie is een verzameling tekenreeksen die overeenkomen met bepaalde patronen. De speciale tekens $, ^, ., *, +, ?, [, ], (, ) en \ functioneren bij het opgeven van deze patronen als operatoren op alle overblijvende gewone tekens. Een gewoon teken is een eenvoudige reguliere expressie die overeenkomt met een tekens en met niets anders (bijvoorbeeld <TT CLASS="literal">h</TT> komt uitsluitend overeen met <I CLASS="emphasis">h</I>). U kunt een speciaal teken weergeven als een gewoon teken door er een achterwaartse schuine streep (\) voor te plaatsen. Zo komt <TT CLASS="literal">\$</TT> overeen met <I CLASS="emphasis">$</I>.</P>
+<P class="before-ul"><A NAME="TMPID4665"></A>Hanteer de volgende richtlijnen voor een zo effectief mogelijk gebruik van reguliere expressies:</P><A NAME="AEN4366"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4367"></A><A NAME="TMPID4668"></A>Wanneer in een zoekactie reguliere expressies in combinatie met het trefwoord <TT CLASS="literal">QLREGEX</TT> worden gebruikt, kan de reguliere expressie op een willekeurige plek binnen een woord in een item voorkomen. Zo wordt bijvoorbeeld met <TT CLASS="literal">QLREGEX "bas"</TT> naar items gezocht die ten minste één woord bevatten met het woordje <I CLASS="emphasis">bas</I>, zoals <I CLASS="emphasis">bas</I>, <I CLASS="emphasis">bastion</I> of <I CLASS="emphasis">albast</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4375"></A><A NAME="TMPID4676"></A>U kunt twee reguliere expressies (<TT CLASS="literal">&lt;<I CLASS="varname">x</I>></TT> en <TT CLASS="literal">&lt;<I CLASS="varname">y</I>></TT>) koppelen om een reguliere expressie te vormen die met een tekenreeks overeenkomt (mits <TT CLASS="literal">&lt;<I CLASS="varname">x</I>></TT> overeenkomt met het begin van die tekenreeks en <TT CLASS="literal">&lt;<I CLASS="varname">y</I>></TT> met de rest ervan). Zo komt <TT CLASS="literal">h\$</TT> overeen met <I CLASS="emphasis">h$</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4387"></A><A NAME="TMPID4688"></A>Het gebruik van het trefwoord <TT CLASS="literal">QLREGEX</TT> in combinatie met reguliere expressies in query's voor zinsneden is bijna altijd minder efficiënt dan het gebruik van het trefwoord <TT CLASS="literal">OR</TT> voor het samenstellen van dezelfde query, vanwege het aantal bewerkingen dat voor reguliere expressies is vereist.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4391"></A><A NAME="TMPID4692"></A>Het beperken en versmallen van zoekbewerkingen bespaart tijd, vooral bij het zoeken naar voorvoegsels. Als u bijvoorbeeld onderdelen wilt zoeken met het getal 1995 en beginnend met <I CLASS="emphasis">d</I>, kost een zoekactie met <TT CLASS="literal">QLREGEX "^d"</TT> meer tijd dan een zoekactie met <TT CLASS="literal">QLREGEX "^d1995"</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4396"></A><A NAME="TMPID4697"></A>Vermijd zoekacties met reguliere expressies naar korte achtervoegsels zoals <I CLASS="emphasis">ing</I>, omdat door de zoekmachine alle woorden in de index van links naar rechts moeten worden geparseerd om achtervoegsels te vinden. In plaats daarvan is het verstandig om uw zoekactie te versmallen door achtervoegsels met voorvoegsels te combineren in reguliere expressies of om de modificator <B CLASS="guilabel">Woord eindigt op</B> op de pagina Livelink zoeken te gebruiken.</P></LI></UL>
+<P><A NAME="TMPID4700"></A>U kunt de volgende lijst met operatoren binnen reguliere expressies gebruiken voor het beschrijven van een verzameling tekenreeksen.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4401"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Operator</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Beschrijving</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Geeft elk teken afzonderlijk aan.<BR><TT CLASS="literal">\a.2</TT> komt bijvoorbeeld overeen met elk woord dat een tekenreeks van drie tekens bevat en begint met een <I CLASS="emphasis">a</I> en dat eindigt met <I CLASS="emphasis">2</I> (zoals <I CLASS="emphasis">ab2z</I>, <I CLASS="emphasis">aa2</I> of <I CLASS="emphasis">aaa2zzz</I>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Sluit een tekenset of tekenbereik in. Hierbij gelden de volgende regels: <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4725"></A>U kunt bereiken en losse tekens door elkaar gebruiken.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4727"></A>In een tekenset hebben <TT CLASS="literal">]</TT>, <TT CLASS="literal">-</TT> en <TT CLASS="literal">^</TT> een speciale betekenis. Alle overige tekens vertegenwoordigen alleen zichzelf.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4732"></A>Het minteken (<TT CLASS="literal">-</TT>) is een bereikoperator tussen twee tekens.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4735"></A><A NAME="AEN4356">Het teken <TT CLASS="literal">^</TT> mag alleen op de eerste positie in een tekenset worden gebruikt.</P></TD></TR></TABLE>  Zo komt <TT CLASS="literal">[abc]</TT> overeen met <I CLASS="emphasis">a</I>, <I CLASS="emphasis">b</I> of <I CLASS="emphasis">c</I>. <TT CLASS="literal">[a-z]</TT> komt overeen met elke willekeurige kleine letter. <TT CLASS="literal">[-$a0-9]</TT> komt overeen met <I CLASS="emphasis">-</I>, <I CLASS="emphasis">$</I>, <I CLASS="emphasis">a</I> of elk willekeurig cijfer.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[^]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Vormt een tekenset die de opgegeven tekenset uitsluit (komt overeen met elk teken behalve dat wat is opgegeven). Als <TT CLASS="literal">-</TT> of <TT CLASS="literal">]</TT> na <TT CLASS="literal">[^</TT> volgt, wordt <TT CLASS="literal">-</TT> of <TT CLASS="literal">]</TT> behandeld als het eerste teken. <BR>Bijvoorbeeld, <TT CLASS="literal">[^a-z]</TT> komt overeen met elk willekeurig teken, behalve de letters van het alfabet. <TT CLASS="literal">[^]^a-z0-9]</TT> komt overeen met elk willekeurig teken, behalve <I CLASS="emphasis">]</I>, <I CLASS="emphasis">^</I> of alfanumerieke tekens.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">^</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Geeft de lege tekenreeks aan het begin van een woord aan.<BR>Zo komt <TT CLASS="literal">^ch</TT> overeen met elk exemplaar van <I CLASS="emphasis">ch</I> aan het begin van een woord (zoals <I CLASS="emphasis">chronisch</I>, maar niet <I CLASS="emphasis">acht</I>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">*</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Geeft nul of meer keer de kleinste voorafgaande reguliere expressie aan. De operator <TT CLASS="literal">*</TT> gevolgd door een reguliere expressie met <TT CLASS="literal">^</TT> als woordbegin wordt echter geïnterpreteerd als de expressie met een willekeurig einde (zoals bij een wildcard (*) in query's).<BR>Zo komt <TT CLASS="literal">ad*</TT> overeen met <I CLASS="emphasis">a</I>, <I CLASS="emphasis">ad</I>, <I CLASS="emphasis">add</I>, enzovoort.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">+</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Geeft één of meer keer de kleinste voorafgaande reguliere expressie aan.<BR>Zo komt <TT CLASS="literal">tr[ei]+</TT> overeen met <I CLASS="emphasis">tre</I>, <I CLASS="emphasis">tri</I>, <I CLASS="emphasis">tree</I>, <I CLASS="emphasis">trie</I>, <I CLASS="emphasis">triie</I>, etc. maar niet met <I CLASS="emphasis">tr</I>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">?</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Geeft nul of één keer de kleinste voorafgaande reguliere expressie aan. Zo komt <TT CLASS="literal">ze[ei]?</TT> alleen overeen met <I CLASS="emphasis">ze</I>, <I CLASS="emphasis">zee</I> en <I CLASS="emphasis">zei</I>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">$</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Geeft de lege tekenreeks aan het eind van een woord aan.<BR>Zo komt <TT CLASS="literal">erd$</TT> overeen met de tekens <I CLASS="emphasis">erd</I> wanneer deze aan het eind van een woord of regel voorkomen.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">|</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Scheidt twee mogelijkheden. Als <TT CLASS="literal">x</TT> en <TT CLASS="literal">y</TT> reguliere expressies zijn, komt <TT CLASS="literal">x|y</TT> overeen met alles dat ofwel overeenkomt met <TT CLASS="literal">x</TT> ofwel overeenkomt met <TT CLASS="literal">y</TT>.<BR>Zo komt <TT CLASS="literal">zee|bed</TT> alleen overeen met <I CLASS="emphasis">zee</I> en <I CLASS="emphasis">bed</I>. <TT CLASS="literal">[abc]</TT> kan ook worden geschreven als <TT CLASS="literal">a|b|c</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">()</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Groepeert items (zoals mogelijkheden of complexe reguliere expressies) zodat u deze kunt combineren met reguliere expressies en operatoren.<BR>Zo komt <TT CLASS="literal">(ro)?(co)+</TT> overeen met elk aantal tekenreeksen <I CLASS="emphasis">co</I> dat niet gelijk is aan nul en dat wordt voorafgegaan door niets of <I CLASS="emphasis">ro</I> (zoals <I CLASS="emphasis">co</I>, <I CLASS="emphasis">coco</I>, <I CLASS="emphasis">rococo</I>, enzovoort).</TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Recommandations de développement d'affichages de rapports avec scripts</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-server-recdevscr.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Ecriture de script côté serveur';
+          header.title2 = 'Recommandations de développement d\'affichages de rapports avec scripts';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID17154"></A>Les WebReports avec écriture de script côté serveur doivent être développés sur une instance Content Server de simulation. De préférence, cette instance doit exécuter le générateur Content Server, afin de faciliter le débogage, et le développeur doit bénéficier des droits d'administration système. Une fois les WebReports développés et testés, afin d'assurer qu'ils sont appropriés à une utilisation en production, ils peuvent être placés dans une instance de production au moyen de XMLExport et XMLImport. Vous pouvez également les déplacer un par un, au moyen du téléchargement d'affichages de rapports. </P>
+<P class="before-ul"><A NAME="TMPID17159"></A>Une fois les WebReports placés sur une instance de production, un administrateur système doit utiliser la page d'administration WebReports <B CLASS="guilabel">Gérer l'écriture de script WebReports</B> pour vérifier chaque rapport et les activer s'il est satisfait quant à la sécurité des rapports, et en particulier celle des aspects relatifs aux scripts. Voici les pièges à éviter :</P><A NAME="AEN16415"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16416"></A><A NAME="TMPID17164"></A>Boucles infinies pouvant monopoliser des threads sur Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16419"></A><A NAME="TMPID17167"></A>Consommation exagérée de mémoire par des créations de données ou des itérations sans limites.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16421"></A><A NAME="TMPID17169"></A>Absence de vérifications des données non définies ou transmises en paramètre. Par exemple, le script doit vérifier les paramètres non définis et les traiter.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16423"></A><A NAME="TMPID17171"></A>Présence de l'instruction <TT CLASS="literal">scheduler.debugbreak()</TT>, utile en développement mais superflue en production.</P></LI></UL>
+<P><A NAME="TMPID17173"></A>Les deux premiers risques présentent le potentiel le plus élevé d'affecter Content Server.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

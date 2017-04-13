@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<title>Sauvegarde et restauration Content Server</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/otadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-bu-llservers-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion des serveurs dans Content Server';
+          header.title2 = 'Sauvegarde et restauration Content Server';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID12231"></A>Vous devez sauvegarder périodiquement Content Server pour protéger les données se trouvant dans votre déploiement Content Server. De plus, OpenText vous recommande de sauvegarder Content Server dès que vous appliquez un correctif ou une mise à jour, installez, désinstallez ou mettez à niveau un module. Ceci est également valable à chaque fois que vous apportez une modification à votre déploiement Content Server.</P>
+<P class="before-ul"><A NAME="TMPID12237"></A>Un ensemble de sauvegardes Content Server comprend les éléments suivants :</P><A NAME="AEN11308"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11309"></A><A NAME="TMPID12241"></A>un dossier &lt;<I CLASS="varname">Content Server_accueil</I>> ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11313"></A><A NAME="TMPID12245"></A>une base de données Content Server ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11316"></A><A NAME="TMPID12248"></A>un magasin de fichiers externe ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11318"></A><A NAME="TMPID12250"></A>un ou plusieurs index de recherche ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11320"></A><A NAME="TMPID12252"></A>tout dossier Content Server se trouvant en dehors du dossier &lt;<I CLASS="varname"> Content Server_accueil</I>>, par exemple un dossier Chargement.</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF105"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12257"></A><B CLASS="note">Note : </B><BR>Si votre déploiement Content Server inclut des modules facultatifs ou des applications intégrées, il peut être nécessaire d'inclure des éléments additionnels dans l'ensemble de sauvegardes.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID12259"></A>Arrêtez les services Content Server avant d'effectuer une sauvegarde afin que tous les composants Content Server soient synchronisés les uns avec les autres. Effectuer la sauvegarde de Content Server lorsque les services Content Server fonctionnent peut entraîner des incohérences de données. Par exemple, la base de données Content Server peut contenir des références à des éléments Content Server qui n'existent pas dans la sauvegarde du magasin de fichiers externe.</P><A NAME="PROC-BKUP-LLES"></A>
+<DIV title="Pour sauvegarder 'Content Server' :" CLASS="procedure">
+<P><B>Pour sauvegarder Content Server :</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID12270"></A>Arrêtez les services Content Server.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12273"></A>Sauvegardez la base de données Content Server à l'aide des outils appropriés pour votre système de gestion de base de données relationnelle Microsoft SQL Server ou Oracle Database.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12278"></A>Sauvegardez les index de recherche Content Server en effectuant une copie du dossier <TT CLASS="literal">...\index\&lt;<I CLASS="varname">nom_index</I>></TT> et de ses sous-dossiers.</P>
+<P>
+<DIV CLASS="informalexample">
+<P class="nr1"><A NAME="AEN11351"></A><B>Exemple: </B><A NAME="TMPID12283"></A>Pour sauvegarder l'index de recherche d'entreprise, copiez le dossier <TT CLASS="literal">...\index\Enterprise\</TT>, ainsi que tous les sous-dossiers.</P>
+</DIV></P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF106"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12286"></A><B CLASS="note">Note : </B><BR>Voir <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbs-h-agd.ota-ibrbackupoverview-so" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/otadmin/ota-ibrbackupoverview-so.htm">Sauvegarde et restauration des index</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbs-h-agd.ota-ibrbackupoverview-so" FMT=""></span> pour plus d'informations sur l'automatisation des sauvegardes d'index.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12289"></A>Sauvegardez le dossier &lt;<I CLASS="varname">Content Server_accueil</I>> en le copiant, ainsi que ses sous-dossiers.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12293"></A>Sauvegardez tout dossier Content Server se trouvant en dehors du dossier &lt;<I CLASS="varname">Content Server_accueil</I>>, par exemple le dossier Chargement Content Server.</P></LI></OL></DIV><A NAME="PROC-RESTOR-LLES"></A>
+<DIV title="Pour restaurer un ensemble de sauvegardes 'Content Server' :" CLASS="procedure">
+<P><B>Pour restaurer un ensemble de sauvegardes Content Server :</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID12302"></A>Arrêtez les services Content Server.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12305"></A>Restaurez votre base de données Content Server.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12308"></A>Restaurez les index de recherche Content Server.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12311"></A>Restaurez le dossier &lt;<I CLASS="varname">Content Server_accueil</I>>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12315"></A>Restaurez tout dossier Content Server existant en dehors du dossier &lt;<I CLASS="varname">Content Server_accueil</I>>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12320"></A>Démarrez les services Content Server.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

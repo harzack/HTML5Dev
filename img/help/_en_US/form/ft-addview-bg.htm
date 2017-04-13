@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESFRM100500-H-UGD-EN-1">
+<META PiXprocLocator="form">
+<META mancondkey="llesfrm-cwm -- llesrep-h-ugd -- llesesn-h-ugd -- lleswfp-h-ugd -- lleschn-h-ugd -- lleswfm-h-ugd -- llesafm-h-ugd -- llesrt-h-ugd -- lleslfm-h-ugd -- lleswfw-h-ugd -- llesfwf-h-ugd"><title>Defining Custom Views</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ft-addview-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Using Forms';
+          header.title2 = 'Defining Custom Views';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID672"></A>Form Templates can have multiple views. A view is a file that is an alternative version of the default Form based on the Form Template. You can create a view when you want to customize a Form for a specific purpose. For instance, you can create a custom view that hides a field that you do not want to use. After you create a custom view, you can view it or specify which users or groups receive this view by default when they access the Form.</P>
+<P><A NAME="TMPID678"></A>Like Form Templates, views are files (in either HTML or PDF format) that you add to Content Server like any other object.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF8"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID682"></A><B CLASS="NOTE">Note: </B><BR>You can add views to a template only if your Content Server installation includes the Web Forms module, the PDF Forms module, or the eForms module.</P>
+<P><A NAME="TMPID686"></A>If you add a version to a Form Template that has different fields than the original, you must update any views associated with the Form Template to make them conform to the new version.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="BH-OPTSPECVIEW">Specifying the View Type</A></P>
+<P><A NAME="TMPID691"></A>When adding a view, you are prompted to specify the view type if the optional PDF Forms and WebForms modules are installed.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="F-READPRINTVIEW">Using &lt;Read Only&gt; and &lt;Print&gt; Views</A></P>
+<P><A NAME="TMPID695"></A>There are two custom view types that add functionality to the Forms module, &lt;Read Only&gt; and &lt;Print&gt;.</P>
+<P><A NAME="TMPID697"></A>A &lt;Read Only&gt; view enables users to view a Form, but prevents them from making changes. Before you create the Form, you must configure the permissions to be read-only on the Form Template on which the Form is based.</P>
+<P><A NAME="TMPID702"></A>Adding the &lt;Print&gt; view to a Form Template adds a <B CLASS="GUILABEL">Print Form</B> command to the <B CLASS="GUILABEL">Functions</B> menu of Forms created with the template. This function sends Form data to a view that you design specifically to be printed.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF9"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID710"></A><B CLASS="NOTE">Note: </B><BR>When adding these view types to a Template, you must name them using the angle brackets (&lt; &gt;).</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="F-AFT-DESIGN-BG-OPTF">Specifying Optional Fields</A></P>
+<P><A NAME="TMPID713"></A>Content Server automatically fills in some fields with the data that it stores about the user who opens the Form. For example, for the Form field <TT CLASS="LITERAL">LL_UserLogin</TT>, Content Server supplies the current user's Content Server user name when the Form is opened.</P>
+<P class="before-ul"><A NAME="TMPID721"></A>The following names for user data fields are reserved (all are case sensitive):</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN721"></A><A NAME="TMPID724"></A><TT CLASS="LITERAL">LL_UserLogin</TT>, the user's login name</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN724"></A><A NAME="TMPID727"></A><TT CLASS="LITERAL">LL_UserFirstName</TT>, the user's first name</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN727"></A><A NAME="TMPID730"></A><TT CLASS="LITERAL">LL_UserMiddleName</TT>, the user's middle name</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN730"></A><A NAME="TMPID733"></A><TT CLASS="LITERAL">LL_UserLastName</TT>, the user's last name</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN733"></A><A NAME="TMPID736"></A><TT CLASS="LITERAL">LL_UserFullName</TT>, the user's full name (first, middle initial, and last)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN736"></A><A NAME="TMPID739"></A><TT CLASS="LITERAL">LL_UserTitle</TT>, the user's title</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN739"></A><A NAME="TMPID742"></A><TT CLASS="LITERAL">LL_UserMailAddress</TT>, the user's e-mail address</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN742"></A><A NAME="TMPID745"></A><TT CLASS="LITERAL">LL_UserContact</TT>, the user's phone number and extension</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN745"></A><A NAME="TMPID748"></A><TT CLASS="LITERAL">LL_UserGroupName</TT>, the department to which the user belongs</P></LI></UL>
+<table CLASS="IMPORTANT">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="IMPORTANT"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID751"></A><B CLASS="IMPORTANT">Important: </B><BR>Content Server always returns data for the <I CLASS="EMPHASIS">current user</I> in the reserved fields. If you want to store this information in Content Server, allow the Form to be edited later, and maintain a list of each user who edits the information, be sure to design a Form that contains the logic to store the data in another field by copying or appending the data in the <TT CLASS="LITERAL">LL_UserLogin</TT> field. If you try to store the user data by creating a field on the Form Template named <TT CLASS="LITERAL">LL_UserLogin</TT>, the value in that field will be overwritten with the current user's Content Server user name each time the Form is edited.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="ft-addview-p.htm" revision="">To Add a Custom View to a Form Template</A></p></li>
+<li><p><A  HREF="ft-views-info-p.htm" revision="">To View a Form Template's Custom Views</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

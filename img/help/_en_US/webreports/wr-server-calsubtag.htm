@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Calling Sub-tags</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-server-calsubtag.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Server Side Scripting';
+          header.title2 = 'Calling Sub-tags';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID22008"></A>It is possible to make use of sub-tags without also invoking a static data tag using the following dot function:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN20729"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Function</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Parameters</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">String ._subTag(String data, String subtags)</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">data</B>: a String value to be operated on by the sub-tags.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">subtags</B>: a String containing the sub-tags to use on the data.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">A String value containing the result of the data transformed by the sub-tags.</TD></TR></TABLE>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN20749"></A>&nbsp;</P>
+<P class="nr1"><B>Example: </B><A NAME="TMPID22030"></A><TT CLASS="literal">String s = ._subTag('3','DECODE:1:Beginning:2:Middle:3:End:Other UPPER')</TT></P>
+</DIV></P>
+<P><A NAME="TMPID22032"></A>In this case the string “s” is set to <TT CLASS="literal">END</TT>.</P>
+<P><A NAME="TMPID22035"></A>Note that not all sub-tags are supported when called by <TT CLASS="literal">._subTag</TT>. Generally sub-tags that cause some other action besides returning formatted data do not work. The following sub-tags are not supported: <TT CLASS="literal">ADDVAR</TT>, <TT CLASS="literal">CONCATVAR</TT>, <TT CLASS="literal">NEXT</TT>, <TT CLASS="literal">PREV</TT>, <TT CLASS="literal">SETFORM</TT>, <TT CLASS="literal">SETVAR</TT>, <TT CLASS="literal">SETWFATTR</TT>, <TT CLASS="literal">SETWFFORM</TT>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

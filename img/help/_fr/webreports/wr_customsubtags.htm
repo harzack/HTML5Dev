@@ -1,0 +1,119 @@
+<!-- wr_customsubtags.htm -->
+<HTML>
+	<HEAD>
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+		<TITLE>Custom Sub-tags</TITLE>
+		<LINK REL="stylesheet" HREF="../../ix21.css">
+		<script language="JavaScript" src="../../llhelp.js" >
+		</script>
+	</HEAD>
+	<BODY ONLOAD="checkFrame('wr_customsubtags.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+		<SCRIPT LANGUAGE="JavaScript">
+			var header = new AdminHeader();
+			header.title1 = 'Advanced Information';
+			header.title2 = 'Custom Sub-tags';
+			header.draw();
+		</SCRIPT>
+
+		<p class="body">
+			<B><U>Using Custom Sub-tags with WebReports</U></B>
+		</P>
+		<p class="body">
+			Developers can create their own sub-tags using ordinary text documents and 'drop' them into a folder on the server, allowing you to generate sub-tag features customized for your needs
+			and have them included in your WebReport reportview for use just like any other sub-tag listed in the Tag Guide.
+			<BR>
+			There are no restrictions on what can be coded in a custom sub-tag because they are located on the server - this means that OScript packages that are normally blocked for use in a
+			WebReport reportview with server-side scripting will be available in a custom sub-tag.<BR>
+			The result will be a WebReports sub-tag that behaves just like any other sub-tag that is packaged with WebReports.
+		</P>
+		<p class="body">
+			A sample custom sub-tag called 'sample.txt' can be found in the <i>[LIVELINK_HOME]</i>\<i>module</i>\<i>webreports_n_n_n</i>\<i>subtags</i> folder on the server where your Content Server instance is installed.<BR>
+			This file is really just a template to start building from.  New sub-tags can be based on this file and saved into the same folder.
+		</P>
+		<table CLASS="NOTE">
+			<TR>
+				<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD>
+			</TR>
+			<TR FRAME="VOID">
+				<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+					<P CLASS="NOTE">
+						<IMG SRC="../../images/pi_note.gif"></IMG>
+					</P>
+				</TD>
+				<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+					<P>
+						<B CLASS="NOTE">Note: </B>
+						<BR>
+						The Content Server service must be restarted in order for new custom sub-tags to be available.
+					</P>
+				</TD>
+			</TR>
+		</TABLE>
+		<p class="body">
+			The first line in the custom sub-tag file template is<BR>
+			<B>// @MINPARMS=0,@MAXPARMS=10</B>, which is where you would specify the number of parameters you want to make available when calling the sub-tag,
+			so if you specify<BR>
+			<B>// @MINPARMS=1,@MAXPARMS=1</B>, this means that when you call the sub-tag, you must also pass one parameter.<BR>
+			In your code, you can access these parameters using <B>myTag[n]</B>, where n is the number of the parameter you want to access (starting at number 2 as the first value in myTag is a unique identifier assigned to the sub-tag).
+		</P>
+		<p class="body">
+			You can test that your sub-tag code compiles correctly using the <B>Build All Sub-tags</B> page in the WebReports Administration section of the administration pages.
+		</P>
+		<P class="body">
+			<B><U>Example</U></B>
+		</P>
+		<P class="body">
+			The following text could be saved into a file called 'addintegers.txt' and creates a custom sub-tag called <B>ADDINTEGERS</B>.<BR>
+			The sub-tag takes between two and three parameters and adds them together, returning the total.<BR>
+			The code contains error handling, so if any of the parameters are not integers, or the total is not an integer, an error message will be returned instead of the total.<BR>
+			The sub-tag could be called like: <B>[LL_REPTAG_'' ADDINTEGERS:2:3 /]</B>, which would return 5, or <B>[LL_REPTAG_'' ADDINTEGERS:2:3:4 /]</B>, which would return 9.<BR>
+			<B>[LL_REPTAG_'' ADDINTEGERS:'x':'y' /]</B> would return '* ADDINTEGERS: Parameters must be valid integers *'.
+		</P>
+		<P class="body">
+		// @MINPARMS=2,@MAXPARMS=3<BR>
+		function Dynamic _ADDINTEGERS( Assoc rep,  integer subTagInd, List myTag, Integer rowNo=-1,Integer colNo=-1,RecArray sourceData = undefined)<BR>
+		<BR>
+		&nbsp;&nbsp;// All parameters are passed as strings.<BR>
+		&nbsp;&nbsp;Integer parm1 = Str.StringToInteger( myTag[2] )<BR>
+		&nbsp;&nbsp;Integer parm2 = Str.StringToInteger( myTag[3] )<BR>
+			<BR>
+		&nbsp;&nbsp;Integer	total<BR>
+			<BR>
+		&nbsp;&nbsp;// Are both parameters valid integers?<BR>
+		&nbsp;&nbsp;if IsDefined( parm1 ) && IsDefined( parm2 )<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;// Add the two numbers together.<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;total = parm1 + parm2<BR>
+				<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;// Check to see if the third parameter (optional) is specified.<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;if isDefined( myTag[4] )<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Convert the string parameter to an integer.<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer parm3 = Str.StringToInteger( myTag[4] )<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Is the parameter a valid integer?<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If IsDefined( parm3 )<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Add the parameter to the running total.<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total = total + parm3<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;end<BR>
+				<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;// Is the total a valid integer?<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;if IsDefined( total )<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Set rep.data to the value we want to return to the WebReport.<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Ensure returned data is a string type.<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep.Data = Str.String( total )<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;else<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Return an error message<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep.Data = .manageError( .fSubtags, myTag, 'ADDINTEGERS', 1001, 'Numbers do not add up to a valid integer', 'LONG')<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;end<BR>
+		&nbsp;&nbsp;else<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;// Return an error message<BR>
+		&nbsp;&nbsp;&nbsp;&nbsp;rep.Data = .manageError( .fSubtags, myTag, 'ADDINTEGERS', 1002, 'Parameters must be valid integers', 'LONG')<BR>
+		&nbsp;&nbsp;end<BR>
+		end
+		</P>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+	</body>
+</HTML>

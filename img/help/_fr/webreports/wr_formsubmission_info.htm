@@ -1,0 +1,57 @@
+<!-- wr_formsubmission_info.htm -->
+<!-- Copyright 2009 Resonate KT Ltd  -->
+
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Form Submission Mechanism</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_formsubmission_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = "Form Submission Mechanism";
+        header.draw();
+
+</SCRIPT>
+
+
+<p class="body">
+WebReports provides a form submission mechanism, "Initiate WebReport", that is similar to "SQL Table", the main differences being that when the data is stored in the SQL
+table, the primary key, or SEQ, is identified and passed to a WebReport which is initiated straight after the form submission.  The data stored in each method is
+interchangeable - i.e. it is possible to change the form submission mechanism between "Initiate WebReport" and "SQL Table" without affecting the existing data.
+<br><br>
+Initiate WebReport requires only two configuration options which are set on the specific tab of the form.
+<ul>
+<li>The WebReport that is to be executed immediately following form submission
+<li>A checkbox to determine whether the WebReport is executed transparently or is presented to the user following form submission
+</ul>
+</p>
+
+<p class="body">
+In each case the SEQ from the form just submitted is available as a parameter [LL_REPTAG_&SEQ /].  This can be used in the WebReport as a key to lookup additional data
+associated with the form just submitted or it can be  passed as a parameter  to a separate (sub) WebReport which has it's destination set to "Populate Form".  This allows basic
+relational tables to be maintained through a series of WebReports as the act of using a WebReport to export data to a form will cause a further WebReport to initiate
+if the submission mechanism is set appropriately.
+</p>
+
+<p class="body">
+The Initiate WebReport form submission mechanism is not visible until the "Manage Relational Table" option has been used to configure an associated SQL table.
+</p>
+
+<p class="body">
+Form tags of the type [LL_FormTag_1_1_3_1 /] are supported only when "Show WebReport" is not selected.  If needing to display data just submitted with "Show WebReport" checked
+then the tag [LL_REPTAG_&SEQ /] must be used as a parameter to a sub-WebReport/LiveReport to retrieve the submitted data.
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

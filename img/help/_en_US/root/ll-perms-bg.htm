@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESRT100501-H-UGD-EN-1">
+<META name="PiXprocLocator" content="webhelp">
+<title>Understanding Permissions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webuser/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'll-perms-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Exploring Content Server';
+          header.title2 = 'Understanding Permissions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID748"></A>One of the most fundamental and important tasks in Content Server is controlling access to the information it contains, a task known as <I CLASS="EMPHASIS">access control</I>. In Content Server, your access to items and Containers in the system are defined by <I CLASS="EMPHASIS">permissions</I>, which are simply the rules that determine what you can see and do in the system. By defining appropriate permissions for your user population, your organization can effectively manage the security of information stored in the Content Server database.</P>
+<P class="before-ul"><A NAME="TMPID754"></A>Access control is so essential to Content Server that it even defines what you see in the Content Server interface. For example:</P><A NAME="AEN759"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN760"></A><A NAME="TMPID759"></A>If you do not have the <I CLASS="EMPHASIS">See</I> permission to see an item, the item is hidden from you when you open a Container or view a <B CLASS="GUILABEL">Search Results</B> page.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN764"></A><A NAME="TMPID763"></A>If you do not have the <I CLASS="EMPHASIS">Add Items</I> permission to add items to a Container, the <B CLASS="GUILABEL">Add Item</B> menu does not appear when you open that Container.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN768"></A><A NAME="TMPID767"></A>Only the functions that you have permission to perform appear on an item's <B CLASS="GUILABEL">Functions</B> menu.</P></LI></UL>
+<P><A NAME="TMPID769"></A>For every item stored in Content Server, the system maintains an <I CLASS="EMPHASIS">Access Control List</I>, otherwise known as an ACL. Basically, an ACL is a list of all users and groups that have access to an item and what actions those users are permitted to perform on that item. Your permissions, as defined by an item's ACL, determine whether you can see and open the item, whether you can modify or delete it, and whether you can change the permissions on it. For detailed information about working with permissions, see <span><A href="../root/perms-managing-bg.htm">Managing Permissions</A></span>.</P>
+<P><A NAME="TMPID773"></A>In addition to permissions, your ability to see and do things in Content Server depends on your <I CLASS="EMPHASIS">system privileges</I>. While permissions operate on an item-by-item basis, privileges operate on a system-wide basis. Privileges include the ability to sign in to the system, to add or modify users and groups, or to perform system administration functions. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../webhelp/lleswbu-h-ugd.ug-users-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/webuser/ug-users-bg.htm">Working with Users</A><XPROC NAME="ExtXrefEnd" HREF="../webhelp/lleswbu-h-ugd.ug-users-bg" FMT=""></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LL-TYPESPERMS">Types of Permissions</A></P>
+<P class="before-ul"><A NAME="TMPID779"></A>There are three distinct but related types of permissions:</P><A NAME="AEN781"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN782"></A><A NAME="TMPID782"></A>Work Item permissions, which apply to Channels, Discussions, and Task Lists.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN784"></A><A NAME="TMPID784"></A>Document Management permissions, which apply to most item types.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN786"></A><A NAME="TMPID786"></A>Role-Based permissions, which apply to Projects.</P></LI></UL>
+<P><A NAME="TMPID787"></A>Most items are governed by Document-Management permissions, which is a rich set of permissions designed to control many levels of access. However, some items do not require such an elaborate permissions model. For more information about these permissions types, see <span><A href="../root/perms-types-bg.htm">Permission Types</A></span>.</P>
+<P><A NAME="TMPID789"></A>Because there are multiple permission types, the affected item's permissions sometimes cannot transfer precisely when items are copied or moved to different locations. In such cases, Content Server must <I CLASS="EMPHASIS">map</I> the item's permissions to the nearest corresponding permissions that are appropriate for its new location. For more information about how permission types are mapped, see <span><A href="../root/perms-mapping-bg.htm">Permissions Mapping</A></span>.</P>
+<P><A NAME="TMPID793"></A>Generally, if you have permission to add an item somewhere in Content Server, you also have permission to modify that item's ACL. This includes the ability to change the item's Owner or Owner Group, and to remove access to the item. However, the administrator and other privileged users can specify access-control options that prevent users from making certain changes, or even enable some users to edit a specific item's permissions.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LL-OWNERSHIP">Ownership</A></P>
+<P><A NAME="TMPID797"></A>Every item's ACL includes records for its <I CLASS="EMPHASIS">Owner</I>, its <I CLASS="EMPHASIS">Owner Group</I>, and for <I CLASS="EMPHASIS">Public Access</I>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF8"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID802"></A><B CLASS="NOTE">Note: </B><BR>By default, these three entries are a part of every item's ACL. However, they may be removed in some cases. For more information, contact your administrator.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID803"></A>Initially, the <I CLASS="EMPHASIS">creator</I> of an item, the user who added it, is the Owner of the item. However, this can be changed. The item's Owner Group is initially inherited from the <I CLASS="EMPHASIS">parent container</I>. The parent container is the location in which the item was added. The item's Owner Group can also be changed.  <I CLASS="EMPHASIS">Public Access</I> is a designation that defines generic permissions for, in most cases, all users in the system.</P>
+<P><A NAME="TMPID807"></A>When you add an item, it <I CLASS="EMPHASIS">inherits</I> its permissions from the parent container, or the location in which the item was added. However, while the <I CLASS="EMPHASIS">permissions</I> of the container's Owner are copied to the new item, the <I CLASS="EMPHASIS">creator</I> of the new item is assigned as Owner of that item. Therefore, the Owner permissions on a container determine the permissions that the creators of items have on the items they add to that container.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PW">My Workspace Permissions</A></P>
+<P><A NAME="TMPID813"></A>You are the Owner of your <B CLASS="GUILABEL">My Workspace</B> and its contents. You have full permissions on your <B CLASS="GUILABEL">My Workspace</B> and the items stored there, and you are responsible for administering them. You can grant other users and groups access to selected items stored in your <B CLASS="GUILABEL">My Workspace</B> or to the entirety of your <B CLASS="GUILABEL">My Workspace</B>. You set permissions for your <B CLASS="GUILABEL">My Workspace</B> in the same way you set permissions for any other Container.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF9"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID820"></A><B CLASS="NOTE">Note: </B><BR>Even if you grant other users permission on your <B CLASS="GUILABEL">My Workspace</B>, these users cannot reach the <B CLASS="GUILABEL">My Workspace</B> directly. Other users with permissions on your <B CLASS="GUILABEL">My Workspace</B> can access it by:</P><A NAME="AEN823"></A>
+<UL class="NOTE">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN824"></A><A NAME="TMPID826"></A>Searching for an item contained there. A link to the item appears on the <B CLASS="GUILABEL">Search Results</B> page.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN827"></A><A NAME="TMPID829"></A>Clicking a Shortcut to an item in your <B CLASS="GUILABEL">My Workspace</B> that you add to a publicly accessible location, such as the Enterprise <B CLASS="GUILABEL">Workspace</B>. Other users can then use the Shortcut to access the item. Once they access the item, users can click the <B CLASS="GUILABEL">Up One Level</B> icon, <IMG alt="Up a Level icon"  src="../../../webdoc/upalevel.gif"> , until they reach the <B CLASS="GUILABEL">Overview</B> page of your <B CLASS="GUILABEL">My Workspace</B>.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

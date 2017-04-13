@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="NGDLLES100502-H-UGD-DE-1">
+<META name="pvScheme" content="010203">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="ngd">
+<META mancondkey="ngdcore-h-ugd -- lleswbb-h-ugd -- ngdcore-ugd -- lleswfp-h-ugd -- llescls-h-ugd -- llesrcm-igd -- lleswat-h-ugd -- llescl-h-ugd -- llesrt-h-ugd -- lleswbd-h-ugd"><title>Mithilfe der  Live Query Language  mit regulären Ausdrücken arbeiten </title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ngdlles-lqlregex-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Mithilfe komplexer Abfragen suchen';
+          header.title2 = 'Mithilfe der ';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4659"></A>Sie können in komplexen Abfragen reguläre Ausdrücke verwenden, sofern Sie diese in Anführungszeichen (<TT CLASS="literal">"&nbsp;"</TT>) setzen und ihnen das Schlüsselwort <TT CLASS="literal">QLREGEX</TT> voranstellen.</P>
+<P><A NAME="TMPID4662"></A>Ein regulärer Ausdruck ist eine Gruppe von Zeichenfolgen, die bestimmten Mustern entsprechen. Bei diesen Mustern dienen die Sonderzeichen $, ^, ., *, +, ?, [, ], (, ), \, als Operatoren für allen anderen normalen Zeichen. Ein normales Zeichen ist ein einfacher regulärer Ausdruck, der nur einem Zeichen entspricht und keine andere Bedeutung hat (<TT CLASS="literal">h</TT> entspricht z. B. nur <I CLASS="emphasis">h</I>). Um ein Sonderzeichen als normales Zeichen darzustellen, stellen Sie diesem einen umgekehrten Schrägstrich vor (\). <TT CLASS="literal">\$</TT> entspricht z. B. <I CLASS="emphasis">$</I>.</P>
+<P class="before-ul"><A NAME="TMPID4667"></A>Die folgenden Richtlinien sollten beim Verwenden regulärer Ausdrücke berücksichtigt werden:</P><A NAME="AEN4368"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4369"></A><A NAME="TMPID4670"></A>Wird der reguläre Ausdruck zusammen mit dem Schlüsselwort <TT CLASS="literal">QLREGEX</TT> in einer Suche verwendet, wird der angegebene reguläre Ausdruck an jeder beliebigen Position innerhalb eines Wortes in einem Objekt gefunden. Wenn Sie z. B. <TT CLASS="literal">QLREGEX "Hand"</TT> eingeben, wird nach allen Objekten mit mindestens einem Wort gesucht, das <I CLASS="emphasis">Hand</I> enthält, z. B. <I CLASS="emphasis">Hand</I>, <I CLASS="emphasis">Handlung</I>, <I CLASS="emphasis">Abhandeln</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4377"></A><A NAME="TMPID4678"></A>Sie können zwei beliebige reguläre Ausdrücke miteinander verbinden (<TT CLASS="literal"> &lt;<I CLASS="varname">x</I>></TT> und <TT CLASS="literal">&lt;<I CLASS="varname">y</I>></TT>), um einen regulären Ausdruck zu bilden, der einer zu suchenden Zeichenfolge entspricht (wenn <TT CLASS="literal"> &lt;<I CLASS="varname">x</I>></TT> für den Anfang dieser Zeichenfolge und <TT CLASS="literal">&lt;<I CLASS="varname">y</I>></TT> für den Rest dieser Zeichenfolge steht). <TT CLASS="literal">h\$</TT> entspricht z. B. <I CLASS="emphasis">h$</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4389"></A><A NAME="TMPID4690"></A>In Wortfolgen-Abfragen ist die Verwendung des Schlüsselworts <TT CLASS="literal">QLREGEX</TT> mit regulären Ausdrücken aufgrund der erforderlichen Verarbeitung für reguläre Ausdrücke meistens weniger effizient als die Verwendung des Schlüsselworts <TT CLASS="literal">OR</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4393"></A><A NAME="TMPID4694"></A>Durch das Einschränken einer Suche können Sie insbesondere bei Präfixsuchen Zeit sparen. Wenn Sie z. B. nach 1995er Teilenummern suchen möchten, die mit <I CLASS="emphasis">d</I> beginnen, dauert eine Suche mit <TT CLASS="literal">QLREGEX "^d"</TT> länger als eine Suche mit <TT CLASS="literal">QLREGEX "^d1995"</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4398"></A><A NAME="TMPID4699"></A>Vermeiden Sie die Verwendung von regulären Ausdrücken in Suchvorgängen für kurze Endungen, wie z. B. <I CLASS="emphasis">et</I>, da die Suchmaschine alle Wörter im Index von links nach rechts analysieren muss, um Endungen zu finden. Kombinieren Sie stattdessen Endungen mit Anfängen in regulären Ausdrücken, oder verwenden Sie den Modifikator <B CLASS="guilabel">Wort endet mit</B>, um die Suche einzuschränken.</P></LI></UL>
+<P><A NAME="TMPID4702"></A>Zum Beschreiben von Zeichenfolgengruppen können Sie die Operatoren in der folgenden Liste verwenden.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4403"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Operator</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Beschreibung</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Entspricht einem beliebigen einzelnen Zeichen.<BR>Beispielsweise entspricht <TT CLASS="literal">\a.2</TT> einem beliebigen Wort, das eine Zeichenfolge von drei Zeichen enthält, die mit <I CLASS="emphasis">a</I> beginnt und mit <I CLASS="emphasis">2</I> endet (z. B. <I CLASS="emphasis">ab2z</I>, <I CLASS="emphasis">aa2</I> oder <I CLASS="emphasis">aaa2zzz</I>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Schließt eine Zeichengruppe oder einen Bereich ein. Dabei gilt die folgende Regel: <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4727"></A>Bereiche und einzelne Zeichen können vermischt werden.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4729"></A>In einer Zeichengruppe haben <TT CLASS="literal">]</TT>, <TT CLASS="literal">-</TT> und <TT CLASS="literal">^</TT> eine spezielle Bedeutung. Alle anderen Zeichen stellen nur sich selbst dar.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4734"></A>Das Minuszeichen (<TT CLASS="literal">-</TT>) ist ein Bereichsoperator zwischen zwei Zeichen.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4737"></A><A NAME="AEN4358">Das Caretzeichen (<TT CLASS="literal">^</TT>) kann in einer Zeichengruppe nur als erstes Zeichen verwendet werden.</P></TD></TR></TABLE>  Beispiel: <TT CLASS="literal">[abc]</TT> entspricht <I CLASS="emphasis">a</I>, <I CLASS="emphasis">b</I> oder <I CLASS="emphasis">c</I>. <TT CLASS="literal">[a-z]</TT> entspricht jedem beliebigen Kleinbuchstaben. <TT CLASS="literal">[-$a0-9]</TT> entspricht <I CLASS="emphasis">-</I>, <I CLASS="emphasis">$</I>, <I CLASS="emphasis">a</I> oder einer einzelnen Ziffer.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[^]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Anfang einer Zeichengruppe, die die angegebene Zeichengruppe ergänzt (entspricht einem beliebigen Zeichen mit Ausnahme der angegebenen Zeichen). Wenn <TT CLASS="literal">-</TT> oder <TT CLASS="literal">]</TT> den Zeichen <TT CLASS="literal">[^</TT> nachgestellt wird, wird <TT CLASS="literal">-</TT> oder <TT CLASS="literal">]</TT> als erstes Zeichen interpretiert. <BR>Zum Beispiel entspricht <TT CLASS="literal">[^a-z]</TT> allen Zeichen, außer den Buchstaben des Alphabets. <TT CLASS="literal">[^]^a-z0-9]</TT> entspricht einem beliebigen Zeichen außer <I CLASS="emphasis">]</I>, <I CLASS="emphasis">^</I> oder alphanumerischen Zeichen.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">^</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Entspricht der leeren Zeichenfolge am Wortanfang.<BR><TT CLASS="literal">^sp</TT> findet z. B. alle Instanzen von <I CLASS="emphasis">sp</I> am Wortanfang (z. B. <I CLASS="emphasis">speziell</I>, aber nicht <I CLASS="emphasis">Anspannung</I>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">*</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Entspricht dem kleinsten vorhergehenden regulären Ausdruck null oder mehrere Male. Der Operator <TT CLASS="literal">*</TT> nach einem regulären Ausdruck mit <TT CLASS="literal">^</TT> als Wortanfang wird jedoch als Ausdruck mit einer beliebigen Endung interpretiert (wie ein Platzhalter (*) in Abfragen).<BR>Zum Beispiel findet <TT CLASS="literal">ad*</TT> <I CLASS="emphasis">a</I>, <I CLASS="emphasis">ad</I>, <I CLASS="emphasis">add</I> usw.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">+</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Entspricht dem kleinsten vorhergehenden regulären Ausdruck, sofern dieser mindestens einmal vorkommt.<BR>So entspricht z. B. <TT CLASS="literal">tr[ei]+</TT> <I CLASS="emphasis">tre</I>, <I CLASS="emphasis">tri</I>, <I CLASS="emphasis">tree</I>, <I CLASS="emphasis">trie</I>, <I CLASS="emphasis">triie</I>, Es entspricht jedoch nicht <I CLASS="emphasis">tr</I>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">?</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Entspricht dem kleinsten vorhergehenden regulären Ausdruck, sofern dieser nicht oder einmal vorkommt. Beispiel: <TT CLASS="literal">se[ea]?</TT> entspricht nur <I CLASS="emphasis">se</I>, <I CLASS="emphasis">sea</I> und <I CLASS="emphasis">see</I>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">$</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Entspricht der leeren Zeichenfolge am Wortende.<BR><TT CLASS="literal">the$</TT> entspricht z. B. den Zeichen <I CLASS="emphasis">the</I>, wenn diese am Ende eines Wortes oder einer Zeile vorkommen.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">|</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Trennt zwei Alternativen. Wenn <TT CLASS="literal">x</TT> und <TT CLASS="literal">y</TT> reguläre Ausdrücke sind, entspricht <TT CLASS="literal">x|y</TT> allen Zeichen, die mit <TT CLASS="literal">x</TT> oder <TT CLASS="literal">y</TT> übereinstimmen.<BR>Beispiel: <TT CLASS="literal">Meer|See</TT> entspricht nur <I CLASS="emphasis">Meer</I> und <I CLASS="emphasis">See</I>. <TT CLASS="literal">[abc]</TT> kann auch geschrieben werden<TT CLASS="literal"> a|b|c</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">()</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Gruppiert Objekte (z. B. Alternativen oder komplexe reguläre Ausdrücke), sodass Sie diese mit anderen regulären Ausdrücken und Operatoren kombinieren können.<BR><TT CLASS="literal">(ro)?(ko)+</TT> entspricht z. B. einer beliebigen Anzahl (nicht Null) von <I CLASS="emphasis">ko</I>-Zeichenfolgen, denen nichts oder <I CLASS="emphasis">ro</I> vorgestellt ist (z. B. <I CLASS="emphasis">ko</I>, <I CLASS="emphasis">koko</I>, <I CLASS="emphasis">rokoko</I> usw.).</TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

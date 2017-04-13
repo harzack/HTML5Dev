@@ -1,0 +1,162 @@
+<!-- wr_browse_functions.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Browse Function Reference</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_browse_functions.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+	var header = new AdminHeader();
+	header.title1 = 'Advanced Information';
+	header.title2 = 'Browse Function Reference';
+	header.draw();
+</SCRIPT>
+
+<p class="body">The following functions are available to use in your ActiveView/WebReport reporting applications. They provide useful page browsing utilities to enhance and simplify the design process for developers.  Add URL parameters, create sortable columns, or create useful COPY, MOVE, DELETE buttons in your reports using any of the functions below.  Please read on to take advantage of some of these features.</p>
+
+<p class="body"><u><SPAN class="gui">Browse Function Reference Guide</SPAN></u>
+
+<p class="body">
+The <b>browse.js</b> file packaged with WebReports includes a list of functions designed to aid in page browse design. The browse.js file is accessed using a SCRIPT include like this:
+</p>
+<PRE>
+&lt;SCRIPT SRC="/&lt;support dir&gt;/webreports/library/browse.js"&gt;&lt;/SCRIPT&gt;
+</PRE>
+<p class="body">
+If this file is being included into a WebReport or ActiveView the LIBPATH tag can be used like this:
+</p>
+<PRE>
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]browse.js"&gt;&lt;/SCRIPT&gt;
+</PRE>
+<p class="body">
+A description of the available functions in browse.js, parameter info, and some useful examples are provided below:
+</p>
+
+<p class="body">
+<b>setFilter( name, value )</b>
+<ul><li>A function used to register any parameters and add to the current URL. Calling this will ensure the parameters will exist even if a column is re-sorted and can be accessed later on in a session.</li>
+	<li>Takes arguments: name (<b>required</b>), value (<b>required</b>)</li>
+		<ul>
+			<li>name - a String that represents the name of the new parameter to be added to the URL</li>
+			<li>value - a String/Number that represents the value of the parameter.</li>
+		</ul>
+	<li><b>Example</b>:  setFilter( 'count', 2 ); - the parameter '&count=2' will be added to the current URL.</li>
+</ul>
+</p>
+
+<p class="body">
+<b>setupContext( support_Dir, url_Prefix, my_URL, next_URL, def_SortCol, sort_Dir, form_name, style_Type )</b>
+<ul><li>This function is used to initialize a set of global variables in browse.js used by various utility functions. (E.g. to manage sort columns, etc.)</li>
+	<li>Takes arguments: support_Dir (<b>required</b>), url_Prefix (<b>required</b>), my_URL (<b>required</b>), next_URL (<b>required</b>), def_SortCol (<b>required</b>), sort_Dir (<b>required</b>), form_name (<b>optional</b>), style_Type (<b>optional</b>)</li>
+		<ul>
+			<li>support_Dir - location of the support directory - "[LL_REPTAG_SUPPORTDIR /]"  (E.g. /Livelink971support/) </li>
+			<li>url_Prefix - "[LL_REPTAG_URLPREFIX /]"  (E.g. /Livelink971/livelink.exe)</li>
+			<li>my_URL - the current location - "[LL_REPTAG_SOURCEID LLURL:BROWSE /]"  (E.g. ?func=ll&objId=xxx&objaction=browse - where 'xxx' is an objectId)</li>
+			<li>next_URL - location of the next URL - "[LL_REPTAG_NEXTURL ESCAPEURL /]"</li>
+			<li>def_SortCol - the current value of the sort column   (E.g. 'name'). Usually specified with a parameter tag such as '[LL_REPTAG_&SORT /]'. Where there 
+			is more than one possible sort column, it is possible to specify an array in JSON format with the current values of all columns. The setColumn functions will look for the first non-blank
+			value. Typically this will look like this: <br>['[LL_REPTAG_&AVSORT /]','[LL_REPTAG_&SORT /]']. </br> </li>
+			<li>sort_Dir - the default sort direction  (E.g. '' or 'desc')</li>
+			<li>form_name - the name of the form in the reportview/template, defaults to 'BrowseViewFrm'</li>
+			<li>style_Type - optional boolean parameter (true/false) to indicate if you want CS10 styling (true) or pre-CS10 styling (false) for the report columns.</li>
+		</ul>
+	<li>This function must be called before using any of the other functions in browse.js.</li>
+</ul>
+</p>
+
+<p class="body">
+<b>setupContextPOST( support_Dir, def_SortCol, sort_Dir, form_name, style_Type )</b>
+<ul><li>This function is equivalent to setupContext but is used when POST requests are required instead of GET. This is normally useful when the page being submitted has data being passed via form fields.</li>
+</ul>
+</p>
+
+
+<p class="body">
+<b>setColumn( title, parm2, parm3, parm4, parm5,parm6 )</b>
+<ul><li>Creates a column in an ActiveView/WebReport that is sortable when the title is clicked. A set of formatting attributes can also be specified and applied to the column.</li>
+	<li>Takes arguments: Title (<b>required</b>), HTML Attributes (<b>optional</b>), Sort Reference (<b>optional</b>), CS Sorting? (<b>optional</b>), Alternate Sort Parm (<b>optional</b>), Current Value for Alt Parm (<b>optional</b>)</li>
+		<ul>
+			<li>Title (String) - the title to be displayed for the column. If no title is specified (E.g. '') a divider will just be added.</li>
+			<li>HTML Attributes - an optional parameter that represents a comma separated list of HTML formatting attributes for the column. (E.g. "align=right,width=10%,etc...")</li>
+			<li>Sort Reference - an optional string that represents the column name to be sorted on from the datasource. Simple column names can be specified here (Eg. 'subtype' or 'name'). 
+			If you want to sort by the value of a WebReport sub-tag, a simple "reference key" can be specified here and the sub-tag can be defined in the @PREDEFKEY directive in the SORT tag. 
+			(Eg. parm3='catValue' then the SORT tag will contain the following: @PREDEFKEY REF:catValue PARM:"[LL_REPTAG=DATAID CAT:'somecat':'someattr':DISPLAY /]")</li>
+			<li>CS Sorting - optional boolean parameter (true/false) to indicate if you want to use the Content Server sort (e.g. &sort=name, &sort=-name) or the WebReport sort (&sort=name&direction=asc, &sort=name&direction=desc) syntax. 
+			Default value is false. Simple column names should use the Content Server sort (true). Sorting based on complex tag/sub-tags combinations should use the WebReport sort (false).</li>
+			<li>Alternate Sort Parm - Optional string parameter that allows you to define your own custom sort parameter in the URL. This is used in conjunction with the @PARMNAMES directive which needs
+				to be defined in the SORT tag. Example: parm5='AVsort' then the SORT tag will look for the '&AVsort' parameter to sort by instead of the default '&sort' parameter.</li>
+			<li>Current Value for Alt Parm - Optional String parameter to specify the sort value specified by the alternate sort parameter. Usually this will be a parameter tag using the name in alternate sort parm. E.g. [LL_REPTAG_&AVSORT /]</li>		
+		</ul>
+	<li>This function requires that 'setupContext' function be run beforehand because certain variables are referenced within the function. (E.g. supportDir, urlPrefix, myURL, and sortCol)</li>
+	<li>Additional documentation on the @PREDEFKEY and @PARMNAMES directives can be found in the Online Help > Advanced Information > Sorting with WebReports section.</li>
+	<li><b>Examples</b>:<br><br>
+<PRE>
+setColumn( '' );								// No title is specified, just add a divider
+setColumn( 'Type', 'width=2%', 'subtype', true );				// Simple usage. Sort by the column 'subtype' returned from the datasource using the Content Server sort.
+setColumn( 'Name', 'align=left', 'name', true );				// Simple usage. Sort by the column 'name' returned from the datasource using the Content Server sort.
+
+// Sort the column by the value of '=DATAID NODEINFO:VERSIONNUM' tag/sub-tag. Here 'verNum' is a reference key for the @PREDEFKEY directive defined in the SORT tag below. Here we are using the WebReport sort.
+setColumn( 'Version', 'align=right,width=15%', 'verNum' );
+
+// Sort the column by a category-attribute value. 'catValue' is a reference key and 'AVsort' is a custom sort parameter defined in @PARMNAMES directive in the SORT tag below.
+setColumn( 'Attribute', '', 'catValue', false, 'AVsort' );
+
+...
+
+[LL_WEBREPORT_STARTROW /]
+
+	[// Sort tag with the directives @PARMNAMES and @PREDEFKEY defined. Add additional @PREDEFKEY's here if you need to sort by complex tag/sub-tag combinations.
+	[LL_WEBREPORT_SORT @PARMNAMES SORTCOL:AVsort SORTDIR:direction @PREDEFKEY REF:verNum PARM:"[LL_REPTAG=DATAID NODEINFO:VERSIONNUM /]" @PREDEFKEY REF:catValue PARM:"[LL_REPTAG=DATAID CAT:'somecat':'someattr':DISPLAY /]" /]
+
+[LL_WEBREPORT_ENDROW /]
+
+...
+</PRE>
+	</li>
+</ul>
+</p>
+
+<p class="body">
+<b>setColumnPOST( title, parm2, parm3 )</b>
+<ul><li>This function is equivalent to setupColumn but is used when POST requests are required instead of GET. This is normally useful when the page being submitted has data being passed via form fields.</li>
+</ul>
+</p>
+<p class="body">
+<b>multiButton( gifName, label, reqHandler, reqName )</b>
+<ul><li>Creates and inserts a button into a ActiveView/WebReport page. It will display the appropriate button style based on the Content Server instance.</li>
+	<li>Takes arguments: gifName (<b>required</b>), label (<b>required</b>), reqHandler (<b>required</b>), reqName (<b>required</b>)</li>
+		<ul>
+			<li>gifName - String specifying the name of the image in the support directory.</li>
+			<li>label - String specifying the label to be displayed on the button in the page.</li>
+			<li>reqHandler - String specifying the request handler action to take when the button is clicked.</li>
+			<li>reqName - String specifying the name of the request.</li>
+		</ul>
+	<li>This function requires that 'setupContext' function be run beforehand because 'supportDir' variable is referenced within the function.</li>
+	<li><b>Examples</b>:<br></br>
+
+<PRE>
+&lt;SCRIPT&gt;
+	// Create the buttons Copy, Move, Delete, Zip & Download, Zip & Email, and Print on the page
+	multiButton('copy', 'Copy', 'll.ProcessMultiCopy','copy');
+	multiButton('move', 'Move', 'll.ProcessMultiMove','move');
+	multiButton('del', 'Delete', 'll.ProcessMultiDelete','delete');
+	multiButton('multifile/zipdwnld', 'Zip &amp; Download', 'multifile.zipdwnldmulti', 'zipdwnld');
+	multiButton('multifile/zipemail', 'Zip &amp; Email', 'multifile.zipemailmulti', 'zipemail');
+	multiButton('multifile/print', 'Print', 'multifile.printmulti', 'print');
+&lt;/SCRIPT&gt;
+</PRE>
+	</li>
+</ul>
+</p>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Creating a Custom Thesaurus</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbb-thescreatecustom-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Thesauruses';
+          header.title2 = 'Creating a Custom Thesaurus';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID16552"></A>You can create a custom thesaurus manually in a text editor, or you can write a script that translates your data to the syntax required by the Thesaurus Customization utility. The Thesaurus Customization utility is a single executable file called either buildths.bat (on Microsoft Windows) or buildths.sh (on UNIX).</P>
+<P><A NAME="TMPID16553"></A>Before you build a custom thesaurus, you must create an XML template file that contains your own specialized thesaurus entries. With the Thesaurus Customization utility, OpenText provides a sample XML template file that you can modify. For example, you can add synonyms or translations for existing words, or add new words altogether. The main word in a thesaurus entry is called a <I CLASS="glossterm">head word</I>.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN15782"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tag Name</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">What the tag contains</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Where the tag must be</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&lt;<TT CLASS="literal">OTThesaurus</TT>&gt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">All the tags in the thesaurus template</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">At the beginning of the template file</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&lt;<TT CLASS="literal">Headword</TT>&gt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Information about a head word or group of synonyms</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Within the <TT CLASS="literal">&lt;OTThesaurus&gt;</TT> tag</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&lt;<TT CLASS="literal">Headword_Text</TT>&gt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The head word itself</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Within the <TT CLASS="literal">&lt;Headword&gt;</TT> tag</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&lt;<TT CLASS="literal">Meaning</TT>&gt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Information about a particular meaning of the head word. You can have more than one meaning of a head word.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Within the <TT CLASS="literal">&lt;Headword&gt;</TT> tag</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&lt;<TT CLASS="literal">Meaning_Text</TT>&gt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Text distinguishing a particular meaning</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Within the <TT CLASS="literal">&lt;Meaning&gt;</TT> tag</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&lt;<TT CLASS="literal">PartofSpeech</TT>&gt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The head word's part of speech (for example, noun, verb, adverb, adjective, and so on)</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Within the <TT CLASS="literal">&lt;Meaning&gt;</TT> tag</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&lt;<TT CLASS="literal">Synonym</TT>&gt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">A synonym for the head word</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Within the <TT CLASS="literal">&lt;Meaning&gt;</TT> tag</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID16608"></A>After creating an XML template file, you transfer the thesaurus file as a parameter to the Thesaurus Customization utility, which builds the thesaurus file. Content Server Search Engines use this file to provide synonyms in search results. The thesaurus file that you generate with this utility is not dynamically updated. If you want to add entries to your thesaurus, you must generate a new thesaurus file manually.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

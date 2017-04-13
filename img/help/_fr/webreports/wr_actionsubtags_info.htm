@@ -1,0 +1,88 @@
+<!-- wr_actionsubtags_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Action Sub-tags</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_actionsubtags_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+	var header = new AdminHeader();
+	header.title1 = 'Advanced Information';
+	header.title2 = 'Action Sub-tags';
+	header.draw();
+</SCRIPT>
+<p class="body">
+The term Action Sub-tags describes a set of sub-tags that perform specific actions as opposed to simply manipulating the data returned by a
+WebReports tag. The following list describes the current set of these sub-tags and what they do.
+</p>
+<table class="body" border=1>
+<tr><td><a href="wr_tag_syntax.htm#setvar">SETVAR</a></td><td nowrap>Used to take the tag data and set a named variable with it</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#concatvar">CONCATVAR</a></td><td nowrap>Used to take the tag data and concatenate it to a named variable</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#addvar">ADDVAR</a></td><td nowrap>Used to take the tag data and add it numerically to a named variable</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#setform">SETFORM</a></td><td nowrap>Used to set form fields with tag values</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#setwfform">SETWFFORM</a></td><td nowrap>Used to set Workflow form fields with tag values</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#setwfattr">SETWFATTR</a></td><td nowrap>Used to set Workflow attributes with tag values</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#setwfattach">SETWFATTACH</a></td><td nowrap>Used to set Workflow attachments</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#setwfcomment">SETWFCOMMENT</a></td><td nowrap>Used to add comments to Workflow steps</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#setwfinfo">SETWFINFO</a></td><td nowrap>Used to change the Title of a Workflow instance</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#setwftaskinfo">SETWFTASKINFO</a></td><td nowrap>Used to change the Priority of a user or group task in a Workflow instance</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#setemailattach">SETEMAILATTACH</a></td><td nowrap>Used to set email attachments with Email as a Destination</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#cataction">CATACTION</a></td><td nowrap>Used to set Category Attributes with tag values</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#subtagnodeaction">NODEACTION</a></td><td nowrap>Used to perform actions on Content Server nodes</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#subtagpermaction">PERMACTION</a></td><td nowrap>Used to permissions related actions on Content Server nodes</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#subtagrmaction">RMACTION</a></td><td nowrap>Used to set Records Management attributes with tag values</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#subtagrmholdaction">RMHOLDACTION</a></td><td nowrap>Used to perform actions involving Record Management Holds</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#subtagscaction">SCACTION</a></td><td nowrap>Used to set Security Clearance attributes with tag values</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#subtaguseraction">USERACTION</a></td><td nowrap>Used to perform actions on Content Server users and groups</td></tr>
+<tr><td><a href="wr_tag_syntax.htm#subtagwfaction">WFACTION</a></td><td nowrap>Used to perform actions on Workflows</td></tr>
+</table>
+<p class=body>
+The first three of these action sub-tags are all associated with managing variables. More information on working with variable
+action sub-tags can be found in the section, <a href="wr_variable_info.htm">Variables & Variable Sub-tags</a>.
+</p>
+<p class="gui"><U>Action Sub-tag Properties</U></p>
+<p class="body">
+One of the main differences between these sub-tags and the many other sub-tags is that each of these sub-tags is designed to store or set
+the tag data in some other data storage location. Normally this means that the data from the corresponding tag will not actually be returned
+and displayed in the output of the WebReport.
+</p>
+<p class="body">
+An action sub-tag can have any number of normal sub-tags to the left of it in the tag syntax. Any changes to the tag data will be used in
+the value that is eventually used to perform the specified action.
+</p><p class="body">
+Most sub-tags used to the right of an action sub-tag will be ignored.
+The SHOW sub-tag (described below) and the CURRENTVAL sub-tag described in the <a href="wr_variable_info.htm">Variables & Variable Sub-tags</a> section are notable exceptions to this rule.
+The <a href="wr_variable_info.htm">Variables & Variable Sub-tags</a> section also provides a detailed description of the difference between these two sub-tags.
+</p>
+<p class="gui"><U>Display Considerations</U></p>
+<p class="body">
+Normally the use of an Action Sub-tag in a tag means that the tag data is not returned to the output of the WebReport.
+If it is required that the tag data will also be displayed in the report output, then the SHOW sub-tag must be used. This should
+usually be in the rightmost position in the sub-tag list. Note that this sub-tag always causes the original tag value
+(prior to the action being performed) to be displayed.  For variable action sub-tags it is important to note that any variable
+calculations are not included in the displayed data.  The examples below should clarify this. (Note: these examples all use a "literal
+tag" which returns a fixed value as specified between quotes. This tag is sometimes useful where a specific number must be used
+with action sub-tags - e.g. to add a specific number - but is used here primarily to simplify the examples.)
+</p>
+<table class="body" border=1>
+<tr><td nowrap>[LL_REPTAG_"2" <b>SETVAR:test</b> /]</td><td>A variable called <b>test</b> is created and set to the value: <b>2</b>.  It is not displayed in the output.
+(This value for <b>test</b> will be assumed in the subsequent examples.)</td></tr>
+<tr><td nowrap>[LL_REPTAG_"123" <b>ADDVAR:test</b> /]</td><td>The value <b>123</b> is added to the variable named <b>test</b>
+(making the new value of <b>test</b> equal to <b>125</b>). Nothing is displayed in the report output. </td></tr>
+<tr><td nowrap>[LL_REPTAG_"123" ADDVAR:test <b>SHOW</b> /]</td><td>The value <b>123</b> is added to the variable named <b>test</b>
+(assuming <b>test</b> is still set to <b>2</b>).  This makes the new value of <b>test</b> equal to <b>125</b>.
+The tag value of <b>123</b> is displayed in the report output. </td></tr>
+<tr><td nowrap>[LL_REPTAG_"123" <b>DEC</b> ADDVAR:test SHOW /]</td><td>The value <b>123</b> is decremented by the DEC sub-tag (changing the
+value to <b>122</b>).  This is then added to the variable named <b>test</b> making the new value of <b>test</b> equal to <b>124</b>).
+The tag output (after the DEC sub-tag has modified it) of <b>122</b> is displayed in the report output.</td></tr>
+</table>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

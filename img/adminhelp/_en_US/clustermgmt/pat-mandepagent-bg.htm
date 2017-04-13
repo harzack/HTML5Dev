@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESPAT100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="clustermgmt_10_5_0">
+<META mancondkey="lleswba-h-agd"><title>Managing Cluster Agents</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'pat-mandepagent-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Content Server Cluster Management';
+          header.title2 = 'Managing Cluster Agents';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID183"></A>The Cluster Agents function displays the hosts for Content Server. The <B CLASS="guilabel">Cluster Agents</B> page displays all the following information about the available hosts and instances:</P><A NAME="AEN164"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN165"></A><A NAME="TMPID188"></A><B CLASS="guilabel">Host</B> is the name of the Content Server instance.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN169"></A><A NAME="TMPID192"></A><B CLASS="guilabel">Port</B> is the number of the port that the Content Server instance uses.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN173"></A><A NAME="TMPID196"></A><B CLASS="guilabel">Agent Status</B> lists if the host is active, idle, or offline.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN176"></A><A NAME="TMPID199"></A><B CLASS="guilabel">Last Updated</B> lists the time that the most recent change was made to a Content Server instance.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN180"></A><A NAME="TMPID203"></A><B CLASS="guilabel">Status</B> lists if the host is online or offline. It the Status is <TT CLASS="literal">online</TT>, click <B CLASS="guilabel">online</B> to obtain detailed information about the Cluster Agent host computer.</P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID208"></A><B CLASS="tip">Tip: </B><BR>In the <B CLASS="guilabel">Detailed host information</B> dialog box, information on CPU, memory, or disk usage appears in yellow or red if it exceeds a certain threshold (by default, 80%). You can adjust the threshold for each of these items by editing the <TT CLASS="filename">config.ini</TT> file. See <span><A HREF="pat-ini-monitorsettings.htm">Host Monitoring</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PAT-MANDEPAGENT-COMMERRS-BG">Resolving Communication Errors</A></P>
+<P><A NAME="TMPID214"></A>If you are unable to access information on the <B CLASS="guilabel">Cluster Agents</B> page, and an error message appears that states <TT CLASS="literal">A communication error has occurred</TT> or <TT CLASS="literal">The agent for the requested host is currently offline</TT>, it is possible that the Cluster Agent is unable to communicate with the database.</P>
+<P><A NAME="TMPID218"></A>Verify that the database connection is available:</P>
+<div>
+<DL CLASS="vl">
+<DT class="vl"><A NAME="AEN196"></A><A NAME="TMPID221"><B>Microsoft SQL Server</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID224"></A>If you use Microsoft SQL Server for your Content Server database and run it on a non-default port or do not enable the SQL Server Browser service, see <span><A HREF="pat-ini-sqlserver.htm">Microsoft SQL Server Settings</A></span> for information on editing the <TT CLASS="filename">config.ini</TT> file to allow Cluster Management to connect to SQL Server.</P></DD>
+<DT class="vl"><A NAME="TMPID233"><B>Oracle Database</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID236"></A>If you use Oracle Database for your Content Server database and run Content Server on Microsoft Windows, the <TT CLASS="filename">bin</TT> folder of the Oracle Database client must be included in the Windows <TT CLASS="literal">Path</TT> system environment variable. Otherwise, Cluster Management might be unable to connect to Oracle Database. See <span><A HREF="pat-ini-oracle.htm">Oracle Database Settings</A></span> for information on editing the <TT CLASS="filename">config.ini</TT> file to rectify this problem.</P></DD></DL></div>
+<P><A NAME="TMPID249"></A>Alternatively, the Cluster Agent might be unable to connect to the database because of problems with name resolution. When you open  Content Server to use Cluster Management, ensure that you are using a fully qualified domain name and not <TT CLASS="literal">localhost</TT>, a host name or an IP address.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="pat-mandepagegent-p.htm" revision="">To Manage Cluster Agents</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

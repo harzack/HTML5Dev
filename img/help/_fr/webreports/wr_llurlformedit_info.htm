@@ -1,0 +1,47 @@
+<!-- wr_llurlformedit_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>LLURL:FORMEDIT</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_llurlformedit_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'LLURL:FORMEDIT';
+        header.draw();
+
+</SCRIPT>
+
+<p class="body">
+
+LLURL:FORMEDIT may be used with forms residing inside a workflow as well as standalone forms outside of workflows.  From WebReports 4.0.1 a change was made that effects WebReports running on Livelink 9.5 or 9.6 that use LLURL:FORMEDIT for a workflow form:  It is no longer necessary to manually append &editable=true at the end of a URL created by LLURL:FORMEDIT as this parameter is now included automatically.  Any extra "&editable=true" should be removed.
+<br><br>
+<b><U>Standalone Forms</U></b><br><BR>
+An optional parameter VIEWID is supported to specify the nodeid of the form view that should be used when displaying the form for editing.  The viewids may be found by using the template's function menu and selecting Properties-Views.  Hover the mouse pointer over the links to the view and look for the
+&objid= parameter in the browser status bar.  If VIEWID is not specified, the view selected in the form's specific tab is used.
+<br><br>
+<b>Usage example:</b><br><BR>
+[LL_REPTAG=DATAID LLURL:FORMEDIT:VIEWID:1234 /]
+<br><br>
+<b><U>Workflow Forms</U></b><br><BR>
+When used with forms inside a workflow LLURL:FORMEDIT supports the optional parameters VIEWNAME and FORMID.
+FORMID specifies an integer that identifies (if there is more than one form) which form in the workflow should be edited.  If no FORMID parameter is provided, a value of 1 is used by default.  To discover the value required for FORMID you need to open the forms tab of the workflow and hover the mouse pointer over the "Edit" link to the form you require.  Examine the URL for this link (either in the browser status bar or open the form in a new window and inspect the address bar). Look for the &FormID= parameter in the URL - this is id you need.
+VIEWNAME specifies the name (not the nodeid) of the view to use when editing the form.  The available view names may be found by using the Template's function menu and selecting Properties-Views.  If VIEWNAME is not specified, no view will be applied.
+<br><br>
+
+Further details on LLURL and the FORMEDIT option can be found in the <a href="wr_tag_syntax.htm#subtagllurl">Tag Guide</a>.
+
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

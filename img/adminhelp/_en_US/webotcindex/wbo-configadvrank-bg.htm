@@ -1,0 +1,148 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Configuring Advanced Ranking</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/recommender/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbo-configadvrank-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Searching';
+          header.title2 = 'Configuring Advanced Ranking';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID14781"></A>An item's search result relevance score is based upon several parameters which can be tuned and adjusted to reflect your application needs. In most cases, the configuration is comprised of weights and regions. The weights indicate how important the parameter is in scoring.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF310"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID14783"></A><B CLASS="note">Note: </B><BR>These weight values are relative. Setting all the weights high is the same as setting all the weights to a medium value. The difference in weights is ultimately what matters.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID14784"></A>The calculation of an item's score is based on the <I CLASS="emphasis">weighted average</I> of its <I CLASS="emphasis">query score</I> and its <I CLASS="emphasis">advanced criteria scores</I>. A query score is the measure of an item's match to a Query. The closer that an item matches a Query, the higher its query score. Advanced criteria are additional ways of determining a score for an item. Like the query score, the closer that an item matches the advanced criteria (for example, if it is a specific MIME type), the higher its associated advanced criteria score. Queries have a weight value, and each advanced criterion has its own weight value. The higher the weight value, the more that score affects the search result score. The combination of an item's query score and advanced criteria scores are combined as a weighted average to produce the item's search result score. Advanced criteria include the following:</P><A NAME="AEN14024"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14025"></A><A NAME="TMPID14790"></A><B CLASS="guilabel">Field Rank</B>, which is based on an item's metadata regions. Metadata regions store information (metadata) about indexed items (for example, summary, location, MIME type, creation date, and size). When you configure the field rank, you specify the metadata regions that are most important. If a query term in a Query matches the metadata in a region that you specified (for example, OTSummary), the item is given a higher score. For more information about index regions, see <span><A href="../webotcindex/wbo-confrgix-bg.htm">Configuring Index Regions</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14029"></A><A NAME="TMPID14794"></A><B CLASS="guilabel">Date Rank</B>, which is based on one or more of the date metadata regions of an item. When you configure the date rank, you specify the date metadata region (for example, OTModifyDate) that is used to calculate an item's score. Items that are closer to the real-time date are given higher scores.</P>
+<P><A NAME="TMPID14796"></A>Date relevance is computed using a decay rate from the current date. The decay rate is one of the configurable values. Small values for decay rates will reduce the score of older items more rapidly. A simplified approximation of the algorithm is:</P>
+<P><A NAME="TMPID14797"></A><TT CLASS="literal">Date Relevance = decay / (recentness + decay)</TT></P>
+<P><A NAME="TMPID14799"></A>In practice, a very aggressive value that strongly favors recent objects would be a decay rate of 20 days.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14036"></A><A NAME="TMPID14801"></A><B CLASS="guilabel">Type Rank</B>, which is based on an item's enum type metadata regions. For example, when you configure the type rank, you can specify the enum type metadata regions (for example, OTFilterMIMEType) that are most important. Items that have a value that you specify (for example, application/msword or text/plain) are given higher scores.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14039"></A><A NAME="TMPID14804"></A><B CLASS="guilabel">Object Score</B>, which is based on an item's OTObjectScore metadata region. This region is a measure of the value placed upon an item by users of the system. When you configure the object score, you also specify the weight values for the three criteria that make up the object score: the Favorites weight (the number of times an item has been added to users' Favorites), the Shortcuts weight (the number of Shortcuts that have been made to the item), and accesses weight (the number of times the object has been accessed). The higher the weight, relative to the other two, the more influence it has on the object score. For the accesses weight to contribute to the object score, Recommender must be enabled. For more information about enabling Recommender, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/llesrec-h-agd.rec-admrec-so" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/recommender/rec-admrec-so.htm">Administering Recommender</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/llesrec-h-agd.rec-admrec-so" FMT=""></span>. When you change the weight values, Content Server may update the OTObjectScore region for all of the items in the index. However, rather than fully re-indexing the Enterprise data source, which may take considerable time for large indexes, Content Server lessens the performance impact by using a lightweight extraction system to update the items. If the performance impact is still too great, you can disable the object rank advanced ranking by setting the ObjectRankEnabled parameter in the opentext.ini file to <TT CLASS="literal">FALSE</TT>. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-options-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-options-rf.htm">[options]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-options-rf" FMT=""></span>.</P></LI></UL>
+<P><A NAME="TMPID14811"></A>When you configure advanced ranking, you specify an integer that establishes the weight that is associated with Queries, advanced criteria, or both. The following table provides information about the format that you should use when you configure each advanced ranking option.</P>
+<P><A NAME="TMPID14812"></A><B CLASS="highlight">Format for Advanced Ranking Options</B></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN14050"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Advanced Ranking Option</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Format</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Query Weight</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The <TT CLASS="literal">weight</TT> integer establishes the overall base value against which other relevance computation options are calculated.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Weights can range from <TT CLASS="literal">1</TT> to unbounded, but if you do not specify a value, <TT CLASS="literal">100</TT> is used by default.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF311"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID14832"></A><B CLASS="note">Note: </B><BR>All <TT CLASS="literal">weight</TT> values in all fields must be expressed as integers.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field Rank</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">regionName,weight</TT>, where <TT CLASS="literal">regionName</TT> represents the name of a metadata region, and <TT CLASS="literal">weight</TT> represents an integer that establishes how important this ranking option is.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This example of a field rank configuration, <TT CLASS="literal">"OTSummary",15</TT>, ranks the document summary region at a value of 15 out of the base value of 100.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">To configure multiple field rank values, use a semicolon-separated list: <TT CLASS="literal">"regionName1",weight1;"regionName2",weight2</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date Rank</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">regionName</TT>,<TT CLASS="literal">decay</TT>,<TT CLASS="literal">weight</TT> where <TT CLASS="literal">regionName</TT> is the name of a date metadata region.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The <TT CLASS="literal">decay</TT> value sets the number of days for an item's score. As an item gets older (in increments of this number), it is assigned a lower score. For example, if you set the <TT CLASS="literal">decay</TT> value to <TT CLASS="literal">10</TT>, and an item was created or modified within the last 10 days, it is assigned the highest score. If an item was created or modified within the last 20 days, it is assigned a lower score. The item's score continues to decrease, based on how many days ago it was created or modified. Items that were created or modified too many days ago are assigned a score of zero.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This example of a date rank configuration, <TT CLASS="literal">"OTModifyDate",10,5</TT>, sets the item modification date region to a decay rate of 10, and ranks it at a value of 5 out of the base value of 100.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">To configure multiple date rank values, use a semicolon-separated list in the following format: <TT CLASS="literal">"regionName1",decay1,weight1;"regionName2",decay2,weight2</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type Rank</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">regionName,textWeight:text,regionWeight</TT>, where <TT CLASS="literal">regionName</TT> is the file MIME type metadata region.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">textWeight</TT> is the relative weight for this text string within this region, and should be an integer from 1 to 100, and <TT CLASS="literal">text</TT> is a string to check. If found, the associated textWeight value is used.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">regionWeight</TT> is the importance relative to other elements of the relevance computation.</TD></TR></TABLE>This example of a type rank configuration uses the file's MIME type region, a textWeight of 20, the text string that defines MS Word documents, and the relative importance compared to other elements at 30: <TT CLASS="literal">"OTFilterMIMEType",20:"application/msword",30</TT>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">To configure multiple type rank values, use a semicolon-separated list in the following format: <TT CLASS="literal">"regionName1",textWeight1:"text1",regionWeight1;"regionName2",textWeight2:"text2",regionWeight2</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">You can list many <TT CLASS="literal">regionName</TT> and <TT CLASS="literal">text</TT> settings, separated by colons. For example: <TT CLASS="literal">"OTFilterMIMEType",20:"application/msword",50:"text/plain",20:"application/vnd.ms-excel";"OTSubType",10:"144",10</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Object Score</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">"OTObjectScore",weight</TT> represents the value placed on a object by Content Server users, which allows you to further adjust the weight given to search rankings.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This example sets the region that measures user’s value of an item to 100:<TT CLASS="literal">"OTObjectScore",100</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The <B CLASS="guilabel">Favorites Weight</B>, <B CLASS="guilabel">Shortcuts Weight</B>, and <B CLASS="guilabel">Accesses Weight</B> values allow you to specify the weights used by the indexing system, based on factors such as references the number of accesses, when it calculates the Object Score. The weights do not need to add up to a specific number since they represent the relative importance of the three factors.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webotcindex/wbo-toconfigadvrank-p.htm" revision="">To Configure Advanced Ranking</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

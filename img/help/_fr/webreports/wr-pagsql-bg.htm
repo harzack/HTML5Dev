@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Approche SQL</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-pagsql-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Pagination dans WebReports';
+          header.title2 = 'Approche SQL';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID19005"></A>De manière générale, mais il y a des exceptions, il est recommandé de réaliser le plus d'opérations possible dans la base de données. Ainsi, la liste des résultats est réduite au maximum avant de transiter par le réseau vers Content Server. Plus il y a de résultats, plus le temps de transit dans le réseau est long. Si nous avons une base de données Oracle et que le WebReport ou le client ne disposent d'aucun filtre, nous pouvons utiliser WebReports pour transmettre un numéro de début et de fin de ligne utilisés par Oracle pour renvoyer une « vue de recherche » de données. Considérons le rapport LiveReport simplifié suivant. </P><A NAME="AEN18245"></A>
+<PRE 
+CLASS="screen"
+>select * from (
+    select dt1.*, rownum rnum from (
+        select * from DTree
+    ) dt1
+where rownum &lt;= %2)
+where rnum &gt;= %1</PRE
+>
+<P><A NAME="TMPID19010"></A>Nous avons une vue incorporée qui renvoie la table DTree, ainsi que la pseudo-colonne <TT CLASS="literal">RowNum</TT> sous forme de raccourci <TT CLASS="literal">rnum</TT>. Une instruction extérieure effectue ensuite une sélection dans la vue incorporée à l'aide de l'association du raccourci <TT CLASS="literal">rnum</TT> et de la nouvelle pseudo-colonne RowNum afin d'extraire une vue de recherche des données. %1 et %2 représentent les paramètres du rapport LiveReport du numéro de type et correspondent respectivement aux numéros de début et de fin de ligne. Lors de l'exécution du rapport LiveReport, ces paramètres sont visibles dans l'URL en tant que <TT CLASS="literal">inputLabel1</TT> et <TT CLASS="literal">inputLabel2</TT>. La même technique peut être appliquée à différentes requêtes en remplaçant l'instruction Select la plus centrale, <TT CLASS="literal">select * from DTree</TT>, par la vôtre. </P>
+<P><A NAME="TMPID19017"></A>Le rapport peut être exécuté en cliquant sur le lien et en remplissant les invites de début et de fin, ou en envoyant une URL manuellement. Ci-dessous un exemple d'URL dans laquelle le paramètre de début de ligne est « 20 » et celui de fin de ligne est « 30 ». </P><A NAME="AEN18256"></A>
+<PRE 
+CLASS="screen"
+>?func=ll&amp;objId=xyz&amp;objAction=runReport&amp;inputLabel1=20&amp;inputLabel2=30</PRE
+>
+<P><A NAME="TMPID19021"></A>A ce stade, nous n'avons besoin que d'une interface permettant le contrôle de ces deux valeurs de paramètre. Ici, nous pouvons utiliser les WebReports pour obtenir les boutons Premier, Précédent, Suivant et Dernier. Ci-dessous, vous trouverez une mise en œuvre possible qui montre un affichage de rapport réduit à l'essentiel avec une mise en forme minimale. </P><A NAME="AEN18258"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]page.js"&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT&gt;
+var wrurl = "[LL_REPTAG_MYID LLURL:REPORT /]";
+var myCnt = [LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$GETCOUNT /] /];
+var pageSize = [LL_REPTAG_$PAGESIZE /];
+var p1 = [LL_REPTAG_&amp;inputLabel1 /];
+var p2 = [LL_REPTAG_&amp;inputLabel2 /];
+&lt;/SCRIPT&gt;
+
+&lt;TABLE&gt;
+&lt;TR&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME1 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_STARTROW /]
+&lt;TR&gt;
+&lt;TD&gt;[LL_REPTAG_1 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_2 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_3 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_4 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_5 /]&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_ENDROW /]
+&lt;/TABLE&gt;
+
+&lt;INPUT TYPE=BUTTON ID=FIRST VALUE=&lt;&lt; ONCLICK="getPage(wrurl, 'first', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=PREVIOUS VALUE=&lt; ONCLICK="getPage(wrurl, 'prev', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=NEXT VALUE=&gt; ONCLICK="getPage(wrurl, 'next', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=LAST VALUE=&gt;&gt; ONCLICK="getPage(wrurl, 'last', myCnt, pageSize, p1, p2 );"&gt;</PRE
+>
+<P><A NAME="TMPID19023"></A>La section d'en-tête contient plusieurs déclarations JavaScript, ainsi que les titres de colonne HTML qui peuvent être réparties comme suit. Un fichier de bibliothèque JavaScript, page.js, qui fournit la fonction, getPage(), pour vous aider par rapport aux mécanismes de pagination. Cette fonction est utilisée lorsque l'utilisateur clique sur les boutons Premier, Précédent, Suivant, Dernier. Elle peut être utilisée dans tout WebReport. L'utilisateur peut également choisir de développer sa propre fonction et de l'incorporer. </P><A NAME="AEN18260"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]page.js"&gt;&lt;/SCRIPT&gt;</PRE
+>
+<P><A NAME="TMPID19025"></A>L'URL de base du rapport que nous voulons exécuter. Le code ci-dessous doit entraîner le stockage de <TT CLASS="literal">?func=ll&amp;objId=xyz&amp;objAction=RunReport</TT> dans la variable <TT CLASS="literal">wrurl</TT>. Il serait possible de coder cette expression en dur, même si une solution plus flexible est utilisée et dans laquelle <TT CLASS="literal">MYID</TT> est l'ID de données du WebReport actuel qui est transmis vers la sous-balise LLURL pour créer une URL de rapport basée sur cette ID. Ceci donne la possibilité de copier/coller le code entre des affichages de rapport et des instances Content Server sans apporter de modification. </P><A NAME="AEN18266"></A>
+<PRE 
+CLASS="screen"
+>var wrurl = "[LL_REPTAG_MYID LLURL:REPORT /]";</PRE
+>
+<P><A NAME="TMPID19031"></A>La variable JavaScript <TT CLASS="literal">myCnt</TT> est définie à l'aide d'un sous-rapport WebReport. Le sous-rapport WebReport est utilisé pour rechercher le nombre total de lignes pouvant être paginées. Dans notre cas, nous avons un rapport LiveReport indépendant et très simple qui comptabilise le nombre de lignes dans DTree : <TT CLASS="literal">select count(*) from DTree</TT> </P>
+<P><A NAME="TMPID19034"></A>Le sous-rapport WebReport l'utilise comme sa source de données. Le sous-rapport WebReport lui-même contient simplement une balise, <TT CLASS="literal">[LL_REPTAG_1 /]</TT>, dans la section de ligne. Tous les autres caractères, y compris les espaces et les retours chariot, doivent être supprimés de l'affichage de rapport. Ceci permet de nous assurer que nous n'avons qu'un nombre dans la variable JavaScript. Si vous exécutez le sous-rapport WebReport en tant que tel, vous devez simplement voir un nombre et les en-têtes Content Server. N'oubliez pas que si le rapport principal contient un filtre d'autorisation ou une clause Where, ceux-ci doivent également figurer dans le rapport de compte pour que le chiffre soit précis. Nous utilisons une constante, <TT CLASS="literal">[LL_REPTAG_$GETCOUNT /]</TT>, pour désigner le sous-rapport WebReport. Pensez à vous rendre dans l'onglet <B CLASS="guilabel">Constantes</B> et définissez-la. Pour plus d'informations sur la raison de l'utilisation d'une constante, voir <span><A HREF="wr-constant-info.htm">Constantes WebReports</A></span>. </P><A NAME="AEN18276"></A>
+<PRE 
+CLASS="screen"
+>var myCnt = [LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$GETCOUNT /] /];</PRE
+>
+<P><A NAME="TMPID19041"></A>Nous définissons ensuite une autre variable JavaScript avec un nombre entier qui représente le nombre de lignes que nous voulons afficher sur chaque page. N'oubliez pas de définir cette constante sur la page <B CLASS="guilabel">Constantes</B>. </P><A NAME="AEN18279"></A>
+<PRE 
+CLASS="screen"
+>var pageSize = [LL_REPTAG_$PAGESIZE /];</PRE
+>
+<P><A NAME="TMPID19044"></A>Enfin, nous définissons deux variables JavaScript qui représentent les numéros actuels de début et de fin de ligne. Pour que le rapport s'exécute directement, au lieu de vous demander ces valeurs, utilisez la page <B CLASS="guilabel">Paramètres</B> de WebReports pour définir une valeur par défaut pour chacun d'eux. Les valeurs par défaut 1 et 20 permettraient d'afficher les 20 premières lignes lorsque l'utilisateur exécute le rapport. </P><A NAME="AEN18282"></A>
+<PRE 
+CLASS="screen"
+>var p1 = [LL_REPTAG_&amp;inputLabel1 /];
+var p2 = [LL_REPTAG_&amp;inputLabel2 /];</PRE
+>
+<P><A NAME="TMPID19047"></A>Le reste de l'en-tête et toute la section de ligne ne sont que des balises HTML et WebReports standard qui affichent les titres des colonnes et les données des lignes. La seule autre complexité concerne les boutons Premier, Précédent, Suivant et Dernier de la section de pied de page. Comme mentionné précédemment, ces boutons utilisent la fonction getPage() pour créer l'URL de la vue de recherche de données suivante. Cette fonction est appelée lorsque l'utilisateur clique sur l'un de ces boutons. Elle accepte 7 paramètres, dont 5 sont obligatoires. Les 5 premiers paramètres ont été décrits précédemment. Les deux derniers prennent par défaut les valeurs <TT CLASS="literal">inputLabel1</TT> et <TT CLASS="literal">inputLabel2</TT> respectivement. Elles ne sont pas nécessaires puisque nous utilisons les deux premiers paramètres de rapport LiveReport pour la pagination. Par contre, si nous voulions utiliser les troisième et quatrième paramètres de filtrage, nous devrions transmettre les valeurs <TT CLASS="literal">inputLabel3</TT> et <TT CLASS="literal">inputLabel4</TT>. </P><A NAME="AEN18288"></A>
+<PRE 
+CLASS="screen"
+>&lt;INPUT TYPE=BUTTON ID=FIRST VALUE=&lt;&lt; ONCLICK="getPage(wrurl, 'first', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=PREVIOUS VALUE=&lt; ONCLICK="getPage(wrurl, 'prev', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=NEXT VALUE=&gt; ONCLICK="getPage(wrurl, 'next', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=LAST VALUE=&gt;&gt; ONCLICK="getPage(wrurl, 'last', myCnt, pageSize, p1, p2 );"&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

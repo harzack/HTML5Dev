@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle de la balise location</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-loc-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Descriptions et syntaxe des balises Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle de la balise location';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LOCTAG01">Description</A></P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3887"></A><B CLASS="important">Important : </B><BR>Cette balise est obligatoire, quel que soit le type d'objet ou l'action d'importation concerné. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="nr1"><A NAME="TMPID3888"></A>La balise <TT CLASS="literal">location</TT> indique l'emplacement de l'objet. Le chemin d'accès doit être absolu, commencer en haut de la hiérarchie et les différents niveaux doivent être séparés par deux-points.  </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LOCTAG02">Syntaxe</A></P><A NAME="AEN3718"></A>
+<PRE 
+CLASS="screen"
+>&lt;location&gt;Enterprise:Projects&lt;/location&gt;</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LOCTAG03">Utilisation</A></P>
+<P><A NAME="TMPID3899"></A>Cette balise est obligatoire, quel que soit le type d'objet ou l'action d'importation concerné.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LOCTAG04">Notes</A></P>
+<A NAME="AEN3722"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN3723"></A><B>Si <NOBR>action="create"</NOBR> est utilisé :</B></P>
+<P class="nr1"><A NAME="TMPID3906"></A>La balise <TT CLASS="literal">&lt;location&gt;&lt;/location&gt;</TT> représente le chemin d'accès dans Content Server où l'objet sera créé. Selon la manière dont l'importateur d'objet a été configuré, le chemin d'accès peut être créé s'il n'existe pas. La création de chemin ne s'applique qu'à l'action <TT CLASS="literal">action="create"</TT>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN3730"></A><B>Si <NOBR>action="update"</NOBR> est utilisé :</B></P>
+<P class="nr1"><A NAME="TMPID3913"></A>La balise <TT CLASS="literal">&lt;location&gt;&lt;/location&gt;</TT> représente soit le chemin d'accès dans Content Server menant à l'objet à mettre à jour, soit le chemin d'accès dans Content Server menant à l'objet parent. Le chemin d'accès choisi dépend du paramètre <B CLASS="guilabel">Ajouter un titre à l'emplacement</B> dans la section de configuration. Par exemple, pour mettre à jour un document nommé <TT CLASS="filename">readme.txt</TT> situé dans le dossier « Projets » de l'espace de travail Entreprise :</P>
+<P><A NAME="TMPID3920"></A>Si la case <B CLASS="guilabel">Ajouter un titre à l'emplacement</B> est cochée, la syntaxe est la suivante : <A NAME="AEN3742"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;location&gt;Enterprise:Projects&lt;/location&gt;
+&lt;title language="en"&gt;readme.txt&lt;/title&gt;</PRE
+> </P>
+<P><A NAME="TMPID3923"></A>Si la case <B CLASS="guilabel">Ajouter un titre à l'emplacement</B> est décochée, la syntaxe est la suivante : <A NAME="AEN3745"></A>
+<PRE 
+CLASS="screen"
+>&lt;location&gt;Enterprise:Projects:readme.txt&lt;/location&gt;</PRE
+> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN3746"></A><B>Si <NOBR>action="sync"</NOBR> est utilisé :</B></P>
+<P class="nr1"><A NAME="TMPID3929"></A>La balise <TT CLASS="literal">&lt;location&gt;&lt;/location&gt;</TT> représente le chemin d'accès dans Content Server où l'objet sera créé ou mis à jour.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN3752"></A><B>Si <NOBR>action="addversion"</NOBR> est utilisé :</B></P>
+<P class="nr1"><A NAME="TMPID3935"></A>La balise <TT CLASS="literal">&lt;location&gt;&lt;/location&gt;</TT> représente le chemin d'accès dans Content Server où l'objet sera créé.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN3758"></A><B>Si <NOBR>action="delete"</NOBR> est utilisé :</B></P>
+<P class="nr1"><A NAME="TMPID3941"></A>La balise <TT CLASS="literal">&lt;location&gt;&lt;/location&gt;</TT> représente le chemin d'accès dans Content Server menant à l'objet à supprimer. Les règles de syntaxe s'appliquant au paramètre <B CLASS="guilabel">Ajouter un titre à l'emplacement</B> , indiquées précédemment pour <TT CLASS="literal">action="update"</TT>s'appliquent à <TT CLASS="literal">action="delete"</TT> également.</P></LI></OL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LOGTAG05">Exemple</A></P>
+<P><A NAME="TMPID3949"></A>Pour créer un projet nommé « Standard Project » dans le dossier « Documentation » de l'espace de travail Entreprise lorsque la case <B CLASS="guilabel">Ajouter un titre à l'emplacement</B> est cochée :</P><A NAME="AEN3772"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="project" action="create"&gt;
+    &lt;location&gt;Enterprise:Documentation&lt;/location&gt;
+    &lt;title language="en"&gt;Standard Project&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWFP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webwfp">
+<title>Spécification de dates</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webwork/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-dates-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Dates et priorités';
+          header.title2 = 'Spécification de dates';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID636"></A>Les intervenants du workflow peuvent programmer et suivre la progression d'un workflow en cours si vous configurez le workflow et ses étapes pour l'utilisation de durées (dates d'échéance) et de dates de début. Vous pouvez également configurer Content Server pour que la date d'échéance du workflow soit recalculée après l'exécution de n'importe quelle étape <B CLASS="guilabel">Initiateur</B>, <B CLASS="guilabel">Utilisateur</B>, <B CLASS="guilabel">Evaluer</B> ou <B CLASS="guilabel">Gestionnaire d'élément</B>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="DUEDATES">Spécification d'échéances</A></P>
+<P><A NAME="TMPID644"></A>Content Server calcule la date d'échéance d'une étape dès le lancement du workflow en ajoutant à la date de début du workflow les durées que vous avez indiquées pour les étapes <B CLASS="guilabel">Initiateur</B>, <B CLASS="guilabel">Utilisateur</B>, <B CLASS="guilabel">Gestionnaire d'élément</B> et <B CLASS="guilabel">Sous-workflow</B>. Par exemple, si un workflow comporte trois étapes <B CLASS="guilabel">Utilisateur</B> avec une durée d'une journée et que le workflow est lancé le 22 septembre, sa date d'échéance sera le 25 septembre. Les <B CLASS="guilabel">Etapes clés</B> et les <B CLASS="guilabel">Etapes du processus</B> s'exécutent automatiquement et n'ont pas de durée.</P>
+<P><A NAME="TMPID653"></A>Si le workflow inclut une ou plusieurs étapes <B CLASS="guilabel">Evaluer</B>, Content Server calcule les échéances pour toutes les branches de chaque étape <B CLASS="guilabel">Evaluer</B> et utilise la date la plus éloignée comme échéance du workflow.</P>
+<P><A NAME="TMPID657"></A>Si vous attribuez une date de début explicite à une étape de workflow, Content Server inclut la durée précédant le début de l'étape dans ses calculs d'échéance. Si vous ne définissez pas de date de début explicite, Content Server calcule les échéances à partir du moment où l'étape arrive sur la page <B CLASS="guilabel">Tâches assignées</B> d'un utilisateur.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF8"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes : </B></P><A NAME="AEN652"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN653"></A><A NAME="TMPID664"></A>Vous pouvez préciser si Content Server doit calculer l'échéance d'une tâche d'étape sur la base d'une semaine de travail standard (en excluant les week-ends) dans les propriétés générales du schéma de workflow. Pour plus d'informations sur les propriétés générales, reportez-vous à la rubrique <span><A HREF="wf-properties-bg.htm">Définition des propriétés générales</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN657"></A><A NAME="TMPID668"></A>Les utilisateurs disposant des autorisations appropriées peuvent modifier les dates d'échéances dans une instance de workflow en cours sur la page Statut de workflow. Pour plus d'informations sur la gestion des autorisations, reportez-vous à la rubrique <span><A HREF="wf-manag-permissions-bg.htm">Configuration des autorisations de gestion</A></span>. Pour plus d'informations sur le suivi des workflows, reportez-vous à la rubrique <span><XPROC NAME="ExtXrefStart" HREF="lleswfw-h-ugd.wf-status-bg" FMT="" NO1ST><A  HREF="../../../help/_fr/webwork/wf-status-bg.htm">Gestion des workflows et des tâches assignées</A><XPROC NAME="ExtXrefEnd" HREF="lleswfw-h-ugd.wf-status-bg" FMT=""></span>.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="RECALC">Recalcul automatique de la date d'échéance</A></P>
+<P><A NAME="TMPID673"></A>Vous pouvez indiquer à Content Server de recalculer automatiquement la date d'échéance une fois que les étapes <B CLASS="guilabel">Initiateur</B>, <B CLASS="guilabel">Evaluer</B>, <B CLASS="guilabel">Sous-workflow</B>, <B CLASS="guilabel">Gestionnaire d'élément</B> et <B CLASS="guilabel">Utilisateur</B> sont terminées. Par exemple, si une étape <B CLASS="guilabel">Utilisateur</B> prend moins de temps que prévu dans sa durée, Content Server recalcule automatiquement l'échéance du workflow en retirant le temps économisé dans l'étape.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF9"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID683"></A><B CLASS="note">Note : </B><BR>Si vous spécifiez l'option de recalcul des dates d'échéance au cours d'une étape sans spécifier de durée, le système ne peut pas calculer la date d'échéance du workflow ni la date d'échéance de l'étape. Si vous ne spécifiez pas la durée de l'étape, le workflow affiche la date d'échéance &lt;Aucune&gt; ou &lt;Aucune date d'échéance&gt;.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="START">Spécification d'une date de commencement</A></P>
+<P><A NAME="TMPID686"></A>Vous pouvez spécifier une date de début, à savoir une date explicite pour le lancement des étapes <B CLASS="guilabel">Initiateur</B>, <B CLASS="guilabel">Utilisateur</B> et <B CLASS="guilabel">Gestionnaire d'élément</B>. Une étape n'apparaît sur la page <B CLASS="guilabel">Tâches assignées</B> d'un utilisateur avec une tâche assignée qu'à sa date de début.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WF-CALCDATESSUBWF">Calcul des dates d'échéances avec des sous-workflows</A></P>
+<P><A NAME="TMPID693"></A>Lorsqu'un workflow est lancé, les échéances pour le workflow principal et le sous-workflow sont calculées sur la base de la durée et des dates de début fournies pour chaque étape. Dès qu'une étape est terminée (envoyée) le moteur du workflow recherche toute étape non terminée configurée pour utiliser l'option de recalcul des échéances. Les étapes d'un sous-workflow peuvent donc influencer les dates d'échéance des étapes du workflow principal si elles sont configurées pour utiliser l'option de recalcul des échéances. Par exemple, les étapes d'un sous-workflow qui prennent plus de temps que prévu provoquent un retard dans le lancement des étapes restantes dans le workflow principal.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WF-CALCDUEDATESMEVAL">Calcul des dates d'échéances avec plusieurs étapes Evaluer</A></P>
+<P><A NAME="TMPID696"></A>Si vous demandez que l'échéance du workflow soit calculée par Content Server et que le workflow comporte une ou plusieurs étapes <B CLASS="guilabel">Evaluer</B>, Content Server calcule les échéances pour les deux branches de chaque étape <B CLASS="guilabel">Evaluer</B> et définit la date la plus éloignée comme date d'échéance du workflow.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

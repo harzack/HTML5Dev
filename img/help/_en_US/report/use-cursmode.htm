@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESREP100500-H-UGD-EN-1">
+<META PiXprocLocator="report">
+<META mancondkey="llesrt-h-ugd -- lleswbu-h-ugd"><title>Using Cursor Mode</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'use-cursmode.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Adding LiveReports';
+          header.title2 = 'Using Cursor Mode';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID305"></A>In standard LiveReports and by default with LiveReport Extensions, queries are also executed using a “Cursor Fetch” to retrieve one row of data at a time so that Content Server can limit the total number of results returned. This limit can be set via the Record Limit field in both standard LiveReports and LiveReport Extensions. This approach protects the database from inappropriate queries returning excessively large result sets; however, this mode is slower than a standard SQL query (i.e. not Cursor Fetch mode). When queries are being developed and tested it is recommended to leave the Cursor Fetch mode selected and limit result sets with the Record Limit option. Once a query has been debugged and determined to be safe, this mode could be unselected in order to improve query performance. When this option is unselected an alert is generated to warn that the SQL query will now return unlimited results unless some constraints are specifically added to the SQL (e.g. RowNum &lt; 1000 in Oracle or TOP 1000 in MS SQL).</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

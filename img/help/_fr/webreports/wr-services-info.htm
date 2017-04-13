@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Services WR</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-services-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'Services WR';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID17909"></A>La fonction des services WR permet de récupérer des informations du moteur WebReports. L'un des exemples les plus utiles est un service qui permet de spécifier des balises et sous-balises dans une requête qui renvoie les données résultantes sans qu'il soit nécessaire de créer un objet WebReport ou ActiveView. Cette fonction permet d'exploiter la majorité des fonctions utiles disponibles via les balises statiques et les sous-balises du moteur WebReport. Un simple appel de la fonction des services WR permet de renvoyer le résultat d'une balise ou des données littérales traitées via une liste quasi-illimitée de sous-balises. Par exemple, un appel de service pourrait renvoyer des informations de catégorie ou d'attribut à l'aide de la sous-balise CAT. Le résultat d'un appel de service peut simplement être renvoyé sous forme de texte directement au client qui a appelé la fonction, ou il est possible de spécifier uniquement les formats XML ou JSON. Si le format XML ou JSON est utilisé pour renvoyer les données d'un appel de service, le contenu s'accompagne d'un champ d'erreur qui permet à une application client de rechercher les erreurs par programmation. Cette fonction convient parfaitement aux appels AJAX, notamment avec le type de réponse JSON. Le logiciel ActiveView ou WebReports comprend une fonction JavaScript prédéfinie qui permet d'appeler facilement ces services à l'aide d'AJAX. </P>
+<P><A NAME="TMPID17911"></A>Voici un exemple d'appel d'un service de recherche de balise/sous-balise à l'aide d'une URL simple de type <TT CLASS="literal">GET</TT> :</P>
+<P><A NAME="TMPID17913"></A><TT CLASS="literal"> &lt;prefix&gt;?func=webreports.runservice&amp;servicetype=gettagdata&amp;tagdata=&lt;TAGDATA&gt;&amp;statictag=&lt;STATIC TAG name&gt;&amp;subtags=&lt;SUBTAGLIST&gt; </TT></P>
+<P><A NAME="TMPID17915"></A>Toutes les requêtes de service comprennent le paramètre : <B CLASS="highlight">?func=webreports.runservice</B> comme point de départ, suivi du paramètre <B CLASS="highlight">&amp;servicetype=</B> servant à sélectionner l'un des services pris en charge. Pour plus d'informations sur les valeurs valides de <B CLASS="highlight">&amp;servicetype=</B>, voir <span><A HREF="wr-services-availsvcs.htm">Types de services disponibles</A></span>. En fonction du service sélectionné, d'autres paramètres peuvent être requis, comme indiqué dans le tableau ci-dessous.  Ces paramètres peuvent être utilisés dans les requêtes <TT CLASS="literal">GET</TT> ou <TT CLASS="literal">POST</TT> à l'aide d'AJAX ou des champs de formulaire standard pour envoyer la requête. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF57"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID17923"></A><B CLASS="note">Note : </B><BR>Notez que <B CLASS="highlight">?func=</B> est remplacé par <B CLASS="highlight">&amp;func=</B> pour les types de requête <TT CLASS="literal">POST</TT> avec AJAX.</P>
+<P><A NAME="TMPID17927"></A>Dans certains cas, il est nécessaire d'inclure un signe de pourcentage, %, dans la requête envoyée aux services WR. Pour éviter que ce signe de pourcentage soit interprété comme un caractère d'échappement URL, il est nécessaire d'utiliser un code URL pour spécifier un signe de pourcentage. Plus spécifiquement, lorsque % est requis, <TT CLASS="literal">%25</TT> doit être utilisé, puisque ce code désigne un signe de pourcentage.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-services-availsvcs.htm" revision="">Types de services disponibles</A></p></li>
+<li><p><A  HREF="wr-predef-functions.htm" revision="">Utilisation des fonctions prédéfinies</A></p></li>
+<li><p><A  HREF="wr-services-exampl.htm" revision="">Exemples</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>WebReports DSstartrow and DSendrow</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-pagdsds-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Pagination in WebReports';
+          header.title2 = 'WebReports DSstartrow and DSendrow';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID23865"></A>When dealing with moderately sized result sets or non-LiveReport data sources, the data source parameters DSstartrow, DSendrow and DSmaxrows provide a relatively simple way to implement a paging mechanism (meaning network performance could be a factor in overall response time). When using this method the entire result set will be passed from the database to Content Server. WebReports then uses the DSstartrow and DSendrow parameter to take a slice of the result set before delivering it to the client.</P>
+<P><A NAME="TMPID23867"></A>When using this method we do not need to worry about the mechanics of pagination in the actual SQL query. This means that if we were working with the same result set as the first example, we only need the inner-most query select * from DTree. This makes the method well suited to SQL Server databases which don't support rownum.</P>
+<P><A NAME="TMPID23868"></A>If using the same reportview as above, the parameters need to be changed. Remember, default values need to be set on the WebReports parameters tab for when the report first runs:</P><A NAME="AEN22543"></A>
+<PRE 
+CLASS="screen"
+>var p1 = [LL_REPTAG_&amp;DSstartrow /];
+var p2 = [LL_REPTAG_&amp;DSendrow /];</PRE
+>
+<P><A NAME="TMPID23870"></A>The buttons also need to change so that the getPage() function is passed two new parameters representing the names of the pagination control parameters:</P><A NAME="AEN22545"></A>
+<PRE 
+CLASS="screen"
+>&lt;INPUT TYPE=BUTTON ID=FIRST VALUE=&lt;&lt; ONCLICK="getPage(wrurl, 'first', myCnt, pageSize, p1, p2, 'DSstartrow', 'DSendrow');"&gt;
+&lt;INPUT TYPE=BUTTON ID=PREVIOUS VALUE=&lt; ONCLICK="getPage(wrurl, 'prev', myCnt, pageSize, p1, p2, 'DSstartrow', 'DSendrow' );"&gt;
+&lt;INPUT TYPE=BUTTON ID=NEXT VALUE=&gt; ONCLICK="getPage(wrurl, 'next', myCnt, pageSize, p1, p2, 'DSstartrow', 'DSendrow' );"&gt;
+&lt;INPUT TYPE=BUTTON ID=LAST VALUE=&gt;&gt; ONCLICK="getPage(wrurl, 'last', myCnt, pageSize, p1, p2, 'DSstartrow', 'DSendrow' );"&gt;</PRE
+>
+<P><A NAME="TMPID23872"></A>If we were <span><A HREF="wr-search-datasource-info.htm">Using a Search Query as a Data Source</A></span> with DSstartrow and DSendrow we need to use a slightly different method to find the total number of results. Using the search data source specific tag, <span><A HREF="wr-tag-cdsixth.htm#WR-TAG-CDINDXTOTALHITS">INDEXTOTALHITS</A></span> we can achieve the same thing as the sub-WebReport that performs the count operation: <TT CLASS="literal">var myCnt = [LL_REPTAG_INDEXTOTALHITS /];</TT></P>
+<P><A NAME="TMPID23876"></A>If, in the examples above, we look at any given page with 20 rows of content it will be about 60KB including all the Content Server header and footer information. If we then split out the content (the only piece that's changing from page-to-page) we see that this is less than 3KB, for example only 5% of the overall page size. Obviously further significant performance benefits can be gained by using Ajax to only update the portion of the page that we're interested in.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

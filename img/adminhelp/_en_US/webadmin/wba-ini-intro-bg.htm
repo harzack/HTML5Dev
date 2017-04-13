@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Understanding the opentext.ini file</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-ini-intro-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Server Configuration';
+          header.title2 = 'Understanding the opentext.ini file';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4315"></A>The default installation path for the <TT CLASS="filename">opentext.ini</TT> file is <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/config/opentext.ini</TT>. The <TT CLASS="filename">opentext.ini</TT> file is the main Content Server configuration file for both primary and secondary Content Server installations.</P>
+<P><A NAME="TMPID4323"></A>The <TT CLASS="filename">opentext.ini</TT> file contains settings such as database connection options, paths to files, date formats, debugging options, and logging options. The file is created automatically during the Content Server installation process. At that time, the default options are set and many settings are configured dynamically. Some settings, such as the encoded Administrator's password and Notification settings, are changed by Content Server as necessary.</P>
+<P><A NAME="TMPID4327"></A>Most of the settings that appear in the <TT CLASS="filename">opentext.ini</TT> file can be changed on the Administration pages, but some settings must be changed by manually editing the <TT CLASS="filename">opentext.ini</TT> file in a text editor. For more information, see <span><A href="../webadmin/wba-ini-modifying-rf.htm">Modifying the opentext.ini file</A></span>. </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-ini-modifying-rf.htm" revision="">Modifying the opentext.ini file</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-nodetypemap-rf.htm" revision="">Node Type Number to Name Mappings</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-aform-rf.htm" revision="">[AFORM]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-adminhelpmap-rf.htm" revision="">[AdminHelpMap]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-agents-rf.htm" revision="">[agents]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-attributes-rf.htm" revision="">[Attributes]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-basehref-rf.htm" revision="">[BaseHref]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-catalog-rf.htm" revision="">[Catalog]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-chicklet-rf.htm" revision="">[chicklet]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-client-rf.htm" revision="">[Client]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-dateformats-rf.htm" revision="">[dateformats]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-dbconnection-rf.htm" revision="">[dbconnection:connection_name]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-dcs-rf.htm" revision="">[DCS]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-dcsim-rf.htm" revision="">[DCSIm]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-dcsipool-rf.htm" revision="">[DCSipool]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-dcspipe-rf.htm" revision="">[DCSpipe]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-dcsservers-rf.htm" revision="">[DCSservers]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-dcsview-rf.htm" revision="">[DCSview]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-dcsworker-rf.htm" revision="">[DCSworker]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-dcsxpdf-rf.htm" revision="">[DCSxpdf]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-docundelete-rf.htm" revision="">[DocumentUndelete]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-editablemimetypes-rf.htm" revision="">[EditableMimeTypes]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-exclmimetypes-rf.htm" revision="">[ExcludedMimeTypes]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-externaldcs-rf.htm" revision="">[ExternalDCS]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-fetchmimetypes-rf.htm" revision="">[FetchMimeTypes]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-filterengine-rf.htm" revision="">[FilterEngine]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-filters-rf.htm" revision="">[filters]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-general-rf.htm" revision="">[general]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-helpmap-rf.htm" revision="">[HelpMap]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-hhexcludedmimetypes-rf.htm" revision="">[HHExcludedMimeTypes]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-hhincludedmimetypes-rf.htm" revision="">[HHIncludedMimeTypes]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-hithighlight-rf.htm" revision="">[hithighlight]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-home-rf.htm" revision="">[Home]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-indexobject-rf.htm" revision="">[IndexObject]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-interestsprofile-rf.htm" revision="">[InterestsProfile]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-ipmove-rf.htm" revision="">[ipmove]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-javaserver-rf.htm" revision="">[javaserver]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-lang-rf.htm" revision="">[Lang_xx_XX]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-livelinkextractor-rf.htm" revision="">[LivelinkExtractor]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-llserver-rf.htm" revision="">[llserver]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-llview-rf.htm" revision="">[llview]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-loader-rf.htm" revision="">[loader]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-modules-rf.htm" revision="">[Modules]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-nlqsearch-rf.htm" revision="">[nlqsearch]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-notify-rf.htm" revision="">[notify]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-options-rf.htm" revision="">[options]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-otadmin-rf.htm" revision="">[OTAdmin]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-otcommon-rf.htm" revision="">[OTCommon]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-passwords-rf.htm" revision="">[Passwords]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-project-rf.htm" revision="">[Project]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-qdf-rf.htm" revision="">[QDF]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-relagent-rf.htm" revision="">[relagent]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-report-rf.htm" revision="">[report]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-schedact-rf.htm" revision="">[scheduleactivity]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-searchoptions-rf.htm" revision="">[SearchOptions]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-security-rf.htm" revision="">[Security]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-servers-rf.htm" revision="">[Servers]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-sockserv-rf.htm" revision="">[sockserv]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-summarizer-rf.htm" revision="">[Summarizer]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-tabs-rf.htm" revision="">[Tabs]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-undeletepurge-rf.htm" revision="">[UndeletePurge]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-unix-lang-rf.htm" revision="">[unix_lang]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-usersetting-rf.htm" revision="">[UserSetting]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-vwablemimetypes-rf.htm" revision="">[ViewableMimeTypes]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-workflow-rf.htm" revision="">[Workflow]</A></p></li>
+<li><p><A  href="../webadmin/wba-ini-xml-rf.htm" revision="">[XML]</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

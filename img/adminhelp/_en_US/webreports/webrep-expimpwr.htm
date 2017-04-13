@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<title>Exporting and Importing WebReports to XML</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'webrep-expimpwr.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Content Server Functions Available for WebReports';
+          header.title2 = 'Exporting and Importing WebReports to XML';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID1272"></A>When exporting and importing WebReports to XML, the following points should be considered:</P><A NAME="AEN1258"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1259"></A><A NAME="TMPID1275"></A>When a target system is being searched for a matching object, if more than one match exists the import routine will currently use the first match found in the database. This should normally be the first object which was created.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1261"></A><A NAME="TMPID1277"></A>The WebReports export and import does not handle the following:</P><A NAME="AEN1263"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1264"></A><A NAME="TMPID1280"></A>Any categories or attributes associated with settings to export to a Content Server node will not be re-linked to new objects on a target system.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1267"></A><A NAME="TMPID1283"></A>Scheduling data is not currently exported or imported.</P></LI></UL></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WEBR-STEXPIMP">Standard Export/Import</A></P>
+<P><A NAME="TMPID1286"></A>Like most Content Server objects, WebReports provides the capability to store all the WebReport data in an XML file for later importing. The basic functionality uses the same syntax as other Content Server objects. For example, to export a single WebReport object the following syntax could be used:</P><A NAME="AEN1273"></A>
+<PRE 
+CLASS="screen"
+>&#13;?func=ll&amp;objId=10879&amp;objAction=xmlexport&amp;nodeinfo&amp;content=base64&amp;versioninfo=current&amp;scope=sub</PRE
+>
+<P><A NAME="TMPID1290"></A><TT CLASS="literal">&amp;attributeinfo</TT> can be used to include any assigned attributes.<TT CLASS="literal">&amp;versioninfo=all</TT> can be used if all versions are required.</P>
+<P><A NAME="TMPID1293"></A>In this example the <TT CLASS="literal">objid 10879</TT> refers to a WebReport object. If an entire Content Server container is being exported (using the <TT CLASS="literal">&amp;scope=sub</TT> parameter) and a WebReport exists within it, the WebReport will be exported with exactly the same information. Because WebReports include textual content, the <TT CLASS="literal">&amp;content=base64</TT> must be used during any export.</P>
+<P><A NAME="TMPID1298"></A>To import a WebReport the standard import syntax is used. For example, to import a file called <TT CLASS="filename">TestImport.xml</TT> which is stored on Content Server's <TT CLASS="filename">C:\</TT> drive to a folder in Content Server with the object ID <TT CLASS="literal">22222</TT>, the following syntax would be used:</P><A NAME="AEN1288"></A>
+<PRE 
+CLASS="screen"
+>&#13;?func=admin.xmlimport&amp;filename=C:\TestImport.xml&amp;objid=22222</PRE
+>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF8"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1306"></A><B CLASS="note">Note: </B><BR>The file to be imported must be saved/stored in a location where the Content Server can retrieve it; in the example above, the C:\ drive is on the Content Server's local disk, not on the C drive for the user who is executing the command.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="webr-specimpexp.htm" revision="">Special Import Features</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

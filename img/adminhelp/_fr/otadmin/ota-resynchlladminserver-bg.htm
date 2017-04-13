@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Resynchronisation des serveurs d'administration</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-resynchlladminserver-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Création des index à l\'aide de modèles';
+          header.title2 = 'Resynchronisation des serveurs d\'administration';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID715"></A>Chaque site Content Server possède un serveur et un serveur d'administration. Le serveur contrôle toutes les fonctionnalités et affiche les pages que vous voyez dans l'interface utilisateur à l'aide du serveur HTTP. Le serveur d'administration gère les processus de flux de données dans le système (par exemple les processus Extracteur Entreprise et Directory Walker et les processus Conversion de documents et Distributeur de mise à jour). Il gère également un système de mise en mémoire cache de fichier qui permet d'améliorer l'efficacité de certaines opérations Content Server, telles que la mise en évidence des résultats.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF20"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID719"></A><B CLASS="note">Note : </B><BR>Sur chaque site Content Server, le serveur et le serveur d'administration sont représentés comme des services dans votre système d'exploitation Windows.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID721"></A>Après avoir installé Content Server, vous devez configurer les serveurs d'administration sur votre site. Vous pouvez également configurer la mémoire cache du fichier du serveur d'administration. Vous pouvez ensuite effectuer des opérations de maintenance, telles que la consultation, l'exécution d'une commande ping, l'interruption ou la réinitialisation du serveur d'administration. Si nécessaire, vous pouvez également resynchroniser un serveur d'administration pour vous assurer que ses données reflètent avec exactitude les informations stockées dans la base de données Content Server.</P>
+<P><A NAME="TMPID724"></A>La resynchronisation d'un serveur d'administration modifie le fichier <TT CLASS="filename">otadmin.cfg</TT> afin qu'il prenne en compte les informations actuellement stockées dans la base de données Content Server et ordonne au serveur d'administration de créer ou de supprimer des objets, le cas échéant, en vue de prendre en compte les informations mises à jour.</P>
+<P><A NAME="TMPID727"></A>Vous pouvez resynchroniser un serveur d'administration à tout moment. Toutefois, Content Server vous invite automatiquement à resynchroniser un serveur d'administration après avoir modifié son nom d'hôte et son numéro de port.</P>
+<P><A NAME="TMPID729"></A>Avant de resynchroniser un serveur d'administration, assurez-vous que les chemins de répertoire et les numéros de port enregistrés pour les objets source de données de la base de données Content Server sont corrects sur l'hôte du serveur d'administration. Pour ce faire, allez sur l'onglet <B CLASS="guilabel">Spécifique</B> de la page Propriétés de chaque objet source de la base de données et vérifiez que les chemins et les numéros de port sont corrects sur l'hôte du serveur d'administration.</P>
+<P><A NAME="TMPID732"></A>Le serveur stocke les informations concernant ses serveurs d'administration dans la base de données Content Server, y compris les processus de flux de données et les moteurs de recherche qu'il contrôle en utilisant ces serveurs. Les serveurs d'administration n'étant pas directement connectés à la base de données Content Server, chacun d'entre eux dispose de sa propre copie de ces informations dans le fichier <TT CLASS="filename">otadmin.cfg</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF21"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID737"></A><B CLASS="note">Note : </B><BR>Le fichier <TT CLASS="filename">otadmin.cfg</TT> est stocké dans le répertoire <TT CLASS="literal"> config</TT> d'une installation Content Server principale.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID741"></A>Les informations du fichier <TT CLASS="filename">otadmin.cfg</TT> d'un serveur d'administration doivent toujours correspondre aux informations de la base de données Content Server. Cependant, il peut arriver que ces informations ne correspondent plus. Par exemple :</P><A NAME="AEN753"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN754"></A><A NAME="TMPID746"></A>Vous changez le nom d'hôte ou le numéro de port d'un serveur d'administration.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN756"></A><A NAME="TMPID748"></A>Vous effectuez une installation Content Server sur un nouvel hôte et vous la connectez à une base de données Content Server créée sur un autre hôte. Les informations relatives aux emplacements des objets source de données qui sont stockées dans la base de données Content Server ne sont peut-être pas correctes pour le nouvel hôte si les répertoires sont mappés ou montés différemment, en cas de conflit de numéros de port ou si les serveurs d'administration enregistrés ne sont plus disponibles.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN761"></A><A NAME="TMPID753"></A>Le fichier <TT CLASS="filename">otadmin.cfg</TT> d'un serveur d'administration enregistré est corrompu ou a été supprimé.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN764"></A><A NAME="TMPID756"></A>Les modifications apportées aux informations de la base de données Content Server n'ont pas pu être appliquées au fichier <TT CLASS="filename">otadmin.cfg</TT> d'un serveur d'administration. Ce cas rare peut se présenter si vous modifiez ces informations en créant des commandes SQL directement dans la base de données Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN769"></A><A NAME="TMPID761"></A>Le serveur d'administration est passé en <I CLASS="emphasis">mode sans échec</I>. Pour en savoir plus, consultez le document <span><A href="../otadmin/ota-maintainlladminserver-rf.htm">Maintenance des serveurs d'administration</A></span>.</P></LI></UL>
+<P><A NAME="TMPID764"></A>Si vous pensez que les informations relatives aux serveurs d'administration et aux sources de données stockées dans la base de données Content Server ne correspondent pas aux informations stockées dans les fichiers <TT CLASS="filename">otadmin.cfg</TT> des serveurs d'administration enregistrés, vous devez les resynchroniser. La resynchronisation d'un serveur d'administration vérifie la stabilité des index du serveur afin de s'assurer qu'ils ne sont pas corrompus, modifie le fichier <TT CLASS="filename">otadmin.cfg</TT> afin qu'il prenne en compte les informations actuellement stockées dans la base de données Content Server, puis ordonne au serveur d'administration de créer ou de supprimer des objets, le cas échéant, en vue de prendre en compte les informations mises à jour. Cependant, si un ou plusieurs index sont corrompus, la resynchronisation s'arrête et affiche un message d'erreur vous demandant de contacter le service d'assistance clientèle d'OpenText.</P>
+<P class="before-ul"><A NAME="TMPID770"></A>La resynchronisation d'un serveur d'administration donne parfois des résultats inattendus. Par exemple, s'il existe une différence entre la base de données Content Server et le fichier <TT CLASS="filename">otadmin.cfg</TT> d'un serveur d'administration concernant la présence ou non d'un index spécifique sur l'hôte du serveur d'administration, il y a deux résultats possibles, selon les circonstances :</P><A NAME="AEN782"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN783"></A><A NAME="TMPID775"></A>S'il existe une entrée pour l'index dans le fichier <TT CLASS="filename"> otadmin.cfg</TT> d'un serveur d'administration (ce qui signifie que l'index réside sur l'hôte de ce serveur), mais qu'il n'y a pas d'entrée correspondante dans la base de données Content Server, la resynchronisation ordonne au serveur d'administration de supprimer cette entrée du fichier <TT CLASS="filename"> otadmin.cfg</TT> et de supprimer l'index de l'emplacement erroné.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN788"></A><A NAME="TMPID780"></A>Si les informations de la base de données Content Server indiquent que l'index existe sur un hôte spécifique du serveur d'administration mais que le fichier <TT CLASS="filename"> otadmin.cfg</TT> de cet hôte ne contient pas d'entrée pour cet index, la resynchronisation ordonne au serveur d'administration d'ajouter une entrée pour l'index dans le fichier <TT CLASS="filename">otadmin.cfg</TT> et de créer un index vide à l'emplacement spécifié dans la base de données Content Server.</P></LI></UL>
+<P title="Orphaned or Unknown processes" CLASS="bridgehead-boldpara"><A NAME="TMP4REF22">Processus inconnus ou orphelins</A></P>
+<P><A NAME="TMPID786"></A>Une fois la resynchronisation terminée, un résumé des résultats s'affiche. Si certains processus dans le fichier <TT CLASS="filename">otadmin.cfg</TT> ne correspondent pas aux informations stockées dans la base de données, ils sont répertoriés dans la section des résultats <B CLASS="guilabel">Processus inconnus ou orphelins</B>.</P>
+<P><A NAME="TMPID789"></A>Des erreurs peuvent se produire dans cette section étant donné la présence d'une restriction connue dans le processus de synchronisation du serveur d'administration qui empêche parfois certains processus de se resynchroniser correctement. Une double synchronisation résout ce problème potentiel.</P>
+<P><A NAME="TMPID790"></A>Si des erreurs surviennent, exécutez le processus de resynchronisation une deuxième fois pour les réparer. Aucune erreur ne devrait se produire après une seconde resynchronisation, par conséquent, si certaines erreurs sont toujours présentes, contactez le service d'assistance clientèle d'OpenText.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../otadmin/ota-toresyncllas-p.htm" revision="">Pour resynchroniser un serveur d'administration</A></p></li>
+<li><p><A  href="../otadmin/ota-reconfigdsobjs-rf.htm" revision="">Reconfiguration des objets source de données</A></p></li>
+<li><p><A  href="../otadmin/ota-serverresyncreport-rf.htm" revision="">Rapport de resynchronisation du serveur</A></p></li>
+<li><p><A  href="../otadmin/ota-dbresyncreport-rf.htm" revision="">Rapport de resynchronisation de la base de données</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

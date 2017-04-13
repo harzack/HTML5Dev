@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWDV100500-H-AGD-EN">
+<META PiXprocLocator="webdav"><title>Configuring Host Translation</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wd-config-host-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering OpenText WebDAV';
+          header.title2 = 'Configuring Host Translation';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID439"></A>For load-balancing or security purposes, users sometimes install intermediate servers between the client and the Web server that runs WebDAV, including reverse proxies and load balancers. During communication between the Web server and intermediate server, the URL the client uses to connect is hidden. As a result, any URL information reported back to the client displays the URL used by the intermediate server and is, therefore, incorrect. To fix this error in information transmittal, you can configure the Web server to translate the URL for the intermediate servers back to the URL used by the client.</P>
+<P><A NAME="TMPID441"></A>The protocol also gets hidden, and incorrect protocol information can be passed to clients. Therefore, you can specify the correct protocol to be used. Typical protocols include http, which is the default, and https.</P>
+<P><A NAME="TMPID442"></A>In the following example, the following settings translate an incorrect URL <TT CLASS="LITERAL">http://hostname1:8080/livelinkdav</TT>, back to a correct URL <TT CLASS="LITERAL">https://hostname2/livelinkdav</TT>.</P>
+<P><A NAME="TMPID445"></A><TT CLASS="LITERAL">Proxy Hostname = hostname1:8080</TT><TT CLASS="LITERAL">Set Host = hostname2</TT><TT CLASS="LITERAL">Set Scheme = https</TT></P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wd-config-host1-p.htm" revision="">To Configure Host Translations</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

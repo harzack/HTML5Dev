@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>WR Trigger</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-trigger-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'WR Trigger';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID22978"></A>The <B CLASS="guilabel">WR Trigger</B> feature allows WebReports to be initiated by specific events in Content Server. For node types that have been enabled with the <B CLASS="guilabel">WR Trigger</B> feature, the WebReports developer can choose to initiate a webreport for a number of Content Server events. The <B CLASS="guilabel">WR Trigger</B> feature is off by default and can be enabled per node type in the administration pages under <B CLASS="guilabel">WR Trigger Administration</B>. The Content Server events for which you can initiate a WebReport are:</P><A NAME="AEN21668"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21669"></A><A NAME="TMPID22990"></A>Add Version</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21671"></A><A NAME="TMPID22992"></A>Category Update</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21673"></A><A NAME="TMPID22994"></A>Create</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21675"></A><A NAME="TMPID22996"></A>Delete</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21677"></A><A NAME="TMPID22998"></A>Move</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21679"></A><A NAME="TMPID23000"></A>Copy</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21681"></A><A NAME="TMPID23002"></A>Update</P></LI></UL>
+<P><A NAME="TMPID23003"></A>By default the <B CLASS="guilabel">WR Trigger</B> tab will be accessible by any user that has <I CLASS="emphasis">Modify</I> permission against a node for which WR Trigger is enabled. Administrators can restrict access to selected users and groups by using the <B CLASS="guilabel">Administer Object and Usage Privileges</B> page in the <B CLASS="guilabel">System Administration</B> section of the administration area. The <B CLASS="guilabel">Usage Privileges</B> section contains an entry for <B CLASS="guilabel">WR Trigger Tab</B> which can be used to set the restrictions.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TRIGGER-GENUSE">General Usage</A></P>
+<P><A NAME="TMPID23012"></A>The <B CLASS="guilabel">WR Trigger</B> feature is accessed via a new WR Trigger option in the properties section of the functions menu, which brings up a new tab. The menu and subsequent tab can only be accessed for subtypes that have the WR Trigger feature enabled. Triggers can be set on individual objects or they can be set on containers and cascaded down a hierarchy, which provides a convenient way to set triggers on a large volume of items.</P>
+<P><IMG SRC="image032.png"></P>
+<P><A NAME="TMPID23015"></A>When an item is “Deleted” using the function menu, one of two things can happen. The item might be truly deleted and so completely removed from the database, or the item might be moved to the Recycle Bin or Undelete Volume. The behavior will depend on how specific subtypes, for example Documents or Folders, are configured with these modules. The Delete trigger only fires on a true database delete, for example, when items are destroyed. If it is required to trigger a WebReport based on a “function menu delete” that results in the item being moved to the Recycle Bin or Undelete Volume, the <TT CLASS="literal">Move</TT> trigger event must be used. Logic can then be used in the webreport. Use <TT CLASS="literal">NODEINFO:PARENTID /OWNERID</TT> to determine whether the item was moved to one of these locations or elsewhere in Content Server.</P>
+<P><A NAME="TMPID23021"></A>When a root node, a container with other items in it, is copied, moved or deleted, the trigger occurs on the root node only. No WebReport will be initiated for individual sub items. If a WebReport needs to be initiated for each specific item, it can be achieved using a query that takes the node that initiated the trigger to find all the children, then use a subWebReport to implement the specific behavior, for example to trigger a workflow.</P>
+<P><A NAME="TMPID23022"></A>All triggers are initiated after the event has occurred with the exception of Delete. For example, if using <TT CLASS="literal">[LL_REPTAG_TRIGGERID NODEINFO:PARENTID /]</TT> in a webreport that has been initiated by a Move trigger event, the objectid of the new parent will be returned. See <TT CLASS="literal">[LL_REPTAG_TRIGGERORIGPARENTID /]</TT> for accessing the original. With the delete trigger, the event is fired just before the delete so that we have the maximum meta data available. Once a node is truly deleted, it no longer exists and so has no valid meta data.</P>
+<P><A NAME="TMPID23025"></A>When a document is added to Content Server, both the <TT CLASS="literal">Create</TT> trigger and the <TT CLASS="literal">Add Version</TT> trigger are fired. This is because Content Server sees this as two actions. First a node creation occurs and once the node is created a new version, in this case version 1, is added to that node. If a folder were added, only the <TT CLASS="literal">Create</TT> trigger would fire.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TRIGGER-USRGRP">User or Group Triggers</A></P>
+<P class="before-ul"><A NAME="TMPID23033"></A>The <TT CLASS="literal">WR Trigger</TT> feature now supports triggering based on User or Group events. This can be configured in the administration pages under <B CLASS="guilabel">User/Group WR Trigger Administration</B>. The WebReports developer can choose to initiate a webreport based on the following User/Group events:</P><A NAME="AEN21715"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21716"></A><A NAME="TMPID23039"></A>Add User to Group</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21718"></A><A NAME="TMPID23041"></A>Create User/Group</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21720"></A><A NAME="TMPID23043"></A>Delete User/Group</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21722"></A><A NAME="TMPID23045"></A>Update User/Group</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21724"></A><A NAME="TMPID23047"></A>User Login</P></LI></UL>
+<P><A NAME="TMPID23048"></A>When the <B CLASS="guilabel">Global</B> checkbox is selected, anytime one of the selected trigger events is triggered within Content Server, regardless of who executed it, the specified WebReport is executed. Otherwise, if a User or Group is specified, the <B CLASS="guilabel">Global</B> checkbox is cleared, the webreport will execute if the trigger event happens within the group or to the user. For example, if creation, deletion or addition, among others, happen in the group, and not explicitly on the group itself, then the webreport will initiate. For a user, the trigger event needs to happen on the user. This means that not all trigger events are relevant to users and so they are ignored. In the screen-shot below, the Admin user would need to be deleted for the “Delete User/Group” trigger event to fire.</P>
+<P><IMG SRC="image034.png"></P>
+<P><A NAME="TMPID23054"></A>In the above example a webreport is initiated if a user is added to <B CLASS="highlight">TestGroup1</B>, a new user is created with “TestGroup1” as its Department, or if “TestGroup1” is deleted.&#13;</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TRIGGER-WRTRIGTAG">WR Trigger tags</A></P>
+<P class="before-ul"><A NAME="TMPID23060"></A>WR Trigger supports the following feature specific tags which are detailed in the tag guide:</P><A NAME="AEN21738"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21739"></A><A NAME="TMPID23063"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGER">[LL_REPTAG_TRIGGER /]</A></span></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21742"></A><A NAME="TMPID23066"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGERDESTPARENTID">[LL_REPTAG_TRIGGERDESTPARENTID /]</A></span></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21745"></A><A NAME="TMPID23069"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGERID">[LL_REPTAG_TRIGGERID /]</A></span></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21748"></A><A NAME="TMPID23072"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGERNEWID">[LL_REPTAG_TRIGGERNEWID /]</A></span></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21751"></A><A NAME="TMPID23075"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGERNEWNAME">[LL_REPTAG_TRIGGERNEWNAME /]</A></span></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21754"></A><A NAME="TMPID23078"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGEROLDNAME">[LL_REPTAG_TRIGGEROLDNAME /]</A></span></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21757"></A><A NAME="TMPID23081"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGERSOURCEPARENTID">[LL_REPTAG_TRIGGERSOURCEPARENTID /]</A></span></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21760"></A><A NAME="TMPID23084"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGERADD">[LL_REPTAG_TRIGGERADDEDCATEGORIES /]</A></span></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21763"></A><A NAME="TMPID23087"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGERCATVAL">[LL_REPTAG_TRIGGERCATEGORYVALUECHANGES /]</A></span></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN21766"></A><A NAME="TMPID23090"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGERDELCAT">[LL_REPTAG_TRIGGERDELETEDCATEGORIES /]</A></span></P></LI></UL>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="WR-TRIGGER-EXAM"></A><B>Example</B></P>
+<A NAME="AEN21770"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21771"></A><A NAME="TMPID23095"></A>Initiate a workflow and attach a document to it when a new item is created.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21773"></A><A NAME="TMPID23097"></A>Set the webReport destination to the workflow you wish to initiate:</P>
+<A NAME="AEN21775"></A>
+<OL TYPE="a">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21776"></A><A NAME="TMPID23100"></A>From the webreport's functions menu select <B CLASS="guilabel">Properties</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21779"></A><A NAME="TMPID23103"></A>From the <B CLASS="guilabel">Properties</B> menu, select <B CLASS="guilabel">Destination</B>.</P></LI></OL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21783"></A><A NAME="TMPID23107"></A>Select the functions menu on a folder above the location the item will be created. From that folder's functions menu, select <B CLASS="guilabel">Properties</B>, then select <B CLASS="guilabel">WR Trigger</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21787"></A><A NAME="TMPID23111"></A>On the folder's <B CLASS="guilabel">WR Trigger</B> tab, select the WebReport to be executed and select the <TT CLASS="literal">Create</TT> event as the trigger.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21791"></A><A NAME="TMPID23115"></A>In the webreport set the item that initiates the event to be attached to the workflow. Do this by editing the reportview and using:</P>
+<P><A NAME="TMPID23116"></A><TT CLASS="literal">[LL_REPTAG_TRIGGERID SETWFATTACH:COPY:INHERITATTRS:MERGED /]</TT></P>
+<P><A NAME="TMPID23118"></A><TT CLASS="literal">TRIGGERID</TT> is the id of the object that initiated the event and <TT CLASS="literal">SETWFATTACH:COPY:INHERITATTRS:MERGED</TT> copies this node to the attachments folder merging the categories of the node with those of the attachments folder. For more information, see <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETWFATTACH">SETWFATTACH</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF81"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<A NAME="AEN21800"></A>
+<OL TYPE="a" class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21801"></A><A NAME="TMPID23125"></A>Rather than initiating a workflow, the WebReports destination tab could be set to send an email. To attach the item that fired the event to the email destination use <TT CLASS="literal">[LL_REPTAG_TRIGGERID /]</TT>. It is worth noting that <TT CLASS="literal">SETWFATTACH</TT> and <TT CLASS="literal">SETEMAILATTACH</TT> can be used multiple times to attach several items to the destination. For more information, see <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETEMAIL">SETEMAILATTACH</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21808"></A><A NAME="TMPID23132"></A>The <B CLASS="guilabel">Show WebReport</B> option in the <B CLASS="guilabel">WR Trigger</B> tab should only be selected if the event is triggered manually by a Content Server user. If the event is caused by a WebReport, for example <span><A HREF="wr-tag-sttwelfth.htm#WR-TAG-STNODEACTION">NODEACTION</A></span>, this option should be left cleared because <B CLASS="guilabel">Show WebReport</B> is not applicable.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21815"></A><A NAME="TMPID23139"></A>Avoid creating a Folder trigger with the <B CLASS="guilabel">Add Version</B> trigger event selected, and the initiating WebReport outputting a new Content Server document, <B CLASS="guilabel">Output Destination=Content Server</B>, to the same folder. This causes the trigger on the folder to be recursively fired and results in a Content Server error.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21822"></A><A NAME="TMPID23146"></A>When applying a WR Trigger to a container in order to trigger a WebReport based on an object being moved, created, or copied into that container, ensure both the container subtype, and the subtype of the object to be placed in the container, are selected in the <B CLASS="guilabel">WR Trigger</B> administration page.</P></LI></OL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></OL>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

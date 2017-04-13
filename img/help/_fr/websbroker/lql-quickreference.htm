@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBB100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websbroker">
+<META mancondkey="llesrcm-h-ugd -- llespob-h-ugd -- llesprj-h-ugd -- ngdlles-h-ugd -- llesrcs-h-ugd -- llesrec-h-ugd -- llesapp-h-ugd -- llescl-h-ugd -- llesrt-h-ugd -- llesels-h-ugd -- lleselv-h-agd -- lleswat-h-ugd"><title>Référence rapide au langage LQL</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lql-quickreference.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Recherche Content Server';
+          header.title2 = 'Référence rapide au langage LQL';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3299"></A>Exemples de termes de recherche :</P>
+<P><A NAME="TMPID3300"></A><TT CLASS="literal"><B CLASS="highlight">Lune</B></TT><BR><TT CLASS="literal"><B CLASS="highlight">« chev* »</B></TT><BR><TT CLASS="literal"><B CLASS="highlight">=« pantins articulés »</B></TT><BR><TT CLASS="literal"><B CLASS="highlight">[qlregion « OTData »] « maison »</B></TT> <BR><TT CLASS="literal"><B CLASS="highlight">[qlregion « OTFileType »] qlrange « pdf|word|excel »</B></TT><BR><TT CLASS="literal"><B CLASS="highlight"> [qlregion « OTFileSize »] qlrange « 80 000~120 000 »</B></TT> <BR><TT CLASS="literal"><B CLASS="highlight">[qlregion « OTIndexErrors »] !=« 2 »</B> </TT><BR><TT CLASS="literal"><B CLASS="highlight">[qlregion « OTFileName »] *</B></TT></P>
+<P><A NAME="TMPID3328"></A>Des opérateurs sont utilisés pour relier les termes de recherche. Sans précision, on suppose l'utilisation de l'opérateur AND.</P>
+<P><A NAME="TMPID3329"></A><TT CLASS="literal"><B CLASS="highlight">AND, OR, NOT, XOR, SOR</B></TT> <BR><TT CLASS="literal"><B CLASS="highlight">PROX[5] - second terme parmi les 5 mots qui suivent le premier terme</B></TT><BR><TT CLASS="literal"> <B CLASS="highlight">QLNEAR - comme PROX[10,F]</B></TT><BR></P>
+<P><A NAME="TMPID3336"></A>Pour rechercher des opérateurs, placez-les entre guillemets :</P>
+<P><A NAME="TMPID3337"></A><TT CLASS="literal"><B CLASS="highlight">« tourner » « not » « crier »</B></TT> </P>
+<P><A NAME="TMPID3343"></A>L'évaluation s'effectue de gauche à droite. Utilisez les parenthèses pour clarifier ou modifier cet ordre.</P>
+<P><A NAME="TMPID3344"></A><TT CLASS="literal"><B CLASS="highlight">Lune and (phobos or déimos)</B></TT> </P>
+<P><A NAME="TMPID3347"></A>Des comparateurs sont appliqués pour un terme unique. Vous pouvez utiliser un comparateur ou un modificateur, mais pas les deux.</P>
+<P><A NAME="TMPID3348"></A><TT CLASS="literal"><B CLASS="highlight">=, !=, &gt;, &lt;, &gt;=, &lt;=</B></TT> </P>
+<P><A NAME="TMPID3351"></A>Les modificateurs nécessitent une gestion particulière pour un terme unique.</P>
+<P><A NAME="TMPID3352"></A><TT CLASS="literal"><B CLASS="highlight">qlthesaurus - correspond également aux synonymes</B> </TT><BR><TT CLASS="literal"><B CLASS="highlight">qlrange - correspondance dans un intervalle ou à partir d'une liste</B></TT><BR><TT CLASS="literal"> <B CLASS="highlight">qlstem - correspondance avec les formes singulier ou pluriel</B></TT> <BR><TT CLASS="literal"><B CLASS="highlight">qlregex - correspondance basée sur un modèle (expression régulière)</B></TT><BR><TT CLASS="literal"> <B CLASS="highlight">qllefttruncation terme (utilisation facilitée :  *terme)</B> </TT><BR><TT CLASS="literal"><B CLASS="highlight">qllefttruncation terme (utilisation facilitée : terme*)</B></TT><BR></P>
+<P><A NAME="TMPID3365"></A>Champs de métadonnées. Sans précision, les termes de recherche correspondent au corps de texte intégral et aux régions de recherche par défaut.  Spécifiez un champ de métadonnées pour un terme de recherche :</P>
+<P><A NAME="TMPID3366"></A><TT CLASS="literal"><B CLASS="highlight">[qlregion « nomdossier »] « locution de recherche »</B> </TT></P>
+<P><A NAME="TMPID3371"></A>Pour limiter les correspondances aux champs avec des attributs de métadonnées. Disponible uniquement avec quelques champs de métadonnées dans Content Server, en général pour les langues :</P>
+<P><A NAME="TMPID3373"></A><TT CLASS="literal"><B CLASS="highlight">[qlregion « OTName »][qlattribute « lang »=« fr »] « locution française »</B></TT></P>
+<P><A NAME="TMPID3380"></A>Pour rechercher un terme uniquement dans un texte intégral (et non dans les métadonnées) :</P>
+<P><A NAME="TMPID3381"></A><TT CLASS="literal"><B CLASS="highlight">[qlregion « OTData »] « terme »</B></TT> </P>
+<P><A NAME="TMPID3386"></A>Pour rechercher les caractères spéciaux dans les métadonnées, les faire précéder d'un antislash :</P>
+<P><A NAME="TMPID3387"></A><TT CLASS="literal"><B CLASS="highlight">[qlregion « url »] « c\:\\racine\\dossier »</B> </TT></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

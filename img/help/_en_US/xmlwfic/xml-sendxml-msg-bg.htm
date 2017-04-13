@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-EN-1">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Sendxml Wrapper for Stylesheets</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-sendxml-msg-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Messages and Wrappers';
+          header.title2 = 'Sendxml Wrapper for Stylesheets';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1240"></A>When XML actions are configured to process messages with stylesheets, all outgoing messages are wrapped in sendxml elements before being sent to the stylesheet for transformation. The stylesheet must produce a <TT CLASS="LITERAL">sendxml</TT> element if it wants the transformed message to be sent. This allows a single stylesheet to distinguish between the incoming and outgoing cases and gives stylesheets some ability to control message processing as well as message format.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-025">XML Representation</A></P>
+<P><A NAME="TMPID1244"></A><TT CLASS="LITERAL">&lt;sendxml filename="…" contenttype="…"&gt;…&lt;/sendxml&gt;</TT></P>
+<P><A NAME="TMPID1246"></A>The sendxml wrapper is a sendxml element that contains the message to be sent.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-026">XML Namespaces (if used)</A></P>
+<P><A NAME="TMPID1249"></A><TT CLASS="LITERAL">&lt;sendxml xmlns="http://www.opentext.com/llx/"&gt;</TT></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-027">HTML Representation</A></P>
+<P><A NAME="TMPID1253"></A>The sendxml wrapper is not used in HTML exchanges.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-028">Contents of Message</A></P>
+<P class="before-ul"><A NAME="TMPID1256"></A>The following items are included in a sendxml wrapper:</P><A NAME="AEN1224"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1225"></A><A NAME="TMPID1259"></A>Filename</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1227"></A><A NAME="TMPID1261"></A>Contenttype</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1229"></A><A NAME="TMPID1263"></A>Any message</P></LI></UL>
+<P><A NAME="TMPID1264"></A>A sendxml wrapper must contain a single child element for the message to be sent. The <TT CLASS="LITERAL">filename</TT> and <TT CLASS="LITERAL">contenttype</TT> attributes are optional and can be used to modify message processing. If the message is being sent to a directory using the HTTP PUT protocol, the filename attribute contains the filename to be used for storing the message in that directory. The <TT CLASS="LITERAL">contenttype</TT> attribute contains the MIME type of the message to be sent. The default value is text/xml, but it can be changed by a stylesheet. If the stylesheet changes the content type to text/html, the message is written using the XSLT output rules for HTML.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

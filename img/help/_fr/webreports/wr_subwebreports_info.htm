@@ -1,0 +1,166 @@
+<!-- wr_subwebreports_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Sub-WebReports</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_subwebreports_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Sub-WebReports';
+        header.draw();
+
+</SCRIPT>
+
+<p class="body">
+A WebReport can call another WebReport (a "sub-WebReport") whose results will be returned and inserted into the parent report at the point where the tag is placed.  Sub-WebReports can be thought of as "sub-routines" that form part of the overall report results.  This tag is particularly useful where you wish to collect the results from several different queries (e.g. LiveReport SQL queries) and present them in a single report.  For example it is often simpler to use two or more simple SQL queries in place of one complex one or you may wish to combine results from a SQL query with results from a search query.
+</p>
+<p class="body">
+There are two ways to call a sub-WebReport:
+</P>
+<ul type="disc">
+	<li>if the RKTEngine is enabled: [LL_REPTAG_'&lt;Sub-WebReport ID&gt;' RUNSWR /]</li>
+	<BR>
+	<li>if the RKTEngine is not enabled or installed: [LL_WEBREPORT_SUBWEBREPORT NODEID:&lt;Sub-WebReport ID&gt; /]</li>
+</ul>
+
+<p class="body">
+Both approaches produce the same result, except that the RKTEngine allows further sub-tags to be added after RUNSWR.  For example: 
+<BR>
+[LL_REPTAG_'&lt;Sub-WebReport ID&gt;' RUNSWR SHOW SETVAR:SubWRValue /]. 
+</P>
+
+<p CLASS="gui"><U>Parameters</U></p>
+<p class="body">
+Parameters can be passed to a sub-WebReport as follows:
+</p>
+
+<ul type="disc">
+<li>[LL_REPTAG_'&lt;Sub-WebReport ID&gt;' RUNSWR:&lt;Parameter name&gt;:&lt;Integer value&gt;:&lt;Parameter name&gt;:"&lt;String value&gt;" /]</li>
+<BR>
+<li>[LL_WEBREPORT_SUBWEBREPORT NODEID:&lt;Sub-WebReport ID&gt; PARM:&lt;Parameter name&gt;:&lt;Integer value&gt; PARM:&lt;Parameter name&gt;:"&lt;String value&gt;" /]</li>
+</ul>
+
+<p class="body">
+<B>Example:</B>
+</P>
+<ul type="disc">
+<li>[LL_REPTAG_'123456' RUNSWR:InputLabel1:299:myStatus:"awaiting review" /]</li>
+<BR>
+<li>[LL_WEBREPORT_SUBWEBREPORT NODEID:123456 PARM:InputLabel1:299 PARM:myStatus:"awaiting review" /]</li>
+</ul>
+
+<p CLASS="gui"><U>Inheritance</U></p>
+<p class="body">
+A sub-WebReport will inherit parameter and constant values from a calling WebReport implicitly.  For example, if the calling WebReport has a parameter defined called nodeID, this value can be read by the sub-WebReport using [LL_REPTAG_&amp;nodeID /] regardless of whether or not nodeID is passed to the sub-WebReport as an argument in the [LL_REPTAG_'&lt;Sub-WebReport ID&gt;' RUNSWR /] or [LL_WEBREPORT_SUBWEBREPORT /] call.
+</P>
+<p class="body">
+If a parameter or constant is defined in both the calling WebReport and the sub-WebReport, then the value defined in the sub-WebReport will be used by the sub-WebReport.
+</P>
+<p class="body">
+If a parameter value is defined in the sub-WebReport, then if it is passed as an argument in the [LL_REPTAG_'&lt;Sub-WebReport ID&gt;' RUNSWR /] or [LL_WEBREPORT_SUBWEBREPORT /] call then the passed value will be used by the sub-WebReport.
+</p>
+<p class="body">
+The table below illustrates how parameter inheritance works, where the first WebReport is calling the second WebReport as a sub-WebReport.
+</P>
+<TABLE border=1>
+<TR>
+<TH COLSPAN=3>Main WebReport</TH>
+<TH COLSPAN=4>Sub-WebReport</TH>
+</TR>
+<TR>
+
+<TD><B>(&fruit)<BR>Default Value</B></TD>
+<TD><B>(&fruit)<BR>Request Value</B></TD>
+<TD><B>Result of [LL_REPTAG_&fruit /]</B></TD>
+<TD><B>(&fruit)<BR>Default Value</B></TD>
+<TD><B>(&fruit)<BR>Passed Parameter Value</B></TD>
+<TD><B>Result of [LL_REPTAG_&fruit /]</B></TD>
+<TD><B>Comment</B></TD>
+</TR>
+<TR>
+<TD>-</TD>
+<TD>Pear</TD>
+<TD>Pear</TD>
+<TD>-</TD>
+<TD><i>&lt;not passed&gt;</i></TD>
+<TD>Pear</TD>
+<TD>Inherited from main WebReport</TD>
+</TR>
+<TR>
+<TD>Apple</TD>
+<TD>-</TD>
+<TD>Apple</TD>
+<TD>-</TD>
+<TD><i>&lt;not passed&gt;</i></TD>
+<TD>Apple</TD>
+<TD>Inherited from main WebReport</TD>
+</TR>
+<TR>
+<TD>Apple</TD>
+<TD>Pear</TD>
+<TD>Pear</TD>
+<TD>-</TD>
+<TD><i>&lt;not passed&gt;</i></TD>
+<TD>Pear</TD>
+<TD>Inherited from main WebReport</TD>
+</TR>
+<TR>
+<TD>Apple</TD>
+<TD>-</TD>
+<TD>Apple</TD>
+<TD>Orange</TD>
+<TD><i>&lt;not passed&gt;</i></TD>
+<TD>Orange</TD>
+<TD>Not passed, so uses sub-WebReport default value</TD>
+</TR>
+<TR>
+<TD>-</TD>
+<TD>Pear</TD>
+<TD>Pear</TD>
+<TD>Orange</TD>
+<TD><i>&lt;not passed&gt;</i></TD>
+<TD>Orange</TD>
+<TD>Not passed, so uses sub-WebReport default value</TD>
+</TR>
+<TR>
+<TD>Apple</TD>
+<TD>Pear</TD>
+<TD>Pear</TD>
+<TD>Orange</TD>
+<TD><i>&lt;not passed&gt;</i></TD>
+<TD>Orange</TD>
+<TD>Not passed, so uses sub-WebReport default value</TD>
+</TR>
+<TR>
+<TD>Apple</TD>
+<TD>Pear</TD>
+<TD>Pear</TD>
+<TD>Orange</TD>
+<TD>Grape</TD>
+<TD>Grape</TD>
+<TD>Passed parameter value used instead of sub-WebReport default value</TD>
+</TR>
+</TABLE>
+
+<p CLASS="gui"><U>Returning a nodeID to the calling WebReport if the sub-WebReport has a destination of Content Server</U></p>
+<p class="body">
+If the destination of the sub-WebReport is a Content Server Node, then the nodeID can be returned to the calling WebReport by adding the <B>SHOWNODEID</B> argument to the call, for example:
+<UL>
+<LI>If using RUNSWR, add SHOWNODEID to the end of the arguments list: [LL_REPTAG_'123456' RUNSWR:InputLabel1:299:myStatus:"awaiting review":SHOWNODEID /]</LI> 
+<LI>If using SUBWEBREPORT, add SHOWNODEID as an extra argument: [LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$mySubReport /] SHOWNODEID /]</LI>
+</UL>
+</P>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

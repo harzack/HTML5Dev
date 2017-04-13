@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<title>Creating, Installing and Upgrading Language Packs</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/websystemobj/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-multilingual-install-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Managing UI Languages';
+          header.title2 = 'Creating, Installing and Upgrading Language Packs';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID12934"></A>A <I CLASS="emphasis">Localization Kit</I> is available on the <A HREF="https://knowledge.opentext.com" TARGET="_blank">OpenText Knowledge Center</A>. Before you can configure languages, you must create a new language pack and install it on the computer where Content Server is installed.</P>
+<P><A NAME="TMPID12940"></A>When a new instance of Content Server is installed, English is always the default language. French, German, Japanese and Dutch language packs are included in the Content Server installation. If you intend using one of these five languages, it is not necessary to create a new Localization Kit.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12944"></A><B CLASS="important">Important: </B><BR>OpenText strongly recommends that you delete and recreate the User Help Data Source Folder and the Admin Help Data Source Folder whenever you add or remove language packs, or when the system default locale is modified. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbs-h-agd.wbs-user-admin-index-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/websystemobj/wbs-user-admin-index-bg.htm">Creating the User or Admin Help Index</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbs-h-agd.wbs-user-admin-index-bg" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-MULTI-INSTALL">Installing Language Packs</A></P>
+<P><A NAME="TMPID12949"></A>Once you have the language pack you want to install, and depending on whether this is a Content Server system language pack or a Content Server module language pack, you need to do one of two things:</P>
+<A NAME="AEN12013"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12014"></A><A NAME="TMPID12954"></A>If you are installing a Content Server system language pack, you need to unzip the language pack to the root Content Server installation directory.</P>
+<P><A NAME="TMPID12957"></A>For example, if you installed Content Server to the <TT CLASS="filename">C:\OPENTEXT</TT> directory, unzip the language pack you have downloaded, or created, to the <TT CLASS="filename">C:\OPENTEXT</TT> directory. The language pack will be unzipped to <TT CLASS="filename">C:\OPENTEXT\langpkgstaging</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12023"></A><A NAME="TMPID12963"></A>If you are installing a Content Server module language pack, you need to unzip the language pack to the <TT CLASS="filename">C:\&lt;<I CLASS="varname">Content Server_home</I>>\langpkgstaging\module</TT> directory, where <TT CLASS="filename">C:\&lt;<I CLASS="varname">Content Server_home</I>></TT> is the location of your Content Server installation.</P></LI></OL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF111"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12973"></A><B CLASS="note">Note: </B><BR>When you install a language pack, if settings already exist in the <TT CLASS="filename">opentext.ini</TT> file, and the value of the setting is not empty, the values will be overwritten with the settings in the language pack you install.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID12975"></A>Once a language is installed, the language code will appear in alphabetical order under the <B CLASS="guilabel">Languages</B> section on the <B CLASS="guilabel">Installed Language Packs</B> page. Content Server, and each Content Server module, will show all available languages; if a language is not installed for a particular module, a “No languages installed” message is listed. For more information about language names and codes, see <span><A href="../webadmin/wba-multilingual-configlang-bg.htm">Configuring Languages</A></span>.</P>
+<P><A NAME="TMPID12982"></A>You can specify a different user display name format for each language. The display name for users can be their Log-in ID, or their first name, last name, and middle initial. You can also choose to append the users' Log-in IDs to the format you choose. For more information, see <span><A href="../webadmin/wba-usersettings-bg.htm">Configuring User Settings</A></span>.</P>
+<P><A NAME="TMPID12984"></A>When you install a language, it may be necessary to update the way dates and times appear to match the standard of that language. For example, the default date format is set to appear as <I CLASS="emphasis">month/day/year</I>, but you may want to set it to a <I CLASS="emphasis">year/month/day</I> format. You can specify the format for each installed language. For more information, see <span><A href="../webadmin/wba-admindate-bg.htm">Setting Date and Time Formats</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-MULTI-UPGRADE">Upgrading Language Packs</A></P>
+<P><A NAME="TMPID12990"></A>Content Server language packs can be upgraded. OpenText releases updated language packs, for each of the languages shipped with Content Server, with each Content Server update.</P>
+<P><A NAME="TMPID12995"></A>There are two ways that you can upgrade your language packs:</P>
+<A NAME="AEN12056"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12057"></A><A NAME="TMPID12998"></A>When you upgrade Content Server to the latest patch or service pack, you can also download the latest language packs.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12060"></A><A NAME="TMPID13001"></A>You can also download the latest language packs from the <A HREF="https://knowledge.opentext.com" TARGET="_blank">OpenText Knowledge Center</A> and install those updated language packs on your Content Server system.</P></LI></OL>
+<P><A NAME="TMPID13006"></A>Once you have the updated language pack you want to install, you need to unzip it to the proper directory:</P>
+<A NAME="AEN12067"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12068"></A><A NAME="TMPID13009"></A>If you are installing an updated language pack to the Content Server system, unzip the updated language pack to the root Content Server installation directory.</P>
+<P><A NAME="TMPID13012"></A>For example, if you installed Content Server to the <TT CLASS="filename">C:\OPENTEXT</TT> directory, unzip the updated language pack you have downloaded to the <TT CLASS="filename">C:\OPENTEXT</TT> directory. The updated language pack will be unzipped to <TT CLASS="filename">C:\OPENTEXT\langpkgstaging</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12077"></A><A NAME="TMPID13018"></A>If you are installing an updated language pack to a Content Server module, unzip the updated language pack to the <TT CLASS="filename">C:\&lt;<I CLASS="varname">Content Server_home</I>>\langpkgstaging\module</TT> directory, where <TT CLASS="filename">C:\&lt;<I CLASS="varname">Content Server_home</I>></TT> is the location of your Content Server installation.</P></LI></OL>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID13028"></A><B CLASS="important">Important: </B><BR>Because customers can download and install full language packs with each Content Server update, each full language pack will overwrite the corresponding, existing language pack, provided the version of the language pack you are installing is <I CLASS="emphasis">equal to or greater</I> than the currently installed language pack.</P>
+<P><A NAME="TMPID13031"></A>Content Server will generate an error message if the updated language pack you are attempting to install is an older version than the currently installed language pack.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID13033"></A>For more information, see <span><A href="../webadmin/wba-multilingual-update-p.htm">To Update a Language Pack for Content Server</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-MULTI-DISABLE">Disabling Language Packs</A></P>
+<P><A NAME="TMPID13037"></A>Language packs cannot be uninstalled, but they can be disabled. For more information on how to disable a language pack, see <span><A href="../webadmin/wba-multilingual-configlang-bg.htm">Configuring Languages</A></span>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-multilingual-install-p.htm" revision="">To Install a Language Pack for Content Server</A></p></li>
+<li><p><A  href="../webadmin/wba-multimodule-install-p.htm" revision="">To Install a Language Pack for a Content Server Module</A></p></li>
+<li><p><A  href="../webadmin/wba-multilingual-update-p.htm" revision="">To Update a Language Pack for Content Server</A></p></li>
+<li><p><A  href="../webadmin/wba-multilingual-updatemod-p.htm" revision="">To Update a Language Pack for a Content Server Module</A></p></li>
+<li><p><A  href="../webadmin/wba-multilingual-viewpacks-p.htm" revision="">To View Installed Language Packs</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

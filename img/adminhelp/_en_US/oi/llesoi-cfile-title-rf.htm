@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>title Tag Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-title-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Tag Descriptions and Syntax';
+          header.title2 = 'title Tag Control File Syntax';
+           header.draw();
+  </script>
+
+<table CLASS="CAUTION">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="ICONCELL">
+<P CLASS="CAUTION" ALIGN="CENTER"><IMG ALT="Caution" SRC="../../images/pi_caution.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID4297"></A><B CLASS="CAUTION">Caution</B><BR>The colon character, “:”, cannot be used in any title because colons are used to delimit path information.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TITTAG01">Description</A></P>
+<P class="nr1"><A NAME="TMPID4301"></A>The <TT CLASS="LITERAL">title</TT> tag is used to apply a title to an object. Content Server supports using multiple <TT CLASS="LITERAL">title</TT> tags for an object in order to create multiple titles, in multiple languages, for that object.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TITTAG02">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4093"></A>&lt;title language="en"&gt;Moving Pictures&lt;/title&gt;</PRE
+>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4094"></A>&lt;title clear="true" language="en"&gt;&lt;/title&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TITTAG03">Usage</A></P>
+<A NAME="AEN4096"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN4097"></A><A NAME="TMPID4317"></A>The <TT CLASS="LITERAL">title</TT> tag is required when:</P><A NAME="AEN4100"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4101"></A><A NAME="TMPID4321"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="create"&gt;</TT></P></LI></UL>
+<P><A NAME="TMPID4325"></A>The exception to this rule relates to <TT CLASS="LITERAL">type="document"</TT>. See the <I CLASS="EMPHASIS">Notes</I> section below for further information.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN4109"></A><A NAME="TMPID4329"></A>The <TT CLASS="LITERAL">title</TT> tag may be either required or optional, depending on the setting of the “Add Title to Location” check box in Object Importer, when:</P><A NAME="AEN4114"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4115"></A><A NAME="TMPID4335"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4120"></A><A NAME="TMPID4340"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="delete"&gt;</TT></P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4125"></A><A NAME="TMPID4345"></A>The “Notes” section below provides more information about the requirements for the “Add Title to Location” setting. For information about how to set the “Add Title to Location” check box, see <span><A HREF="llesoi-cfg-p.htm">To Configure Object Importer</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4131"></A><A NAME="TMPID4351"></A>Creating, updating, or deleting a title might require the <span><A HREF="llesoi-cfile-title-rf.htm#LANGTAG02">language Attribute</A></span>, which is detailed below.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TITTAG04">Notes</A></P>
+<A NAME="AEN4135"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4136"></A><A NAME="TMPID4357"></A>During an <TT CLASS="LITERAL">action="create"</TT>, the <TT CLASS="LITERAL">title</TT> tag is required for all object types except Documents, <TT CLASS="LITERAL">type="document</TT>. If your import uses <TT CLASS="LITERAL">&lt;node type="document action="create"</TT> with no title specified, the name of the document will be used. For example, if the <TT CLASS="LITERAL">&lt;title language="en"&gt;&lt;/title&gt;</TT> tag is not used when importing the document <TT CLASS="FILENAME">&lt;file&gt;c:/temp/import_dir/readme.txt&lt;/file&gt;</TT>, Content Server uses “readme.txt” for the object name and filename of the version.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4146"></A><A NAME="TMPID4367"></A>During an <TT CLASS="LITERAL">action="update"</TT> or <TT CLASS="LITERAL">action="delete"</TT>, this tag is required, and must contain the name of the object, if the <B CLASS="GUILABEL">Add Title to Location</B> check box is selected. If the <B CLASS="GUILABEL">Add Title to Location</B> check box is cleared, this tag can, optionally, be used to rename an object during an update.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4152"></A><A NAME="TMPID4373"></A>To clear the value of the <TT CLASS="LITERAL">title</TT> tag, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4156"></A><A NAME="TMPID4377"></A>If a title doesn't exist in a language which has been enabled in the system to which you are importing, the <TT CLASS="LITERAL">clear="true"</TT> attribute will be used for clearing out the title in that language.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4159"></A><A NAME="TMPID4380"></A>In the event that two, or more, title tags with the same language attribute appear in the same node paragraph, no error will occur. Object Importer will set the title to the value contained in the last <TT CLASS="LITERAL">&lt;title&gt;</TT> tag with that language attribute.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TITTAG05">Example</A></P>
+<P><A NAME="TMPID4385"></A>To create a document called “My Guide” in the “Documents” folder, with a title listed for English and a title listed for French:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4167"></A>&#13;&lt;import&gt;
+  &lt;node type="document" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;My Guide&lt;/title&gt;
+    &lt;title language="fr"&gt;Mon Guide&lt;/title&gt;
+    &lt;file&gt;c:\temp\my_guide.doc&lt;\file&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P><A NAME="TMPID4389"></A>To view more <TT CLASS="LITERAL">title</TT> tag examples, see <span><A HREF="llesoi-cfile-titlsamp-rf.htm">title Import Control File Examples</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LANGTAG02">language Attribute</A></P>
+<P><A NAME="TMPID4394"></A>Use the <TT CLASS="LITERAL">language</TT> attribute to specify a <TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">language_code</I>></TT> which will create, update, or delete the title of that object associated with that language. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4176"></A>&lt;title language="en"&gt;Moving Pictures&lt;/title&gt;
+&lt;title language="fr"&gt;Images Mobiles&lt;/title&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4177"></A>&lt;title clear="true" language="de"&gt;&lt;/title&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4178"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4413"></A>The <TT CLASS="LITERAL">language</TT> attribute is optional, provided only one <TT CLASS="LITERAL">&lt;title&gt;&lt;/title&gt;</TT> tag appears in the node paragraph. If you are applying multiple <TT CLASS="LITERAL">&lt;title language="en"&gt;&lt;/title&gt;</TT> tags in the node paragraph, the <TT CLASS="LITERAL">language</TT> attribute is required.</P>
+<table CLASS="TIP">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="TIP"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID4419"></A><B CLASS="TIP">Tip: </B><BR>OpenText recommends that you always use the <TT CLASS="LITERAL">language</TT> attribute on the <TT CLASS="LITERAL">title</TT> tag, and, if there is only one <TT CLASS="LITERAL">title</TT> tag, that you specify the system default language code on the <TT CLASS="LITERAL">language</TT> attribute.</P>
+<P><A NAME="TMPID4425"></A>If the <TT CLASS="LITERAL">language</TT> attribute is not used, Object Importer will use the system default language.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4429"></A>In order for multilingual titles to be created, or updated, all languages referenced by the <TT CLASS="LITERAL">language</TT> attribute must exist on Content Server, and those languages must be enabled.</P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4435"></A>If <TT CLASS="LITERAL">&lt;node type="&lt;<I CLASS="VARNAME">any_type</I>>" action="create"</TT>, then multilingual titles will be created, provided the <I CLASS="EMPHASIS">language</I> exists, and is enabled, on the system. If <TT CLASS="LITERAL">&lt;node action="update"</TT> or <TT CLASS="LITERAL">&lt;node action="sync"</TT>, then multilingual titles will be updated if the <I CLASS="EMPHASIS">title</I> exists for that <TT CLASS="LITERAL">language</TT> attribute.</P></TD></TR></TABLE>
+<table CLASS="CAUTION">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="ICONCELL">
+<P CLASS="CAUTION" ALIGN="CENTER"><IMG ALT="Caution" SRC="../../images/pi_caution.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID4444"></A><B CLASS="CAUTION">Caution</B><BR>On the <B CLASS="GUILABEL">Object Importer Configure</B> page, one of the selectable options is the <B CLASS="GUILABEL">Add Title to Location</B> check box. If selected, all update, add version and delete operations will take the first <TT CLASS="LITERAL">&lt;title&gt;</TT> tag in the node paragraph in the import script, append the contents of the <TT CLASS="LITERAL">&lt;title&gt;</TT> tag to the contents of the <TT CLASS="LITERAL">&lt;location&gt;</TT> tag, and perform the update, add version, or delete operation on this object.</P>
+<P><A NAME="TMPID4451"></A>In the case that multiple titles are defined within the node paragraph, as will be the case in a multilingual system, Object Importer will only assess the first title for the purposes of determining which object is to be updated, added to, or deleted. If the first title is not in the user's preferred metadata language, the operation may fail to find the object because the <TT CLASS="LITERAL">&lt;location&gt;</TT> tag contains one component in the wrong language.</P>
+<P><A NAME="TMPID4454"></A>Users must ensure that the first title is always in the same language as the <TT CLASS="LITERAL">&lt;location&gt;</TT> tag, or the user can choose to clear the <B CLASS="GUILABEL">Add Title to Location</B> check box in the <B CLASS="GUILABEL">Object Importer Configure</B> page.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

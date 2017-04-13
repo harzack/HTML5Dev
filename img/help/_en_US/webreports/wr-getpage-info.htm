@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Page Function Reference</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-getpage-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'Page Function Reference';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID20958"></A>The page.js file packaged with WebReports includes a useful function 'getPage' to assist in the mechanics of pagination when you want to display a large set of results. This function is called when the user clicks the First, Previous, Next, or Last buttons (See image below). In addition this function is available to use in any WebReport reporting application. The page.js file is accessed using the a SCRIPT include like this: <TT CLASS="literal">&lt;SCRIPT SRC="/&lt;support dir&gt;/webreports/library/page.js"&gt;&lt;/SCRIPT&gt;</TT></P>
+<P><A NAME="TMPID20960"></A>If this file is being included into a WebReport the LIBPATH tag can be used like this: <TT CLASS="literal">&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]page.js"&gt;&lt;/SCRIPT&gt;</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-GETPAGE-PARM">getPage( baseURL, page, dataCount, pageSize, ip1, ip2, startParm, endParm )</A></P><A NAME="AEN19686"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19687"></A><A NAME="TMPID20966"></A>A function that is invoked when the user clicks the First, Previous, Next, or Last buttons. It builds and executes the URL for the next slice of data to display to the user based on the button that is clicked.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN19689"></A><A NAME="TMPID20968"></A>Takes the arguments:</P><A NAME="AEN19691"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19692"></A><A NAME="TMPID20971"></A><B CLASS="highlight">baseURL</B>: a required parameter. The base URL of the report we want to run. This can be achieved using the WebReport tag <TT CLASS="literal">[LL_REPTAG_MYID LLURL:REPORT /]</TT> which would resolve to something like: <TT CLASS="literal">?func=ll&amp;objId=xyz&amp;objAction=RunReport</TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19697"></A><A NAME="TMPID20976"></A><B CLASS="highlight">page</B>: a required parameter. A String indicating which button is clicked. It must be one of the following values: first, prev, next, or last.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19700"></A><A NAME="TMPID20979"></A><B CLASS="highlight">dataCount</B>: a required parameter. A number representing the total number of rows to paginate through.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19703"></A><A NAME="TMPID20982"></A><B CLASS="highlight">pageSize</B>: a required parameter.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19706"></A><A NAME="TMPID20985"></A><B CLASS="highlight">ip1</B>: a required parameter. The current start row number. Example: If 'ip1=1' and 'ip2=20' is specified, it would result in the first 20 rows being displayed when the user runs the WebReport.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19709"></A><A NAME="TMPID20988"></A><B CLASS="highlight">ip2</B>: a required parameter. The current end row number. Example: If 'ip1=1' and 'ip2=20' is specified, it would result in the first 20 rows being displayed when the user runs the WebReport.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19712"></A><A NAME="TMPID20991"></A><B CLASS="highlight">startParm</B>: an optional parameter. Represents the start parameter name. If not specified, it defaults to 'inputLabel1'. Generally this is the name for the parameter 'ip1'. This parameter is used in the URL of the next page to display with its value set to the start row number.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19715"></A><A NAME="TMPID20994"></A><B CLASS="highlight">endParm</B>: an optional parameter. Represents the end parameter name. If not specified, it defaults to 'inputLabel2'. Generally this is the name for the parameter 'ip2'. This parameter is used in the URL of the next page to display with its value set to the end row number.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19718"></A><A NAME="TMPID20997"></A>Please see a detailed example of Pagination using the 'getPage' function: <span><A HREF="wr-ajax-exampl.htm#WR-GETURL-EX">getURLParm( parm ) Example</A></span>.</P></LI></UL>
+<DIV title="Example Pagination - First, Previous, Next, and Last Buttons" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-GETPGE-EX"></A><B><IMG title="Example Pagination - First, Previous, Next, and Last Buttons" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-28: Example Pagination - First, Previous, Next, and Last Buttons</B></P>
+<P><IMG SRC="image037.png"></P><IMG title="Example Pagination - First, Previous, Next, and Last Buttons" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

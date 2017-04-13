@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Référencement des constantes dans l'affichage de rapport WebReport</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-constant-refconst.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Constantes WebReports';
+          header.title2 = 'Référencement des constantes dans l\'affichage de rapport WebReport';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1036"></A>Lorsqu'une constante a été définie, la valeur correspondante peut être insérée dans l'affichage de rapport autant de fois que nécessaire. Il n'est pas indispensable de définir une constante avant d'ajouter la balise correspondante dans l'affichage de rapport. Il peut être plus rapide de les définir via la méthode automatique ci-dessus lorsque vous avez terminé de modifier l'affichage de rapport. Par exemple, si une constante nommée <TT CLASS="literal">reportID</TT> a été stockée pour référencer un autre WebReport, la syntaxe utilisée peut être la suivante :</P>
+<P><A NAME="TMPID1038"></A><TT CLASS="literal">?func=ll&amp;objid=[LL_REPTAG_$reportID /]&amp;objaction=runreport</TT></P>
+<P><A NAME="TMPID1040"></A>Cependant, il peut être plus approprié d'utiliser la même constante avec <TT CLASS="literal">LLURL</TT> comme suit :</P>
+<P><A NAME="TMPID1042"></A><TT CLASS="literal">[LL_REPTAG_$reportID LLURL:REPORT /]</TT></P>
+<P><A NAME="TMPID1044"></A>qui devient <TT CLASS="literal">?func=ll&amp;objid=xyz&amp;objaction=runreport</TT>, où <TT CLASS="literal">xyz</TT> est la valeur de la constante <TT CLASS="literal">reportID</TT>. </P>
+<P><A NAME="TMPID1048"></A>L'avantage de cette approche est que si Content Server modifie le fonctionnement de cette URL, le rapport continue à fonctionner, tandis que la première méthode nécessiterait d'apporter des modifications au rapport. Si vous travaillez dans l'éditeur en ligne WebReports, il est possible d'utiliser l'interface glisser-déposer pour accélérer certaines activités. Pour plus d'informations sur l'utilisation de l'interface glisser-déposer, voir <span><A HREF="wr-constant-dragdrop-p.htm">Pour faire glisser et déposer une constante dans l'affichage de rapport WebReport</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Reconfiguration des objets source de données</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-reconfigdsobjs-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Resynchronisation des serveurs d\'administration';
+          header.title2 = 'Reconfiguration des objets source de données';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID813"></A>Lorsque vous installez une nouvelle instance de Content Server et que vous essayez de vous connecter à une base de données existante, vous devez reconfigurer les serveurs d'administration, les index et les processus de flux de données enregistrés dans la base de données, puis resynchroniser tous les serveurs d'administration enregistrés du site. Pour en savoir plus, voir <span><A href="../otadmin/ota-resynchlladminserver-bg.htm">Resynchronisation des serveurs d'administration</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF23"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID817"></A><B CLASS="note">Note : </B><BR>Si vous resynchronisez un serveur d'administration qui gère un index Entreprise sans déplacer au préalable le répertoire de l'index Entreprise vers le chemin d'accès spécifié dans la base de données (ou sans modifier le chemin pour qu'il corresponde à l'emplacement correct), Content Server crée un index Entreprise vide à l'emplacement spécifié dans la base de données. Dans ce cas, vous devez extraire à nouveau les données Entreprise pour régénérer l'index Entreprise. Pour plus d'informations sur la réextraction de toutes les données, reportez-vous à la rubrique <span><A href="../otadmin/ota-verifyandreindex-bg.htm">Vérification du contenu et réindexation</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF24">Reconfiguration des serveurs d'administration</A></P>
+<P class="before-ul"><A NAME="TMPID821"></A>La reconfiguration d'un serveur d'administration s'effectue en vérifiant qu'il est disponible et que seuls des serveurs d'administration valables sont enregistrés avec lui.</P><A NAME="AEN831"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN832"></A><A NAME="TMPID824"></A>Exécutez une commande ping vers tous les serveurs d'administration enregistrés pour vous assurer que le nouvel hôte Content Server peut y accéder.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN835"></A><A NAME="TMPID827"></A>Si l'un des serveurs d'administration enregistrés réside sur un hôte distant, assurez-vous que Content Server est installé sur cet hôte et qu'il fonctionne correctement. Pour plus d'informations sur l'installation de Content Server, reportez-vous au <I CLASS="emphasis">Guide d'installation de Content Server</I>. Lorsque Content Server est installé et que les serveurs d'administration ont démarré, vous devrez peut-être modifier le numéro de port ou le mot de passe stockés dans la base de données.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN842"></A><A NAME="TMPID834"></A>Supprimez l'enregistrement des serveurs d'administration que vous ne souhaitez plus utiliser.</P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF25">Reconfiguration des index</A></P>
+<P class="before-ul"><A NAME="TMPID836"></A>La reconfiguration d'un index s'effectue en vérifiant que tous les objets source de données liés sont valables et que le chemin de leur répertoire est correct.</P><A NAME="AEN846"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN847"></A><A NAME="TMPID839"></A>Assurez-vous que les serveurs d'administration, les moteurs d'index et les répertoires d'indexation sont corrects pour cette nouvelle installation Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN850"></A><A NAME="TMPID842"></A>Pour utiliser à nouveau les index créés à l'aide de l'installation Content Server dans laquelle la base de données a été créée, assurez-vous que les fichiers d'index existent dans les emplacements du répertoire d'indexation spécifiés dans l'onglet <B CLASS="guilabel">Spécifique</B> de la page Propriétés du moteur d'indexation. Si les répertoires d'indexation ne se trouvent pas aux chemins d'accès spécifiés, modifiez les chemins pour qu'ils correspondent à l'emplacement correct ou <span><A href="../webotcindex/wbo-moveindx-bg.htm">Déplacement des index</A></span> les répertoires d'index vers les chemins spécifiés.</P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF26">Reconfiguration des processus de flux de données</A></P>
+<P><A NAME="TMPID847"></A>La reconfiguration des processus de flux de données s'effectue en vérifiant que les serveurs d'administration, les répertoires de lecture et d'écriture et les numéros de port sont corrects pour cette nouvelle installation Content Server.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

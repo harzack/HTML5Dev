@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>setColumn( title, parm2, parm3, parm4, parm5, parm6 )</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="4">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-brws-setcolm.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Guide de référence des fonctions de navigation';
+          header.title2 = 'setColumn( title, parm2, parm3, parm4, parm5, parm6 )';
+           header.draw();
+  </script>
+  <A NAME="AEN12982"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12983"></A><A NAME="TMPID13708"></A>Crée une colonne dans un ActiveView/WebReport pouvant être triée lorsque l'utilisateur clique sur le titre. Un ensemble d'attributs de formatage peut également être spécifié et appliqué à la colonne.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN12985"></A><A NAME="TMPID13710"></A>Traite les arguments suivants :</P><A NAME="AEN12987"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN12988"></A><A NAME="TMPID13713"></A><B CLASS="highlight">title</B> : paramètre obligatoire. Titre à afficher de la colonne. Si aucun titre n'est spécifié, par exemple ", un simple diviseur est ajouté.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN12991"></A><A NAME="TMPID13716"></A><B CLASS="highlight">HTML Attributes</B> : paramètre facultatif. Paramètre facultatif représentant une liste d'attributs de formatage HTML, séparés par des virgules, pour la colonne. Par exemple « align=right,width=10%,etc... »</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN12995"></A><A NAME="TMPID13720"></A><B CLASS="highlight">Sort Reference</B> : paramètre facultatif. Chaîne facultative représentant le nom de la colonne sur laquelle effectuer le tri, à partir de la source de données. Vous pouvez spécifier ici des noms de colonnes simples. For example, « subtype » ou « name ». si vous souhaitez trier selon la valeur d'une sous-balise WebReport, il vous suffit de spécifier ici une simple « reference key » et la sous-balise peut être définie par la directive @PREDEFKEY dans la balise SORT. Par exemple, si <TT CLASS="literal">parm3='catValue'</TT>, la balise SORT contient la valeur suivante : <TT CLASS="literal">@PREDEFKEY REF:catValue PARM:"[LL_REPTAG=DATAID CAT:'somecat':'someattr':DISPLAY /]")</TT> </P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN13003"></A><A NAME="TMPID13728"></A><B CLASS="highlight">CS Sorting</B> : paramètre facultatif. Paramètre booléen facultatif, true/false, pour indiquer si vous souhaitez utiliser la syntaxe du tri Content Server, par exemple <TT CLASS="literal">&amp;sort=name, &amp;sort=-name</TT>, ou celle du tri WebReport, par exemple <TT CLASS="literal">&amp;sort=name&amp;direction=asc, &amp;sort=name&amp;direction=desc</TT>. La valeur par défaut est false. Les noms de colonnes simples doivent utiliser le tri Content Server (true). Les tris basés sur des combinaisons complexes de balises et de sous-balises doivent utiliser le tri WebReport (false). </P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN13010"></A><A NAME="TMPID13735"></A><B CLASS="highlight">Alternate Sort Parm</B> : paramètre facultatif. Chaîne facultative vous permettant de définir votre paramètre de tri personnalisé dans l'URL. Utilisée conjointement à la directive @PARMNAMES, qui doit être définie dans la balise SORT. Exemple : Si parm5='AVsort', pour effectuer le tri, la balise SORT recherche le paramètre '&amp;AVsort' plutôt que le paramètre par défaut '&amp;sort'. </P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN13013"></A><A NAME="TMPID13738"></A><B CLASS="highlight">Current Value for Alt Parm</B> : paramètre facultatif. Chaîne facultative spécifiant la valeur de tri indiquée par l'autre paramètre de tri. Il s'agit généralement d'une balise de paramètre utilisant le nom dans l'autre paramètre de tri. Par exemple, [LL_REPTAG_&amp;AVSORT /]</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13016"></A><A NAME="TMPID13741"></A>Cette fonction exige que la fonction 'setupContext' ait été exécutée au préalable, car elle fait référence à certaines variables. Par exemple : supportDir, urlPrefix, myURL et sortCol.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13018"></A><A NAME="TMPID13743"></A>Pour plus d'informations sur les directives @PREDEFKEY et @PARMNAMES, voir <span><A HREF="wr-sort-info.htm">Tri des résultats</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13021"></A><A NAME="TMPID13746"></A>Exemple :</P><A NAME="AEN13023"></A>
+<PRE 
+CLASS="screen"
+>setColumn( '' );								// No title is specified, just add a divider
+setColumn( 'Type', 'width=2%', 'subtype', true );				// Simple usage. Sort by the column 'subtype' returned from the datasource using the Content Server sort. 
+setColumn( 'Name', 'align=left', 'name', true );				// Simple usage. Sort by the column 'name' returned from the datasource using the Content Server sort. 
+
+// Sort the column by the value of '=DATAID NODEINFO:VERSIONNUM' tag/sub-tag. Here 'verNum' is a reference key for the @PREDEFKEY directive defined in the SORT tag below. Here we are using the WebReport sort. 
+setColumn( 'Version', 'align=right,width=15%', 'verNum' );
+
+// Sort the column by a category-attribute value. 'catValue' is a reference key and 'AVsort' is a custom sort parameter defined in @PARMNAMES directive in the SORT tag below. 
+setColumn( 'Attribute', '', 'catValue', false, 'AVsort' );
+
+... 
+
+[LL_WEBREPORT_STARTROW /]
+
+	[// Sort tag with the directives @PARMNAMES and @PREDEFKEY defined. Add additional @PREDEFKEY's here if you need to sort by complex tag/sub-tag combinations. 
+	[LL_WEBREPORT_SORT @PARMNAMES SORTCOL:AVsort SORTDIR:direction @PREDEFKEY REF:verNum PARM:"[LL_REPTAG=DATAID NODEINFO:VERSIONNUM /]" @PREDEFKEY REF:catValue PARM:"[LL_REPTAG=DATAID CAT:'somecat':'someattr':DISPLAY /]" /]
+
+[LL_WEBREPORT_ENDROW /]
+
+...</PRE
+></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

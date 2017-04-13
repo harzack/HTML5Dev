@@ -1,0 +1,209 @@
+<!-- wr_parameter_procedures.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Using Parameters</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_parameter_procedures.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+	var header = new AdminHeader();
+	header.title1 = 'Working With WebReports';
+	header.title2 = 'Using Parameters';
+	header.draw();
+</SCRIPT>
+
+<p class="body">
+  <b><u>Defining Parameters for the WebReport manually</u></b><br><br>
+Use the procedure below where you have parameters you want to define but have not yet used in the WebReport.  Once defined here you can reference
+them in the reportview.
+<ul>
+  <li class="body" type="disc">Select the parameters tab for the WebReport using the function option:  <SPAN class="gui">Properties -&gt;&nbsp;Parameters</SPAN></li>
+  <li class="body" type="disc">Select the <img src="../../images/add_row.gif" border="0" width="16" height="16" alt="Add Row Icon "> button to add a new parameter (if no other parameters have been defined the <SPAN class="gui">Click here to add new parameter...</SPAN> option can also be used)</li>
+  <li class="body" type="disc">Using the new, blank row which is created add a parameter name, display text, prompt order, default value and other settings. See full list of parameter <a href="#parmsettings">settings</a>.
+  <li class="body" type="disc">Select the <SPAN class="gui">Update</SPAN> button from the bottom of the screen</li>
+</ul>
+</p>
+
+<p class="body">
+  <b><u>Defining Parameters for the WebReport automatically</u></b><br><br>
+Use this method where you have made reference to a parameter or multiple parameters in the reportview and want to quickly populate them on the parameters tab.  In addition, parameters
+defined in LiveReport data sources will also be populated on the tab.  This method
+saves time on the method above as it allows the parameters to be populated on mass.  It also, where possible, will determine the parameter type programmatically.  Where this is
+not possible, the parameter will be of type string.
+<ul>
+  <li class="body" type="disc">Select the parameters tab for the WebReport using the function option:  <SPAN class="gui">Properties -&gt;&nbsp;Parameters</SPAN></li>
+  <li class="body" type="disc">Select the <img src="../../../get.gif" border="0" alt="Extract parameters from reportview icon"> button to add all the parameters that are used in the reportview or LiveReport data source.  Note that this icon
+  only appears when the reportview or LiveReport contains parameters that are not defined on the parameters tab.</li>
+  <li class="body" type="disc">For all the new parameters, add a parameter name, display text, prompt order, default value and other settings. See full list of parameter <a href="#parmsettings">settings</a>.
+  <li class="body" type="disc">Select the <SPAN class="gui">Update</SPAN> button from the bottom of the screen</li>
+</ul>
+</p>
+
+<p class="body">
+  <b><u>Referencing Parameters in the WebReport reportview</u></b>
+<br><br>
+Once a parameter has been defined, the corresponding value can be inserted into the reportview as many times as required (it is not
+necessary that a parameter is defined prior to adding the corresponding tag in the reportview, if using the automatic method above it may
+be faster to define them once you have finished changing the reportview).
+</p>
+
+<p class="body">
+If working in the WebReports online editor it is possible to use the drag-and-drop interface to speed up some activities.
+<ul>
+  <li class="body" type="disc">You can drag and drop parameters by selecting the appropriate parameter from the dropdown list and then dragging the
+  <img src="../../../copyto.gif" border="0" alt="Copy Tag to Clipboard"> icon to the point in the reportview where you want to insert the parameter.</li>
+	<li>You can open the parameters tab in a new window by selecting the parameters hyperlink before the dropdown</li>
+	<li>You can update the list of parameters in the dropdown by clicking the <img src="../../../upgradable.gif" border="0" alt="Copy Tag to Clipboard"> icon.  This
+	has the effect of updating the list without reloading the page.</li>
+</ul>
+</p>
+
+<p class="body">
+A full description of the parameters tag and the sub-tags which can be used with it can be found in the <a href="wr_tag_syntax.htm#parmname">syntax guide</a>.  A more
+detailed discussion on the subject of parameters can be found <a href="wr_parameter_info.htm">here</a> in the Advanced Information section.
+</p>
+
+<p class="infin">
+<b><u>Deleting WebReport Parameters</u></b>
+</p>
+<p class="body">
+Select the parameters tab for the WebReport using the function option: <SPAN class="gui">Properties -&gt;&nbsp;Parameters</SPAN>
+</p>
+<ul>
+  <li>Select the <img src="../../images/delete-row.gif" border="0" alt="Delete Row Icon"> button for the parameter to be deleted and accept the warning message by selecting <SPAN class="gui">OK</SPAN></li>
+  <li>Select the <SPAN class="gui">Update</SPAN> button from the bottom of the screen.</li>
+</ul>
+</p>
+<p class="body">
+Alternatively:
+<ul>
+  <li>Select the <img src="../../../uncheck.gif" border="0" alt="Clear all parameters from this tab"> button to delete all the parameter definitions for the entire WebReport.</li>
+  <li>Select the <SPAN class="gui">Update</SPAN> button from the bottom of the screen.</li>
+</ul>
+</p>
+
+<p class="gui">
+<u><a name="parmsettings"></a>Parameter Tab Settings</u>
+</p>
+<p class="body">
+This table provides details of the different options available on the parameters tab and the effect they have on the end report.
+<br><br>
+<table border="1" cellpadding="5" class="body">
+	<tr bgcolor="lightgray" >
+		<td><B>Option</B></td>
+		<td><B>Description</B></td>
+	</tr>
+	<tr>
+		<td>&nbsp;<nobr>Parameter Name</nobr></td>
+		<td>This is the name of the parameter as it will appear in the URL once the user has selected their values and selected Run on the prompting page.
+		The parameter name must not contain spaces or other characters which cannot be passed in a URL.  The end user will be largely unaware of this value.
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;Display Text</td>
+		<td>This is the text that the user will be prompted with.  It differs from the parameter name in that is can be more descriptive and can contain spaces.</td>
+	</tr>
+	<tr>
+		<td>&nbsp;Prompt</td>
+		<td>This checkbox determines whether the user will see the prompt or not.  If the user it not prompted for a particular parameter the default value will
+		be used.  If turning off prompting for a parameter make sure you do not put the user in a situation where they are stuck.  This might happen if you make
+		a parameter mandatory, turn the prompting off and don't select a default value.</td>
+	</tr>
+	<tr>
+		<td>&nbsp;Mandatory</td>
+		<td>This checkbox determines whether a parameter is mandatory or not.  If a parameter is mandatory the user will not be able to go beyond the
+		prompt screen without selecting a value for the parameter (unless the parameter has a default value).  Mandatory parameters can be identified on the
+		prompt screen by the <IMG SRC="../../../required.gif" HEIGHT="12" WEIGHT="12" BORDER="0" ALT="Required"> icon next to the prompt text.</td>
+	</tr>
+	<tr>
+		<td>&nbsp;Prompt Order</td>
+		<td>This field determines the order in which the parameters will appear on the prompt screen.  The values can be alphanumeric.</td>
+	</tr>
+	<tr>
+		<td>&nbsp;Type</td>
+		<td>This field will determine the type of parameter the user is prompted for.  This can be String, ObjectID, User, Number, Object, Date or Custom.
+		See the separate <a href="#parametertypes">parameter type</a> table for details of each parameter type</td>
+	</tr>
+	<tr>
+		<td>&nbsp;Default Value</td>
+		<td>This is the value that will be used if the user doesn't select a value on the prompt screen.  The value will appear pre-populated on the prompt screen.
+		The value will be used by WebReports that are running on a schedule.</td>
+	</tr>
+	<tr>
+		<td>&nbsp;Description</td>
+		<td>The description is a free text field which allows the WebReport developer two options.  They can put comments in it so as to remind them and other developers
+		about an implementation detail.  The second option is to tick the Show Descriptions checkbox at the top of the parameters page - this will cause all the descriptions
+		to appear on the prompt screen where they can be used to provide the end user with instructions.  This field can contain HTML tags.</td>
+	</tr>
+	<tr>
+		<td><nobr>&nbsp;Show Descriptions</nobr></td>
+		<td>This field determines whether the description text for all the parameters appears on the prompt page.
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;Prompt File</td>
+		<td>When selected the contents of this file will be rendered at the top of the prompts page.  This allows developers to quickly apply the same branding or instructions to the top
+		of all their prompting screens.  A text-based document or a separate WebReport maybe selected to provide this text.  If using a WebReport this gives the developer the flexibility
+		to bring back dynamic content to the prompt screen.  One use of this might be to perform some summary counts on the data the user is about to select from on the prompting screen. </td>
+	</tr>
+</table>
+</p>
+
+<p class="gui">
+<u><a name="parametertypes"></a>Parameter Types</u>
+</p>
+<p class="body">
+This table illustrates the different parameter types which can be selected on the parameters tab and the effect they have on the end report.
+<br><br>
+<table border="1" cellpadding="5" class="body">
+	<tr bgcolor="lightgray" >
+		<td><B>Type</B></td>
+		<td><B>Description</B></td>
+	</tr>
+	<tr>
+		<td>&nbsp;String</td>
+		<td>The String parameter type will prompt the user with a free text field</td>
+	</tr>
+	<tr>
+		<td>&nbsp;ObjectID</td>
+		<td>The ObjectID parameter type allows the report developer to specify types of Livelink objects the user can select from on the prompt screen.  One or
+		more items can be selected from the multi-value list and at least one type must be selected before the developer can browse for a default value.</td>
+
+	</tr>
+	<tr>
+		<td>&nbsp;User</td>
+		<td>This field allows the report developer to create a user prompt.  The developer can decide whether the user is allowed
+		to browse for Users, Groups or Users and Groups</td>
+	</tr>
+	<tr>
+		<td>&nbsp;Number</td>
+		<td>Similar to the String parameter but forces the user to enter a numeric value</td>
+	</tr>
+	<tr>
+		<td>&nbsp;Object</td>
+		<td>Allows the user to select a Livelink sub type.  For example, select Document (144) or Folder (0)</td>
+
+	</tr>
+	<tr>
+		<td>&nbsp;Date</td>
+		<td>Prompts the user with a date field.  The developer can decide whether the time is displayed or not - also whether
+		the user is prompted with a blank date, the current date or a specific date in time.</td>
+	</tr>
+
+	<tr>
+		<td>&nbsp;Custom</td>
+		<td>Here the developer can browse for a WebReport that is being used to provide a custom prompt.  The developer might use this
+		to create a custom pick list, for example.</td>
+	</tr>
+</table>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

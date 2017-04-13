@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>ODD, ODDEVEN, ONERROR</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stthirteenth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sub-Tags';
+          header.title2 = 'ODD, ODDEVEN, ONERROR';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID10450"></A>This section details the sub-tags: <span><A HREF="wr-tag-stthirteenth.htm#WR-TAG-STODD">ODD</A></span>, <span><A HREF="wr-tag-stthirteenth.htm#WR-TAG-STODDEVEN">ODDEVEN</A></span>, and  <span><A HREF="wr-tag-stthirteenth.htm#WR-TAG-STONERROR">ONERROR</A></span>.&#13;</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STODD">ODD</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STODD-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGODD"></A><B CLASS="highlight">ODD</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STODD-DESC">Description</A></P>
+<P><A NAME="TMPID10462"></A>Returns true if the data returned by the main tag is an odd number, otherwise returns false. This can also be used as per the example for the <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STEVEN">EVEN</A></span> tag.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STODDEVEN">ODDEVEN</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STODDEVEN-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGODDEVEN"></A><B CLASS="highlight">ODDEVEN</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STODDEVEN-DESC">Description</A></P>
+<P><A NAME="TMPID10472"></A>Returns either <TT CLASS="literal">ODD</TT> or <TT CLASS="literal">EVEN</TT> based on the data returned by the main tag. If the main tag data is not a valid integer then this sub-tag returns an empty string. This sub-tag can be used with a tag like <span><A HREF="wr-tag-cdtwelfth.htm#WR-TAG-CDROWNUM">ROWNUM</A></span> to set an appropriate style for each row. The <TT CLASS="literal">ODDEVEN</TT> sub-tag also allows two additional parameters to be specified. If provided, these two parameters will be returned alternately instead of <TT CLASS="literal">ODD/EVEN</TT>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STODDEVEN-EXAMPL">Example</A></P>
+<P><A NAME="TMPID10480"></A>This example shows how to use the standard Content Server styles, <B CLASS="guilabel">BrowseRow1</B> and <B CLASS="guilabel">BrowseRow2</B> to allow each row to have an alternating colour. The class statement for each row would alternate between <B CLASS="guilabel">BrowseRow1</B> and <B CLASS="guilabel">BrowseRow2</B>.</P>
+<P><A NAME="TMPID10486"></A>Each row includes the following TR statement:</P>
+<P><A NAME="TMPID10487"></A><TT CLASS="literal">&lt;<I CLASS="varname">TR class=[LL_REPTAG_ROWNUM ODDEVEN:BrowseRow1:BrowseRow2 /]</I>></TT></P>
+<P><A NAME="TMPID10490"></A>Each row would resolve to either:</P>
+<P><A NAME="TMPID10491"></A><TT CLASS="literal">&lt;<I CLASS="varname">TR class=BrowseRow1</I>></TT></P>
+<P><A NAME="TMPID10494"></A>or:</P>
+<P><A NAME="TMPID10495"></A><TT CLASS="literal">&lt;<I CLASS="varname">TR class=BrowseRow2</I>></TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STONERROR">ONERROR</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STONERROR-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGONERROR"></A><B CLASS="highlight">ONERROR:&lt;<I CLASS="varname">parm</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STONERROR-DESC">Description</A></P>
+<P><A NAME="TMPID10507"></A>A sub-tag error typically occurs when a sub-tag receives invalid data or an invalid parameter. The <TT CLASS="literal">ONERROR</TT> sub-tag allows the developer to change the default error message when an error occurs. The position of the <TT CLASS="literal">ONERROR</TT> sub-tag in the list of sub-tags is irrelevant, and applies to every sub-tag in the list.</P>
+<P><A NAME="TMPID10510"></A>The optional <TT CLASS="literal">BREAK</TT> parameter prevents subsequent sub-tags from being processed as soon as the first error occurs.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STONERROR-PARAM">Parameters</A></P>
+<P><A NAME="TMPID10514"></A>The following options for using this sub-tag include:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN9605"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Error Type</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ONERROR:BLANK[:BREAK]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This option will replace any standard error message with a blank string, useful for preventing error messages from being displayed.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ONERROR:SHORT[:BREAK]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This option will display a short version of the error message consisting of the sub-tag in question and an error number.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ONERROR:LONG[:BREAK]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This option will display a full error message for the sub-tag in question.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ONERROR:CUSTOM:&lt;<I CLASS="varname">error message</I>>[:BREAK]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This option allows the developer to specify their own error message for a sub-tag.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STONERROR-EXAMP">Example</A></P>
+<P><A NAME="TMPID10555"></A>For example: <TT CLASS="literal">[LL_REPTAG=VALUE LIST:1 ONERROR:CUSTOM:"Invalid list" INC:1 ONERROR:LONG /]</TT></P>
+<P><A NAME="TMPID10557"></A>In this example the message “Invalid list” would be returned for this tag if the <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> sub-tag had returned an error. If the <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> sub-tag does not cause an error but the <span><A HREF="wr-tag-stninth.htm#WR-TAG-STINC">INC</A></span> sub-tag does, then the standard error message would be returned.</P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN9651"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID10563"></A>The following is example using the optional <TT CLASS="literal">BREAK</TT> parameter. Consider the following sub-tag:</P>
+<P><A NAME="TMPID10565"></A><TT CLASS="literal">[LL_REPTAG_"somestring" LIST:4 INC /]</TT></P>
+<P><A NAME="TMPID10567"></A>The <TT CLASS="literal">LIST:4</TT> sub-tag produces an error because the data, in this case “somestring”, is not a valid list. The <TT CLASS="literal">INC</TT> sub-tag receives the error message from the <TT CLASS="literal">LIST</TT> sub-tag, which is also invalid, in other words is not an integer, and therefore produces an error:</P>
+<P><A NAME="TMPID10572"></A><TT CLASS="literal">* INC: Invalid (non-integer) data value *</TT></P>
+<P><A NAME="TMPID10574"></A>The error message can be customized in a number of ways, as detailed below. Notice that the placement of <TT CLASS="literal">ONERROR</TT> is irrelevant:</P>
+<P><A NAME="TMPID10576"></A><TT CLASS="literal">[LL_REPTAG_"somestring" LIST:4 ONERROR:SHORT INC /]</TT></P>
+<P><A NAME="TMPID10578"></A>Returns: <TT CLASS="literal">* INC: 1002 *</TT></P>
+<P><A NAME="TMPID10580"></A><TT CLASS="literal">[LL_REPTAG_"somestring" LIST:4 INC ONERROR:CUSTOM:"Custom Error Message" /]</TT></P>
+<P><A NAME="TMPID10582"></A>Returns: <TT CLASS="literal">* INC: Custom Error Message *</TT></P>
+<P><A NAME="TMPID10584"></A>Adding the <TT CLASS="literal">BREAK</TT> parameter causes processing to stop as soon as the first error occurs. In the following example, the error occurs in the <TT CLASS="literal">LIST</TT> sub-tag, and therefore the <TT CLASS="literal">INC</TT> sub-tag isn't processed:</P>
+<P><A NAME="TMPID10588"></A><TT CLASS="literal">[LL_REPTAG_"somestring" LIST:4 INC ONERROR:LONG:BREAK /]</TT></P>
+<P><A NAME="TMPID10590"></A>Returns: <TT CLASS="literal">* LIST: Data is not a valid list *</TT></P>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

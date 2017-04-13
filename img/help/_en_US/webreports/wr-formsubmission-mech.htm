@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Form Submission Mechanism</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-formsubmission-mech.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Running WebReports';
+          header.title2 = 'Form Submission Mechanism';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1034"></A>WebReports provides a form submission mechanism, <B CLASS="guilabel">Initiate WebReport</B>, that is similar to <B CLASS="guilabel">SQL Table</B>. The main differences being that when the data is stored in the SQL table, the primary key, or <TT CLASS="literal">SEQ</TT>, is identified and passed to a WebReport which is initiated immediately after the form submission.</P>
+<P><A NAME="TMPID1038"></A>The data stored in each method is interchangeable. In other words, it is possible to change the form submission mechanism between <B CLASS="guilabel">Initiate WebReport</B> and <B CLASS="guilabel">SQL Table</B> without affecting the existing data.</P>
+<P class="before-ul"><A NAME="TMPID1041"></A><B CLASS="guilabel">Initiate WebReport</B> requires only two configuration options that are set on the <B CLASS="guilabel">Specific</B> tab of the form:</P><A NAME="AEN936"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN937"></A><A NAME="TMPID1046"></A>You need to set the WebReport that is to be executed immediately following tthe form submission</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN939"></A><A NAME="TMPID1048"></A>You need to determine whether the WebReport is to be executed transparently, or is to be presented to the user following form submission</P></LI></UL>
+<P><A NAME="TMPID1049"></A>In each case, the <TT CLASS="literal">SEQ</TT>, from the form just submitted, is available as a parameter <TT CLASS="literal">[LL_REPTAG_&amp;SEQ /]</TT>. This can be used in the WebReport as a key to look up additional data associated with the form just submitted. Alternately, it can be passed as a parameter to a separate, sub, WebReport which has it's destination set to <B CLASS="guilabel">Populate Form</B>. This allows basic relational tables to be maintained through a series of WebReports as the act of using a WebReport to export data to a form will cause a further WebReport to initiate if the submission mechanism is set appropriately.</P>
+<P><A NAME="TMPID1053"></A>The <B CLASS="guilabel">Initiate WebReport</B> form submission mechanism is not visible until the <B CLASS="guilabel">Manage Relational Table</B> option has been used to configure an associated SQL table.</P>
+<P><A NAME="TMPID1056"></A>Form tags of the type <TT CLASS="literal">[LL_FormTag_1_1_3_1 /]</TT> are only supported when <B CLASS="guilabel">Show WebReport</B> is <I CLASS="emphasis">not</I> selected. You might need to select <B CLASS="guilabel">Show WebReport</B>, for example, if you need to display data that has just been submitted. In that case, you must use the <TT CLASS="literal">[LL_REPTAG_&amp;SEQ /]</TT> tag as a parameter to a sub-WebReport and/or sub-LiveReport in order to retrieve the submitted data.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<title>WebReports Database Administration and Downgrading to Earlier Versions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'webrep-dbadmin.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'The WebReports Administration Section';
+          header.title2 = 'WebReports Database Administration and Downgrading to Earlier Versions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1002"></A>During an uninstall of the WebReports module, initiated from the <B CLASS="guilabel">Module Administration</B> page, the module's database schema will remain in place in order to provide the system administrator with more flexibility; for example to avoid the loss of schedule information when WebReports is re-installed. Only WebReports 5.0.x or above can be re-installed under these circumstances.</P>
+<P class="before-ul"><A NAME="TMPID1007"></A>If you wish to permanently remove WebReports and its associated schema or downgrade the schema, you can do this by selecting <B CLASS="guilabel">WebReports Database Administration</B> on the administration pages.</P><A NAME="AEN1006"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1007"></A><A NAME="TMPID1013"></A>If you choose to <B CLASS="guilabel">Delete WebReports tables</B> the entire WebReports schema will be removed and, following this, you will be taken through the uninstall of the module.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1011"></A><A NAME="TMPID1017"></A>If you choose to <B CLASS="guilabel">Downgrade the scheme to 4.x.x</B> only the new schema added after WebReports 4.1.1 will be dropped and, following this, you will be taken through the uninstall of the module. All data valid in WebReports 4.x.x will be retained and you can then install WebReports 4.x.x.</P></LI></UL>
+<P><A NAME="TMPID1021"></A>In the event that WebReports is uninstalled without using either of these options and an attempt is then made to install a pre-5.0.x version of WebReports the installation will fail with a schema mismatch error. It will be necessary to manual uninstall WebReports and then either re-install WebReports 5.0.x and use one of the above options, or manually drop the schema from the database. If in doubt, please contact OpenText support.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

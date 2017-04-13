@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<title>WebReports Preferences in the opentext.ini File</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'webrep-wrprefini.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Content Server Functions Available for WebReports';
+          header.title2 = 'WebReports Preferences in the opentext.ini File';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1405"></A>WebReports has a number of configuration preferences that can be set in the <TT CLASS="filename">opentext.ini</TT> file. The following table describes the options. Be cautious about making changes to settings in the <TT CLASS="filename">opentext.ini</TT> file. Content Server must be restarted before any changes take effect. Always consult OpenText support if in doubt.</P>
+<DIV title="WebReports Configuration Options in the opentext.ini File" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="WEBR-CONFOPTS-TB"></A><B>Table 1-2: WebReports Configuration Options in the opentext.ini File</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field Name</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">addsearchbutton</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">String or null</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Describes the label used for the button to launch a WebReport from Content Server search. This should be set from the Admin pages in Content Server. Please refer to the WebReports User Guide for more detail about this feature.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">searchslice</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Integer</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Determines how many results are to be gathered in go from the search API. Changing this setting will have an impact on performance of WebReports that use search as a data source. In general this setting should not be altered without advice from OpenText support. Default is 300.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">searchHardLimit</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Integer</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Determines a maximum limit on the number of results that a WebReport using search as a data source can return. Default is 50,000.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">searchDebug</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">true / false</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Turns on extra debug information in the thread log for executing WebReports with search as a data source. False by default.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EnableOscriptReportviews</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">true / false</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Controls whether Oscript is permitted within reportviews. Default is true. When set to false no oscript within any reportview will be compiled or executed. This turns the scripting feature off completely on the Content Server. Please refer to the WebReports User Guide for more detail about this feature. True by default.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OscriptAllowFunction1</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">List of strings</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">A list of individual oscript package functions to be permitted within a reportview. Please refer to the WebReports User Guide for more detail about this feature.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OscriptAllowWholePkg</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">List of strings</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">A list of oscript packages to be permitted within a reportview. Please refer to the WebReports User Guide for more detail about this feature.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">MaxNestedSubWebReports</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Integer</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Controls the upper limit of how deep sub-WebReports may be nested. Default value is 5 if this field is absent.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">VersionInput</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">String dir path</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the input directory for a converter (e.g. AdLib eXpress). This should be changed via the <B CLASS="guilabel">Manage WebReports Conversion</B> administration page.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ConversionDir</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">String dir path</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the output directory for a converter (e.g. AdLib eXpress). This should be changed via the <B CLASS="guilabel">Manage WebReports Conversion</B> administration page.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">additionalSearchColumns</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">List of strings or list of lists</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Determines the optional columns available to WebReports that use search data sources. Possible values include: OTHotWords, OTSummary, parentRecord, Score, shortOTSummary. These can be specified as strings within a list or as a list of two element lists where the first element is the column coming back from search and the second column is what you want it to be called in the output. It should be noted that these values are made available via the search index. If the underlying structure of the index were to change in future releases, these columns may no longer be available.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AllowFormCustomview</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">true / false</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Control whether WebReports can be added to form templates as views. This feature is visible by navigating to the views tab of a form template. The options <B CLASS="guilabel">Add WR Power View</B> will be present if the feature is enabled. The feature is enabled by default.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">WRNodeMIMETypes</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">List of strings</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Determines the list of MIME types that a WebReport node itself may be set to. Effectively this is the MIME type of the reportview. Normally WebReports are assigned the <TT CLASS="literal">text/plain</TT> MIME type, but sometimes it may be useful to permit <TT CLASS="literal">text/html</TT> or other MIME types.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">destinationmimetypes</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">List of strings</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The is the MIME type of the output that will be created by WebReports. Depending on client settings this can determine what application is used to open the resulting document.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">WRTriggerSubtypes</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">List of integers</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Controls the sub-types that are able to initiate WebReports from the WR Trigger feature. All sub-types are disabled by default.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DisallowServices</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">true / false</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Enables or disables the WR Services feature. WR Services is enabled by default.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">livelinkcategory_maxNumCats</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Integer</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Defines the maximum number of categories selectable via the category as a data source feature.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">livelinkcategory_NumAttrAcross</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Integer</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Defines the maximum number of attributes that should be displayed on a single line from the category as a data source feature.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">livelinkcategory_attrDelimiter</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">String</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">This character is used to separate multivalue attributes in the output from the category as a data source feature.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">livelinkcategory_maxNumRows</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Integer</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Controls the maximum number of results that are retrievable from the category as a data source feature.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AllowFormCustomview</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">true / false</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Enables or disables the WR Power View feature which allows a WebReport to be used as a form view.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EnabledLAPIFunctions</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">List of strings</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">This setting contains a whitelist of LAPI functions that can be run as an AJAX request. The following functions are always enabled by default to support WebReports: <TT CLASS="literal">{'wrlistnodes', 'wrlistusers', 'setwizarddata', 'getobjectinfo'}</TT> and do not need to be explicitly set in the <TT CLASS="filename">opentext.ini</TT> file. Other functions can be added to this list, or a generic <TT CLASS="literal">{'all'}</TT> value can be used to enabled all functions.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">collectConvDocCache</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Integer</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">For WebReports that use certain destinations that allow for conversion of the WebReport output before delivery to its final destination, the document is stored in a cache which is cleared by an agent after 120 minutes by default. This setting specifies an alternate expiry time for the cache.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SecureServicesSubtags</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">List of Strings</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">This setting is used to define any sub-tags that require special security considerations when being used through the WR Services feature. If any of the specified sub-tags are included in a WR Services request then the software will expect that a secure token has also been provided in the request. For example, <TT CLASS="literal">?func=webreports.runservice&amp;servicetype=gettagdata&amp;tagdata=1000&amp;subtags=useraction:delete</TT> would create an error message unless a valid security token had previously been requested (<TT CLASS="literal">&amp;servicetype=gettoken</TT>) and added to the request like this: <TT CLASS="literal">?func=webreports.runservice&amp;servicetype=gettagdata&amp;tagdata=1000&amp;subtags=useraction:delete&amp;securerequesttoken=123456....</TT> This setting is automatically added with a default list on new, full installs but if the software is installed as an Update the default setting is added as a comment. The current set of sub-tags included by default are: SecureServicesSubtags={'CATACTION','NODEACTION','SCACTION','PERMACTION','RMACTION', 'USERACTION','WFACTION','USERINFO','RMINFO','NODEINFO','EMAILINFO','WFINFO','AUDITINFO', 'VERINFO','SCINFO','POINFO'}</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">UpdateNumber</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Integer</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">This setting is used by the software to manage software update versions and should not be altered without guidance from support personnel.</TD></TR></TABLE></DIV>
+<DIV title="The following example illustrates a typical arrangement:" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF9"></A><B><FONT COLOR="WHITE">.</FONT><BR><IMG title="The following example illustrates a typical arrangement:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-1: The following example illustrates a typical arrangement:</B></P><A NAME="AEN1523"></A>
+<PRE 
+CLASS="screen"
+>&#13;[WebReports]
+addsearchbutton=Custom Report
+VersionInput=C:\AdLib eXpress\Input
+ConversionDir=C:\AdLib eXpress\Output
+OscriptAllowFunction1={'Scheduler.debugbreak','Web.CRLF','Web.Escape','Web.Unescape','Web.DecodeForURL','Web.EncodeForURL','Web.Format','Web.EscapeHTML','Web.EscapeXML'}
+OscriptAllowWholePkg={'Assoc','Bytes','Date','List','Math','Pattern','RecArray','Str','String','Boolean','undefined','void','integer','real','record'}
+EnableOscriptReportviews=true
+MaxNestedSubWebReports=10
+additionalSearchColumns={{'OTSummary','Summary'},{'shortOTSummary','shortSummary'},OTHotWords,Score,parentRecord}</PRE
+><IMG title="The following example illustrates a typical arrangement:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

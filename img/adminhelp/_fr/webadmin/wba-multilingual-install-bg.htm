@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<title>Création, installation et mise à niveau de lots de langues</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/websystemobj/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-multilingual-install-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion des langues de l\'interface utilisateur';
+          header.title2 = 'Création, installation et mise à niveau de lots de langues';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID12611"></A>Un <I CLASS="emphasis">kit de localisation</I> est disponible sur le <A HREF="https://knowledge.opentext.com" TARGET="_blank"> Knowledge Center OpenText</A>. Avant de pouvoir configurer des langues, vous devez créer un nouveau lot de langue et l'installer sur l'ordinateur où s'exécute Content Server. </P>
+<P><A NAME="TMPID12617"></A>Lorsqu'une nouvelle instance de Content Server est installée, la langue par défaut est toujours l'anglais. Les lots de langues français, allemand, japonais et néerlandais sont inclus dans l'installation de Content Server. Si vous souhaitez utiliser l'une de ces cinq langues, il n'est pas nécessaire de créer un nouveau kit de localisation. </P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12621"></A><B CLASS="important">Important : </B><BR>OpenText vous recommande vivement de supprimer et de recréer le dossier de la source de données : Aide utilisateur et le dossier de la source de données : Aide administrateur lorsque vous ajoutez ou supprimez des lots de langues ou lorsque le paramètre régional du système est modifié. Pour en savoir plus, voir <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbs-h-agd.wbs-user-admin-index-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/websystemobj/wbs-user-admin-index-bg.htm">Création de l`index de l`aide utilisateur ou administrateur</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbs-h-agd.wbs-user-admin-index-bg" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-MULTI-INSTALL">Installation de lots de langues</A></P>
+<P><A NAME="TMPID12626"></A>Lorsque vous disposez du lot de langue que vous souhaitez installer, et en fonction de s'il s'agit d'un lot de langue de système Content Server ou d'un lot de langue de module Content Server, vous devez effectuer l'une des opérations suivantes : </P>
+<A NAME="AEN11682"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11683"></A><A NAME="TMPID12631"></A>Si vous installez un lot de langue de système Content Server, vous devez décompresser le lot de langue dans le répertoire d'installation racine de Content Server. </P>
+<P><A NAME="TMPID12634"></A>Par exemple, si vous avez installé Content Server sur le répertoire <TT CLASS="filename">C:\OPENTEXT</TT>, décompressez le lot de langue que vous avez téléchargé ou créé dans le répertoire <TT CLASS="filename">C:\OPENTEXT</TT>. Le lot de langue est décompressé dans <TT CLASS="filename">C:\OPENTEXT\langpkgstaging</TT>. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11692"></A><A NAME="TMPID12640"></A>Si vous installez un lot de langue de module Content Server, vous devez décompresser le lot de langue dans le répertoire <TT CLASS="filename">C:\&lt;<I CLASS="varname">Content Server_home</I>>\langpkgstaging\module</TT>, où <TT CLASS="filename">C:\&lt;<I CLASS="varname">Content Server_home</I>></TT> correspond à l'emplacement de votre installation Content Server.</P></LI></OL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF107"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12650"></A><B CLASS="note">Note : </B><BR>Lorsque vous installez un lot de langue, si les paramètres existent déjà dans le fichier <TT CLASS="filename">opentext.ini</TT>, et que la valeur du réglage n'est pas vide, les valeurs sont remplacées par les paramètres du lot de langue que vous installez.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID12652"></A>Une fois qu'une langue est installée, le code de langue apparaît par ordre alphabétique sous la section <B CLASS="guilabel">Langues</B> de la page <B CLASS="guilabel">Lots de langues installés</B>. Content Serveret chaque module Content Server affichent toutes les langues disponibles ; si une langue n'est pas installée pour un module particulier, un message « Aucune langue installée » s'affiche. Pour de plus amples informations sur les noms et codes de langues, reportez-vous à la section <span><A href="../webadmin/wba-multilingual-configlang-bg.htm">Configuration des langues</A></span>. </P>
+<P><A NAME="TMPID12659"></A>Vous pouvez spécifier un format de nom d'affichage utilisateur différent pour chaque langue. Le nom d'affichage pour les utilisateurs peut être leur ID de connexion ou leur prénom, leur nom et leur initiale intermédiaire. Vous pouvez également décider d'ajouter les ID de connexion des utilisateurs au format de votre choix. Pour en savoir plus, voir <span><A href="../webadmin/wba-usersettings-bg.htm">Configuration des paramètres utilisateur</A></span>. </P>
+<P><A NAME="TMPID12661"></A>Lorsque vous installez une langue, il peut s'avérer nécessaire de mettre à jour la façon dont les dates et les heures s'affichent pour correspondre à l'affichage standard de cette langue. Par exemple, le format de date par défaut suit le modèle <I CLASS="emphasis">mois/jour/année</I>, mais vous pouvez le modifier en <I CLASS="emphasis">année/mois/jour</I>. Vous pouvez spécifier le format pour chaque langue installée. Pour en savoir plus, voir <span><A href="../webadmin/wba-admindate-bg.htm">Définition des formats de date et d'heure</A></span>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-MULTI-UPGRADE">Mise à niveau de lots de langues</A></P>
+<P><A NAME="TMPID12667"></A>Les lots de langues Content Server peuvent être mis à niveau. OpenText propose des lots de langues mis à jour, pour chacune des langues fournies avec Content Server, avec chaque mise à jour de Content Server. </P>
+<P><A NAME="TMPID12672"></A>Il existe deux manières de mettre vos lots de langues à niveau :</P>
+<A NAME="AEN11725"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11726"></A><A NAME="TMPID12675"></A>Lorsque vous mettez Content Server à niveau vers le correctif ou le Service pack le plus récent, vous pouvez également télécharger les lots de langues les plus récents.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11729"></A><A NAME="TMPID12678"></A>Vous pouvez également télécharger les lots de langues les plus récents depuis la <A HREF="https://knowledge.opentext.com" TARGET="_blank"> Knowledge Center OpenText</A> et installer ces lots de langues mis à jour sur votre système Content Server.</P></LI></OL>
+<P><A NAME="TMPID12683"></A>Lorsque vous avez mis à jour le lot de langue que vous souhaitez installer, vous devez le décompresser dans le répertoire adéquat :</P>
+<A NAME="AEN11736"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11737"></A><A NAME="TMPID12686"></A>Si vous installez un lot de langue mis à jour sur le système Content Server, décompressez le lot de langue mis à jour dans le répertoire d'installation racine de Content Server.</P>
+<P><A NAME="TMPID12689"></A>Par exemple, si vous avez installé Content Server sur le répertoire <TT CLASS="filename">C:\OPENTEXT</TT>, décompressez le lot de langue mis à jour que vous avez téléchargé dans le répertoire <TT CLASS="filename">C:\OPENTEXT</TT>. Le lot de langue mis à jour est décompressé dans <TT CLASS="filename">C:\OPENTEXT\langpkgstaging</TT>. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11746"></A><A NAME="TMPID12695"></A>Si vous installez un lot de langue mis à jour sur un module Content Server, décompressez le lot de langue mis à jour dans le répertoire <TT CLASS="filename">C:\&lt;<I CLASS="varname">Content Server_home</I>>\langpkgstaging\module</TT>, où <TT CLASS="filename">C:\&lt;<I CLASS="varname">Content Server_home</I>></TT> correspond à l'emplacement de votre installation Content Server.</P></LI></OL>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12705"></A><B CLASS="important">Important : </B><BR>Comme les clients peuvent télécharger et installer des lots de langues complets avec chaque mise à jour de Content Server, chaque lot de langue complet remplace le lot de langue existant qui correspond, à condition que la version du lot de langue que vous installez soit <I CLASS="emphasis">supérieure ou égale</I> au lot de langue actuellement installé. </P>
+<P><A NAME="TMPID12708"></A>Content Server génère un message d'erreur si le lot de langue mis à jour que vous essayez d'installer est une version antérieure au lot de langue actuellement installé. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID12710"></A>Pour en savoir plus, voir <span><A href="../webadmin/wba-multilingual-update-p.htm">Pour mettre à jour un lot de langue pour Content Server</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-MULTI-DISABLE">Désactivation de lots de langues</A></P>
+<P><A NAME="TMPID12714"></A>Les lots de langues ne peuvent pas être désinstallés, mais ils peuvent être désactivés. Pour plus d'informations sur la désactivation d'un lot de langue, voir <span><A href="../webadmin/wba-multilingual-configlang-bg.htm">Configuration des langues</A></span>. </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-multilingual-install-p.htm" revision="">Pour installer un lot de langue pour Content Server</A></p></li>
+<li><p><A  href="../webadmin/wba-multimodule-install-p.htm" revision="">Pour installer un lot de langue pour un module Content Server</A></p></li>
+<li><p><A  href="../webadmin/wba-multilingual-update-p.htm" revision="">Pour mettre à jour un lot de langue pour Content Server</A></p></li>
+<li><p><A  href="../webadmin/wba-multilingual-updatemod-p.htm" revision="">Pour mettre à jour un lot de langue pour un module Content Server</A></p></li>
+<li><p><A  href="../webadmin/wba-multilingual-viewpacks-p.htm" revision="">Affichage des lots de langues installés</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

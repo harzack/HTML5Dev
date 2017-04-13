@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Configuring Performance Settings</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-confperformance-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Server Parameters and Settings';
+          header.title2 = 'Configuring Performance Settings';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID3269"></A>You can modify the following performance settings for the  Server from the Configure Performance Settings page:</P><A NAME="AEN2939"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2940"></A><A NAME="TMPID3272"></A><span><A href="../webadmin/wba-confperformance-bg.htm#NUMOFSESSIONS">Number of Sessions</A></span></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2943"></A><A NAME="TMPID3275"></A><span><A href="../webadmin/wba-confperformance-bg.htm#SERVERTHREADS">Server Threads</A></span></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2946"></A><A NAME="TMPID3278"></A><span><A href="../webadmin/wba-confperformance-bg.htm#RECIEVEBEFORESEND">Receive Before Send</A></span></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2949"></A><A NAME="TMPID3281"></A><span><A href="../webadmin/wba-confperformance-bg.htm#WEBCACHE">Enable Web Caching</A></span></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2952"></A><A NAME="TMPID3284"></A><span><A href="../webadmin/wba-confperformance-bg.htm#FILEBUFFER">File Buffer Size</A></span></P></LI></UL>
+<P><A NAME="TMPID3286"></A>The <B CLASS="guilabel">Configure Performance Settings</B> page is accessible from the Administration page. Select <B CLASS="guilabel">Server Configuration</B>. Next, select <B CLASS="guilabel">Configure Performance Settings</B>.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="NUMOFSESSIONS"> Number of Sessions</A></P>
+<P><A NAME="TMPID3291"></A>This setting defines the maximum number of user log-in sessions cached on a server thread. The default value of the Number of Sessions is set to 100. When the maximum number of sessions is reached, the oldest user log-in session is dropped. User log-in sessions are cached independently on each thread. When a user returns to a thread after their log-in information has been dropped from the cache, it will take slightly longer to execute their next request. The lower the maximum number of sessions, the less memory the server must dedicate to tracking user log-in sessions on each thread. The larger the number, however, the less often the server will drop user log-in information from the cache. A  Server's memory consumption can be large for a system running many threads. You may want to try different values for the maximum number of sessions, depending on how many users are accessing your Content Server system. </P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="SERVERTHREADS">Server Threads</A></P>
+<P class="before-ul"><A NAME="TMPID3294"></A>This setting defines the number of threads used by Content Server. The default <B CLASS="guilabel">Number of Threads</B> is 8. You may want to increase or decrease the number of threads, depending on:</P><A NAME="AEN2966"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2967"></A><A NAME="TMPID3299"></A>the speed of individual request execution times.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2969"></A><A NAME="TMPID3301"></A>the amount of capacity needed.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2971"></A><A NAME="TMPID3303"></A>your usage profile.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2973"></A><A NAME="TMPID3305"></A>the availability of CPU and RAM resources on your Content Server hardware.</P></LI></UL>
+<P><A NAME="TMPID3307"></A>The optimum number of threads depends on the environment in which the Content Server instance is running (such as the number, speed and architecture (for example, NUMA) of the CPUs, amount of physical memory, speed of network connection, and whether disks are local or accessed over the network). It also depends on the usage profile for your Content Server instance (such as what types of requests are made and the frequencies at which each of those types of requests is made). To help estimate the memory usage of the server and to reduce the time required to establish new threads, you should enter the same value for the Minimum and Maximum Number of Threads setting.</P>
+<P><A NAME="TMPID3310"></A>To determine the number of threads that your server can support, Open Text recommends that you experiment with different thread values. You can measure your results by using the Content Server logs and the utilities that are available from the operating system. For further information, see <I CLASS="emphasis">Content Server - Dynamic Thread Allocation in Content Server 10</I> on the OpenText Knowledge Center.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF41"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3316"></A><B CLASS="note">Note: </B><BR>Do not set the number of threads higher than the number of connections supported by your RDBMS.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="RECIEVEBEFORESEND">Receive Before Send </A></P>
+<P><A NAME="TMPID3318"></A>This setting reduces the amount of time the  Server must dedicate to downloading and opening documents. The default setting for Receive Before Send is set to <TT CLASS="literal">FALSE</TT>. When <TT CLASS="literal">ReceiveBeforeSend=TRUE</TT>, the  Server's responses are buffered to the Web server, which then assumes control of sending the contents to the browser. This allows the available server threads to move on to other requests more quickly. From an end-user perspective, fetching and downloading documents will still take the same amount of time.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="WEBCACHE">Enable Web Caching</A></P>
+<P><A NAME="TMPID3322"></A>This setting allows documents served by Content Server to be cached by the Web server. The default setting for Enable Web Caching is set to FALSE. When Web caching is enabled, cached documents are validated by the  server. If the process of validation confirms that the current copy of the document is in the cache, the document is delivered from the Web Cache instead of the  server.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF42"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3325"></A><B CLASS="note">Note: </B><BR>In Content Server, Web Caching is only used when there are requests for Documents to be downloaded or fetched.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="FILEBUFFER">File Buffer Size</A></P>
+<P><A NAME="TMPID3328"></A>This setting allows you to configure the file buffer size when copying items to and from the External File Store. The file buffer size must be entered in bytes and the value must be between 16384 (16 KB) and 2097152 (2 MB). By default, the file buffer size used for copying items is 524288 (512 KB). </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-confperformance-p.htm" revision="">To Configure Performance Settings</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

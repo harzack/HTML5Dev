@@ -1,0 +1,63 @@
+<!-- wr_getpage_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Page Function Reference</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_getpage_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Page Function Reference';
+        header.draw();
+
+</SCRIPT>
+
+<p class="body">The <b>page.js</b> file packaged with WebReports includes a useful function '<b>getPage</b>' to assist in the mechanics of pagination when you want to display a large set of results. This function is called when the user clicks the First, Previous, Next, or Last buttons (See image below). In addition this function is available to use in any WebReport reporting application. The page.js file is accessed using the a SCRIPT include like this:</p>
+
+<PRE>
+&lt;SCRIPT SRC="/&lt;support dir&gt;/webreports/library/page.js"&gt;&lt;/SCRIPT&gt;
+</PRE>
+<p class="body">
+If this file is being included into a WebReport the LIBPATH tag can be used like this:
+</p>
+<PRE>
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]page.js"&gt;&lt;/SCRIPT&gt;
+</PRE>
+
+<p class="body"><b><U>Example Pagination - First, Previous, Next, and Last Buttons</U></b><br></p>
+<img src="./pagination.png" border=0><br><br>
+
+
+<p class="body">
+A description of the 'getPage' function and its parameters is provided below:
+</p>
+
+<p class="body">
+<b>getPage( baseURL, page, dataCount, pageSize, ip1, ip2, startParm, endParm )</b>
+<ul><li>A function that is invoked when the user clicks the First, Previous, Next, or Last buttons. It builds and executes the URL for the next slice of data to display to the user based on the button that is clicked.</li>
+	<li>Takes arguments:  baseURL (<b>required</b>),  page (<b>required</b>), dataCount (<b>required</b>), pageSize (<b>required</b>), ip1 (<b>required</b>), ip2 (<b>required</b>), startParm (<b>optional</b>), endParm (<b>optional</b>)</li>
+		<ul>
+			<li>baseURL - the base URL of the report we want to run. This can be achieved using the WebReport tag "[LL_REPTAG_MYID LLURL:REPORT /]" which would resolve to something like this: '?func=ll&objId=xyz&objAction=RunReport'</li>
+			<li>page - a String indicating which button is clicked. It must be one of the following values: 'first', 'prev', 'next', or 'last'.</li>
+			<li>dataCount - a number representing the total number of rows to paginate through.</li>
+			<li>ip1 - the current start row number. See example below.</li>
+			<li>ip2 - the current end row number. See example below.</li>
+			<li><b>Example</b>: If 'ip1=1' and 'ip2=20' is specified, it would result in the first 20 rows being displayed when the user runs the WebReport.</li>
+			<li>startParm - an optional parameter that represents the start parameter name. If not specified, it defaults to 'inputLabel1'. Generally this is the name for the parameter 'ip1'. This parameter is used in the URL of the next page to display with its value set to the start row number.</li>
+			<li>endParm - and optional parameter that represents the end parameter name. If not specified, it defaults to 'inputLabel2'. Generally this is the name for the parameter 'ip2'. This parameter is used in the URL of the next page to display with its value set to the end row number.</li>
+		</ul>
+	<li>Please see a detailed example of Pagination using the 'getPage' function <a href="wr_pagination_info.htm">here</a>.</li>
+</ul>
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

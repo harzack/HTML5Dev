@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Structure de l'affichage de rapport</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-reportviews-structrep.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Fichier d\'affichage de rapport';
+          header.title2 = 'Structure de l\'affichage de rapport';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID16439"></A>L'affichage de rapport comprend les éléments suivants :</P>
+<A NAME="AEN15695"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15696"></A><A NAME="TMPID16442"></A><B CLASS="highlight">Section en-tête</B> : cette section est utilisée pour communiquer tout code devant être exécuté au début du WebReport. Elle est générée une seule fois, quel que soit le nombre de lignes de rapport qui sont lues à partir de la source de données sous-jacente. Par exemple, si vous produisez un document HTML, toutes les balises d'ouverture comme &lt;<I CLASS="varname">TABLE</I>> doivent figurer dans cette section. Cependant, il n'est pas nécessaire d'inclure &lt;<I CLASS="varname">HTML</I>> ou &lt;<I CLASS="varname">BODY</I>> si l'en-tête Content Server standard est inclus. L'en-tête Content Server est inclus par défaut, sauf si la balise <TT CLASS="literal">[LL_WEBREPORT_EXCLUDEHEADER /]</TT> est utilisée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15705"></A><A NAME="TMPID16451"></A><B CLASS="highlight">[LL_WEBREPORT_STARTROW /]</B> : dans l'éditeur en ligne, cette ligne n'est pas modifiable. Elle est fournie uniquement pour indiquer l'endroit où la balise de début de ligne sera insérée afin que les utilisateurs n'essayent pas d'en ajouter une autre.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15708"></A><A NAME="TMPID16454"></A><B CLASS="highlight">Section ligne</B> : cette section est utilisée pour définir tout code devant être appliqué à toutes les lignes de données. Toutes les balises utilisées pour désigner les données de la colonne de source de données ne fonctionneront que dans cette section. Il est important de noter que tout dans cette section sera répété pour chaque ligne de la source de données. Par exemple, si 10 lignes de données du rapport doivent être renvoyées, tout dans cette section apparaîtra 10 fois dans la sortie du WebReport. La seule exception est l'utilisation de balises conditionnelles pour exclure certaines données de la sortie. Pour en savoir plus, voir <span><A HREF="wr-tag-syntax.htm">Balises d'affichage de rapport</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15712"></A><A NAME="TMPID16458"></A><B CLASS="highlight">[LL_WEBREPORT_ENDROW /]</B> : dans l'éditeur en ligne, cette ligne n'est pas modifiable. Elle est fournie uniquement pour indiquer l'endroit où la balise de fin de ligne sera insérée afin que les utilisateurs n'essayent pas d'en ajouter une autre.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15715"></A><A NAME="TMPID16461"></A><B CLASS="highlight">Section pied de page</B> : cette section est utilisée pour communiquer tout code devant être exécuté à la fin du WebReport. Elle est générée une seule fois, quel que soit le nombre de lignes de rapport qui sont lues à partir de la source de données sous-jacente. Toutes les balises HTML de fermeture comme &lt;<I CLASS="varname">/TABLE</I>> figurent normalement dans cette section.</P></LI></OL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

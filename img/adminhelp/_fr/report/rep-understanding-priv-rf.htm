@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<title>Privilèges et autorisations pour les rapports LiveReport</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/root/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/report/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'rep-understanding-priv-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion des rapports LiveReport';
+          header.title2 = 'Privilèges et autorisations pour les rapports LiveReport';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID182"></A>Le module Content Server LiveReports permet aux utilisateurs de créer et d'utiliser des éléments Content Server appelés rapports LiveReport. Les rapports LiveReport sont de puissants outils permettant d'accéder directement au SGBDR sous-jacent dans Content Server au moyen d'instructions SQL.</P>
+<P class="before-ul"><A NAME="TMPID186"></A>Vous pouvez configurer les rapports LiveReports de façon à : </P><A NAME="AEN191"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN192"></A><A NAME="TMPID189"></A>retourner des listes d'éléments qui répondent à certains critères ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN194"></A><A NAME="TMPID191"></A>rapporter des informations statistiques sur le contenu d'une base de données sous forme de graphique circulaire présentant la proportion des éléments que possède chaque utilisateur ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN196"></A><A NAME="TMPID193"></A>modifier des informations de la base de données, par exemple, réaffecter toutes les tâches d'un utilisateur qui a quitté l'organisation.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="ADMIN-PERMS-LIVEREP">Gestion des privilèges et des droits d'accès aux rapports LiveReport</A></P>
+<P><A NAME="TMPID196"></A>Etant donné que les rapports LiveReport vous permettent de modifier directement les informations contenues dans la base de données Content Server, OpenText vous conseille d'accorder avec parcimonie le droit aux utilisateurs de créer des rapports LiveReport. </P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Astuce" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID200"></A><B CLASS="tip">Astuce : </B><BR>Vous pouvez configurer Content Server pour empêcher LiveReports de modifier la base de données Content Server. Voir <span><A HREF="rep-conf-rep-sec-bg.htm">Configuration de la sécurité des rapports LiveReports</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID204"></A>Les utilisateurs n'ayant pas le droit d'en créer peuvent toutefois exécuter des rapports LiveReport s'ils disposent des autorisations nécessaires. Par exemple, vous pouvez permettre à tous les utilisateurs d'exécuter un rapport affichant la liste des éléments qui leur appartiennent ou qu'ils ont réservés. Les utilisateurs peuvent afficher les rapports LiveReports qu'ils sont autorisés à exécuter sur la page Gérer les rapports LiveReport, à laquelle ils accèdent en cliquant sur <B CLASS="guilabel">Rapports</B> dans le menu général <B CLASS="guilabel">Personnel</B>.</P>
+<P><A NAME="TMPID207"></A>En limitant la création de rapports LiveReport à un nombre restreint d'utilisateurs compétents, vous vous prémunissez contre les éventuels dommages qu'ils peuvent infliger au contenu de la base de données. Une connaissance élémentaire de SQL et du schéma Content Server est une condition sine qua non pour pouvoir modifier les rapports LiveReport avec un minimum d'efficacité et de sécurité. Un utilisateur qui a le droit de modifier ou de créer des rapports LiveReport peut y inclure n'importe quelle instruction SQL. Il peut utiliser l'instruction <TT CLASS="literal">SELECT</TT> pour récupérer des informations, mais également les instructions <TT CLASS="literal">UPDATE</TT> et <TT CLASS="literal">DELETE</TT> pour modifier et supprimer des informations. Pour plus d'informations sur les noms des tables et colonnes de la base de données Content Server, reportez-vous au guide <I CLASS="emphasis">Référence du schéma du système</I>. </P>
+<P class="before-ul"><A NAME="TMPID214"></A>Vous pouvez octroyer les droits suivants à un utilisateur pour un rapport LiveReport : </P><A NAME="AEN218"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN219"></A><A NAME="TMPID217"></A>Voir</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN221"></A><A NAME="TMPID219"></A>Voir le contenu</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN223"></A><A NAME="TMPID221"></A>Modifier</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN225"></A><A NAME="TMPID223"></A>Modifier les attributs</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN227"></A><A NAME="TMPID225"></A>Supprimer</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN229"></A><A NAME="TMPID227"></A>Modifier les autorisations</P></LI></UL>
+<P><A NAME="TMPID228"></A>Pour modifier des rapports LiveReport existants, un utilisateur doit bénéficier de l'autorisation Modifier pour ces rapports et du privilège de création pour le type d'élément des rapports LiveReports. Pour exécuter un rapport LiveReport, un utilisateur doit disposer de l'autorisation Voir le contenu sur ce rapport. Pour de plus amples informations sur les autorisations, reportez-vous à <span><XPROC NAME="ExtXrefStart" HREF="llesrt-h-ugd.ll-perms-bg" FMT="" NO1ST><A  HREF="../../../help/_fr/root/ll-perms-bg.htm">Autorisations</A><XPROC NAME="ExtXrefEnd" HREF="llesrt-h-ugd.ll-perms-bg" FMT=""></span> et <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-permissions-so" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-permissions-so.htm">Gestion des autorisations</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-permissions-so" FMT=""></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="ALLOW-OBJ-LIVEREP">Définition des objets autorisés dans les rapports LiveReport interactifs</A></P>
+<P class="before-ul"><A NAME="TMPID233"></A>Certains rapports LiveReports sont interactifs dans la mesure où ils permettent à leurs utilisateurs de spécifier des informations et de sélectionner des options. Un des types d'entrées pouvant être ajoutés à un rapport LiveReport est le type Objet. Quand ce type d'entrée est inclus dans un rapport LiveReport, il apparaît dans un menu permettant aux utilisateurs de sélectionner le type d'objet qui les intéresse. Par défaut, les types d'éléments que les utilisateurs peuvent sélectionner dans le menu Eléments sont : </P><A NAME="AEN236"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN237"></A><A NAME="TMPID236"></A>Canal</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN239"></A><A NAME="TMPID238"></A>Discussion</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN241"></A><A NAME="TMPID240"></A>Document</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN243"></A><A NAME="TMPID242"></A>Dossier</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN245"></A><A NAME="TMPID244"></A>Rapport LiveReport</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN247"></A><A NAME="TMPID246"></A>Projet</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN249"></A><A NAME="TMPID248"></A>Tâche</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN251"></A><A NAME="TMPID250"></A>Liste de tâches</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN253"></A><A NAME="TMPID252"></A>Sujet</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN255"></A><A NAME="TMPID254"></A>URL</P></LI></UL>
+<P><A NAME="TMPID255"></A>Vous pouvez modifier la liste des types d'éléments inclus dans les menus Eléments en modifiant le paramètre <TT CLASS="literal">objectSybTypes</TT> dans la section <TT CLASS="literal">[reports]</TT> du fichier <TT CLASS="filename">opentext.ini</TT>. </P>
+<P><A NAME="TMPID259"></A>Le volume Rapports LiveReport Content Server initial contient un ensemble de rapports LiveReports fourni par OpenText. Vous pouvez modifier ces rapports pour répondre aux besoins de vos utilisateurs et ajouter de nouveaux rapports au volume Rapports LiveReport à l'aide du menu <B CLASS="guilabel">Ajouter un élément</B> ou en les important dans votre système Content Server.</P>
+<P><A NAME="TMPID264"></A>Les utilisateurs peuvent stocker les rapports LiveReports n'importe où dans Content Server, mais la page Gérer les rapports LiveReport affiche uniquement les rapports LiveReports du volume Rapports LiveReport que les utilisateurs sont autorisés à afficher.</P>
+<P><A NAME="TMPID266"></A>Etant donné que le volume Rapports LiveReport est un type de dossier Content Server, vous pouvez y effectuer les mêmes tâches que dans les autres dossiers Content Server. Vous pouvez ajouter de nouveaux rapports LiveReports, octroyer des autorisations d'accès au volume et à son contenu, configurer le volume, etc. Pour plus d'informations sur l'ajout, la modification et l'exécution de rapports LiveReport, reportez-vous à <span><XPROC NAME="ExtXrefStart" HREF="llesrep-h-ugd.lr-overview-so" FMT="" NO1ST><A  HREF="../../../help/_fr/report/lr-overview-so.htm">Utilisation des rapports LiveReport</A><XPROC NAME="ExtXrefEnd" HREF="llesrep-h-ugd.lr-overview-so" FMT=""></span> de l'aide en ligne utilisateur de Content Server.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

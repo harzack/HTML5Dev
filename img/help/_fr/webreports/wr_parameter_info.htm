@@ -1,0 +1,75 @@
+<!-- wr_parameter_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Parameter Usage</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_parameter_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Parameter Usage';
+   	header.draw();
+
+</SCRIPT>
+<p class="body">
+When running a WebReport parameters can be included in the URL for the WebReport itself, as well as for the associated data source. These two parameter types are described here.
+</p>
+<p class="body">
+<SPAN class="gui"><U>WebReport Parameters</U></SPAN><BR><BR>
+There are several parameters which are used to control the behavior of the WebReport. Many of these parameters are designed
+to allow WebReport designers to construct unique URLs to modify the WebReport behavior according to application requirements. A list of available parameters for data sources
+can be found in the section: <a href="wr_datasource_info.htm">advanced information on Datasources</a> and a list of parameters to control exporting can be found in the
+section: <a href="wr_export_info.htm">advanced information on exporting</a>.
+In addition to these built-in parameters, the WebReports module also supports the creation and use of unique parameters as defined by the WebReport developers. These are passed by
+placing <SPAN class="gui">&parmname=data</SPAN> in the parameter list of the URL where 'parmname' can be any string of standard alpha-numeric characters.
+
+<blockquote class="body"><B>Example:</B><BR><BR>...?func=ll&objId=47478&objAction=RunReport<SPAN class="gui">&myparm=testdata</SPAN>&nexturl=....<br></blockquote>
+</p>
+<p class="body">
+This data is then accessible within the reportview using the defined tag syntax. E.g. <SPAN class="gui">[LL_REPTAG_&myparm /]</SPAN>
+would return "testdata" in the previous example.
+<br>
+<i>(Note: sub-tags can be used to modify the data returned by a parameter tag.) </i>
+</p>
+<p class="body">
+<SPAN class="gui"><U>Data Source Parameters</U></SPAN><BR><BR>
+The LiveReports and Search Queries data sources allow input parameters to be defined and
+collected when the report is run. When a LiveReport is being used as a data source, the standard LiveReport prompting will be allowed prior to
+the WebReport executing if no parameters have been supplied in the URL. In this scenario, when the WebReport is run the user is presented with the
+LiveReport prompts much as if they had run the LiveReport directly. Once the user has entered the required prompts then the WebReport
+continues as normal. <br><BR>
+When a WebReport has been defined with a saved query as the data source, it is possible to insert variables into the full text search
+specification of the saved query. For example, the term <SPAN class="gui">%1</SPAN> can be placed in the 'Full Text Search Terms' field of any
+full text search boxes. These variables will be substituted with any corresponding parameters in the URL. URL parameters follow the same convention as a LiveReport, i.e.
+inputlabel&lt;x&gt;=value (where x is a number from 1 to 99 which corresponds with variables %1, %2, etc.) In the example below, a variable such as %1 would be replaced with the word 'WebReport' by using a URL parameter in the form:
+<SPAN class="gui">inputlabel1=WebReport</SPAN>. These variables can also be used in complex queries as part of the Livelink Query Language (LQL).
+See the online help for "Search" for more information.
+<!-- These links got changed in LL9.7 - not possible to support LL9.5-9.7 at same time so commenting out for now
+<a href="../websbroker/sr_fulltext.html">Full text searching</a>, <a href="../websbroker/sr_lql.html">Using Livelink Query Language</a> and
+<a href="../websbroker/sr_savequery.html">Saving Livelink Queries</a>.-->
+</p>
+<blockquote class="body"><B>Example:</B><BR><BR>...?func=ll&objId=47478&objAction=RunReport<SPAN class="gui">&inputLabel1=WebReport</SPAN>&nexturl=....</blockquote>
+<p class="body">
+If a WebReport is run by invoking its URL from a user developed page (e.g. HTML document or another WebReport) then it is possible to supply the necessary input
+parameters for both the WebReport and any data source in the URL that is used to invoke the WebReport.
+If all required LiveReport parameters are passed within the URL, then the user will not be prompted for the input parameters in the normal way.
+</p>
+<p class="body">
+<SPAN class="gui"><U>Default Parameters</U></SPAN><BR><BR>
+WebReports provides a feature to allow defaults to be set for any parameters that would normally be passed through the URL. When a default value is set for
+a parameter, then this value will be used if no corresponding parameter is found in the URL. More information about <a href="wr_parameter_procedures.htm">parameter defaults</a> can be found
+through the online help.
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

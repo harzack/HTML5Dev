@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Search Filters</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/websbroker/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/websbroker/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-searchfilters-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Searching';
+          header.title2 = 'Search Filters';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID13666"></A>Search Filters let users generate a new search request, based on their Search Results, by selecting values that include additional restrictions.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF282"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID13668"></A><B CLASS="note">Note: </B><BR>When using Search Filters, Remote Search results are excluded from the filter values and counts.</P>
+<P><A NAME="TMPID13669"></A>Search Filters currently does not support Aggregate-Text regions.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID13670"></A>The unique values with additional restrictions used by Search Filters may sometimes show a higher number of Search Results than really exist. This happens when a particular value is deleted from every object, but the value string is still in the dictionary. There are only two ways of knowing when to remove it:</P><A NAME="AEN12906"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12907"></A><A NAME="TMPID13673"></A>for every delete, iterate for every internal objectID over the Search Filters data structure, to see if the value still exists</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12909"></A><A NAME="TMPID13675"></A>keep a count for every dictionary entry, and decrement it</P></LI></UL>
+<P><A NAME="TMPID13676"></A>Either way is not currently feasible, so the higher number of Search Results will sometimes show, until Search Filters self-correct when the Search Engine is restarted.</P>
+<P><A NAME="TMPID13677"></A>For a detailed overview of Search Filters, and how users can refine their Search Results, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswbb-h-ugd.sr-tosearchwsrfilters-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/websbroker/sr-tosearchwsrfilters-bg.htm">Using Search Filters</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswbb-h-ugd.sr-tosearchwsrfilters-bg" FMT=""></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF283">Restricted Filters</A></P>
+<P><A NAME="TMPID13680"></A>If an attribute filter is applied, and users do not have permissions for the attribute's Category, they will see <B CLASS="guilabel">(Restricted Filters)</B> displayed in the active Filters. This indicates there are some Filters applied that affect the Search Results that they don't have permissions to see. They cannot remove a single restricted Filter, but they can click the <B CLASS="guilabel">Remove all filters</B> link.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF284">Hidden Containers</A></P>
+<P><A NAME="TMPID13684"></A>Users can introduce Search Filters constraints into a saved Query. For information about saved Queries, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswbb-h-agd.sr-workingwsvq" FMT="" NO1ST><i>Livelink Search Administration - websbroker Module (LLESWBB-H-AGD)</i><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswbb-h-agd.sr-workingwsvq" FMT=""></span>. Some constraints may contain information that users don't have permissions to see. If they run a saved Query where they don't have permission for the Filter data, for example, if there is a Filter on the location “Folder A”, and they don't have permissions to see this folder, the data is marked <B CLASS="guilabel">(hidden)</B> on the Search Results and Advanced Search pages.</P>
+<P title="Incomplete facet sets" CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBS-SEARCHFILTERS-RF">Incomplete facet sets</A></P>
+<P><A NAME="TMPID13690"></A>You can increase the maximum number of search filter region values considered by the Search Engine by adjusting the <TT CLASS="literal">MaximumNumberOfValuesPerFacet</TT> parameter in the <TT CLASS="literal">[DataFlow_xxx]</TT> section of the <TT CLASS="filename">search.ini</TT> file. The Search Engine accumulates only <TT CLASS="literal">32767</TT> facets per region, by default, so if this value is reached, then the facet set of Search Results will be incomplete.</P>
+<P><A NAME="TMPID13695"></A>When the threshold is reached, an indicator, in the form of an asterisk <TT CLASS="literal"><B CLASS="highlight">*</B></TT>, is displayed on the search filter region title bar. When you mouse over the asterisk <TT CLASS="literal"><B CLASS="highlight">*</B></TT>, a message will display, for example, “More than <I CLASS="emphasis">X</I> values”, where <I CLASS="emphasis">X</I> is the total count of facet values for the region, to indicate the facet set is incomplete.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF285"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID13704"></A><B CLASS="note">Note: </B><BR>The indicator that the facet set is incomplete is only displayed for users with System Admin permissions, and those included in the “See Unpermissioned Result Counts” privilege group. These users are shown the true search result count from the Search Engine. For more information, see “Defining Search Results Counts” in <span><A href="../webotcindex/wbo-specindx-bg.htm">Administering Searching Processes</A></span>.</P>
+<P><A NAME="TMPID13708"></A>The values displayed for the Search Filter are estimates.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webotcindex/wbs-searchfilters-p.htm" revision="">To Configure Search Filters</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

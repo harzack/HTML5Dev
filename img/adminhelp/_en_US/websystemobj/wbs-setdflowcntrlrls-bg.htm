@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Adding Data Flow Control Rules</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-setdflowcntrlrls-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Control Rules';
+          header.title2 = 'Adding Data Flow Control Rules';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID9912"></A>Data flow control rules manage the data flows at your Content Server site. They allow you to define the states or conditions that data flows may encounter and to associate certain actions with those conditions. For example, you can create a data flow control rule that instructs Content Server to stop a data flow and deliver a system object alert email when errors occur in a particular data flow process.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF183"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9916"></A><B CLASS="note">Note: </B><BR>Content Server delivers system object alert email messages to the recipients that you specify on the Configure System Object Alert E-Mail Delivery page. For more information, see <span><A href="../websovmgmt/sov-cnfsoaed-p.htm">To Enable Error-Checking and E-Mail Delivery</A></span></P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID9919"></A>You can create data flow control rules based on the number of IPool messages in a data flow, the amount of time that a data flow has been idle or stalled, the process errors in a data flow, or the amount of disk space available on the computer where the data flow runs. </P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF184">Number of Messages</A></P>
+<P><A NAME="TMPID9921"></A>A Number of Messages control rule starts or stops an IPool feeder or an IPool reader and delivers system object alert email messages when the number of IPool messages in a data flow is greater than or less than a number that you specify. For example, if you want Content Server to send an information message when the number of IPool messages in an IPool feeder exceeds 200, you can create a control rule that identifies that condition.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF185">Quiet Data Flow</A></P>
+<P><A NAME="TMPID9924"></A>A Quiet Data Flow control rule starts or stops an IPool feeder or an IPool reader and delivers system object alert email messages when a data flow remains quiet (receives no IPool messages) for a specific amount of time. Quiet data flows are data flows whose processes are running successfully and are clear of IPool messages. For example, if you want Content Server to send an error message when a data flow is clear of IPool messages for 30 minutes, you can create a control rule that identifies that condition.</P>
+<P><A NAME="TMPID9926"></A>This control rule is especially useful for data flows that have low volume, such as the Help data flow, because it allows you to automatically shut down data flows when they are no longer active. You can also use this data flow control rule to indicate when problems occur in data flows that typically have high volume.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF186">Stalled Data Flow</A></P>
+<P><A NAME="TMPID9928"></A>A Stalled Data Flow control rule stops an IPool feeder or the data flow and delivers system object alert email messages when a data flow stalls for a certain amount of time. Stalled data flows are data flows whose processes are running but are not processing the IPool messages that the data flow receives. For example, if you want Content Server to send a severe error message and stop the IPool feeder when a data flow stalls for more than six hours, you can create a control rule that identifies those conditions.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF187">Process Errors in the Data Flow</A></P>
+<P><A NAME="TMPID9931"></A>A Process Error in the Data Flow control rule stops the data flow and delivers system object alert email messages when errors occur during the execution of one of the processes in a data flow. If a process error occurs, a message describing the specific error condition is displayed on the <B CLASS="guilabel">Specific</B> tab of the corresponding data flow process's Properties page. You can base data flow control rules on the existence of process errors in a data flow; however, you cannot base data flow control rules on a specific process error itself.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF188">Disk Space</A></P>
+<P><A NAME="TMPID9934"></A>A Disk Space control rule starts or stops an IPool feeder, an IPool reader, or the data flow, and can deliver system object alert email messages when a certain amount of free disk space is available. For example, if you want to stop an IPool reader and send a warning message when a certain amount of disk space is no longer available, you can create a control rule that identifies those conditions.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-cntrlipool-p.htm" revision="">To Add a Control Rule Based on IPool Messages</A></p></li>
+<li><p><A  href="../websystemobj/wbs-cntrlrlqdflw-p.htm" revision="">To Add a Control Rule Based on Quiet Data Flows</A></p></li>
+<li><p><A  href="../websystemobj/wbs-cntrlsdflw-p.htm" revision="">To Add a Control Rule Based on Stalled Data Flows</A></p></li>
+<li><p><A  href="../websystemobj/wbs-cntrlrldspc-p.htm" revision="">To Add a Control Rule Based on Disk Space</A></p></li>
+<li><p><A  href="../websystemobj/wbs-cntrlperr-p.htm" revision="">To Add a Control Rule Based on Process Errors</A></p></li>
+<li><p><A  href="../websystemobj/wbs-toeditcntrlrl-p.htm" revision="">To Edit a Control Rule</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

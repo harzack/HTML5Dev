@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Exécution de tâches de maintenance Oracle</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-dbadmin-perform-oracle-tasks-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Maintenance d\'une base de données existante';
+          header.title2 = 'Exécution de tâches de maintenance Oracle';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID14030"></A>Utilisez la page Maintenance du serveur Oracle pour effectuer les tâches suivantes :</P><A NAME="AEN13011"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13012"></A><A NAME="TMPID14033"></A>créer un nouvel espace de stockage ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13014"></A><A NAME="TMPID14035"></A>créer un compte utilisateur Oracle ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13016"></A><A NAME="TMPID14037"></A>agrandir un espace de stockage ; </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13018"></A><A NAME="TMPID14039"></A>supprimer un compte utilisateur Oracle et/ou ses tables.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID14040"></A>Utilisez la page Maintenance du serveur Oracle dans les deux cas suivants :</P><A NAME="AEN13021"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13022"></A><A NAME="TMPID14043"></A>Lorsque vous administrez une base de données Content Server. Dans ce cas, vous accédez à la page Maintenance du serveur Oracle en cliquant sur le lien <B CLASS="guilabel">Tâches de maintenance Serveur Oracle</B> de la page Maintenance de la base de données active. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13026"></A><A NAME="TMPID14047"></A>Lorsque vous créez une base de données Content Server pour vous connecter à une installation Content Server nouvelle ou existante. Dans ce cas, vous accédez à la page Maintenance du serveur Oracle en cliquant sur le lien <B CLASS="guilabel">Maintenance du serveur Oracle</B> de la page Créer des tables Content Server.</P></LI></UL>
+<P><A NAME="TMPID14052"></A>Dans ces deux cas, cliquez sur le lien <B CLASS="guilabel">Revenir à la page précédente</B> de la page Maintenance du serveur Oracle pour revenir à la page initiale (Maintenance de la base de données active ou Créer des tables Content Server) à partir de laquelle vous aviez affiché la page Maintenance du serveur Oracle.</P>
+<P class="before-ul"><A NAME="TMPID14055"></A>Si vous accédez à la page Maintenance du serveur Oracle dans le cadre d'une création de base Content Server, effectuez les tâches suivantes dans l'ordre indiqué avant de cliquer sur le lien <B CLASS="guilabel">Revenir à la page précédente</B> :</P><A NAME="AEN13038"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13039"></A><A NAME="TMPID14060"></A><span><A href="../webadmin/wba-dbadmin-create-tblspc-oracle-p.htm">Création d'un nouvel espace de stockage</A></span>, si nécessaire, destiné à contenir les tables de la base Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13043"></A><A NAME="TMPID14064"></A><span><A href="../webadmin/wba-dbadmin-delete-oracle-users-tables-p.htm">Pour supprimer des utilisateurs et des tables Oracle</A></span> pouvant se connecter à l'espace de stockage. </P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF132">Création d'un nouvel espace de stockage </A></P>
+<P><A NAME="TMPID14067"></A>Content Server utilise un <I CLASS="emphasis">espace de stockage</I> Oracle pour stocker les tables de la base Content Server. Du fait qu'un espace de stockage peut contenir des tables appartenant à plusieurs utilisateurs Oracle, il n'est pas nécessaire de créer un nouvel espace s'il en existe déjà un avec suffisamment de place.</P>
+<P><A NAME="TMPID14071"></A>L'espace de stockage étant créé en même temps que la base Content Server, aucune procédure distincte de création n'est en principe nécessaire.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF133">Création d'un utilisateur Oracle </A></P>
+<P><A NAME="TMPID14074"></A>Toutes les tables de l'espace de stockage appartiennent à des utilisateurs Oracle. Un utilisateur Oracle en particulier possède les tables de la base Content Server. Content Server utilise le nom d'utilisateur Oracle et son mot de passe pour se connecter à la base Content Server, gérée par le serveur Oracle.</P>
+<P><A NAME="TMPID14078"></A>L'utilisateur Oracle étant créé en même temps que la base Content Server, aucune procédure distincte de création n'est en principe nécessaire.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF134"> Agrandissement d'un espace de stockage </A></P>
+<P><A NAME="TMPID14081"></A>Un espace de stockage contient un ou plusieurs fichiers de données. A mesure que la quantité de données de votre base Content Server augmente, ces fichiers se remplissent et deviennent saturés. Vous pouvez augmenter la taille d'un espace de stockage en lui ajoutant un nouveau fichier de données.</P>
+<P><A NAME="TMPID14083"></A>Certaines versions du serveur Oracle Server peuvent être configurées de façon à ce que l'espace de stockage s'agrandisse automatiquement lorsque l'espace vient à manquer. Pour plus d'informations, reportez-vous à la documentation fournie avec votre serveur Oracle. </P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF135">Suppression d'un utilisateur Oracle et/ou de ses tables </A></P>
+<P><A NAME="TMPID14085"></A>Si la base de données Content Server est endommagée, la seule manière pour la récupérer peut être de supprimer ses tables et même l'utilisateur de base de données, puis de restaurer la base à partir d'une sauvegarde.</P>
+<P><A NAME="TMPID14087"></A>Si vous supprimez uniquement les tables, celles créées pour les catégories personnalisées ne sont pas retirées. De ce fait, pour les englober dans la suppression, supprimez l'utilisateur et ses tables. </P>
+<P class="before-ul"><A NAME="TMPID14088"></A>La page Connexion de l'administrateur du serveur Oracle s'affiche dans les deux cas suivants :</P><A NAME="AEN13069"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13070"></A><A NAME="TMPID14091"></A>Lorsque vous créez une base de données Content Server. La page apparaît une fois que vous cliquez sur le bouton <B CLASS="guilabel">Continuer</B> de la page Sélectionner le type de SGBDR.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13074"></A><A NAME="TMPID14095"></A>Vous avez cliqué sur le lien <B CLASS="guilabel">Tâches de maintenance Serveur Oracle</B> de la page Maintenance de la base de données active. </P></LI></UL>
+<P><A NAME="TMPID14097"></A>Sur cette page, vous devez indiquer le nom d'utilisateur et le mot de passe d'un compte SGBDR détenant les privilèges Administrateur.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-dbadmin-create-tblspc-oracle-p.htm" revision="">Création d'un nouvel espace de stockage</A></p></li>
+<li><p><A  href="../webadmin/wba-dbadmin-create-oracle-acct-p.htm" revision="">Création d'un utilisateur Oracle</A></p></li>
+<li><p><A  href="../webadmin/wba-dbadmin-extend-oracle-acct-p.htm" revision="">Pour agrandir un espace de stockage Oracle</A></p></li>
+<li><p><A  href="../webadmin/wba-dbadmin-delete-oracle-users-tables-p.htm" revision="">Pour supprimer des utilisateurs et des tables Oracle</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

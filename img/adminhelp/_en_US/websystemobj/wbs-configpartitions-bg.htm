@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Configuring Partitions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-configpartitions-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Partitions';
+          header.title2 = 'Configuring Partitions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID9298"></A>After you add a partition to an Indexing and Searching system, you can configure it. When you configure a partition, you can change its mode, which is sometimes necessary when re-indexing. For information about partition modes, see <span><A href="../websystemobj/wbs-understandingpartmaps-bg.htm">Working with Partition Maps</A></span>. For information about re-indexing, see <span><A href="../otadmin/ota-verifyandreindex-bg.htm">Verifying Content and Re-indexing</A></span>.</P>
+<P><A NAME="TMPID9301"></A>You can also specify the amount of disk or memory space to be allocated to the content and metadata of indexed documents. Each partition's Index Engine provides the Update Distributor process with information about how much disk or memory space is occupied in the index. The Update Distributor process then determines how to balance the distribution of data across all of the partitions in the Indexing and Searching system. Once a partition's maximum amount of disk or memory space is occupied, the Update Distributor process stops sending data to the Index Engine for indexing. For more information about Index Engines and Update Distributor processes, see <span><A href="../websystemobj/wbs-configindexeng-so.htm">Configuring Indexing Processes</A></span>. The <I CLASS="emphasis">content accumulator</I> is an operation in a partition's index that uses memory to store indexed content before it writes the content to a subindex (a subdirectory in a partition's index) on disk. The content accumulator collects content updates (from the Update Distributor process) in memory before it writes the updated content to a subindex. You can specify the amount of memory space that is allocated to the content accumulator. When content fills the memory space, the content accumulator writes the content to a subindex and becomes empty. Allocating a large amount of memory space to the content accumulator can reduce the number of index merges that are required to ensure the number of subindexes required for the partition.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF166">Managing Partition Locations</A></P>
+<P class="before-ul"><A NAME="TMPID9305"></A>Managing partition locations allows you to specify an Admin server, associate a corresponding directory path, and select how many partitions can be created for that location. Once you have specified Admin servers and their locations, you must make at least one of the locations active. If there are no active locations, partition creation will fail when the control rule is triggered. You can also specify the index backup source location of the new partition. For more information about control rules, see <span><A href="../websystemobj/wbs-admincntrlrls-so.htm">Administering Control Rules</A></span>. When setting up multiple locations, you can choose to distribute the partitions in one of the following ways:</P><A NAME="AEN8587"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8588"></A><A NAME="TMPID9309"></A><B CLASS="guilabel">Sequentially</B>, which creates the specified number of partitions in one active location.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8591"></A><A NAME="TMPID9312"></A><B CLASS="guilabel">Alternately</B>, which rotates partition creation across active locations.</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF167"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9315"></A><B CLASS="note">Note: </B><BR>When the Enterprise Data Source is created, one Admin server location is added. By default, the location is set to active and the maximum number of partitions allowed for the location is set to unlimited. If you choose to set multiple locations for partition creation to active and the current location is not valid, Content Server will create the partition at the next available location. There is no Content Server validation to verify the Location Path.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF168">Resynchronizing</A></P>
+<P><A NAME="TMPID9319"></A>An Admin server writes information to an <TT CLASS="filename">otadmin.cfg</TT> file and a <TT CLASS="filename">search.ini</TT> file to reflect changes in the Content Server database (for example, if a partition has been configured or deleted). The <TT CLASS="filename">otadmin.cfg</TT> and <TT CLASS="filename">search.ini</TT> files are configuration files that store information about the system objects that are associated with data sources. Specifically, the <TT CLASS="filename">search.ini</TT> file contains settings that are set by default when components of Indexing and Searching systems (for example, partitions, Index Engines, and Search Engines) are created. OpenText strongly recommends that you do not modify the settings in the <TT CLASS="filename">search.ini</TT> file. At all times, the information in the<TT CLASS="filename">otadmin.cfg</TT> and <TT CLASS="filename">search.ini</TT> files must match the corresponding information in the Content Server database. However, this information can become mismatched (for example, if the information recorded in a file is deleted or has become corrupted). If this occurs, you may need to <I CLASS="emphasis">resynchronize</I> a partition. Resynchronizing a partition modifies the <TT CLASS="filename">otadmin.cfg</TT> and <TT CLASS="filename">search.ini</TT> files to reflect information about the partition that is currently stored in the Content Server database.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-toconfigpartition-p.htm" revision="">To Configure a Partition</A></p></li>
+<li><p><A  href="../websystemobj/wbs-toresyncpartition-p.htm" revision="">To Resynchronize a Partition</A></p></li>
+<li><p><A  href="../websystemobj/wbs-cntrl-plm-p.htm" revision="">To Configure the Partition Location</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

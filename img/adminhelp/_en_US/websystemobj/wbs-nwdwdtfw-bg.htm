@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Indexing Data on your File System</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-nwdwdtfw-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Creating Indexes Using Templates';
+          header.title2 = 'Indexing Data on your File System';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID359"></A>Using Content Server Directory Walker technology, you can create data flows that index data on your file system. This allows Content Server users to search that data from within Content Server. For each Directory Walker index that you create, you specify a set of one or more top-level directories on your file system that you want to index.</P>
+<P><A NAME="TMPID363"></A>A Directory Walker data flow consists of a Directory Walker process, a Document Conversion process, and an Update Distributor process. The Directory Walker process <I CLASS="emphasis">walks</I> the top-level directories that you specify (and their subdirectories, if necessary) and looks for files that match the criteria that you specify.</P>
+<P><A NAME="TMPID365"></A>You determine the types of files that the Directory Walker process collects by specifying inclusion and exclusion criteria (such as, file name patterns, date ranges, and file size ranges). The Directory Walker process writes the files that match your criteria to a data interchange pool (IPool). The Document Conversion process reads the data from this IPool, converts it to HTML or raw text, and then writes it to a second IPool. The Update Distributor process reads the data from this second IPool, passes the data to the Index Engines that it manages, and then issues commands to generate or update the corresponding index.</P>
+<P><A NAME="TMPID366"></A>When you create a Directory Walker data flow, Content Server generates <I CLASS="emphasis">crawl history files</I>. Crawl history files contain information about the files that the Directory Walker process has already walked. When a Directory Walker process walks a set of directories that halve already been walked, it compares the crawl history files to the files that are currently stored in the directory to locate new, updated, or deleted files. The Directory Walker process extracts information about added, replaced, or deleted files to the data flow. It does not extract the entire file set again, which makes index updating more efficient. You can modify the location of the crawl history files on the <B CLASS="guilabel">Specific</B> tab of the Directory Walker Properties page.</P>
+<P><A NAME="TMPID370"></A>If you expect the data in the indexed directories to change, you can <A href="../websystemobj/wbs-specdflw-bg.htm">Maintaining Data Flows</A> to have it re-walk the directories or you can you can configure a Data Flow Process to run on a set schedule. For more information, see <A href="../websystemobj/wbs-configdflwstrt-p.htm">To Configure Data Flow Process Start Options</A>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF5">Setting up a Directory Walker Data Source</A></P>
+<P><A NAME="TMPID374"></A>You begin setting up a Directory Walker data source by naming it and specifying the port numbers on which its processes listen.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF6">Configuring a Hyperlink Mapping</A></P>
+<P><A NAME="TMPID376"></A>After you name the data source and specify its port numbers, you configure its hyperlink mappings. Hyperlink mappings allow users to access information in a Directory Walker data source when viewing search results. Documents in a Directory Walker data source are identified by their entire path name. When these documents are returned in a search, they display on the Search Results page as their path names. To ensure that each result links to the appropriate document, you must create a hyperlink mapping that will configure the data source to serve the documents through a Web server. You must run a Web server for hyperlink mappings to function properly.</P>
+<P><A NAME="TMPID377"></A>You list directories to walk when you configure a Directory Walker. All the directories listed must have a common root. For example, if you set the Directory Walker to walk <TT CLASS="literal">c:/dirA/dir1</TT> and <TT CLASS="literal">c:/dirA/dir2</TT>, you can create a hyperlink mapping from <TT CLASS="literal">c:/dirA</TT>. If you list different root directories, such as <TT CLASS="literal">c:/dirA</TT> and <TT CLASS="literal">c:/dirB</TT> or <TT CLASS="literal">c:/dirA</TT> and <TT CLASS="literal">d:/dirA</TT>, you cannot create a hyperlink mapping from both these paths. If your directories do not have common roots, consider creating separate Directory Walker indexes for them so that they can use hyperlink mappings.</P>
+<P><A NAME="TMPID385"></A>You can configure hyperlink mappings when you create a Directory Walker data source or when you configure its Search Manager. For other non-Enterprise data sources, you configure hyperlink mappings when you <span><A href="../webotcindex/wbo-confighypmap-rf.htm">Configuring Hyperlink Mappings</A></span>. Examples of non-Enterprise data sources are the Admin Help Data Source, the Directory Walker Data Source, the User Help Data Source, and the XML Activator Producer Data Source.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF7">Configuring Directory Walker Information</A></P>
+<P><A NAME="TMPID388"></A>After you set up a Directory Walker data source, you configure the Directory Walker information. The Directory Walker is a process that extracts data from your file system and writes it to a data interchange pool (IPool).</P>
+<P><A NAME="TMPID389"></A>When you create a Directory Walker index by clicking <B CLASS="guilabel">Directory Walker Data Source</B> on the <B CLASS="guilabel">Add Item</B> menu on the System Administration page, Content Server automatically specifies logging options for the corresponding data flow, using default log files, levels, and locations. If you want to specify custom logging options, you can modify the default values on the Directory Walker Properties page after Content Server generates the data flow.</P>
+<P><A NAME="TMPID394"></A>When specifying directories on the Create New Directory Walker Data Source page, you must specify the directory paths as they are mapped/mounted on the host of the Admin server whose shortcut you select in the <B CLASS="guilabel">Host</B> drop-down list.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF8">Configuring Document Conversion Information</A></P>
+<P><A NAME="TMPID397"></A>After you set up a Directory Walker data source and configure the Directory Walker process, you must configure the intermediate Document Conversion information. The Document Conversion process reads data from a data interchange pool (IPool), converts the data to HTML or raw text, and then writes it to a different IPool.</P>
+<P><A NAME="TMPID398"></A>When specifying the read and write directories for the Document Conversion process, you must specify the directory paths as they are mapped/mounted on the host of the Admin server whose shortcut you select in the <B CLASS="guilabel">Host</B> drop-down list.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF9">Configuring the Index Engine Information</A></P>
+<P><A NAME="TMPID401"></A>After you set up a Directory Walker data source and configure the Directory Walker and Document Conversion processes, you must configure Update Distributor information. For more information about configuring index updating processes, see <span><A href="../websystemobj/wbs-configindexeng-so.htm">Configuring Indexing Processes</A></span>.</P>
+<P><A NAME="TMPID403"></A>When specifying the read and index directories for the index updating process, you must specify the directory paths as they are mapped/mounted on the host of the Admin server whose shortcut you select in the <B CLASS="guilabel">Host</B> drop-down list.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF10">Completing a Directory Walker Data Source</A></P>
+<P><A NAME="TMPID406"></A>After you set up a Directory Walker data source, and then configure the Directory Walker, Document Conversion, and Update Distributor processes, you can complete the Directory Walker data source set up.</P>
+<P><A NAME="TMPID407"></A>You can specify whether you want the processes in the Directory Walker data flow to start on creation or you can manually start the processes after you create the data flow. For example, if you want to <span><A href="../xmlsearch/xml-indexoverview-bg.htm">Indexing XML Data</A></span> to the Search Engines associated with this data source, you can create the data flow, publish the regions, and then start the data flow processes so that the XML regions are indexed when they run.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-setupwkrsrc-p.htm" revision="">To Set Up a Directory Walker Data Source</A></p></li>
+<li><p><A  href="../websystemobj/wbs-confighyperlink-p.htm" revision="">To Configure Hyperlink Mappings</A></p></li>
+<li><p><A  href="../websystemobj/wbs-configdirwkrinfo-p.htm" revision="">To Configure Directory Walker Information</A></p></li>
+<li><p><A  href="../websystemobj/wbs-configdocconvinfo-p.htm" revision="">To Configure Document Conversion Information</A></p></li>
+<li><p><A  href="../websystemobj/wbs-configindexinfo-p.htm" revision="">To Configure Index Engine Information</A></p></li>
+<li><p><A  href="../websystemobj/wbs-cmpltdirwkrsrc-p.htm" revision="">To Configure Directory Walker Data Source</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

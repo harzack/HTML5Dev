@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Exportation vers un WebForm</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-export-wrkfrm.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Exportation des données du rapport';
+          header.title2 = 'Exportation vers un WebForm';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID687"></A>Lors de l'exportation vers un WebForm, l'utilisateur peut récupérer les résultats d'un rapport, ou en sélectionner des parties, et insérer ces résultats dans un WebForm Content Server. Ceci fournit au développeur de rapport une puissante fonction dans laquelle il peut importer des données provenant d'autres systèmes vers un WebForm, ou d'un WebForm vers un autre WebForm dans le même système. Les utilisateurs chevronnés peuvent utiliser cette fonction pour créer une mémoire cache à partir d'un ensemble de données plus important et exécuter d'autres rapports sur la base de cette mémoire cache régulièrement mise à jour. </P>
+<P><A NAME="TMPID689"></A>L'exportation vers une fonction WebForm permet à l'utilisateur de mettre à jour et de remplacer les données existantes du WebForm, ou bien d'ajouter des données aux données existantes du WebForm. </P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN679"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID691"></A>Pour spécifier quelles données du WebReport sont insérées dans le WebForm, vous devez utiliser la sous-balise <TT CLASS="literal">SETFORM</TT> :</P>
+<P><A NAME="TMPID693"></A><TT CLASS="literal">[LL_REPTAG=USERID SETFORM:USER /]</TT> va prendre l'ID de l'utilisateur et l'insérer dans la colonne <TT CLASS="literal">USER</TT>.</P>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN685"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID697"></A>Vous pouvez également utiliser des sous-balises qui vont agir sur les données avant de les insérer dans le WebForm :</P>
+<P><A NAME="TMPID698"></A><TT CLASS="literal">[LL_REPTAG=USERID USERINFO:GROUPID SETFORM:GROUP /]</TT> utilise <TT CLASS="literal">USERINFO</TT> avec le paramètre <TT CLASS="literal">GROUPID</TT> pour récupérer le groupe de l'actuel utilisateur. <TT CLASS="literal">SETFORM</TT> prend alors ce groupe et l'insère dans le champ du WebForm appelé <TT CLASS="literal">GROUP</TT>. Vous pouvez utiliser <TT CLASS="literal">SETFORM</TT> pour insérer les données pour tous les champs nécessaires.</P>
+</DIV></P>
+<P><IMG SRC="image015.png"></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

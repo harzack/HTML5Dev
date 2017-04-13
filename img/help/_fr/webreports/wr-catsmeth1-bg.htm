@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>CAT : méthode 1</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-catsmeth1-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Catégories et attributs';
+          header.title2 = 'CAT : méthode 1';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID18444"></A>La sous-balise CAT peut être considérée comme une macro WebReports. Elle opère sur un identificateur d'objet Content Server et peut récupérer toute donnée de catégorie et d'attribut stockée relativement à l'objet correspondant. Ces données peuvent ensuite être utilisées en sortie ou former la base d'un filtrage ou d'un tri. Nous nous intéressons ici uniquement à l'affichage de ces données. Avec CAT, nous avons également besoin d'une source de données. Dans ce cas, nous utilisons un LiveReport. </P><A NAME="AEN17686"></A>
+<PRE 
+CLASS="screen"
+>select LLAttrData.ID DATAID
+	from
+		LLAttrData, DTree
+	where
+		LLAttrData.DEFID = 338223 and
+		LLAttrData.ATTRID = 1 and
+		LLAttrData.VERNUM = DTree.VERSIONNUM and
+		LLAttrData.ID = DTree.DATAID</PRE
+>
+<P><A NAME="TMPID18447"></A>Cette simple requête renvoie une colonne unique de dataids Content Server auxquels la catégorie 338223 a été appliquée, à leur version la plus récente. Evidemment, tout critère de filtre peut être utilisé ; il est important ici que nous disposions d'une liste de dataids dont nous souhaitons voir les informations de catégories. Cela étant obtenu ci-dessus, nous pouvons créer un WebReport pour extraire des informations de catégories : </P><A NAME="AEN17688"></A>
+<PRE 
+CLASS="screen"
+>&lt;TABLE CELLSPACING="1" STYLE="font-size:11px" BORDER="0"&gt;
+&lt;TR STYLE="background-color:#999999;color:white;bold;"&gt;
+	&lt;TD&gt; Trial Name &lt;/TD&gt;
+	&lt;TD&gt; Number of Failures &lt;/TD&gt;
+	&lt;TD&gt; Assignee &lt;/TD&gt;
+	&lt;TD&gt; Start Date &lt;/TD&gt;
+	&lt;TD&gt; End Date &lt;/TD&gt;
+	&lt;TD&gt; Complete &lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_STARTROW /]
+&lt;TR BGCOLOR="ffffff"&gt;
+	&lt;TD&gt; [LL_REPTAG=DATAID CAT:"Test Category":"Trial Name":DISPLAY /]&lt;/TD&gt;
+	&lt;TD&gt; [LL_REPTAG=DATAID CAT:"Test Category":"Number of Failures":DISPLAY /]&lt;/TD&gt;
+	&lt;TD&gt; [LL_REPTAG=DATAID CAT:"Test Category":"Assignee":DISPLAY /]&lt;/TD&gt;
+	&lt;TD&gt; [LL_REPTAG=DATAID CAT:"Test Category":"Start Date":DISPLAY /]&lt;/TD&gt;
+	&lt;TD&gt; [LL_REPTAG=DATAID CAT:"Test Category":"End Date":DISPLAY /]&lt;/TD&gt;
+	&lt;TD&gt; [LL_REPTAG=DATAID CAT:"Test Category":"Complete":DISPLAY /]&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_ENDROW /]
+&lt;/TABLE&gt;</PRE
+>
+<P><A NAME="TMPID18449"></A>Cet affichage de rapport est conçu pour être aussi simple que possible. Il utilise la colonne DATAID renvoyée par la source de données afin d'extraire chaque attribut souhaité pour la catégorie Catégorie de test. Les résultats sont insérés dans un tableau HTML qui ressemble à une sortie LiveReport, bien que nous puissions utiliser tout type de formatage. </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN17690"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Nom de l'essai</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Nombre d'échecs</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Utilisateur avec une tâche assignée</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Date de début</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Date de fin</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Achevé</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">JRS62-99</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">18</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">10657</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Dim Jun 25 00:00:00 2006</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Jeu Avr 01 00:00:00 1999</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">TRUE</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID18492"></A>Notez que la valeur renvoyée pour Achevé est TRUE, car c'est ainsi que l'utilisateur voit cette valeur dans la catégorie. Cela est différent des résultats de la méthode SQL, car la base de données stocke les valeurs sous forme de 0 ou 1 et Content Server convertit cela en TRUE ou FALSE pour affichage dans le type d'attribut de case à cocher. </P>
+<P><A NAME="TMPID18494"></A>Selon la taille du système Content Server et son utilisation réelle, les étapes ci-dessus peuvent suffire pour fournir un rapport terminé. Toutefois, s'il est nécessaire d'améliorer les performances, consultez la section Mise en cache de résultats avec WebReports. </P>
+<P><A NAME="TMPID18495"></A>Vous pouvez trouver une section de référence détaillée au sujet de la sous-balise CAT dans <span><A HREF="wr-tag-syntax.htm">Balises d'affichage de rapport</A></span>. </P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

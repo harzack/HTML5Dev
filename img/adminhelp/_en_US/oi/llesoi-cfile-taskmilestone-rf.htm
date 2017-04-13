@@ -1,0 +1,201 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>taskmilestone Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-taskmilestone-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Control File Syntax';
+          header.title2 = 'taskmilestone Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TSKMLETAG01">taskmilestone</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TSKMLETAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID2911"></A>Use <TT CLASS="LITERAL">type="taskmilestone"</TT> on  the <TT CLASS="LITERAL">node</TT> tag to create, update, or delete a Task Milestone.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TSKMLETAG03">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2786"></A>&lt;node type="taskmilestone" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TSKMLETAG04">Usage</A></P>
+<A NAME="AEN2788"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2789"></A><A NAME="TMPID2925"></A>Creating or updating a Task Milestone can include a number of optional subordinate tags: <span><A HREF="llesoi-cfile-taskmilestone-rf.htm#ACTDTTAG1">actualdate Tag</A></span>, <span><A HREF="llesoi-cfile-taskmilestone-rf.htm#CURRDTTAG1">currentdate Tag</A></span>, and <span><A HREF="llesoi-cfile-taskmilestone-rf.htm#ORIGDTTAG1">originaldate Tag</A></span>. These subordinate tags are detailed below.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2794"></A><A NAME="TMPID2930"></A>Creating, updating, or deleting a Task Milestone can also require a number of other subordinate tags, such as the <TT CLASS="LITERAL">location</TT> tag. These other subordinate tags are detailed in <span><A HREF="llesoi-cfilesamp-bg.htm">Object Importer Tag Descriptions and Syntax</A></span>.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TSKMLETAG05">Example</A></P>
+<P><A NAME="TMPID2935"></A>To create a Task Milestone, called “New Milestone,” attached to a Task List, called “New Task List”, in the Enterprise Workspace:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2802"></A>&#13;&lt;import&gt;
+  &lt;node type="taskmilestone" action="create"&gt;
+    &lt;location&gt;Enterprise:New Task List&lt;/location&gt;
+    &lt;title language="en"&gt;New Milestone&lt;/title&gt;
+    &lt;actualdate&gt;20110114&lt;/actualdate&gt;
+    &lt;currentdate&gt;20110107150000&lt;/currrentdate&gt;
+    &lt;originaldate&gt;20100201&lt;/originaldate&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="ACTDTTAG1">actualdate Tag</A></P>
+<P><A NAME="TMPID2941"></A>The <TT CLASS="LITERAL">actualdate</TT> tag adds or updates the actual date for the Task Milestone. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2806"></A>&lt;actualdate&gt;20100601&lt;/actualdate&gt;
+&lt;actualdate&gt;2010060150000&lt;/actualdate&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2807"></A>&lt;actualdate clear="true"&gt;&lt;/actualdate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2808"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2958"></A>The <TT CLASS="LITERAL">actualdate</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="taskmilestone"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2962"></A>The <TT CLASS="LITERAL">actualdate</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2965"></A>The <TT CLASS="LITERAL">actualdate</TT> tag is optional when:</P><A NAME="AEN2830"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2831"></A><A NAME="TMPID2969"></A><TT CLASS="LITERAL">&lt;node type="taskmilestone" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2834"></A><A NAME="TMPID2972"></A><TT CLASS="LITERAL">&lt;node type="taskmilestone" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2837"></A><A NAME="TMPID2975"></A><TT CLASS="LITERAL">&lt;node type="taskmilestone" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2980"></A>Dates must be in the format YYYYMMDD or YYYYMMDDHHMMSS, where HH refers to the 24-hour clock and is a value between 01 and 24. If YYYYMMDD is used, the time defaults to 000000.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2982"></A>To clear the value, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CURRDTTAG1">currentdate Tag</A></P>
+<P><A NAME="TMPID2986"></A>The <TT CLASS="LITERAL">currentdate</TT> tag adds or updates the current date for the Task Milestone, sometimes known as the <I CLASS="EMPHASIS">Target Date</I>. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2851"></A>&lt;currentdate&gt;20101130&lt;/currentdate&gt;
+&lt;currentdate&gt;20101130150000&lt;/currrentdate&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2852"></A>&lt;currentdate clear="true"&gt;&lt;/currentdate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2853"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3004"></A>The <TT CLASS="LITERAL">currentdate</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="taskmilestone"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3008"></A>The <TT CLASS="LITERAL">currentdate</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID3011"></A>The <TT CLASS="LITERAL">currentdate</TT> tag is optional when:</P><A NAME="AEN2875"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2876"></A><A NAME="TMPID3015"></A><TT CLASS="LITERAL">&lt;node type="taskmilestone" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2879"></A><A NAME="TMPID3018"></A><TT CLASS="LITERAL">&lt;node type="taskmilestone" action="update"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3023"></A>The date must be in the format YYYYMMDD or YYYYMMDDHHMMSS, where HH refers to the 24-hour clock and is a value between 01 and 24. If YYYYMMDD is used, the time defaults to 000000. If this tag is not specified during create, the current system date is used.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3025"></A>To clear the value, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="ORIGDTTAG1">originaldate Tag</A></P>
+<P><A NAME="TMPID3029"></A>The <TT CLASS="LITERAL">originaldate</TT> tag adds or updates the original date for the Task Milestone. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2892"></A>&lt;originaldate&gt;20100701&lt;/originaldate&gt;
+&lt;originaldate&gt;20100701150000&lt;/originaldate&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2893"></A>&lt;originaldate clear="true"&gt;&lt;/originaldate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2894"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3046"></A>The <TT CLASS="LITERAL">originaldate</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="taskmilestone"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3050"></A>The <TT CLASS="LITERAL">originaldate</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID3053"></A>The <TT CLASS="LITERAL">originaldate</TT> tag is optional when:</P><A NAME="AEN2916"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2917"></A><A NAME="TMPID3057"></A><TT CLASS="LITERAL">&lt;node type="taskmilestone" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2920"></A><A NAME="TMPID3060"></A><TT CLASS="LITERAL">&lt;node type="taskmilestone" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2923"></A><A NAME="TMPID3063"></A><TT CLASS="LITERAL">&lt;node type="taskmilestone" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3068"></A>Dates must be in the format YYYYMMDD or YYYYMMDDHHMMSS. If YYYYMMDD is used, the time defaults to 000000. If this tag is not specified during create, the current system date is used.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3070"></A>To clear the value, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Echanges de requêtes/réponses HTTP </title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-httpexchanges-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Champs et formats de messages';
+          header.title2 = 'Echanges de requêtes/réponses HTTP ';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1009"></A>Le type de contenu des requêtes ou des réponses HTTP détermine le format de base des données qu'elles transportent. Différents types d'actions XML Workflow Interchange prennent en charge différents types de contenu pour les échanges.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="HTTPHTMLFORMDATA">Echange de données de formulaires HTML </A></P>
+<P><A NAME="TMPID1025"></A>Les actions d'envoi HTML envoient des requêtes via un type de contenu multipart/form-data (données de formulaires en plusieurs parties), conformément à la norme RFC 1867. La requête contient des champs de données pour un message de lancement ou un message de modification de tâche, selon le type de message de l'action et les paramètres de personnalisation.</P>
+<P class="before-ul"><A NAME="TMPID1026"></A>Il existe trois réponses possibles à ce type de requête :</P><A NAME="AEN1028"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1029"></A><A NAME="TMPID1029"></A>code de statut d'erreur HTTP (entre 400 et 599) avec un message de statut pour indiquer une erreur ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1031"></A><A NAME="TMPID1031"></A>code de statut de réussite (entre 200 et 299) sans données ou avec des données HTML pour indiquer une réussite ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1033"></A><A NAME="TMPID1033"></A>code de statut de réussite et type de contenu multipart/form-data utilisé pour indiquer une réussite et mettre à jour les champs dans la tâche de lancement. Ce type de réponse est un message OK HTML et prend en charge les mêmes champs au même format que la requête.</P></LI></UL>
+<P><A NAME="TMPID1034"></A>Les actions d'acceptation HTML traitent les requêtes des actions d'envoi HTML et acceptent les requêtes POST en utilisant le type de contenu multipart/form-data. Le type de message de l'action et les paramètres de personnalisation déterminent les champs à traiter. Tous les champs non traités sont ignorés.</P>
+<P class="before-ul"><A NAME="TMPID1035"></A>Une action d'acceptation HTML génère l'une des réponses suivantes :</P><A NAME="AEN1037"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1038"></A><A NAME="TMPID1038"></A>statut d'erreur HTTP avec message de statut pour indiquer une erreur ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1040"></A><A NAME="TMPID1040"></A>statut OK (code 200) et données HTML pour indiquer une réussite ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1042"></A><A NAME="TMPID1042"></A>statut OK (code 200) et données de formulaires en plusieurs parties pour indiquer une réussite et renvoyer les nouvelles informations à la routine appelante. Ce type de réponse est renvoyé de messages de lancement acceptés, afin de fournir à la routine appelante les informations sur le workflow qui a été lancé.</P></LI></UL>
+<P><A NAME="TMPID1043"></A>Les actions d'acceptation HTML acceptent également les requêtes GET qui ne contiennent pas de données. En réponse, elles renvoient des données de formulaires en plusieurs parties contenant les valeurs courantes de la plupart des champs renseignés avec une requête POST. C'est le type de requête que le navigateur Web effectue si vous cliquez sur le lien URL. Le navigateur télécharge les données du formulaire, que vous pouvez utiliser comme modèle pour un futur téléchargement.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="HTTPXMLEXCHANGES">Echanges XML</A></P>
+<P><A NAME="TMPID1051"></A>Les actions d'envoi XML envoient des requêtes en utilisant le type de contenu text/xml, indiquant qu'il s'agit d'un document XML conforme à la recommandation XML 1.0 (http://www.w3.org). La requête est un message de lancement XML ou un message de modification de tâche formaté selon les paramètres personnalisés de l'action.</P>
+<P class="before-ul"><A NAME="TMPID1052"></A>Il existe trois réponses possibles à ce type de requête :</P><A NAME="AEN1053"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1054"></A><A NAME="TMPID1055"></A>code de statut d'erreur HTTP (entre 400 et 599) avec un message de statut pour indiquer une erreur ; </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1056"></A><A NAME="TMPID1057"></A>code de statut de réussite (entre 200 et 299) sans données ou avec des données non-XML pour indiquer une réussite ; </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1058"></A><A NAME="TMPID1059"></A>code de statut de réussite et type de contenu text/xml avec message d'erreur XML ou message OK XML. Un message d'erreur indique un échec de traitement et peut comprendre une chaîne de statut décrivant l'erreur. Un message OK indique une réussite et met à jour les champs dans la tâche appelante. L'action accepte le même format XML pour les réponses qu'elle génère pour la requête, lequel format est déterminé par le type de message et les paramètres de personnalisation. </P></LI></UL>
+<P><A NAME="TMPID1060"></A>Les actions d'acceptation XML ont pour but de traiter les requêtes des actions d'envoi XML. Elles acceptent les requêtes POST qui utilisent le type de contenu text/xml transportant un message XML au format déterminé par le type de message de l'action et les paramètres de personnalisation. Une action d'acceptation XML renvoie une condition d'erreur HTTP, un message d'erreur XML pour indiquer un échec ou un message OK XML pour indiquer une réussite.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

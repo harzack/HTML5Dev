@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Working with Domains</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbu-domain-overview-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Domains';
+          header.title2 = 'Working with Domains';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID18930"></A>When Domains are enabled, an additional field appears below the <B CLASS="guilabel">Username</B> and <B CLASS="guilabel">Password</B> fields on the Content Server Log-in page. This field, which is named <B CLASS="guilabel">Domain</B> by default, requires the user to specify a Domain to log in to. The field's display name varies, depending on the Domain Display Name setting you defined on the Configure Domain page. For example, if you are using Domains to create separate workspaces for different companies in an organization, you could set the Domain display name to <B CLASS="guilabel">Company</B>. Non-Domain Content Server users leave this field blank to log in to the system.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF201"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID18938"></A><B CLASS="note">Note: </B><BR>Because Content Server supports isolated Domains, different users and groups can have the same user name in different Domains.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF202">X-Domain Groups and X-Domain Projects</A></P>
+<P><A NAME="TMPID18941"></A><I CLASS="emphasis">X-Domain groups</I>, known as <I CLASS="emphasis">cross-Domain groups</I>, are used to allow collaboration across Domains. For example, if you have two groups of users, each in a different Domain, that need to collaborate on a project, you can create one X-Domain group which contains both groups of users.</P>
+<P class="before-ul"><A NAME="TMPID18944"></A>An X-Domain group can contain:</P><A NAME="AEN17617"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17618"></A><A NAME="TMPID18947"></A>users from multiple Domains</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17620"></A><A NAME="TMPID18949"></A>groups from multiple Domains</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17622"></A><A NAME="TMPID18951"></A>Domains</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17624"></A><A NAME="TMPID18953"></A>other X-Domain groups</P></LI></UL>
+<P><A NAME="TMPID18954"></A>You can also create an <I CLASS="emphasis">X-Domain Project</I>, adding users and groups from multiple Domains, to allow groups to share information. </P>
+<P><A NAME="TMPID18956"></A>To create an X-Domain project, you populate a regular Project with users, groups, Domains, or X-Domain groups from multiple Domains.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF203">Permissions and Privileges</A></P>
+<P><A NAME="TMPID18958"></A>Only an Administrator, or a user with both system administration and user/groups administration privileges, can add a Domain or X-Domain group, or access different Domains on permissions pages. The permissions interface for other users remains the same. However, all Content Server items can be assigned permissions across domains by the administrator, allowing users in different Domains to access these items, especially by using Content Server Search. Similarly, only Administrators can create X-Domain Projects.</P>
+<P><A NAME="TMPID18961"></A>An entire Domain can be an Owner Group for any item.</P>
+<P><A NAME="TMPID18962"></A>If you want Domain users to be able to access administration volumes, such as the Workflow Volume or the Categories Volume, you must create the <I CLASS="emphasis">All Domains X-Domain group</I>. For the System Object Volume, the Personal Search Templates folder, the XML DTD Volume, and the Reports Volume, you must set permissions manually for Domain users.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF204">Finding Domains</A></P>
+<P><A NAME="TMPID18966"></A>You search for Domains the same way that you search for users or groups. When Domains are enabled, however, in addition to the <B CLASS="guilabel">Find</B> drop-down list and the <B CLASS="guilabel">that starts with</B> field, the users and groups search bar includes the <B CLASS="guilabel">in</B> drop-down list. By default, this list is set to the <I CLASS="emphasis">system Domain</I>, but below a dotted line, it lists all Domains in the system. The system Domain is the domain of all users who do not belong to any Domain that has been created. By default, the system Domain is named <I CLASS="emphasis">Content Server</I>.</P>
+<P><A NAME="TMPID18973"></A>When the system Domain is selected, the <B CLASS="guilabel">Find</B> drop-down list contains the options <B CLASS="guilabel">Domain Name</B> and <B CLASS="guilabel">X-Domain Group Name</B>. If you select a specific Domain in the <B CLASS="guilabel">in</B> drop-down list, Content Server removes these options.</P>
+<P><A NAME="TMPID18979"></A>When you want to display only users or groups in a particular Domain, click the name of that Domain in the <B CLASS="guilabel">in</B> drop-down list, and then search as you would in the Content Server system as a whole.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF205">Configuring and Editing Domains</A></P>
+<P><A NAME="TMPID18983"></A>Any Domain you create automatically becomes a member of the <I CLASS="emphasis">All Domains cross-Domain group</I>, if it exists. A DefaultGroup is created for this Domain at the time the it is created, with the same name as the Domain. It behaves in the same manner as DefaultGroup in the Content Server system Domain does. Once Domains are enabled, you create new Domains and cross-Domain groups in much the same way that you create users and groups.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF206"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID18987"></A><B CLASS="note">Note: </B><BR>To populate a Domain, you must add new users and groups; you cannot add existing Content Server users or groups as Domain users or groups. When you add a user or group to a Domain, that user or group exists only in that Domain, not the Content Server system as a whole.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID18990"></A>Domains <I CLASS="emphasis">cannot</I> be deleted; they can only be disabled. When you disable Domains, all existing Domains and cross-Domain groups remain in the database. If you re-enable Domains, Content Server automatically restores all previously used Domains.</P>
+<P><A NAME="TMPID18993"></A>An Administrator sees a special version of the Users and Groups Search bar if the Domains feature is enabled. In addition to the <B CLASS="guilabel">Find</B> drop-down list and the <B CLASS="guilabel">that starts with</B> field, the <B CLASS="guilabel">Domain</B> drop-down list appears. This new list by default has your system Domain selected, but it lists all of the Domains in the system. When the system Domain is selected, the <B CLASS="guilabel">Find</B> drop-down list contains the options <B CLASS="guilabel">Domain Name</B> and <B CLASS="guilabel">X-Domain Group Name</B>.</P>
+<P class="before-ul"><A NAME="TMPID19000"></A>The only attribute of a Domain you can edit is its name. However, you can perform the following tasks for Domains on the Configure Domain page:</P><A NAME="AEN17672"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17673"></A><A NAME="TMPID19003"></A>Enable or disable Domains</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17675"></A><A NAME="TMPID19005"></A>Create an <I CLASS="emphasis">All Domains X-Domain group</I>. When you create the All Domains group, Content Server automatically populates it with all the Domains in the Content Server system. The All Domains group updates automatically each time you add another Domain, so that you do not have to manually regenerate it. In addition to Domains, the All Domains group can contain users and groups. To add these, you edit the group.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17680"></A><A NAME="TMPID19010"></A>Specify a display name (for example, <I CLASS="emphasis">Company</I>) for the Domain. The name appears on the login and user profile pages.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17683"></A><A NAME="TMPID19013"></A>Specify a <I CLASS="emphasis">system Domain name</I> to represent the entire Content Server system. Once you define this name, it appears above the dotted line in the <B CLASS="guilabel">Domain</B> drop-down list on Search Bars for the Administrator. The default name is <TT CLASS="literal">Content Server</TT>.</P></LI></UL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webuser/wbu-domain-find-p.htm" revision="">To Find a Domain</A></p></li>
+<li><p><A  href="../webuser/wbu-domain-open-p.htm" revision="">To Open a Domain Workspace</A></p></li>
+<li><p><A  href="../webuser/wbu-domain-add-p.htm" revision="">To Add a Domain</A></p></li>
+<li><p><A  href="../webuser/wbu-domain-config-p.htm" revision="">To Configure Domains</A></p></li>
+<li><p><A  href="../webuser/wbu-domain-createx-p.htm" revision="">To Create an X-Domain Group</A></p></li>
+<li><p><A  href="../webuser/wbu-domain-xproj-p.htm" revision="">To Create an X-Domain Project</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,53 @@
+<!-- wr_preferences_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>INI Preferences</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_preferences_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'WebReports:';
+        header.title2 = 'INI Preferences';
+        header.draw();
+
+</SCRIPT>
+
+<p class="body">
+It is possible to reference settings from the <b>opentext.ini</b> file with a WebReport, using the standard constant tag syntax. This feature is subject
+to the following limitations:
+<ul>
+<li>Only items contained under the <b>[WebReports]</b> section of the opentext.ini file can be referenced.</li>
+<li>Some standard options cannot be referenced. This is a development decision based on potential security issues. If in doubt, try to reference
+a particular setting as defined below. If the setting has been blocked, an undefined constant error message will be displayed.</li>
+<li>If a constant has been defined for a WebReport with the same name as a preference, the constant takes precedence.</li>
+</ul>
+</p>
+<p class="body">
+The most common application of this feature is to define unique preferences that will only be used with this feature, i.e. preferences that do not
+already exist in the <b>[WebReports]</b> section. This allows a system (server) level setting that can be referenced by all WebReports. Because the
+opentext.ini file can vary from server to server, this feature also allows that WebReports can use logic based on a particular server. Here are a
+few examples of how this feature may be used:
+<ul>
+<li>Define system level messages, titles or labels</li>
+<li>Define file paths or URLs. This is effectively creating a globally (system wide) available constant</li>
+<li>Define parameters that identify a particular Livelink server. For example, "SERVERTYPE=SECURE". In this way logic can
+be added to WebReports to control their behavior according to which Livelink server they are being run from.</li>
+</ul>
+</p>
+<p class="body">
+<p class="body">
+For more information on using the constant tag syntax see the section called <b>Referencing constants in the WebReport reportview</b> in the help page: <A HREF="wr_constant_procedures.htm">Using Constants</A>
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

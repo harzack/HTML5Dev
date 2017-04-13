@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Calling Sub-WebReports</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-server-calsuweb.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Server Side Scripting';
+          header.title2 = 'Calling Sub-WebReports';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID22047"></A>A script can directly call another WebReport using the following dot function:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN20768"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Function</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Parameters</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">Assoc ._subWebReport(Dynamic nodeid, [String &lt;<I CLASS="varname">parms</I>>], [String &lt;<I CLASS="varname">option</I>>])</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">nodeid</B>: a String or Integer value specifying the nodeid of the report to run.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">&lt;<I CLASS="varname">parms</I>></B>: an optional String containing the parameters to pass to the sub-WebReport. The required format is: <TT CLASS="literal">'PARM:myParm1:myVal1 PARM:myParm2:myVal2'</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">&lt;<I CLASS="varname">option</I>></B>: an optional String value of either <TT CLASS="literal">output</TT>, <TT CLASS="literal">data</TT> or <TT CLASS="literal">all</TT> selecting the required form of the results (see below); defaults to <TT CLASS="literal">output</TT>.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">In all cases an Assoc is returned with a key <TT CLASS="literal">ok</TT> holding a Boolean value that is <TT CLASS="literal">TRUE</TT> if the call was successful. If unsuccessful there is a further key <TT CLASS="literal">err</TT> containing an error String. If successful, the additional keys are as follows:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID22085"></A><B CLASS="highlight">If &lt;<I CLASS="varname">option</I>> = <TT CLASS="literal">output</TT>, or if &lt;<I CLASS="varname">option</I>> is not specified,</B> an Assoc with a key <TT CLASS="literal">output</TT> is returned. The value for the <TT CLASS="literal">output</TT> key is a String containing the formatted output of the sub-WebReport.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID22093"></A><B CLASS="highlight">If &lt;<I CLASS="varname">option</I>> = <TT CLASS="literal">data</TT></B> an Assoc with a key <TT CLASS="literal">data</TT> is returned. The value for the key <TT CLASS="literal">data</TT> is a RecArray containing the original data from the sub-WebReport's data source.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID22100"></A><B CLASS="highlight">If &lt;<I CLASS="varname">option</I>> = <TT CLASS="literal">all</TT></B> an Assoc with both the keys <TT CLASS="literal">output</TT> and <TT CLASS="literal">data</TT> are returned.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN20826"></A>&nbsp;</P>
+<P><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID22107"></A>There follows an example which takes a nodeID (DataID) from the data source and uses it as a parameter when calling a sub-WebReport. The script checks the sub-WebReport call was successful and either outputs the result or an error message:</P><A NAME="AEN20828"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_STARTSCRIPT NAME:callSWR /]
+Function string callSWR(Dynamic c)
+Assoc result
+String parm = Str.Format('PARM:inputlabel1:%1', c.data[1].DataID)
+
+result = ._subWebReport(._repTag('$report'), parm, 'output')
+
+if result.ok
+   return result.output
+else
+   return result.err
+end
+end
+[LL_WEBREPORT_ENDSCRIPT /]
+
+[LL_WEBREPORT_CALL NAME:callSWR /]</PRE
+>
+<P><A NAME="TMPID22109"></A>In this example <TT CLASS="literal">._repTag</TT> is used to return the value of a constant that points to the sub-WebReport required.</P>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

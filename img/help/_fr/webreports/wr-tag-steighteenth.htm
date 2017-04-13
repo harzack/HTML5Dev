@@ -1,0 +1,504 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>UNESCAPESTR, UPPER, URLTOPOST, USERACTION, USERINFO, USERINGROUP, USERPREF</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-steighteenth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sous-balises';
+          header.title2 = 'UNESCAPESTR, UPPER, URLTOPOST, USERACTION, USERINFO, USERINGROUP, USERPREF';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID11116"></A>Cette section apporte des informations sur les sous-balises suivantes : <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUNESCAPESTR">UNESCAPESTR</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUPPER">UPPER</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBURLTOPOST">URLTOPOST</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERACTION">USERACTION</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERINFO">USERINFO</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERINGROUP">USERINGROUP</A></span> et <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERPREF">USERPREF</A></span>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUNESCAPESTR">UNESCAPESTR</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="UNESCAPESTR-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGUNESCAPESTR"></A><B CLASS="highlight">UNESCAPESTR</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="UNESCAPESTR-DESC">Description</A></P>
+<P><A NAME="TMPID11132"></A>Convertit les caractères d'échappement dans leur équivalent. Par exemple, <TT CLASS="literal">\r</TT> sera converti en caractère de retour chariot.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="UNESCAPESTR-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID11136"></A><TT CLASS="literal">[LL_REPTAG=NAME UNESCAPESTR /]"</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUPPER">UPPER</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="UPPER-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGUPPER"></A><B CLASS="highlight">UPPER</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="UPPER-DESC">Description</A></P>
+<P><A NAME="TMPID11146"></A>Met en majuscules tout le texte contenu dans le champ.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBURLTOPOST">URLTOPOST</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="URLTOPOST-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGURLTOPOST"></A><B CLASS="highlight">URLTOPOST</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="URLTOPOST-DESC">Description</A></P>
+<P><A NAME="TMPID11155"></A>Pour toute URL valide, convertit l'URL de type <TT CLASS="literal">GET</TT> en une requête <TT CLASS="literal">POST</TT>, en créant une série de champs <TT CLASS="literal">FORM</TT> au nom approprié, avec les valeurs correspondantes. Si l'URL contient un préfixe avant les paramètres, celui-ci est abandonné et seuls les paramètres sont convertis en champs de formulaire.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="URLTOPOST-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID11161"></A>Prenons par exemple l'URL suivante : <TT CLASS="literal">/Livelink971/livelink.exe?func=ll&amp;objId=157220&amp;objAction=RunReport&amp;reqcacheid=1005851343</TT>, qui est convertie en HTML, avec les lignes suivantes :</P>
+<P><A NAME="TMPID11163"></A><A NAME="AEN10469"></A>
+<PRE 
+CLASS="screen"
+>&lt;<I
+CLASS="varname"
+>INPUT TYPE="HIDDEN" NAME="func" VALUE="ll"</I
+>>
+&lt;<I
+CLASS="varname"
+>INPUT TYPE="HIDDEN" NAME="objId" VALUE="157220"</I
+>>
+&lt;<I
+CLASS="varname"
+>INPUT TYPE="HIDDEN" NAME="objAction" VALUE="RunReport"</I
+>>
+&lt;<I
+CLASS="varname"
+>INPUT TYPE="HIDDEN" NAME="reqcacheid" VALUE="1005851343"</I
+>></PRE
+></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUSERACTION">USERACTION</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERACTION-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGUSERACTION"></A><B CLASS="highlight">USERACTION:&lt;<I CLASS="varname">opération</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERACTION-DESC">Description</A></P>
+<P><A NAME="TMPID11178"></A>Cette sous-balise permet de manipuler de gros volumes d'utilisateurs et de groupes, au niveau du serveur. Les utilisateurs qui exécutent un rapport contenant cette sous-balise ne sont autorisés à exécuter que les opérations bénéficiant du même niveau d'autorisations/de privilèges que l'interface utilisateur standard.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERACTION-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10482"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Action</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:ADD:&lt;<I CLASS="varname">id_utilisateur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Ajoute un utilisateur ou un groupe au groupe renvoyé par la balise principale.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:CREATEGROUP</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Crée un nouveau groupe, portant le nom renvoyé par la balise principale. Un paramètre facultatif est pris en charge, pour définir le chef de groupe.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:CREATEUSER:&lt;<I CLASS="varname">mot_de_passe</I>>:&lt;<I CLASS="varname">service</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Crée un nouvel utilisateur bénéficiant des autorisations par défaut (accès public et avec identification), portant le nom renvoyé par la balise principale.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:DELETE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprime l'utilisateur ou le groupe renvoyé par la balise principale.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:DEPARTMENT:&lt;<I CLASS="varname">ID de groupe ou nom</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Modifie le groupe de service pour l'utilisateur renvoyé par la balise principale.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:PRIVILEGE:&lt;<I CLASS="varname">privilège</I>>:&lt;<I CLASS="varname">vrai ou faux</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Définit une valeur de privilège pour l'utilisateur renvoyé par la balise principale. Les valeurs de privilège correspondent aux options disponibles dans la section Privilèges de la page <B CLASS="guilabel">Modifier l'utilisateur</B>. Cette sous-balise accepte les valeurs suivantes :</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11227"></A><B CLASS="highlight">LoginEnabled</B> : correspond à la case à cocher <B CLASS="guilabel">Connexion autorisée</B>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11231"></A><B CLASS="highlight">PublicAccessEnabled</B> : correspond à la case à cocher <B CLASS="guilabel">Accès public activé</B>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11235"></A><B CLASS="highlight">CanCreateModifyUsers</B> : correspond à la case à cocher <B CLASS="guilabel">Peut créer/modifier des utilisateurs</B>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11239"></A><B CLASS="highlight">CanCreateModifyGroups</B> : correspond à la case à cocher <B CLASS="guilabel">Peut créer/modifier des groupes</B>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11243"></A><B CLASS="highlight">UserAdministrationRights</B> : correspond à la case à cocher <B CLASS="guilabel">Droits d'administration utilisateur</B>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11247"></A><B CLASS="highlight">SystemAdministrationRights</B> : correspond à la case à cocher <B CLASS="guilabel">Droits d'administration système</B>.</P></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette sous-balise fonctionne uniquement pour les utilisateurs disposant de droits d'administration utilisateur. Les utilisateurs sont autorisés à définir uniquement les privilèges qu'eux-mêmes possèdent.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:REMOVE:&lt;<I CLASS="varname">id_utilisateur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprime un utilisateur ou un groupe du groupe renvoyé par la balise principale. Notez que vous ne pouvez pas supprimer d'utilisateur d'un groupe dont le service est le même groupe. Dans Content Server, tout utilisateur doit faire partie d'un service.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:RENAME:&lt;<I CLASS="varname">nom</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renomme le groupe ou l'utilisateur ciblé.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERACTION-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID11266"></A><TT CLASS="literal">[LL_REPTAG=GROUPID USERACTION:ADD:38832 /]</TT> ajoute l'utilisateur dont l'ID est « 38832 » au groupe renvoyé dans la colonne <TT CLASS="literal">GROUPID</TT>. </P>
+<P><A NAME="TMPID11270"></A><TT CLASS="literal">[LL_REPTAG=newname USERACTION:CREATEGROUP:LEADERID:4526 /]</TT> crée un nouveau groupe, qui portera le nom indiqué dans la colonne « nouveau_nom », et spécifie comme chef de ce groupe l'utilisateur « 4526 ». </P>
+<P><A NAME="TMPID11274"></A><TT CLASS="literal">[LL_REPTAG_'jbloggs' USERACTION:CREATEUSER:'aardv4rk':'DefaultGroup' /]</TT> crée un nouvel utilisateur portant le nom « jbloggs », dont le mot de passe est « aardv4rk » et le service « Groupe_par_défaut ».  </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUSERINFO">USERINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINFO-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGUSERINFO"></A><B CLASS="highlight">USERINFO:&lt;<I CLASS="varname">format</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINFO-DESC">Description</A></P>
+<P><A NAME="TMPID11288"></A>Dans le cas d'un ID d'utilisateur Content Server valide, cette sous-balise renvoie les informations utilisateur au format indiqué dans le paramètre spécifié.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINFO-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10592"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Format</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une Assoc contenant les métadonnées de l'utilisateur. Peut être associée en chaîne avec la sous-balise <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span>, pour récupérer des informations spécifiques, non disponibles via les autres balises <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERINFO">USERINFO</A></span>, par exemple <TT CLASS="literal">[LL_REPTAG_'1000' USERINFO ASSOC:Gender /]</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:CONTACT</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Coordonnées de l'utilisateur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:FIRSTNAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Prénom de l'utilisateur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:FULLNAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Nom complet de l'utilisateur, au format globalement spécifié pour le système Content Server ; par exemple, « Joseph Durand ».</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:GROUPID</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID du groupe principal de l'utilisateur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:GROUPNAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Nom du groupe principal de l'utilisateur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:LASTNAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Nom de famille de l'utilisateur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:LEADERID</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Si l'ID spécifié correspond à un groupe, l'ID de l'utilisateur chef de ce groupe est renvoyé.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:MAILADDRESS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Adresse e-mail de l'utilisateur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:MIDDLENAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Deuxième prénom de l'utilisateur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:NAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID de connexion de l'utilisateur ou nom du groupe.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:PRIVILEGES</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une Assoc contenant les valeurs booléennes correspondant aux privilèges de l'utilisateur. Peut être associée en chaîne à une autre valeur, à l'aide de la sous-balise <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span>, pour définir un privilège particulier, par exemple <TT CLASS="literal">[LL_REPTAG_USERID USERINFO:PRIVILEGES ASSOC:UserAdministrationRights /]</TT>, qui renvoie vrai ou faux en fonction de la valeur de la propriété booléenne « UserAdministrationRights ». Cette sous-balise renvoie des données uniquement si le WebReport est exécuté par un utilisateur disposant de droits d'administration utilisateur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:PWS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ObjectID de l'espace de travail Personnel de l'utilisateur. Cette sous-balise peut être utilisée pour créer un lien vers l'espace de travail Personnel d'un utilisateur, en l'associant à la sous-balise <TT CLASS="literal">LLURL</TT>. Par exemple, <TT CLASS="literal">[LL_REPTAG_USERID USERINFO:PWS LLURL:BROWSE /]</TT> fournit une URL pour accéder à l'espace de travail Personnel de l'utilisateur qui exécute le WebReport.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:TITLE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Titre de l'utilisateur.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUSERINGROUP">USERINGROUP</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINGROUP-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGUSERINGROUP"></A><B CLASS="highlight">USERINGROUP</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINGROUP-DESC">Description</A></P>
+<P><A NAME="TMPID11387"></A>Renvoie Vrai si l'utilisateur actuel, c'est-à-dire celui qui exécute le WebReport, est membre du groupe renvoyé par la balise principale. Si la balise principale n'est associée à aucun ID de groupe valide, la valeur Faux est renvoyée.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINGROUP-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID11390"></A><TT CLASS="literal">[LL_WEBREPORT_IF "[LL_REPTAG=id USERINGROUP /]" == "TRUE" /]</TT></P>
+<P><A NAME="TMPID11392"></A><TT CLASS="literal">I AM IN GROUP: [LL_REPTAG=NAME /]</TT></P>
+<P><A NAME="TMPID11394"></A><TT CLASS="literal">[LL_WEBREPORT_ENDIF /]</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUSERPREF">USERPREF</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREF-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGUSERPREF"></A><B CLASS="highlight">USERPREF:&lt;<I CLASS="varname">onglet</I>>:&lt;<I CLASS="varname">paramètre</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREF-DESC">Description</A></P>
+<P><A NAME="TMPID11406"></A>Dans le cas d'un ID utilisateur Content Server valide, cette sous-balise renvoie les paramètres utilisateur trouvés lorsque vous sélectionnez <B CLASS="guilabel">Paramètres</B> dans le menu <B CLASS="guilabel">Outils</B>. Certaines sous-balises renvoient une Assoc Oscript et peuvent être associées à la sous-balise <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREF-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10709"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Format</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une Assoc Oscript contenant les valeurs de l'onglet <B CLASS="guilabel">Général</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:DFTSTARTPAGE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="guilabel">Page d'ouverture</B> par défaut de l'utilisateur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:ENHANCEDKYBD</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie Vrai ou Faux en fonction du paramètre <B CLASS="guilabel">Mode d'accès au clavier étendu</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:LANGUAGE:CODE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie le code de la langue préférée de l'utilisateur. Si aucune langue n'a été spécifiée, la langue système par défaut est renvoyée. Voici quelques exemples de valeurs renvoyées possibles : <TT CLASS="literal">_en_US</TT> et <TT CLASS="literal">_fr</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:LANGUAGE:NAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie le nom d'affichage de la langue préférée de l'utilisateur. Si aucune langue n'a été spécifiée, la langue système par défaut est renvoyée. Voici quelques exemples de valeurs renvoyées possibles :  <TT CLASS="literal">Anglais (Etats-Unis)</TT> et <TT CLASS="literal">Français</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:MODDUR</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Durée de l'indicateur <B CLASS="guilabel">Modifié</B>, en nombre de jours.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:NAVSTYLE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie le style de navigation de l'utilisateur. Il s'agit de l'une des trois valeurs suivantes :</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID11465"></A>chaîne vide, si aucune préférence n'a été définie ;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID11467"></A>bandeau ;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID11469"></A>liste déroulante.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:NEWDUR</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie la durée de l'indicateur <B CLASS="guilabel">Nouveau</B>, en nombre de jours.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:SBLOCATION</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie <TT CLASS="literal">left</TT> ou <TT CLASS="literal">right</TT>, en fonction du paramètre <B CLASS="guilabel">Emplacement de la barre latérale</B>. Disponible uniquement dans les versions Content Server 10.0 et supérieures.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:SIDEBAR</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie <TT CLASS="literal">true</TT> ou <TT CLASS="literal">false</TT>, en fonction du paramètre <B CLASS="guilabel">Afficher la barre latérale dans la navigation</B>. Disponible uniquement dans les versions Content Server 10.0 et supérieures.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:SHOWITEMDESC</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie <TT CLASS="literal">true</TT> ou <TT CLASS="literal">false</TT>, en fonction du paramètre <B CLASS="guilabel">Présenter les descriptions d'élément dans l'affichage détaillé</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">COLORS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une Assoc Oscript contenant tous les paramètres de l'onglet <B CLASS="guilabel">Couleur</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">COLORS:ROW1</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Valeur hexadécimale du paramètre <TT CLASS="literal">Row1</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">COLORS:ROW2</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Valeur hexidécimale du paramètre <TT CLASS="literal">Row2</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une Assoc Oscript contenant tous les paramètres de l'onglet <B CLASS="guilabel">Discussion</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION:DFTPERIODFROM</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Paramètre <B CLASS="guilabel">Valeur par défaut de la zone Depuis</B> de l'onglet <B CLASS="guilabel">Discussion</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION:DFTVIEW</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Paramètre <B CLASS="guilabel">Affichage par défaut</B> de l'onglet <B CLASS="guilabel">Discussion</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION:FILTERPREF</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Paramètre <B CLASS="guilabel">Préférences de filtre</B> de l'onglet <B CLASS="guilabel">Discussion</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION:POSTINGPREF</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie <TT CLASS="literal">true</TT> ou <TT CLASS="literal">false</TT> en fonction du paramètre <B CLASS="guilabel">Préférences de publication</B> dans l'onglet <B CLASS="guilabel">Discussion</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION:REPLYPREF</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie <TT CLASS="literal">true</TT> ou <TT CLASS="literal">false</TT> en fonction du paramètre <B CLASS="guilabel">Préférences de réponses</B> dans l'onglet <B CLASS="guilabel">Discussion</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION:VIEWITEMOPTIONS </B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie <TT CLASS="literal">true</TT> ou <TT CLASS="literal">false</TT> en fonction du paramètre <B CLASS="guilabel">Afficher les options de l'élément</B> dans l'onglet <B CLASS="guilabel">Discussion</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une Assoc Oscript contenant tous les paramètres de l'onglet <B CLASS="guilabel">Workflow</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:WFSTARTPAGE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Paramètre <B CLASS="guilabel">Tâches assignées du workflow &gt; Page de départ</B> de l'onglet <B CLASS="guilabel">Workflow</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:PROXY</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Paramètre <B CLASS="guilabel">Tâches assignées du workflow &gt; Proxy</B> de l'onglet <B CLASS="guilabel">Workflow</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:ASSIGNMENTSSHOW</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une Assoc Oscript contenant tous les paramètres <B CLASS="guilabel">Tâches assignées du workflow &gt; Afficher</B>, y compris les données d'expression, le cas échéant.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:AUTOOPEN</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie <TT CLASS="literal">true</TT> ou <TT CLASS="literal">false</TT> en fonction du paramètre <B CLASS="guilabel">Ouvrir automatiquement la tâche suivante dans le même workflow si elle m'est assignée</B> dans l'onglet <B CLASS="guilabel">Workflow</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:INCLUDEWFASSGN</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie <TT CLASS="literal">true</TT> ou <TT CLASS="literal">false</TT> en fonction du paramètre <B CLASS="guilabel">Inclure les tâches assignées du workflow dans la page 'Mes tâches assignées'</B> dans l'onglet <B CLASS="guilabel">Workflow</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:STATUSSHOW </B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une Assoc Oscript contenant tous les paramètres de l'onglet <B CLASS="guilabel">Statuts du workflow</B> &gt; <B CLASS="guilabel">Afficher dans le workflow</B>, y compris les données d'expression, le cas échéant.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:SORTORDER</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Paramètre <B CLASS="guilabel">Statuts de workflow</B> &gt; <B CLASS="guilabel">Ordre de classement</B> de l'onglet <B CLASS="guilabel">Workflow</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:DFTWFTAB</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Paramètres <B CLASS="guilabel">Onglet 'Mes workflows' par défaut</B> de l'onglet <B CLASS="guilabel">Workflow</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:MAXITEMS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Paramètre <B CLASS="guilabel">Nombre maximum d'éléments par page</B> de l'onglet <B CLASS="guilabel">Workflow</B>.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREF-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID11649"></A><TT CLASS="literal">[LL_REPTAG=USERID USERPREF:GENERAL:STARTPAGE /]</TT> renvoie le paramètre <B CLASS="guilabel">Page de départ</B> de l'utilisateur.</P>
+<P class="before-ul"><A NAME="TMPID11652"></A>Les autres valeurs pouvant être utilisées à la place de <TT CLASS="literal">STARTPAGE</TT> sont :</P><A NAME="AEN10953"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10954"></A><A NAME="TMPID11656"></A>Espace de travail Entreprise</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10956"></A><A NAME="TMPID11658"></A>Mon espace de travail</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10958"></A><A NAME="TMPID11660"></A>A propos de Content Server</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10961"></A><A NAME="TMPID11663"></A>Ma page d'accueil</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

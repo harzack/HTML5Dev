@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Configuring Data Flow Process Start Options</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-configdflwstrt-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Data Flows';
+          header.title2 = 'Configuring Data Flow Process Start Options';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3509"></A>When you create Content Server indexes using index templates, Content Server automatically generates the appropriate system objects, including the data flow and all of its processes. In this case, Content Server configures each data flow process using default values. You can modify these default options if you want to customize the configuration of the data flow processes. Modifying start options allows you to customize when data flow processes run, which can improve the efficiency of data processing. For example, depending on the amount of data that needs to be processed at your site, you can schedule data flow processes to run each minute or each hour every day, or every other day. Another option that can ensure the efficiency of data processing at your site is configuring start options for the Enterprise Extractor process and setting up <I CLASS="emphasis">control rules</I> (rules for the delivery of data flow management actions) for the Document Conversion and Update Distributor processes. For example, when you configure the start options for an Enterprise Extractor process, you can schedule it to run every day at 9:00 PM. The Enterprise Extractor process runs until it extracts all the objects in the Content Server database, and then transfers the extracted objects as data interchange pool (IPool) messages to the IPool from which the Document Conversion process reads. If you set up a control rule for the Document Conversion process, the process runs whenever there are IPool messages in the IPool from which it reads. When there are no IPool messages, the Document Conversion process stops running until it receives one or more IPool messages. You can also set up this control rule for the Update Distributor process, which is a process that passes data to Index Engines for indexing. Whenever there are IPool messages in the IPool from which the Update Distributor reads, the Update Distributor runs; and it stops running when there are no messages.</P>
+<P><A NAME="TMPID3515"></A>You can configure the start options on the <B CLASS="guilabel">Specific</B> tab of each data flow process's Properties page to determine whether the process runs persistently, runs according to a predetermined schedule, or runs when you start it manually.</P>
+<P><A NAME="TMPID3517"></A>The following table describes the most appropriate start options for data flow processes.</P>
+<DIV title="Default Start Options" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="TAB-AID28"></A><B>Table 1-1: Default Start Options</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Process Type</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description of Default Start Option</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Enterprise Extractor</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Schedule this process to run each minute so that it can continuously monitor changes in your Content Server database. Although you can modify the time and days when the Enterprise Extractor runs, OpenText recommends that you do not set this process to the <B CLASS="guilabel">Manual</B> or <B CLASS="guilabel">Persistent</B> start option.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Directory Walker</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Set this process to run when you manually start it. It then continues to run until it completes its operations. Depending on the type of index that you are creating, you can change the manual setting. Use the <B CLASS="guilabel">Manual</B> start option when indexing relatively static data on your file system. If you expect the content of the specified directories to change frequently, you can configure the Directory Walker process to run according to a schedule (for example, once per week). In this way, you can keep the index synchronized with the current state of the data in the walked directories.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Document Conversion</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Schedule this process to run each minute so that it can monitor its read directory for new data regularly. Although you can modify the time and days when the Document Conversion process runs, OpenText recommends that you do not set this process to the <B CLASS="guilabel">Manual</B> or <B CLASS="guilabel">Persistent</B> start option.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Update Distributor</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">This process runs continuously so that it can constantly monitor its read directory for data to index. OpenText recommends that you do not set the Update Distributor process to any other start option.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Importer</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Schedule this process to run each minute so that it can continuously respond to changes in your Content Server database. OpenText recommends that you do not set the Importer process to any other start option.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">XML Activator Producer</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Schedule this process to run each minute so that it recrawls a directory regularly. Although you can modify the time and days when the XML Activator Producer process runs, OpenText recommends that you do not set this process to the <B CLASS="guilabel">Manual</B> or <B CLASS="guilabel">Persistent</B> start option.</TD></TR></TABLE></DIV>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-configdflwstrt-p.htm" revision="">To Configure Data Flow Process Start Options</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Exemples de fichier de contrôle d'importation de tâches</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-tasksamp-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Exemples de fichier de contrôle d\'importation de l\'importateur d\'objet';
+          header.title2 = 'Exemples de fichier de contrôle d\'importation de tâches';
+           header.draw();
+  </script>
+
+<DIV title="Pour créer une liste de tâches en ne définissant aucun des paramètres facultatifs :   " CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LLESOI-TASKSAMP01"></A><B><IMG title="Pour créer une liste de tâches en ne définissant aucun des paramètres facultatifs :   " SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-44 : Pour créer une liste de tâches en ne définissant aucun des paramètres facultatifs :   </B></P><A NAME="AEN4400"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="tasklist" action="create"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="en"&gt;New Task List&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour créer une liste de tâches en ne définissant aucun des paramètres facultatifs :   " SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour créer une étape clé au sein de la liste de tâches créée précédemment :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LLESOI-TASKSAMP02"></A><B><IMG title="Pour créer une étape clé au sein de la liste de tâches créée précédemment :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-45 : Pour créer une étape clé au sein de la liste de tâches créée précédemment :</B></P><A NAME="AEN4403"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="taskmilestone" action="create"&gt;
+    &lt;location&gt;Enterprise:New Task List&lt;/location&gt;
+    &lt;title language="en"&gt;New Milestone&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour créer une étape clé au sein de la liste de tâches créée précédemment :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour créer une tâche dotée de l'étape clé créée précédemment, au sein de la liste de tâches créée ci-dessus :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LLESOI-TASKSAMP03"></A><B><IMG title="Pour créer une tâche dotée de l'étape clé créée précédemment, au sein de la liste de tâches créée ci-dessus :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-46 : Pour créer une tâche dotée de l'étape clé créée précédemment, au sein de la liste de tâches créée ci-dessus :</B></P><A NAME="AEN4406"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="task" action="create"&gt;
+    &lt;location&gt;Enterprise:New Task List&lt;/location&gt;
+    &lt;title language="en"&gt;New Task&lt;/title&gt;
+    &lt;milestone&gt;Enterprise:New Task List:New Milestone&lt;/milestone&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour créer une tâche dotée de l'étape clé créée précédemment, au sein de la liste de tâches créée ci-dessus :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour supprimer l'étape clé créée précédemment de la tâche créée ci-dessus :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF56"></A><B><IMG title="Pour supprimer l'étape clé créée précédemment de la tâche créée ci-dessus :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-47 : Pour supprimer l'étape clé créée précédemment de la tâche créée ci-dessus :</B></P><A NAME="AEN4409"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="task" action="update"&gt;
+    &lt;location&gt;Enterprise:New Task List:New Task&lt;/location&gt;
+    &lt;milestone clear="true"&gt;&lt;/milestone&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour supprimer l'étape clé créée précédemment de la tâche créée ci-dessus :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

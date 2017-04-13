@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>created Tag Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-crtd-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Tag Descriptions and Syntax';
+          header.title2 = 'created Tag Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CRTDTAG01">Description</A></P>
+<P class="nr1"><A NAME="TMPID3844"></A>Use the <TT CLASS="LITERAL">created</TT> tag to specify a different create date for the object.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CRTDTAG02">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3669"></A>&lt;created&gt;20100731&lt;/created&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CRTDTAG03">Usage</A></P>
+<A NAME="AEN3671"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3672"></A><A NAME="TMPID3857"></A>The <TT CLASS="LITERAL">created</TT> tag is not a required tag.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3675"></A><A NAME="TMPID3860"></A>The <TT CLASS="LITERAL">created</TT> tag is optional when:</P><A NAME="AEN3678"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3679"></A><A NAME="TMPID3864"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3684"></A><A NAME="TMPID3869"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3689"></A><A NAME="TMPID3874"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="addversion"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3694"></A><A NAME="TMPID3879"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="sync"&gt;</TT></P></LI></UL></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CRTDTAG04">Notes</A></P>
+<A NAME="AEN3700"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3701"></A><A NAME="TMPID3887"></A>Dates must be in the format YYYYMMDD or YYYYMMDDHHMMSS, where HH refers to the 24-hour clock and is a value between 01 and 24. If YYYYMMDD is used, the time defaults to 000000. If this tag is not specified during create, the current system date is used.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3703"></A><A NAME="TMPID3889"></A>For document objects, there are two created fields, one on the document and one for each version of the document. If this tag is 	specified during an <TT CLASS="LITERAL">action="create"</TT>, the date will be modified on the document <I CLASS="EMPHASIS">and</I> on the version of the document.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3707"></A><A NAME="TMPID3893"></A>When updating a document with the <TT CLASS="LITERAL">&lt;file&gt;</TT> tag present, or when adding a new version, the date will apply to the new version. When updating a document without the <TT CLASS="LITERAL">&lt;file&gt;</TT> tag, the date will apply to the document.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CRTDTAG05">Example</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3712"></A>&#13;&lt;import&gt;
+  &lt;node type="document" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;My Guidelines&lt;/title&gt;
+    &lt;file&gt;c:\temp\guidelines.doc&lt;\file&gt;
+    &lt;createdby&gt;Admin&lt;/createdby&gt;
+    &lt;created&gt;20100731&lt;/created&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

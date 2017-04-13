@@ -1,0 +1,174 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<title>Working with Object Importer Control Files</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Object Importer: <NOBR>OpenText Content Server Admin Online Help</NOBR>';
+          header.title2 = 'Working with Object Importer Control Files';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID844"></A>Object Importer creates, updates, or deletes objects within Content Server based on directions from an import control file. The import control file contains meta information supplied by the user. It is an XML file, and must contain valid XML. The import control file can have any name and ASCII extension, for example, <TT CLASS="FILENAME">import.txt</TT>.&#13;</P>
+<P><A NAME="TMPID851"></A>Control files must be placed in the control file directory, where Object Importer processes them one at a time. Before Object Importer begins processing a control file, each file is moved from the control file directory into the working directory. Once the file has been processed, which means that the import has completed and stopped, the control file may be deleted from the working directory, if that is how you have configured Object Importer. Import control files can be added to, or removed from, the control file directory at any time. For information about setting up and configuring the working and control file directories, see <span><A HREF="llesoi-cfg-p.htm">To Configure Object Importer</A></span>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF6"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID857"></A><B CLASS="NOTE">Note: </B><BR>To prevent data loss, you must stop any running imports before you stop or restart the server.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<table CLASS="WARNING">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="ICONCELL">
+<P CLASS="WARNING" ALIGN="CENTER"><IMG ALT="Warning" SRC="../../images/pi_warning.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID859"></A><B CLASS="WARNING">Warning</B><BR>It is very important that the control file be properly formatted. The import will fail unless the entire import control file, including comments, is contained within the import tags, <TT CLASS="LITERAL">&lt;import&gt;&lt;/import&gt;</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-ICF">The Import Control File Character Set</A></P>
+<P><A NAME="TMPID863"></A>By default, the Import Control File is in the ANSI character set. You can use other character sets, for example UTF-8, as long as the XML header provides the correct encoding. For more information about using UTF-8 with the import control file, see <span><A HREF="llesoi-cfile-so.htm#LLESOI-UNICODE">Object Importer and UTF-8</A></span>. &#13;</P>
+<P><A NAME="TMPID871"></A>When using the import control file in the ANSI character set, the following special characters must be encoded as entities.</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN836"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Character</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Encoded Value</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&lt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&amp;lt;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&gt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&amp;gt;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">'</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&amp;apos;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">"</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&amp;quot;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&amp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&amp;amp;</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID897"></A>The XML parser will allow for more flexibility in dealing with characters that needed to be escaped such as “&lt;”, “&gt;”, and “&amp;”.</P>
+<DIV title="The 'CDATA' tag can be used to wrap data that you do not want the XML engine to process:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF7"></A><B><IMG title="The 'CDATA' tag can be used to wrap data that you do not want the XML engine to process:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 3-1: The <NOBR>CDATA</NOBR> tag can be used to wrap data that you do not want the XML engine to process:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN868"></A>&#13;&lt;node action="create" type="folder"&gt;
+  &lt;location&gt;Enterprise:OI&lt;/location&gt;
+  &lt;title language="en"&gt;&lt;![CDATA[Anything in here will not be processed such as &amp;lt;, &amp;gt;, &amp;amp;.]]&gt;&lt;/title&gt;
+&lt;/node&gt;</PRE
+><IMG title="The 'CDATA' tag can be used to wrap data that you do not want the XML engine to process:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="'CDATA' will not work with attribute values, so certain characters may need to be escaped: '&lt;', '&gt;', '&apos;', '&quot;', and '&amp;':" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF8"></A><B><IMG title="'CDATA' will not work with attribute values, so certain characters may need to be escaped: '&lt;', '&gt;', '&apos;', '&quot;', and '&amp;':" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 3-2: <NOBR>CDATA</NOBR> will not work with attribute values, so certain characters may need to be escaped: “&amp;lt;”, “&amp;gt;”, “&amp;apos;”, “&amp;quot;”, and “&amp;amp;”:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN877"></A>&#13;&lt;node action="create" type="folder"&gt;
+  &lt;location&gt;Enterprise:OI&lt;/location&gt;
+  &lt;title language="en"&gt;&lt;![CDATA[Anything in here will not be processed such as &amp;lt;, &amp;gt;, &amp;amp;.]]&gt;&lt;/title&gt;
+  &lt;category name="Content Server Categories:Test"&gt;
+    &lt;attribute name="Height &amp;amp; Width"&gt;&lt;![CDATA[2'x2"]]&gt;&lt;/attribute&gt;
+  &lt;/category&gt;
+&lt;/node&gt;</PRE
+><IMG title="'CDATA' will not work with attribute values, so certain characters may need to be escaped: '&lt;', '&gt;', '&apos;', '&quot;', and '&amp;':" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-MULTI01">Importing Multilingual Metadata using Object Importer</A></P>
+<P><A NAME="TMPID918"></A>Object Importer provides support for the multilingual feature available with Content Server. When a new instance of Content Server is installed, the administrator selects the language which will function as the system default language. You can view your system default language, and all languages which have been installed and enabled for metatdata, in the <B CLASS="GUILABEL">Metadata</B> section of the Content Server Administration page. Click the <B CLASS="GUILABEL">Configure Multilingual Metadata</B> link. For more information about configuring multilingual metadata on Content Server, see <I CLASS="EMPHASIS">Configuring Multilingual Metadata</I> in the <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-multilingual-metadata-config-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-multilingual-metadata-config-bg.htm">Configuring Multilingual Metadata</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-multilingual-metadata-config-bg" FMT=""></span>. &#13;</P>
+<P><A NAME="TMPID936"></A>Object Importer users can now import multilingual metadata to Content Server, provided the languages referenced in the import control file are installed and enabled on the system. Support for multilingual metadata import is provided by using the <span><A HREF="llesoi-cfile-desc-rf.htm">description Tag Control File Syntax</A></span> and the <span><A HREF="llesoi-cfile-title-rf.htm">title Tag Control File Syntax</A></span>.</P>
+<P><A NAME="TMPID941"></A>Previously, only one <TT CLASS="LITERAL">&lt;description&gt;</TT> and one <TT CLASS="LITERAL">&lt;title&gt;</TT> tag was permitted per node paragraph. Each node paragraph details one action which will be undertaken on one object. With support for multilingual metadata, you can apply multiple <TT CLASS="LITERAL">&lt;description&gt;</TT> tags and multiple <TT CLASS="LITERAL">&lt;title&gt;</TT> tags per node paragraph. Each <TT CLASS="LITERAL">&lt;description&gt;</TT> tag must contain a unique <TT CLASS="LITERAL">language="&lt;<I CLASS="VARNAME">language_code</I>>"</TT> attribute, and each <TT CLASS="LITERAL">&lt;title&gt;</TT> tag must contain a unique <TT CLASS="LITERAL">language="&lt;<I CLASS="VARNAME">language_code</I>>"</TT> attribute.</P>
+<table CLASS="IMPORTANT">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="IMPORTANT"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID953"></A><B CLASS="IMPORTANT">Important: </B><BR>All languages referenced in the import control file must be both installed and enabled on Content Server. If you try to import objects that have multiple languages set for their titles and descriptions into a unilingual Content Server environment, then the import of those objects will fail. If you selected the <B CLASS="GUILABEL">Stop Processing on Error</B> check box on the <B CLASS="GUILABEL">Configure Object Importer</B> page, your import will stop after encountering the first error.</P>
+<P><A NAME="TMPID959"></A>Any failures will be written to the Object Importer log file which can be found in <TT CLASS="FILENAME">&lt;<I CLASS="VARNAME">Content Server_home</I>>/logs</TT> or in <TT CLASS="FILENAME">&lt;<I CLASS="VARNAME">Content Server_home</I>>/objectimporter</TT>, depending on how you have set up Object Importer. For more information about Object Importer log file setup, see <span><A HREF="llesoi-cfg-p.htm">To Configure Object Importer</A></span>. For more information about viewing Object Importer log files, see <span><A HREF="llesoi-viewlog-p.htm">To View or Delete Log Files</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="An import control file which imports multilingual data for a folder" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF9"></A><B><IMG title="An import control file which imports multilingual data for a folder" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 3-3: An import control file which imports multilingual data for a folder</B></P>
+<P class="nr1"><A NAME="TMPID974"></A>The following import control file will create a folder called “Project” in the Enterprise Workspace. The “Project” folder will have a second, German, title assigned to it, “Projekte”. The reason that the created folder will be called “Project”, and not “Projekte”, occurs because the system default language for this Content Server installation is set to English. This folder will have both English and German titles and descriptions assigned to it.</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN943"></A>&#13;&lt;import&gt;
+  &lt;node action="create" type="folder"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="de"&gt;Projekte&lt;/title&gt;
+    &lt;title language="en"&gt;Project&lt;/title&gt;
+    &lt;description language="de"&gt;Projektdaten&lt;/description&gt;
+    &lt;description language="en"&gt;Project Data&lt;/description&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="An import control file which imports multilingual data for a folder" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="An import control file which imports multilingual data for a project" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF10"></A><B><IMG title="An import control file which imports multilingual data for a project" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 3-4: An import control file which imports multilingual data for a project</B></P>
+<P class="nr1"><A NAME="TMPID984"></A>The following import control file will update a project called “projects_list” in the Enterprise Workspace. The descriptions for this project are updated in both German and English. The title for this project is updated in English, while the German title is deleted. The opportunity to add a German title at a later date exists.</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN948"></A>&#13;&lt;import&gt;
+  &lt;node action="update" type="project"&gt;
+    &lt;description language="de"&gt;eine Liste aller Projekte&lt;/description&gt;
+    &lt;description language="en"&gt;a list of all projects&lt;/description&gt;
+    &lt;location&gt;Enterprise:Projects&lt;/location&gt;
+    &lt;title clear="true" language="de"&gt;&lt;/title&gt;
+    &lt;title language="en"&gt;projects_list&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="An import control file which imports multilingual data for a project" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P><A NAME="TMPID987"></A>For more information about importing multilingual metadata in Object Importer, see the <span><A HREF="llesoi-cfile-desc-rf.htm">description Tag Control File Syntax</A></span> and the <span><A HREF="llesoi-cfile-title-rf.htm">title Tag Control File Syntax</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-UNICODE">Object Importer and UTF-8</A></P>
+<P><A NAME="TMPID994"></A>If the control file contains non-ASCII characters, add the following line, <TT CLASS="LITERAL">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</TT>, to the top of the control file and save the control file with UTF-8 encoding. &#13;</P>
+<DIV title="Example showing an import control file which can contain non-ASCII characters:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF11"></A><B><IMG title="Example showing an import control file which can contain non-ASCII characters:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 3-5: Example showing an import control file which can contain non-ASCII characters:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN966"></A>&#13;&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;import&gt;
+  &lt;node action="create" type="document"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="en"&gt;New Document&lt;/title&gt;
+    &lt;file&gt;c:\readme.txt&lt;/file&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Example showing an import control file which can contain non-ASCII characters:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF12"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1008"></A><B CLASS="NOTE">Note: </B><BR>Documents on the file system to be imported into Content Server, must be made up of characters in the ASCII or ISO-8859-1 character sets. These documents are specified between the <TT CLASS="LITERAL">&lt;file&gt;&lt;/file&gt;</TT> tags in the import control file.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-REMCONFI">Removing Content from Fields with Object Importer Control Files</A></P>
+<P><A NAME="TMPID1014"></A>When specifying control files for importing objects, it is possible in some cases to use the <TT CLASS="LITERAL">clear="true"</TT> attribute to remove specific types of data from fields that currently contain information. These fields include Categories and Attributes, Descriptions, and Projects. To see an example of the <TT CLASS="LITERAL"> clear="true"</TT> attribute, see <span><A HREF="llesoi-cfile-desc-rf.htm">description Tag Control File Syntax</A></span>. &#13;</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

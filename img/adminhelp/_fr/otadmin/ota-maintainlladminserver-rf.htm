@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Maintenance des serveurs d'administration</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-maintainlladminserver-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration de l\'indexation de gros volumes';
+          header.title2 = 'Maintenance des serveurs d\'administration';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3001"></A>Après avoir configuré vos serveurs d'administration, vous pouvez effectuer des opérations de maintenance. Vous pouvez par exemple parcourir un serveur d'administration pour déterminer les processus de flux de données qu'il gère, vous pouvez exécuter une commande ping vers un serveur d'administration pour déterminer s'il est connecté et vous pouvez interrompre un serveur d'administration si vous voulez qu'il soit exécuté en mode sans échec pendant que vous effectuez d'autres opérations d'administration. Si vous interrompez un serveur d'administration, vous devez le réinitialiser pour qu'il ne soit plus en mode sans échec. Vous pouvez également afficher les numéros de port associés aux processus d'indexation et de recherche gérés par un serveur d'administration.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF65">Parcourir les serveurs d'administration</A></P>
+<P><A NAME="TMPID3003"></A>Les sites Content Server peuvent avoir plusieurs serveurs d'administration différents, chacun d'entre eux pouvant gérer différents composants d'index (par exemple, les processus de flux de données et les moteurs de recherche) dans la base de données Content Server. Vous pouvez parcourir un serveur d'administration pour consulter la liste des composants d'index qu'il gère.</P>
+<P><A NAME="TMPID3006"></A>Si un site Content Server dispose de plusieurs serveurs d'administration, vous pouvez les parcourir afin de déterminer comment les processus de flux de données et les moteurs de recherche sont distribués entre les serveurs. Vous pouvez également surveiller le statut et gérer les processus ou les moteurs de recherche. Les tâches d'administration que vous pouvez effectuer sont les mêmes que celles que vous pouvez effectuer sur les processus ou les moteurs de recherche lorsque vous accédez à leur emplacement dans le système Content Server.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF66">Exécution d'une commande ping vers des serveurs d'administration</A></P>
+<P><A NAME="TMPID3010"></A>Lorsqu'un serveur d'administration n'est plus disponible (c'est-à-dire que, pour une raison quelconque, l'administrateur Content Server le déconnecte), le serveur exécute une commande ping trois fois afin de déterminer s'il est de nouveau disponible. Si la commande échoue trois fois, le serveur considère le serveur d'administration comme étant définitivement déconnecté et n'exécute pas d'autres commandes ping. Lorsque cela se produit et que le serveur d'administration est de nouveau disponible, vous devez exécuter vous-même une commande ping afin de reconnecter ce serveur au serveur.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF67">Interruption des serveurs d'administration</A></P>
+<P><A NAME="TMPID3013"></A>Vous devez interrompre un serveur d'administration pour pouvoir l'exécuter en mode sans échec afin que vous puissiez effectuer des tâches de maintenance du système sans gêner ses fonctions principales.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF68">Mode sans échec</A></P>
+<P class="before-ul"><A NAME="TMPID3015"></A>Le serveur d'administration adopte un mode sans échec <I CLASS="emphasis">de dépannage</I> car :</P><A NAME="AEN2386"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2387"></A><A NAME="TMPID3019"></A>L'administrateur émet la commande <TT CLASS="command">go safe</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2390"></A><A NAME="TMPID3022"></A>Content Server ne peut pas enregistrer un fichier de configuration ou un fichier de processus actif.</P></LI></UL>
+<P><A NAME="TMPID3024"></A>Un serveur d'administration passe en mode sans échec lorsqu'il ne peut pas écrire dans son fichier <TT CLASS="filename">otadmin.cfg</TT> ou dans son fichier <TT CLASS="filename">otadmin.pid</TT>. Lorsqu'un serveur d'administration passe en mode sans échec, son statut s'affiche sur la page Volume des objets système. L'onglet <B CLASS="guilabel">Général</B> de la page Propriétés du serveur d'administration affiche un message plus détaillé décrivant la condition qui a provoqué le passage en mode sans échec du serveur d'administration.</P>
+<P class="before-ul"><A NAME="TMPID3028"></A>Ces commandes sont conformes en mode sans échec :</P><A NAME="AEN2398"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2399"></A><A NAME="TMPID3031"></A><TT CLASS="command">exit process</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2402"></A><A NAME="TMPID3034"></A><TT CLASS="command">quit</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2405"></A><A NAME="TMPID3037"></A><TT CLASS="command">reset server</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2408"></A><A NAME="TMPID3040"></A><TT CLASS="command">shutdown</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2411"></A><A NAME="TMPID3043"></A><TT CLASS="command">status process</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2414"></A><A NAME="TMPID3046"></A><TT CLASS="command">status ipool</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2417"></A><A NAME="TMPID3049"></A><TT CLASS="command">status server</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2420"></A><A NAME="TMPID3052"></A><TT CLASS="command">statuscode process</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2423"></A><A NAME="TMPID3055"></A><TT CLASS="command">statustext process</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2426"></A><A NAME="TMPID3058"></A><TT CLASS="command">sync</TT></P></LI></UL>
+<P><A NAME="TMPID3060"></A>Un serveur d'administration ne vérifie pas la quantité d'espace disque disponible et ne passe donc pas en mode sans échec lorsque l'espace disque est faible.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF69">Réinitialisation des serveurs d'administration</A></P>
+<P><A NAME="TMPID3062"></A>Vous devez réinitialiser un serveur d'administration pour qu'il ne soit plus en mode sans échec et pour qu'il soit de nouveau actif.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF70">Affichage des numéros de port</A></P>
+<P class="before-ul"><A NAME="TMPID3064"></A>Affichez les numéros de port pour déterminer quels ports sont en cours d'utilisation ou pour vous assurer que tous les processus d'indexation et de recherche gérés par un serveur d'administration sont exécutés sur des ports uniques. La liste des numéros de port comprend les numéros de port utilisés par les processus suivants (s'ils existent) :</P><A NAME="AEN2434"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2435"></A><A NAME="TMPID3067"></A>Extracteur Content Server</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2438"></A><A NAME="TMPID3070"></A>Director Walker</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2440"></A><A NAME="TMPID3072"></A>XML Activator</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2442"></A><A NAME="TMPID3074"></A>Conversion de documents</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2444"></A><A NAME="TMPID3076"></A>Moteur d'indexation</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2446"></A><A NAME="TMPID3078"></A>Moteur de recherche</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2448"></A><A NAME="TMPID3080"></A>Fédérateur de recherche</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2450"></A><A NAME="TMPID3082"></A>Distributeur de mise à jour</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2452"></A><A NAME="TMPID3084"></A>Serveur d'administration</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2454"></A><A NAME="TMPID3086"></A>Serveur DCS</P></LI></UL>
+<P><A NAME="TMPID3087"></A>Vous pouvez trier cette liste dans l'ordre ascendant ou descendant des numéros de port, par type d'objet, par nom ou par emplacement. Les numéros de port affichés en rouge indiquent un conflit de ports (c'est-à-dire qu'au moins deux processus sont configurés pour être exécutés sur le même port). Dans ce cas, vous pouvez effectuer le tri par numéro de port pour identifier l'origine du conflit, puis modifier les valeurs des ports en conflit.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF71"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3089"></A><B CLASS="note">Note : </B><BR>Cette liste comprend uniquement les ports utilisés par les processus d'indexation et de recherche et non <I CLASS="emphasis">l'ensemble</I> des ports Content Server. Pour savoir quels autres ports sont utilisés par Content Server, vous pouvez consulter le fichier opentext.ini du site. Si vous exécutez Content Server dans un environnement de clusters, vous devez consulter tous les fichiers opentext.ini du cluster.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF72">Mise à jour des chemins des processus de recherche</A></P>
+<P><A NAME="TMPID3095"></A>La page Gestion de chemin de serveur d'administration vous permet de mettre à jour les mappages et les noms de chemin pour la configuration de la recherche afin de répercuter toute modification apportée au cours du processus de mise à niveau. Ces chemins doivent être mis à jour une fois pour chaque serveur d'administration dans le système.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../otadmin/ota-updatsrchprocpaths-p.htm" revision="">Pour mettre à jour les chemins des processus de recherche</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

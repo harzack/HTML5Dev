@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Evénements Interchange</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-understandevents-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Mise en route de XML Workflow Interchange';
+          header.title2 = 'Evénements Interchange';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID61"></A>Les messages envoyés et reçus par XML Workflow Interchange permettent à un processus source d'une machine source de lancer un processus cible sur une machine cible. Le processus cible renvoie ensuite les résultats au processus source. Les deux processus peuvent être un workflow Content Server.</P>
+<DIV title="Exemple de 'XML Workflow Interchange'" CLASS="figure">
+<P><A NAME="WORKFLOW-EXAMPLE"></A><IMG alt="Exemple de 'XML Workflow Interchange'" SRC="workflow_ex.png"></P>
+<P CLASS="figure" ALIGN="LEFT"><B>Figure 1-1 : Exemple de XML Workflow Interchange</B></P></DIV>
+<P class="before-ul"><A NAME="TMPID68"></A>Etant donné que le processus cible peut impliquer une interaction manuelle des utilisateurs, ce processus n'est pas censé se terminer immédiatement et n'a donc pas besoin d'un canal de communication ouvert pendant l'exécution du processus cible. Lorsque les workflows sont connectés de cette façon, les deux événements suivants entraînent l'échange de messages :</P><A NAME="AEN68"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN69"></A><A NAME="TMPID73"></A>Un lancement se produit lorsque le processus source souhaite démarrer le processus cible. Par exemple, si le processus source est un workflow Content Server et qu'une tâche XML Interchange est prête, la tâche source envoie un <B CLASS="highlight">message de lancement</B> au système cible, qui démarre alors le processus cible. Le système cible renvoie immédiatement une <B CLASS="highlight">réponse de lancement</B> contenant des informations sur le nouveau processus qu'il a démarré ou une erreur indiquant la raison pour laquelle le processus ne peut pas démarrer. Si la cible est une URL de lancement à distance dans un schéma de workflow Content Server, le message de lancement démarre un nouveau workflow en utilisant ce schéma. Les réponses indiquant un lancement réussi comprennent une URL qui peut être utilisée pour vérifier le statut du workflow lancé.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN77"></A><A NAME="TMPID81"></A>Une modification de tâche se produit lorsque le nouveau processus cible atteint une étape ou se termine et est prêt à renvoyer des informations ou le statut au processus source. Le processus cible envoie alors un <B CLASS="highlight">message de modification de la tâche</B> au processus source. Ce message peut mettre à jour les informations dans la tâche source et transférer la tâche. Si le processus cible est un workflow Content Server, le message de modification de la tâche est envoyé à l'URL fournie dans le message de lancement par la tâche source.</P></LI></UL>
+<P><A NAME="TMPID84"></A>Si les processus source et cible sont des workflows Content Server, ces deux événements sont déclenchés lorsqu'une étape <B CLASS="guilabel">Workflow Interchange</B> est prête. Lorsqu'une étape <B CLASS="guilabel">Workflow Interchange</B> du workflow source est prête, elle envoie un <B CLASS="highlight">message de lancement</B> au système cible. Lorsque l'étape <B CLASS="guilabel">Workflow Interchange</B> qui se trouve à la fin du workflow cible est prête, elle répond en envoyant un <B CLASS="highlight">message de modification de la tâche</B>. Une fois le <B CLASS="highlight">message de lancement</B> envoyé, l'étape <B CLASS="guilabel">Workflow Interchange</B> de la source attend un <B CLASS="highlight">message de modification de la tâche</B>.</P>
+<P><A NAME="TMPID94"></A>L'éditeur de workflow Content Server permet de déterminer ce qui se produit lorsque chaque étape <B CLASS="guilabel">Workflow Interchange</B> de votre workflow est prête, que les étapes actives reçoivent des <B CLASS="highlight">messages de modification de tâche</B> et que les schémas de workflow reçoivent des <B CLASS="highlight">messages de lancement</B>. Le concepteur de workflow Content Server permet de s'écarter de façon significative du modèle d'échange standard et permet à d'autres types de systèmes de jouer le rôle de source ou de cible.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

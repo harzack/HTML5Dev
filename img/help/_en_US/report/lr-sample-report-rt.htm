@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="report">
+<title>Sample LiveReport</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/root/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-sample-report-rt.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working with LiveReports';
+          header.title2 = 'Sample LiveReport';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID626"></A>Using the <I CLASS="emphasis">Items Reserved by [User]</I> LiveReport as an example, this page describes the LiveReport-specific fields that appear when you add or edit a LiveReport. When you add a report, additional general item settings appear. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="llesrt-h-ugd.ll-gen-items-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/root/ll-gen-items-bg.htm">Working with General Items</A><XPROC NAME="ExtXrefEnd" HREF="llesrt-h-ugd.ll-gen-items-bg" FMT=""></span>.  </P>
+<P><A NAME="TMPID632"></A>To bring up the page containing the fields discussed below, from the Global Menu Bar, select <B CLASS="guilabel">Reports</B> from the <B CLASS="guilabel">Personal</B> menu. On the <B CLASS="guilabel">My Reports</B> page, select the <B CLASS="guilabel">LiveReports</B> tab. Scroll down to the <B CLASS="guilabel">Items Reserved by [User]</B> LiveReport. From the <B CLASS="guilabel">Items Reserved by [User]</B> Functions menu, select <B CLASS="guilabel">Edit</B>. </P>
+<A NAME="AEN642"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN643"></A><A NAME="TMPID642"></A><B CLASS="guilabel">Title</B> text box, which contains the title value of the LiveReport you selected. In this example, the text box contains the title: “Items Reserved by [User]”.</P>
+<P><A NAME="TMPID645"></A>The title text appears on the LiveReport's results page. The bracketed value, <TT CLASS="literal">[User]</TT>, will be replaced with the name of the user that opens the report.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN649"></A><A NAME="TMPID648"></A><B CLASS="guilabel">Record Limit</B> number field which requires a positive integer. This field contains the default value <TT CLASS="literal">100</TT>.</P>
+<P><A NAME="TMPID651"></A>This number represents the maximum number of results that a LiveReport will return. This prevents Content Server from searching for more information than necessary. If the specified limit is reached when a LiveReport opens, a note appears on the result page.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN655"></A><A NAME="TMPID654"></A><B CLASS="guilabel">Show Prompts</B> check box.</P>
+<P><A NAME="TMPID656"></A>Selecting this check box requires users to supply parameters when this LiveReport is used as a subreport. This check box is <I CLASS="emphasis">not</I> selected by default, which causes certain report values to automatically pass on to subreports.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN660"></A><A NAME="TMPID659"></A><B CLASS="guilabel">Inputs</B> area containing multiple lines, each of which includes a <B CLASS="guilabel">Type</B> list and a <B CLASS="guilabel">Prompt</B> text box.</P>
+<P><A NAME="TMPID663"></A>There are multiple input types available in the <B CLASS="guilabel">Type</B> list. For more information about input types, see <span><A HREF="param-liverep.htm#INPUT">Input Type Requirements</A></span>. If the “User” type is selected from the <B CLASS="guilabel">Type</B> list, “User Name:” appears when a user opens a report. The input type, “User”, enables the user who opens the report to browse for the name of the user about whom they want information.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN672"></A><A NAME="TMPID671"></A><B CLASS="guilabel">SQL</B> text box.</P>
+<P><A NAME="TMPID673"></A>This text box contains the SQL statement that defines the parameters and input values from the report. A LiveReport cannot be executed without a valid SQL statement. In this example, the SQL statement requests a LiveReport to return information for items that are reserved by a specified user.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN676"></A><A NAME="TMPID675"></A><B CLASS="guilabel">Allow Database Modification</B> check box.</P>
+<P><A NAME="TMPID677"></A>This check box is cleared by default, which prevents the SQL statement from modifying the database.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF6"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID679"></A><B CLASS="note">Note: </B><BR>The <B CLASS="guilabel">Allow Database Modification</B> check box does not appear if your administrator has enabled LiveReports Security.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN683"></A><A NAME="TMPID682"></A><B CLASS="guilabel">Param %&lt;<I CLASS="varname">number</I>></B> lists.</P>
+<P><A NAME="TMPID685"></A>The parameters that you choose from these lists need to be defined in the SQL statement. In this example, the <B CLASS="guilabel">Param %1</B> list selected by default is <B CLASS="guilabel">User Input 1</B>. This means that the value displayed in the LiveReport is determined at the time it is opened, depending on the user input. The <B CLASS="guilabel">Param %2</B> list selected by default is <B CLASS="guilabel">Filter Permissions</B>. This means that the LiveReport only returns results for those items that the user has been assigned the <I CLASS="emphasis">See</I> permission. The <B CLASS="guilabel">Param %3</B> list selected by default is <B CLASS="guilabel">Report Fields</B>. This parameter type is required by the LiveReport format, unless your SQL statement contains the statement <TT CLASS="literal">SELECT * FROM DTree</TT>. For more information about parameters, see <span><A HREF="param-liverep.htm">Parameter and Input Types</A></span> and <span><A HREF="lr-report-format-rt.htm#LIVEREPORT">LiveReports and Auto LiveReports</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN698"></A><A NAME="TMPID697"></A><B CLASS="guilabel">Report Format</B> list and <B CLASS="guilabel">Configure</B> button.</P>
+<P><A NAME="TMPID700"></A>In this example, the results of the SQL statement appear in the “LiveReport” format, which displays results in a list. It is often helpful to select the Auto LiveReport format first so that you can inspect the results in a list before adapting your SQL statement to produce a customized graph.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN704"></A><A NAME="TMPID703"></A><B CLASS="guilabel">Click-thru Sub-Report</B> text box and <B CLASS="guilabel">Browse Content Server...</B> button.</P>
+<P><A NAME="TMPID707"></A>The <B CLASS="guilabel">Browse Content Server...</B> button enables you to select a subreport which you can associate with this LiveReport. In this example, a subreport is not associated with the LiveReport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN712"></A><A NAME="TMPID711"></A><B CLASS="guilabel">Sub-Report Param &lt;<I CLASS="varname">number</I>></B> text boxes.</P>
+<P><A NAME="TMPID714"></A>If, in the <B CLASS="guilabel">Click-thru Sub-Report</B> text box, you associated a subreport with this LiveReport, you must type the name of an existing parameter that you want to pass on to the subreport in these fields. These subreport parameters must correspond to the input parameters of the subreport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN718"></A><A NAME="TMPID717"></A><B CLASS="guilabel">Display Columns</B> area containing multiple lines, each of which includes a <B CLASS="guilabel">Field</B> text box and a <B CLASS="guilabel">Column Title</B> text box.</P>
+<P><A NAME="TMPID721"></A>This instructs Content Server, when displaying the LiveReport results, to display the value you enter in the <B CLASS="guilabel">Column Title</B> text box as the column title of the column you identify in the <B CLASS="guilabel">Field</B> text box, instead of using the terminology from the database table.</P></LI></OL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

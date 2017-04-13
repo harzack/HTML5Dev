@@ -1,0 +1,158 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWFP100500-H-UGD-EN-1">
+<META PiXprocLocator="webwfp">
+<title>Moving or Copying Items</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/root/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-movecopy-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Defining Item Handler Step Operations';
+          header.title2 = 'Moving or Copying Items';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4831"></A>You can configure a Workflow Map to automatically move or copy Content Server items and Workflow Map attachments to a Content Server container, such as a folder or project. When Workflow Map processing reaches an <B CLASS="GUILABEL">Item Handler</B> step, it moves or copies attachments and items based on the requests you define on its <B CLASS="GUILABEL">Move/Copy</B> tab, which are called <I CLASS="EMPHASIS">move or copy definitions</I>. After you create move or copy definitions, you can modify them if you want to change them.</P>
+<P><A NAME="TMPID4843"></A>A move or copy definition is comprised of two parts: the Move/Copy source, which is the item you want the <B CLASS="GUILABEL">Item Handler</B> step to move or copy, and the Move/Copy target, which is the Content Server container where you want the <B CLASS="GUILABEL">Item Handler</B> step to move or copy the source item.</P>
+<P class="before-ul"><A NAME="TMPID4847"></A>The source can be any of the following:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4183"></A><A NAME="TMPID4850"></A>A Workflow Map attachment, including the Workflow Map Attachments folder.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4187"></A><A NAME="TMPID4856"></A>A Content Server item.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4190"></A><A NAME="TMPID4859"></A>A folder definition defined on the same step. For more information about folder definitions, see <span><A HREF="wf-folders-bg.htm">Creating Folders</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4193"></A><A NAME="TMPID4862"></A>An Item Reference attribute that refers to a Content Server item.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID4864"></A>The target can be any of the following container items:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4198"></A><A NAME="TMPID4867"></A>The Workflow Map Attachments folder or a folder in the Workflow Map Attachments folder.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4202"></A><A NAME="TMPID4873"></A>A Content Server container item, such as a workspace, project, or folder.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4205"></A><A NAME="TMPID4876"></A>A folder definition defined on the same step.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4207"></A><A NAME="TMPID4878"></A>An Item Reference attribute that refers to a Content Server container item.</P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF34"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P CLASS="NOTE" ALIGN="LEFT"><B>Notes: </B></P>
+<UL class="NOTE">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4212"></A><A NAME="TMPID4883"></A>Folder definitions are available only if you have one or more folder definitions defined for the same <B CLASS="GUILABEL">Item Handler</B> step.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4215"></A><A NAME="TMPID4886"></A>An Item Reference attribute is available as a target only if you have configured one for the Workflow Map.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF35">Specifying Source Options</A></P>
+<P><A NAME="TMPID4890"></A>You can specify the way the step moves or copies a container item, and how it names the items it creates as a result of the request.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF36">Working with Workspaces as Sources</A></P>
+<P><A NAME="TMPID4892"></A>You cannot move or copy the Enterprise Workspace or Personal Workspace, but you can select them as sources in an <B CLASS="GUILABEL">Item Handler</B> step move or copy request if you want to perform operations on their contents only. For example, if you select the Personal Workspace as the source item in a move or copy request and specify that you want the operation to apply to only the items it contains (but not the Personal Workspace itself), the <B CLASS="GUILABEL">Item Handler</B> step will move or copy the contents of the Personal Workspace to the target container you specify.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF37">Working with the Workflow Map Attachment Folder as a Source</A></P>
+<P><A NAME="TMPID4898"></A>You can specify the Workflow Map Attachments folder in an <B CLASS="GUILABEL">Item Handler</B> step move or copy request, but the move operation produces the same result as a copy operation. The Workflow Map Attachment folder is a fixed container available for all Workflow Maps, so Content Server does not permit you to move it. If you specify the Workflow Map Attachments folder as the source item in a move request, the system creates a copy of the Workflow Map Attachments folder in the container item you specify.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF38">Working with Container Contents</A></P>
+<P><A NAME="TMPID4910"></A>If the source item is a Content Server container, such as a folder or workspace, you can specify that only the contents of the container be moved or copied.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF39">Renaming a Moved or Copied Item</A></P>
+<P><A NAME="TMPID4913"></A>You can specify a different name for the item being created by the move or copy operation.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF40"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID4915"></A><B CLASS="NOTE">Note: </B><BR>You cannot rename Content Server items if you choose to move or copy the contents of a container.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF41">Synchronizing Containers</A></P>
+<P><A NAME="TMPID4918"></A>If you are moving or copying a container item, you can have the target container's contents synchronized. This ensures that the latest version of each item that exists in both the source and target containers are added to the target container. For example, if a document exists in the source and target location, the source document will be added as a new version of the target document. In addition, any document that exists in the source container but does not exist in the target location is either moved or copied to the target location, depending on the transfer operation you specify.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF42">Creating Major Versions of Documents</A></P>
+<P class="before-ul"><A NAME="TMPID4920"></A>You can configure a move or copy request to create major versions of documents that use advanced versioning in the target container, as long as your request includes the following operations:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4246"></A><A NAME="TMPID4923"></A>Synchronizing containers</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4248"></A><A NAME="TMPID4925"></A>Moving or copying container contents only</P></LI></UL>
+<P><A NAME="TMPID4926"></A>For example, imagine that you want to synchronize the contents of two folders, named “Folder 1” (the source container) and “Folder 2” (the target container) that contain among other items a document named “FinalReport” that uses advanced versioning. If you configure the move or copy request to create major versions, the system adds the current version of “FinalReport” in “Folder 1” as a major version of “FinalReport” in “Folder 2” each time the step is processed.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="PERMS">Specifying Permissions</A></P>
+<P class="before-ul"><A NAME="TMPID4935"></A>You must choose one of the following methods to indicate what permissions are assigned to moved or copied items:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4261"></A><A NAME="TMPID4938"></A><B CLASS="GUILABEL">Original</B>, which maintains the permissions found on the source item.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4264"></A><A NAME="TMPID4941"></A><B CLASS="GUILABEL">Destination</B>, which causes items to inherit the permissions found on the target container.</P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF43"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID4944"></A><B CLASS="NOTE">Note: </B><BR>When using the <B CLASS="GUILABEL">Item Handler</B> step to move a folder within the Workflow package to a folder inside the Enterprise Workspace using the <B CLASS="GUILABEL">Destination</B> permissions option, the <B CLASS="GUILABEL">Item Handler</B> step will only inherit permissions to the first folder level.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID4948"></A>For more information about permissions, see <span><XPROC NAME="ExtXrefStart" HREF="llesrt-h-ugd.ll-perms-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/root/ll-perms-bg.htm">Understanding Permissions</A><XPROC NAME="ExtXrefEnd" HREF="llesrt-h-ugd.ll-perms-bg" FMT=""></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF44">Managing Categories</A></P>
+<P class="before-ul"><A NAME="TMPID4951"></A>You must choose one of the following methods to indicate how Content Server Categories and Attributes are managed on moved or copied items:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4278"></A><A NAME="TMPID4955"></A><B CLASS="GUILABEL">Original</B>, which maintains the categories found on the source item.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4281"></A><A NAME="TMPID4958"></A><B CLASS="GUILABEL">Destination</B>, which causes items to inherit the categories found on the target item.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4284"></A><A NAME="TMPID4961"></A><B CLASS="GUILABEL">Merged</B>, which combines the categories found on the source item with the categories found on the target item.</P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF45"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID4964"></A><B CLASS="NOTE">Note: </B><BR>If a category exists on the source item and the target item, the source category replaces the target category.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID4965"></A>For more information about categories and attributes, see <span><A HREF="wf-catsatts-bg.htm">Working with Categories and Attributes in Workflow Maps</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF46">Working With Multiple Value Item Reference Attributes</A></P>
+<P><A NAME="TMPID4968"></A>If the Workflow Map contains an Item Reference attribute, you may be able to use it as a source or target in move or copy requests. However, you cannot use multiple value Item Reference attributes as the source and target in the same request. For example, if you specify an Item Reference attribute that contains references to five documents and choose a folder as the target, the step moves or copies the five documents into the target folder. If you specify the same Item Reference attribute as the source, but then specify another Item Reference attribute that refers to multiple folders as the target, an error will occur.</P>
+<P><A NAME="TMPID4971"></A>Also, if you specify a multiple value Item Reference attribute as the target in a move request, the source item will be moved to each item referred to by the source attribute until it reaches the last item where it will be stored. For example, if you specify a document as the source and an Item Reference attribute that refers to three folders as the target, the step first moves the document to the first folder, then immediately moves it to the second folder, and then finally moves the document to the third folder before step processing is complete. The document's audit trail will show that it was moved to each of the folders and each folder will reflect an update, but only the third folder contains the source document.</P>
+<P><A NAME="TMPID4972"></A>For more information about Item Reference attributes, see <span><A HREF="wf-attributes-bg.htm">Defining Attributes</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF47">Copying Attachments with a Process Step</A></P>
+<P><A NAME="TMPID4975"></A>You can use the <B CLASS="GUILABEL">Process</B> step to copy a Content Server Attachment to a Content Server Container. You specify the attachment and the Content Server container on the step's <B CLASS="GUILABEL">Attachments</B> tab.</P>
+<P><A NAME="TMPID4981"></A>You must specify the permissions to use when creating the copied item in the Content Server Container.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF48"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID4984"></A><B CLASS="NOTE">Note: </B><BR>OpenText strongly recommends that you use the <B CLASS="GUILABEL">Item Handler</B> step to copy attachments. You can copy attachments using the <B CLASS="GUILABEL">Process</B> step, but the <B CLASS="GUILABEL">Process</B> step may not be supported in future releases.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wf-movecopy-p.htm" revision="">To Add or Modify a Move or Copy Definition</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

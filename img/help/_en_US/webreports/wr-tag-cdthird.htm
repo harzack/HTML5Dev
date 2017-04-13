@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>COLNAME, CR, CRLF</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-cdthird.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Column Data Tags';
+          header.title2 = 'COLNAME, CR, CRLF';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3621"></A>This section details the column data tags <span><A HREF="wr-tag-cdthird.htm#WR-TAG-CDCOLNAME">COLNAME</A></span>, <span><A HREF="wr-tag-cdthird.htm#WR-TAG-CDCR">CR</A></span>, and <span><A HREF="wr-tag-cdthird.htm#WR-TAG-CDCRLF">CRLF</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDCOLNAME">COLNAME</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDCOLNAME-NAME">Syntax</A></P>
+<P><A NAME="REPORTTAGCOLNAME"></A><B CLASS="highlight">[LL_REPTAG_COLNAME&lt;<I CLASS="varname">column number</I>> /]</B></P>
+<P><A NAME="TMPID3632"></A>or</P>
+<P><A NAME="TMPID3633"></A><B CLASS="highlight">[LL_REPTAG_COLNAME++ /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDCOLNAME-DESC">Description</A></P>
+<P><A NAME="TMPID3637"></A>This tag returns the name of a column from the associated data source, based on the number which is supplied after <TT CLASS="literal">COLNAME</TT>.</P>
+<P><A NAME="TMPID3639"></A>This tag is useful when a generic Reportview is being developed. Rather than hard coding a column name into the Reportview, this tag will always provide the correct column name. The default Reportview uses this tag for all column names.</P>
+<P><A NAME="TMPID3640"></A>The <TT CLASS="literal">COLNAME++</TT> variation of this tag will automatically provide the next column number.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDCOLNAME-EXAMP">Example</A></P>
+<P><A NAME="TMPID3644"></A>An example using [LL_REPTAG_COLNAME&lt;<I CLASS="varname">column number</I>> /]: <TT CLASS="literal">[LL_REPTAG_COLNAME1 /]</TT> would return the word: “DATAID” in a WebReport that is dumping the Content Server <TT CLASS="literal">DTREE</TT> using an Auto LiveReport.</P>
+<P class="before-ul"><A NAME="TMPID3650"></A>An example using [LL_REPTAG_COLNAME++ /]:</P><A NAME="AEN3322"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3323"></A><A NAME="TMPID3653"></A>If the previous <TT CLASS="literal">COLNAME</TT> tag is <TT CLASS="literal">COLNAME3</TT> then <TT CLASS="literal">COLNAME++</TT> will return the value of <TT CLASS="literal">COLNAME4</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3329"></A><A NAME="TMPID3659"></A>If <TT CLASS="literal">COLNAME++</TT> is used again, then the value of <TT CLASS="literal">COLNAME5</TT> will be returned.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3333"></A><A NAME="TMPID3663"></A>If <TT CLASS="literal">COLNAME1</TT> is then used, <TT CLASS="literal">COLNAME++</TT> continues from the last column number and will therefore return the value of <TT CLASS="literal">COLNAME2</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDCR">CR</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDCR-NAME">Syntax</A></P>
+<P><A NAME="REPORTTAGCR"></A><B CLASS="highlight">[LL_REPTAG_CR /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDCR-DESC">Description</A></P>
+<P><A NAME="TMPID3675"></A>Returns a carriage-return character constant.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDCRLF">CRLF</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDCRLF-NAME">Syntax</A></P>
+<P><A NAME="REPORTTAGCRLF"></A><B CLASS="highlight">[LL_REPTAG_CRLF /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDCRLF-DESC">Description</A></P>
+<P><A NAME="TMPID3684"></A>Returns a carriage-return, linefeed constant.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

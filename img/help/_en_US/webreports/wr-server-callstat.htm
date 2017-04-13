@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Calling Static Data Tags</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-server-callstat.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Server Side Scripting';
+          header.title2 = 'Calling Static Data Tags';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID21949"></A>It is sometimes useful to be able to obtain the value returned by a WebReport static data tag inside a section of Oscript. Note that static data tags do not include tags such as <TT CLASS="literal">[LL_REPTAG=&lt;<I CLASS="varname">column</I>> /]</TT> or <TT CLASS="literal">[LL_REPTAG_%&lt;<I CLASS="varname">var name</I>> /]</TT>.</P>
+<P><A NAME="TMPID21954"></A>For example, you may need to know the value of a WebReport constant or parameter. Although you could arrange to pass these items as parameters at the time the script is called, you can also access them directly using the built-in dot function <TT CLASS="literal">._repTag</TT> which has the following syntax: <TT CLASS="literal">String ._repTag( String tag )</TT></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN20677"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Function</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Parameters</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">String ._repTag( String tag )</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">tag</B>: a string value representing the tag plus optional sub-tags.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">A String value containing the final value of the specified tag and sub-tags.</TD></TR></TABLE>
+</DIV></P>
+<DIV title="Here are two examples that return the value of a WebReport constant called 'report':" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF73"></A><B><FONT COLOR="WHITE">.</FONT><BR><IMG title="Here are two examples that return the value of a WebReport constant called 'report':" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-36: Here are two examples that return the value of a WebReport constant called <NOBR>report</NOBR>:</B></P>
+<A NAME="AEN20697"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20698"></A><A NAME="TMPID21979"></A><TT CLASS="literal">String value1 = ._repTag('$report')</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20701"></A><A NAME="TMPID21982"></A><TT CLASS="literal">String value2 = ._repTag('[LL_REPTAG_$report /]')</TT></P></LI></OL>
+<P class="nr1"><A NAME="TMPID21984"></A>Note that you may specify either the full tag name or a shortened version which omits the opening <TT CLASS="literal">[LL_REPTAG_ and closing /]</TT>.</P><IMG title="Here are two examples that return the value of a WebReport constant called 'report':" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Here are two further examples:" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF74"></A><B><IMG title="Here are two further examples:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-37: Here are two further examples:</B></P>
+<A NAME="AEN20708"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20709"></A><A NAME="TMPID21990"></A><TT CLASS="literal">String value3 = ._repTag('&amp;myNode NODEINFO:NAME')</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20712"></A><A NAME="TMPID21993"></A><TT CLASS="literal">String value4 = ._repTag('USERID USERINFO:MAILADDRESS')</TT></P></LI></OL><IMG title="Here are two further examples:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P><A NAME="TMPID21995"></A>Note that not all sub-tags are supported when used within <TT CLASS="literal">._repTag</TT>. Generally sub-tags that cause some other action besides returning formatted data do not work.</P>
+<P><A NAME="TMPID21997"></A>The following sub-tags are not supported: <TT CLASS="literal">ADDVAR</TT>, <TT CLASS="literal">CONCATVAR</TT>, <TT CLASS="literal">NEXT</TT>, <TT CLASS="literal">PREV</TT>, <TT CLASS="literal">SETFORM</TT>, <TT CLASS="literal">SETVAR</TT>, <TT CLASS="literal">SETWFATTR</TT>, <TT CLASS="literal">SETWFFORM</TT>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

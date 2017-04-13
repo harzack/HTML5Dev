@@ -1,0 +1,131 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOE100500-H-AGD-EN-1">
+<META PiXprocLocator="objectexporter">
+<title>Configuring Object Exporter</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webnotify/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoe-cfg-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Object Exporter: <NOBR>OpenText Content Server Admin Online Help</NOBR>';
+          header.title2 = 'Configuring Object Exporter';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID53"></A>OpenText Object Exporter enables the export of any number of objects from Content Server to the file system. The control file that manages the export process is configurable. Within the control file, you specify where the objects to be exported are located in Content Server, and where on the file system to export the objects. You can export the following Content Server object types: &#13;</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN64"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Object Type</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Object Exporter Syntax</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Alias</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">alias</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Compound Document</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">compounddoc</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Custom View</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">customview</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Discussion</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">discussion</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Document</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">document</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Folder</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">folder</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Project</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">project</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Reply</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">reply</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Topic</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">topic</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">URL</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">url</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOE-CFG-BG">Working with Object Exporter Configuration</A></P>
+<P class="before-ul"><A NAME="TMPID108"></A>From the <B CLASS="GUILABEL">Configure Object Exporter</B> page you define how Object Exporter processes an export. You must specify the full paths to the working, log, and destination directories on the <B CLASS="GUILABEL">Configure Object Exporter</B> page. First, you must create these three directories and ensure that they are visible to Content Server: &#13;</P><A NAME="AEN129"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN130"></A><A NAME="TMPID134"></A>The working directory is the location where the output file(s) will be created and stored temporarily, before being moved when the process is finished. An example of a valid working directory is:  <TT CLASS="FILENAME">C:\OPENTEXT\object_exporter\working</TT>, where <TT CLASS="FILENAME">C:\OPENTEXT</TT> is the default install path for Content Server.&#13;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN137"></A><A NAME="TMPID141"></A>The log directory is the location where Object Exporter will write log files. In order to view and delete log files from the Object Exporter <B CLASS="GUILABEL">View Export Log Files</B> page, the log files directory must be located in <TT CLASS="FILENAME">&lt;<I CLASS="VARNAME">Content Server_home</I>>\object_exporter</TT>. An example of a valid log directory is:  <TT CLASS="FILENAME">C:\OPENTEXT\object_exporter\log</TT>, where <TT CLASS="FILENAME">C:\OPENTEXT</TT> is the default install path for Content Server.&#13;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN150"></A><A NAME="TMPID154"></A>The destination directory is the location where Object Exporter will move the output file(s) when the process is finished. The output file(s) from a <I CLASS="EMPHASIS">successful</I> export are actually import control file(s) which correspond to that successful export. Using OpenText Object Importer, you can use these file(s) to import all objects you have recently exported, as all object's permissions, titles, attributes, and other object metadata are detailed in these import control file(s). An example of a valid destination directory is:  <TT CLASS="FILENAME">C:\OPENTEXT\object_exporter\destination</TT>, where <TT CLASS="FILENAME">C:\OPENTEXT</TT> is the default install path for Content Server.&#13;</P></LI></UL>
+<table CLASS="IMPORTANT">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="IMPORTANT"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID165"></A><B CLASS="IMPORTANT">Important: </B><BR>The working, log, and destination directories must be created, visible to Content Server, and specified on the <B CLASS="GUILABEL">Configure Object Exporter</B> page, otherwise exports will not proceed.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID169"></A>In addition to creating the Object Exporter-specific directories detailed above, you must also:</P><A NAME="AEN168"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN169"></A><A NAME="TMPID173"></A>Ensure the Admin user's email address is set in the Admin user's account page. This page is accessed by selecting <B CLASS="GUILABEL">Users &amp; Groups</B> from the <B CLASS="GUILABEL">Enterprise</B> menu. Search for the Admin user on the <B CLASS="GUILABEL">Users &amp; Groups</B> page, then click <B CLASS="GUILABEL">Edit</B> next to the Admin user's name. Enter an email address for the Admin user.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN175"></A><A NAME="TMPID179"></A>Fill in the <B CLASS="GUILABEL">Notifications</B> page. The <B CLASS="GUILABEL">Notifications</B> page does not need to be enabled. For more information about the <B CLASS="GUILABEL">Notifications</B> page, see <I CLASS="EMPHASIS">Configuring Notifications, Reports, Events, and Settings</I> in the <span><XPROC NAME="ExtXrefStart" HREF="lleswbn-h-agd.wbn-config-report-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webnotify/wbn-config-report-bg.htm">Clearing Outstanding Events</A><XPROC NAME="ExtXrefEnd" HREF="lleswbn-h-agd.wbn-config-report-bg" FMT=""></span>.</P></LI></UL>
+<table CLASS="IMPORTANT">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="IMPORTANT"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID186"></A><B CLASS="IMPORTANT">Important: </B><BR>If the Admin user's email address is not set, or the <B CLASS="GUILABEL">Notifications</B> page is not filled in, exports will not proceed.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID188"></A>On the <B CLASS="GUILABEL">Configure Object Exporter</B> page you must determine the setting for the <B CLASS="GUILABEL">Objects per Batch</B> field. The <B CLASS="GUILABEL">Objects per Batch</B> field allows you to stipulate that the exported objects are to be broken into a series of output files, rather than having a single, very large file. These output files are the ones written to the <B CLASS="GUILABEL">Destination</B> directory that you created above.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOE-MANEXPORT-BG">Working with Object Exporter Manual Object Export</A></P>
+<P><A NAME="TMPID197"></A>Object exports are initiated from the <B CLASS="GUILABEL">Manual Object Export</B> page using the <B CLASS="GUILABEL">Start Export</B> button. From this page you choose the export control file which Object Exporter will run to export your data from Content Server to your system. On this page you must also state the name of the log file to which Object Exporter will record the information from the export. &#13;</P>
+<DIV title="Example of an export control file which excludes Documents and Folders from the export:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF0"></A><B><IMG title="Example of an export control file which excludes Documents and Folders from the export:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-1: Example of an export control file which excludes Documents and Folders from the export:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN204"></A>&#13;&lt;export&gt;
+  &lt;node&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;docstorage&gt;c:\docs&lt;/docstorage&gt;
+    &lt;exclude&gt;
+      &lt;object&gt;document&lt;/object&gt;
+      &lt;object&gt;folder&lt;/object&gt;
+    &lt;/exclude&gt;
+  &lt;/node&gt;
+&lt;/export&gt;</PRE
+><IMG title="Example of an export control file which excludes Documents and Folders from the export:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOE-VIEWLOGS-BG">Working with Object Exporter Log Files</A></P>
+<P><A NAME="TMPID213"></A>In order to view and delete log files from the Content Server administration pages, the log files must be located in: <TT CLASS="FILENAME">&lt;<I CLASS="VARNAME">Content Server_home</I>>\object_exporter</TT>. &#13;</P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="llesoe-cfg-p.htm" revision="">To Configure Object Exporter</A></p></li>
+<li><p><A  HREF="llesoe-manexport-p.htm" revision="">To Export an Object</A></p></li>
+<li><p><A  HREF="llesoe-viewlogs-p.htm" revision="">To View or Delete Object Exporter Log Files</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

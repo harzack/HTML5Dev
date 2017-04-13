@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWDV100500-H-AGD-EN">
+<META PiXprocLocator="webdav"><title>Configuring Custom Header Authentication</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wd-config-customheader-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring WebDAV Authentication';
+          header.title2 = 'Configuring Custom Header Authentication';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID771"></A>Custom Header authentication can be often used when the Web server is configured with third-party software for authenticating users. When such a product enforces an authentication requirement, and passes the name of the authenticated user in an HTTP header, WebDAV can be configured to accept the user name from this header.</P>
+<P><A NAME="TMPID773"></A>To configure this authentication method, the name of the HTTP header must be provided. Note that the documentation for your third-party authentication product might give the name of the equivalent ISAPI or CGI variable, for example "SOME_HEADER" or "HTTP_SOME_HEADER", instead of the name of the HTTP header itself, "Some-Header". This authentication method must be configured with the actual HTTP header name, which may include dashes, but not underscore characters, and doesn't start with "HTTP".</P>
+<table CLASS="CAUTION">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="ICONCELL">
+<P CLASS="CAUTION" ALIGN="CENTER"><IMG ALT="Caution" SRC="../../images/pi_caution.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID775"></A><B CLASS="CAUTION">Caution</B><BR>Since arbitrary HTTP headers can be included in Web requests, this authentication method must only be used in conjunction with a third-party authentication product that enforces authentication and controls the named header. Allowing Web requests to arbitrarily specify the value of the header used for authentication would enable unrestricted impersonation of any Content Server user.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wd-config-customheader1-p.htm" revision="">To enable Custom Header Authentication</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

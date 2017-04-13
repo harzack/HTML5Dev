@@ -1,0 +1,275 @@
+<!-- wr_trigger_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>WR Trigger</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_trigger_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+	var header = new AdminHeader();
+	header.title1 = 'Advanced Information';
+	header.title2 = 'WR Trigger';
+	header.draw();
+</SCRIPT>
+
+<p class="body">
+The WR Trigger feature allows WebReports to be initiated by specific events in Content Server.<br>
+</P>
+<p class="body">
+By default the WR Trigger tab will be accessible by any user that has 'Modify' permission against a node that WR Trigger is enabled for.  Administrators can restrict
+access to selected users and groups by using the <B>Administer Object and Usage Privileges</B> page in the <B>System Administration</B> section of the administration area.
+The <B>Usage Privileges</B> section contains an entry for <B>WR Trigger Tab</B> which can be used to set the restrictions.
+</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP">
+ Node Triggers
+</p>
+
+<p class="body">
+For node types that have been enabled with the feature (which is disabled by default and can be enabled per node type in the administration pages under WR Trigger Administration) the WebReport developer can choose to initiate a WebReport for the following Content Server events:<br>
+</P>
+		<table align="center" WIDTH="95%" border="2" cellspacing="1" cellpadding="5">
+			<tr bgcolor="lightgray" >
+				<td width=15% class="gui">Trigger Value</td>
+				<td class="gui">Description</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Add Version
+				</td>
+				<td>
+					Fired when a new version is added to an existing document or when a new document is added.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Category Update
+				</td>
+				<td>
+					Fired when a Content Server category is applied, removed or updated on a given node.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Copy Destination
+				</td>
+				<td>
+					Fired when an item is copied. Can also be associated with a container where it will fire for any item 
+					that is copied to the container, i.e. the container is the destination for the copy action.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Copy Source
+				</td>
+				<td>
+					Fired when an item is copied. Can also be associated with a container where it will fire for any item 
+					that is copied from the container, i.e. the container is the source for the copy action.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Create
+				</td>
+				<td>
+					Fired when a node is created.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Delete
+				</td>
+				<td>
+					Fired when a node is deleted.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Move Destination
+				</td>
+				<td>
+					Fired when an item is moved. Can also be associated with a container where it will fire for any item 
+					that is moved to the container, i.e. the container is the destination for the move action.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Move Source
+				</td>
+				<td>
+					Fired when an item is moved. Can also be associated with a container where it will fire for any item 
+					that is moved from the container, i.e. the container is the source for the move action.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Rename
+				</td>
+				<td>
+					Fired when a node is renamed.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Update
+				</td>
+				<td>
+					Fired when a node is updated an example of which is changing the description.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Workflow Initiated
+				</td>
+				<td>
+					Fired when a workflow is initiated.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Workflow Completed
+				</td>
+				<td>
+					Fired when a workflow is completed.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Workflow Suspended
+				</td>
+				<td>
+					Fired when a workflow is suspended.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Workflow Resumed
+				</td>
+				<td>
+					Fired when a workflow is resumed.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Workflow Stopped
+				</td>
+				<td>
+					Fired when a workflow is stopped.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Workflow Deleted
+				</td>
+				<td>
+					Fired when a workflow is deleted.
+				</td>
+			</tr>
+			<tr CLASS="body">
+				<td CLASS="gui">
+					Workflow Archived
+				</td>
+				<td>
+					Fired when a workflow is archived.
+				</td>
+			</tr>
+		</table>
+
+<p class="body">
+The feature is accessed via a new <b>WR Trigger</b> option in the Properties section of the function menu, which brings up a new tab.  The menu and subsequent tab can only be accessed for subtypes that have the WR Trigger feature enabled.  Triggers can be set on individual objects or they can be set on containers and cascaded down a hierarchy which provides a convenient way to set triggers on a large volume of items.
+</p>
+
+<p class="body">
+<b><U>General Usage</U></b><br><br>
+When an item is "Deleted" using the function menu one of two things can happen.  The item might be truly deleted and so completely removed from the database, or the item might be moved to the Recycle Bin or Undelete Volume.  The behavior will depend on how specific subtypes (Documents vs. Folders etc.) are configured with these modules.  The Delete trigger will fire if an item is destroyed or moved to the Recycle Bin.  If it is required to trigger a WebReport based on a "function menu delete" that results in the item being moved to the Undelete Volume, the Move trigger event must be used.  Logic can then be used in the WebReport (simply use NODEINFO:PARENTID /OWNERID) to determine whether the item was moved to one of these locations or elsewhere in Content Server.
+</p>
+<p class="body">
+When a root node (a container with other items in it) is copied, moved or deleted the trigger occurs on the root node only.  No WebReport will be initiated for individual sub-items.  If a WebReport needs to be initiated for each specific item, it can be achieved using a query that takes the node that initiated the trigger to find all the children, then use a sub-WebReport to implement the specific behavior - e.g. trigger a workflow.
+</p>
+<p class="body">
+All triggers are initiated after the event has occurred with the exception of Delete.  For example, if using [LL_REPTAG_TRIGGERID NODEINFO:PARENTID /] in a WebReport that has been initiated by a Move trigger event, the objectid of the new parent will be returned (see [LL_REPTAG_TRIGGERSOURCEPARENTID /] for accessing the original).  With the delete trigger the event is fired just before the delete so that we have the maximum metadata available.  Once a node is truly deleted, it no longer exists and so has no valid metadata.
+</p>
+<p class="body">
+When a document is added to Content Server both the Create trigger and the Add Version trigger are fired.  This is because Content Server sees this as two actions.  First a node creation occurs and once the node is created a new version (in this case version 1) is added to that node.  If a folder were added, only the Create trigger would fire.
+</p>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP">
+ User or Group Triggers
+</p>
+
+<p class="body">
+The WR Trigger feature now supports triggering based on User or Group events. This can be configured in the administration pages under Manage User/Group WR Triggers. The WebReport
+developer can choose to initiate a WebReport based on the following User/Group events:
+<ul>
+	<li>Add User to Group</li>
+	<li>Create User/Group</li>
+	<li>Delete User/Group</li>
+	<li>Update User/Group</li>
+	<li>User Login</li>
+</ul>
+</p>
+<p class="body">
+When the Global checkbox is selected, anytime one of the selected trigger events is triggered within Content Server (regardless of who executed it), the specified WebReport is executed.
+Otherwise if a User or Group is specified (Global checkbox is off) the WebReport will execute if the trigger event happens within the group or to the user. For example, if creation,
+deletion, addition, etc. happen in the group (not explicitly on the group itself) then the WebReport will initiate. For a user, the trigger event needs to happen on the user. This means
+that not all trigger events are relevant to users and so they are ignored. In the screen-shot below, the Admin user would need to be deleted for the 'Delete User/Group' trigger event
+to fire.
+</p>
+
+<img src="./user_group_trigger.png" border=0>
+
+<p class="body">
+In this example a WebReport is initiated if a user is added to 'TestGroup1', a new user is created with 'TestGroup1' as its Department, or if 'TestGroup1' is deleted. In addition if the 'Admin' user
+is deleted from Content Server, the WebReport will execute.
+</p>
+
+<p class="body">
+<b><U>Related Tags</U></b><br><br>
+The following tags are specific to the WR Trigger feature (select tag for specific help).
+<ul>
+	<li><a href="wr_tag_syntax.htm#llreptagtrigger">[LL_REPTAG_TRIGGER /]</a></li>
+	<li><a href="wr_tag_syntax.htm#llreptagtriggerdestparentid">[LL_REPTAG_TRIGGERDESTPARENTID /]</a></li>
+	<li><a href="wr_tag_syntax.htm#llreptagtriggerid">[LL_REPTAG_TRIGGERID /]</a></li>
+	<li><a href="wr_tag_syntax.htm#llreptagtriggernewid">[LL_REPTAG_TRIGGERNEWID /]</a></li>
+	<li><a href="wr_tag_syntax.htm#llreptagtriggernewname">[LL_REPTAG_TRIGGERNEWNAME /]</a></li>
+	<li><a href="wr_tag_syntax.htm#llreptagtriggeroldname">[LL_REPTAG_TRIGGEROLDNAME /]</a></li>
+	<li><a href="wr_tag_syntax.htm#llreptagtriggersourceparentid">[LL_REPTAG_TRIGGERSOURCEPARENTID /]</a></li>
+</ul>
+</p>
+
+<p class="body">
+<b><U>Example</U></b><br><br>
+Initiate a workflow and attach a document to it when a new item is created.
+<ul>
+	<li>Set the WebReport destination to the workflow you wish to initiate (Properties -&gt; Destination).</li>
+	<li>Open the WR Trigger tab (Properties -&gt; WR Trigger) on a folder above where the item will be created, select the WebReport to be executed and select the Create 	event as the trigger.
+	</li>
+	<li>In the WebReport set the item that initiates the event to be attached to the workflow.  Do this by editing the reportview and using <b>[LL_REPTAG_TRIGGERID <a href="wr_tag_syntax.htm#setwfattach">SETWFATTACH:COPY:INHERITATTRS:MERGED</a> /]</b>.  TRIGGERID is the id of the object that initiated the event and SETWFATTACH:COPY:INHERITATTRS:MERGED copies this node to the attachments folder merging the categories of the node with those of the attachments folder.</li>
+</ul>
+</p>
+<p class="body">
+	Rather than initiating a workflow the WebReports destination tab could be set to send an email.  To attach the item that fired the event
+	to the email destination use <b>[LL_REPTAG_TRIGGERID <a href="wr_tag_syntax.htm#setemailattach">SETEMAILATTACH</a> /]</b>.  It's worth noting that SETWFATTACH and SETEMAILATTACH can 	be used multiple times to attach several items to the destination.
+</p>
+
+<p class="gui">
+<u>Important Notes and Recommendations</u>
+</p>
+<ul>
+	<li>The Show WebReport option in the WR Trigger tab should only be checked if the event is triggered manually by a Content Server user. If the event is caused by a WebReport
+		(Eg. NODEACTION) this option should be left unchecked because Show WebReport is not applicable.</li>
+	<li>Avoid creating a Folder trigger with the 'Add Version' trigger event selected and the initiating WebReport outputting a new Content Server document (Output Destination=Content Server) to
+		the same folder. This causes the trigger on the folder to be recursively fired and results in a Content Server Error.
+	</li>
+	<li>When applying a WR Trigger to a container in order to trigger a WebReport based on an object being moved, created or copied into that container, ensure both the container subtype and the subtype of the object to be placed in the container are selected in the WR Trigger administration page.
+	</li>
+</ul>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

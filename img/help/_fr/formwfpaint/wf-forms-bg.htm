@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESFWF100500-H-UGD-FR-1">
+<META name="PiXprocLocator" content="formwfpaint">
+<title>Ajout de formulaires au lot de travail</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-forms-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation de formulaires dans les schémas de workflow';
+          header.title2 = 'Ajout de formulaires au lot de travail';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID66"></A>Vous pouvez ajouter des modèles de formulaire et des formulaires Content Server au lot de travail de votre schéma de workflow lorsque vous voulez mettre les formulaires à disposition aux étapes de départ, de l'utilisateur, de l'initiateur et du gestionnaire d'élément. Vous devez activer des formulaires dans le lot de travail du workflow avant de pouvoir ajouter des formulaires au workflow. Vous pouvez supprimer des formulaires du schéma de workflow.</P>
+<P><A NAME="TMPID68"></A>Si un formulaire est disponible à l'étape Utilisateur, les destinataires de l'étape ont accès à ce formulaire sur la page Etape du workflow lorsqu'ils traitent l'étape. Par exemple, vous pouvez définir une enquête en tant que formulaire, ajouter le formulaire au lot de travail du schéma de workflow, puis le rendre disponible dans une étape Utilisateur. Lorsque le workflow est lancé et arrive à l'étape Utilisateur, l'étape apparaît sur la page <B CLASS="GUILABEL">Mes tâches assignées</B> de l'utilisateur. Pour effectuer la tâche, l'utilisateur assigné clique sur le nom de l'étape, puis sur l'onglet <B CLASS="GUILABEL">Formulaires</B>, où il peut remplir le questionnaire.</P>
+<P><A NAME="TMPID71"></A>Si un seul formulaire est disponible à l'étape Utilisateur, le formulaire s'ouvre immédiatement. Si plusieurs formulaires sont disponibles à l'étape Utilisateur, l'utilisateur assigné doit cliquer sur le nom de chaque formulaire de la page <B CLASS="GUILABEL">Formulaires</B> pour ouvrir les formulaires et effectuer la tâche correspondante.</P>
+<P><A NAME="TMPID73"></A>Lorsque vous ajoutez un formulaire, vous devez spécifier un nom de formulaire et un mécanisme de stockage des données. Vous pouvez aussi spécifier si Content Server crée une version du formulaire à chaque fois qu'un utilisateur le remplit, si le formulaire par défaut est affiché lorsqu'un utilisateur accède à l'étape et si le formulaire est obligatoire. Si le formulaire est requis, l'utilisateur assigné à une étape doit afficher le formulaire lorsqu'il effectue des tâches dans l'étape.</P>
+<P><A NAME="TMPID75"></A>Après avoir ajouté un formulaire au lot de travail, vous pouvez modifier le formulaire en spécifiant les valeurs par défaut des champs et rendre le formulaire disponible dans les étapes.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="STORAGE">Sélection d'un mécanisme de réserve</A></P>
+<P class="before-ul"><A NAME="TMPID78"></A>Pour chaque formulaire que vous ajoutez au lot de travail d'un workflow, vous devez sélectionner un mécanisme de stockage. Après le lancement d'un workflow, le mécanisme de stockage enregistre les données que les utilisateurs fournissent dans le formulaire pendant que celui-ci se déplace dans le traitement du workflow. Vous pouvez choisir l'un des mécanismes de réserve suivants :</P><A NAME="AEN81"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN82"></A><A NAME="TMPID81"></A>Table SQL</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN84"></A><A NAME="TMPID83"></A>Workflow Content Server</P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF0"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID86"></A><B CLASS="NOTE">Note : </B><BR>Votre administrateur peut mettre à votre disposition des mécanismes personnalisés supplémentaires.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="SQLTABLE">Utilisation du mécanisme de réserve Table SQL</A></P>
+<P><A NAME="TMPID89"></A>Table SQL peut être utilisé comme mécanisme de stockage d'un formulaire de workflow à condition que ce formulaire soit basé sur un modèle de formulaire associé à une table de base de données. Lorsqu'un utilisateur clique sur les boutons <B CLASS="GUILABEL">Enregistrer</B> ou <B CLASS="GUILABEL">Appliquer</B> du formulaire, Content Server envoie les données vers le serveur HTTP, le mécanisme Table SQL stocke alors les données actuelles du formulaire sous forme d'un enregistrement dans la table de la base de données Content Server. Celle-ci est associée au modèle de formulaire sur lequel repose le formulaire.</P>
+<P><A NAME="TMPID94"></A>Les données du formulaire enregistrées sont accessibles dans Content Server via les rapports LiveReport et les applications externes, même lorsque le workflow est terminé. Content Server indexe des données de formulaire enregistrées avec un schéma de workflow, de sorte que ces données peuvent faire l'objet de recherches via la fonction de Recherche Content Server.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="WF">Utilisation du mécanisme de réserve de Workflow Content Server</A></P>
+<P><A NAME="TMPID101"></A>Workflow Content Server peut être utilisé comme mécanisme de stockage pour tout formulaire dans un workflow. Lorsqu'un utilisateur clique sur les boutons <B CLASS="GUILABEL">Enregistrer</B> ou <B CLASS="GUILABEL">Appliquer</B> du formulaire qui permet d'envoyer les données vers le serveur HTTP, le mécanisme Content Server Workflow stocke alors les données actuelles du formulaire dans le lot de travail du schéma de workflow. Les données du formulaire envoyées sont uniquement accessibles dans le cadre du workflow.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-FORMDISABLEVERSION">Désactivation des versions pour les champs de formulaire</A></P>
+<P><A NAME="TMPID108"></A>Par défaut, Content Server affiche la valeur actuelle des champs d'un formulaire, mais il stocke les valeurs actuelles et la totalité des anciennes valeurs dans la base de données Content Server. Pour afficher les anciennes valeurs des champs (par exemple, si vous effectuez un audit d'un workflow comportant le formulaire), vous pouvez créer un rapport LiveReport afin de récupérer dans la base de données Content Server toutes les anciennes valeurs d'un champ au cours du traitement du workflow. Pour que Content Server stocke uniquement les valeurs actuelles des champs, vous pouvez désactiver la création de versions pour un formulaire.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-FORMDISPLAYATTACH">Autoriser l'accès aux pièces jointes du workflow</A></P>
+<P><A NAME="TMPID115"></A>Si vous ajoutez un formulaire à un workflow qui comprend des pièces jointes, vous pouvez autoriser les utilisateurs du formulaire à y accéder directement, à partir du formulaire. Les utilisateurs de formulaire peuvent effectuer sur la page des <B CLASS="GUILABEL">Pièces jointes</B> du workflow des tâches identiques à celles qu'ils pourraient effectuer s'ils naviguaient dans le workflow. Ils peuvent, par exemple, afficher ou ajouter des documents, ou effectuer d'autres tâches suivant leurs droits. La zone des pièces jointes du workflow affiche tous les documents ou tous les éléments qui ont été ajoutés au cours des étapes précédemment effectuées dans le workflow. Si l'utilisateur assigné à une tâche n'a pas l'autorisation d'accéder à la zone des pièces jointes du workflow, un message d'erreur s'affiche, informant l'utilisateur que la zone des pièces jointes ne peut pas être affichée. En revanche, l'utilisateur peut ajouter des données au formulaire ou terminer la tâche.</P>
+<P><A NAME="TMPID117"></A>Par défaut, Content Server ajoute un bouton <B CLASS="GUILABEL">Afficher les pièces jointes</B> au formulaire lorsque vous activez l'accès aux pièces jointes du workflow pour une étape Tâche de formulaire. Lorsque les utilisateurs cliquent sur le bouton, les pièces jointes du workflow s'affichent dans une nouvelle fenêtre. Si vous créez une vue personnalisée du formulaire, vous devez ajouter un bouton personnalisé vous permettant d'afficher les pièces jointes. Vous pouvez également incorporer la zone Pièces jointes du workflow dans le formulaire. Pour plus d'informations sur l'ajout d'un bouton personnalisé ou l'affichage des pièces jointes dans un cadre incorporé au formulaire, reportez-vous au manuel <span><XPROC NAME="ExtXrefStart" HREF="llesfrm-cwm.-" FMT="" NO1ST><i>OpenText Forms - Manuel des concepteurs de formulaires (LLESFRM-CWM)</i><XPROC NAME="ExtXrefEnd" HREF="llesfrm-cwm.-" FMT=""></span> dans la <A title="OpenText Knowledge Center" HREF="https://knowledge.opentext.com" TARGET="_blank">Base de connaissances OpenText</A>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID123"></A><B CLASS="NOTE">Note : </B><BR>Il n'est pas possible d'accéder aux pièces jointes dans les formulaires PDF Forms et eForms.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wf-forms-enable-p.htm" revision="">Pour activer les formulaires dans le lot de travail</A></p></li>
+<li><p><A  HREF="wf-forms-add-p.htm" revision="">Pour ajouter un formulaire au lot de travail</A></p></li>
+<li><p><A  HREF="wf-forms-mod-p.htm" revision="">Pour modifier un formulaire dans le lot de travail</A></p></li>
+<li><p><A  HREF="wf-forms-avail-p.htm" revision="">Pour rendre un formulaire disponible dans une étape</A></p></li>
+<li><p><A  HREF="wf-forms-del-p.htm" revision="">Pour supprimer un formulaire du lot de travail</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

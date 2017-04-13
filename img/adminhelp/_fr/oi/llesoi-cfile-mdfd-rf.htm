@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle de la balise modified</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-mdfd-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Descriptions et syntaxe des balises Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle de la balise modified';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MDFDTAG01">Description</A></P>
+<P class="nr1"><A NAME="TMPID3958"></A>Utilisez la balise <TT CLASS="literal">modified</TT> pour spécifier une date de modification différente pour l'objet.  </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MDFDTAG02">Syntaxe</A></P><A NAME="AEN3782"></A>
+<PRE 
+CLASS="screen"
+>&lt;modified&gt;20100715&lt;/modified&gt;</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MDFDTAG03">Utilisation</A></P>
+<A NAME="AEN3784"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3785"></A><A NAME="TMPID3970"></A>La balise <TT CLASS="literal">modified</TT> n'est pas obligatoire.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3788"></A><A NAME="TMPID3973"></A>La balise <TT CLASS="literal">modified</TT> est facultative dans le cas suivant :</P><A NAME="AEN3791"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3792"></A><A NAME="TMPID3977"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="create"&gt;</TT></P></LI></UL>
+<P><A NAME="TMPID3981"></A>La seule exception à cette règle concerne <TT CLASS="literal">type="document"</TT>. Consultez la section <I CLASS="emphasis">Notes</I> ci-dessous pour plus d'informations.</P></LI></OL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MDFDTAG04">Notes</A></P>
+<A NAME="AEN3801"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3802"></A><A NAME="TMPID3988"></A>Par défaut, la balise <TT CLASS="literal">modified</TT> ne s'applique pas aux objets Document, <TT CLASS="literal">type="document"</TT>. Lorsqu'elle est spécifiée, la date de modification ne sera pas mise à jour pour l'objet Document.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3806"></A><A NAME="TMPID3992"></A>Les dates doivent être au format AAAAMMJJ ou AAAAMMJJHHMMSS, où la valeur HH se rapporte au format 24 heures et doit être comprise entre 01 et 24. Si le format AAAMMJJ est utilisé, l'heure prend par défaut la valeur 000000. Si cette balise n'est pas spécifiée lors de la création, la date système actuelle est utilisée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3808"></A><A NAME="TMPID3994"></A>Si vous définissez la date de modification sur une date antérieure à la date de création, Object Importer génère une erreur.</P></LI></OL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MDFDTAG05">Exemple</A></P><A NAME="AEN3812"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="reply" action="create"&gt;
+    &lt;location&gt;Enterprise:Discussion 001:Topic 001&lt;/location&gt;
+    &lt;title language="en"&gt;Reply 001&lt;/title&gt;
+    &lt;body&gt;This is a reply&lt;/body&gt;
+    &lt;createdby&gt;Admin&lt;/createdby&gt;
+    &lt;owner&gt;Admin&lt;/owner&gt;
+    &lt;created&gt;20040214&lt;/created&gt;
+    &lt;modified&gt;20041225&lt;modified&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

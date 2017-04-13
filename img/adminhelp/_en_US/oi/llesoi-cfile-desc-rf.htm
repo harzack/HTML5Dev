@@ -1,0 +1,136 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>description Tag Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-desc-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Tag Descriptions and Syntax';
+          header.title2 = 'description Tag Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="DESCTAG01">Description</A></P>
+<P class="nr1"><A NAME="TMPID3903"></A>Use the <TT CLASS="LITERAL">description</TT> tag to provide a description for the object. Content Server supports using multiple <TT CLASS="LITERAL">description</TT> tags for an object in order to create multiple descriptions, in multiple languages, for that object.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="DESCTAG02">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3725"></A>&lt;description language="en"&gt;first draft&lt;/description&gt;</PRE
+>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3726"></A>&lt;description clear="true" language="en"&gt;&lt;/description&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="DESCTAG03">Usage</A></P>
+<A NAME="AEN3728"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3729"></A><A NAME="TMPID3919"></A>The <TT CLASS="LITERAL">description</TT> tag is not a required tag.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3732"></A><A NAME="TMPID3922"></A>The <TT CLASS="LITERAL">description</TT> tag is optional when:</P><A NAME="AEN3735"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3736"></A><A NAME="TMPID3926"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3741"></A><A NAME="TMPID3931"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3746"></A><A NAME="TMPID3936"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="addversion"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3751"></A><A NAME="TMPID3941"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="sync"&gt;</TT></P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3756"></A><A NAME="TMPID3946"></A>Creating, updating, or clearing a description might require the <span><A HREF="llesoi-cfile-desc-rf.htm#LANGTAG01">language Attribute</A></span>, which is detailed below.</P>
+<table CLASS="TIP">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="TIP"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID3949"></A><B CLASS="TIP">Tip: </B><BR>OpenText recommends that you always use the <TT CLASS="LITERAL">language</TT> attribute on the <TT CLASS="LITERAL">description</TT> tag, and, if there is only one <TT CLASS="LITERAL">description</TT> tag, that you specify the system default language code on the <TT CLASS="LITERAL">language</TT> attribute.</P>
+<P><A NAME="TMPID3955"></A>If the <TT CLASS="LITERAL">language</TT> attribute is not used, Object Importer will use the system default language.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="DESCTAG04">Notes</A></P>
+<A NAME="AEN3770"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3771"></A><A NAME="TMPID3962"></A>To clear the value of the <TT CLASS="LITERAL">description</TT> tag, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3775"></A><A NAME="TMPID3966"></A>If a description doesn't exist in a language which has been enabled in the system to which you are importing, the <TT CLASS="LITERAL">clear="true"</TT> attribute will be used for clearing out the description in that language.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3778"></A><A NAME="TMPID3969"></A>In the event that two, or more, description tags with the same language attribute appear in the same node paragraph, no error will occur. Object Importer will set the description to the value contained in the last <TT CLASS="LITERAL">&lt;description&gt;</TT> tag it encounters with that language attribute.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="DESCTAG05">Example</A></P>
+<P><A NAME="TMPID3974"></A>To create the “guidelines.doc” document, with descriptions in both English and French, when the “Add Title to Location” check box is selected:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3786"></A>&#13;&lt;import&gt;
+  &lt;node type="document" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;guidelines.doc&lt;/title&gt;
+    &lt;description language="en"&gt;Final Drafts&lt;/description&gt;
+    &lt;description language="fr"&gt;Versions Finales&lt;/description&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P><A NAME="TMPID3978"></A>To view more <TT CLASS="LITERAL">description</TT> tag examples, see <span><A HREF="llesoi-cfile-descsamp-rf.htm">description Import Control File Examples</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LANGTAG01">language Attribute</A></P>
+<P><A NAME="TMPID3983"></A>Use the <TT CLASS="LITERAL">language</TT> attribute to specify a <TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">language_code</I>></TT> which will create, update, or clear the description of that object associated with that language. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3795"></A>&lt;description language="en"&gt;Final Drafts&lt;/description&gt;
+&lt;description language="fr"&gt;Versions Finales&lt;/description&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3796"></A>&lt;description clear="true" language="it"&gt;&lt;/description&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3797"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4002"></A>The <TT CLASS="LITERAL">language</TT> attribute is not required, provided only one <TT CLASS="LITERAL">&lt;description&gt;&lt;/description&gt;</TT> tag appears in the node paragraph. If you are applying multiple <TT CLASS="LITERAL">&lt;description&gt;&lt;/description&gt;</TT> tags in the node paragraph, the <TT CLASS="LITERAL">language</TT> attribute is required.</P>
+<table CLASS="TIP">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="TIP"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID4008"></A><B CLASS="TIP">Tip: </B><BR>OpenText recommends that you always use the <TT CLASS="LITERAL">language</TT> attribute on the <TT CLASS="LITERAL">description</TT> tag.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4013"></A>In order for multilingual descriptions to be created or updated, all languages referenced by the <TT CLASS="LITERAL">language</TT> attribute must exist on Content Server, and those languages must be enabled.</P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4019"></A>If <TT CLASS="LITERAL">&lt;node type="&lt;<I CLASS="VARNAME">any_type</I>>" action="create"&gt;</TT>, then multilingual descriptions will be created, provided the <I CLASS="EMPHASIS">language</I> exists, and is enabled, on the system. If <TT CLASS="LITERAL">&lt;node action="update"</TT> or <TT CLASS="LITERAL">&lt;node action="sync"</TT>, then multilingual descriptions will be updated if the <I CLASS="EMPHASIS">description</I> exists for that <TT CLASS="LITERAL">language</TT> attribute.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

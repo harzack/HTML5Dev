@@ -1,0 +1,191 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Sorting Results</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-sort-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'Sorting Results';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID22129"></A>The WebReport content control tag <TT CLASS="literal">[LL_WEBREPORT_SORT "&lt;<I CLASS="varname">Sort Keys</I>>":ASC/DESC &lt;<I CLASS="varname">More Sort Keys</I>> &lt;<I CLASS="varname">Global Direction</I>> /]</TT> makes it possible to sort data using one or more columns from the data source specified as sort keys.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF75"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID22135"></A><B CLASS="note">Note: </B><BR>This section details information about the <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSORT">SORT</A></span> tag. For information about the sub-tag, please see <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSORT">SORT</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID22138"></A>Each sort key contains a quoted column reference, “&lt;<I CLASS="varname">Sort Keys</I>>”, followed by an optional colon : and direction parameter, ASC or DESC. There is also the option to specify a &lt;<I CLASS="varname">Global Direction</I>>, that specifies if values should be assorted in ascending or descending order.</P>
+<P class="before-ul"><A NAME="TMPID22142"></A>Examples include:</P><A NAME="AEN20863"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20864"></A><A NAME="TMPID22145"></A><TT CLASS="literal">[LL_WEBREPORT_SORT "dataid":DESC /]</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20867"></A><A NAME="TMPID22148"></A><TT CLASS="literal">[LL_WEBREPORT_SORT "dataid" "1" DESC /]</TT></P></LI></UL>
+<P class="before-ul"><A NAME="TMPID22150"></A>There are three different ways to specify the column reference for each sort key:</P><A NAME="AEN20871"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20872"></A><A NAME="TMPID22153"></A>Specify a column number from the data source. A numeric value representing the column number from left to right in the data source can be used. For example, <TT CLASS="literal">[LL_WEBREPORT_SORT "1" /]</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20875"></A><A NAME="TMPID22156"></A>Specify a column name from the data source. A text value representing the name of one of the columns used in the data source can be used. For example, <TT CLASS="literal">[LL_WEBREPORT_SORT "dataid" /]</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20878"></A><A NAME="TMPID22159"></A>Specify a WebReports tag and sub-tags to be used as a sort key. This function allows the sort to be based on different criteria than the normal data returned by the column. For example: <TT CLASS="literal">[LL_WEBREPORT_SORT "[LL_REPTAG=DATAID NODEINFO:NAME /]" /]</TT>. In this example, rather than sorting on the <TT CLASS="literal">DataId</TT> column, the sort will be based on the name of the DTree object which is returned by <TT CLASS="literal">NODEINFO:NAME</TT>.</P></LI></UL>
+<P><A NAME="TMPID22164"></A>Multiple sort columns can be specified, allowing the user to sort within a sort and so on. As an example, we could sort by the first column, and within this we could sort on the second column, and within this, the third column. Here is how the syntax might look followed by an example of the output.</P>
+<P><A NAME="TMPID22165"></A><TT CLASS="literal">[LL_WEBREPORT_SORT "1" "2" "3" /]</TT></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN20887"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">column 1</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">column 2</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">column 3</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">a</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">27</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">zucchini</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">b</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">apple</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">b</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">8</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">carrot</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">b</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">8</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">zucchini</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">d</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">potato</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID22218"></A>The methods above can be combined to provide sorting on multiple key values as shown in the following examples:</P>
+<A NAME="AEN20939"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20940"></A><A NAME="TMPID22221"></A><TT CLASS="literal">[LL_WEBREPORT_SORT "1":ASC "name" "[LL_REPTAG_3 DECODE:1:Active:2:Inactive /]":ASC /]</TT></P>
+<P><A NAME="TMPID22223"></A>This sorts by:</P>
+<A NAME="AEN20944"></A>
+<OL COMPACT="COMPACT" TYPE="a" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN20945"></A><A NAME="TMPID22226"></A>the first column explicitly in the ascending direction,</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN20947"></A><A NAME="TMPID22228"></A>then the name column, also in the ascending direction by default,</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN20949"></A><A NAME="TMPID22230"></A>then, depending on the value in column 3, it is either sorted on the column Active or Inactive, also ascending.</P></LI></OL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20951"></A><A NAME="TMPID22232"></A><TT CLASS="literal">[LL_WEBREPORT_SORT "1" "name":DESC "[LL_REPTAG_3DECODE:1:Active:2:Inactive/]" /]</TT></P>
+<P><A NAME="TMPID22234"></A>This sorts by:</P>
+<A NAME="AEN20955"></A>
+<OL COMPACT="COMPACT" TYPE="a" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN20956"></A><A NAME="TMPID22237"></A>the first column ascending, by default,</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN20958"></A><A NAME="TMPID22239"></A>then the name column descending,</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN20960"></A><A NAME="TMPID22241"></A>then sorted on the third column, having first converted any values of 1 to Active and any values of 2 to Inactive.</P></LI></OL></LI></OL>
+<P><A NAME="TMPID22242"></A>In addition to the direction parameter that can be optionally specified for <I CLASS="emphasis">each</I> sort key, the <TT CLASS="literal">SORT</TT> function also supports a global direction parameter to specify the sort direction, ascending or descending, to be used for all sort keys that don't have a direction specified.</P>
+<P><A NAME="TMPID22245"></A><TT CLASS="literal">DESC</TT> or <TT CLASS="literal">ASC</TT> should be used without the colon. Some older syntaxes are still supported. If this parameter is not specified, the direction defaults to ascending, <TT CLASS="literal">ASC</TT>. For example:</P>
+<P><A NAME="TMPID22249"></A><TT CLASS="literal">[LL_WEBREPORT_SORT "1" "2" DESC /]</TT></P>
+<P><A NAME="TMPID22251"></A>In this example, the data set will be sorted in descending order of column 1 followed by descending order of column 2.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-SORT-ADVNOT">Advanced Notes</A></P>
+<P><A NAME="ADVNOT-REF1"></A>This tag is always placed within a row section, for example after the <TT CLASS="literal">[LL_WEBREPORT_STARTROW /]</TT> and before <TT CLASS="literal">[LL_WEBREPORT_ENDROW /]</TT>. It is possible to have multiple <TT CLASS="literal">SORT</TT> tags in a row section but this is normally unnecessary since each <TT CLASS="literal">SORT</TT> tag supports multiple keys.</P>
+<P><A NAME="TMPID22259"></A>When using a WebReports tag and sub-tags as the sort parameter, any results which are numeric or in a valid date form as defined in the Content Server system, will be sorted as integer and date types respectively.</P>
+<P><A NAME="TMPID22262"></A>When using the <TT CLASS="literal">SORT</TT> tag, it is possible to use parameter or constant tags as part of the tag syntax. This is useful to allow content to be sorted according to a value that has been passed as a parameter or a constant. For example:</P>
+<P><A NAME="TMPID22264"></A><TT CLASS="literal">&#13;[LL_WEBREPORT_SORT"[LL_REPTAG=DATAID NODEINFO:[LL_REPTAG_&amp;nodefield/]/]":[LL_REPTAG_&amp;direction/]/]</TT></P>
+<P><A NAME="TMPID22266"></A>In the example above, a URL parameter could be passed to specify which <TT CLASS="literal">NODEINFO:</TT> should be used. A direction could also be passed in this example.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF76"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID22269"></A><B CLASS="note">Note: </B><BR>For the <B CLASS="highlight">&amp;nodefield</B> parameter, the tag would not work correctly if no value had been passed as nodefield. The <B CLASS="guilabel">Parameter Default</B> feature should be used to provide a default parameter in situations like this.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-sort-presort.htm" revision="">Pre-defined Sort Parameters</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

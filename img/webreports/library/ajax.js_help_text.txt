@@ -1,0 +1,114 @@
+AJAX.JS Function Interface
+// Copyright Resonate KT Limited 2012
+// Version: 6.0
+This file accompanies the file called ajax.js that is contained in the support/webreports/library folder. It defines the various functions that can be used and 
+the required (or optional parameters that can be used. The primary purpose of this JS file is to provide some generically useful methods of using WebReports in 
+conjuction with AJAX technology. Further information on using this file (and other library files) is included in the documentation for WebReports under the
+heading of "Detailed Examples".
+
+
+updatePage Function
+--------------------
+This function is used to invoke a WebReport that will update some HTML component on the current page. The target WebReport will usually return a set of
+HTML to be inserted into an HTML component that is also specified when this function is called. This function can be called in any of the following ways:
+
+Interface:
+updatePage( WebReportId/URL, HTMLelementID)
+updatePage( WebReportId/URL, HTMLelementID, optionalParms )
+updatePage( WebReportId/URL, HTMLelementID, JSfunction )
+updatePage( WebReportId/URL, HTMLelementID, optionalParms, JSfunction )
+
+
+Parameters:				
+WebReportId/URL	(Mandatory)(number/string)	- Either the numeric objectid (dataid) of a WebReport or the nickname of a WebReport or a URL. 
+				If the nickname is numeric then it should be enclosed in quotes (e.g. '12345') in order to be distinguished from a dataid. 
+				
+HTMLelementID	(Mandatory)(string)			- A string of characters that should match the ID of the HTML element that is to be updated when the A
+				AJAX call is returned.
+optionalParms	(Optional)(string)			- Any parameters that are to be passed to the WebReport being executed are passed in this string. They must be formatted
+				appropriately in this form: '&parm=value,&parm2=value2'
+JSfunction		(Optional)(function)		- An optional function that will be executed after a response has been received and the specifid HTML component 
+				has been updated. When this function is called, it will be passed the HTML object (as referenced by HTMLelementID) as a parameter. 
+			
+============================================		
+JSfunction example:
+function update(htmlobj) {
+
+	htmlobj.value = "<enter text here>";
+}
+
+updatePage(12345, 'datadiv', update);
+===========================================
+This example calls a WebReport with the ID 12345 and passes it the ID "datadiv". The WebReport in question will insert HTML code into the object referenced by "datadiv". 
+After this object has been updated, the function "update" is called and passed a reference to the "datadiv" object which it uses to set the value to some default text. 
+
+If it is desirable to pass additional information to the JSfunction it can be done like this:
+updatePage(12345, 'datadiv', function(htmlobj) {update(htmlobj,'Title Text'} );
+This example assumes that the function called "update" expects a second, string parameter. 
+
+
+getJSData Function
+------------------
+This function is used to invoke a WebReport that will return JavaScript code to be executed in the calling web page. 
+
+Interface:
+getJSData( WebReportId/URL);
+getJSData( WebReportId/URL, optionalParms, JSfunction );
+getJSData( WebReportId/URL, JSfunction);
+getJSData( WebReportId/URL, optionalParms);
+
+Parameters:
+WebReportId/URL	(Mandatory)(number/string)	- Either the numeric objectid (dataid) of a WebReport or the nickname of a WebReport or a URL. 
+				If the nickname is numeric then it should be enclosed in quotes (e.g. '12345') in order to be distinguished from a dataid. 
+optionalParms	(Optional)(string)			- Any parameters that are to be passed to the WebReport being executed are passed in this string. They must be formatted
+				appropriately in this form: '&parm=value,&parm2=value2'
+JSfunction		(Optional)(function)		- An optional function that will be executed after a response has been received and an JavaScript returned by the 
+				WebReport has been executed. Any JavaScript that needs to execute only after a response has been returned should be called from here.
+				
+If it is desirable to pass additional information to the JSfunction it can be done like this:
+updatePage(12345, 'datadiv', function() {displayData('Title Text'} );
+
+
+ 
+sendRequest Function
+--------------------
+This is a generic function that can send an AJAX request to invoke a WebReport. This function is used by both the updatePage and getJSData functions. This 
+information is provided so that more specific application requirements (that are not covered by updatePage or getJSData) can be managed.
+
+Interface:
+sendRequest( WebReportId, responseFunction );
+sendRequest( WebReportId, responseFunction, reqType, optionalParms)
+sendRequest( WebReportId, responseFunction, reqType)
+sendRequest( WebReportId, responseFunction, optionalParms )
+
+Parameters:
+WebReportId		(Mandatory)(number/string)	- Either the numeric objectid (dataid) of the WebReport or the nickname of the WebReport. 
+				If the nickname is numeric then it should be enclosed in quotes (e.g. '12345') in order to be distinguished from a dataid. 
+responseFunction(Mandatory)(function)		- Function to be executed when the Ajax request returns. (See example below.)
+optionalParms	(Optional)(string)			- Any parameters that are to be passed to the WebReport being executed are passed in this string. They must be formatted
+				appropriately in this form: '&parm=value,&parm2=value2'
+reqType			(Optional)(string)			- The type of request to send to the web server (Livelink). Valid types are either 'GET' or 'POST').
+
+ 
+==============================================================================================
+responseFunction example:
+function simpleFunction() {
+	alert('the request has returned');
+}
+
+sendRequest( 12345, simpleFunction, '&x-1' )
+==============================================================================================
+This approach only works if no information needs to be passed to the response Function.  In more complex scenarios, an approach like this can be used:
+
+==============================================================================================
+responseFunction example2:
+
+function executeJS(request, optFunction) {
+	.	.	.
+}
+
+// (assuming http_request and JSfunction are existing variables in the calling JavaScript)
+var handlerFunc = function () {executeJS( http_request, JSfunction )};
+sendRequest( 12345, handlerFunc )
+==============================================================================================
+

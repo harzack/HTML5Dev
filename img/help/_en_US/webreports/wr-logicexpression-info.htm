@@ -1,0 +1,577 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Logical Expressions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-logicexpression-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'Logical Expressions';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID20458"></A>WebReports provides several conditional tags to allow selective filtering of the output using logical expressions. Examples of the tags which support logical expressions include:</P><A NAME="AEN19186"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19187"></A><A NAME="TMPID20462"></A><TT CLASS="literal">[LL_WEBREPORT_EXITIF (logical expression) /]</TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19190"></A><A NAME="TMPID20465"></A><TT CLASS="literal">[LL_WEBREPORT_INCLUDEIF (logical expression) /]</TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19193"></A><A NAME="TMPID20468"></A><TT CLASS="literal">[LL_WEBREPORT_IF (logical expression) /]</TT></P></LI></UL>
+<P class="before-ul"><A NAME="TMPID20470"></A>Logic expressions for these tags are made up of one or more logical clauses which are separated by a logical Boolean operator. Examples of Boolean operators are:</P><A NAME="AEN19197"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19198"></A><A NAME="TMPID20473"></A>AND</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19200"></A><A NAME="TMPID20475"></A>OR</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19202"></A><A NAME="TMPID20477"></A>&amp;&amp;</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19204"></A><A NAME="TMPID20479"></A>||</P></LI></UL>
+<P><A NAME="TMPID20480"></A>For example: <I CLASS="emphasis">clause1</I> AND <I CLASS="emphasis">clause2</I> OR <I CLASS="emphasis">clause3</I></P>
+<P><A NAME="TMPID20484"></A>Each one of these clauses is made up of two operands which are compared using one of the comparison operators. See <span><A HREF="wr-logicexpression-info.htm#LOGEXP-T"><NOBR>Table&nbsp;1-53</NOBR></A></span> for a list of supported operators. For example, each clause is in the form: <I CLASS="emphasis">“parmA”</I> == <I CLASS="emphasis">“parmB”</I></P>
+<P><A NAME="TMPID20490"></A>In these clauses each operand can be either a constant value or one of the WebReports report tags which is supported for use in a logic expression. Currently, variables are not supported in <TT CLASS="literal">IF/ENDIF</TT> expressions and the <TT CLASS="literal">ACTUALROWS</TT> tag cannot be used within a row section. For example: <TT CLASS="literal">"[LL_REPTAG_TOTALROWS /]" &gt;= "10"</TT></P>
+<P><A NAME="TMPID20495"></A>Using these two concepts a logical expression with multiple clauses could look like this: <TT CLASS="literal">[LL_WEBREPORT_IF "[LL_REPTAG_TOTALROWS /]" &gt;= "10" AND "[LL_REPTAG_&amp;reptype /]" == "parmB"&gt; /]...[LL_WEBREPORT_ENDIF /]</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="OPERATORS">Operators</A></P>
+<P><A NAME="TMPID20499"></A>WebReports support a variety of logical operators which are described in the following table.</P>
+<DIV title="List of Supported Operators" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="LOGEXP-T"></A><B>Table 1-53: List of Supported Operators</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Operator</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Meaning</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Notes</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">==</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Equal to</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Performs a string compare.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">!= or &lt;&gt;</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Not equal to</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Performs a string compare.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">&lt;=</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Less than or equal to</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compares the operands in the following manner:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID20542"></A>If both operands can be treated as integers, an <B CLASS="highlight">integer compare</B> is performed;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID20545"></A>otherwise, if both operands can be treated as dates, a <B CLASS="highlight">date compare</B> is performed;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID20548"></A>otherwise a <B CLASS="highlight">string compare</B> is performed.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">&gt;=</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Less than or equal to</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compares the operands in the following manner:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID20559"></A>If both operands can be treated as integers, an <B CLASS="highlight">integer compare</B> is performed;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID20562"></A>otherwise, if both operands can be treated as dates, a <B CLASS="highlight">date compare</B> is performed;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID20565"></A>otherwise a <B CLASS="highlight">string compare</B> is performed.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">&lt;</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Less than</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compares the operands in the following manner:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID20576"></A>If both operands can be treated as integers, an <B CLASS="highlight">integer compare</B> is performed;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID20579"></A>otherwise, if both operands can be treated as dates, a <B CLASS="highlight">date compare</B> is performed;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID20582"></A>otherwise a <B CLASS="highlight">string compare</B> is performed.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">&gt;</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Greater than</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compares the operands in the following manner:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID20593"></A>If both operands can be treated as integers, an <B CLASS="highlight">integer compare</B> is performed;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID20596"></A>otherwise, if both operands can be treated as dates, a <B CLASS="highlight">date compare</B> is performed;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID20599"></A>otherwise a <B CLASS="highlight">string compare</B> is performed.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">IN</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Second operand contains first operand</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compares the operands as strings returning <TT CLASS="literal">TRUE</TT> if the first operand is contained at least once within the second operand. The comparison is case insensitive. If either operand is an empty string <TT CLASS="literal">IN</TT> returns <TT CLASS="literal">TRUE</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">NOTIN</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Second operand does not contain first operand</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compares the operands as strings returning <TT CLASS="literal">FALSE</TT> if the first operand is contained at least once within the second operand. The comparison is case insensitive. If either operand is an empty string <TT CLASS="literal">NOTIN</TT> returns <TT CLASS="literal">FALSE</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">STARTIN</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Second operand starts with first operand</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compares the operands as strings returning <TT CLASS="literal">TRUE</TT> if the first operand appears at the start of the second operand. The comparison is case insensitive. If either operand is an empty string <TT CLASS="literal">STARTIN</TT> returns <TT CLASS="literal">TRUE</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">CHILDOF</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">First operand is a child node of the second operand</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Treats the operands as Content Server Nodes returning <TT CLASS="literal">TRUE</TT> if the first node is contained directly or indirectly by the second node. If either operand is not a valid Content Server object <TT CLASS="literal">ID</TT>, <TT CLASS="literal">CHILDOF</TT> returns <TT CLASS="literal">FALSE</TT>. If either operand is an empty string <TT CLASS="literal">CHILDOF</TT> returns <TT CLASS="literal">TRUE</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">NOTCHILDOF</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">First operand is a not child node of the second operand</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Treats the operands as Content Server Nodes returning <TT CLASS="literal">FALSE</TT> if the first node is contained directly or indirectly by the second node. If either operand is not a valid Content Server object <TT CLASS="literal">ID</TT>, <TT CLASS="literal">NOTCHILDOF</TT> returns <TT CLASS="literal">TRUE</TT>. If either operand is an empty string <TT CLASS="literal">NOTCHILDOF</TT> returns <TT CLASS="literal">FALSE</TT>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="DATECOMPARISON">Treatment of Dates</A></P>
+<P class="before-ul"><A NAME="TMPID20668"></A>For certain operators:</P><A NAME="AEN19393"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19394"></A><A NAME="TMPID20671"></A><TT CLASS="literal">&lt;=</TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19397"></A><A NAME="TMPID20674"></A><TT CLASS="literal">&gt;=</TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19400"></A><A NAME="TMPID20677"></A><TT CLASS="literal">&lt;</TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN19403"></A><A NAME="TMPID20680"></A><TT CLASS="literal">&gt;</TT></P></LI></UL>
+<P><A NAME="TMPID20682"></A>WebReports first attempts to convert the string operands into integers. If conversion to integer is unsuccessful, WebReports attempts to convert the operands into dates. In reality operands cannot have a type as they are all raw strings; however, strings conforming to a particular format can be interpreted as a type such as integer or date. Only if the strings match any of the date formats described in the table below will they be converted into dates and compared as dates. The supported formats match those used by common WebReports tags and data source dates.</P>
+<P><A NAME="TMPID20686"></A>All the following examples will be treated as dates by WebReports:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN19412"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Tag</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Format</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Notes</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_DATE /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">May 17 2008</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Current date from Content Server</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_DATETIME /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Thu May 17 11:59:04 2007</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Current date and time from Content Server</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=CreateDate /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Thu May 17 11:59:04 2007</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date and time from DTree table. This is the same format as from an SQL Server or an Oracle database.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=DataId NODEINFO:CreateDate /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Thu May 17 11:59:04 2007</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date and time from <TT CLASS="literal">NODEINFO</TT> sub-tag</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_&amp;dateParm /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">D/2007/5/17:8:13:0</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This is a WebReports parameter defined as a date in the parameters tab with the time field enabled. The time shown here is 8:13 AM. The unusual format is an internal system format used by Content Server to represent dates stored as strings. Please note that a WebReports parameter that is not defined as a date in the parameters tab will not be converted to a date unless it's contents follows the format shown. For example, a string parameter containing 5/17/2007 will not be converted to a date for comparison.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_&amp;inputlabel1 /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">D/2007/5/17:0:0:0</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date input parameter defined in LiveReport, and not defined in WebReports <B CLASS="guilabel">Parameter</B> tab. No time element can be specified</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROCESSING-ORDER">Order of Evaluation</A></P>
+<P><A NAME="TMPID20762"></A>The WebReports logic clauses do not support any bracketing to force expressions to be evaluated in a particular order. The order of evaluation of any logical expression is that each clause is evaluated from left to right. The logical result of each clause, <TT CLASS="literal">TRUE</TT> or <TT CLASS="literal">FALSE</TT>, is compared with the result of the next clause to the right. The combined result of these two operations is then passed to the next clause to the right, and so on. Logical operators are compared using traditional Boolean logic. For example:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN19489"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Left Clause Result</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Clause Operator</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Right Clause Result</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Logical Result</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">AND</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">AND</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">AND</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">OR</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">OR</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">OR</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID20865"></A>To illustrate how multiple clauses are evaluated, consider the following example:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN19589"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Clause 1</TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Clause 2</TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Clause 3</TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Clause 4</TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">“5” == “5”</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">AND</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">“10” != “5”</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">OR</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">“10” == “2”</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">AND</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">“5” == “10”</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID20912"></A>This simplistic expression would be evaluated from left to right as follows:</P>
+<A NAME="AEN19636"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19637"></A><A NAME="TMPID20915"></A>Clause 1 evaluates to <TT CLASS="literal">TRUE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19640"></A><A NAME="TMPID20918"></A>Clause 2 evaluates to <TT CLASS="literal">TRUE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="WRLE3"></A><A NAME="TMPID20921"></A>Clause 1(<TT CLASS="literal">TRUE</TT>) <B CLASS="highlight">AND</B> Clause 2(<TT CLASS="literal">TRUE</TT>) results in <TT CLASS="literal">TRUE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19649"></A><A NAME="TMPID20927"></A>Clause 3 evaluates to <TT CLASS="literal">FALSE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="WRLE5"></A><A NAME="TMPID20930"></A>The previous result from <span><A HREF="wr-logicexpression-info.htm#WRLE3">3</A></span> of <TT CLASS="literal">TRUE</TT> <B CLASS="highlight">OR</B> Clause 3 (<TT CLASS="literal">FALSE</TT>) results in <TT CLASS="literal">TRUE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19659"></A><A NAME="TMPID20937"></A>Clause 4 evaluates to <TT CLASS="literal">FALSE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19662"></A><A NAME="TMPID20940"></A>The previous result from <span><A HREF="wr-logicexpression-info.htm#WRLE5">5</A></span> of <TT CLASS="literal">TRUE</TT> <B CLASS="highlight">AND</B> Clause 4 (<TT CLASS="literal">FALSE</TT>) results in <TT CLASS="literal">FALSE</TT>.</P></LI></OL>
+<P><A NAME="TMPID20946"></A>Thus, the end result of this logical expression is <TT CLASS="literal">FALSE</TT>. From this example it should be evident that the rightmost parameter has the highest precedence. For example, if the rightmost clause resolves to <TT CLASS="literal">FALSE</TT> and the preceding logical operator is <TT CLASS="literal">AND</TT>, then the result will always be <TT CLASS="literal">FALSE</TT> regardless of any other parameters. Similarly, if the rightmost clause resolves to <TT CLASS="literal">TRUE</TT> and the preceding logical operator is <TT CLASS="literal">OR</TT>, then the result of the expression will always be <TT CLASS="literal">TRUE</TT>.</P>
+<P><A NAME="TMPID20954"></A>If this logical expression was written out using brackets it would look like this:</P><A NAME="AEN19678"></A>
+<PRE 
+CLASS="screen"
+>(((("5" == "5") AND ("10" != "5")) OR ("10" == "2")) AND ("5" == "10"))</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

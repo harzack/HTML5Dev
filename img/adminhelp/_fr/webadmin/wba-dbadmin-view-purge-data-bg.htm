@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Affichage et élimination de données</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-dbadmin-view-purge-data-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Maintenance d\'une base de données existante';
+          header.title2 = 'Affichage et élimination de données';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF129">Affichage de l'utilisation de l'espace de stockage (Oracle) </A></P>
+<P class="nr1"><A NAME="TMPID13933"></A>Le serveur Oracle utilise une entité appelée <I CLASS="emphasis">espace de stockage </I> pour stocker les tables d'une ou plusieurs bases de données relationnelles. Si votre SGBDR est un serveur Oracle, vous pouvez afficher la quantité d'espace utilisé par les tables Content Server dans l'espace de stockage Oracle.</P>
+<P><A NAME="TMPID13936"></A>Sur la page Maintenance de la base de données active, cliquez sur le lien <B CLASS="guilabel">Afficher l'utilisation de Espace de stockage Content Server</B>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF130">Elimination des données supprimées (Oracle) </A></P>
+<P><A NAME="TMPID13940"></A>Si votre SGBDR est un serveur Oracle et si la base de données Content Server utilise le stockage de documents interne, la page Maintenance de la base de données active affiche le lien <B CLASS="guilabel">Eliminer les données supprimées</B>.</P>
+<P><A NAME="TMPID13943"></A>Lorsque les utilisateurs suppriment des documents de la base Content Server, Oracle marque les données comme étant <I CLASS="emphasis">supprimées</I>, bien que celles-ci occupent toujours l'espace disque. Il est donc recommandé de purger les données supprimées à intervalles réguliers pour libérer de l'espace disque.</P>
+<P><A NAME="TMPID13946"></A>Le lien <B CLASS="guilabel">Eliminer les données supprimées</B> affiche la page correspondante sur laquelle vous effectuez la suppression.</P>
+<P><A NAME="TMPID13948"></A>Si votre SGBDR est un serveur Oracle et que votre base de données Content Server stocke les documents en interne, vous pouvez utiliser la page Eliminer les données supprimées pour supprimer de la table des données BLOB les données ayant le statut <I CLASS="emphasis">supprimé</I>. Vous accédez à la page correspondante en cliquant sur le lien Eliminer les données supprimées sur la page Maintenance de la base de données active.</P>
+<P><A NAME="TMPID13951"></A>Lorsqu'un utilisateur Content Server supprime un document stocké en interne dans une base de données Content Server, Oracle ne supprime pas le document du support de stockage, mais il lui attribue le statut <I CLASS="emphasis">supprimé</I>. Par conséquent, le document continue à occuper de l'espace sur le disque, même si les utilisateurs Content Server n'y ont plus accès. Il est donc recommandé de purger les données supprimées de la base de données Content Server à intervalles réguliers pour libérer de l'espace disque.</P>
+<P><A NAME="TMPID13957"></A>Pour éliminer des données supprimées, vous devez avoir suffisamment de <I CLASS="emphasis">segments rollback</I> pour éliminer la table de données BLOB. Pour plus d'informations sur l'opération de rollback, reportez-vous à la documentation Oracle.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF131"> Visualisation des tables Content Server</A></P>
+<P><A NAME="TMPID13961"></A>Une base de données Content Server enregistre les données dans un ensemble de tables SGBDR. Vous pouvez afficher la liste de ces tables et le nombre de lignes que contient chacune d'entre elles.</P>
+<P><A NAME="TMPID13963"></A>La page Utilisation des espaces de stockage Content Server affiche des informations sur l'espace dans lequel réside la base de données Content Server courante, y compris l'espace utilisé.</P>
+<P class="before-ul"><A NAME="TMPID13966"></A>Pour le serveur Oracle, la page Afficher les tables Content Server affiche les informations suivantes sur les tables de la base Content Server :</P><A NAME="AEN12950"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12951"></A><A NAME="TMPID13971"></A>le nom des tables ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12953"></A><A NAME="TMPID13973"></A>l'espace de stockage Oracle qui contient la table. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12955"></A><A NAME="TMPID13975"></A>le nombre de lignes dans la table ;</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID13976"></A>Pour Microsoft SQL Server, la page Afficher les tables Content Server affiche les informations suivantes sur les tables de la base Content Server : </P><A NAME="AEN12960"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12961"></A><A NAME="TMPID13981"></A>le nom de la table ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12963"></A><A NAME="TMPID13983"></A>le nombre de lignes dans la table ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12965"></A><A NAME="TMPID13985"></A>le type d'objet du serveur SQL ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12967"></A><A NAME="TMPID13987"></A>l'utilisateur de Sybase ou Microsoft SQL Server qui est propriétaire de la table. </P></LI></UL>
+<P><A NAME="TMPID13988"></A>Le serveur Oracle utilise une entité appelée <I CLASS="emphasis">espace de stockage </I> pour stocker les tables d'une ou plusieurs bases de données relationnelles. Un espace de stockage peut avoir plusieurs utilisateurs dont chacun possède un ensemble de tables. En général, l'ensemble de tables correspondant à une base de données Content Server réside dans un espace unique, qui peut être partagé avec d'autres ensembles de tables appartenant à des utilisateurs de base de données différents.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-dbadmin-view-ll-tables-p.htm" revision="">Pour afficher des tables Content Server</A></p></li>
+<li><p><A  href="../webadmin/wba-dbadmin-view-tablespace-p.htm" revision="">Affichage de l'utilisation de l'espace de stockage</A></p></li>
+<li><p><A  href="../webadmin/wba-dbadmin-purge-data-p.htm" revision="">Pour éliminer les données BLOB de votre base de données</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

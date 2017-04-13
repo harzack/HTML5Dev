@@ -1,0 +1,259 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>JavaScript Arrays</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-insertjsarray-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'JavaScript Arrays';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID20228"></A>The content control tag <span><A HREF="wr-tag-ccfifth.htm#WEBREPORTINSERTJSARRAY">[LL_WEBREPORT_INSERTJSARRAY /]</A></span> provides the ability to automatically insert a JavaScript array with all of the report data populated. This feature is useful for applications where the report data is to be manipulated using JavaScript in the client browser.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-INSERTJSARRAY-GENAUT">Generating a JavaScript Array Automatically</A></P>
+<P class="before-ul"><A NAME="TMPID20232"></A>The data in the report is converted to the array according to the following criteria:</P><A NAME="AEN18966"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18967"></A><A NAME="TMPID20235"></A>A JavaScript array is created by default with the name <TT CLASS="filename">repData</TT>. If an alternative array name is provided using the <TT CLASS="literal">ARRAYNAME:</TT> parameter, then the array is created using the specified name.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18971"></A><A NAME="TMPID20239"></A>The array is indexed numerically from zero, 0, through to an index which is one less than the length of the array.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18973"></A><A NAME="TMPID20241"></A>The columns are created as a second dimension of the row array, for example an array of arrays. Columns are indexed numerically from zero, 0, to an index which is one less than the total number of columns.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18975"></A><A NAME="TMPID20243"></A>A series of constants are also created which can be used to reference the column indices. Each constant is named according to the column which it references.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18977"></A><A NAME="TMPID20245"></A>If the inserted JavaScript needs to be enclosed in opening and closing <TT CLASS="literal">SCRIPT</TT> tags then the <TT CLASS="literal">SCRIPT</TT> parameter should be included.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18981"></A><A NAME="TMPID20249"></A>For data where several columns are repeated and only one column is consistently unique, the <TT CLASS="literal">MULTIVALUE:</TT> parameter can be used. This parameter will create a third array dimension for the unique column. For more information, see the examples below.</P></LI></UL>
+<P CLASS="bridgehead-subheading3"><A NAME="WR-INSERTJSARRAY-EXAMP1">Example 1</A></P>
+<P><A NAME="TMPID20253"></A>Consider the following data:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN18986"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Id</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">FirstName</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LastName</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1111</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">James</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Black</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">2222</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Johnny</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Green</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">3333</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Frank</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Smith</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID20292"></A>Given a data source returning data according to the table above, the tag <span><A HREF="wr-tag-ccfifth.htm#WEBREPORTINSERTJSARRAY">[LL_WEBREPORT_INSERTJSARRAY /]</A></span> would generate the following:</P>
+<P><A NAME="TMPID20294"></A><A NAME="AEN19027"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT LANGUAGE="Javascript"&gt;
+    var repData= new Array();
+    var ID = 0;
+    var FIRSTNAME = 1;
+    var LASTNAME = 2;
+    repData[0] = new Array("1111","James","Black");
+    repData[1] = new Array("2222","Johnny","Green");
+    repData[2] = new Array("3333","Frank","Smith");
+&lt;/SCRIPT&gt;</PRE
+></P>
+<P CLASS="bridgehead-subheading3"><A NAME="WR-INSERTJSARRAY-EXAMP2">Example 2</A></P>
+<P><A NAME="TMPID20298"></A>Consider the following data:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN19030"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Id</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">FirstName</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LastName</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ChildName</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1111</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">James</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Black</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Matthew</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1111</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">James</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Black</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Jonathan</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1111</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">James</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Black</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Emily</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">2222</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Johnny</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Green</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">George</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">2222</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Johnny</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Green</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Mavis</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">3333</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Frank</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Smith</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">N/A</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID20374"></A>Given a data source returning data according to the table above, the tag <TT CLASS="literal">[LL_WEBREPORT_INSERTJSARRAY MULTIVALUE:CHILDNAME /]</TT> would generate the following:</P>
+<P><A NAME="TMPID20376"></A><A NAME="AEN19108"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT LANGUAGE="Javascript"&gt;
+   var repData= new Array();
+   var ID = 0;var FIRSTNAME = 1;
+   var LASTNAME = 2;
+   repData[0] = new Array("1111","James","Black",new Array("Matthew", "Jonathan", "Emily"));
+   repData[1] = new Array("2222","Johnny","Green",new Array("George", "Mavis"));
+   repData[2] = new Array("3333","Frank","Smith",new Array("N/A"));
+&lt;/SCRIPT&gt;</PRE
+></P>
+<P><A NAME="TMPID20378"></A>In this example, the <TT CLASS="literal">MULTIVALUE</TT> option makes it possible to compensate for the redundancy of the first three columns. Six possible rows have been reduced to three rows by creating another level of JavaScript array.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

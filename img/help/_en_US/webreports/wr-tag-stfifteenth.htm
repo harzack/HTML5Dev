@@ -1,0 +1,1199 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>RANGE, REAL, REC, RECARRAY, RECORD, REDIRECT, REPLACE, REVERSE, RMACTION, RMCLASS, RMHOLDACTION, RMHOLDINFO, RMINFO, RMPERMCHECK, RMTYPE, ROUND, RPAD, RSI, RSISCHEDULE, RUNSHELL, RUNSQL, RUNSWR, RUNTEMPLATE</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stfifteenth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sub-Tags';
+          header.title2 = 'RANGE, REAL, REC, RECARRAY, RECORD, REDIRECT, REPLACE, REVERSE, RMACTION, RMCLASS, RMHOLDACTION, RMHOLDINFO, RMINFO, RMPERMCHECK, RMTYPE, ROUND, RPAD, RSI, RSISCHEDULE, RUNSHELL, RUNSQL, RUNSWR, RUNTEMPLATE';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID11870"></A>This section details the sub-tags: <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRANGE">RANGE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STREAL">REAL</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STREC">REC</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECARRAY">RECARRAY</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECORD">RECORD</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STREDIRECT">REDIRECT</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STREPLACE">REPLACE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STREVERSE">REVERSE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMPERMCHECK">RMPERMCHECK</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STROUND">ROUND</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRPAD">RPAD</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">RSI</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSISCHEDULE">RSISCHEDULE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRUNSHELL">RUNSHELL</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRUNSQL">RUNSQL</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRUNSWR">RUNSWR</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRUNTEMPLATE">RUNTEMPLATE</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRANGE">RANGE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRANGE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRANGE"></A><B CLASS="highlight">RANGE:&lt;<I CLASS="varname">start index</I>></B></P>
+<P><A NAME="TMPID11901"></A>or</P>
+<P><A NAME="TMPID11902"></A><B CLASS="highlight">RANGE:&lt;<I CLASS="varname">start index</I>>:&lt;<I CLASS="varname">end index</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRANGE-DESC">Description</A></P>
+<P><A NAME="TMPID11908"></A>For any list formatted as: <TT CLASS="literal">{'item1','item2'}</TT>, this sub-tag returns a range from the original list based on a specified start index and an optional end index. This sub-tag is identical to the <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSLICE">SLICE</A></span> sub-tag but only works with <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>s. All indices count starting at one (1) so the slice will include all characters starting from, and including, the &lt;<I CLASS="varname">start index</I>> and concluding with, and including, the &lt;<I CLASS="varname">end index</I>>, if one is specified. If &lt;<I CLASS="varname">end index</I>> is omitted, or exceeds the total length of the string, then the remainder of the string is used. A <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> follows the Content Server <TT CLASS="literal">LIST</TT> convention where the first character is a <B CLASS="highlight">{</B>, the last character is a <B CLASS="highlight">}</B>, and each element is separated by a comma. The output of this sub-tag is a list in the same format. A <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> can be de-referenced using the <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> sub-tag.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRANGE-EXAMP">Example</A></P>
+<P><A NAME="TMPID11924"></A>These different examples of the <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRANGE">RANGE</A></span> sub-tag show the different results that would be produced, assuming the associated tag contained the following list: <TT CLASS="literal">{'Apple','Pear','Orange','Mango'}</TT></P>
+<P><A NAME="TMPID11927"></A><B CLASS="highlight">RANGE:3</B> would return: <TT CLASS="literal">{'Orange','Mango'}</TT></P>
+<P><A NAME="TMPID11930"></A><B CLASS="highlight">RANGE:2:3</B> would return: <TT CLASS="literal">{'Pear','Orange'}</TT></P>
+<P><A NAME="TMPID11933"></A><B CLASS="highlight">RANGE:3:100</B> would return: <TT CLASS="literal">{'Orange','Mango'}</TT></P>
+<P><A NAME="TMPID11936"></A><B CLASS="highlight">RANGE:2:3 LIST:1</B> would return: <TT CLASS="literal">'Pear'</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STREAL">REAL</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREAL-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGREAL"></A><B CLASS="highlight">REAL</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREAL-DESC">Description</A></P>
+<P><A NAME="TMPID11947"></A>Explicitly casts data as type Real.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STREC">REC</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREC-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGREC"></A><B CLASS="highlight">REC</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREC-DESC">Description</A></P>
+<P><A NAME="TMPID11956"></A>The REC sub-tag operates on a DataID, and returns the related row from the WebNodes view. The sub-tag also accepts a <TT CLASS="literal">DTREE</TT> parameter, that returns the DTree record for the provided DataID.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREC-EXAMPL">Example</A></P>
+<P><A NAME="TMPID11960"></A><TT CLASS="literal">[LL_REPTAG_'2000' REC /]</TT></P>
+<P><A NAME="TMPID11962"></A>Returns the WebNodes record for the Enterprise:</P>
+<P><A NAME="TMPID11963"></A><TT CLASS="literal">R&lt;'OWNERID'=-2000,'PARENTID'=-1,'DATAID'=2000,'NAME'='Enterprise', ... &gt;</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRECARRAY">RECARRAY</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRECARRAY-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRECARRAY"></A><B CLASS="highlight">RECARRAY:&lt;<I CLASS="varname">rowIndex</I>>:&lt;<I CLASS="varname">colIndex</I>></B></P>
+<P><A NAME="TMPID11973"></A>or</P>
+<P><A NAME="TMPID11974"></A><B CLASS="highlight">RECARRAY:&lt;<I CLASS="varname">rowIndex</I>>:&lt;<I CLASS="varname">fieldName</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRECARRAY-DESC">Description</A></P>
+<P><A NAME="TMPID11980"></A>Allows indexing of the Content Server <TT CLASS="literal">RECARRAY</TT> data type. If the column extracted from the data source is a <TT CLASS="literal">RECARRAY</TT>, a Content Server data structure consisting of a <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> of <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECORD">RECORD</A></span>s, the value of the field specified by &lt;<I CLASS="varname">rowIndex</I>> and &lt;<I CLASS="varname">colIndex</I>> or &lt;<I CLASS="varname">fieldName</I>> is returned, and only that value.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF27"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11991"></A><B CLASS="note">Note: </B><BR>This sub-tag can be used repetitively and/or in combination with other sub-tags, such as <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> and <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>, to access information in complex data structures.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="STRECARRAY-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID11996"></A>For more information, see <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span>, <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECORD">RECORD</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRECORD">RECORD</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRECORD-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRECORD"></A><B CLASS="highlight">RECORD:&lt;<I CLASS="varname">index</I>></B></P>
+<P><A NAME="TMPID12007"></A>or</P>
+<P><A NAME="TMPID12008"></A><B CLASS="highlight">RECORD:&lt;<I CLASS="varname">fieldName</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRECORD-DESC">Description</A></P>
+<P><A NAME="TMPID12013"></A>Allows indexing of the Content Server <TT CLASS="literal">RECORD</TT> data type. If the column extracted from a data source is a <TT CLASS="literal">RECORD</TT>, in other words a Content Server data structure, the value of the field specified by &lt;<I CLASS="varname">index</I>> or &lt;<I CLASS="varname">fieldName</I>> is returned, and only that value.</P>
+<P><A NAME="TMPID12020"></A>The &lt;<I CLASS="varname">index</I>> argument will only work if the data does not contain commas (,) or equals signs (=). If the data contains commas or equals signs, OpenText recommends that you use &lt;<I CLASS="varname">fieldName</I>>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF28"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12025"></A><B CLASS="note">Note: </B><BR>This sub-tag can be used repetitively and/or in combination with other sub-tags such as <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> and <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> to access information in complex data structures.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="STRECORD-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID12030"></A>See also: <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span>, <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECARRAY">RECARRAY</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STREDIRECT">REDIRECT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREDIRECT-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGREDIRECT"></A><B CLASS="highlight">REDIRECT</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREDIRECT-DESC">Description</A></P>
+<P><A NAME="TMPID12042"></A>Redirects the browser to the URL specified in the main tag.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STREPLACE">REPLACE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREPLACE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGREPLACE"></A><B CLASS="highlight">REPLACE:&lt;<I CLASS="varname">parm1</I>>:&lt;<I CLASS="varname">parm2</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREPLACE-DESC">Description</A></P>
+<P><A NAME="TMPID12053"></A>Performs a “replace all” action on the items of data pulled from the data source. All occurrences of the &lt;<I CLASS="varname">parm1</I>> string are replaced by &lt;<I CLASS="varname">parm2</I>>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREPLACE-EXAMPL">Example</A></P>
+<P><A NAME="TMPID12059"></A><TT CLASS="literal">[LL_REPTAG=PRIORITY REPLACE:"3":"Low" /]</TT> would result in all occurrences of the number “3” in the <B CLASS="guilabel">Priority</B> field being replaced with the word “Low”.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF29"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12065"></A><B CLASS="note">Note: </B><BR>There can be no spaces between <TT CLASS="literal">REPLACE</TT>, &lt;<I CLASS="varname">parm1</I>> and &lt;<I CLASS="varname">parm2</I>>. Use only the colon separator.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STREVERSE">REVERSE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREVERSE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGREVERSE"></A><B CLASS="highlight">REVERSE</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREVERSE-DESC">Description</A></P>
+<P><A NAME="TMPID12077"></A>Accepts a list and reverses it.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREVERSE-EXAMPL">Example</A></P>
+<P><A NAME="TMPID12080"></A><TT CLASS="literal">[LL_REPTAG_'{1,3,2}' REVERSE /]</TT> returns <TT CLASS="literal">{2,3,1}</TT>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMACTION">RMACTION</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMACTION-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRMACTION"></A><B CLASS="highlight">RMACTION:&lt;<I CLASS="varname">operation</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMACTION-DESC">Description</A></P>
+<P><A NAME="TMPID12092"></A>Provides the ability to perform various actions against Records Management data found on the <B CLASS="guilabel">Records Detail</B> tab of Records, Content Server nodes such as documents, that are being managed with the Records Management module. If the Records Management module is not installed, this sub-tag returns nothing for all options.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMACTION-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN11064"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP">Operation</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Description</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:ACCESSION:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Accession field.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:ADDRESSEE:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Addressee(s) field.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:AUTHOR:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Author or Originator field.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:ESSENTIAL:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Essential field. Indicate the 3 letter code.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:FINALIZE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Finalizes the record. Optionally, append the parameter <TT CLASS="literal">:APPLYTOSUBITEMS</TT> in order to finalize sub-items, as well as the node in the main tag.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:LASTREVIEWDATE:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Last Review Date field.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:NEXTREVIEWDATE:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Next Review Date field.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:OFFICIAL:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Official field. Value can be set to TRUE or FALSE.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:ORIGINATIONORG:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Originating Organization field.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:OTHERADDRESSEE:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Other Addressee(s) field.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:RECEIVEDDATE:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Received Date field.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:RECORDDATE:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Record Date field.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:RMCLASSIFICATION:ADD:&lt;<I CLASS="varname">classification ID</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Adds the Records Management classification specified in the &lt;<I CLASS="varname">classification ID</I>> argument to the record. If the record already has a Records Management classification then the existing classification will be removed and replaced with the new one.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:RMCLASSIFICATION:REMOVE:&lt;<I CLASS="varname">classification ID</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Removes the Records Management classification specified in the &lt;<I CLASS="varname">classification ID</I>> argument from the record.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:SERIALIZE:&lt;<I CLASS="varname">field name</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a JSON representation of the field definition.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:STATUS:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Status field. Indicate the 3 letter code.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:STATUSDATE:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Status Date field.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:STORAGEMEDIUM:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Storage Medium field. Indicate the 3 letter code.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:SUBJECT:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Subject field.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:UPDATECYCLE:&lt;<I CLASS="varname">new value</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Update Cycle Period field. Valid values are 1, 2, or 3.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMACTION-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID12226"></A>See also <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMPERMCHECK">RMPERMCHECK</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSISCHEDULE">RSISCHEDULE</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">RSI</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMCLASS">RMCLASS</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMCLASS-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRMCLASS"></A><B CLASS="highlight">RMCLASS:&lt;<I CLASS="varname">parm</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMCLASS-DESC">Description</A></P>
+<P><A NAME="TMPID12244"></A>Provides metadata information unique to RM Classification objects. Requires the dataid of the RM Classification itself to be returned from the main tag. If you need to access details of an RM Classification from the node to which it is applied the <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span> sub-tag can be used: <TT CLASS="literal">[LL_REPTAG=DATAID RMINFO:CLASSID RMCLASS:&lt;<I CLASS="varname">parameter</I>> /]</TT>.</P>
+<P><A NAME="TMPID12248"></A>RSI details can be accessed in a similar fashion with the <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">RSI</A></span> sub-tag. For example, <TT CLASS="literal">[LL_REPTAG=DATAID RMINFO:CLASSID RMCLASS:RSI RSI:URL /]</TT> would get the URL to open an RSI based purely on the dataid of the node to which the RSI/RM Classification is applied.</P>
+<P><A NAME="TMPID12251"></A>It should be noted that an RM Classification is just a standard Content Server node type and therefore basic metadata associated with the node is available using the <span><A HREF="wr-tag-sttwelfth.htm#WR-TAG-STNODEINFO">NODEINFO</A></span> sub-tag. For example, <TT CLASS="literal">[LL_REPTAG=DATAID NODEINFO:CREATEDATE /]</TT> will return the date the RM Classification was created. This differs from RMCLASS which returns metadata that is unique to the RM Classification object subtype and only found on the specific tab of such objects. If the Records Management module is not installed this sub-tag returns nothing for all options.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMCLASS-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN11223"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Modifier</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description in Content Server Interface</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:FILENUMBER</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">File Number</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:CREATIONDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Creation Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:STATUS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Status</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:STATUSDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Status Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:ESSENTIAL</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Essential</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:STORAGEMEDIUM</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Storage Medium</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:DISPOSITIONAUTH</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Disposition Authority</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:UPDATECYCLE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Update Cycle Period</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:CLOSED</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Closed Flag</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:RSI</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">RSI</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:SUBJECT</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Subject</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:KEYWORDS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Keywords</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:LASTADDDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Last Addition Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:SELECTABLE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Selectable</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMCLASS-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID12337"></A>See also <span><A HREF="wr-tag-sttwelfth.htm#WR-TAG-STNODEINFO">NODEINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMPERMCHECK">RMPERMCHECK</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">RSI</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSISCHEDULE">RSISCHEDULE</A></span> for other Records Management functionality.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMHOLDACT">RMHOLDACTION</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDACT-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRMHOLDACTION"></A><B CLASS="highlight">RMHOLDACTION:&lt;<I CLASS="varname">parms</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDACT-DESC">Description</A></P>
+<P><A NAME="TMPID12356"></A>Provides the ability to perform various actions to do with Holds, such as applying and removing Holds, creating new Holds, and creating new Hold Types.</P>
+<P><A NAME="TMPID12357"></A>If the Records Management module is not installed, this sub-tag returns nothing for all options.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDACT-PARAM">Parameters</A></P><A NAME="AEN11325"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN11326"></A><B>RMHOLDACTION:APPLY:&lt;<I CLASS="varname">Hold ID or Name</I>></B></P>
+<P class="nr1"><A NAME="TMPID12364"></A>Applies a Hold to the node specified in the main tag.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN11330"></A><B>RMHOLDACTION:REMOVE:&lt;<I CLASS="varname">Hold ID or Name</I>></B></P>
+<P class="nr1"><A NAME="TMPID12368"></A>Removes a Hold from the node specified in the main tag.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN11334"></A><B>RMHOLDACTION:CREATE:HOLD:&lt;<I CLASS="varname">parms</I>></B></P>
+<P class="nr1"><A NAME="TMPID12372"></A>Creates a new Hold. The data in the main tag is ignored. The following parameters can be used:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN11338"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Parameter Name</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Details</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Hold Name</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Mandatory parameter. Will be converted to upper-case</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Date Applied</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Mandatory parameter. Must be a valid date string, for example “yyyy-mm-dd”.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Hold Type</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Mandatory parameter. Will be validated against existing Hold Types</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Alternate Hold ID</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Optional parameter.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Comment</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Optional parameter.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Date to Suspend</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Optional parameter. Must be a valid date string, if defined, for example “yyyy-mm-dd”.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P>
+<P><A NAME="TMPID12412"></A>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN11382"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID12414"></A>The following will create a Hold called “Hold 1”, with a Date Applied of “1st March 2012”, of type “Hold Type 1”:</P><A NAME="AEN11387"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'123456' RMHOLDACTION:CREATE:HOLD:"Hold 1":"2012-03-01":"Hold Type 1" /]</PRE
+>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN11388"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID12420"></A>The second example will create a Hold called “Hold 2”, with a Date Applied of “1st March 2012”, of type “Hold Type 2”, with a blank value for “Alternate Hold ID”, a comment of “a comment” and a Date To Suspend of “15th March 2012”:</P><A NAME="AEN11396"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'123456' RMHOLDACTION:CREATE:HOLD:"Hold 2":"2012-03-01":"Hold Type 1":"":"a comment":"2012-03-15" /]</PRE
+>
+</DIV></P></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN11397"></A><B>RMHOLDACTION:CREATE:TYPE:&lt;<I CLASS="varname">parms</I>></B></P>
+<P class="nr1"><A NAME="TMPID12431"></A>Creates a new Hold Type. The following parameters can be used:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN11401"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Parameter Name</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Details</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP">Code</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Mandatory parameter. Will be converted to upper-case.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP">Default Period</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Mandatory parameter. Must be an integer.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP">Description</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Optional parameter. Will be converted to upper-case</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P>
+<P><A NAME="TMPID12451"></A>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN11425"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID12453"></A>This first example will create a Hold Type called “HOLD TYPE 1” with a default period of 30:</P><A NAME="AEN11428"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'123456' RMHOLDACTION:CREATE:TYPE:"Hold Type 1":30 /]</PRE
+>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN11429"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID12457"></A>The second example will create a Hold called “HOLD TYPE 2”, with a default period of 30 and a description of “HOLD TYPE 2 DESCRIPTION”.</P><A NAME="AEN11433"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'123456' RMHOLDACTION:CREATE:TYPE:"Hold Type 2":30:"Hold Type 2 Description" /]</PRE
+>
+</DIV></P></P></LI></UL>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDACT-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID12463"></A>See also <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMPERMCHECK">RMPERMCHECK</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">RSI</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSISCHEDULE">RSISCHEDULE</A></span> for other Records Management functionality.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDINFO-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRMHOLDINFO"></A><B CLASS="highlight">RMHOLDINFO:&lt;<I CLASS="varname">parm</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDINFO-DESC">Description</A></P>
+<P><A NAME="TMPID12481"></A>Provides access to Records Management Holds data found on the <B CLASS="guilabel">Holds</B> tab of the node ID specified in the main tag. If the Records Management module is not installed, this sub-tag returns nothing for all options.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDINFO-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN11453"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Modifier</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP">RMHOLDINFO:ALL</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a RecArray containing all Holds applied both directly and indirectly, through inheritance, to the node. Append <TT CLASS="literal">:INCLUDECHILDREN</TT> to include Holds for children of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP">RMHOLDINFO:DIRECT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a RecArray containing all Holds applied directly to the node.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDINFO-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID12503"></A>See also <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMPERMCHECK">RMPERMCHECK</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">RSI</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSISCHEDULE">RSISCHEDULE</A></span> for other Records Management functionality.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMINFO">RMINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMINFO-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRMINFO"></A><B CLASS="highlight">RMINFO:&lt;<I CLASS="varname">parm</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMINFO-DESC">Description</A></P>
+<P><A NAME="TMPID12521"></A>Provides access to Records Management data found on the <B CLASS="guilabel">Records Detail</B> tab of Records, Content Server nodes such as documents, that are being managed with the Records Management module. The three options <TT CLASS="literal">RMCLASSIFICATION</TT>, <TT CLASS="literal">FILENUMBER</TT> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">RSI</A></span> relate more to the RM Classification but are provided here so that everything from the <B CLASS="guilabel">Records Detail</B> tab can be returned from this one sub-tag in exactly the same format. See the <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span> sub-tag to return slightly more generic data than these three options.</P>
+<P><A NAME="TMPID12529"></A>If the Records Management module is not installed, this sub-tag returns nothing for all options.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMINFO-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN11499"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Modifier</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description in the Content Server Interface</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RECORDOFFICER</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Record Officer</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RECORDDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Record Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RECORDTYPE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Record Type</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:STATUS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Status</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:STATUSDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Status Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RECEIVEDDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Received Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:ESSENTIAL</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Essential</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:OFFICIAL</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Official</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:STORAGEMEDIUM</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Storage Medium</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:ACCESSION</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Accession</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:SUBJECT</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Subject</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RECORDSMANAGERGROUP</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Records Manager Group</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:AUTHOR </B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Author or Originator</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:ADDRESSEE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Addressee(s)</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:OTHERADDRESSEE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Other Addressee(s)</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:ORIGINATIONORG </B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Originating Organization</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:UPDATECYCLE </B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Update Cycle Period</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:NEXTREVIEWDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Next Review Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:LASTREVIEWDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Last Review Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:CLASSID</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The dataid of the <I CLASS="emphasis">primary</I> RM Classification applied to this node. Using this sub-tag option we can easily access the <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span> sub-tag. For example, <TT CLASS="literal">[LL_REPTAG=DATA RMINFO:CLASSID RMCLASS:RSI /]</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RMCLASSIFICATION</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The path of the primary RM Classification applied to the node</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RSI</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The RSI associated with the primary RM Classification applied to the node. Note that the RSI returned from this sub-tag can be different to the RSI returned from <TT CLASS="literal">RMCLASS:RSI</TT>, which is the RSI applied to the RM Classification.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:FILENUMBER</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The File Number of the primary RM Classification applied to the node.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMINFO-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID12661"></A>See also <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMPERMCHECK">RMPERMCHECK</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">RSI</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSISCHEDULE">RSISCHEDULE</A></span> for other Records Management functionality.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMPERMCHECK">RMPERMCHECK</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMPERMCHECK-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRMPERMCHECK"></A><B CLASS="highlight">RMPERMCHECK:&lt;<I CLASS="varname">object type</I>>:&lt;<I CLASS="varname">feature name</I>>:&lt;<I CLASS="varname">permission</I>></B></P>
+<P><A NAME="TMPID12679"></A>or</P>
+<P><A NAME="TMPID12680"></A><B CLASS="highlight">RMPERMCHECK:&lt;<I CLASS="varname">object type</I>>:&lt;<I CLASS="varname">feature name</I>>:&lt;<I CLASS="varname">permission</I>>:&lt;<I CLASS="varname">user ID</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMPERMCHECK-DESC">Description</A></P>
+<P><A NAME="TMPID12688"></A>Expects a valid Content Server node ID in the main tag and returns TRUE if the current user, or an optionally specified user, has the specified permission for the node, else returns FALSE.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMPERMCHECK-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN11658"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Parameter</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:ACCESSION:UPDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can update the <TT CLASS="literal">ACCESSION</TT> feature on the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:ESSENTIAL:UPDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can update the <TT CLASS="literal">ESSENTIAL</TT> feature on the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:HOLD:APPLY</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can apply <TT CLASS="literal">HOLD</TT>s on the <B CLASS="guilabel">Holds</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:HOLD:REMOVE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can remove <TT CLASS="literal">HOLD</TT>s on the <B CLASS="guilabel">Holds</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:HOLD:VIEW</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can view the <B CLASS="guilabel">Holds</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:MARKOFFICIAL:ADD</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can select the <B CLASS="guilabel">Mark Official</B> box on the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:MARKOFFICIAL:REMOVE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can clear the <B CLASS="guilabel">Mark Official</B> box on the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:PROVENANCE:ASSIGN</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can assign <TT CLASS="literal">PROVENANCE</TT>s on the <B CLASS="guilabel">Provenance</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:PROVENANCE:REMOVE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can remove <TT CLASS="literal">PROVENANCE</TT>s on the <B CLASS="guilabel">Provenance</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:PROVENANCE:VIEW</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can view the <B CLASS="guilabel">Provenance</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:RECEIVEDDATE:UPDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can update the <TT CLASS="literal">RECEIVEDDATE</TT> feature on the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:RECORDDATE:UPDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can update the <TT CLASS="literal">RECORDDATE</TT> feature on the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:RECORDSDETAIL:VIEW</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can view the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:RMCLASSIFICATION:APPLY</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can apply <TT CLASS="literal">RMCLASSIFICATION</TT>s on the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:RMCLASSIFICATION:REMOVE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can remove <TT CLASS="literal">RMCLASSIFICATION</TT>s on the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:RSI:UPDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can update the <TT CLASS="literal">RSI</TT> feature on the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:STATUS:UPDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can update the <TT CLASS="literal">STATUS</TT> feature on the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:STORAGEMEDIUM:UPDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can update the <TT CLASS="literal">STORAGEMEDIUM</TT> feature on the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:SUBJECT:UPDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can update the <TT CLASS="literal">SUBJECT</TT> feature on the <B CLASS="guilabel">Records Detail</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:XREFERENCE:ASSIGN</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can assign <TT CLASS="literal">XREFERENCE</TT>s  on the <B CLASS="guilabel">XReference</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:XREFERENCE:REMOVE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can remove <TT CLASS="literal">XREFERENCE</TT>s  on the <B CLASS="guilabel">XReference</B> property tab of the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMPERMCHECK:MANAGEDOBJECT:XREFERENCE:VIEW</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The user can view the <B CLASS="guilabel">XReference</B> property tab of the node.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMTYPE">RMTYPE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMTYPE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRMTYPE"></A><B CLASS="highlight">RMTYPE:&lt;<I CLASS="varname">parm</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMTYPE-DESC">Description</A></P>
+<P><A NAME="TMPID12858"></A>Provides access to metadata specific to the Record Type object from the Records Management module. See the <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span> sub-tag for information on how to access RSI data from the RM Classification node. If the Records Management module is not installed, this sub-tag returns nothing for all options.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMTYPE-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN11828"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Modifier</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description in Content Server Interface</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMTYPE:RSI</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">RSI</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMTYPE:DEFAULTTYPE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Default Type</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMTYPE-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID12882"></A>See also <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMPERMCHECK">RMPERMCHECK</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">RSI</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSISCHEDULE">RSISCHEDULE</A></span>  for other Records Management functionality.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STROUND">ROUND</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STROUND-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGROUND"></A><B CLASS="highlight">ROUND:&lt;<I CLASS="varname">round number</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STROUND-DESC">Description</A></P>
+<P><A NAME="TMPID12900"></A>Rounds a numeric value by the specified <TT CLASS="literal">ROUND</TT> parameter. If no <TT CLASS="literal">ROUND</TT> parameter is specified, it defaults to 2.</P>
+<P><A NAME="TMPID12903"></A>The <TT CLASS="literal">ROUND</TT> parameter must be an integer or real number. The integer or real number must be greater than, or equal to, 0. An error occurs if the tag does not contain a valid integer or real number. Zeroes are padded to the specified <TT CLASS="literal">ROUND</TT> parameter if no decimal portion is present. See the second example below.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STROUND-EXAMP">Example</A></P>
+<A NAME="AEN11873"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11874"></A><A NAME="TMPID12910"></A><TT CLASS="literal">25.479 ROUND:2</TT> would return: “25.48”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11878"></A><A NAME="TMPID12914"></A><TT CLASS="literal">45 ROUND:3</TT> would return: “45.000”. Note that zeroes are padded.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11882"></A><A NAME="TMPID12918"></A><TT CLASS="literal">50.99 ROUND:0</TT> would return: “51”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11886"></A><A NAME="TMPID12922"></A><TT CLASS="literal">-4.545 ROUND:1</TT> would return: “-4.5”.</P></LI></OL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRPAD">RPAD</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRPAD-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRPAD"></A><B CLASS="highlight">RPAD:&lt;<I CLASS="varname">pad char</I>>:&lt;<I CLASS="varname">width</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRPAD-DESC">Description</A></P>
+<P><A NAME="TMPID12935"></A>Add padding characters, defined by &lt;<I CLASS="varname">pad char</I>>, to the right of existing data. Add enough characters to fill the field up to the specified &lt;<I CLASS="varname">width</I>>. If there is a mantissa, then only the width of the number following the decimal point is used.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRPAD-EXAMP">Example</A></P>
+<P><A NAME="TMPID12940"></A>For example, given a data tag returning the number 123.456, the following <TT CLASS="literal">[LL_REPTAG_1 RPAD:9:5 /]</TT> tag will return “123.45699”.</P>
+<P><A NAME="TMPID12943"></A>Given a data tag returning the number 123, the following <TT CLASS="literal">[LL_REPTAG_1 RPAD:9:5 /]</TT> tag will return “12399”.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRSI">RSI</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRSI-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRSI"></A><B CLASS="highlight">RSI:&lt;<I CLASS="varname">parm</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRSI-DESC">Description</A></P>
+<P><A NAME="TMPID12955"></A>A Record Series Identifier (RSI) allows records managers to apply retention and destruction information to electronic records in Content Server. You can define new RSIs, or edit existing RSIs, through the Enterprise menu followed by the Records Management option followed by the RSI link. This sub-tag allows access to the metadata associated with any given RSI. See the <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span> sub-tag for information on how to access RSI data from the RM Classification node. If the Records Management module is not installed, this sub-tag returns nothing for all options.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRSI-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN11917"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Modifier</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description in Content Server Interface</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:RSI</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">RSI</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:TITLE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Title</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:DESCRIPTION</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Description</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:SUBJECT</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Subject</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:STATUS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Status</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:STATUSDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Status Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:DISCONTINUE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Discontinue</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:DISCONTINUEDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Discontinue Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:DISCONTINUECOMMENT</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Discontinue Comment</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:URL</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The URL required to access a specific RSI. For example, <TT CLASS="literal">...?func=RecMan.EditRSI&amp;item=XX...</TT></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRSI-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID13021"></A>See also <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMPERMCHECK">RMPERMCHECK</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span>, and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSISCHEDULE">RSISCHEDULE</A></span> for other Records Management functionality.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRSISCHEDULE">RSISCHEDULE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRSISCHEDULE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRSISCHEDULE"></A><B CLASS="highlight">RSISCHEDULE:&lt;<I CLASS="varname">parm</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRSISCHEDULE-DESC">Description</A></P>
+<P><A NAME="TMPID13039"></A>Returns data for the Record Series Identifier (RSI) schedule associated with the node in the main tag. If the Records Management module is not installed, this sub-tag returns nothing for all options.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRSISCHEDULE-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN11998"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Modifier</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description in Content Server Interface</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:STAGE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Stage</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:RETENTIONRULE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Retention Rule</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:METEVENTRULE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Met Event Rule</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:CALCULATEDDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Calculated Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:ACTIONTOPERFORM</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Action to Perform</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:DISPOSITION</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Disposition</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:COMMENTS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Comments</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:RULECODE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Rule Code</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:DATETOUSE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date To Use</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:DATETOUSEVALUE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date To Use Value</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:RETENTIONYEARS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Retention Years</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:RETENTIONMONTHS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Retention Months</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:RETENTIONDAYS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Retention Days</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:YEARENDMONTH</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Year End Month</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:YEARENDDAY</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Year End Day</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:INTERVALS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Intervals</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:FIXEDDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Fixed Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:EVENTBASED</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Event Based</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:EVENT</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Event</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:PERMANENT</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Permanent</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:DEFAULTPROCESS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Default Process</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSISCHEDULE:ACTIONINFO</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Action Info</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRSISCHEDULE-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID13162"></A>See also <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span>, and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">RSI</A></span> for other Records Management functionality.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRUNSHELL">RUNSHELL</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNSHELL-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRUNSHELL"></A><B CLASS="highlight">RUNSHELL</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNSHELL-DESC">Description</A></P>
+<P><A NAME="TMPID13178"></A>This sub-tag allows a server-side shell script to be executed on the server, and returns the output from the script.</P>
+<P><A NAME="TMPID13179"></A>Scripts must exist in a sub-directory below the “templates” folder under the WebReports module directory, and can have a <TT CLASS="literal">.cmd</TT>, <TT CLASS="literal">.bat</TT>, or <TT CLASS="literal">.py</TT> extension.</P>
+<P><A NAME="TMPID13184"></A><TT CLASS="literal">RUNSHELL</TT> supports passing parameters to the script. The parameters must be separated from the script name by a space. For example, <TT CLASS="literal">[LL_REPTAG_'scripts/myscript.py parm' RUNSHELL /]</TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNSHELL-EXAMPL">Example</A></P>
+<P><A NAME="TMPID13189"></A>For example, a Python script with the following:</P><A NAME="AEN12145"></A>
+<PRE 
+CLASS="screen"
+># contents of scripts/myscript.py
+print 'Hello World!'</PRE
+>
+<P><A NAME="TMPID13191"></A>can be executed with:</P><A NAME="AEN12147"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'scripts/myscript.py' RUNSHELL /]</PRE
+>
+<P><A NAME="TMPID13193"></A>This would return 'Hello World!' to the report.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNSHELL-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID13196"></A>See also <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRUNSQL">RUNSQL</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRUNTEMPLATE">RUNTEMPLATE</A></span>, and <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSETDATASOURCE">SETDATASOURCE</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRUNSQL">RUNSQL</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNSQL-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRUNSQL"></A><B CLASS="highlight">RUNSQL</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNSQL-DESC">Description</A></P>
+<P><A NAME="TMPID13208"></A>This sub-tag is used to run a LiveReport and returns the results as a RecArray. The main tag must contain the DataID of a LiveReport or the file system data source name. Parameters passed to <TT CLASS="literal">RUNSQL</TT> are interpreted as <TT CLASS="literal">&amp;inputLabel1</TT>, <TT CLASS="literal">&amp;inputLabel2</TT>, and so on.</P>
+<P><A NAME="TMPID13212"></A>If the LiveReport runs an <TT CLASS="literal">UPDATE</TT> or <TT CLASS="literal">DELETE</TT> statement then the RecArray will contain a single record containing &lt;<I CLASS="varname">rowCount</I>>, that will be populated by the number of rows updated or deleted.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNSQL-EXAMPL">Example</A></P>
+<P><A NAME="TMPID13218"></A>For example, <TT CLASS="literal">[LL_REPTAG_'9999' RUNSQL:"JohnDoe" /]</TT> executes the LiveReport with DataID <TT CLASS="literal">9999</TT> and passes in the parameter <TT CLASS="literal">&amp;inputLabel1=JohnDoe</TT>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRUNSWR">RUNSWR</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNSWR-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRUNSWR"></A><B CLASS="highlight">RUNSWR</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNSWR-DESC">Description</A></P>
+<P><A NAME="TMPID13230"></A>This sub-tag provides a sub-tag syntax for calling a sub-WebReport.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNSWR-EXAMPL">Example</A></P>
+<P><A NAME="TMPID13233"></A>The following tag demonstrates how a sub-WebReport is normally called with the <TT CLASS="literal">[LL_WEBREPORT_SUBWEBREPORT /]</TT> tag:</P><A NAME="AEN12181"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_SUBWEBREPORT NODEID:68873 PARM:inputLabel1:299 PARM:myStatus:"awaiting review" /]</PRE
+>
+<P><A NAME="TMPID13236"></A>This can be rewritten with the <TT CLASS="literal">RUNSWR</TT> sub-tag as follows:</P><A NAME="AEN12184"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'68873' RUNSWR:inputLabel1:299:myStatus:"awaiting review" /]</PRE
+>
+<P><A NAME="TMPID13239"></A>Both approaches produce the same result, except the second approach allows further sub-tags to be added to the tag. For example:</P><A NAME="AEN12186"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'68873' RUNSWR:inputLabel1:299:myStatus:"awaiting review" DECODE:0:"false":1:"true" /]</PRE
+>
+<P><A NAME="TMPID13241"></A>If the destination of the sub-WebReport is a Content Server Node, then the nodeID can be returned to the calling WebReport by adding the <TT CLASS="literal">SHOWNODEID</TT> argument to the end of the <TT CLASS="literal">RUNSWR</TT> call. For example:</P><A NAME="AEN12191"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_$mySubReport RUNSWR:SHOWNODEID /]
+[LL_REPTAG_$mySubReport RUNSWR:inputLabel1:299:myStatus:"awaiting review":SHOWNODEID /]</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNSWR-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID13248"></A>For more information, see <span><A HREF="wr-server-calsuweb.htm">Calling Sub-WebReports</A></span>, <span><A HREF="wr-subwebreports-info.htm">Using Sub-WebReports</A></span> and <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSUBWEBREPORT">SUBWEBREPORT</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRUNTEMPLATE">RUNTEMPLATE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNTEMPLATE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGRUNTEMPLATE"></A><B CLASS="highlight">RUNTEMPLATE</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNTEMPLATE-DESC">Description</A></P>
+<P><A NAME="TMPID13260"></A>Calling <TT CLASS="literal">RUNTEMPLATE</TT> is similar to calling a sub-WebReport and has the same syntax as <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRUNSWR">RUNSWR</A></span>. However, there are some key differences:</P>
+<A NAME="AEN12205"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12206"></A><A NAME="TMPID13265"></A>The template ignores its own parameters, constants, and data source.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12208"></A><A NAME="TMPID13267"></A>The context from the calling report is shared with the template. That means constants, variables, parameters, and the data source from the calling report are visible in the template.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12210"></A><A NAME="TMPID13269"></A>The template can change variables or override the datasource, for example <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSETDATASOURCE">SETDATASOURCE</A></span>, but these changes are not reflected in the calling report.</P></LI></OL>
+<P><A NAME="TMPID13271"></A>The <TT CLASS="literal">RUNTEMPLATE</TT> sub-tag can also be used to run templates located on the filesystem.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRUNTEMPLATE-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID13275"></A>For more information, see <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSETDATASOURCE">SETDATASOURCE</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRUNSWR">RUNSWR</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

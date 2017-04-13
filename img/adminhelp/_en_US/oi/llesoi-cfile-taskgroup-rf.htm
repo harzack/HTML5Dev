@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>taskgroup Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-taskgroup-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Control File Syntax';
+          header.title2 = 'taskgroup Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TSKGRPTAG01">taskgroup</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TSKGRPTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID2805"></A>Use <TT CLASS="LITERAL">type="taskgroup"</TT> on  the <TT CLASS="LITERAL">node</TT> tag to create, update, or delete a Task Group.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TSKGRPTAG03">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2690"></A>&lt;node type="taskgroup" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TSKGRPTAG04">Usage</A></P>
+<A NAME="AEN2692"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2693"></A><A NAME="TMPID2819"></A>Creating or updating a Task Group can include a subordinate tag, <span><A HREF="llesoi-cfile-taskgroup-rf.htm#MLSTTAG01">milestone Tag</A></span>, which is detailed below.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2696"></A><A NAME="TMPID2822"></A>Creating, updating, or deleting a Task Group can also require a number of other subordinate tags, such as the <TT CLASS="LITERAL">location</TT> tag. These other subordinate tags are detailed in <span><A HREF="llesoi-cfilesamp-bg.htm">Object Importer Tag Descriptions and Syntax</A></span>.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TSKGRPTAG05">Example</A></P>
+<P><A NAME="TMPID2827"></A>To create a Task Group with a Milestone, called “New Task Group” and “New Milestone”, attached to the Task List, “New Task List”, in the Enterprise Workspace:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2705"></A>&#13;&lt;import&gt;
+  &lt;node type="taskgroup" action="create"&gt;
+    &lt;location&gt;Enterprise:New Task List&lt;/location&gt;
+    &lt;title language="en"&gt;New Task Group&lt;/title&gt;
+    &lt;milestone&gt;Enterprise:New Task List:New Milestone&lt;/milestone&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="MLSTTAG01">milestone Tag</A></P>
+<P><A NAME="TMPID2834"></A>Use the <TT CLASS="LITERAL">milestone</TT> tag to assign a Milestone to a Task Group. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2709"></A>&lt;milestone&gt;Enterprise:New Task List:New Milestone&lt;/milestone&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2710"></A>&lt;milestone clear="true"&gt;&lt;/milestone&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2711"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2851"></A>The <TT CLASS="LITERAL">milestone</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="taskgroup"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2855"></A>The <TT CLASS="LITERAL">milestone</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2858"></A>The <TT CLASS="LITERAL">milestone</TT> tag is optional when:</P><A NAME="AEN2733"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2734"></A><A NAME="TMPID2862"></A><TT CLASS="LITERAL">&lt;node type="taskgroup" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2737"></A><A NAME="TMPID2865"></A><TT CLASS="LITERAL">&lt;node type="taskgroup" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2740"></A><A NAME="TMPID2868"></A><TT CLASS="LITERAL">&lt;node type="taskgroup" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2873"></A>The Milestone must exist in Content Server before it can be assigned to a Task Group. If this tag is not specified during create, no milestone will be assigned to the Task Group.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2876"></A>To unassign the milestone, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

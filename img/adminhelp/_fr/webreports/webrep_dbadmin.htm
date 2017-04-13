@@ -1,0 +1,34 @@
+﻿<HTML>
+	<HEAD>
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+		<TITLE>WebReports Database Administration</TITLE>
+		<link rel="stylesheet" href="../../ix21.css" type="text/css">
+		<script language="JavaScript" src="../../llhelp.js"></script>
+	</HEAD>
+	<BODY ONLOAD="checkFrame( 'webrep_dbadmin.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif"><A NAME="TopOfPage"> </A><A NAME="P8_93"></A>
+		<SCRIPT LANGUAGE="JavaScript">
+			var header = new AdminHeader();
+			header.title1 = 'WebReports Administration: OpenText Content Server Admin Online Help';
+			header.title2 = 'WebReports Database Administration';
+			header.addTab( AdminHeader.PROCEDURES, 'none' );  // 'none' indicates unavailable tab
+			header.addTab( AdminHeader.BACKGROUND, 'none' );  // null indicates selected tab
+			header.addTab( AdminHeader.RELATED, 'none' ); // give relative path to file for linked tab
+			header.draw();
+		</SCRIPT>
+
+		<P CLASS="body">The WebReports Database Administration page is used to manage any supported WebReports database actions.  These actions include permanently deleting the WebReports tables for a clean uninstall, and downgrading the database schema to the appropriate module version.</P>
+
+		<ul>
+			<li>If you choose to <b>Delete WebReports tables</b>, the entire WebReports schema will be removed and following this you will be taken through the uninstall of the module.  <i>All of the WebReports tables - including the WebReports schedule table, stats table, trigger tables, and the Module.VersionInfo entry in the KINI table - will be permanently deleted from the database.</i></li>
+			<BR>
+			<BR>
+			<li>If you choose to <b>Downgrade the schema to a 5.0.x level (only new tablse removed)</b>, only the new schema added after WebReports 5.0.x will be dropped and following this you will be taken through the uninstall of the module.  All data valid in WebReports 5.0.x will be retained and you can then install WebReports 5.0.x.  <i>Specifically, the WEBREPORTSUGTRIGGERS table is deleted from the database, and the Module.VersionInfo entry in the KINI table is downgraded to 5.0.x.</i></li>
+		</ul>		 
+
+		<P CLASS="body">For more information about this feature please refer to the WebReports Admin guide.</p>
+
+		<SCRIPT LANGUAGE="JavaScript">
+			new AdminFooter().draw();
+		</SCRIPT>
+	</BODY>
+</HTML>

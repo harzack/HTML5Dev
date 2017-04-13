@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Mise en cache de résultats avec WebReports</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-catcacheres-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Catégories et attributs';
+          header.title2 = 'Mise en cache de résultats avec WebReports';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID18977"></A>Même si vous choisissez la méthode la plus appropriée parmi celles présentées ci-dessus, des problèmes de performances restent possibles. Dans ce cas, nous pouvons envisager de « mettre en cache » les données brutes dans une nouvelle table. WebReports peut écrire les résultats de toute requête dans une table SQL dédiée, en utilisant la destination d'exportation WebForm. Si nous le faisons pour le surensemble de résultats, nous disposons ensuite pour travailler d'un ensemble de données beaucoup plus restreint, ce qui permet d'améliorer les performances. </P>
+<P><A NAME="TMPID18979"></A>Créez un nouveau modèle de formulaire et configurez les champs que vous souhaitez afficher dans le WebReport final. Dans notre cas, ceux-ci sont en relation directe avec notre catégorie. Nous créons donc un modèle à 6 champs, qui reflètent chacun les types présents dans la catégorie proprement dite. Nous allons utiliser le stockage de tables SQL pour le formulaire ; vous devez donc utiliser des noms de champs qui constituent des noms de colonnes de base de données valides. Par exemple, n'utilisez pas d'espaces. Une fois le modèle terminé, créez une table SQL du nom de votre choix, puis créez un formulaire à partir du modèle. A ce stade, la table servant de « cache » est terminée, il ne reste plus qu'à renseigner son contenu. </P>
+<P><A NAME="TMPID18981"></A>Il convient de noter que si nous souhaitons vérifier les autorisations des résultats finaux et/ou fournir des liens hypertexte vers les données d'origine, nous devons aussi mettre en cache le dataid, en plus des champs de catégorie qui nous intéressent. </P>
+<P><A NAME="TMPID18982"></A>Prenez le WebReport créé par l'une des méthodes ci-dessus et modifiez-le afin qu'il utilise la sous-balise SETFORM pour mapper les données de la balise source au champ de destination. Si nous prenons l'exemple de l'affichage de rapport CAT, nous devons obtenir dans la section des lignes le code ci-dessous, ou du code similaire : </P><A NAME="AEN18220"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG=DATAID CAT:"Test Category":"Trial Name":DISPLAY SETFORM:TRIAL /]
+[LL_REPTAG=DATAID CAT:"Test Category":"Number of Failures":DISPLAY SETFORM:FAILURES /]
+[LL_REPTAG=DATAID CAT:"Test Category":"Assignee":DISPLAY SETFORM:ASSIGN /]
+[LL_REPTAG=DATAID CAT:"Test Category":"Start Date":DISPLAY SETFORM:STDT /]
+[LL_REPTAG=DATAID CAT:"Test Category":"End Date":DISPLAY SETFORM:EDDT /]
+[LL_REPTAG=DATAID CAT:"Test Category":"Complete":DISPLAY SETFORM:STATUS /]</PRE
+>
+<P><A NAME="TMPID18984"></A>Définissez maintenant l'onglet Destination du WebReport sur Exporter vers le formulaire, puis recherchez le formulaire que nous venons de créer. Définissez le champ Ajouter des résultats sur Ecraser les données existantes. Programmez ensuite l'exécution du rapport conformément aux besoins de vos utilisateurs et à la disponibilité de la puissance de calcul. Par exemple, vous pouvez programmer un rapport pour qu'il s'exécute à la fin de chaque mois, en vue du traitement des bulletins de salaire, car les données sont requises à ce moment-là uniquement. Dans certains cas, il convient d'exécuter un rapport toutes les heures. Les besoins précis doivent être déterminés par le développeur du WebReport et l'utilisateur final. </P>
+<P><A NAME="TMPID18985"></A>La dernière étape consiste à créer un LiveReport/WebReport pour présenter les données contenues dans la nouvelle table constituant le cache des données. Si des problèmes de performances persistent, le développeur du WebReport doit envisager de paginer les données avant de les fournir au navigateur. </P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

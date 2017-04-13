@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Gestion de stockage interne et externe</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-dbadmin-manage-int-ext-storage-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administration de la base de données';
+          header.title2 = 'Gestion de stockage interne et externe';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID14352"></A>Avant de créer votre base de données Content Server, vous devez choisir entre un stockage interne et un stockage externe des documents et autres fichiers que les utilisateurs ajouteront à Content Server. Si vous utilisez le stockage interne, le contenu et les <I CLASS="emphasis">métadonnées</I> (données décrivant un élément Content Server) des fichiers téléchargés sont stockés dans les fichiers de données du SGBDR. Dans le cas du stockage externe, seules les métadonnées des fichiers téléchargés sont stockées dans la base de données, le contenu des fichiers étant alors conservé dans le système de fichiers. </P>
+<P><A NAME="TMPID14357"></A>Lorsqu'un élément est ajouté à Content Server, le système crée un enregistrement le concernant dans la table ProviderData, ainsi que dans d'autres tables de la base de données Content Server. La table ProviderData contient des informations indiquant à Content Server où il peut récupérer un fichier lorsqu'un utilisateur demande à le visualiser ou à l'extraire. Dans le cas d'un stockage interne, la table ProviderData enregistre l'emplacement interne du fichier dans la base de données. Dans le cas d'un stockage externe, la table ProviderData enregistre le chemin d'accès physique au fichier dans le système de fichiers.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF138"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID14362"></A><B CLASS="note">Note : </B><BR>Lorsque vous utilisez un stockage de document externe, Content Server utilise un algorithme de numérotation pour nommer les fichiers pour assurer le suivi des multiples versions d'un même fichier. Content Server n'enregistre pas les fichiers dans le système de fichiers sous les noms qu'ils portaient lorsqu'ils ont été copiés depuis les disques des utilisateurs. Par exemple, si l'utilisateur ajoute un fichier appelé <TT CLASS="filename">Expense12Mar.xls</TT> à Content Server, son nom dans le répertoire de stockage externe devrait s'apparenter à <TT CLASS="filename">2934eriw.233</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID14368"></A>Au moment de choisir entre les deux modes de stockage, vous devez vous poser les questions suivantes :</P><A NAME="AEN13348"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13349"></A><A NAME="TMPID14371"></A>Quelles sont les implications du stockage interne par opposition au stockage externe sur votre &lt;&gt;stratégie de sauvegarde et de récupération ? </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13351"></A><A NAME="TMPID14373"></A>La base de données Content Server va-t-elle contenir des documents volumineux et quel niveau de performance attendez-vous pour la gestion de tels documents ?</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13354"></A><A NAME="TMPID14376"></A>Si vous optez pour le stockage externe, le périphérique de stockage va-t-il être conservé localement ou à distance du principal hôte Content Server ? Comment allez-vous configurer votre système en conséquence ? </P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF139">Implications au niveau de la stratégie de sauvegarde et de restauration </A></P>
+<P><A NAME="TMPID14379"></A>Chaque serveur SGBDR pris en charge par Content Server possède des outils élaborés de sauvegarde et de restauration permettant de réaliser des sauvegardes sans désactiver les bases de données. En choisissant un stockage de documents interne, vous simplifiez votre stratégie de sauvegarde et de restauration dans la mesure où vous pouvez utiliser ces outils pour sauvegarder le contenu des fichiers téléchargés dans la base de données Content Server. </P>
+<P><A NAME="TMPID14382"></A>Avec le stockage de documents externes, votre stratégie de sauvegarde et de restauration risque de devenir plus complexe, selon vos besoins. Une stratégie consiste à désactiver la base de données Content Server et le stockage de documents externe pour réaliser les sauvegardes. Elle offre l'avantage de générer un ensemble de données statique et une sauvegarde synchronisée sur les métadonnées de la base de données Content Server. En revanche, la désactivation de la base de données Content Server n'est pas nécessairement une option viable dans les multinationales qui opèrent 24h/24. </P>
+<P><A NAME="TMPID14386"></A>Dans ce cas, il existe d'autres stratégies de sauvegarde et de restauration plus complexes. Par exemple, si vous réalisez une sauvegarde de la réserve de documents externe en ligne, vous devez faire appel à un utilitaire de synchronisation pour corriger les différences entre la réserve externe et la copie effectuée pendant la sauvegarde. Si vous avez besoin d'aide pour développer une stratégie de sauvegarde et de restauration à l'intention d'une réserve de documents externe, prenez contact avec les Services professionnels d'Open Text.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF140">Performances requises pour la gestion des documents volumineux </A></P>
+<P><A NAME="TMPID14388"></A>Les transactions internes de base de données sont parfois inefficaces pour traiter des documents volumineux. Plus le fichier est gros, plus le travail à entreprendre pour ajouter, extraire ou modifier le fichier est important. Les systèmes de fichiers externes en revanche permettent une gestion plus efficace des fichiers volumineux. Les tests effectués par Open Text ont montré que les transactions de gestion des documents avec une réserve externe peuvent se dérouler jusqu'à trois fois plus vite qu'en utilisant un stockage interne. </P>
+<P><A NAME="TMPID14389"></A>Si vous prévoyez de stocker dans votre base de données Content Server des documents volumineux et si vous voulez optimiser les performances de gestion, nous vous conseillons le stockage externe.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF141">Configuration d'une réserve de documents externe </A></P>
+<P class="before-ul"><A NAME="TMPID14392"></A>Avant de procéder à la sélection de l'option de stockage de documents externe et de spécifier le chemin d'accès physique à la réserve de documents externe, prenez note des points suivants : </P><A NAME="AEN13372"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13373"></A><A NAME="TMPID14395"></A>Vous devez créer le répertoire à utiliser pour le stockage externe avant de créer la base de données Content Server. Si ce répertoire n'existe pas, Content Server ne le créera pas.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13377"></A><A NAME="TMPID14399"></A>Si le répertoire de stockage de documents externe ne réside pas sur le même hôte que votre installation Content Server principale, vous devez mapper/monter le répertoire sur l'hôte Content Server principal. Si vous utilisez UNIX, utilisez un montage NFS. Si vous travaillez sous Windows NT ou Windows 2000, mappez une lettre de lecteur avec le répertoire de documents externe. Un autre point important concernant une réserve de stockage externe à distance sous Windows NT ou Windows 2000 est qu'elle doit avoir pour propriétaire l'utilisateur Content Server. Pour ce faire, vous devez créer un utilisateur ayant le même nom, le même mot de passe et les mêmes privilèges tant sur l'hôte Content Server principal que sur l'hôte du stockage externe distant. Les serveurs Content Server sur l'hôte principal doivent s'exécuter sur le compte de cet utilisateur et le répertoire de stockage sur l'hôte distant doit appartenir à cet utilisateur. Pour plus d'informations sur les privilèges que doit posséder l'utilisateur Windows NT ou Windows 2000, reportez-vous à la section « Creating a Windows NT or Windows 2000 User » du manuel <I CLASS="emphasis">Content ServerFirst-Time Installation Guide</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13386"></A><A NAME="TMPID14408"></A>Une fois que vous avez créé et monté/mappé le répertoire de stockage de documents externe sur un hôte distant, essayez de vous y connecter à partir de l'hôte Content Server principal en tant qu'utilisateur système (créé au préalable) afin de vérifier que vous avez bien accès au répertoire et que vous pouvez y enregistrer des données. En cas de problèmes liés aux autorisations ou à la nature du propriétaire, corrigez la situation avant de créer la base Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13390"></A><A NAME="TMPID14412"></A>Si vous placez la réserve externe sur l'hôte Content Server principal, l'écriture et l'extraction des documents risquent d'être légèrement plus rapides, en raison de l'absence de délais dus au réseau. Les tests réalisés par Open Text ont montré que le gain de performances obtenu en plaçant la réserve de documents externe sur l'hôte primaire Content Server est insignifiant comparé à son installation sur un hôte distant. Ce gain sera plus important si vous fonctionnez dans un environnement réseau chargé. Si c'est le cas, vous pouvez envisager de placer les composants du système Content Server sur leur propre sous-réseau isolé. </P></LI></UL>
+<P><A NAME="TMPID14416"></A>Les bases de données Content Server peuvent stocker des documents en interne ou en externe dans le système de fichiers. Le choix d'un de ces deux modes se fait au moment où les tables de la base de données Content Server sont créées.</P>
+<P><A NAME="TMPID14419"></A>La page Paramètres du stockage externe apparaît lorsque vous cliquez sur le lien <B CLASS="guilabel">Paramètres du stockage externe</B> de la page Maintenance de la base de données active d'une base à stockage externe. (Ce lien n'apparaît pas sur la page Maintenance de la base de données active des bases à stockage interne.) La page Paramètres du stockage externe affiche le chemin d'accès actuel au répertoire de stockage externe, ainsi qu'un lien avec la page Répertoire de documents externe, dans laquelle vous pouvez modifier ou déplacer le répertoire de documents externe.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-dbadmin-set-external-storage-bg.htm" revision="">Définition de paramètres de stockage externe</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

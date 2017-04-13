@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Appel de sous-rapports WebReport</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-server-calsuweb.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Ecriture de script côté serveur';
+          header.title2 = 'Appel de sous-rapports WebReport';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID17322"></A>Un script peut appeler directement un autre WebReport au moyen de la fonction point suivante :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN16576"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Fonction</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Paramètres</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">Assoc ._subWebReport(Dynamic nodeid, [String parms], [String option])</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">nodeid</B> : valeur de chaîne ou entière spécifiant l'id du nœud du rapport à exécuter.</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">parms</B> : valeur de chaîne facultative contenant les paramètres à transmettre au sous-rapport WebReport. Le format requis est le suivant : <TT CLASS="literal">'PARM:myParm1:myVal1 PARM:myParm2:myVal2'</TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">option</B> : valeur de chaîne facultative, définie sur <TT CLASS="literal">output</TT>, <TT CLASS="literal">data</TT> ou <TT CLASS="literal">all</TT>, sélectionnant la forme requise des résultats (voir ci-dessous) ; définie sur <TT CLASS="literal">output</TT> par défaut.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Dans tous les cas, une Assoc est renvoyée avec une clé <TT CLASS="literal">ok</TT> contenant une valeur booléenne égale à <TT CLASS="literal">TRUE</TT> si l'appel a réussi. En cas d'échec, une autre clé <TT CLASS="literal">err</TT> contient une chaîne d'erreur. En cas de réussite, les clés supplémentaires sont renvoyées comme suit :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID17356"></A><B CLASS="highlight">Si option = <TT CLASS="literal">output</TT> ou option n'est pas spécifié</B>, une Assoc avec une clé <TT CLASS="literal">output</TT> est renvoyée. La valeur de la clé <TT CLASS="literal">output</TT> est une chaîne contenant la sortie formatée du sous-rapport WebReport.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID17362"></A><B CLASS="highlight">Si option = <TT CLASS="literal">data</TT></B>, une Assoc avec la clé <TT CLASS="literal">data</TT> est renvoyée. La valeur de la clé <TT CLASS="literal">data</TT> est un RecArray contenant les données d'origine de la source de données du sous-rapport WebReport.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID17368"></A><B CLASS="highlight">Si option = <TT CLASS="literal">all</TT></B> une Assoc avec les deux clés <TT CLASS="literal">output</TT> et <TT CLASS="literal">data</TT> est renvoyée.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN16626"></A>&nbsp;</P>
+<P><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID17374"></A>Voici un exemple prenant un nodeID (DataID) de la source de données et l'utilisant comme un paramètre lors de l'appel d'un sous-rapport WebReport. Le script vérifie que l'appel du sous-rapport WebReport a réussi et produit en conséquence le résultat ou un message d'erreur :</P><A NAME="AEN16628"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_STARTSCRIPT NAME:callSWR /]
+Function string callSWR(Dynamic c)
+Assoc result
+String parm = Str.Format('PARM:inputlabel1:%1', c.data[1].DataID)
+
+result = ._subWebReport(._repTag('$report'), parm, 'output')
+
+if result.ok
+   return result.output
+else
+   return result.err
+end
+end
+[LL_WEBREPORT_ENDSCRIPT /]
+
+[LL_WEBREPORT_CALL NAME:callSWR /]</PRE
+>
+<P><A NAME="TMPID17376"></A>Dans cet exemple <TT CLASS="literal">._repTag</TT> est utilisé pour renvoyer la valeur d'une constante pointant vers le sous-rapport WebReport requis.</P>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

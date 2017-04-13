@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Mise à niveau d'un module</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-moduleadmin-upgrading-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion des modules';
+          header.title2 = 'Mise à niveau d\'un module';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID17699"></A>Lorsqu'Open Text publie de nouvelles versions de modules Content Server, ces modules peuvent souvent être téléchargés depuis la base de connaissances Open Text, ou sont parfois disponibles sur CD-ROM. Open Text vous recommande de consulter les notes de version d'un module avant de lancer une installation de mise à niveau.</P>
+<P><A NAME="TMPID17701"></A>Un module est mis à niveau en deux étapes. La première étape de la mise à niveau extrait les fichiers nécessaires du fichier .tar ou du programme d'installation et les place dans le répertoire <TT CLASS="filename">_home/staging</TT>. Votre système Content Server n'est pas encore mis à niveau ; vous devez accéder aux pages Administration pour achever la mise à niveau du module.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF200"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID17705"></A><B CLASS="note">Note : </B><BR>Lorsque vous mettez à niveau un module, les fichiers du module précédent sont supprimés de Content Server et replacés dans le répertoire <TT CLASS="filename">_home\staging</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID17708"></A>La manière dont vous mettez à niveau un module dépend du type de système d'exploitation sur lequel Content Server est installé. Une fois les nouveaux fichiers ajoutés aux emplacements appropriés dans le répertoire <TT CLASS="filename">_home/staging</TT>, le processus de mise à niveau est le même pour les systèmes d'exploitation Windows et UNIX.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="UPGRADE-MOD">Mise à niveau de modules sous Windows et UNIX</A></P>
+<P><A NAME="TMPID17713"></A>Pour les versions Windows des modules Content Server, vous effectuez la première phase d'une mise à niveau à l'aide d'un programme d'installation InstallShield. Ce programme d'installation vous permet de sélectionner l'instance de Content Server pour laquelle vous voulez mettre à niveau le module et place les fichiers correspondants dans un sous-répertoire du répertoire <TT CLASS="filename">_home/staging</TT>.</P>
+<P><A NAME="TMPID17717"></A>Pour les versions UNIX des modules Content Server, vous effectuez la première phase de la mise à niveau en utilisant un fichier d'archive compressé au format .tar. L'extraction de ce fichier .tar place les fichiers du module dans un sous-répertoire du répertoire <TT CLASS="filename">_home/staging</TT>.</P>
+<P><A NAME="TMPID17720"></A>Le répertoire <TT CLASS="filename">_home/staging</TT> n'existe pas si aucun module facultatif n'est encore installé ou si aucun des modules préinstallés n'a encore été mis à niveau. Dans ce cas, le programme d'installation du module (pour Windows) ou l'extraction du fichier .tar (pour UNIX) crée automatiquement le répertoire <TT CLASS="filename">_home/staging</TT>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="COMPLETE-MOD-UPGRADE">Fin de l'installation d'un module </A></P>
+<P><A NAME="TMPID17725"></A>Vous effectuez la seconde étape de la mise à niveau d'un module à l'aide de la page Mettre des modules à niveau, accessible via la page Administration.</P>
+<P><A NAME="TMPID17726"></A>Une fois la mise à niveau effectuée, la page Redémarrer Content Server est la première page qui s'affiche pour la plupart des modules. Cependant, certaines mises à niveau de module exigent que vous définissiez certains paramètres de configuration avant de redémarrer le serveur. Pour plus d'informations sur la définition de paramètres de configuration, reportez-vous à la documentation spécifique du module.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF201"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID17729"></A><B CLASS="note">Note : </B><BR>Si vous avez installé plusieurs modules, ils apparaissent sur la page Mettre des modules à niveau. Vous pouvez mettre à niveau plusieurs modules simultanément, pourvu qu'ils n'aient pas de dépendances sur d'autres modules. Lorsqu'un module a une dépendance sur un autre module, ce module doit d'abord être ajouté ou mis à niveau. Après la mise à niveau d'un module associé à des fichiers d'aide en ligne, vous devez mettre à jour l'index de l'aide pour voir les fichiers d'aide en ligne associés au module. Pour en savoir plus, voir <span><A href="../webadmin/wba-moduleadmin-updating-help-bg.htm">Mise à jour de l'aide en ligne utilisateur et administrateur</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-moduleadmin-upgrade-windows-p.htm" revision="">Pour mettre à niveau un module sous Windows</A></p></li>
+<li><p><A  href="../webadmin/wba-moduleadmin-upgrade-unix-p.htm" revision="">Pour mettre à niveau un module sous UNIX</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

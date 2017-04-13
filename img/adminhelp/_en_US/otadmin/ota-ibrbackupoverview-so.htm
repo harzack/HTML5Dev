@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Backing Up and Restoring Indexes</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-ibrbackupoverview-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Search';
+          header.title2 = 'Backing Up and Restoring Indexes';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID11649"></A>A data source's index allows Content Server users to search for items in that data source. If an index has been deleted or you suspect that   its contents are corrupt, you can re-create it by purging its data flow and re-indexing its data source. However, for a large data source, such as the Content Server Enterprise, purging and re-indexing can be a time-consuming process. Therefore, you should back up your indexes on a regular basis. Index backups allow you to restore an index to a recent state without having to perform a full re-index. Because the backup and restore processes operate only on the index, they take far less time than re-indexing a large data source.</P>
+<P><A NAME="TMPID11652"></A>Content Server backs up an index by copying all the relevant files from the index's location to a destination directory. You can then use your corporate backup software to back up the destination directory. When you restore the index, you place the appropriate files in a directory and specify that location to the restore process.</P>
+<P class="before-ul"><A NAME="TMPID11654"></A>Content Server provides two types of backups that you can use in combination:</P><A NAME="AEN10926"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10927"></A><A NAME="TMPID11658"></A><I CLASS="emphasis">Full</I>: A full backup saves the entire index to a destination directory, overwriting any previous backups that exist in that location. You can keep only one full backup of an index in any given location.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10930"></A><A NAME="TMPID11661"></A><I CLASS="emphasis">Differential</I>: A differential backup saves only the data that has changed in the index since the last backup. In most cases, this means that a differential backup requires less disk space than a full backup; however, because Content Server merges periodically, this is not always the case. For example, suppose that four index fragments exist when you perform your first full backup. The full backup saves all four index fragments. Then suppose that a merge operation occurs. This results in one index fragment that contains all four previous fragments. If you run a differential backup at this point, the remaining index fragment is saved, but may require as much, if not more, disk space than the previous full backup.</P>
+<DIV title="Differential Backup and Merges" CLASS="figure">
+<P><A NAME="INCRFRAGS"></A><IMG alt="Differential Backup and Merges"  src="../../../otadmin/incrfrags.gif"></P>
+<P CLASS="figure" ALIGN="LEFT"><B>Figure 1-4: Differential Backup and Merges</B></P></DIV></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF223">Developing a Backup Policy</A></P>
+<P><A NAME="TMPID11668"></A>To make full use of the backup and restore features, you must develop a policy that determines the frequency and types of backups that are appropriate for your site. For most sites, OpenText recommends scheduling full backups less frequently and differential backups more frequently. For example, you may plan a full backup once a week and differential backups each night.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF224">Automating Index Backups</A></P>
+<P><A NAME="TMPID11671"></A>You can schedule automated backup processes to implement a backup policy using a Backup Manager. A Backup Manager is a special Content Server folder that contains the scheduled backup processes that are associated with a particular data source. Within the Backup Manager, you can create, change, or delete scheduled backup processes. Before you back up a data source's index, that data source must have a Backup Manager. If the data source does not have a Backup Manager, you must create one.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF225">Backing Up Indexes Manually</A></P>
+<P><A NAME="TMPID11674"></A>You can manually start a backup process at any time by using the Backup Wizard, provided there is no backup process currently running on the data source you are trying to back up. If you try to manually start a backup process on a data source that has no Backup Manager, Content Server prompts you to create a Backup Manager.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF226"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11677"></A><B CLASS="note">Note: </B><BR>OpenText recommends that you automate index backups.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF227">Viewing the Index Backup History</A></P>
+<P><A NAME="TMPID11680"></A>If you want to view the backups that have been performed on a data source in the past, you can view its backup history.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF228">Restoring Indexes</A></P>
+<P><A NAME="TMPID11682"></A>If an index becomes damaged or corrupted, and you have backed up the index, you can use the Restore Wizard to restore the index to its state as of the most recent backup. You can then start the extractor or producer process for that data source to re-extract any changes in the database since the last backup.</P>
+<P><A NAME="TMPID11683"></A>Before you restore an index, you must retrieve the backups of that index from your corporate backup repository and place these files in a temporary location. From there, Content Server Restore Wizard copies the files back into the index's home location. You must also stop the indexing and searching processes, as well as the Backup Manager before restoring an index. This will prevent an automatic (scheduled) backup from occurring when the restore operation is in progress.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../otadmin/ota-ibrautomate-bg.htm" revision="">Automating Index Backups</A></p></li>
+<li><p><A  href="../otadmin/ota-ibrmanual-bg.htm" revision="">Backing Up Indexes Manually</A></p></li>
+<li><p><A  href="../otadmin/ota-ibrviewbackuphist-bg.htm" revision="">Viewing the Backup History</A></p></li>
+<li><p><A  href="../otadmin/ota-ibrrestoreindex-bg.htm" revision="">Restoring Indexes</A></p></li>
+<li><p><A  href="../otadmin/ota-ibrspecinfbackupmgr-rf.htm" revision="">Using a Backup Manager</A></p></li>
+<li><p><A  href="../otadmin/ota-ibrspecinfbackup-rf.htm" revision="">Using a Backup Process</A></p></li>
+<li><p><A  href="../otadmin/ota-datetimevar-rf.htm" revision="">Date and Time Variables</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

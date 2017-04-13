@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>To Create the Enterprise Index During Installation</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-enterindxdurinst-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Creating the Enterprise Index';
+          header.title2 = 'To Create the Enterprise Index During Installation';
+           header.draw();
+  </script>
+  <A NAME="PROCID-WBS1111"></A>
+<DIV title="To create the Enterprise index during installation:" CLASS="procedure">
+<P><B><A NAME="PROCID-WBS1111"></A>To create the Enterprise index during installation:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID155"></A>To create the Enterprise index on a secondary Content Server host whose Admin server you have registered on that host, refresh your Web page to display the new host in the <B CLASS="guilabel">Host</B> drop-down list in the <B CLASS="guilabel">Producer Information</B> section.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID160"></A>On the Create New Enterprise Data Source page, type a unique identifier for all the system objects associated with this indexing data flow in the <B CLASS="guilabel">Processes Prefix</B> field. If you want to specify the number of partitions into which this index should be divided, type a number in the <B CLASS="guilabel">Partitions</B> field.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID164"></A>In the <B CLASS="guilabel">Port</B> field, type a value representing the series of port numbers on which you want the processes that are associated with this data source to listen. The port number that you specify and the next 11 (at least) consecutive port numbers must not be used by another data source in your system. The number of consecutive port numbers that will be used depends on the number of partitions that you specify in the <B CLASS="guilabel">Partitions</B> field. Creating an Enterprise index requires eight port numbers, and for each partition, four additional port numbers. Valid values range from <TT CLASS="literal">1025</TT> to <TT CLASS="literal">65530</TT>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID170"></A>In the <B CLASS="guilabel">Write Base Directory</B> field in the <B CLASS="guilabel">Producer Information</B> section, type the absolute path of the directory where you want the Extractor process to write data. By default, the write directory is the <TT CLASS="literal">&lt;<I CLASS="varname">Content Server_home</I>></TT> <TT CLASS="literal">/index/enterprise</TT> directory on the primary Content Server host. You must choose a directory on a drive on the primary Content Server host.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID180"></A>In the <B CLASS="guilabel">Host</B> drop-down list in the <B CLASS="guilabel">Intermediate and Consumer Information</B> section, click the shortcut of the Admin server on whose host you want the Document Conversion and Update Distributor processes to run. By default, these processes run on an Admin server on the primary Content Server host.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID185"></A>In the <B CLASS="guilabel">Read Base Directory</B> field, type the absolute path of the directory where you want the Document Conversion process to read data. Specify the directory path as it is mapped/mounted on the host of the Admin server on which the Document Conversion process runs.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID188"></A>In the <B CLASS="guilabel">Write Base Directory</B> field in the <B CLASS="guilabel">Intermediate and Consumer Information</B> section, type the absolute path of the directory where you want the Document Conversion process to write converted data. Specify the directory path as it is mapped/mounted on the host of the Admin server on which the Document Conversion process runs. OpenText strongly recommends that you choose a directory on a drive that is local to the host of the Admin server that runs the Document Conversion process.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID193"></A>To start the data flow processes as soon as they are created, select the <B CLASS="guilabel">Start Processes in Data Flow</B> check box.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID196"></A>Click the <B CLASS="guilabel">Create Processes</B> button. </P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID199"></A>On the <span><A href="../websystemobj/wbs-statusdf-rf.htm">Data Flow Creation Status</A></span> page, click the <B CLASS="guilabel">Continue</B> button.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

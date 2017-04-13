@@ -1,0 +1,163 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESPAT100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="clustermgmt_10_5_0">
+<META mancondkey="lleswba-h-agd"><title>Managing Master System</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'pat-manpatch-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Content Server Cluster Management';
+          header.title2 = 'Managing Master System';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID469"></A>The <B CLASS="guilabel">Managing Master System</B>  page lists available, staged, and installed hotfixes, and provides tools for downloading and installing hotfixes.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF3"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID472"></A><B CLASS="note">Note: </B><BR>For information on how to reverse the effects of a hotfix deployment, see <span><A HREF="pat-manrec-bg.htm">Rolling Back a Hotfix Deployment (Using the Manifest Recovery)</A></span> for details.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID474"></A>After you click <B CLASS="guilabel">Manage Master System</B> in the <B CLASS="guilabel">Cluster Management</B> section of the Content Server administration page, Cluster Management runs an analysis of your Master System. If the system has been recently validated, you are offered the option of skipping this analysis. Once the analysis completes, an <B CLASS="guilabel">Analysis Report</B> appears showing your current Update Level, Installed Patches, and Installed Optional Modules. Click <B CLASS="guilabel">Continue</B> to display the <B CLASS="guilabel">Manage Master System Patches</B> page.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PAT-MANPATCHPAGE-BG">The Manage Master System Patches Page</A></P>
+<P class="before-ul"><A NAME="TMPID485"></A>The <B CLASS="guilabel">Manage Master System Patches</B> page has the following tabs:</P><A NAME="AEN461"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN462"></A><A NAME="TMPID489"></A><B CLASS="guilabel">Available Patches</B> lists the hotfixes that are available on the OpenText Knowledge Center for download. The hotfixes that appear in this tab depend on the modules that you have installed on your Content Server instance.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN468"></A><A NAME="TMPID495"></A><B CLASS="guilabel">Staged Patches</B> lists the hotfixes that you have downloaded and placed in the Patch Staging Folder (by default, <TT CLASS="filename">&lt;<I CLASS="varname">Content_Server_home</I>>/clustermanagement/staging/</TT>).</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF4"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID500"></A><B CLASS="note">Note: </B><BR>Hotfixes appear temporarily in the Patch Staging Folder before their content is moved to the Content Server database, so normally the Patch Staging Folder does not contain all of the hotfixes that are listed in the <B CLASS="guilabel">Staged Patches</B> tab. It may contain no hotfixes at all.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN477"></A><A NAME="TMPID504"></A><B CLASS="guilabel">Installed Patches</B> lists the installed hotfixes, indicating their status as one of the following:</P>
+<div>
+<DL CLASS="vl">
+<DT class="vl"><A NAME="AEN480"></A><A NAME="TMPID508"><B>Error</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID511"></A>A hotfix with a status of <TT CLASS="literal">Error</TT> has not been correctly installed. It appears with a red background.</P></DD>
+<DT class="vl"><A NAME="TMPID514"><B>Unknown</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID516"></A>Cluster Management assigns an <TT CLASS="literal">Unknown</TT> status to hotfixes that do not appear on the Cluster Management manifest file. Hotfixes with a status of <TT CLASS="literal">Unknown</TT> appear with a yellow background. <TT CLASS="literal">Unknown</TT> hotfixes may include patches for third-party or custom modules that are not processed by OpenText.</P>
+<P><A NAME="TMPID523"></A>Hotfixes with a status of <TT CLASS="literal">Unknown</TT> are not replicated to your Content Server when you use the <B CLASS="guilabel">Manage Cluster</B> functions.</P></DD>
+<DT class="vl"><A NAME="TMPID528"><B>Removal</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID530"></A>Hotfixes with a status of <TT CLASS="literal">Removal</TT> appear with a yellow background. Cluster Management removes hotfixes that have a status of <TT CLASS="literal">Removal</TT> the next time that you click <B CLASS="guilabel">Deploy</B> on the <B CLASS="guilabel">Staged Patches</B> tab.</P>
+<P><A NAME="TMPID535"></A>Until they are removed, Hotfixes with a status of <TT CLASS="literal">Removal</TT> <I CLASS="emphasis">are</I> replicated to your Content Server when you use the <B CLASS="guilabel">Manage Cluster</B> functions.</P></DD>
+<DT class="vl"><A NAME="TMPID541"><B>Verified</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID543"></A>Hotfixes with a status of <TT CLASS="literal">Verified</TT> have been successfully installed.</P></DD></DL></div></LI></UL>
+<P><A NAME="TMPID545"></A>On each of the tabs, information is provided under the following columns:</P>
+<div>
+<DL CLASS="vl">
+<DT class="vl"><A NAME="AEN519"></A><A NAME="TMPID548"><B>Install</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID550"></A>This column appears only on the <B CLASS="guilabel">Staged Patches</B> tab. When you enable the check box beside a hotfix and then click <B CLASS="guilabel">Deploy</B>, the hotfix is installed on the Master System.</P>
+<P class="before-ul"><A NAME="TMPID553"></A>Unless a hotfix has a dependency, you can install hotfixes in any order. When there are dependencies, Cluster Management ensures that hotfixes are installed in the necessary order.</P><A NAME="AEN528"></A>
+<UL>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN529"></A><A NAME="TMPID557"></A>When a hotfix has a dependency on another hotfix, the required hotfix is installed first. </P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN531"></A><A NAME="TMPID559"></A>When a hotfix that modifies Cluster Management is selected for installation, it is always installed before any other hotfixes.</P></LI></UL></DD>
+<DT class="vl"><A NAME="TMPID562"><B>Name</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID564"></A>The name of the hotfix file.</P></DD>
+<DT class="vl"><A NAME="TMPID566"><B>Description</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID568"></A>A brief description of the hotfix. The description may include the change made by the hotfix, the issue resolved by the hotfix, and the issue number from the OpenText issue tracking system.</P></DD>
+<DT class="vl"><A NAME="TMPID571"><B>Updates</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID573"></A>The code base that the hotfix applies to. If, for example <TT CLASS="literal">Update 2014-03, Initial Release</TT> appears in this column, the hotfix is intended to be applied to either the initial release of the installed version of Content Server or to the installed version of Content Server with Update 2014-03 in place. If <TT CLASS="literal">None</TT> appears in this column or the column is blank, the hotfix is not specific to a particular Content Server code base. It may, for example, be a hotfix that patches a module that is compatible with  Content Server with any of various Updates in place.</P></DD>
+<DT class="vl"><A NAME="TMPID581"><B>Modules</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID583"></A>The module that the hotfix patches. If <TT CLASS="literal">None</TT>, the hotfix patches core Content Server.</P></DD>
+<DT class="vl"><A NAME="TMPID587"><B>Action</B></A></DT>
+<DD>
+<P class="before-ul nr1"><A NAME="TMPID589"></A>Links appear in this column that allow for various actions:</P><A NAME="AEN563"></A>
+<UL>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN564"></A><A NAME="TMPID592"></A><B CLASS="guilabel">Remove</B> appears only on the <B CLASS="guilabel">Staged Patches</B> tab. Click <B CLASS="guilabel">Remove</B> to delete a staged package.</P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID597"></A><B CLASS="tip">Tip: </B><BR>Use this feature to remove deprecated hotfixes from the <B CLASS="guilabel">Staged Patches</B> tab.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN572"></A><A NAME="TMPID600"></A><B CLASS="guilabel">Details</B> appears on each of the tabs. Click <B CLASS="guilabel">Details</B> to open a <B CLASS="guilabel">Patch Details</B> page that provides information on a hotfix.</P></LI></UL></DD></DL></div>
+<P CLASS="bridgehead-subheading3"><A NAME="PAT-PATCHDETAILSPAGE-BG">The Patch Details Page</A></P>
+<P><A NAME="TMPID607"></A>The <B CLASS="guilabel">Patch Details</B> page provides the following information on a hotfix:</P>
+<div>
+<DL CLASS="vl">
+<DT class="vl"><A NAME="AEN580"></A><A NAME="TMPID611"><B>Name</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID613"></A>The name of the hotfix file.</P></DD>
+<DT class="vl"><A NAME="TMPID615"><B>Description</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID617"></A>A brief description of the hotfix. The description may include the change made by the hotfix, the issue resolved by the hotfix, and the issue number from the OpenText issue tracking system.</P></DD>
+<DT class="vl"><A NAME="TMPID620"><B>Impacts</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID622"></A>A description of the effect that the hotfix has on your overall Content Server deployment. If <TT CLASS="literal">Database Schema</TT>, <TT CLASS="literal">Content in the File Store</TT>, or <TT CLASS="literal">Search Index</TT> appears in this field, it indicates that the named component is changed by applying the hotfix.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID628"></A><B CLASS="important">Important: </B><BR>If any of the above items are listed in the <B CLASS="guilabel">Impacts</B> field, it is particularly important to take a full backup of your system before applying the hotfix.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></DD>
+<DT class="vl"><A NAME="TMPID631"><B>Modules</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID633"></A>The module that the hotfix patches. If <TT CLASS="literal">None</TT>, the hotfix patches core Content Server.</P></DD>
+<DT class="vl"><A NAME="TMPID637"><B>Supersedes</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID639"></A>A different hotfix that the hotfix is intended to replace. The different hotfix is automatically removed when you install the current hotfix.</P></DD>
+<DT class="vl"><A NAME="TMPID641"><B>Superseded by</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID643"></A>A different hotfix that is intended to replace the hotfix. Normally, you should download and install the different hotfix that appears in this field instead of using the current hotfix.</P></DD>
+<DT class="vl"><A NAME="TMPID645"><B>Dependents</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID647"></A>Hotfixes that are listed in this field are required to be installed with the current hotfix.</P></DD></DL></div>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="pat-manpatch-p1.htm" revision="">To View Available Patches</A></p></li>
+<li><p><A  HREF="pat-manpatch-p2.htm" revision="">To View Staged Patches</A></p></li>
+<li><p><A  HREF="pat-manpatch-p3.htm" revision="">To View Installed Patches</A></p></li>
+<li><p><A  HREF="pat-manpatch-p4.htm" revision="">To Install Patches</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

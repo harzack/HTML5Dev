@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREC100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="recommender">
+<META mancondkey="lleswba-h-agd -- llesels-h-ugd"><title>Configuration du paramétrage système de l'assistant de recommandation</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'rec-confsys-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administration de l\'Assistant de recommandation';
+          header.title2 = 'Configuration du paramétrage système de l\'assistant de recommandation';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID252"></A>Le paramétrage système de l'Assistant de recommandation contrôle les opérations internes de la fonction, contrairement aux composants Assistant de recommandation qui contrôlent la présentation aux utilisateurs des données de l'Assistant de recommandation. Pour plus d'informations sur les composants de l'Assistant de recommandation, reportez-vous à la rubrique <span><A HREF="rec-confcomp-bg.htm">Configuration des composants de l'Assistant de recommandation</A></span>. </P>
+<P><A NAME="TMPID254"></A>Le paramétrage système de l'Assistant de recommandation permet de configurer l'agent de l'Assistant de recommandation, qui assure le suivi des habitudes de l'utilisateur, d'afficher des données et de les éliminer des tables de base de données de l'agent. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="REC-CONFSYSRUN">Exécution de l'agent de l'Assistant de recommandation</A></P>
+<P><A NAME="TMPID257"></A>L'agent de l'Assistant de recommandation, lorsqu'il s'exécute, enregistre, dans la table de suivi, le comportement de l'utilisateur depuis le dernier enregistrement effectué. Il fait également une synthèse des données précédemment stockées dans la table de suivi et les place dans le tableau de synthèse. Le système utilise alors les données du tableau de synthèse pour créer les recommandations. </P>
+<P><A NAME="TMPID258"></A>Par défaut, l'agent de l'Assistant de recommandation effectue un suivi du comportement de l'utilisateur Admin et des autres utilisateurs. Cependant, si vous ne voulez pas que le comportement de l'utilisateur Admin influence les recommandations, vous pouvez désactiver cette fonction.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF7"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID260"></A><B CLASS="note">Note : </B><BR>Les modifications apportées au suivi de l'utilisateur Admin ne sont pas visibles tant que l'agent de l'Assistant de recommandation ne s'exécute pas.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID261"></A>L'agent de l'Assistant de recommandation s'exécute toutes les cinq minutes, en fonction de la quantité de données qu'il doit traiter. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="REC-CONFSYSWORK">Utilisation du tableau de synthèse</A></P>
+<P><A NAME="TMPID264"></A>Le tableau de synthèse contient les données utilisées par le système pour générer les recommandations. Le tableau enregistre, pour un utilisateur et un élément donnés, le nombre de fois où une opération donnée a été effectuée. La colonne de tableau correspondant à cette valeur est celle du nombre de références. </P>
+<P><A NAME="TMPID265"></A>Dans les grands tableaux, les données qui influent le plus sur les recommandations sont celles pour lesquelles le nombre de références est le plus élevé. Lorsque l'on visualise de grands tableaux, il est donc utile de filtrer les données par nombre de références. </P>
+<P><A NAME="TMPID266"></A>Pour disposer en permanence de données pertinentes et actualisées, ces données doivent être éliminées à intervalles réguliers. Vous pouvez définir le système pour qu'il élimine automatiquement les données présentes dans le tableau de synthèse depuis un nombre de jours donné ou vous pouvez éliminer l'ensemble des données du tableau manuellement. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="REC-CONFSYSEXL">Exclusion ou inclusion des types de fichiers</A></P>
+<P><A NAME="TMPID269"></A>La section <TT CLASS="literal">[ExcludedMimeTypes]</TT> du fichier <TT CLASS="filename">opentext.ini</TT> spécifie les types de fichiers extraits et indexés dans Content Server. La section <TT CLASS="literal">[ExcludedMimeTypes]</TT> est une liste d'exclusion, ce qui signifie que vous pouvez inclure ou exclure un élément de la section <B CLASS="guilabel">Eléments les plus actifs</B> de l'onglet des recommandations usuelles en modifiant la liste. Les éléments dont les types de fichiers <I CLASS="emphasis">sont inclus</I> dans la liste <I CLASS="emphasis">n'apparaîtront pas</I> dans la section <B CLASS="guilabel">Eléments les plus actifs</B>. Les éléments dont les types de fichiers <I CLASS="emphasis">ne sont pas inclus</I> dans la liste <I CLASS="emphasis">apparaîtront</I> dans la section Eléments les plus actifs. </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="rec-toconfsys-p.htm" revision="">Pour configurer le paramétrage système de l'Assistant de recommandation</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

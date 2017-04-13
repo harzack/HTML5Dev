@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<title>Special Import Features</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'webr-specimpexp.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Exporting and Importing WebReports to XML';
+          header.title2 = 'Special Import Features';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID1311"></A>Besides the standard features of export/import, WebReports provide some more advanced features to aid in re-forming links to any dependencies on the destination system. This feature is used to resolve the following objects on the target system:</P><A NAME="AEN1296"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1297"></A><A NAME="TMPID1314"></A>Datasource IDs</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1299"></A><A NAME="TMPID1316"></A>Any constants set to LivelinkObject</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1301"></A><A NAME="TMPID1318"></A>Any constants set to LivelinkUser</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1303"></A><A NAME="TMPID1320"></A>Any parameter defaults set to ObjectID</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1305"></A><A NAME="TMPID1322"></A>Any parameter defaults set to Custom</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1307"></A><A NAME="TMPID1324"></A>Any parameter defaults set to User</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1309"></A><A NAME="TMPID1326"></A>Any Global Constant IDs</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1311"></A><A NAME="TMPID1328"></A>Any Global Parameter IDs</P></LI></UL>
+<P><A NAME="TMPID1329"></A>These objects are resolved using a series of actions to attempt to find the correct object on the target system. In some cases there may be more than one appropriate matching object so there is a priority order for matching. The items below show the order of matching. If any step fails to find a match then the next step is tried.</P>
+<A NAME="AEN1314"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1315"></A><A NAME="TMPID1332"></A>If the object to be matched is being imported as part of the same XML import operation, then the new ID for the imported object will be used.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1317"></A><A NAME="TMPID1334"></A>If the original object ID exists on the target system then the associated node is tested to ensure that it is the same type of object with the same name and data.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1319"></A><A NAME="TMPID1336"></A>If there is no equivalent object ID then the target system is searched (using a DB query) to find an object with the same name and equivalent data. If a match is found then the new object ID is added to the WebReport</P></LI></OL>
+<P><A NAME="TMPID1337"></A>Content Server user IDs are managed in a similar fashion; however user IDs are not imported during the XML import so the first matching method doesn't apply.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

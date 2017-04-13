@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="report">
+<title>Adding LiveReports</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/root/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'add-liverep.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Adding and Editing LiveReports';
+          header.title2 = 'Adding LiveReports';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID119"></A>When you add a LiveReport, you must specify the maximum number of results you want returned, write a SQL statement to execute the database search, and choose a report format. For more information about formatting options, see <span><A HREF="lr-report-format-rt.htm">Understanding LiveReport Formats</A></span>. Additional LiveReport options enable you to specify criteria that will return more precise results. You can also use LiveReports to change the contents of a database, unless your administrator has enabled LiveReports Security to prevent LiveReports from modifying the database. For example, you can create a LiveReport that reassigns incomplete tasks to a specific user. For a detailed description of the additional LiveReport options and to view a sample report, see <span><A HREF="lr-sample-report-rt.htm">Sample LiveReport</A></span>. When you add a LiveReport you can add a description for it, modify its Categories and Attributes, and add it to a different location. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="llesrt-h-ugd.ll-gen-items-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/root/ll-gen-items-bg.htm">Working with General Items</A><XPROC NAME="ExtXrefEnd" HREF="llesrt-h-ugd.ll-gen-items-bg" FMT=""></span>.</P>
+<P><A NAME="TMPID123"></A>The SQL statement is the most important element of a LiveReport. Content Server supplies parameters for the SQL statement to use, either by asking users to specify them when they open a report, or by using system-supplied values, such as the current date. A Sub-Report can use values that it inherits from the parent report.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID126"></A><B CLASS="note">Note: </B><BR>When you write the SQL statement for a report, remember that Content Server does not interpret the percent character (%) when used to make a <I CLASS="emphasis">like</I> clause in your SQL statement; therefore, use two percent characters instead (%%).</P>
+<P><A NAME="TMPID129"></A>By default, a LiveReport does not check permissions on items in the database. A LiveReport displays all records, regardless of whether the user opening the report has the See permission for that record. However, you can restrict the results to only those items the user has permission to view. For example, defining <B CLASS="guilabel">Param %1</B> by selecting the <TT CLASS="literal">Filter Permissions</TT> type and adding <TT CLASS="literal">AND %1</TT> to your SQL statement restricts search results to items that the user has permission to see.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="param-liverep.htm" revision="">Parameter and Input Types</A></p></li>
+<li><p><A  HREF="lr-param-enhanc-bg.htm" revision="">Enhanced Inputs and Substitution Parameters</A></p></li>
+<li><p><A  HREF="lr-use-transmode-bg.htm" revision="">Using Transaction Mode</A></p></li>
+<li><p><A  HREF="lr-use-cursmode-bg.htm" revision="">Using Cursor Fetch Mode</A></p></li>
+<li><p><A  HREF="lr-db-modfeat-bg.htm" revision="">Allow Database Modification Features</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

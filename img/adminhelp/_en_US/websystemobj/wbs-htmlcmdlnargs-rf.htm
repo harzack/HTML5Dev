@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Command Line Arguments</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-htmlcmdlnargs-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Data Flow Processes';
+          header.title2 = 'Command Line Arguments';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID8712"></A>In addition to the arguments listed below, you can specify any of the parameters contained in the <TT CLASS="literal">[FilterEngine]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file on the command line for a Document Conversion process. For example, you can specify whether a particular Document Conversion process generates summaries of the documents it converts by passing the <TT CLASS="literal">-summary</TT> parameter to the command line. For more information about the parameters in the <TT CLASS="literal">[FilterEngine]</TT> section, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-filterengine-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-filterengine-rf.htm">[FilterEngine]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-filterengine-rf" FMT=""></span>.</P>
+<P><A NAME="TMPID8718"></A>Arguments set on the command line override the global parameters set in the <TT CLASS="filename">opentext.ini</TT> file.</P>
+<P><A NAME="TMPID8720"></A>The following table describes the parameters that you can set on the command line for a particular Document Conversion process. </P>
+<DIV title="Document Conversion Process's Command Line Arguments" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="PROCCMDLINEARG"></A><B>Table 1-7: Document Conversion Process's Command Line Arguments</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Argument</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">-readipool</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the absolute path to the data flow directory, which contains the IPool subdirectory from which the Document Conversion process reads IPool messages </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">-readarea</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the name of the IPool subdirectory from which the Document Conversion process reads IPool messages</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">-writeipool</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the absolute path to the data flow directory, which contains the IPool subdirectory in which the Document Conversion process writes the files that it processes </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">-writearea</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the name of the IPool subdirectory in which the Document Conversion process writes the files that it processes</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">-sleep</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the number of milliseconds for the Document Conversion process to sleep if the input IPool is empty. After each sleep period, the process checks the input IPool for more IPool messages to process. If this parameter is not set or is set to <TT CLASS="literal">-1</TT>, the process exits when it encounters an empty IPool. If you set this parameter to a positive number, the process is persistent. The default value is <TT CLASS="literal">-1</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">-inifile</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the absolute path of the opentext.ini file</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">-adminport</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the port number on which the Document Conversion 	process listens for the <TT CLASS="literal">shutdown</TT> command. The default Admin server sends a <TT CLASS="literal">shutdown</TT> command to instruct the Document Conversion process to stop gracefully. By default, Content Server specifies a value for this command line argument when it creates a Document Conversion process</TD></TR></TABLE></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

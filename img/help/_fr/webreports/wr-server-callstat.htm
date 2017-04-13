@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Appel de balises de données statiques</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-server-callstat.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Ecriture de script côté serveur';
+          header.title2 = 'Appel de balises de données statiques';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID17224"></A>Il est parfois utile d'obtenir la valeur renvoyée par une balise de donnée statique WebReport dans une section d'Oscript. Notez que les balises de données statiques n'incluent pas de balises telles que <TT CLASS="literal">[LL_REPTAG=&lt;<I CLASS="varname">colonne</I>> /]</TT> ou <TT CLASS="literal">[LL_REPTAG_%&lt;<I CLASS="varname">nom variable</I>> /]</TT>. </P>
+<P><A NAME="TMPID17229"></A>Par exemple, vous pouvez avoir besoin de connaître la valeur d'une constante ou d'un paramètre WebReport. Vous pouvez transmettre ces éléments sous forme de paramètres lorsque le script est appelé, mais vous pouvez aussi y accéder directement au moyen de la fonction point intégrée <TT CLASS="literal">._repTag</TT> dont la syntaxe est la suivante : <TT CLASS="literal">String ._repTag( String tag )</TT> </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN16485"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Fonction</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Paramètres</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">String ._repTag( String tag )</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">tag</B> : valeur de chaîne représentant la balise, puis des sous-balises facultatives.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Une valeur de chaîne contenant la valeur finale de la balise et des sous-balises spécifiées.</TD></TR></TABLE>
+</DIV></P>
+<DIV title="Voici deux exemples renvoyant la valeur d'une constante WebReport appelée 'report' :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF52"></A><B><FONT COLOR="WHITE">.</FONT><BR><IMG title="Voici deux exemples renvoyant la valeur d'une constante WebReport appelée 'report' :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 1-32 : Voici deux exemples renvoyant la valeur d'une constante WebReport appelée <NOBR>report</NOBR> :</B></P>
+<A NAME="AEN16505"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16506"></A><A NAME="TMPID17254"></A><TT CLASS="literal">String value1 = ._repTag('$report')</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16509"></A><A NAME="TMPID17257"></A><TT CLASS="literal">String value2 = ._repTag('[LL_REPTAG_$report /]')</TT></P></LI></OL>
+<P class="nr1"><A NAME="TMPID17259"></A>Notez que vous pouvez spécifier le nom complet de la balise ou une version raccourcie qui omet la mention d'ouverture <TT CLASS="literal">[LL_REPTAG_ et le crochet fermant /]</TT>.</P><IMG title="Voici deux exemples renvoyant la valeur d'une constante WebReport appelée 'report' :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Voici deux autres exemples :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF53"></A><B><IMG title="Voici deux autres exemples :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 1-33 : Voici deux autres exemples :</B></P>
+<A NAME="AEN16516"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16517"></A><A NAME="TMPID17265"></A><TT CLASS="literal">String value3 = ._repTag('&amp;myNode NODEINFO:NAME')</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16520"></A><A NAME="TMPID17268"></A><TT CLASS="literal">String value4 = ._repTag('USERID USERINFO:MAILADDRESS')</TT></P></LI></OL><IMG title="Voici deux autres exemples :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P><A NAME="TMPID17270"></A>Notez que certaines sous-balises ne sont pas prises en charge par <TT CLASS="literal">._repTag</TT>. En général, les sous-balises qui exécutent une autre action que renvoyer des données formatées ne fonctionnent pas.</P>
+<P><A NAME="TMPID17272"></A>Les sous-balises suivantes ne sont pas prises en charge : <TT CLASS="literal">ADDVAR</TT>, <TT CLASS="literal">CONCATVAR</TT>, <TT CLASS="literal">NEXT</TT>, <TT CLASS="literal">PREV</TT>, <TT CLASS="literal">SETFORM</TT>, <TT CLASS="literal">SETVAR</TT>, <TT CLASS="literal">SETWFATTR</TT>, <TT CLASS="literal">SETWFFORM</TT>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

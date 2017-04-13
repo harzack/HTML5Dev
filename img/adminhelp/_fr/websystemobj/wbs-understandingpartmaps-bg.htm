@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Utilisation des schémas de partition</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-understandingpartmaps-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion des partitions';
+          header.title2 = 'Utilisation des schémas de partition';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID7953"></A>Un <I CLASS="emphasis">schéma de partition</I> est une représentation du système d'indexation et de recherche d'une source de données. En affichant un schéma de partition, vous pouvez voir tous les composants d'un système d'indexation et de recherche (par exemple les partitions et les moteurs d'indexation et de recherche), ce qui vous permet de gérer efficacement le système. Vous pouvez par exemple surveiller le statut de chaque composant en même temps, ce qui vous aide à maintenir les performances d'indexation et de recherche sur votre site.</P>
+<P><A NAME="TMPID7955"></A>Un schéma de partition vous permet de surveiller l'espace utilisé pour chaque partition et le mode actuel de la partition, ce qui vous permet de savoir quand de nouvelles partitions sont requises. L'espace utilisé est répertorié comme un pourcentage entier et représente l'espace disque ou mémoire (le plus grand des deux) actuellement occupé par le contenu et les métadonnées des documents indexés. Le mode indique si l'index de partition accepte toujours de nouveaux éléments pour l'indexation (Lecture/Ecriture), accepte seulement les mises à jour d'éléments indexés déjà existants (Mettre à jour uniquement) ou n'accepte plus de mises à jour (Lecture seule).</P>
+<table CLASS="warning">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="warning" ALIGN="CENTER"><IMG ALT="Avertissement" SRC="../../images/pi_warning.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID7957"></A><B CLASS="warning">Avertissement</B><BR>Lorsque vous modifiez une partition sur En lecture seule, le moteur d'indexation pour cette partition s'arrête et cesse d'indexer tout élément mis à jour ou supprimé.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF149"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID7959"></A><B CLASS="note">Note : </B><BR>Open Text recommande généralement de ne pas utiliser les modes En lecture seule et Mettre à jour uniquement.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID7961"></A>Si vous décidez de réindexer un élément en le modifiant dans l'interface graphique utilisateur ou en le réinsérant dans <I CLASS="emphasis">dtreenotify</I>, le distributeur de mise à jour envoie une requête ping à tous les moteurs d'indexation en cours d'exécution pour vérifier si l'élément existe déjà. Etant donné que le moteur d'indexation pour la partition En lecture seule est arrêté, il n'enverra pas de réponse à la requête ping. Le distributeur de mise à jour part du principe que cet élément est nouveau et il l'ajoute à une autre partition Lecture/Ecriture puis crée des éléments en double. </P>
+<P><A NAME="TMPID7963"></A>Si les éléments dans votre système Content Server sont mis à jour via l'interface utilisateur ou le module SDK, n'utilisez pas la partition en mode Lecture seule. Par exemple, lorsqu'un système Content Server est utilisé dans le cadre d'un litige, un index ne doit pas être modifié, comme dans un système d'archivage d'e-mails.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF150"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID7967"></A><B CLASS="note">Note : </B><BR>Pour plus d'informations sur l'espace disque ou mémoire à allouer au contenu et aux métadonnées des documents indexés, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-configpartitions-bg.htm">Configuration des partitions</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID7969"></A>Un schéma de partition vous permet également de configurer les propriétés de chaque composant et d'ajouter ou de supprimer des composants. Si vous devez effectuer des opérations de maintenance sur un système d'indexation et de recherche, vous pouvez arrêter puis démarrer ou redémarrer le schéma de partition : cela permet d'arrêter et de démarrer tous ses processus d'indexation et de recherche. Si vous arrêtez les processus d'indexation et de recherche, l'indexation et la recherche sont arrêtées pour la source de données. Pour personnaliser l'indexation et la recherche pour un système d'indexation et de recherche, vous devez configurer un schéma de partition.</P>
+<P><A NAME="TMPID7970"></A>Lorsque vous créez l'index d'une source de données à partir de modèles Content Server, un schéma de partition est automatiquement créé pour la source de données. Si vous créez l'index d'une source de données en créant individuellement les objets système associés, vous devez ajouter vous-même un schéma de partition. Pour plus d'informations sur l'ajout de composants d'index individuels, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-creindexindiv-so.htm">Création individuelle de composants d'index</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF151">Gestion des composants d'un schéma de partition</A></P>
+<P class="before-ul"><A NAME="TMPID7974"></A>La gestion des processus implique également de surveiller le statut de chaque processus. Un processus peut avoir les statuts suivants : </P><A NAME="AEN7261"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7262"></A><A NAME="TMPID7977"></A><B CLASS="highlight">En cours d'exécution</B>, indiqué par une coche bleue.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7265"></A><A NAME="TMPID7980"></A><B CLASS="highlight">Inactif</B>, indiqué par une coche grise.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7268"></A><A NAME="TMPID7983"></A><B CLASS="highlight">En cours...</B> ou <B CLASS="highlight">Attente</B>, indiqué par une coche jaune.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7272"></A><A NAME="TMPID7987"></A><B CLASS="highlight">Erreur</B>, indiqué par une croix rouge.</P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF152">Configuration des schémas de partition</A></P>
+<P><A NAME="TMPID7990"></A>La configuration d'un schéma de partition implique la définition de paramètres permettant de personnaliser le fonctionnement de l'indexation et de la recherche pour l'index d'une source de données. Vous pouvez, par exemple, spécifier l'intervalle de nettoyage des fichiers, ce qui permet de supprimer automatiquement les fichiers inutilisés des index d'une partition. Vous pouvez également spécifier des règles qui déterminent les documents qui sont indexés. Vous pouvez définir un certain nombre de paramètres qui détectent si les documents ont un nombre important de mots uniques. Si un document a trop de mots uniques, le document ne sera pas indexé. En spécifiant des paramètres qui empêchent l'indexation de certains documents, vous pouvez améliorer les performances de votre système car la liste de mots gérée par votre système est plus petite.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF153">Configuration de la fusion d'index</A></P>
+<P><A NAME="TMPID7992"></A>Lorsque vous configurez un schéma de partition, vous pouvez également personnaliser les opérations de fusion pour l'index d'une source de données. La fusion d'index permet de fusionner les <I CLASS="emphasis">sous-index</I> (sous-répertoires dans l'index d'une partition), ce qui réduit la taille de l'index de chaque partition. Vous pouvez configurer les opérations de fusion d'index pour votre site afin qu'elles n'aient pas lieu inutilement. Cependant, Content Server fusionne régulièrement les sous-index afin d'enlever de l'index les données supprimées dans un but d'optimisation des performances de la recherche. Vous pouvez spécifier le nombre de sous-index à partir duquel une opération de fusion a lieu. Si le nombre de sous-index dépasse le nombre défini, une fusion entre le plus petit groupe consécutif de deux ou trois sous-index se produit. Vous pouvez également spécifier la date de création la plus ancienne et le taux de fusion, qui déterminent également les sous-index susceptibles d'être fusionnés. Par exemple, si la date de création des sous-index est antérieure à une date spécifique, ils sont susceptibles d'être fusionnés afin d'enlever les données supprimées. De plus, si le taux de fusion est défini à <TT CLASS="literal">3</TT> (c'est-à-dire 3:1) et qu'une combinaison de sous-index dans un groupe consécutif est équivalent à au moins un tiers de la taille du plus gros sous-index, ce groupe est susceptible d'être fusionné. Les fusions de trois sous-index (maximum) ont lieu en priorité entre les sous-index dont la taille de fichier combinée est la plus importante. Une seule fusion par partition ne peut se produire à la fois.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-toviewpartmaps-p.htm" revision="">Pour afficher un schéma de partition</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

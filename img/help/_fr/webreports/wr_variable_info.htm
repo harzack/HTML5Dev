@@ -1,0 +1,310 @@
+<!-- wr_variable_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Variables & Action Sub-tags</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_variable_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Variables & Action Sub-tags';
+        header.draw();
+
+</SCRIPT>
+
+<p class="body">
+Various components in WebReports support the concept of variables. Variables provide the ability to store and or accumulate
+results from other tags for output into the reportview. Variables are supported by the following types of tag and sub-tag:
+</p>
+<ul type="disc">
+	<li><SPAN class="gui"><a href="wr_tag_syntax.htm#varname">[LL_REPTAG_%&lt;variablename&gt; /]</a></span> - tag returns whatever is stored in a variable represented
+    by "varname". Varname is a set of valid characters (e.g. no spaces or special characters). This variable name
+    should match with a variable previously created by one of the sub-tags which support variable setting</li>
+    <li><SPAN class="gui"><a href="wr_tag_syntax.htm#setvar">SETVAR</a></span> - sub-tag that allows any
+    tag result to be stored in a named variable</li>
+    <li><SPAN class="gui"><a href="wr_tag_syntax.htm#addvar">ADDVAR</a></span> - sub-tag that adds any numeric
+    tag result to the numeric value in a named variable </li>
+    <li><SPAN class="gui"><a href="wr_tag_syntax.htm#concatvar">CONCATVAR</a></span>- sub-tag that concatenates any text/string
+    based result to the text in a named variable </li>
+    <li><SPAN class="gui"><a href="wr_tag_syntax.htm#currentval">CURRENTVAL</a></span>- sub-tag that returns the current value
+	of a variable and or the result of a variable action sub-tag. (This sub-tag is only available with WebReports 4.0.1 and above)
+	</li>
+</ul>
+
+<p CLASS="gui"><U>The Variable Tag</U></p>
+<p class="body">
+Variables can be displayed using a special WebReports variable tag like this:
+</p>
+<p class="gui">[LL_REPTAG_%test /]</p>
+<p class="body">
+This example shows the syntax if we wanted to display a variable called test in the report output.
+This tag can be used anywhere in the reportview but will always display the final value of the variable.
+That is, after any variable sub-tags elsewhere in the reportview have modified the variable.
+Normal formatting type sub-tags can be used with this tag, e.g.:
+<p class="gui">
+[LL_REPTAG_%test UPPER /]
+</p>
+<p class="body">
+If you want to see the current value of a variable at a specific point in the reportview (reflecting only the sub-tag actions that have occurred up to that point) you must use the CURRENTVAL sub-tag as shown here:
+</p>
+<p class="gui">
+[LL_REPTAG_%test CURRENTVAL /]</p>
+<p class="body">
+Action sub-tags cannot be used with variable tags unless this CURRENTVAL sub-tag has been included.
+The next sections explore various ways the CURRENTVAL sub-tag can be used to allow variables to interact
+with other action sub-tags.
+</p>
+<p CLASS="gui"><U>Using Variable Sub-tag Actions</U></p>
+<p class="body">
+Variable sub-tags all come under the heading of Action Sub-tags. See the <a href="wr_actionsubtags_info.htm">Action Sub-tags </a>section for more information
+</p>
+<p class="body">
+The various available sub-tags for setting and modifying variables are described in depth in the WebReports tag guide under the appropriate
+various sub-tag sections:
+<a href="wr_tag_syntax.htm#setvar">SETVAR</a>, <a href="wr_tag_syntax.htm#addvar">ADDVAR</a>, <a href="wr_tag_syntax.htm#concatvar">CONCATVAR</a>,
+<a href="wr_tag_syntax.htm#concatvar">CURRENTVAL</a>.
+In the following sections we will examine how some of these sub-tags are used in conjunction with other tags to solve problems.
+</p>
+
+<p CLASS="gui"><U>CONCATVAR and ADDVAR</U></p>
+
+<p class="body">
+The sub-tags ADDVAR and CONCATVAR are most useful when used in the row section of a reportview to combine multiple cells of data into a
+single string or value for output.  Note that for adding multiple numeric values from report data columns, the [LL_REPTAG_@SUM /] can
+also be used. We will examine some examples of using CONCATVAR and ADDVAR here using this sample data source and the following syntax
+explanation table.
+</p>
+
+<table width=50% border=1 class="body">
+<tr bgcolor="lightgray">
+<td align=center colspan=3><B>Sample Data</B></td></tr>
+  <tr bgcolor="lightgray">
+    <td><B>ID</B></td>
+    <td><B>Name</B></td>
+    <td><B>Quota</B></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Bob</td>
+    <td>100</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Ted</td>
+    <td>250</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Carol</td>
+    <td>150</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Alice</td>
+    <td> 50</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Bob</td>
+    <td> 50</td>
+  </tr>
+</table>
+<br>
+<table class="body" summary="" border="1">
+	<tr bgcolor="lightgray">
+		<td><B>Tab Syntax</B></td>
+		<td><B>Variable Result</B></td>
+		<td><B>Description</B></td>
+	</tr>
+	<tr>
+		<td>[LL_REPTAG=Name CONCATVAR:names:, /]</td>
+		<td>Names = Bob,Ted,Carol,Alice,Bob</td>
+		<td>The name column for each row in the data source is concatenated into the "names"
+		variable with a comma (,) in between each item.  Note that for the first row the "names" variable is assumed to be a
+		blank string. </td>
+	</tr>
+	<tr>
+		<td>[LL_REPTAG=Name CONCATVAR:names:,:UNIQUE /]</td>
+		<td>Names = Bob,Ted,Carol,Alice</td>
+		<td>This is the same as the previous example but use of the "UNIQUE" parameter means the second occurrence of "Bob" is omitted. </td>
+	</tr>
+
+	<tr>
+		<td>[LL_REPTAG=Quota ADDVAR:Total /]</td>
+		<td>Total = 600</td>
+		<td>The quota column for each row in the data source is cumulatively added to the "Total" variable. (100+250+150+50+50)</td>
+	</tr>
+</table>
+<br>
+<p class=gui><U>Using CURRENTVAL to Display Intermediate Values</U></p>
+<p class=body>
+The <b>CURRENTVAL</b> sub-tag is used to allow variable sub-tags to display the current value of a variable according to its position within the
+reportview.  Variable sub-tags are processed starting at the top of the file and working towards the bottom (rows are also processed in
+order from 1 to n).  Normally a variable tag ([LL_REPTAG_%test /]) returns the final value of a variable regardless of where it was
+positioned in the reportview; however, if the CURRENTVAL sub-tag is included in a variable tag, the tag will display its value according
+to its position in the reportview.  This example illustrates the difference.
+</p>
+<table CLASS="body" WIDTH=95% summary="" border="1">
+	<tr bgcolor="lightgray"><td align=center><B>Reportview</B></td></tr>
+	<tr>
+		<td>
+		The total for all quotas in the report: [LL_REPTAG_%totals /]<br><br>
+[LL_WEBREPORTS_STARTROW /]<br><br>
+Quota for [LL_REPTAG=name /]: [LL_REPTAG=quota ADDVAR:totals SHOW /] ([LL_REPTAG_%totals CURRENTVAL /])<br><br>
+[LL_WEBREPORTS_ENDROW /]<br>
+		</td>
+	</tr>
+</table>
+<br>
+<table CLASS="body" WIDTH=95% summary="" border="1">
+	<tr bgcolor="lightgray"><td align=center><B>Report Output</B></td></tr>
+	<tr>
+		<td>
+The total for all quotas in the report: 600<br>
+Quota for Bob: 100 (100)<br><br>
+Quota for Ted: 250 (350)<br><br>
+Quota for Carol: 150 (500)<br><br>
+Quota for Alice:  50 (550)<br><br>
+Quota for Bob:  50 (600)<br>
+		</td>
+	</tr>
+</table>
+<p class=body>
+The example above also helps to illustrate the difference between SHOW and CURRENTVAL.
+</p>
+<p class=body>
+The same output could also be produced with this alternative syntax:
+</p>
+<table CLASS="body" WIDTH=95% summary="" border="1">
+	<tr bgcolor="lightgray"><td align=center><B>Reportview</B></td></tr>
+	<tr>
+		<td>
+		The total for all quotas in the report: [LL_REPTAG_%totals /]<br><br>
+[LL_WEBREPORTS_STARTROW /]<br><br>
+Quota for [LL_REPTAG=name /]: [LL_REPTAG=quota /] ([LL_REPTAG=quota ADDVAR:totals CURRENTVAL /]<br><br>
+[LL_WEBREPORTS_ENDROW /]<br>
+		</td>
+	</tr>
+</table>
+<br>
+<p class=body>
+This variation uses a simple report tag ([LL_REPTAG=quota /]) to display the quota value and then when adding
+the quota to totals, the CURRENTVAL sub-tag is used to display the new value of "Totals" after ADDVAR executes.
+</p>
+<p class=body>
+The output of CURRENTVAL can be modified by other sub-tags like this:
+</p>
+<p class=gui>
+[LL_REPTAG_%totals CURRENTVAL TRUNC:5 /]
+</p>
+<p class=gui>
+<U>Using Variable Data With Other Action Tags</U>
+</p>
+<p class=body>
+Normal variable tags cannot be used to supply data for action sub-tags unless the CURRENTVAL sub-tag is used like this:
+</p>
+<p class=gui>
+[LL_REPTAG_%totals CURRENTVAL SETFORM:field1 /]
+</p>
+
+<p class=body>
+It is also possible to use formatting or display type sub-tags to modify the data that is output by CURRENTVAL. For example:
+</p>
+<p class=gui>
+[LL_REPTAG_%totals CURRENTVAL TRUNC:5 SETFORM:field1 /]
+</p>
+<p class=body>
+More than one CURRENTVAL sub-tag can be used in a tag provided all syntax requirements are met. E.g.
+</p>
+<p class=gui>
+[LL_REPTAG_%names CURRENTVAL TRUNC:5 CONCATVAR:namestr CURRENTVAL /]
+</p>
+
+<p class=body>
+The way this works is that the current value of "names" is output by the first (leftmost) CURRENTVAL.
+This output is then processed by TRUNC:5 (which truncates the output string to 5 characters) and then concatenated
+to the variable "namestr".  Finally the last CURRENTVAL sub-tag causes the new value of "namestr" to be displayed in the reportview
+</p>
+<p class=body>
+The following syntax rules apply to the use of CURRENTVAL:
+</p>
+<ul class="body" type="disc">
+<li>A CURRENTVAL sub-tag must be the first sub-tag used in a variable tag list or must have a variable action tag (e.g. ADDVAR, CONCATVAR, SETVAR)
+immediately to its left in the sub-tag list. Examples:
+<table class="body">
+<tr><td nowrap>[LL_REPTAG_%somevar CURRENTVAL /] </td><td WIDTH=20%>&nbsp;- VALID</td></tr>
+<tr><td nowrap>[LL_REPTAG_%somevar DEC CURRENTVAL /]</td><td>&nbsp;- INVALID</td></tr>
+<tr><td nowrap>[LL_REPTAG_"2"  CURRENTVAL /] </td><td>&nbsp;- INVALID</td></tr>
+<tr><td nowrap>[LL_REPTAG_"2"  ADDVAR:anyvar CURRENTVAL /]</td><td>&nbsp;- VALID</td></tr>
+<tr><td nowrap>[LL_REPTAG_"2"  ADDVAR:anyvar DEC CURRENTVAL /] </td><td>&nbsp;- INVALID</td></tr>
+</table>
+</li>
+<li>Where a CURRENTVAL sub-tag has other action sub-tags to its right, the output of the CURRENTVAL sub-tag can be used by the next
+action sub-tag to its right in the sub-tag list. Examples:
+<table class="body" >
+<tr><td nowrap>[LL_REPTAG_%temp  CURRENTVAL ADDVAR:anyvar /]</td><td>&nbsp;- VALID</td></tr>
+<tr><td nowrap>[LL_REPTAG_%temp  ADDVAR:anyvar /]</td><td>&nbsp;- INVALID</td></tr>
+</table>
+</li>
+<li>Where there are non-action (e.g. formatting) sub-tags between CURRENTVAL and the next action sub-tag to its right, the
+formatting sub-tags will massage the output of CURRENTVAL to modify the data that will be used by the next action sub-tag. E.g.:<br>
+<p class=gui>[LL_REPTAG_%temp CURRENTVAL UPPER TRUNC:5 ADDVAR:anyvar /]</p>
+<p class=body>(The output of "temp" is converted to uppercase, truncated and then added to "anyvar".)</p>
+</li>
+</ul>
+
+<p class=gui><U>Variables and Conditional Tags</U></p>
+<p class=body>
+As of WebReports 4.0.1 variables can be used to control IF/ENDIF type tags. The setting or editing of variables can also be prevented
+if they are nested within IF/ENDIF blocks. This behavior is "linear". That is, variables and conditionals are processed from the top of the
+reportview to the bottom.  The examples in this section illustrate this effect.
+</p>
+<p class=body>
+Normally, to use a variable as part of a conditional expression, the CURRENTVAL sub-tag is used to ensure we are working with the current
+value as opposed to the final value.  E.g.:
+</p>
+<p class=gui>
+[LL_WEBREPORT_IF "[LL_REPTAG_%totals CURRENTVAL /]" >= "500" /]
+</p>
+<p class=body>
+The next example helps to illustrate the cause and effect of using variables in conditional expressions as well as placing variable
+action sub-tags within a conditional expression.
+</p>
+<table CLASS="body" WIDTH=95% summary="" border="1">
+	<tr bgcolor="lightgray"><td align=center><B>Reportview</B></td></tr>
+	<tr>
+		<td>
+[LL_REPTAG_"Name List: " SETVAR:somestr /]<br><br>
+<span class=gui>[LL_WEBREPORT_STARTROW /]</span><br><br>
+[LL_REPTAG=NAME CONCATVAR:names:, /]<br><br>
+<span class=gui>[LL_WEBREPORT_ENDROW /]</span><br><br>
+[LL_WEBREPORT_IF "[LL_REPTAG_%names CURRENTVAL /]" <> "" /]<br><br>
+[LL_WEBREPORT_%names CURRENTVAL CONCATVAR:somestr /]<br><br>
+[LL_WEBREPORT_ELSE /]<br><br>
+[LL_WEBREPORT_"No Names" SETVAR:somestr /]<br><br>
+[LL_WEBREPORT_ENDIF /]<br><br>
+Final Output: [LL_WEBREPORT_%somestr /]
+		</td>
+	</tr>
+</table>
+<br>
+
+<p class=body>
+This example sets a variable called "somestr" to the string 'Name List: '. In the row section, multiple names are potentially concatenated
+to the variable called "names".  Following the row section we have a check to see if the "names" variable is empty or not.
+If the names variable is not empty, we concatenate the "names" variable to the "somestr" variable to create an output that would be
+something like: 'Name List: Bob, Ted, etc.' If the "names" variable is empty
+then we simply set "somestr" to the literal string: 'No Names'.  The "somestr" variable is output at the end of the report output.
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

@@ -1,0 +1,93 @@
+<!-- wr_draganddrop_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Drag and Drop Functionality</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_draganddrop_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Drag and Drop Functionality';
+        header.draw();
+</SCRIPT>
+
+<p class="body">
+The ability to use Drag and Drop functionality is now included with WebReports and ActiveViews.  The core functionality for Drag and Drop is contained within a WebReport reportview that can be called from another WebReport, enabling drag and drop for the parent container for the initiating WebReport.
+</p>
+
+<p class="body">
+Integrating drag and drop functionality into WebReports and ActiveView consist of two main steps.  The first step is to add a new tab for the user to click to switch into Drag and Drop mode for the container, and the second step requires a viewable WebReport that contains the actual Drag and Drop functionality.  The execution of these two steps is straightforward, but varies slightly between WebReports and ActiveView.  
+</p>
+
+<p class="body">
+<u><SPAN class="gui">Step 1: The Core Drag and Drop Functionality Reportview</SPAN></u>
+</p>
+
+<p class="body">
+The first step of integrating drag and drop functionality in WebReports and ActiveView is to create a WebReport using one of the core drag and drop example reportviews.  There are four of these that differ due to Livelink version (9.7.1 or previous versions) and product (WebReports or ActiveView).  Below is a table showing which default file to use for your setup. 
+</p>
+
+<table class="body" border="1" summary="">
+	<tr><td></td><td bgcolor="lightgray"><B>Livelink 9.7.1 (WebDAV 3.6.0)</B></td><td bgcolor="lightgray"><B>Livelink 9.6 - 9.7 (WebDAV 3.5.x)</B></td></tr>
+	<tr><td bgcolor="lightgray"><B>Default Reportview</B></td><td>draganddrop_view_webdav35x</td><td>draganddrop_view_webdav360</td></tr>
+</table>
+<br>
+
+<p class="body">
+<u><SPAN class="gui">Step 2: Demonstration of Sample Code for WebReports to Call the Core Drag and Drop Reportview</SPAN></u>
+</p>
+
+<p class="body">
+The following three blocks of code are an example of how to add the drag and drop functionality to any WebReport.  In  this case, adding this code to a browse-style WebReport will provide a new tab at the top of the WebReport to click and go to the drag and drop view.
+</p>
+
+<SPAN class="gui">Check that Drag and Drop has been specified:</SPAN>
+<pre>
+[// Test to see if we have a drag and drop view set
+[LL_WEBREPORT_IF "[LL_REPTAG_$D&DVIEW /]" <> "[LL_REPTAG_$undefined /]" /]
+       [LL_REPTAG_$D&DVIEW SETVAR:DRAGDROP /]
+[LL_WEBREPORT_ELSE /]
+       [// No constant, just use a blank string
+       [LL_REPTAG_'' SETVAR:DRAGDROP /]
+[LL_WEBREPORT_ENDIF /]
+</pre>
+
+<SPAN class="gui">Add the javascript function to go to drag and drop when called:</SPAN>
+<pre>
+[LL_WEBREPORT_IF "" <> "[LL_REPTAG_%DRAGDROP CURRENTVAL /]" /]
+function goToDragAndDrop() {
+       document.location = '[LL_REPTAG_$D&DVIEW LLURL:DEFAULTHREF /]';
+}
+[LL_WEBREPORT_ENDIF /]
+</pre>
+
+<SPAN class="gui">Add user interface to select Drag and Drop (in this case a tab):</SPAN>
+<pre>
+[// Check to see if a Drag and Drop reportview has been specified
+[LL_WEBREPORT_IF &quot;&quot; &lt;&gt; &quot;[LL_REPTAG_%DRAGDROP CURRENTVAL /]&quot; /]
+&lt;TD WIDTH=&quot;100%&quot;&gt;
+&lt;TABLE BORDER=&quot;0&quot; CELLPADDING=&quot;0&quot; CELLSPACING=&quot;0&quot;&gt;
+&lt;TR&gt;
+&lt;TD class=&quot;selectedTab&quot; NOWRAP ALIGN=&quot;RIGHT&quot; VALIGN=TOP BACKGROUND=&quot;[LL_REPTAG_SUPPORTDIR /]tab-active.gif&quot;&gt;&lt;NOBR&gt;&lt;IMG SRC=&quot;[LL_REPTAG_SUPPORTDIR /]tableftup-active-0.gif&quot; ALT=&quot;&quot; WIDTH=&quot;5&quot; HEIGHT=&quot;31&quot; BORDER=&quot;0&quot;&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD NOWRAP VALIGN=&quot;MIDDLE&quot; NOWRAP class=&quot;selectedTab&quot;  WIDTH=&quot;80&quot; BACKGROUND=&quot;[LL_REPTAG_SUPPORTDIR /]tab-active.gif&quot;&gt;&lt;NOBR&gt;  Browse  &lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD class=&quot;selectedTab&quot; NOWRAP ALIGN=&quot;RIGHT&quot; VALIGN=TOP BACKGROUND=&quot;[LL_REPTAG_SUPPORTDIR /]tab-active.gif&quot; BACKGROUND=&quot;[LL_REPTAG_SUPPORTDIR /]tab-inactive.gif&quot;&gt;&lt;NOBR&gt;&lt;IMG SRC=&quot;[LL_REPTAG_SUPPORTDIR /]tabrightup-active.gif&quot; WIDTH=&quot;10&quot; HEIGHT=&quot;31&quot; BORDER=&quot;0&quot; ALT=&quot;&quot;&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD class=&quot;unselectedTab&quot; NOWRAP ALIGN=&quot;LEFT&quot; VALIGN=TOP&gt;&lt;NOBR&gt;&lt;IMG SRC=&quot;[LL_REPTAG_SUPPORTDIR /]tableftup-inactive.gif&quot; ALT=&quot;&quot; WIDTH=&quot;5&quot; HEIGHT=&quot;31&quot; BORDER=&quot;0&quot;&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD NOWRAP class=&quot;unselectedTab&quot; WIDTH=&quot;80&quot; BACKGROUND=&quot;[LL_REPTAG_SUPPORTDIR /]tab-inactive.gif&quot;&gt;&lt;NOBR&gt;&lt;A HREF=&quot;javascript:goToDragAndDrop();&quot;&gt;Drag & Drop&lt;/A&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD class=&quot;unselectedTab&quot; NOWRAP ALIGN=&quot;RIGHT&quot; VALIGN=TOP BACKGROUND=&quot;[LL_REPTAG_SUPPORTDIR /]tab-inactive.gif&quot;&gt;&lt;NOBR&gt;&lt;IMG SRC=&quot;[LL_REPTAG_SUPPORTDIR /]tabrightup-inactive.gif&quot; WIDTH=&quot;10&quot; HEIGHT=&quot;31&quot; BORDER=&quot;0&quot; ALT=&quot;&quot;&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD ALIGN=&quot;RIGHT&quot; BACKGROUND=&quot;[LL_REPTAG_SUPPORTDIR /]tabrightline.gif&quot; WIDTH=&quot;100%&quot;&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/TD&gt;
+[LL_WEBREPORT_ENDIF /]
+</pre>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

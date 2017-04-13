@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Renvoyer un nodeID au WebReport appelant si le sous-rapport WebReport a une destination de Content Server</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-subwebrtrn.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation de sous-rapports WebReports';
+          header.title2 = 'Renvoyer un nodeID au WebReport appelant si le sous-rapport WebReport a une destination de Content Server';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID17811"></A>Si la destination du sous-rapport WebReport est un nœud Content Server, le nodeID peut être renvoyé au WebReport appelant en ajoutant l'argument SHOWNODEID à l'appel, par exemple : </P><A NAME="AEN17056"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17057"></A><A NAME="TMPID17814"></A>Lors de l'utilisation de RUNSWR, ajoutez SHOWNODEID à la fin de la liste d'arguments : <TT CLASS="literal">[LL_REPTAG_'123456' RUNSWR:InputLabel1:299:myStatus:"awaiting review":SHOWNODEID /]</TT> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17060"></A><A NAME="TMPID17817"></A>Lors de l'utilisation de SUBWEBREPORT, ajoutez SHOWNODEID en tant qu'argument supplémentaire : [LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$mySubReport /] SHOWNODEID /] </P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

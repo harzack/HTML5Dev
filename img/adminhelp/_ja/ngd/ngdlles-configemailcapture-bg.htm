@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="NGDLLES100502-H-AGD-JA-1">
+<META name="pvScheme" content="010203">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="ngd">
+<title>電子メールの添付ファイル、重複電子メール、および電子メールのサブタイプを取得するための設定</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ngdlles-configemailcapture-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Enterprise Connect の電子メールの設定';
+          header.title2 = '電子メールの添付ファイル、重複電子メール、および電子メールのサブタイプを取得するための設定';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1395"></A>保存された電子メールに適用されるサブタイプ、およびユーザーが添付ファイル付きの電子メールを Content Server に追加した時の添付ファイルの処理方法を指定できます。重複電子メールを特定する方法や、ユーザーが重複電子メールをフォルダーに追加する度にユーザーに通知されるか、あるいは重複電子メールは無視されるか指定することもできます。選択する方法は、電子メールおよび添付ファイルを保存する企業プロセスによって異なります。 </P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF19">電子メールのサブタイプ</A></P>
+<P><A NAME="TMPID1398"></A>電子メールのサブタイプ オプションでは、ユーザーが Content Server に追加したすべての電子メールに電子メールのサブタイプ (749) が適用されます。既定では、すべての電子メールが電子メールのサブタイプとして保存されます。次に、添付ファイルの処理方法を指定できます。電子メールの添付ファイルを、個別のコピーとしては保存しないと選択できます。また、元の電子メールと添付ファイルの他に、添付ファイルの各コピーを個別のドキュメントとして追加すると指定できます。必要に応じて、添付ファイルの別個のコピーを追加するか、電子メールおよび添付ファイルを単一のアイテムして保存するかを、電子メールごとにユーザーが決定できるようにすることができます。 </P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="ヒント" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1401"></A><B CLASS="tip">ヒント: </B><BR>OpenText Records Management モジュールをインストールし、相互参照機能を有効にしている場合は、相互参照を使用して、電子メールと添付ファイルをリンクできます。詳細については、 <span><XPROC NAME="ExtXrefStart" HREF="ngdcore-igd.-" FMT="" NO1ST><i>OpenText Enterprise Connect - Installation Guide (NGDCORE-IGD)</i><XPROC NAME="ExtXrefEnd" HREF="ngdcore-igd.-" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF20">Microsoft Outlook での重複電子メール</A></P>
+<P><A NAME="TMPID1407"></A>既定では、Content Server に追加された電子メールの名前と、そのフォルダーに既に存在している電子メールを比較して、重複電子メールが検出されます。このオプションを選択すると、Enterprise Connect が追加先で重複電子メールを特定する度に、ユーザーに通知されます。設定によっては、ユーザーは重複電子メールの名前変更やメタデータの入力を要求される場合があります。</P>
+<P><A NAME="TMPID1410"></A>例えば、重複電子メールを特定するために既定の名前比較を使用しているとします。ユーザーが電子メールをフォルダーに追加し、その後、名前は同じで内容が異なる電子メールを同じフォルダーに追加すると、重複として特定されます。設定によっては、ユーザーは電子メールの名前変更やメタデータの入力を要求されます。</P>
+<P><A NAME="TMPID1411"></A>必要に応じて、ユーザーが Content Server に追加した電子メールに割り当てられているメッセージ ID と、そのフォルダーに既に存在している電子メールを比較して、重複電子メールが検出されるように指定することができます。メッセージ ID は受信者ごとに異なります。例えば、同じ電子メールが 2 人の異なるユーザーに送信される場合、電子メールのそれぞれのコピーに固有の ID が割り当てられます。その他の選択肢として、ユーザーが Content Server に追加する電子メールの外部メッセージ ID と、そのフォルダーに既に存在している電子メールの外部 ID を比較して、重複電子メールが検出されるように指定することができます。外部メッセージ ID は、ユーザーのドメイン外から受信される電子メールにのみ適用されます。メッセージ ID の比較オプションを選択した場合は、重複電子メールは対象にコピーまたは移動されず、ユーザーは重複電子メールに関する通知を受信しません。新しい電子メールのみが追加され、設定によっては、ユーザーにメタデータの入力が要求される場合があります。</P>
+<P><A NAME="TMPID1414"></A>例えば [重複する電子メールの確認には、メッセージ ID を使用します。] チェック ボックスをオンにしているとします。ユーザーが電子メールのバッチをフォルダーに追加し、そのフォルダーに既に存在している電子メールの 1 つに、バッチ内の電子メールのいずれかと同じメッセージ ID があります。ユーザーは、重複電子メールに関する通知は受信しません。設定によっては、ユーザーは、新しい電子メールのすべてのメタデータの入力を要求される場合があります。もう 1 つのケースとして、2 名のユーザーが同じ送信者から電子メールを受信するとします。両方のユーザーが同じフォルダーに電子メールをコピーした場合、電子メールには異なる ID があるので、その電子メールは重複とは見なされません。</P>
+<P><A NAME="TMPID1416"></A>例えば [重複する電子メールの確認には、外部メッセージ ID を使用します。] チェック ボックスをオンにしているとします。ユーザーは、外部ソースから受信した電子メールをフォルダーに追加します。同じ電子メールを受信した同僚がその電子メールのコピーを同じフォルダーに追加すると、その電子メールは重複と特定され追加されません。ユーザーは、重複電子メールに関する通知は受信しません。</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="重要項目" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1419"></A><B CLASS="important">重要項目: </B><BR>管理者の場合は、最初に Enterprise Connect を設定する時に、重複電子メールの特定方法を決めることが重要になります。ユーザーが電子メールの操作を開始してからこの設定を変更すると、問題が発生する可能性があります。</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF21"></A><IMG ALT="注意" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>注意: </B></P><A NAME="AEN1308"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1309"></A><A NAME="TMPID1424"></A>この機能は、Microsoft Outlook にのみ適用されます。</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1311"></A><A NAME="TMPID1426"></A>この機能は、コンパウンド電子メールには反映されません。</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF22">コンパウンド電子メールのサブタイプ</A></P>
+<P><A NAME="TMPID1428"></A>コンパウンド電子メールのオプションは、Enterprise Connect に移行しようとしている、コンパウンド電子メールのサブタイプ (サブタイプ 557) を使用してきた OpenText Explorer ユーザーのみを対象としています。このオプションを選択すると、すべての電子メールおよび関連する添付ファイルがコンパウンド電子メールとして Content Server に追加されます。コンパウンド電子メールでは、電子メール メッセージおよび関連する添付ファイルが 1 つのフォルダーに結合されます。コンパウンド電子メールは、ドキュメントを表示するように設定されている場合、Enterprise Connect の リスト ぺイン および Easy Access ペイン内にのみ表示されます。コンパウンド電子メールは、Microsoft Outlook またはエクスプローラーのツリー ペイン、あるいは Microsoft Office の [ファイルを開く] ダイアログ ボックスには表示されません。ユーザーは閲覧ウィンドウでコンパウンド電子メールを表示できます。ユーザーがコンパウンド電子メールをオフラインにすることができるようにするには、コンパウンド電子メールのサブタイプを、オフラインにできるサブタイプのリストに追加する必要があります。詳細については、 <span><A HREF="ngdlles-configoffline-bg.htm">オフラインにすることができるサブタイプの指定</A></span>.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="重要項目" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1437"></A><B CLASS="important">重要項目: </B><BR>コンパウンド電子メールに必要な記憶領域は、標準的な電子メールのサブタイプで必要な記憶領域よりはるかに大きくなります。コンパウンド電子メールのサブタイプを適用する場合は、この要件を満たす十分なディスク容量があることを確認してください。</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>目次&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A class="tocd" HREF="ngdlles-configemailcapture-p.htm" revision="">電子メールの添付ファイルを取得するための設定を行うには</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

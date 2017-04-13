@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Configuring Index Verification</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-verificationsched-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Maintaining Indexes';
+          header.title2 = 'Configuring Index Verification';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID10952"></A>The Configure Index Verification page allows you to control when index verification will run, set rules for how objects are identified and corrected, specify report preferences, and define the messages sent to administrators. The options for each section of the page are explained starting with <span><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDSCHEDULE"><NOBR>Table 1-13</NOBR></A> in <A href="../otadmin/ota-verificationsched-p.htm">Index Verification Configuration</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="VERIFSCHEDDEPENDENCIES">Dependencies</A></P>
+<P><A NAME="TMPID10955"></A>The verifier can issue administrator alerts under certain circumstances. These alerts use the standard Content Server notification process, and assume that the notification system is correctly configured.</P>
+<P><A NAME="TMPID10957"></A>Some features of the verifier require the use of the metadata integrity checksum feature in the Search Engine, which does not have an administration interface within Content Server. The default configuration in the Search Engine is for this feature to be disabled. Refer to the Search Engine documentation for information on configuring this feature. If not enabled, then the features of the verifier that use this capability can be selected, but will not identify errors as expected.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF207">Index Verification Agent</A></P>
+<P><A NAME="TMPID10960"></A>The index verification process breaks the task of checking the index into many small chunks, which are then scheduled to run based on time of day and day of the week. The verification process is connected to the standard Content Server 5 minute agent. Each time the agent is run, more chunks of the verification task are performed.</P>
+<P><A NAME="TMPID10962"></A>For small indexes, the overall time to run through a complete analysis of the index may be minutes. For very large indexes, depending upon the scheduling options, a complete verification pass may require several weeks to complete.</P>
+<P><A NAME="TMPID10969"></A>In the [loader] section, add an entry for the verifyAgent:</P><A NAME="AEN10243"></A>
+<PRE 
+CLASS="screen"
+>[loader]
+load_verify=verifyAgent</PRE
+>
+<P><A NAME="TMPID10971"></A>Edit the existing [agents] section to add the verifyAgent ID (12568) to the list of excluded activities, illustrated in the last line below:</P><A NAME="AEN10245"></A>
+<PRE 
+CLASS="screen"
+>[agents]
+lib=.\bin\lljob.dll
+name=lljob
+prio=critical
+timeout=5000
+info=.\config\opentext.ini;agents
+StartScript=.\scripts\llfull.lxe
+JobScript=.\scripts\agent_run.e
+CRON=0,5,10,15,20,25,30,35,40,45,50,55 * * * *
+SleepIntervalSec=60
+ExcludeActivityIDs=3000,3501,5000,8999,9000,9001,9999,12568</PRE
+>
+<P><A NAME="TMPID10973"></A>Create a new section for the verifyAgent from a copy of the [agents] section, and modify along these lines:</P><A NAME="AEN10247"></A>
+<PRE 
+CLASS="screen"
+>[verifyAgent]
+lib=.\bin\lljob.dll
+name=lljob
+prio=critical
+timeout=5000
+info=.\config\opentext.ini;verifyAgent
+StartScript=.\scripts\llfull.lxe
+JobScript=.\scripts\agent_run.e
+CRON=0,5,10,15,20,25,30,35,40,45,50,55 * * * *
+SleepIntervalSec=60
+ActivityIDs=12568</PRE
+>
+<P><A NAME="TMPID10975"></A>The key differences from the standard agent section are the section name, the ActivityIDs of 12568 instead of ExcludeActivityIDs in the last line, and the name change to verifyAgent in the info= line.</P>
+<P><A NAME="TMPID10976"></A>If there are multiple instances of Content Server running, it is important that the verifyAgent be configured to run on only one instance.</P>
+<P><A NAME="TMPID10978"></A>The index verifier is capable of detecting and correcting several types of errors.  However, this is not a replacement for the index validation utilities provided with the OpenText Search Engine. The validation utilities can identify potential errors internal to the data structures within the Search and Index Engines, and should be used on a regular basis.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF208">Detectable Errors</A></P>
+<P><A NAME="TMPID10981"></A>The verifier is capable of detecting several types of errors and warnings, most of which can be selectively tested. The verifier compares the index against all Enterprise Data Sources and Enterprise Library Sources, but does not check objects that are not managed by Content Server, such as files imported into the search index using DirWalker or XMLActivator.</P>
+<P><A NAME="TMPID10983"></A><B CLASS="highlight">Missing objects</B> are items managed by Content Server, which should be present in the search index, but are missing from the index.</P>
+<P><A NAME="TMPID10986"></A><B CLASS="highlight">Stale objects</B> are items managed by Content Server and are present in the search index, but are out of date.  The determination of stale objects is based upon the OTModifyDate field.</P>
+<P><A NAME="TMPID10989"></A><B CLASS="highlight">Orphaned objects</B> are those which are indexed in the Search Engine, but do not have a corresponding entry in the database. These are almost certainly objects that were deleted from Content Server, but not deleted from the search index.  Tests for orphaned objects obey partition restrictions and maximum object age. Tests also obey version restrictions when the current version can be determined. For example, if a version is orphaned but the dataID exists in Content Server then the current version number is checked. Note that minimum object age is ignored for orphaned objects.</P>
+<P><A NAME="TMPID10993"></A><B CLASS="highlight">Orphaned Renditions</B> are objects that cannot be corrected, so they will remain in the search index until the entire index is purged. The Status Code is 9.</P>
+<P><A NAME="TMPID10995"></A><B CLASS="highlight">Metadata integrity errors</B> exist when the Search Engine believes that one or more metadata values have unexpectedly changed since the object was indexed. The Search Engine can create a checksum for metadata at index time, and as a background task re-calculates the checksum.  If the re-calculated checksum does not match, an error is recorded for the object.  This error code is tested for verification.  This feature requires Search Engine configuration as described in the <A href="../otadmin/ota-verificationsched-bg.htm#VERIFSCHEDDEPENDENCIES">Dependencies</A> section.</P>
+<P><A NAME="TMPID10998"></A><B CLASS="highlight">Content warnings</B> are based upon the OTContentStatus metadata field. Content Status is generated during the indexing of an object.  Each object is given a grade indicating the quality of the content.  Objects with no content indexing problems receive a low grade. Objects for which the content is not indexable at all receive a high grade (severe rating).  The content warning threshold selects the relative severity rating of content indexing problems for which a warning should be recorded. Content warnings are not correctable.</P>
+<P><A NAME="TMPID11000"></A><B CLASS="highlight">Metadata warnings</B> are based upon the number of metadata fields that could not be indexed.  This occurs if dates or numbers are malformed, for example.  Each unindexable field increments the value in the OTIndexError field.  A metadata warning exists when the value in this field exceeds a definable threshold for an object. Metadata are not correctable.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../otadmin/ota-verificationsched-p.htm" revision="">Index Verification Configuration</A></p></li>
+<li><p><A  href="../otadmin/ota-verificationsreport-bg.htm" revision="">Viewing the Index Verification Reports</A></p></li>
+<li><p><A  href="../otadmin/ota-verificationsstatus-bg.htm" revision="">Viewing the Index Verification Status</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

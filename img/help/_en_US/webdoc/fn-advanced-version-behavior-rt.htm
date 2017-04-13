@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWBD100500-H-UGD-EN-1">
+<META PiXprocLocator="webdoc">
+<title>Understanding Advanced Versioning Behavior for Content Server Features and Functions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webnotify/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/appearances/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/discussion/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/itemtemplate/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'fn-advanced-version-behavior-rt.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Managing Versions and Generations';
+          header.title2 = 'Understanding Advanced Versioning Behavior for Content Server Features and Functions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1049"></A>In general, advanced versioning rules apply to Documents and Text Documents. However, some Content Server features are affected by advanced versioning, as described in the following sections.</P>
+<P><A NAME="TMPID1051"></A>For information about standard and advanced versioning, see <span><A href="../webdoc/wd-versions-bg.htm">Working with Versions</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="FN-MOVE-COPY">Moving and Copying Advanced Versioning Documents</A></P>
+<P class="before-ul"><A NAME="TMPID1055"></A>When you try to move or copy an advanced versioning Document, the Versions that are moved or copied depend on your permissions on that particular item. Requiring permissions prevents users from easily gaining access to minor Versions. The following permissions apply when move and copy operations are performed on a Document with major or minor Versions:</P><A NAME="AEN1080"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1081"></A><A NAME="TMPID1058"></A><B CLASS="GUILABEL">See Contents</B>, applies to Copy operations. If a user with the See Contents permission copies a Document with advanced versioning enabled, the copy of the Document will only contain the major Versions of the Document.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1084"></A><A NAME="TMPID1061"></A><B CLASS="GUILABEL">Reserve</B> or <B CLASS="GUILABEL">Delete Versions</B>, applies to Copy operations. If a user with the Reserve or Delete Versions permission copies a Document with advanced versioning enabled, the copy of the Document will contain all Versions of the Document.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1088"></A><A NAME="TMPID1065"></A><B CLASS="GUILABEL">Delete</B>, applies to Move operations. If a user with the Delete permission moves a Document with advanced versioning enabled, the original Document and all its Versions are moved.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="FN-SET-NOTIF">Setting Notification on Advanced Versioning Documents</A></P>
+<P><A NAME="TMPID1069"></A>Like standard versioning items, you can set Notification for Documents that use advanced versioning. However, users that can only see major Versions of the Document will only receive Notification related to major Versions. For example, users that can only see major Versions of the Document will only receive Notification when a major Version is added, or when a Version's status changes. If Notifications are set for an item with no major Versions, and the user can only see major Versions, the user will not receive Notification. However, once a major Version exists, the user will receive a Notification.</P>
+<P><A NAME="TMPID1070"></A>For more information about Notifications, see <span><XPROC NAME="ExtXrefStart" HREF="../webdoc/lleswbn-h-ugd.notif-overview-so" FMT="" NO1ST><A  HREF="../../../help/_en_US/webnotify/notif-overview-so.htm">Using Notifications</A><XPROC NAME="ExtXrefEnd" HREF="../webdoc/lleswbn-h-ugd.notif-overview-so" FMT=""></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="FN-UNDER-APP">Understanding Appearances with Advanced Versioning</A></P>
+<P><A NAME="TMPID1074"></A>Appearances are treated as standard Documents, and can therefore have major and minor Versions. Users can view major and minor Versions of Appearances, provided they have the proper permissions.</P>
+<P><A NAME="TMPID1075"></A>For more information about Appearances, see <span><XPROC NAME="ExtXrefStart" HREF="../webdoc/llesapp-h-ugd.app-overview-so" FMT="" NO1ST><A  HREF="../../../help/_en_US/appearances/app-overview-so.htm">Working with Appearances</A><XPROC NAME="ExtXrefEnd" HREF="../webdoc/llesapp-h-ugd.app-overview-so" FMT=""></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="FN-UNDER-ADV-VERS">Understanding Advanced Versioning with Compound Documents</A></P>
+<P><A NAME="TMPID1079"></A>The Release and Revision functions of a Compound Document will operate using the current major Version of the Document. If a Document within a Compound Document uses advanced versioning, the Release and Revision functions will use the current major Version of the Document.</P>
+<P><A NAME="TMPID1080"></A>If a Document within a Compound Document uses advanced versioning and has no major Version, then the Release and Revision functions will not include that Document.</P>
+<P><A NAME="TMPID1081"></A>For more information about Compound Documents, see <span><A href="../webdoc/wd-comp-docs-so.htm">Working with Compound Documents</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="FN-ATT-ADV-VERS">Attaching Advanced Versioning Documents to Topics and Replies</A></P>
+<P><A NAME="TMPID1085"></A>You can only attach Documents with major Versions to a Discussion Topic or Reply. If a minor Version is the most recent Version of the Document, and a major Version exists, then the most recent major Version of the Document is attached. If no major Version exists for a Document, and you try to attach that Document to a Topic or Reply, you will receive an error message stating that you cannot add the Document because no major Version for the Document exists.</P>
+<P><A NAME="TMPID1086"></A>For more information about Discussions, see <span><XPROC NAME="ExtXrefStart" HREF="../webdoc/llesdis-h-ugd.d-overview-so" FMT="" NO1ST><A  HREF="../../../help/_en_US/discussion/d-overview-so.htm">Communicating with Discussions</A><XPROC NAME="ExtXrefEnd" HREF="../webdoc/llesdis-h-ugd.d-overview-so" FMT=""></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="FN-USE-PROJ-TEMP">Using Project Templates with Advanced Versioning Documents</A></P>
+<P><A NAME="TMPID1090"></A>Since Projects can contain advanced versioning Documents, you must be able to create a Project Template that contains advanced versioning Documents. If the Project Template includes an advanced versioning Document, only the Versions that the user has been assigned the <B CLASS="GUILABEL">See</B> permission are included in the Template. If an advanced versioning Document is included in the Template and the user specifies that all Versions of the Document are to be included when the Template is instantiated, the resulting Document will use advanced versioning and include all major and minor Versions of the Document. If a user instantiates the Template and specifies that only the current Version be included, the resulting Document will use advanced versioning and include the current major Versions from the Template.</P>
+<P><A NAME="TMPID1092"></A>For more information about Project Templates, see <span><XPROC NAME="ExtXrefStart" HREF="../webdoc/llesitm-h-ugd.p-proj-template-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/itemtemplate/p-proj-template-bg.htm">Working with Project Templates</A><XPROC NAME="ExtXrefEnd" HREF="../webdoc/llesitm-h-ugd.p-proj-template-bg" FMT=""></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

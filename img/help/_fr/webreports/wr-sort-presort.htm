@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Paramètres de tri prédéfinis</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-sort-presort.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Tri des résultats';
+          header.title2 = 'Paramètres de tri prédéfinis';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID17521"></A>Cette fonction permet d'associer des clés de tri complexes à des références simples pouvant être transmises dans l'URL. Elle est particulièrement utile pour configurer les rapports triés à l'aide des balises et sous-balises WebReports. Lorsque l'utilisateur sélectionne une colonne à trier, il peut être difficile de transmettre la syntaxe de balises nécessaire dans l'URL afin d'exécuter la balise <TT CLASS="literal">SORT</TT>. Pour résoudre ce problème, la fonction donne la possibilité de spécifier : </P><A NAME="AEN16777"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN16778"></A><A NAME="TMPID17526"></A>Le nom d'un ou de plusieurs paramètres devant être vérifiés dans l'URL.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN16780"></A><A NAME="TMPID17528"></A>Une série de mots de référence et la syntaxe de balises associée.</P></LI></UL>
+<P><A NAME="TMPID17529"></A>Lorsque ces éléments sont correctement configurés, chaque paramètre spécifié est vérifié afin de voir si l'un des mots de référence prédéfinis a été trouvé. Si un mot de référence spécifié est trouvé dans les paramètres URL, la syntaxe correspondante pour ce mot est alors insérée dans la balise <TT CLASS="literal">SORT</TT>. </P>
+<P><A NAME="TMPID17531"></A>Pour accéder à cette fonctionnalité, deux « directives » pouvant être incluses dans la balise <TT CLASS="literal">SORT</TT> sont fournies. Le concept d'une « directive » existe dans d'autres balises de contrôle de contenu telles que la balise <TT CLASS="literal">INSERTJSON</TT>. Elle correspond à une commande de syntaxe précédée d'un symbole @. Chaque directive peut contenir une ou plusieurs informations. Les deux directives prises en charge par <TT CLASS="literal">SORT</TT> sont <TT CLASS="literal">@PARMNAMES</TT> et <TT CLASS="literal">@PREDEFKEY</TT>. Ces directives sont expliquées en détail ci-dessous.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN16792"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Directive</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@PARMNAMES</TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">SORTCOL:&lt;<I CLASS="varname">nom_col_tri</I>></TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">DIRCOL:&lt;<I CLASS="varname">nom_col_ordre</I>></TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Une ou plusieurs de ces directives peuvent être spécifiées. Si aucune de ces directives n'est spécifiée, et qu'une clé prédéfinie (comme ci-dessous) est spécifiée, les paramètres <TT CLASS="literal">&amp;sort</TT> et <TT CLASS="literal">&amp;direction</TT> sont alors utilisés pour transmettre toutes les références de tri et d'ordre. Pour chaque directive <TT CLASS="literal">@PARMNAME</TT> fournie, un nom de paramètre URL alternatif peut être spécifié pour la colonne de tri ou pour l'ordre de tri. La possibilité de spécifier plus d'une directive <TT CLASS="literal">@PARMNAME</TT> permet de spécifier plusieurs colonnes de tri. Ces paramètres sont utilisés dans le même ordre que les directives <TT CLASS="literal">@PARMNAME</TT> spécifiées dans la balise <TT CLASS="literal">SORT</TT>. Considérons par exemple les directives suivantes :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@PARMNAMES SORTCOL:sortcol1 DIRCOL:coldir1</TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@PARMNAMES SORTCOL:sortcol2 DIRCOL:coldir2</TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@PARMNAMES SORTCOL:sortcol3 DIRCOL:coldir3</TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Si l'URL contient :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">&amp;sortcol3=parentid&amp;sortcol1=Name&amp;sortcol2=dataid</TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">la balise <TT CLASS="literal">SORT</TT> sera exécutée en fonction de : Nom, DadaID, puis ParentID, dans cette séquence.</TD></TR></TABLE> <table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF55"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID17581"></A><B CLASS="note">Note : </B><BR>En général, la valeur de chacun de ces paramètres spécifie l'une des clés prédéfinies comme établies par la directive <TT CLASS="literal">PREDEFKEY</TT> ci-dessous.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@PREDEFKEY</TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">REF:&lt;<I CLASS="varname">clé de référence</I>></TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">PARM:&lt;<I CLASS="varname">syntaxe de balise/sous-balise</I>></TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette directive est utilisée pour configurer un simple identificateur pouvant être utilisé pour faire référence à une clé de tri de type balise/sous-balise complexe. Ceci permet à l'application client de spécifier une clé simple en tant que paramètre de tri, plutôt qu'un bloc volumineux d'informations de balises et sous-balises WebReports. Par exemple, si une colonne particulière contient la syntaxe suivante : <TT CLASS="literal">[LL_REPTAG=DATAID CAT:somecat:attr1:DISPLAY /]</TT> et que nous voulons effectuer un tri en utilisant ces données, nous pouvons établir une clé comme suit :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@PREDEFKEY REF:col3 PARM:"[LL_REPTAG=DATAID CAT:somecat:attr1:DISPLAY /]"</TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Lorsque cette définition est insérée, <TT CLASS="literal">&amp;sort=col3</TT> dans l'URL, ou une requête POST, demanderait à la balise <TT CLASS="literal">SORT</TT> d'utiliser <TT CLASS="literal">[LL_REPTAG=DATAID CAT:somecat:attr1:DISPLAY /]</TT> en tant que clé <TT CLASS="literal">SORT</TT>. Plusieurs clés prédéfinies de ce type peuvent être créées, une pour chaque colonne pouvant être triée. Cette fonction n'est habituellement utilisée que lorsque la clé de tri est complexe, comme dans l'exemple ci-dessus.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

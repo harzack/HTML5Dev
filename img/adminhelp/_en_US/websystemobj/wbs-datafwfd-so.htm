@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Administering Data Flows</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-datafwfd-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Search';
+          header.title2 = 'Administering Data Flows';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3184"></A>A data flow is a set of linked processes that process data from a single source in Content Server. Content Server allows you to create a data flow that indexes data from a specific source so that it can be searched. You create indexing data flows when you create indexes. Data flow processes in an indexing data flow include processes that locate or extract data (for example, the Enterprise Extractor, Directory Walker, or XML Activator process); the Document Conversion process, which converts data from its native format to HTML or raw text; and the Update Distributor, which passes data to Index Engines for indexing.</P>
+<P><A NAME="TMPID3187"></A>After you add the processes that make up a data flow, you can maintain the data flow (for example, resume, suspend, or resynchronize).</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF73">Viewing Data Flow Pictures</A></P>
+<P><A NAME="TMPID3189"></A>Browsing, which is the default method of viewing a data flow, allows you to view lists of processes and data interchange pools (IPools) in a data flow. When you view a Data Flow Picture, however, you can view a graphical representation of how processes are linked by IPools in a data flow. For more information about viewing a Data Flow Picture, see <span><A href="../websystemobj/wbs-dfpics-bg.htm">Viewing Data Flow Pictures</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF74">Monitoring Data Flow Status</A></P>
+<P class="before-ul"><A NAME="TMPID3192"></A>You can monitor the status of a data flow in a data source folder. A data flow can have the following statuses:</P><A NAME="AEN2563"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2564"></A><A NAME="TMPID3195"></A><B CLASS="guilabel">Active</B>, which indicates that all the processes in the data flow are running or are scheduled to run</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2567"></A><A NAME="TMPID3198"></A><B CLASS="guilabel">Inactive: n running</B>, which indicates that at least one of the processes in the data flow is idle. The number <TT CLASS="literal">n</TT> indicates the number of processes that are running or are scheduled to run.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2571"></A><A NAME="TMPID3202"></A><B CLASS="guilabel">Idle</B>, which indicates that all the processes in the data flow are idle</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2574"></A><A NAME="TMPID3205"></A><B CLASS="guilabel">Problem: n running</B>, which indicates that at least one of the processes in the data flow is returning an error message. The number <TT CLASS="literal">n</TT> indicates the number of processes that are running or are scheduled to run.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID3208"></A>When you browse the Data Flow Manager or view a Data Flow Picture, you can monitor the status of each process in a data flow. A data flow process can have the following statuses:</P><A NAME="AEN2579"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2580"></A><A NAME="TMPID3211"></A><B CLASS="guilabel">Running</B>, which indicates that the process is running</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2583"></A><A NAME="TMPID3214"></A><B CLASS="guilabel">Scheduled</B>, which indicates that the process is scheduled to run, but is not currently running new statuses</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2586"></A><A NAME="TMPID3217"></A><B CLASS="guilabel">Contacting Index Engines</B>, which indicates that the process has finished initializing and is attempting to contact the Index Engine processes. This status appears for the Update Distributor process only.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2589"></A><A NAME="TMPID3220"></A><B CLASS="guilabel">Waiting for Index Engines</B>, which indicates that the process has not been able to contact an Index Engine process yet</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2592"></A><A NAME="TMPID3223"></A><B CLASS="guilabel">Looking for Update Distributor</B>, which indicates that the process is trying to contact socket server to find out what port is being used by the Update Distributor process. This status appears for the Index Engine process only.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2595"></A><A NAME="TMPID3226"></A><B CLASS="guilabel">Contacting Update Distributor</B>, which indicates that the process has found the port for the Update Distributor process, has finished initializing, and is now trying to contact the process. This status appears for the Index Engine process only.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2598"></A><A NAME="TMPID3229"></A><B CLASS="guilabel">Creating Empty Index</B>, which indicates that the process is creating the index for the first time. This status appears for the Index Engine process only.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2601"></A><A NAME="TMPID3232"></A><B CLASS="guilabel">Loading Index</B>, which indicates that the process is loading an index into memory. This status, which is more likely to appear if the index is large, appears for the Index Engine and Search Engine processes only.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2604"></A><A NAME="TMPID3235"></A><B CLASS="guilabel">Restoring Index</B>, which indicates that the process is loading a restored index into memory. This status which is more likely to appear if the index is large, appears for the Index Engine process only.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2607"></A><A NAME="TMPID3238"></A><B CLASS="guilabel">Waiting for Search Engines</B>, which indicates that the process is waiting to be contacted by a Search Engine process. This status appears for the Search Federator process only.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2610"></A><A NAME="TMPID3241"></A><B CLASS="guilabel">Waiting for Initial Index</B>, which indicates that the process is waiting for an Index Engine process to create an initial index. This status appears for the Search Engine process only.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2613"></A><A NAME="TMPID3244"></A><B CLASS="guilabel">Registering with Search Federator</B>, which indicates that the process is contacting a Search Federator. This status appears for the Search Engine process only.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2616"></A><A NAME="TMPID3247"></A><B CLASS="guilabel">Idle</B>, which indicates that the process is stopped and is not scheduled to run</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2619"></A><A NAME="TMPID3250"></A><B CLASS="guilabel">Error</B> &lt;<I CLASS="varname"><B CLASS="guilabel">n</B></I>>, which indicates that the process is returning an error message. Clicking the error message displays the <B CLASS="guilabel">Specific</B> tab of the data flow process's Properties page, where you can modify the process parameter.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2625"></A><A NAME="TMPID3256"></A><B CLASS="guilabel">Unknown</B>, which indicates that Content Server was able to communicate with the Admin server but the Admin server was unable to report the status of the process. This can occur if the Admin server's <TT CLASS="filename">otadmin.cfg</TT> file is damaged, missing, or is not synchronized with the Content Server database.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2631"></A><A NAME="TMPID3262"></A><B CLASS="guilabel">Admin N/A</B>, which indicates that the Admin server is not available and, therefore, cannot report the status of the process. If the Admin server is not available, it is likely that it does not exist.</P></LI></UL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-specdflw-bg.htm" revision="">Maintaining Data Flows</A></p></li>
+<li><p><A  href="../websystemobj/wbs-movedflw-bg.htm" revision="">To Move Data Flow Components</A></p></li>
+<li><p><A  href="../websystemobj/wbs-configdflwstrt-bg.htm" revision="">Configuring Data Flow Process Start Options</A></p></li>
+<li><p><A  href="../websystemobj/wbs-configdflwstp-bg.htm" revision="">Configuring Data Flow Process Stop Options</A></p></li>
+<li><p><A  href="../websystemobj/wbs-dfpics-bg.htm" revision="">Viewing Data Flow Pictures</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

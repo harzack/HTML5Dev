@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Configuration des partitions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-configpartitions-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion des partitions';
+          header.title2 = 'Configuration des partitions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID7806"></A>Après avoir ajouté une partition à un système d'indexation et de recherche, vous pouvez la configurer. Lorsque vous configurez une partition, vous pouvez en modifier le mode, ce qui est parfois nécessaire lors de la réindexation. Pour plus d'informations sur les modes des partitions, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-understandingpartmaps-bg.htm">Utilisation des schémas de partition</A></span>. Pour plus d'informations sur la réindexation, voir <span><A href="../otadmin/ota-verifyandreindex-bg.htm">Vérification du contenu et réindexation</A></span>.</P>
+<P><A NAME="TMPID7809"></A>Vous pouvez également spécifier l'espace disque ou mémoire à allouer au contenu et aux métadonnées des documents indexés. Le moteur d'indexation de chaque partition fournit au processus Distributeur de mise à jour des informations sur l'espace disque ou mémoire occupé dans l'index. Le processus Distributeur de mise à jour détermine alors comment équilibrer la distribution des données sur toutes les partitions du système d'indexation et de recherche. Une fois l'espace disque ou mémoire maximal occupé sur une partition, le processus Distributeur de mise à jour arrête d'envoyer des données au moteur d'indexation pour qu'elles y soient indexées. Pour plus d'informations sur les moteurs d'indexation et les processus Distributeur de mise à jour, voir <span><A href="../websystemobj/wbs-configindexeng-so.htm">Configuration des processus d'indexation</A></span>. L'<I CLASS="emphasis">accumulateur de contenu</I> est une opération exécutée dans l'index d'une partition qui utilise de la mémoire pour stocker le contenu indexé avant de l'enregistrer dans un sous-index (un sous-répertoire dans un index de partition) sur le disque. L'accumulateur de contenu recueille les mises à jour du contenu (depuis le processus Distributeur de mise à jour) dans la mémoire avant d'enregistrer le contenu mis à jour dans un sous-index. Il est possible de spécifier l'espace mémoire alloué à l'accumulateur de contenu. Une fois que le contenu occupe tout l'espace mémoire, l'accumulateur de contenu l'enregistre dans un sous-index et se vide. Lorsque vous allouez une quantité importante d'espace mémoire à l'accumulateur de contenu, cela peut réduire le nombre de fusions d'index requises pour garantir le nombre de sous-index requis pour la partition.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF145">Gestion des emplacements des partitions</A></P>
+<P class="before-ul"><A NAME="TMPID7813"></A>La gestion des emplacements des partitions vous permet de spécifier un serveur d'administration, d'y associer un chemin d'accès et de sélectionner le nombre de partitions pouvant être créées pour cet emplacement. Dès lors que vous avez spécifié des serveurs d'administration et leurs emplacements, vous devez activer au moins l'un des emplacements. Si aucun emplacement n'est actif, la création de partitions échoue lorsque la règle de contrôle est déclenchée. Vous pouvez également spécifier l'emplacement de la source de la sauvegarde d'index de la nouvelle partition. Pour plus d'informations sur les règles de contrôle, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-admincntrlrls-so.htm">Gestion des règles de contrôle</A></span>. Lors de la définition de plusieurs emplacements, vous pouvez choisir de distribuer les partitions de l'une des manières suivantes :</P><A NAME="AEN7101"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7102"></A><A NAME="TMPID7817"></A><B CLASS="guilabel">séquentiellement</B>, ce qui crée le nombre spécifié de partitions dans un seul emplacement actif.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7105"></A><A NAME="TMPID7820"></A><B CLASS="guilabel">alternativement</B>, ce qui alterne la création de partitions dans les différents emplacements actifs.</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF146"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID7823"></A><B CLASS="note">Note : </B><BR>Lorsque la source de données Entreprise est créée, un emplacement de serveur d'administration est ajouté. Cet emplacement est activé par défaut et le nombre maximal de partitions autorisées pour cet emplacement est illimité. Si vous choisissez d'activer plusieurs emplacements pour la création de partitions et que l'emplacement actuel n'est pas valide, Content Server crée la partition dans l'emplacement disponible suivant. Content Server ne vérifie pas le chemin d'accès à l'emplacement.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF147">Resynchronisation</A></P>
+<P><A NAME="TMPID7827"></A>Un serveur d'administration enregistre les informations dans un fichier <TT CLASS="filename">otadmin.cfg</TT> et un fichier <TT CLASS="filename">search.ini</TT> afin de représenter les modifications apportées à la base de données Content Server (par exemple, si une partition a été configurée ou supprimée). Les fichiers <TT CLASS="filename">otadmin.cfg</TT> et <TT CLASS="filename"> search.ini</TT> sont des fichiers de configuration qui stockent des informations sur les objets système associés aux sources de données. Plus spécifiquement, le fichier <TT CLASS="filename">search.ini</TT> contient des paramètres définis par défaut lors de la création des composants des systèmes d'indexation et de recherche (par exemple, partitions, moteurs d'indexation et moteurs de recherche). OpenText vous recommande vivement de ne pas modifier les paramètres du fichier <TT CLASS="filename">search.ini</TT>. Les informations contenues dans les fichiers <TT CLASS="filename">otadmin.cfg</TT> et <TT CLASS="filename">search.ini</TT> doivent toujours être identiques aux informations correspondantes dans la base de données Content Server. Il arrive cependant que ces informations divergent (par exemple, si les informations enregistrées dans un fichier sont supprimées ou endommagées). Dans ce cas, il peut être nécessaire de <I CLASS="emphasis">resynchroniser</I> une partition. La resynchronisation d'une partition modifie les fichiers <TT CLASS="filename">otadmin.cfg</TT> et <TT CLASS="filename"> search.ini</TT> afin de refléter les informations relatives à la partition actuellement stockée dans la base de données Content Server.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-toconfigpartition-p.htm" revision="">Pour configurer une partition</A></p></li>
+<li><p><A  href="../websystemobj/wbs-toresyncpartition-p.htm" revision="">Pour resynchroniser une partition</A></p></li>
+<li><p><A  href="../websystemobj/wbs-cntrl-plm-p.htm" revision="">Pour configurer l'emplacement des partitions</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

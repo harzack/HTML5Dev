@@ -1,0 +1,70 @@
+<!-- wr_online_editing.htm -->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+	<TITLE>Editing a Reportview Online</TITLE>
+	<LINK REL="stylesheet" HREF="../../ix21.css">
+	<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+
+<BODY ONLOAD="checkFrame('wr_online_editing.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+
+<SCRIPT LANGUAGE="JavaScript">
+	var header = new AdminHeader();
+	header.title1 = 'Working With WebReports';
+	header.title2 = 'Editing a Reportview Online';
+	header.draw();
+
+	function makeTagWindow (posn) {
+		var url = 'wr_tag_syntax.htm';
+		var tw = window.open(url,'ContentTagBrowser',"width=800,height=665,resizable=yes,menubar=no,scrollbars=yes,toolbar=no");
+	}
+</SCRIPT>
+
+
+<p class="body">
+<a href="javascript:makeTagWindow()">Click here to open the WebReports Tag Syntax Guide</a>
+</p>
+<p class="body">
+To edit a reportview the <SPAN class="gui">Edit Reportview</SPAN> option can be selected from the
+function menu <img src="../../images/functionsicon.gif" border=0 alt="Functions Icon"> for the WebReport in question.
+This option brings up a reportview editor, described as follows:
+</p>
+<ul class="body">
+  <li><SPAN class="gui">Action</SPAN> - <SPAN class="gui">Add Version</SPAN>, <SPAN class="gui">Add Version & Continue</SPAN>, <SPAN class="gui">Reset</SPAN> and <SPAN class="gui">Cancel</SPAN>
+  buttons are provided at the top and bottom of this form.
+  <SPAN class="gui">Add Version</SPAN> causes the revised information to be submitted to Livelink as a new version, and returns the user to the previous screen.
+  <SPAN class="gui">Add Version & Continue</SPAN> also causes the revised information to be submitted to Livelink as a new version and then
+  allows the user to continue to work on the reportview.
+  The <SPAN class="gui">Reset</SPAN> button clears any
+  changes made since the form was originally opened. <SPAN class="gui">Cancel</SPAN> simply dismisses the form without
+  saving a new version.</li>
+  <li><SPAN class="gui">Header Section</SPAN> - This section is used to provide any code that should be executed at the
+  beginning of the WebReport. It is only output once regardless of how many report rows are being
+  read from the underlying data source. Any opening tags like &ltTABLE&gt should be in this section; however,
+  it is not necessary to include &ltHTML&gt or &ltBODY&gt if the standard Livelink header is being included.
+  The Livelink header is included by default unless the [LL_WEBREPORT_EXCLUDEHEADER /] tag is used.</li>
+  <li><SPAN class="gui">[LL_WEBREPORT_STARTROW /]</SPAN> - This line cannot be edited. It is only provided to show where the start
+  row tag will be inserted so that users do not try to add another one. </li>
+  <li><SPAN class="gui">Row Section</SPAN> - This section is used to define any code that should be applied to all
+  data rows. Any tags that are used to refer to data source column data will only work in this section. It is important
+  to note that anything in this section will be repeated for every row of the data source. For example,
+  if there are 10 rows of report data to be returned, everything in this section will appear 10 times
+  in the output of the WebReport. The only exception to this is if conditional tags are used to exclude
+  some data from the output. (see the <a href="wr_tag_syntax.htm">Tag Syntax Guide</a>).</li>
+  <li><SPAN class="gui">[LL_WEBREPORT_ENDROW /]</SPAN> - This line cannot be edited. It is only provided to show where the end
+  row tag will be inserted so that users do not try to add another one. </li>
+  <li><SPAN class="gui">Footer Section</SPAN> - This section is used to provide any code that should be executed at the
+  end of the WebReport. It is only output once regardless of how many report rows are being
+  read from the underlying data source. Any ending tags like &lt/TABLE&gt should be in this section.
+  </li>
+</ul>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

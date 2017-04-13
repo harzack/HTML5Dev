@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Ajout d'un processus Directory Walker</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbw-adddirwk-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Création individuelle de composants d\'index';
+          header.title2 = 'Ajout d\'un processus Directory Walker';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1759"></A>La plupart des index Content Server sont créés à l'aide des modèles d'index fournis par Content Server. Les modèles d'index vous permettent de créer tous les objets système associés à un index particulier en une seule étape. Vous pouvez par exemple créer l'index Entreprise, un index Directory Walker, un index producteur XML Activator, un index d'aide administrateur ou un index d'aide utilisateur. Pour cela, sélectionnez l'option appropriée dans le menu <B CLASS="guilabel">Ajouter un élément</B> de la page Administration système. Après avoir fourni les informations nécessaires, Content Server génère automatiquement en une seule étape les objets système correspondants (par exemple, le dossier source de données, le gestionnaire de flux de données, le flux de données et tous ses processus, ainsi que le gestionnaire de recherche et ses moteurs de recherche). Vous pouvez également créer des index en ajoutant des objets système individuels à un dossier source de données que vous ajoutez à la page Administration système. Pour plus d'informations sur l'ajout de composants d'index, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-creindexindiv-so.htm">Création individuelle de composants d'index</A></span>.</P>
+<P><A NAME="TMPID1765"></A>La création d'un processus Directory Walker est nécessaire lorsque vous souhaitez indexer des données stockées sur votre système de fichiers. Pour chaque processus Directory Walker que vous créez, vous devez définir les répertoires de niveau supérieur et les niveaux de sous-répertoires que le processus doit parcourir. Le processus Directory Walker parcourt les répertoires de niveau supérieur que vous avez définis (et leurs sous-répertoires, s'il y a lieu) et extrait les fichiers correspondant aux critères définis.</P>
+<P><A NAME="TMPID1766"></A>Vous déterminez les types de fichiers recueillis par le processus Directory Walker en spécifiant les critères d'inclusion et d'exclusion (tels que les modèles de noms de fichier, les intervalles de dates et les intervalles de tailles de fichier). Le processus Directory Walker enregistre les fichiers correspondant à vos critères dans une réserve d'échange de données (IPool). Ils restent accessibles pour le processus suivant du flux de données.</P>
+<P><A NAME="TMPID1767"></A>Si vous créez un index Directory Walker à l'aide du modèle d'index fourni par Content Server, Content Server définit la journalisation de l'index en utilisant des valeurs par défaut. Le cas échéant, Content Server génère un fichier journal Directory Walker dans le répertoire de journaux de votre installation Content Server (<I CLASS="emphasis">Content Server_home</I>/logs) et définit le niveau de consignation sur <B CLASS="guilabel">Valeur par défaut</B>. Une fois que le flux de données Directory Walker a été créé, vous pouvez modifier ces valeurs lors de la configuration du processus Directory Walker. Si vous créez un index Directory Walker en ajoutant des objets système individuels sur un dossier source de données, vous devez définir l'emplacement du fichier journal et le niveau de consignation du processus Directory Walker. Un fichier journal du processus Directory Walker décrit le statut actuel du processus : il indique si le démarrage et l'arrêt se sont déroulés correctement et établit une liste des avertissements ou des erreurs qui se sont produits lors de l'extraction des données.</P>
+<P><A NAME="TMPID1775"></A>Vous pouvez également configurer un processus Directory Walker pour qu'il stocke des informations dans les <I CLASS="emphasis">fichiers de la base de données Historique des fichiers parcourus</I>. Les fichiers de la base de données Historique des fichiers parcourus contiennent des informations sur les fichiers traités par le processus Directory Walker. Lorsqu'un processus Directory Walker parcourt un ensemble de répertoires déjà parcouru, il compare les fichiers de la base de données Historique des fichiers parcourus aux fichiers enregistrés dans le répertoire pour localiser les nouveaux fichiers, ainsi que les fichiers mis à jour ou supprimés. Le processus Directory Walker extrait des informations relatives aux fichiers ajoutés, remplacés ou supprimés dans le flux de données. Il n'extrait pas une nouvelle fois la totalité du jeu de fichiers. Ainsi, la mise à jour de l'index s'en trouve plus efficace. Lorsque vous créez un processus Directory Walker de manière individuelle, vous devez définir le répertoire dans lequel le processus Directory Walker enregistre ses fichiers de la base de données Historique des fichiers parcourus. Lorsque vous créez un flux de données Directory Walker à l'aide des modèles d'index, Content Server crée automatiquement les fichiers de la base de données Historique des fichiers parcourus. Vous pouvez ensuite modifier l'emplacement des fichiers lors de la configuration du processus Directory Walker.</P>
+<P><A NAME="TMPID1778"></A>La création d'un flux de données producteur XML Activator s'effectue en quatre étapes.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF37">Configuration d'un processus Directory Walker</A></P>
+<P><A NAME="TMPID1780"></A>Pour configurer un processus Directory Walker, il vous suffit de le nommer et de définir le serveur d'administration sur l'hôte duquel vous souhaitez exécuter le processus.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF38">Configuration des options de journal et fichiers d'historique</A></P>
+<P><A NAME="TMPID1782"></A>Pour consigner dans un journal l'activité du processus Directory Walker que vous ajoutez à un flux de données, vous pouvez définir le nom du fichier journal à associer au processus et le type d'activité à enregistrer. Si vous ne souhaitez pas consigner dans un journal l'activité du processus Directory Walker, il vous suffit, lors de l'ajout d'un processus Directory Walker, de ne pas définir les informations relatives au journal.</P>
+<P><A NAME="TMPID1783"></A>Définissez également l'emplacement des <I CLASS="emphasis">fichiers de la base de données Historique des fichiers parcourus</I> créés par Directory Walker. Lors de l'exécution d'un processus Directory Walker, les informations relatives aux fichiers traités par le processus sont enregistrées dans les fichiers de la base de données Historique des fichiers parcourus. Le processus Directory Walker utilise ces informations lorsqu'il parcourt un répertoire pour la seconde fois afin de localiser les fichiers nouveaux, mis à jour ou supprimés. OpenText vous recommande de stocker les fichiers de la base de données Historique des fichiers parcourus dans le répertoire où le processus Directory Walker écrit les données : le répertoire que vous spécifiez dans le champ <B CLASS="guilabel">Répertoire d'écriture</B> sur la page Ajouter : Directory Walker.</P>
+<P><A NAME="TMPID1787"></A>Lorsque vous spécifiez des répertoires sur la page Ajouter : Directory Walker, vous devez indiquer le chemin des répertoires tel qu'ils sont mappés/montés sur l'hôte du serveur d'administration dont vous avez sélectionné le raccourci dans la liste déroulante <B CLASS="guilabel">Hôte</B>.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF39">Configuration des groupes de répertoires</A></P>
+<P><A NAME="TMPID1790"></A>Pour qu'un processus Directory Walker puisse s'exécuter, vous devez identifier les répertoires dans lesquels le processus va rechercher les données. Déterminez les répertoires de niveau supérieur et les niveaux de sous-répertoires que le processus doit analyser. Pour chaque groupe de répertoires défini, vous pouvez également identifier les types de fichiers que le processus Directory Walker doit inclure ou exclure.</P>
+<P><A NAME="TMPID1791"></A>Lorsque vous spécifiez des répertoires sur la page Ajouter : Directory Walker, vous devez indiquer le chemin des répertoires tel qu'ils sont mappés/montés sur l'hôte du serveur d'administration dont vous avez sélectionné le raccourci dans la liste déroulante <B CLASS="guilabel">Hôte</B>.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF40">Configuration de l'IPool et des options de démarrage/arrêt</A></P>
+<P><A NAME="TMPID1794"></A>Après avoir configuré le processus Directory Walker, spécifié ses paramètres d'historique des fichiers parcourus et ses paramètres de consignation, puis déterminé les répertoires à analyser, vous devez définir l'emplacement de la réserve d'échange de données (iPool) du processus ainsi que les options de lancement et les options d'arrêt.</P>
+<P><A NAME="TMPID1795"></A>Lorsque vous spécifiez des répertoires sur la page Ajouter : Directory Walker, vous devez indiquer le chemin des répertoires tel qu'ils sont mappés/montés sur l'hôte du serveur d'administration dont vous avez sélectionné le raccourci dans la liste déroulante <B CLASS="guilabel">Hôte</B>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF41"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1798"></A><B CLASS="note">Note : </B><BR>Si vous mélangez les formats de chemin dans le processus Directory Walker, par exemple, un lecteur mappé en tant que répertoire à parcourir et un répertoire UNC dans le champ Exclure, la restriction à exclure est ignorée. La restriction à inclure est également ignorée dans le champ Inclure.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webdirwalk/wbw-setupdirwk-p.htm" revision="">Pour configurer un processus Directory Walker</A></p></li>
+<li><p><A  href="../webdirwalk/wbw-logdirwk-p.htm" revision="">Pour définir les options du journal et les fichiers d'historique</A></p></li>
+<li><p><A  href="../webdirwalk/wbw-setupdirgrp-p.htm" revision="">Pour définir les groupes de répertoires</A></p></li>
+<li><p><A  href="../webdirwalk/wbw-ipoolstrtstp-p.htm" revision="">Pour définir iPool ainsi que les options de lancement ou d'arrêt</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

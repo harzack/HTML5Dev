@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Object Importer Best Practices</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-bestpractices-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Object Importer: <NOBR>OpenText Content Server Admin Online Help</NOBR>';
+          header.title2 = 'Object Importer Best Practices';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID683"></A>This section provides a list of best practices, techniques, and tips for your Object Importer configuration.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-AGNTTHREAD">Agent Thread Utilization</A></P>
+<P><A NAME="TMPID690"></A>When frequent import jobs are scheduled, it may be necessary to monitor the agent thread to ensure that all Content Server scheduled activities on the site are happening promptly. In rare cases, it may be advisable to allocate a dedicated agent thread for scheduling Object Importer jobs. If this is necessary at your site, and for assistance configuring it, contact OpenText Customer Support.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-ANCHOR">Anchor</A></P>
+<P><A NAME="TMPID700"></A>If Object Importer is run from the anchor, or index/notifications server, you will need to install Object Importer on all servers in the cluster because it has an associated schema.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CNTRLFILE">Control File</A></P>
+<P><A NAME="TMPID709"></A>Try to keep the volume at approximately 1000 documents per control file. It is possible to increase the number of documents beyond 1000, but this may adversely affect performance as it will consume more resources on both Content Server and the database server. It is possible to access control files and upload files on machines other than the machine on which Content Server is installed, provided Content Server can access the other machines. However, this may not be possible if there is inconsistency amongst the machines with regards to operating systems, for example, if your system is a mix of Windows and Solaris machines.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-LOADTIME">Load Time</A></P>
+<P><A NAME="TMPID719"></A>Load time can be impacted by the amount of metadata being added to the documents, by the average size of the documents being loaded, and by your system architecture.&#13;</P>
+<P><A NAME="TMPID724"></A>Depending on the amount of metadata being added to the documents, and the average size of the documents being loaded, the average time to load per document is, in most cases, a little less than one second per document.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-MANOBJIMP">Manual Versus Scheduled Imports</A></P>
+<P><A NAME="TMPID727"></A>There is an option to conduct a manual import, but this is intended for small, single batch test runs. For more information about running a manual import, see <span><A HREF="llesoi-manimport-p.htm">To Manually Import a Document</A></span>.&#13;</P>
+<P><A NAME="TMPID733"></A>The preferred method for larger imports is to enable scheduling of imports, and to put control files into the designated upload directory. When a value has been entered in the <B CLASS="GUILABEL">Upload Directory</B> field, imports <I CLASS="EMPHASIS">must</I> take place from this directory. The <B CLASS="GUILABEL">Upload Directory</B> field is found by clicking <B CLASS="GUILABEL">Configure Server Parameters</B> in the <B CLASS="GUILABEL">Server Configuration</B> section of the Content Server Administration pages.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-OBJIMPSER">Object Importer Servers</A></P>
+<P><A NAME="TMPID743"></A>Adding parallel servers will decrease the overall import time needed for the job. Typically, Object Importer does not put too great a strain on the instance of Content Server. Object Importer can run on up to ten servers in parallel. For very large or frequent jobs, greater stress will be put on the database server; as such, it should be monitored to ensure adequate hardware resources are available, especially in areas such as disk space for database logs. In most cases, it should only be necessary to run Object Importer on one server.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-OTOIVOTE">OpenText Object Importer Versus OpenText Explorer</A></P>
+<P class="before-ul"><A NAME="TMPID759"></A>Use Object Importer when:&#13;</P><A NAME="AEN740"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN741"></A><A NAME="TMPID771"></A>You have a larger volume of documents.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN743"></A><A NAME="TMPID773"></A>You want to apply other metadata. Examples of other metadata include categories and attributes, privileges, and owner.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN745"></A><A NAME="TMPID775"></A>You want to upload other types of objects. Examples of other types of objects include compound documents and folder structures.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-PREPRUN">Preparing to Run Object Importer</A></P>
+<A NAME="AEN748"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN749"></A><A NAME="TMPID781"></A>Be certain that the users and categories referenced in the import control file exist in Content Server prior to beginning the import.&#13;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN757"></A><A NAME="TMPID789"></A>Be certain that you are not overloading destination directories. Overloading destination directories will affect browsing, so keep the destination object count to no more than 200 objects or less.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN759"></A><A NAME="TMPID791"></A>Ensure you configure Object Importer as described in <span><A HREF="llesoi-cfg-so.htm">Configuring Object Importer</A></span>. Configuring Object Importer includes, but is not limited to, setting the Object Importer directories and running through the database creation to create the Object Importer status table.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-SCHEDAGENT">Scheduler Agent</A></P>
+<P><A NAME="TMPID799"></A>Only enable one scheduler agent per server on which Object Importer is being run. Be certain to choose a different scheduler agent to run on each server.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-SCHEDULE">Scheduling</A></P>
+<P><A NAME="TMPID807"></A>When possible, run Object Importer during non-peak times. If processing a large job, it may be desirable to disable the index during the load.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-UPLOADDIR">Upload Directory</A></P>
+<P><A NAME="TMPID815"></A>The <B CLASS="GUILABEL">Upload Directory</B> field is found by clicking <B CLASS="GUILABEL">Configure Server Parameters</B> in the <B CLASS="GUILABEL">Server Configuration</B> section of the Content Server administration pages.&#13;</P>
+<P><A NAME="TMPID824"></A>The upload directory may be set or disabled. With the upload directory disabled, which means that the <B CLASS="GUILABEL">Upload Directory</B> field is cleared, Object Importer looks for the documents as specified between the <TT CLASS="LITERAL">&lt;file&gt;&lt;/file&gt;</TT> tags in the control file.</P>
+<DIV title="'Object Importer' looks for a document 'readme.txt' in the directory 'c:\files\':" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF4"></A><B><IMG title="'Object Importer' looks for a document 'readme.txt' in the directory 'c:\files\':" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 2-1: Object Importer looks for a document <TT CLASS="FILENAME">readme.txt</TT> in the directory <TT CLASS="FILENAME">c:\files\</TT>:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN799"></A>&lt;file&gt;c:\files\readme.txt&lt;/file&gt;</PRE
+><IMG title="'Object Importer' looks for a document 'readme.txt' in the directory 'c:\files\':" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P><A NAME="TMPID834"></A>When a value is specified in the upload directory field, Object Importer looks for the document in the directory specified, therefore the control file only needs to contain the name of the file, not the entire path.</P>
+<DIV title="'Object Importer' looks for a document 'readme.txt' in the directory specified in the configuration page:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF5"></A><B><IMG title="'Object Importer' looks for a document 'readme.txt' in the directory specified in the configuration page:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 2-2: Object Importer looks for a document <TT CLASS="FILENAME">readme.txt</TT> in the directory specified in the configuration page:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN806"></A>&lt;file&gt;readme.txt&lt;/file&gt;</PRE
+><IMG title="'Object Importer' looks for a document 'readme.txt' in the directory specified in the configuration page:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<title>To Configure Object Importer</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfg-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Object Importer';
+          header.title2 = 'To Configure Object Importer';
+           header.draw();
+  </script>
+  <A NAME="PROC-CONFIG1"></A>
+<DIV title="To configure 'Object Importer':" CLASS="PROCEDURE">
+<P><B>To configure Object Importer:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID365"></A>Create a control file directory, visible to Content Server, where Object Importer will look for import control files.&#13;</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID374"></A>Create a working directory, visible to Content Server, where Object Importer will process import control files.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID378"></A>Create a log directory where Object Importer will write log files. This directory must always be found in either: <TT CLASS="FILENAME">&lt;<I CLASS="VARNAME">Content Server_home</I>>\logs</TT> or <TT CLASS="FILENAME">&lt;<I CLASS="VARNAME">Content Server_home</I>>\object_importer</TT>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF2"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID387"></A><B CLASS="NOTE">Note: </B><BR>If, on the <B CLASS="GUILABEL">Configure Server Parameters</B> page, a value has been entered to the <B CLASS="GUILABEL">Upload Directory</B> field, imports must take place from this directory. The values specified between the <TT CLASS="LITERAL">&lt;file&gt;&lt;/file&gt;</TT> tags in the import control file must contain the file name only. For example, <TT CLASS="LITERAL">&lt;file&gt;readme.txt&lt;/file&gt;</TT>. For more information about the <B CLASS="GUILABEL">Configure Server Parameters</B> page, see <I CLASS="EMPHASIS">Configuring Basic Server Parameters</I> in the <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-confserver-params-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-confserver-params-bg.htm">Configuring Basic Server Parameters</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-confserver-params-bg" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID396"></A>On the Content Server administration page, in the <B CLASS="GUILABEL">Object Importer Administration</B> section, click <B CLASS="GUILABEL">Configure</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID402"></A>On the <B CLASS="GUILABEL">Configure Object Importer</B> page, in the <B CLASS="GUILABEL">Directory</B> section:</P>
+<OL CLASS="SUBSTEPS" TYPE="a">
+<LI>
+<P class="nr1"><A NAME="TMPID408"></A>In the <B CLASS="GUILABEL">Control File</B> field, specify the full path of the directory you created in Step 1. This is the directory where Object Importer looks for import files.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID412"></A>In the <B CLASS="GUILABEL">Working</B> field, specify the full path of the directory you created in Step 2. This is the directory where Object Importer processes import files.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID416"></A>In the <B CLASS="GUILABEL">Log</B> field, specify the full path of the directory you created in Step 3. This is the directory where Object Importer writes log files, and should always be found in either <TT CLASS="FILENAME">&lt;<I CLASS="VARNAME">Content Server_home</I>>\logs</TT> or <TT CLASS="FILENAME">&lt;<I CLASS="VARNAME">Content Server_home</I>>\object_importer</TT>.</P></LI></OL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID426"></A>In the <B CLASS="GUILABEL">Advanced</B> section:</P>
+<OL CLASS="SUBSTEPS" TYPE="a">
+<LI>
+<P class="nr1"><A NAME="TMPID430"></A>In the <B CLASS="GUILABEL">On Error Address</B> field, specify an email address for notification of critical errors. This does not include errors related to the imported data as those are written to the log file.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID433"></A>In the <B CLASS="GUILABEL">Report Every</B> field, specify how often the database is updated. For performance reasons, OpenText recommends that this value be in proportion to the size of the upload file. If a value of zero, (0), is specified, the update will not occur.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID437"></A>When creating objects in Content Server using Object Importer, you must specify the path to the parent object between the <TT CLASS="LITERAL">&lt;location&gt;&lt;/location&gt;</TT> tags. To create missing folders, and add the object when the parent path does not exist, select the <B CLASS="GUILABEL">Create Directory Structure</B> check box. If the check box is not selected, the object will not be added and an error will be logged.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID443"></A>To delete the control file from the working directory after processing is complete, select the <B CLASS="GUILABEL">Delete Control Files</B> check box. If the check box is not selected, the control file remains in the working directory. This check box only applies to scheduled imports.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID446"></A>To stop processing when an error occurs during control file processing, select the <B CLASS="GUILABEL">Stop Processing on Error</B> check box. By default, Object Importer will process the entire control file, skipping any errors that are encountered.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID450"></A>The <B CLASS="GUILABEL">Add Title to Location</B> check box is used to maintain compatibility between different versions of Object Importer so that existing control files can still be used. For new installations, OpenText recommends that you leave this option cleared, so that you are able to rename objects.</P>
+<P><A NAME="TMPID454"></A>Clear this option for control files created for, and used in, Object Importer Version 1.0.x, Object Importer Version 1.1.7, and Object Importer Version 1.1.7.1. Select this option for control files used in versions of Object Importer after 1.1.7.1, and before Version 3.</P>
+<table CLASS="CAUTION">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="ICONCELL">
+<P CLASS="CAUTION" ALIGN="CENTER"><IMG ALT="Caution" SRC="../../images/pi_caution.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID460"></A><B CLASS="CAUTION">Caution</B><BR>Be aware that once you have created control files using one method, you should not use the other method, as undesired results may occur.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID462"></A>During a scheduled import, when the agent is activated, a list of files in the upload directory at that time is noted by Object Importer. These files are then processed, ignoring any new files that may have been added. To poll the upload directory until there are no files left to process, select the <B CLASS="GUILABEL">Refresh Control Files</B> check box.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID466"></A>To gain the ability to alter the “modify date” on a document during the create operation only, select the <B CLASS="GUILABEL">Document Modify Date</B> check box. This option does not apply to the update operation, and therefore will only work on documents with only one version.</P>
+<P><A NAME="TMPID469"></A>Normally, Content Server does not permit this behavior since adding a version constitutes a modification, which automatically sets the <B CLASS="GUILABEL">Date Modified</B> field to the current date. Setting the “modify date” is not permanent, as it will be reset to the current date when certain actions are performed within Content Server. These actions include altering the name of the document or changing permissions on the document.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID475"></A>To set the value for the <TT CLASS="LITERAL">&lt;owner&gt;</TT> tag to “Admin” if the value cannot be found in the system, instead of throwing an error, select the <B CLASS="GUILABEL">Default Owner to Admin</B> check box.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID480"></A>To set the value for the <TT CLASS="LITERAL">&lt;createdby&gt;</TT> tag to “Admin” if the value cannot be found in the system, instead of throwing an error, select the <B CLASS="GUILABEL">Default Creator to Admin</B> check box.</P></LI></OL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID485"></A>Click <B CLASS="GUILABEL">Update</B>.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

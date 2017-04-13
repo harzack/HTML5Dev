@@ -1,0 +1,303 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREC100500-1409-H-AGD-EN-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="recommender">
+<META mancondkey="llesels-h-ugd -- lleswba-h-agd"><title>Exporting Rating Data to XML</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'rec-expxmlrat-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Recommender';
+          header.title2 = 'Exporting Rating Data to XML';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID911"></A>To export XML data from the <B CLASS="guilabel">Ratings</B> tab of an item's <B CLASS="guilabel">Properties</B> page, append <TT CLASS="literal">&amp;outputxml=true</TT> to the end of the  URL for the page. For example, enter the following URL: </P>
+<P><A NAME="TMPID915"></A><TT CLASS="literal">&lt;<I CLASS="varname">protocol</I>>://&lt;<I CLASS="varname">host</I>>/&lt;<I CLASS="varname">URL_prefix</I>>/.exe?func=ll&amp;objid=&lt;<I CLASS="varname">id</I>>&amp;objAction=Ratings&amp;outputxml=true</TT></P>
+<P class="before-ul"><A NAME="TMPID921"></A>where:</P><A NAME="AEN903"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN904"></A><A NAME="TMPID924"></A><TT CLASS="literal">&lt;<I CLASS="varname">protocol</I>></TT> is either http or https,</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN908"></A><A NAME="TMPID928"></A><TT CLASS="literal">&lt;<I CLASS="varname">host</I>></TT> is your fully qualified host address (for example, host.mycorp.com),</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN912"></A><A NAME="TMPID932"></A><TT CLASS="literal">&lt;<I CLASS="varname">URL_prefix</I>></TT> is the virtual directory shortcut mapped to the <TT CLASS="literal">&lt;<I CLASS="varname">Content Server_home</I>>/cgi</TT> directory in the HTTP server, and</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN919"></A><A NAME="TMPID939"></A><TT CLASS="literal">&lt;<I CLASS="varname">id</I>></TT> is the node ID of the item.</P></LI></UL>
+<P><A NAME="TMPID942"></A>This command outputs the <B CLASS="guilabel">Ratings</B> tab of the item's <B CLASS="guilabel">Properties</B> page for the user who is currently logged in to the  server. </P>
+<P><A NAME="TMPID945"></A>The DTD that defines this XML output is included in installations as <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/module/recommender_&lt;<I CLASS="varname">x</I>>_&lt;<I CLASS="varname">x</I>>_&lt;<I CLASS="varname">x</I>>/config/recommender_xml_output.dtd</TT>, where &lt;<I CLASS="varname">x</I>>_&lt;<I CLASS="varname">x</I>>_&lt;<I CLASS="varname">x</I>> is the version number of the Recommender module. For example, to view the file for the Recommender 10.5.0 module, see <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/module/recommender_10_5_0/config/recommender_xml_output.dtd</TT>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="REC-EXPXMLOUT">Understanding XML Output</A></P>
+<P><A NAME="TMPID962"></A>The following table describes the XML tags in exported rating data, in the order that the tags appear.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF10"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID964"></A><B CLASS="note">Note: </B><BR>In this table, several XML tags share the same name (for example, <TT CLASS="literal">&lt;dc_link&gt;</TT>). This apparent duplication is necessary because the table lists all the tags that appear, in the order that they appear.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="XML Tags in Exported Rating Data" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="TAB-AID7"></A><B>Table 1-6: XML Tags in Exported Rating Data</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tag</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;?xml version="1.0" ?&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the XML version and the character encoding used in the file.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;Ratings&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags for the <B CLASS="guilabel">Ratings</B> tab of the item's <B CLASS="guilabel">Properties</B> page.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;objID&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the node ID of the item.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;statistics&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain statistics information from the <B CLASS="guilabel">Ratings</B> tab of the item's <B CLASS="guilabel">Properties</B> page. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;OverallRating&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the overall rating assigned to the item. This tag includes the following attributes: <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1003"></A><TT CLASS="literal">DisplayName</TT>, the name that appears in the user interface for this element</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1006"></A><TT CLASS="literal">Protocol</TT>, either http or https</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1009"></A><TT CLASS="literal">ServerName</TT>, your fully qualified host address</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1012"></A><TT CLASS="literal">iconURL</TT>, the URL to the icon that represents the item's rating</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;numRatings&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the number of times the item has been rated. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;numAccessed&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the number of times the item has been accessed. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;summary&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Contains a synopsis of the item, which consists of either the system-generated summary of the item, the description of the item as specified on the <B CLASS="guilabel">General</B> tab of the item's <B CLASS="guilabel">Properties</B> page, or the synopsis as edited by a user. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;hotwords&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the system-generated key phrases for the item. (Key phrases are recurring words and word combinations, especially those involving unusual words.) This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;opinions&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain the reviews from the <B CLASS="guilabel">Ratings</B> tab of the item's <B CLASS="guilabel">Properties</B> page. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;opinion&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that define a review given to the item. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;Rating&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the rating given to an item as part of a review. This tag includes the following attributes: <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1054"></A><TT CLASS="literal">DisplayName</TT>, the name that appears in the user interface for this element </P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1057"></A><TT CLASS="literal">Protocol</TT>, either http or https </P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1060"></A><TT CLASS="literal">ServerName</TT>, your fully qualified host address</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1063"></A><TT CLASS="literal">iconURL</TT>, the URL to the icon that represents the item's rating</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;UserID&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies which user reviewed the item. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;UserComment&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the comment given to an item as part of a review. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;UserExplanation&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the explanation given to an item as part of a review. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;Date&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the date on which the review was completed. This tag includes the <TT CLASS="literal">Mask</TT> attribute, which defines the format in which the date appears (for example, <TT CLASS="literal">MM/DD/YYYY</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;personalopinion&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain the review given to an item by the current user. This tag includes the<TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;Rating&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the rating that the current user has given to an item as part of a review. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;UserComment&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the comment that the current user has given to an item as part of a review. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;UserExplanation&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the explanation that the current user has given to an item as part of a review. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;activeusers&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information that appears in the <B CLASS="guilabel">People Who Viewed This Item</B> table on the <B CLASS="guilabel">Ratings</B> tab of the item's <B CLASS="guilabel">Properties</B> page. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;browseview&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain the <B CLASS="guilabel">People Who Viewed This Item</B> table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;header&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain the header of the <B CLASS="guilabel">People Who Viewed This Item</B> table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;column&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain column labels that appear in the header of the table. The order in which the column labels appear in these tags is the order in which they appear in the user interface.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the column heading for the table (for example, <TT CLASS="literal">User Name</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;tagname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the tag name for the column. The tag name associates the column heading with the corresponding column.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;contents&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information that appears in the body of the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;object&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a row in the body of the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_username&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about a user in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the login name of the user as it is displayed in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_imgpath&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the path of the image that accompanies each user in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the link that leads to information about a user in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_firstname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the first name of a user in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_lastname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the last name of a user in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_department&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the department of a user in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;similardocs&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information that appears in the <B CLASS="guilabel">People Who Viewed This Item Also Viewed</B> table on the <B CLASS="guilabel">Ratings</B> tab of the item's <B CLASS="guilabel">Properties</B> page. This tag includes the <TT CLASS="literal">DisplayName</TT> attribute, which is the name that appears in the user interface for this element.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;browseview&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain the <B CLASS="guilabel">People Who Viewed This Item Also Viewed</B> table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;header&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain the header of the <B CLASS="guilabel">People Who Viewed This Item Also Viewed</B> table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;column&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain column labels that appear in the header of the table. The order in which the column labels appear in these tags is the order in which they appear in the user interface.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> Specifies the column heading for the table (for example, <TT CLASS="literal">Type</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;tagname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the tag name for the column. The tag name associates the column heading with the corresponding column.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;contents&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information that appears in the body of the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;object&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a row in the body of the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_subtype&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about the item type for each item in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_subtype_img&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about the image that represents an item's item type.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_imgpath&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the path of the image that represents an item's item type.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_imgalt&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the ALT text for a item's type image (for example, <TT CLASS="literal">Document</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the link for fetching an item.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_name&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about an item's name.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the name of the item as it is displayed in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the link for fetching an item.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_name_new&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Not used in the current version of Recommender.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_functions&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Not used in the current version of Recommender.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_location&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about an item's location.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_location_img&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about the image that accompanies each item's location.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_imgpath&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the path of the image that accompanies each item's location.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_imgalt&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the ALT text for the location image (for example, <TT CLASS="literal">Enterprise Workspace</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TT CLASS="literal">&lt;dc_displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the location of an item as it is displayed in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the link that leads to the location of an item.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_name_new&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Not used in the current version of Recommender.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_size&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about an item's size.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_size_displaysize&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the size of an item as it is displayed in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_modifydate&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about an item's modification date.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_date&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the modification date of an item as it is displayed in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_rating&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about an item's overall rating in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_rating_img&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about the image that represents an item's overall rating in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_imgpath&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the path of the image that represents an item's overall rating in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_imgalt&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the ALT text for the rating image (for example, <TT CLASS="literal">Click to enter your rating</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the link that leads to the <B CLASS="guilabel">Ratings</B> tab of the item's <B CLASS="guilabel">Properties</B> page for an item's image in the table.</TD></TR></TABLE></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

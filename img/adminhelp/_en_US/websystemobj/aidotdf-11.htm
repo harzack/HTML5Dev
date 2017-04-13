@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Opentext.ini file</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="4">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'aidotdf-11.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Installing OpenText Document Filters';
+          header.title2 = 'Opentext.ini file';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID6048"></A>You need to modify the <TT CLASS="filename">opentext.ini</TT> file on Windows and Linux operating systems to enable and customize specific conversion capabilities of OpenText Document Filters.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF124"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6053"></A><B CLASS="note">Note: </B><BR>By default, OpenText recommends you do not modify the <TT CLASS="filename">opentext.ini</TT> file unless directed to do so by OpenText Customer Support, but modifications are required to complete the Document Filters installation.</P>
+<P><A NAME="TMPID6058"></A>You should also know and understand the full intent and capabilities of the custom filter pack before you modify the <TT CLASS="filename">opentext.ini</TT> file. For more information about the parameters you can modify in the <TT CLASS="filename">opentext.ini</TT> file, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-intro-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-intro-bg.htm">Understanding the opentext.ini file</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-intro-bg" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID6062"></A>The <TT CLASS="filename">opentext.ini</TT> file is located in the <TT CLASS="literal">Content Server_home/config</TT> folder, where Content Server_home is the root of your Content Server installation.</P>
+<P><A NAME="TMPID6068"></A>When you edit the <TT CLASS="filename">opentext.ini</TT> file directly in a text editor, you must stop and then restart the Content Server Server, Admin server and the Web application server to put the changes in effect.</P>
+<P><A NAME="TMPID6071"></A>The order of the sections is not important. Section titles and name strings are not case sensitive. Value strings, however, are always case sensitive.</P>
+<P><A NAME="TMPID6072"></A>You must make the following changes to the settings defined in the <TT CLASS="filename">opentext.ini</TT> file.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF125"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6075"></A><B CLASS="note">Note: </B><BR>These settings may be changed further as the result of testing and ongoing development of the OpenText Document Filters application.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="To modify the 'opentext.ini' file:" CLASS="procedure">
+<P><B><A NAME="AEN5440ttl"></A>To modify the opentext.ini file:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID6082"></A>Stop the Content Server services.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID6085"></A>Browse to the <TT CLASS="literal">\OPENTEXT\config</TT> folder, and open the <TT CLASS="filename">opentext.ini</TT> file in a text editor.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID6089"></A>Under <TT CLASS="literal">[DCS]</TT> section, add <TT CLASS="literal">modx10=DCSIm</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF126"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6093"></A><B CLASS="note">Note: </B><BR>The <TT CLASS="literal">modxXX</TT> setting specifies the section of the <TT CLASS="filename">opentext.ini</TT> file that contains the configuration for the OpenText Document Filters. The <TT CLASS="literal">[DCS]</TT> and <TT CLASS="literal">[DCSView]</TT> sections may contain several mod parameters that correspond to different document conversion filters.</P>
+<P><A NAME="TMPID6100"></A>During the installation, you may need change the <TT CLASS="literal">mod</TT> parameter that specifies the <TT CLASS="literal">DCSIm</TT> filter section to the next available <TT CLASS="literal">modxXX</TT> number <I CLASS="emphasis">not</I> currently used.</P>
+<P><A NAME="TMPID6105"></A>Modifying the value of these parameters may prevent the DCS from functioning correctly.</P>
+<P><A NAME="TMPID6106"></A>The character <TT CLASS="literal">x</TT> specifies that the conversion filter process will be running as an external process to DCS worker.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID6109"></A>Under <TT CLASS="literal">[DCSView]</TT>, add <TT CLASS="literal">modx10=DCSIm</TT>.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID6113"></A>Add a new <TT CLASS="literal">[DCSIm]</TT> section, and add:</P><A NAME="AEN5477"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5478"></A><A NAME="TMPID6117"></A><TT CLASS="literal">lib=DCSIm</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5481"></A><A NAME="TMPID6120"></A><TT CLASS="literal">dllpath=%OTHOME%/filters\image</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5484"></A><A NAME="TMPID6123"></A><TT CLASS="literal">outputoleinfo=TRUE</TT></P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF127"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6126"></A><B CLASS="note">Note: </B><BR>When <TT CLASS="literal">outputoleinfo=TRUE</TT> only OLE metadata tags (listed in the <TT CLASS="filename">metadataTags.txt</TT> file) are retrieved. When <TT CLASS="literal">outputoleinfo=FALSE</TT>, or is not defined, then all metadata tags are retrieved. This setting applies to the Custom Regions in Office 2007 and 2010 documents such as Word, Excel, and PowerPoint.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID6131"></A>Under <TT CLASS="literal">[Options]</TT>, change the value <TT CLASS="literal">wantHTMLView=FALSE</TT> to <TT CLASS="literal">wantHTMLView=TRUE</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF128"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6136"></A><B CLASS="note">Note: </B><BR>This change is needed to enable View as Web Page with the 1.1.5 version of the IM filterpack for supported formats on Windows.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID6138"></A>Save the <TT CLASS="filename">opentext.ini</TT> file.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID6141"></A>Restart the Content Server services.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

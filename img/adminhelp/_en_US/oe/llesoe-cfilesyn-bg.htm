@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOE100500-H-AGD-EN-1">
+<META PiXprocLocator="objectexporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Object Exporter Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoe-cfilesyn-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Object Exporter: <NOBR>OpenText Content Server Admin Online Help</NOBR>';
+          header.title2 = 'Object Exporter Control File Syntax';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID349"></A>Every export control file must begin with one <TT CLASS="LITERAL">&lt;export&gt;</TT> tag and end with one <TT CLASS="LITERAL">&lt;/export&gt;</TT> tag.&#13;</P>
+<P><A NAME="TMPID356"></A>Between the <TT CLASS="LITERAL">&lt;export&gt;&lt;/export&gt;</TT> tags are multiple paragraphs, called node paragraphs. Each node paragraph describes one action against a particular object. Each node paragraph begins with a <TT CLASS="LITERAL">&lt;node&gt;</TT> tag and ends with a <TT CLASS="LITERAL">&lt;/node&gt;</TT> tag.</P>
+<P><A NAME="TMPID360"></A>Each time you run an export, the following object types are exported: alias, compound document, custom view, discussion, document, folder, project, reply, topic, and url. To prevent a particular object type from being exported, use the <TT CLASS="LITERAL">exclude</TT> tag.</P>
+<P><A NAME="TMPID362"></A>The following pages contain the export control file syntax and descriptions for Object Exporter tags.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF2"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID365"></A><B CLASS="NOTE">Note: </B><BR>Object Exporter supports multiple export locations.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOE-UTF8OE">Object Exporter and UTF-8</A></P>
+<P><A NAME="TMPID370"></A>If the control file contains non-ASCII characters, add the following line, <TT CLASS="LITERAL">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</TT>, to the top of the control file and save the control file with UTF-8 encoding.&#13;</P>
+<DIV title="Example showing an export control file which can contain non-ASCII characters:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF3"></A><B><IMG title="Example showing an export control file which can contain non-ASCII characters:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 2-1: Example showing an export control file which can contain non-ASCII characters:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN365"></A>&#13;&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;export&gt;
+  &lt;node&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;docstorage&gt;c:\docs&lt;/docstorage&gt;
+  &lt;/node&gt;
+&lt;/export&gt;</PRE
+><IMG title="Example showing an export control file which can contain non-ASCII characters:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF4"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID379"></A><B CLASS="NOTE">Note: </B><BR>The value between the <TT CLASS="LITERAL">&lt;docstorage&gt;&lt;/docstorage&gt;</TT> tags must be made up of characters in the ASCII character set.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="llesoe-cfile-delu-rf.htm" revision="">The deletedusers Tag Control File Syntax</A></p></li>
+<li><p><A  HREF="llesoe-cfile-docst-rf.htm" revision="">The docstorage Tag Control File Syntax</A></p></li>
+<li><p><A  HREF="llesoe-cfile-excl-rf.htm" revision="">The exclude Tag Control File Syntax</A></p></li>
+<li><p><A  HREF="llesoe-cfile-loc-rf.htm" revision="">The location Tag Control File Syntax</A></p></li>
+<li><p><A  HREF="llesoe-cfile-rec-rf.htm" revision="">The recurse Tag Control File Syntax</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

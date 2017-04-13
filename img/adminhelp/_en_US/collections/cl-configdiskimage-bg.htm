@@ -1,0 +1,145 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESCL100500-1406-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-06">
+<META name="PiXprocLocator" content="collections">
+<title>Configuring the Make Disk Image Option</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/collections/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/otadmin/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'cl-configdiskimage-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Collections';
+          header.title2 = 'Configuring the Make Disk Image Option';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID358"></A>Once a Collection has been created and items have been collected, you can create a Disk Image of the Collection. A Disk Image enables you to copy all or specific items in a Collection to disk. This can be used to share content in a Collection with individuals or groups outside of the Content Server environment.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF5">Disk Image Manifest File</A></P>
+<P><A NAME="TMPID361"></A>A Disk Image Manifest File is created when you create a Collection. </P>
+<P><A NAME="TMPID362"></A>The Disk Image includes a generic help file for users when browsing the contents of the manifest file. A link in the header of the manifest file will open the help file in a new browser window. You can edit this help file in a text editor, or replace it with your own customized version, if needed. For details about the information in the Manifest File, see <span><XPROC NAME="ExtXrefStart" HREF="llescl-h-ugd.cl-indexmap-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/collections/cl-indexmap-bg.htm">Reading a Disk Image Manifest File</A><XPROC NAME="ExtXrefEnd" HREF="llescl-h-ugd.cl-indexmap-bg" FMT=""></span>.</P>
+<P><A NAME="TMPID364"></A>When you configure the Disk Image creation settings, you can specify information about Collections and collected items that can be captured, the disk sizes that can be chosen, and when email notification should be sent. You can also restrict the <B CLASS="guilabel">Make Disk Image</B> option to specific Content Server Users and Groups.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CL-DISKIMAGESETTINGS-BG">Specifying the Disk Image Creation Settings</A></P>
+<P><A NAME="TMPID369"></A>To configure the <B CLASS="guilabel">Make Disk Image</B> option, you must first configure the parameters used when writing Collections to disk in the <B CLASS="guilabel">Disk Image Creation Settings</B> area of the administration pages.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID373"></A><B CLASS="important">Important: </B><BR>For the Disk Image creation process to work, you must have a Content Server File Cache, also known as <I CLASS="emphasis">remote admin cache</I>, RAC, configured.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID376"></A>On the <B CLASS="guilabel">Disk Image Creation Settings</B> page, the following settings can be configured:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN384"></A>
+<TH SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Setting</TH>
+<TH SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Available Disk Sizes</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">Defines the disk sizes available to Users during the Make Disk Image creation process. and specifies the default value that should appear. The disk size is the expected size of the disk output. If the Collection size exceeds the specified size, an additional Disk Image is created.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Collections</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">Defines the Content Server information about the Collection that can be included in the Disk Image, and if Users are able to modify these settings. For example, if you always want the Collection's Description included in Disk Images, and you do not want Users to be able to exclude it, select the <B CLASS="guilabel">Active</B> check box but <I CLASS="emphasis">do not</I> select the <B CLASS="guilabel">User Configurable</B> check box.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Content</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">Defines the Content Server information about the items in the Collection that can be included in the Disk Image and if Users are able to modify these settings. For example, if you always want the Descriptions of Collection items to be included in Disk Images, and do not want Users to be able to exclude them, select the <B CLASS="guilabel">Active</B> check box, but <I CLASS="emphasis">do not</I> select the <B CLASS="guilabel">User Configurable</B> check box.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Notification Options</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">Defines the point in the Disk Image creation process that email notification should be sent. For more information about email notification and the contents of the email messages, see <span><XPROC NAME="ExtXrefStart" HREF="llescl-h-ugd.cl-diskimnot-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/collections/cl-makediskimage-bg.htm#cl-diskimnot-bg">Understanding Disk Image Creation Notification</A><XPROC NAME="ExtXrefEnd" HREF="llescl-h-ugd.cl-diskimnot-bg" FMT=""></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Show Max Items per Image</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">Allows Users to specify the number of distinct objects to be included in each image. This value and the Disk File System Format limitations cause multiple output directories to be generated when the amount of output exceeds the value and format limitations. You can clear the check box if you do not want Users to specify a <B CLASS="guilabel">Max Objects per Image</B> setting. <table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF6"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID419"></A><B CLASS="note">Note: </B><BR>For more information about Disk File System Formats, see <span><XPROC NAME="ExtXrefStart" HREF="llescl-h-ugd.cl-makediskimage-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/collections/cl-makediskimage-bg.htm">Creating and Working with Disk Images</A><XPROC NAME="ExtXrefEnd" HREF="llescl-h-ugd.cl-makediskimage-bg" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Allow Sample Images</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">Defines whether a psuedo-random sample of the items selected for the Disk Image creation process can be created. This allows your users, or the consumers of the Disk Image, to assess whether a set of data is appropriate for full investigation by statistical sampling. For example, in a Collection of 1 million objects, the mathematics may indicate that a statistical sample of 16,500 items will be 98% accurate 95% of the time.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="86" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Metadata Language Options</B></TD>
+<TD SCOPE="COL" WIDTH="80" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Default Language</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">Defines the default metadata language for the Disk Image. This setting is only available when multiple languages are available on your Content Server system.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="86" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="80" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">User Configurable</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">Defines whether a User can modify the default metadata language. This setting is only available when multiple languages are available on your Content Server system.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="86" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Administrator Notify</B></TD>
+<TD SCOPE="COL" WIDTH="80" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Enabled</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">Defines whether an email notification is sent to the Content Server administrator.<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF7"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID446"></A><B CLASS="note">Note: </B><BR>This option is not configurable by Users during the Make Disk Image creation process.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ROWSPAN="2" WIDTH="86" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="80" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Notify Level</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP"><I CLASS="emphasis">Required.</I> Defines the number of items in a Disk Image creation process at which the administrator is notified by email.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="80" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">E-Mail Address</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP"><I CLASS="emphasis">Required.</I> Defines the email address this notification should be sent to.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="86" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Directory Mapping</B></TD>
+<TD SCOPE="COL" WIDTH="80" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Description</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">Information about the Collections Make Disk Image command.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="86" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="80" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Admin Server</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">Defines the Content Server File Cache location where Disk Images are written to. You can click the <B CLASS="guilabel">File Cache Settings</B> link to select a specific File Cache and to change additional values. For more information on File Cache settings, see <span><XPROC NAME="ExtXrefStart" HREF="lleswbs-h-agd.ota-settingupfilecache-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/otadmin/ota-settingupfilecache-rf.htm">Setting Up the Admin Server File Cache</A><XPROC NAME="ExtXrefEnd" HREF="lleswbs-h-agd.ota-settingupfilecache-rf" FMT=""></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="86" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="80" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Map Value</B></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP"><I CLASS="emphasis">Required.</I> Defines the URL to access the Disk Image. This value appears in the confirmation message and notification email message when a Disk Image is created. When specifying this value, you can use an FTP server, or provide a UNC or NFS network share location.</TD></TR></TABLE>
+</DIV></P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF8"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID479"></A><B CLASS="note">Note: </B><BR>By default, when a Disk Image is created, it is removed from the File Cache one day after creation. You can modify this value by changing the <B CLASS="guilabel">Expire Time</B> setting on the <B CLASS="guilabel">File Cache</B> tab in the <B CLASS="guilabel">Admin Server Properties</B> page. You can access this page quickly by clicking the <B CLASS="guilabel">File Cache Settings</B> link in the <B CLASS="guilabel">Admin Server</B> area on the <B CLASS="guilabel">Disk Image Creation Settings</B> page.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID486"></A>For more information about creating Disk Images, see <span><XPROC NAME="ExtXrefStart" HREF="llescl-h-ugd.cl-makediskimage-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/collections/cl-makediskimage-bg.htm">Creating and Working with Disk Images</A><XPROC NAME="ExtXrefEnd" HREF="llescl-h-ugd.cl-makediskimage-bg" FMT=""></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CL-RESTRICTMAKEDISK">Restricting the Make Disk Image Option</A></P>
+<P><A NAME="TMPID490"></A>The <B CLASS="guilabel">Make Disk Image</B> option appears by default in the <B CLASS="guilabel">More Actions</B> list when viewing a Collection. You can restrict this option to specific Users or Groups by updating the <B CLASS="guilabel">Make Disk Image</B> Usage Privilege. For example, if you have a Group that is responsible for releasing information to third party sources, and you only want that group to be able to copy information to a Disk Image, you can restrict this option to only that Group. For more information on how to restrict object usage privileges, see <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-objuse-admin-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-objuse-admin-bg.htm">Administering Object and Usage Privileges</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-objuse-admin-bg" FMT=""></span>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="cl-toconfigdiskimage-p.htm" revision="">To Configure Disk Image Settings</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

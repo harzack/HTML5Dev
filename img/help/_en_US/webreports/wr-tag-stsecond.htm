@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>BITCHECK</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stsecond.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sub-Tags';
+          header.title2 = 'BITCHECK';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID5359"></A>This section details the sub-tag <span><A HREF="wr-tag-stsecond.htm#WR-TAG-STBITCHECK">BITCHECK</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STBITCHECK">BITCHECK</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STBITCHECK-NAME">Syntax</A></P>
+<P><A NAME="BITCHECK"></A><B CLASS="highlight">BITCHECK:&lt;<I CLASS="varname">bit mask value</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STBITCHECK-DESC">Description</A></P>
+<P><A NAME="TMPID5370"></A>Tests an integer value returned by the tag to determine if a particular binary bit has been set. The bit mask value must be a regular decimal number which is used to specify which binary bits will be tested. If it is determined that the expected bits are set then this sub-tag returns <TT CLASS="literal">TRUE</TT>, otherwise it returns <TT CLASS="literal">FALSE</TT>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STBITCHECK-EXAMP">Example</A></P>
+<P><A NAME="TMPID5375"></A>To test if the first and fourth bits, from right to left, had been set, the mask needs to be 1001 in binary. Using a binary to decimal converter, the number 1001 converts to decimal 9. Therefore the syntax, <TT CLASS="literal">BITCHECK:9</TT> would be used.</P>
+<P><A NAME="TMPID5377"></A>If the corresponding tag returned a value of 20, decimal, then the bit pattern being tested is: <TT CLASS="literal">10100</TT>. The mask of 9 would determine that neither bit 0 nor 3 are set, so <TT CLASS="literal">BITCHECK:9</TT> would return “FALSE”. To test if the third bit from the right was set, the mask required would be binary 100, decimal 4.</P>
+<P><A NAME="TMPID5381"></A>If the corresponding tag returned decimal 15, binary 1111, then <TT CLASS="literal">BITCHECK:4</TT> sub-tag would return “TRUE”.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

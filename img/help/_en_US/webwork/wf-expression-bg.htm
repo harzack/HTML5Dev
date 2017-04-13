@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWFW100500-1409-H-UGD-EN-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webwork">
+<META mancondkey="lleswfp-cwm -- lleswfp-h-ugd -- llesfrm-cwm -- llesfrm-h-ugd -- lleswbn-h-ugd -- lleseps-h-ugd -- lleseps-h-agd -- llesesn-h-ugd -- llesfwf-h-ugd -- llesrt-h-ugd -- lleselk-h-ugd"><title>Using the Expression Builder</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-expression-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Using Workflows';
+          header.title2 = 'Using the Expression Builder';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1599"></A>The Expression Builder allows you to build complex conditional expressions to limit the Workflows and Assignments that appear on the <B CLASS="guilabel">My Workflows</B> and <B CLASS="guilabel">Workflow Status</B> pages. You can use the Expression Builder on the <B CLASS="guilabel">My Workflows</B>, <B CLASS="guilabel">Workflow Status</B>, and <B CLASS="guilabel">Workflow Settings</B> pages to modify which Workflows and Assignments are displayed on the pages. For more information about the <B CLASS="guilabel">My Workflows</B> and <B CLASS="guilabel">Workflow Status</B> pages, see <span><A HREF="wf-status-bg.htm">Monitoring Workflows and Assignments</A></span>.</P>
+<P><A NAME="TMPID1608"></A>After you create an expression, the expression syntax is displayed on the page and is in effect until you delete it.</P>
+<P class="before-ul"><A NAME="TMPID1609"></A>The Expression Builder allows you to specify expressions based on the following criteria:</P><A NAME="AEN1611"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1612"></A><A NAME="TMPID1612"></A>Workflow name</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1614"></A><A NAME="TMPID1614"></A>Initiator</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1616"></A><A NAME="TMPID1616"></A>Date</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1618"></A><A NAME="TMPID1618"></A>Status (non-archived Workflows only)</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID1619"></A>Valid Workflow status values are:</P><A NAME="AEN1621"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1622"></A><A NAME="TMPID1622"></A>Executing, which refers to all Workflows that are currently executing</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1624"></A><A NAME="TMPID1624"></A>OK, which refers to currently executing Workflows and sub-Workflows that have not exceeded the assigned due date</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1626"></A><A NAME="TMPID1626"></A>Late, which refers to currently executing Workflows and sub-Workflows that have passed the due date</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1628"></A><A NAME="TMPID1628"></A>Milestone Late</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1630"></A><A NAME="TMPID1630"></A>Step Late</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1632"></A><A NAME="TMPID1632"></A>Workflow Late</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1634"></A><A NAME="TMPID1634"></A>Completed</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1636"></A><A NAME="TMPID1636"></A>Stopped</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1638"></A><A NAME="TMPID1638"></A>Suspended</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WF-CREATINGCOMPLEXEXP">Creating Complex Expressions</A></P>
+<P><A NAME="TMPID1641"></A>You can create complex expressions using search elements. For example, you could create the following complex expression, which displays active and completed (but not suspended) Workflows that have a Due Date after July 5, 2013.</P><A NAME="AEN1642"></A>
+<PRE 
+CLASS="programlisting"
+>  1&nbsp; ("Status = OK" OR "Status = Completed") AND "Due Date &gt; 07/05/2013"</PRE
+>
+<P class="before-ul"><A NAME="TMPID1643"></A>The search elements you can use include:</P><A NAME="AEN1644"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1645"></A><A NAME="TMPID1646"></A>Left and right parenthesis</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1647"></A><A NAME="TMPID1648"></A>Delimiters </P><A NAME="AEN1649"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1650"></A><A NAME="TMPID1651"></A><TT CLASS="literal">=</TT> (Equal to)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1653"></A><A NAME="TMPID1654"></A><TT CLASS="literal">&lt;&gt;</TT>(Not equal to)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1656"></A><A NAME="TMPID1657"></A><TT CLASS="literal">&lt;</TT> (Less than)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1659"></A><A NAME="TMPID1660"></A><TT CLASS="literal">&gt;</TT> (Greater than)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1662"></A><A NAME="TMPID1663"></A><TT CLASS="literal">starts with</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1665"></A><A NAME="TMPID1666"></A><TT CLASS="literal">ends with</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1668"></A><A NAME="TMPID1669"></A><TT CLASS="literal">contains</TT></P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1671"></A><A NAME="TMPID1672"></A>Search relationships </P><A NAME="AEN1673"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1674"></A><A NAME="TMPID1675"></A><TT CLASS="literal">AND</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1677"></A><A NAME="TMPID1678"></A><TT CLASS="literal">OR</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1680"></A><A NAME="TMPID1681"></A><TT CLASS="literal">AND NOT</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1683"></A><A NAME="TMPID1684"></A><TT CLASS="literal">OR NOT</TT></P></LI></UL></LI></UL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wf-expression-create-p.htm" revision="">To Create an Expression</A></p></li>
+<li><p><A  HREF="wf-expression-delete-p.htm" revision="">To Delete an Expression</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

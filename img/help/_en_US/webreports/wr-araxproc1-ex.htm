@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Case 1 - Updating a Custom View with a WebReport</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-araxproc1-ex.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'AJAX Examples';
+          header.title2 = 'Case 1 - Updating a Custom View with a WebReport';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID23164"></A>It has always been possible to use an IFRAME to run a WebReport within a Custom View. This was and still is relatively easy to do by using the following in a Custom View: <TT CLASS="literal">&lt;IFRAME SRC="?func=ll&amp;objId=xyz&amp;objAction=RunReport"&gt;&lt;/IFRAME&gt;</TT>.</P>
+<P><A NAME="TMPID23166"></A>Where <TT CLASS="literal">xyz</TT> is the object id of the WebReport you want to run in the IFRAME. This method has limitations but is very simple and can be used to good effect.</P>
+<P><A NAME="TMPID23168"></A>A more flexible approach is to use the Ajax functions bundled with WebReports. The functions allow you to call a WebReport from a Custom View or another WebReport and use the returned data to dynamically update the current page. Below is a simple example of what might be used in a Custom View to dynamically update it with information from a WebReport:</P><A NAME="AEN21846"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="/&lt;your support dir&gt;/webreports/library/ajax.js"&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT&gt;
+  updatePage( 1234, 'customView' );
+&lt;/SCRIPT&gt;</PRE
+>
+<P class="before-ul"><A NAME="TMPID23170"></A>This simple piece of code consists of the following:</P><A NAME="AEN21848"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21849"></A><A NAME="TMPID23173"></A>An HTML DIV element with an ID of “customView”, not shown in code above. This element is inserted by Content Server and wraps the entire Custom View. This code uses Ajax to update the contents of this DIV. If you wish to observe the DIV you need to perform a view source in your web browser and search on “customView”. Note that it is not necessary to use a DIV, any HTML element where the attribute <TT CLASS="literal">innerHTML</TT> is writable can be used.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21855"></A><A NAME="TMPID23179"></A>A JavaScript include file reference that contains the code to make and return the Ajax request. Note that the tag <TT CLASS="literal">[LL_REPTAG_LIBPATH /]</TT> returns the path to a folder on the server that hosts Content Server which contains the library file <TT CLASS="filename">ajax.js</TT>. However, because we are referencing the include file from a Custom View we need to use a qualified path. In a WebReport we would only need the tag and file name.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21860"></A><A NAME="TMPID23184"></A>The next element is a call to the library function, updatePage(). This function takes two parameters. The first is the object id of the WebReport we are using to retrieve the additional data. We could use a WebReports constant which will resolve to an object id if we are making the call from another WebReport. The second parameter is the id of the HTML element we wish to update. In this case we're updating a Custom View and we know all Custom Views are wrappered by a DIV with id, “customView”; this is what we'll update, note the small c and large V as JavaScript is case sensitive.</P></LI></UL>
+<P><A NAME="TMPID23186"></A>At this point we have a folder and we're updating its Custom View with data from a WebReport. Although the information provided in the Custom View is dynamic, it is not context sensitive. We could take this example a step further and make the information displayed in the Custom View relevant to the current folder. By doing this we are able to use one centrally managed WebReport to provide dynamic information which is specific to each folder. An example of this could involve displaying each folders category information in its own Custom View. To do this we need to pass an extra parameter to the WebReport so that we can retrieve the category information relevant to this folder. Here's an example of what the updated call to updatePage() might look like:</P><A NAME="AEN21864"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT&gt;
+  updatePage( 1234, 'customView', '&amp;folderid=' + getURLParm( 'objId' ) );
+&lt;/SCRIPT&gt;</PRE
+>
+<P><A NAME="TMPID23188"></A>The difference between this and the previous example is a third optional parameter, <TT CLASS="literal">folderid</TT>, which can be used by the Ajax report to retrieve information specific to the folder we're in. The function <TT CLASS="literal">getURLParm()</TT> accepts a parameter name and returns the value that is associated with that parameter in the current URL. In the example above we would end up with something looking like <TT CLASS="literal">updatePage( 1234, 'customView', '&amp;folderid=5678' )</TT>. The point is illustrated diagrammatically below.</P>
+<P><IMG SRC="image038.png"></P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF82"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes: </B></P><A NAME="AEN21871"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21872"></A><A NAME="TMPID23196"></A>If you run the Ajax WebReport on its own, everything you see in the browser will be returned to the main report. For this reason, remember to use <TT CLASS="literal">[LL_WEBREPORT_EXCLUDEHTML /]</TT> to turn off the standard Content Server headers, footers and include files.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21876"></A><A NAME="TMPID23200"></A>Although we have called this an Ajax example, it is not true Ajax as there is no XML component as we haven't changed the destination mime type.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21878"></A><A NAME="TMPID23202"></A>While the functions mentioned above have been included to help the average person achieve results as quickly as possible, more advanced users could easily develop their own custom functions to achieve the same thing.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

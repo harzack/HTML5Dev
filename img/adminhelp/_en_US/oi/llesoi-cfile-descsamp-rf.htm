@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>description Import Control File Examples</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-descsamp-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Import Control File Examples';
+          header.title2 = 'description Import Control File Examples';
+           header.draw();
+  </script>
+
+<DIV title="To update the description of a document in English and French. This code may or may not work since the action is 'sync'. If the document exists, then the description will be updated. If the document does not exist, an error will be generated because the <file> tag was not specified. In this example, the 'Add Title to Location' check box is selected:   " CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF25"></A><B><IMG title="To update the description of a document in English and French. This code may or may not work since the action is 'sync'. If the document exists, then the description will be updated. If the document does not exist, an error will be generated because the <file> tag was not specified. In this example, the 'Add Title to Location' check box is selected:   " SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-13: To update the description of a document in English and French. This code may or may not work since the action is <NOBR>sync</NOBR>. If the document exists, then the description will be updated. If the document does not exist, an error will be generated because the &lt;file&gt; tag was not specified. In this example, the “Add Title to Location” check box is selected: &#13;</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4354"></A>&#13;&lt;import&gt;
+  &lt;node type="document" action="sync"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;logo.jpg&lt;/title&gt;
+    &lt;description language="en"&gt;Final draft&lt;/description&gt;
+    &lt;description language="fr"&gt;Version Finale&lt;/description&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To update the description of a document in English and French. This code may or may not work since the action is 'sync'. If the document exists, then the description will be updated. If the document does not exist, an error will be generated because the <file> tag was not specified. In this example, the 'Add Title to Location' check box is selected:   " SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To update the description of a document. This code may or may not work since the action is 'sync'. If the document exists, then the description will be updated. If the document does not exist, an error will be generated because the <file> tag was not specified. In this example, the 'Add Title to Location' check box is cleared:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF26"></A><B><IMG title="To update the description of a document. This code may or may not work since the action is 'sync'. If the document exists, then the description will be updated. If the document does not exist, an error will be generated because the <file> tag was not specified. In this example, the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-14: To update the description of a document. This code may or may not work since the action is <NOBR>sync</NOBR>. If the document exists, then the description will be updated. If the document does not exist, an error will be generated because the &lt;file&gt; tag was not specified. In this example, the “Add Title to Location” check box is cleared:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4359"></A>&#13;&lt;import&gt;
+  &lt;node type="document" action="sync"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents:logo.jpg&lt;/location&gt;
+    &lt;description language="en"&gt;Final drafts&lt;/description&gt;
+    &lt;description language="fr"&gt;Version Finale&lt;/description&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To update the description of a document. This code may or may not work since the action is 'sync'. If the document exists, then the description will be updated. If the document does not exist, an error will be generated because the <file> tag was not specified. In this example, the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To create a 'Documents' Folder in the 'Projects' Folder of the Enterprise Workspace, giving the 'Client' group 'See & See Contents' permissions, while removing permissions from the public group. Descriptions are created in English and French. In order for the descriptions to be applied, both languages need to be installed and enabled on the system:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF27"></A><B><IMG title="To create a 'Documents' Folder in the 'Projects' Folder of the Enterprise Workspace, giving the 'Client' group 'See & See Contents' permissions, while removing permissions from the public group. Descriptions are created in English and French. In order for the descriptions to be applied, both languages need to be installed and enabled on the system:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-15: To create a “Documents” Folder in the “Projects” Folder of the Enterprise Workspace, giving the “Client” group <I CLASS="EMPHASIS">See &amp; See Contents</I> permissions, while removing permissions from the public group. Descriptions are created in English and French. In order for the descriptions to be applied, both languages need to be installed and enabled on the system:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4366"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects&lt;/location&gt;
+    &lt;title language="en"&gt;Documents&lt;/title&gt;
+    &lt;description language="en"&gt;This folder stores documents&lt;/description&gt;
+    &lt;description language="fr"&gt;Ce dossier stocke des documents&lt;/description&gt;
+    &lt;acl group="Client" permissions="100000000"&gt;&lt;/acl&gt;
+    &lt;acl standard="world" permissions="000000000"&gt;&lt;/acl&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To create a 'Documents' Folder in the 'Projects' Folder of the Enterprise Workspace, giving the 'Client' group 'See & See Contents' permissions, while removing permissions from the public group. Descriptions are created in English and French. In order for the descriptions to be applied, both languages need to be installed and enabled on the system:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To update an existing Folder called 'Documents' located in the Enterprise Workspace, by adding a Nickname. In this example, the 'Add Title to Location' check box is selected. The English description for the folder is updated, while the French description for the folder is deleted:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF28"></A><B><IMG title="To update an existing Folder called 'Documents' located in the Enterprise Workspace, by adding a Nickname. In this example, the 'Add Title to Location' check box is selected. The English description for the folder is updated, while the French description for the folder is deleted:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-16: To update an existing Folder called “Documents” located in the Enterprise Workspace, by adding a Nickname. In this example, the “Add Title to Location” check box is selected. The English description for the folder is updated, while the French description for the folder is deleted:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4371"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="en"&gt;Documents&lt;/title&gt;
+    &lt;description language="en"&gt;This folder stores obsolete documents&lt;/description&gt;
+    &lt;description clear="true" language="fr"&gt;&lt;/description&gt;
+    &lt;nickname&gt;docs&lt;/nickname&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To update an existing Folder called 'Documents' located in the Enterprise Workspace, by adding a Nickname. In this example, the 'Add Title to Location' check box is selected. The English description for the folder is updated, while the French description for the folder is deleted:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To rename an existing Folder from 'Documents' to 'My Documents', when the 'Add Title to Location' check box is cleared:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF29"></A><B><IMG title="To rename an existing Folder from 'Documents' to 'My Documents', when the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-17: To rename an existing Folder from “Documents” to “My Documents”, when the “Add Title to Location” check box is cleared:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4377"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;My Documents&lt;/title&gt;
+    &lt;title language="en"&gt;Mes Documents&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To rename an existing Folder from 'Documents' to 'My Documents', when the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

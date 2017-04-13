@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<title>Configuration des règles de stockage</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/controlledviewing/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/recman/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/enterprisearchivesp/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/elservice/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/recmansecurity/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/classification/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-flexstorman-conf-rule-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Fournisseurs de stockage et gestion du stockage';
+          header.title2 = 'Configuration des règles de stockage';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID15970"></A>Vous pouvez définir des règles binaires individuelles et créer une association ordonnée entre les règles et les fournisseurs de stockage afin de déterminer l'emplacement de stockage des documents. Pour modifier les fournisseurs de stockage, les règles et leurs associations, il n'est <I CLASS="emphasis">pas</I> nécessaire de redémarrer les serveurs ou le serveur d'application Web. </P>
+<P><A NAME="TMPID15972"></A>Vous pouvez configurer autant de règles de stockage que vous le souhaitez. Cependant, OpenText vous recommande de maintenir le nombre de règles de stockage en dessous de 12. Les règles de stockage sont évaluées dès qu'un document est ajouté à Content Server ou dès le démarrage d'une tâche de déplacement de contenu. Lorsque vous ajoutez un document, les règles sont évaluées dans l'ordre à partir du haut de la liste. Si le document ne répond à aucune des règles définies, il est stocké dans le <I CLASS="emphasis">fournisseur de stockage par défaut</I>, qui apparaît toujours à la fin de la liste et que vous ne pouvez pas configurer ou supprimer. </P>
+<P><A NAME="TMPID15976"></A>Une règle de stockage est constituée d'un nom de règle, d'une ou de plusieurs conditions et d'une cible de stockage sélectionnée si toutes les conditions sont remplies. Après la création d'une règle, vous pouvez la modifier, la supprimer et modifier son ordre dans la liste. Lorsque vous ajoutez une nouvelle règle, celle-ci apparaît au-dessus de la règle actuelle par défaut. </P>
+<P><A NAME="TMPID15977"></A>Pour chaque type de règle que vous ajoutez, vous spécifiez la valeur de la règle, représentée ci-dessous par le signe <B CLASS="highlight">?</B> dans le champ <B CLASS="guilabel">Valeur</B>. </P>
+<P class="before-ul"><A NAME="TMPID15980"></A>Les règles suivantes sont disponibles par défaut lorsque Content Server est installé pour la première fois : </P><A NAME="AEN14891"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14892"></A><A NAME="TMPID15984"></A><B CLASS="guilabel">La taille du fichier en octets est supérieure à '?'</B> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14895"></A><A NAME="TMPID15987"></A><B CLASS="guilabel">Le nom de la catégorie est '?'</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14898"></A><A NAME="TMPID15990"></A><B CLASS="guilabel">Le type Mime est '?'</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14901"></A><A NAME="TMPID15993"></A><B CLASS="guilabel">La taille du fichier en octets est inférieure à '?'</B> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14904"></A><A NAME="TMPID15996"></A><B CLASS="guilabel">Le nom du noeud contient '?'</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14907"></A><A NAME="TMPID15999"></A><B CLASS="guilabel">Toujours (valeur ignorée)</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14910"></A><A NAME="TMPID16002"></A><B CLASS="guilabel">Toute autre valeur d'attribut du noeud est '?'</B> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14913"></A><A NAME="TMPID16005"></A><B CLASS="guilabel">La valeur de l'attribut ? non spécifique est ?</B> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14916"></A><A NAME="TMPID16008"></A><B CLASS="guilabel">La valeur de l'attribut ? est ?</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14919"></A><A NAME="TMPID16011"></A><B CLASS="guilabel">Toutes les miniatures</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14922"></A><A NAME="TMPID16014"></A><B CLASS="guilabel">Espace disponible du volume (Mo)</B></P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF166"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID16017"></A><B CLASS="note">Note : </B><BR>Si aucune règle n'a été définie, seule l'icône <B CLASS="guilabel">Ajouter</B> apparaît dans la colonne <B CLASS="guilabel">Modifier</B> de la page <B CLASS="guilabel">Configurer les règles de stockage</B>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID16021"></A>Des règles supplémentaires sont installées par les modules facultatifs Content Server suivants :</P><A NAME="AEN14932"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14933"></A><A NAME="TMPID16025"></A>OpenText Archive Storage Provider</P>
+<P CLASS="otModuleHide if-casp-h-ise-showblock" id="TMPID16028"><A NAME="TMPID16028"></A>Voir <span><A href="../webadmin/wba-flexstorman-table.htm#WBA-FLEXSTORMAN-ARCHSRVR">Règles de stockage disponibles pour le module OpenText Archive Storage Provider</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14939"></A><A NAME="TMPID16031"></A>OpenText Classifications</P>
+<P CLASS="otModuleHide if-llescls-h-agd-showblock" id="TMPID16034"><A NAME="TMPID16034"></A>Pour plus d'informations, consultez <span><A href="../webadmin/wba-flexstorman-table.htm#WBA-FLEXSTORMAN-CLASS">Règles de stockage disponibles pour le module Classifications</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14945"></A><A NAME="TMPID16037"></A><I CLASS="namestring">Controlled Viewing and Printing</I></P>
+<P CLASS="otModuleHide if-llescvp-h-agd-showblock" id="TMPID16039"><A NAME="TMPID16039"></A>Pour plus d'informations, voir <span><A href="../webadmin/wba-flexstorman-table.htm#WBA-FLEXSTORMAN-CVPRULE-BG">Règles de stockage disponibles pour le module Controlled Viewing and Printing</A></span> et <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/llescvp-h-agd.cvp-storagerule-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/controlledviewing/cvp-storagerule-bg.htm">Configuration d`une règle de stockage AIC</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/llescvp-h-agd.cvp-storagerule-bg" FMT=""></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14951"></A><A NAME="TMPID16043"></A>Enterprise Library</P>
+<P CLASS="otModuleHide if-lleselv-h-agd-showblock" id="TMPID16044"><A NAME="TMPID16044"></A>Pour plus d'informations, consultez <span><A href="../webadmin/wba-flexstorman-table.htm#WBA-FLEXSTORMAN-ENTLIBR">Règles de stockage disponibles pour le module Enterprise Library</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14955"></A><A NAME="TMPID16047"></A>Records management</P>
+<P CLASS="otModuleHide if-llesrcs-h-agd-showblock if-llesrcm-h-agd-showblock" id="TMPID16048"><A NAME="TMPID16048"></A>Pour plus d'informations, consultez <span><A href="../webadmin/wba-flexstorman-table.htm#RMSTORAGERULES">Les règles de stockage disponibles pour les modules Records Management et Security Clearance</A></span>.</P></LI></UL>
+<P><A NAME="TMPID16050"></A>Pour en savoir plus, voir <span><A href="../webadmin/wba-flexstorman-table.htm">Règles de stockage disponibles</A></span> et <span><A href="../webadmin/wba-flexstorman-examples-bg.htm">Exemples montrant comment définir des règles de stockage</A></span>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-flexstorman-table.htm" revision="">Règles de stockage disponibles</A></p></li>
+<li><p><A  href="../webadmin/wba-flexstorman-define-rule-p.htm" revision="">Pour définir une règle de fournisseur de stockage</A></p></li>
+<li><p><A  href="../webadmin/wba-flexstorman-edit-rule-p.htm" revision="">Pour modifier une règle de fournisseur de stockage</A></p></li>
+<li><p><A  href="../webadmin/wba-flexstorman-delete-rule-p.htm" revision="">Pour supprimer une règle de fournisseur de stockage</A></p></li>
+<li><p><A  href="../webadmin/wba-flexstorman-change-order-rules-p.htm" revision="">Pour modifier l'ordre d'une règle de fournisseur de stockage</A></p></li>
+<li><p><A  href="../webadmin/wba-flexstorman-examples-bg.htm" revision="">Exemples montrant comment définir des règles de stockage</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

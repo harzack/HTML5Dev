@@ -1,0 +1,369 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESCL100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="collections">
+<title>Reading a Disk Image Manifest File</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webdoc/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/elsearch/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'cl-indexmap-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Using Collections';
+          header.title2 = 'Reading a Disk Image Manifest File';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1887"></A>When you create a Disk Image, in addition to copying the specified Collection items to disk, Content Server also generates a Disk Image Manifest file. This Disk Image Manifest file provides information specific to the Disk Image creation, which allows you to quickly review details about the Disk Image, the Collection that the items came from, and about each individual item included in the Disk Image.</P>
+<P><A NAME="TMPID1889"></A>The Disk Image Manifest file is named <TT CLASS="filename">MANIFEST.HTM</TT>, and is located at the root of each Disk Image directory. For example, if your Disk Image output location was <TT CLASS="filename">\\server1\filecache\7</TT>, the <TT CLASS="filename">MANIFEST.HTM</TT> file is located in the directory <TT CLASS="filename">\\server1\filecache\7\D1\MANIFEST</TT>.</P>
+<P CLASS="otModuleHide if-llesels-h-ugd-showblock" id="TMPID1894"><A NAME="TMPID1894"></A>If you have OpenText Enterprise Library items and you collected the attributes, you view the property types for OpenText Enterprise Library in the <TT CLASS="filename">MANIFEST.HTM</TT> file. In Content Server, OpenText Enterprise Library property types are implemented as category attributes.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF29">Manifest Summary tab</A></P>
+<P><A NAME="TMPID1904"></A>The <B CLASS="guilabel">Manifest Summary</B> tab has information about the Collection used to create the Disk Image, and some of the key settings used to create them, and consists of several sections.</P>
+<P><A NAME="TMPID1906"></A>The <B CLASS="guilabel">About this Collection</B> section:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1917"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field Name</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Collection Name</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The name and hyperlink to the Collection in Content Server from which the Disk Image was created.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Collection ID</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The Content Server identifier of the Collection. This ID cannot be modified. </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Description</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The description, if entered in Content Server, when the Collection was created.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Created</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The date the Collection was created.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Modified</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The date the Collection was last modified.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Collection Size</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The number of items in the Collection.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Name Filter</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The name of the filter used to select items based on their Content Server object name.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Type Filter</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The type of filter used to select items based on their Content Server object name.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Entire Collection</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The state of the <B CLASS="guilabel">Entire Collection</B> check box on the browse page at the time of Disk Image creation:<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1961"></A><B CLASS="guilabel">Yes</B> – the entire collection, or the entire filtered collection with respect to defined <B CLASS="guilabel">Name Filter</B> and/or the <B CLASS="guilabel">Type Filter</B> values is included</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1966"></A><B CLASS="guilabel">No</B> – the entire Collection is not included</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID1968"></A>Information in the <B CLASS="guilabel">About this Disk Image</B> section:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1979"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field Name</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Notes</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The supplementary information for the consumer of the Disk Image, such as a case number or procedural steps to follow.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Transaction ID</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The unique transaction ID assigned to each Make Disk Image request.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Disk Image Manifest</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The current Disk Image number out of the total number of Disks.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Sort Order</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The sort order selected when the Disk Image was created:<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1997"></A><B CLASS="guilabel">Create Date</B> – date the object was added to Content Server</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2001"></A><B CLASS="guilabel">Data ID</B> – internal Content Server identifier for the object</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2005"></A><B CLASS="guilabel">Created By</B> – user ID of the person creating the object</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2008"></A><B CLASS="guilabel">Owner</B> – user ID of the person who currently owns or manages the object</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2011"></A><B CLASS="guilabel">Name</B> – user modifiable label for the object</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2014"></A><B CLASS="guilabel">Parent Data ID</B> – Content Server identifier for the location in which the object is located, typically a folder</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2017"></A><B CLASS="guilabel">Parent Name</B> – the user modifiable label for the location in which the object is located, typically a folder</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Range Start</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The first object in this Image based on the sort order.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Range End</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The last object in this Image based on the sort order.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Image Created</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The date and time the Disk Image was created.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">File System</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The file name and folder restrictions, based on the file system used for the exported data.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Item Count</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The number of Content Server objects included in the Disk Image. The count may include multiple versions of objects. The number of distinct objects is included in brackets. If more than one image is created from a Collection, a total count will be included in the final image.</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID2040"></A>Information in the <B CLASS="guilabel">Disk Image Settings</B> section:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2051"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field Name</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Metadata Language</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The language used to create the Disk Image.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Include EDRM XML 1.2:</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indicator if a description of the disk image, using the Electronic Discovery Reference Model (EDRM) standard was included.<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF30"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID2060"></A><B CLASS="note">Note: </B><BR>The number of items described in the EDRM may be significantly less than the number of items in the Disk Image. Only versioned objects with content stored in Content Server are represented in an EDRM description. Content Server objects such as folders, Categories, and Classifications and many other object types are not files, and therefore are not included in the EDRM description.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Version Mode</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The versions of objects selected to be exported. Multiple options may be selected, and include:<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2069"></A><B CLASS="guilabel">Collected Versions</B> – the exact versions of objects added to the Collection.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2072"></A><B CLASS="guilabel">All Versions</B> – every available version of an object, regardless of the Collected version.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2075"></A><B CLASS="guilabel">Current Version</B> – the most current versions of the objects.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2078"></A><B CLASS="guilabel">Latest Major Version</B> – the latest Major version of Content Server objects. If there are no Major versions, then the current Minor version is exported. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="lleswbd-h-ugd.wd-versions-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/webdoc/wd-versions-bg.htm">Working with Versions</A><XPROC NAME="ExtXrefEnd" HREF="lleswbd-h-ugd.wd-versions-bg" FMT=""></span>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID2082"></A>Information in the <B CLASS="guilabel">Chain of Custody Notes</B> section:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2093"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field Name</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP"><B CLASS="guilabel">Environment</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Software</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The product and version number information for your Content Server installation.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Licensed to</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The customer name of your organization as entered in your Content Server license key.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Collection Owner</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The Content Server user ID of the owner of the Collection being exported.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Disk Image Initiator</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The Content Server user ID of the person who created the Disk Image.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP"><B CLASS="guilabel">Collection Creation</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">First item Collected</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The date and time of the first ‘add to Collection’ operation for objects in this Image, using the format <I CLASS="emphasis">MM/DD/YYYY HH:MM</I>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Last item Collected</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The date and time of the last ‘add to Collection’ operation for objects in this Image.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Uncollectable search results</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The number of Search Results objects that could not be included in this Collection. This may happen if items are removed from Content Server and the collection operation occurs before the search index has been updated.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP"><B CLASS="guilabel">Completeness</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Discovery rights enabled</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indicator if eDiscovery Mode was used by the <B CLASS="guilabel">Disk Image Initiator</B>. This mode enables the person who created the Disk Image to ‘see’ and access all objects for Search, Collection and Browse operations.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Removed from Collection</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The number of objects removed from the Collection before the Disk Image was created. If all objects are removed from a Collection, this value is reset to <TT CLASS="literal">0</TT>. All versions of an object must be removed from the Collection for an object to be considered removed. This count is based on Collection Audit entries for the entire Collection, not just this Disk Image. If Collection auditing is disabled or if the audit history was purged, this count will display <TT CLASS="literal">Not Applicable</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Deleted Objects</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The number of objects in Content Server referenced by the Collection that were deleted between the time the object was Collected, and the time the Disk Image was created. Objects must be fully purged before being counted as deleted.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This data is based on Content Server audit records for the entire Collection, not just this Disk Image. If the audit settings were not enabled, this field will display <TT CLASS="literal">Not Applicable</TT>. For more information, see <span><A HREF="cl-auditrecord-bg.htm">Reviewing the Collection Items Audit</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Failed Output Items</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The total number of Collection objects that were not exported for this Disk Image because objects could not be retrieved from Content Server and written to disk. When multiple versions fail for a single object, this count will display <TT CLASS="literal">1</TT>. If an object cannot be retrieved from Content Server and written to disk, this results in an object export failure. The total number of objects with failures for this Disk Image is recorded here. Multiple versions failing for a single object counts as <TT CLASS="literal">1</TT>, and are identified with the error message: <TT CLASS="literal">Unable to save the file</TT>. If multiple images are created, the final image will also contain a total count of failures in all Images.</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID2166"></A>Information in the <B CLASS="guilabel">Collection Categories</B> section:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2177"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field Name</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">The Content Server Categories and Attributes (custom metadata) attached to the Collection, if they exist.</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF31">Disk Image Contents tab</A></P>
+<P><A NAME="TMPID2181"></A>The <B CLASS="guilabel">Disk Image Contents</B> tab contains detailed information about each object included in the Disk Image. As a convenience, checkboxes under the tab header will hide or show various sections with details for all objects.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2192"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field Name</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP"><B CLASS="guilabel">General</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Name</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The Content Server name of the object. Often, it is the name of the file or the subject line of an email message, although any item may have an arbitrary name.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Image Directory</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The file name and path to the object as saved in the Disk Image.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Created</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The time the object was added to Content Server.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Modified</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The time the object was last modified in Content Server, such as a new version being added. In some cases, changes to metadata about the object may also change the Modified time.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Size</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The approximate size of the object as saved on disk.  Rounded to KB or MB as appropriate.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Type</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The Content Server “subtype”. There are hundreds of possible subtypes in Content Server, such as documents, folders, search forms, task lists, or email volumes. Usually, files stored in Content Server such as text, spreadsheets, presentations, faxes or PDF files are of the “document” subtype. The numeric value of the subtype as used by Content Server is included in brackets.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Created By</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The Content Server user ID of the person who added the object to Content Server. This may be different from the user who currently owns the object, or who last modified the object. For automated processes, such as journaling email, this field does not indicate that a user explicitly added the object to Content Server.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Content Server Location</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The Content Server location of the object at the time the Disk Image was created.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Collected Versions</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The versions of the object in the Collection from which the Disk Image was created. Based on version export options, the versions in the Disk Image are not always identical to the collected versions.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Description</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">An optional field in Content Server where users can enter descriptions of objects. It is common for this field to be empty.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP"><B CLASS="guilabel">Categories</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">The Content Server Categories and Attributes (custom metadata) for each object contained in the Collection which exists in this particular disk image. Click <B CLASS="guilabel">Show</B> to display the metadata.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Versions</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">The exported versions of objects in the Collection, if they exist. Objects marked in red were not exported, so they have an error message, a File Name link to the object in the disk image, and an optional Description for each version. Click <B CLASS="guilabel">Show</B> to display the versions. For more information, see <span><A HREF="cl-workitems-bg.htm#CL-COLLECTFRMSR-BG">Collecting Items from the Search Results Page</A></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Additional Files</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">The supplemental files included in Content Server as part of an object’s definition, if they exist. Click <B CLASS="guilabel">Show</B> to display the files.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP"><B CLASS="guilabel">Audit Records</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The audit records detail the material events that created or modified the Collection. Audit records are only included in the first Disk Image of a set. Click <B CLASS="guilabel">Show</B> to display the records.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF32">Search Queries tab</A></P>
+<P><A NAME="TMPID2279"></A>The <B CLASS="guilabel">Search Queries</B> tab contains information about the search query used to create the Collection being exported to this Disk Image. This tab is only available when the <B CLASS="guilabel">Collect All Search Results</B> button is used after a search query to create a Collection. For details, see <span><A HREF="cl-workitems-bg.htm#CL-COLLECTFRMSR-BG">Collecting Items from the Search Results Page</A></span>. The collected items are also available on the <B CLASS="guilabel">Collection Items Audit</B> tab of the Collection’s <B CLASS="guilabel">Properties</B> page. For details, see <span><A HREF="cl-toreviewaudit-p.htm">To View the Collection Items Audit</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF33"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID2287"></A><B CLASS="note">Note: </B><BR>Detailed user and search query information is disabled by default due to potential privacy issues that may exist in some countries.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2297"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field Name</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Date</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The date and time this Disk Image was created, using the format <I CLASS="emphasis">MM/DD/YYYY HH:MM</I>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">User</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The Content Server user ID of the person who created the Disk Image.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Search Manager</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The Content Server ID of the Search Manager used to create the Disk Image.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Items Collected</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The number of items collected and exported in this Disk Image.<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF34"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID2317"></A><B CLASS="note">Note: </B><BR>The number of items described in the EDRM may be significantly less than the number of items in the Disk Image. Only proper files stored in Content Server are represented in an EDRM description. Content Server objects such as folders, messages, wiki entries and many other object types are not files, and therefore are not included in the EDRM description.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">eDiscovery Mode</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The indicator if the <B CLASS="guilabel">Disk Image Initiator</B> used eDiscovery Mode, which enables them to ‘see’ and access all objects for Search, Collection and Browse operations.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Search Query</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The entire <TT CLASS="literal">WHERE</TT> clause used in the search query to create the Collection exported to this Disk Image, for example, <TT CLASS="literal">[region "OTCurrentVersion"] != "FALSE" AND "report"</TT>.</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF35">Help tab</A></P>
+<P><A NAME="TMPID2332"></A>A generic Help file is included, by default, on the Help tab of the Manifest file when you create a Disk Image. Your Content Server administrator may edit or replace this Help file, if needed. This file is intended to help users of the Manifest file who are not familiar with Content Server, or with specified types of documents or information that has been assembled and copied to a Collection of items on disk.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="cl-toopenmanfile-p.htm" revision="">To Open a Disk Image Manifest File</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

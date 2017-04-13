@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>To Configure Optionally Extracted Workflow Regions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbo-confwrkflwregions-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Defining Index Regions';
+          header.title2 = 'To Configure Optionally Extracted Workflow Regions';
+           header.draw();
+  </script>
+  <A NAME="PROC-CONFWRKFLWREGIONS"></A>
+<DIV title="To configure an optionally extracted Workflow region:" CLASS="procedure">
+<P><B><A NAME="PROC-CONFWRKFLWREGIONS"></A>To configure an optionally extracted Workflow region:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID16187"></A>Open the new sample <TT CLASS="filename">LLFieldDefinitions.txt</TT> file in the <TT CLASS="literal">Content Server_home\config\reference</TT> directory in a text editor, and search for <TT CLASS="literal">workflow</TT> to see which Workflow regions are being indexed.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID16193"></A>Search for the <TT CLASS="literal">Content Server Workflow</TT> section to see which Workflow regions are marked <TT CLASS="literal">DROP</TT> or <TT CLASS="literal">REMOVE</TT>, and are not being indexed.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID16199"></A>Open your active <TT CLASS="filename">LLFieldDefinitions.txt</TT> file in the <TT CLASS="literal">Content Server_home\config</TT> directory in a text editor.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID16204"></A>In the <TT CLASS="literal">Content Server Workflow</TT> section of your active <TT CLASS="filename">LLFieldDefinitions.txt</TT> file, type <TT CLASS="literal">#</TT> at the start of a region you want to be indexed, if the line begins with <TT CLASS="literal">DROP</TT> or <TT CLASS="literal">REMOVE</TT>.</P>
+<P><A NAME="TMPID16211"></A>The <TT CLASS="literal">#</TT> comments out the Index Engine directive to discard the region.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID16214"></A>Save and close your active <TT CLASS="filename">LLFieldDefinitions.txt</TT> file in the <TT CLASS="literal">Content Server_home\config</TT> directory.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID16219"></A>Reconstruct the index. For information about reconstructing the index, see <span><A href="../otadmin/ota-lldsmtres-rf.htm">Data Source Maintenance Results</A></span>.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

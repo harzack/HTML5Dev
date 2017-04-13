@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Création de l'index Entreprise</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-nwupetix-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Création des index à l\'aide de modèles';
+          header.title2 = 'Création de l\'index Entreprise';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID105"></A>L'index Entreprise est un index de toutes les données stockées dans la base de données Content Server. Dans des circonstances normales, l'index Entreprise est automatiquement créé lors de l'installation de Content Server. A ce moment, les processus qui génèrent l'index Entreprise et assurent sa mise à jour sont initialisés. Pendant l'installation et la configuration initiale de Content Server, la page Créer une nouvelle source de données Entreprise apparaît automatiquement et vous invite à créer l'index Entreprise. Si l'index Entreprise n'est pas créé au moment de l'installation ou s'il a été supprimé par la suite, vous pouvez le générer automatiquement en sélectionnant <B CLASS="guilabel">Source de données Entreprise</B> dans le menu <B CLASS="guilabel">Ajouter un élément</B> de la page Administration système. Dans ce cas, Content Server génère tous les objets système requis pour créer l'index Entreprise en une seule étape. Cependant, si vous voulez créer les objets système de l'index Entreprise individuellement, vous pouvez ajouter un flux de données. Pour plus d'informations, reportez-vous à la rubrique <A href="../websystemobj/wbs-addanyprocs-bg.htm">Ajout de processus de flux de données</A>.</P>
+<P><A NAME="TMPID113"></A>Un flux de données Entreprise contient un ou plusieurs processus Extracteur, un ou plusieurs processus de conversion de documents et un processus du distributeur de mise à jour. Un processus Extracteur effectue un contrôle continu de la base de données Content Server pour déterminer si de nouvelles informations ont été ajoutées, modifiées ou supprimées. Il ordonne ensuite au serveur d'envoyer les ajouts, les modifications et les suppressions à un IPool. Un processus Conversion de documents lit à partir de cet IPool, convertit les nouvelles données et les données modifiées au format HTML ou texte brut, puis écrit les données converties et les notifications de suppression dans un autre IPool. Le processus Distributeur de mise à jour lit les données à partir de cet IPool, les transmet aux processus Moteur d'indexation qu'il gère et met l'index Entreprise à jour. Le distributeur de mise à jour et les moteurs d'indexation sont aussi des processus d'un système d'indexation et de recherche. </P>
+<P><A NAME="TMPID115"></A>Un seul processus Extracteur étant habituellement requis pour extraire des données de la base de données Content Server, et un seul processus Conversion de documents étant habituellement requis pour convertir les données au format HTML ou texte brut, OpenText vous recommande de ne prévoir qu'un seul processus Extracteur et un seul processus Conversion de documents pour chaque système Content Server, sauf si les services généraux ou le service d'assistance clientèle d'OpenText vous recommande l'ajout de plusieurs processus dans le cadre d'une stratégie d'indexation de gros volumes. Pour plus d'informations sur l'indexation de gros volumes, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-sthghvol-so.htm">Configuration de l'indexation de gros volumes</A></span>.</P>
+<P><A NAME="TMPID121"></A>L'index Entreprise est mis à jour par incréments pour refléter les modifications les plus récentes apportées à la base de données Content Server. Cela permet de garantir la mise à jour systématique des résultats de recherche reçus par les utilisateurs Content Server.</P>
+<P><A NAME="TMPID124"></A>Il existe deux scénarios classiques de création pour l'index Entreprise : pendant l'installation et la configuration de Content Server ou une fois l'installation et la configuration terminées.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF0">Création d'un index Entreprise au cours de l'installation</A></P>
+<P class="before-ul"><A NAME="TMPID127"></A>Les conditions suivantes doivent être remplies :</P><A NAME="AEN139"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN140"></A><A NAME="TMPID130"></A>La page Créer une nouvelle source de données Entreprise est affichée dans votre navigateur Web. Elle fait partie de l'installation et de la configuration de Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN143"></A><A NAME="TMPID133"></A>Si vous voulez créer l'index Entreprise sur un hôte Content Server secondaire, vous avez déjà installé et enregistré cet hôte. Pour plus d'informations, consultez la section <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/llescor-igd.srcid68675-chapter1" FMT="" NO1ST><i>OpenText Content Server - Installation Guide (LLESCOR-IGD)</i><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/llescor-igd.srcid68675-chapter1" FMT=""></span>.</P></LI></UL>
+<P><A NAME="TMPID136"></A>S'il s'agit d'une installation Content Server principale sur un hôte où il en existe déjà d'autres, assurez-vous que les serveurs et les processus de flux de données correspondant à ces installations existantes sont en cours d'exécution avant de créer les processus de flux de données de cet index Entreprise. Cela permet à Content Server de détecter automatiquement les numéros de port déjà utilisés. Si vous voulez créer l'index Entreprise sur un hôte Content Server distant, configurez le serveur d'administration sur cet hôte avant de configurer le processus Extracteur.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF1">Création d'un index Entreprise après l'installation</A></P>
+<P><A NAME="TMPID141"></A>Vous pouvez créer un index Entreprise après l'installation si l'index Entreprise d'origine a été supprimé ou si vous n'avez pas créé d'index Entreprise lors de l'installation. L'index ainsi créé inclut un processus Extracteur, un processus de conversion de documents et un processus du distributeur de mise à jour.</P>
+<P><A NAME="TMPID142"></A>Un seul index Entreprise avec l'ensemble des processus standard étant habituellement requis pour extraire des données de la base de données Content Server, OpenText vous recommande de ne prévoir qu'un seul index pour chaque système Content Server, sauf si les services généraux ou le service d'assistance clientèle d'OpenText recommande l'ajout de plusieurs index ou processus dans le cadre d'une stratégie d'indexation de gros volumes. Pour plus d'informations sur l'indexation de gros volumes, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-sthghvol-so.htm">Configuration de l'indexation de gros volumes</A></span>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-enterindxdurinst-p.htm" revision="">Pour créer l'index Entreprise au cours de l'installation</A></p></li>
+<li><p><A  href="../websystemobj/wbs-enterindxaftinst-p.htm" revision="">Pour créer l'index Entreprise après l'installation</A></p></li>
+<li><p><A  href="../websystemobj/wbs-browsysv-p.htm" revision="">Pour accéder au volume des objets système</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

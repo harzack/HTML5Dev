@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Configuration des serveurs d'administration</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-settinguplladminserver-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Création des index à l\'aide de modèles';
+          header.title2 = 'Configuration des serveurs d\'administration';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1049"></A>La configuration de vos serveurs d'administration dépend de la configuration des ordinateurs utilisés pour exécuter votre site Content Server. Si vous exécutez Content Server dans un environnement de clusters (c'est-à-dire dans un environnement où Content Server est installé sur plusieurs ordinateurs, ce qui permet de répartir différentes opérations Content Server sur plusieurs ordinateurs), vous devez désigner un serveur d'administration par défaut, puis enregistrer avec lui tous les serveurs d'administration distants. Si vous n'exécutez pas Content Server dans un environnement de clusters, vous disposez d'un seul serveur d'administration, qui est automatiquement désigné comme le serveur par défaut.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF27">Configuration d'un serveur d'administration par défaut</A></P>
+<P><A NAME="TMPID1056"></A>Si vous exécutez Content Server dans un environnement de clusters et que vous avez donc plusieurs serveurs d'administration, vous devez en désigner un comme serveur par défaut. Le serveur d'administration par défaut communique avec tous les autres serveurs d'administration du site et s'appelle en règle générale <B CLASS="guilabel">Default</B>. Il est également considéré comme le serveur d'administration par défaut pour tous les processus de flux de données et les moteurs de recherche que vous créez dans Content Server. Si le serveur d'administration par défaut réside sur un hôte distant, vous devez vous assurer que le serveur et le serveur d'administration fonctionnent correctement sur cet hôte.</P>
+<P><A NAME="TMPID1060"></A>Si vous sélectionnez une base de données Content Server existante pour la connecter à une installation Content Server, le nom d'hôte, le numéro de port ou le mot de passe enregistré pour le serveur d'administration par défaut dans cette base de données peuvent ne pas correspondre à ceux du serveur d'administration par défaut de l'installation. Dans ce cas, Content Server vous invite à spécifier le nom d'hôte, le numéro de port ou le mot de passe correct pour le serveur d'administration que vous voulez désigner comme serveur par défaut.</P>
+<P><A NAME="TMPID1064"></A>Vous pouvez fournir des <B CLASS="guilabel">Plages de port</B> afin de spécifier une plage de ports utilisés lors de la création automatique de processus, tels que ceux résultant de l'exécution de règles de contrôle et de la création automatique de partitions. Cette plage se limite uniquement à cette instance du serveur d'administration et vous permet de définir diverses plages lorsque plusieurs serveurs d'administration sont configurés. Vous pouvez modifier les ports assignés aux objets. Aucune autre vérification de plage n'est effectuée.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF28">Enregistrement avec le serveur d'administration par défaut</A></P>
+<P><A NAME="TMPID1067"></A>Lorsque vous avez désigné un serveur d'administration par défaut, vous devez enregistrer avec lui tous les autres serveurs d'administration. L'enregistrement fournit le numéro de port et le mot de passe au serveur de l'ordinateur sur lequel s'exécute le serveur d'administration par défaut. Le serveur a besoin de ces informations pour se connecter au serveur d'administration distant. Pour effectuer un enregistrement avec le serveur d'administration par défaut, un serveur d'administration distant doit être en cours d'exécution.</P>
+<P><A NAME="TMPID1068"></A>Si vous ne voulez plus utiliser de serveur d'administration distant pour gérer les processus de flux de données ou les moteurs de recherche, vous devez supprimer l'enregistrement. Si le serveur d'administration dont vous voulez supprimer l'enregistrement gère actuellement des processus de flux de données ou des moteurs de recherche, vous devez les déplacer vers un autre hôte avant de supprimer l'enregistrement. Pour en savoir plus, voir <span><A href="../websystemobj/wbs-movedflw-bg.htm">Pour déplacer des composants de flux de données</A></span>. Cependant, si un index réside sur l'ordinateur hôte Content Server du serveur d'administration dont vous voulez supprimer l'enregistrement, vous pouvez soit laisser l'index à son emplacement (vous n'avez pas besoin de changer son chemin pour qu'il corresponde à l'emplacement où il est mappé ou monté sur le serveur d'administration de remplacement), soit le déplacer. Pour en savoir plus, voir <span><A href="../webotcindex/wbo-moveindx-bg.htm">Déplacement des index</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF29"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes : </B></P><A NAME="AEN1082"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1083"></A><A NAME="TMPID1075"></A>Si vous installez un serveur d'administration distant sur un système d'exploitation Microsoft Windows, vous devez configurer le serveur d'administration pour qu'il s'exécute comme un utilisateur Windows spécifique, puis utiliser les mêmes nom d'utilisateur et mot de passe Windows pour exécuter les serveurs d'administration sur tous les autres hôtes.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1085"></A><A NAME="TMPID1077"></A>Si vous installez un serveur d'administration distant sous UNIX, ne configurez pas le serveur d'administration pour qu'il s'exécute comme utilisateur <TT CLASS="literal">racine</TT>. Sous UNIX, le serveur d'administration s'exécute comme l'utilisateur s'étant connecté. Utilisez ensuite les mêmes nom d'utilisateur et mot de passe UNIX pour exécuter les serveurs d'administration sur tous les autres hôtes.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF30">Activation de la mémoire cache de fichier du serveur d'administration</A></P>
+<P><A NAME="TMPID1080"></A>La mémoire cache de fichier du serveur d'administration est un dossier de stockage géré par un serveur d'administration. Cette mémoire cache de fichier fournit un système de mémoire cache de fichier qui permet d'améliorer l'efficacité de certaines opérations Content Server, telles que la mise en évidence des résultats. Pour plus d'informations sur l'activation et la configuration de la mémoire cache de fichier, reportez-vous à la rubrique <span><A href="../otadmin/ota-settingupfilecache-rf.htm">Configuration de la mémoire cache de fichier du serveur d'administration</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF31">Activation du service de conversion de documents</A></P>
+<P><A NAME="TMPID1084"></A>Un serveur d'administration gère également un service de conversion de documents (DCS), un processus qui convertit des documents au format HTML ou texte pour que les utilisateurs puissent les afficher ou mettre en évidence les résultats. Pour plus d'informations sur l'activation et la configuration du DCS, reportez-vous à la rubrique <span><A href="../otadmin/ota-settingupdcs-bg.htm">Configuration du service de conversion de documents</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

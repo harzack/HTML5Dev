@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-EN-1">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Understanding Interchange Messages</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-understandmessages-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Getting Started with XML Workflow Interchange';
+          header.title2 = 'Understanding Interchange Messages';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID112"></A>All messages sent or received by XML Workflow Interchange consist of either XML or HTML form data (MIME type multipart/form-data) transferred using the HTTP protocol. When a message is sent by a Workflow Interchange task, it can include data from Forms, Comments, Attachments, and Attributes work packages associated with the task. The recipient of a message returns a status indication and, optionally, new values for some of or all the data.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF0"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID115"></A><B CLASS="NOTE">Note: </B><BR>Comments from the source map cannot be seen in a remotely initiated Workflow.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID116"></A>The type of data that can be transferred in a message and reply depends on the type of interchange event occurring. </P>
+<P class="before-ul"><A NAME="TMPID117"></A>During an <B CLASS="HIGHLIGHT">Initiation Event</B>, the following information can be exchanged:</P><A NAME="AEN117"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN118"></A><A NAME="TMPID121"></A>Source task information (message only), including the URL used to send task edit messages back to the source task.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN120"></A><A NAME="TMPID123"></A>New process information (reply only), including the URL used to check the status of the process that was created.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN122"></A><A NAME="TMPID125"></A>Task status information (reply only). The reply can set the task status to <B CLASS="GUILABEL">Done</B> to complete the source task without sending a task edit message.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN125"></A><A NAME="TMPID128"></A>Comments (message and reply).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN127"></A><A NAME="TMPID130"></A>Workflow Attributes (message and reply).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN129"></A><A NAME="TMPID132"></A>Workflow Forms (message and reply).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN131"></A><A NAME="TMPID134"></A>Workflow Attachments (message only).</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID135"></A>During a <B CLASS="HIGHLIGHT">Task Edit Event</B>, the following information can be exchanged:</P><A NAME="AEN135"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN136"></A><A NAME="TMPID139"></A>Task status information (message only). The message can set the task status to <B CLASS="GUILABEL">Done</B> to complete it.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN139"></A><A NAME="TMPID142"></A>Comments (message and reply).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN141"></A><A NAME="TMPID144"></A>Workflow Attributes (message and reply).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN143"></A><A NAME="TMPID146"></A>Workflow Forms (message and reply).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN145"></A><A NAME="TMPID148"></A>Workflow Attachments (message only).</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID149"></A>XML and HTML form data messages and replies carry approximately the same information, and each format can be customized in the Workflow Designer. Choosing a format depends on the needs of your application. When choosing a format, consider the following:</P><A NAME="AEN148"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN149"></A><A NAME="TMPID152"></A>HTML form data is easiest to process in technologies traditionally used to interact with HTML forms, such as servlets, CGI applications, and .asp pages.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN151"></A><A NAME="TMPID154"></A>Documents attached to a Workflow can only be sent in HTML format messages. The XML format includes only the attachment folder ID.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN153"></A><A NAME="TMPID156"></A>The Content Server Workflow Designer lets you customize simple HTML form data message formats. For example, you can change the names of the form fields used to transfer each data item.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN156"></A><A NAME="TMPID159"></A>XML message formats are more likely to be compatible with current and future versions of XML Workflow Interchange.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN159"></A><A NAME="TMPID162"></A>XML messages can contain information about the range of values that can be entered in attributes and forms.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN161"></A><A NAME="TMPID164"></A>When completing attributes and forms, XML messages let you control which fields are inherited from the previous versions.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN163"></A><A NAME="TMPID166"></A>XML messages can delete the existing values of an attribute.</P></LI></UL>
+<P><A NAME="TMPID167"></A>OpenText recommends using the default XML messages for connecting Content Server Workflows and HTML form data to send initiation messages to custom Java Servlets and CGI applications.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

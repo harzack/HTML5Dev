@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Fonctionnalité glisser-déposer</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-draganddrop-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'Fonctionnalité glisser-déposer';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID14220"></A>La possibilité d'utiliser la fonctionnalité glisser-déposer est désormais incluse dans WebReports et ActiveView. La principale fonctionnalité glisser-déposer est la possibilité d'appeler un affichage de rapport WebReport à partir d'un autre WebReport, ce qui active le glisser-déposer pour le recueil parent pour le lancement du WebReport. </P>
+<P><A NAME="TMPID14221"></A>L'intégration de la fonctionnalité glisser-déposer dans WebReports et ActiveView comporte deux étapes principales. La première étape consiste à ajouter un nouvel onglet permettant à l'utilisateur de passer en mode glisser-déposer pour le recueil et la seconde nécessite un WebReport pouvant être affiché qui contient la véritable fonctionnalité glisser-déposer. La réalisation de ces deux étapes est simple, mais diffère légèrement entre WebReports et ActiveView. </P>
+<DIV title="Etape 1 : le principal affichage de rapport de la fonctionnalité glisser-déposer" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-DADFUNCREP-EX"></A><B><IMG title="Etape 1 : le principal affichage de rapport de la fonctionnalité glisser-déposer" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 1-15 : Etape 1 : le principal affichage de rapport de la fonctionnalité glisser-déposer</B></P>
+<P class="nr1"><A NAME="TMPID14224"></A>La première étape de l'intégration de la fonctionnalité glisser-déposer dans WebReports et ActiveView consiste à créer un WebReport en utilisant l'un des principaux exemples d'affichage de rapport glisser-déposer. Il en existe quatre qui diffèrent en fonction de la version de Livelink (9.7.1 ou versions précédentes) et du produit (WebReports ou ActiveView). Vous trouverez ci-dessous un tableau présentant le fichier par défaut à utiliser en fonction de votre configuration. </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN13495"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight"></B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Livelink 9.7.1 (WebDAV 3.6.0)</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Livelink 9.6 - 9.7 (WebDAV 3.5.x)</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Affichage de rapport par défaut</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">draganddrop_view_webdav35x</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">draganddrop_view_webdav360</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P><IMG title="Etape 1 : le principal affichage de rapport de la fonctionnalité glisser-déposer" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Etape 2 : démonstration d'un exemple de code pour WebReports pour appeler le principal affichage de rapport glisser-déposer" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-DADCRFUNCREP-EX"></A><B><IMG title="Etape 2 : démonstration d'un exemple de code pour WebReports pour appeler le principal affichage de rapport glisser-déposer" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 1-16 : Etape 2 : démonstration d'un exemple de code pour WebReports pour appeler le principal affichage de rapport glisser-déposer</B></P>
+<P class="nr1"><A NAME="TMPID14252"></A>Les trois blocs de code suivants sont un exemple de la manière dont on peut ajouter la fonctionnalité glisser-déposer à tout WebReport. Dans ce cas, ajouter ce code à un WebReport de type navigateur fera apparaître un nouvel onglet en haut du WebReport permettant de passer à la vue glisser-déposer en un clic. </P>
+<P><A NAME="TMPID14253"></A>Vérifiez que glisser-déposer a été précisé :</P><A NAME="AEN13524"></A>
+<PRE 
+CLASS="screen"
+>[// Test to see if we have a drag and drop view set
+[LL_WEBREPORT_IF "[LL_REPTAG_$D&amp;DVIEW /]" &lt;&gt; "[LL_REPTAG_$undefined /]" /]
+       [LL_REPTAG_$D&amp;DVIEW SETVAR:DRAGDROP /]
+[LL_WEBREPORT_ELSE /]
+       [// No constant, just use a blank string
+       [LL_REPTAG_'' SETVAR:DRAGDROP /]
+[LL_WEBREPORT_ENDIF /]</PRE
+>
+<P><A NAME="TMPID14255"></A>Ajoutez la fonction Javascript pour passer en glisser-déposer quand elle est appelée :</P><A NAME="AEN13526"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_IF "" &lt;&gt; "[LL_REPTAG_%DRAGDROP CURRENTVAL /]" /]
+function goToDragAndDrop() {
+       document.location = '[LL_REPTAG_$D&amp;DVIEW LLURL:DEFAULTHREF /]';
+}
+[LL_WEBREPORT_ENDIF /]</PRE
+>
+<P><A NAME="TMPID14257"></A>Ajoutez l'interface utilisateur permettant de sélectionner glisser-déposer (dans ce cas un onglet) :</P><A NAME="AEN13528"></A>
+<PRE 
+CLASS="screen"
+>[// Check to see if a Drag and Drop reportview has been specified
+[LL_WEBREPORT_IF "" &lt;&gt; "[LL_REPTAG_%DRAGDROP CURRENTVAL /]" /]
+&lt;TD WIDTH="100%"&gt;
+&lt;TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0"&gt;
+&lt;TR&gt;
+&lt;TD class="selectedTab" NOWRAP ALIGN="RIGHT" VALIGN=TOP BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tab-active.gif"&gt;&lt;NOBR&gt;&lt;IMG SRC="[LL_REPTAG_SUPPORTDIR /]tableftup-active-0.gif" ALT="" WIDTH="5" HEIGHT="31" BORDER="0"&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD NOWRAP VALIGN="MIDDLE" NOWRAP class="selectedTab"  WIDTH="80" BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tab-active.gif"&gt;&lt;NOBR&gt;  Browse  &lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD class="selectedTab" NOWRAP ALIGN="RIGHT" VALIGN=TOP BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tab-active.gif" BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tab-inactive.gif"&gt;&lt;NOBR&gt;&lt;IMG SRC="[LL_REPTAG_SUPPORTDIR /]tabrightup-active.gif" WIDTH="10" HEIGHT="31" BORDER="0" ALT=""&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD class="unselectedTab" NOWRAP ALIGN="LEFT" VALIGN=TOP&gt;&lt;NOBR&gt;&lt;IMG SRC="[LL_REPTAG_SUPPORTDIR /]tableftup-inactive.gif" ALT="" WIDTH="5" HEIGHT="31" BORDER="0"&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD NOWRAP class="unselectedTab" WIDTH="80" BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tab-inactive.gif"&gt;&lt;NOBR&gt;&lt;A HREF="javascript:goToDragAndDrop();"&gt;Drag &amp; Drop&lt;/A&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD class="unselectedTab" NOWRAP ALIGN="RIGHT" VALIGN=TOP BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tab-inactive.gif"&gt;&lt;NOBR&gt;&lt;IMG SRC="[LL_REPTAG_SUPPORTDIR /]tabrightup-inactive.gif" WIDTH="10" HEIGHT="31" BORDER="0" ALT=""&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD ALIGN="RIGHT" BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tabrightline.gif" WIDTH="100%"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/TD&gt;
+[LL_WEBREPORT_ENDIF /]</PRE
+><IMG title="Etape 2 : démonstration d'un exemple de code pour WebReports pour appeler le principal affichage de rapport glisser-déposer" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

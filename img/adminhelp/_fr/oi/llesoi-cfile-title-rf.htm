@@ -1,0 +1,155 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle de la balise title</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-title-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Descriptions et syntaxe des balises Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle de la balise title';
+           header.draw();
+  </script>
+
+<table CLASS="caution">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="caution" ALIGN="CENTER"><IMG ALT="Attention" SRC="../../images/pi_caution.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID4149"></A><B CLASS="caution">Attention</B><BR>Le caractère deux-points, « : », ne peut pas être utilisé dans un titre car les deux-points servent à délimiter les éléments de chemin d'accès.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TITTAG01">Description</A></P>
+<P class="nr1"><A NAME="TMPID4153"></A>La balise <TT CLASS="literal">title</TT> permet d'appliquer un titre à un objet. Content Server autorise l'utilisation de plusieurs balises <TT CLASS="literal">title</TT> pour un même objet afin de créer plusieurs titres, dans plusieurs langues, pour cet objet.  </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TITTAG02">Syntaxe</A></P><A NAME="AEN3961"></A>
+<PRE 
+CLASS="screen"
+>&lt;title language="en"&gt;Moving Pictures&lt;/title&gt;</PRE
+><A NAME="AEN3962"></A>
+<PRE 
+CLASS="screen"
+>&lt;title clear="true" language="en"&gt;&lt;/title&gt;</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TITTAG03">Utilisation</A></P>
+<A NAME="AEN3964"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3965"></A><A NAME="TMPID4169"></A>La balise <TT CLASS="literal">title</TT> est obligatoire dans le cas suivant :</P><A NAME="AEN3968"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3969"></A><A NAME="TMPID4173"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="create"&gt;</TT></P></LI></UL>
+<P><A NAME="TMPID4177"></A>La seule exception à cette règle concerne <TT CLASS="literal">type="document"</TT>. Consultez la section <I CLASS="emphasis">Notes</I> ci-dessous pour plus d'informations.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3977"></A><A NAME="TMPID4181"></A>La balise <TT CLASS="literal">title</TT> peut être obligatoire ou facultative, selon le paramétrage de la case à cocher « Ajouter un titre à l'emplacement » dans l'importateur d'objet, lorsque :</P><A NAME="AEN3981"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3982"></A><A NAME="TMPID4186"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3987"></A><A NAME="TMPID4191"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="delete"&gt;</TT></P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3992"></A><A NAME="TMPID4196"></A>La section « Notes » ci-dessous fournit des informations complémentaires sur les conditions associées au paramètre « Ajouter un titre à l'emplacement » . Pour plus d'informations sur la configuration de la case à cocher « Ajouter un titre à l'emplacement », consultez la section <span><A HREF="llesoi-cfg-p.htm">Configurer l'importateur d'objet</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3998"></A><A NAME="TMPID4202"></A>La création, mise à jour ou suppression d'un titre peut nécessiter la balise <span><A HREF="llesoi-cfile-title-rf.htm#LANGTAG02">Attribut language</A></span>, décrite ci-dessous.</P></LI></OL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TITTAG04">Notes</A></P>
+<A NAME="AEN4002"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4003"></A><A NAME="TMPID4208"></A>Lors d'une opération <TT CLASS="literal">action="create"</TT>, la balise <TT CLASS="literal">title</TT> est obligatoire pour tous les types d'objet sauf les documents. <TT CLASS="literal">type="document</TT>. Si votre importation utilise <TT CLASS="literal">&lt;node type="document action="create"</TT> sans aucun titre spécifié, le nom du document sera utilisé. Par exemple, si la balise <TT CLASS="literal">&lt;title language="en"&gt;&lt;/title&gt;</TT> n'est pas utilisée lors de l'importation du document <TT CLASS="filename">&lt;file&gt;c:/temp/import_dir/readme.txt&lt;/file&gt;</TT>, Content Server utilise « readme.txt » en tant que nom de l'objet et nom de fichier de la version. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4013"></A><A NAME="TMPID4218"></A>Lors d'une opération <TT CLASS="literal">action="update"</TT> ou <TT CLASS="literal">action="delete"</TT>, cette balise est obligatoire et doit contenir le nom de l'objet, si la case <B CLASS="guilabel">Ajouter un titre à l'emplacement</B> est cochée. Si la case <B CLASS="guilabel">Ajouter un titre à l'emplacement</B> est décochée, cette balise peut, de façon facultative, être utilisée pour renommer un objet lors d'une mise à jour.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4019"></A><A NAME="TMPID4224"></A>Pour effacer la valeur de la balise <TT CLASS="literal">title</TT>, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4023"></A><A NAME="TMPID4228"></A>Si un titre n'existe pas dans une langue activée dans le système vers lequel vous effectuez l'importation, l'attribut <TT CLASS="literal">clear="true"</TT> sera utilisé pour supprimer le titre dans cette langue. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4026"></A><A NAME="TMPID4231"></A>Si deux balises title (ou plus) possèdent le même attribut de langue au sein du même paragraphe de nœud, aucune erreur ne sera générée. L'importateur d'objet définira le titre à l'aide de la valeur contenue dans la dernière balise <TT CLASS="literal">&lt;title&gt;</TT> avec cet attribut de langue.</P></LI></OL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TITTAG05">Exemple</A></P>
+<P><A NAME="TMPID4235"></A>Pour supprimer un document nommé « My Guide » dans le dossier « Documents » , avec un titre répertorié pour l'anglais et un titre répertorié pour le français :</P><A NAME="AEN4033"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;My Guide&lt;/title&gt;
+    &lt;title language="fr"&gt;Mon Guide&lt;/title&gt;
+    &lt;file&gt;c:\temp\my_guide.doc&lt;\file&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P><A NAME="TMPID4239"></A>Pour consulter d'autres exemples de balises <TT CLASS="literal">title</TT>, consultez la section <span><A HREF="llesoi-cfile-titlsamp-rf.htm">Exemples de fichier de contrôle d'importation de titres</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LANGTAG02">Attribut language</A></P>
+<P><A NAME="TMPID4244"></A>Use the <TT CLASS="literal">language</TT> attribute to specify a <TT CLASS="literal">&lt;<I CLASS="varname">language_code</I>></TT> which will create, update, or delete the title of that object associated with that language. La syntaxe de cette balise est la suivante : <A NAME="AEN4042"></A>
+<PRE 
+CLASS="screen"
+>&lt;title language="en"&gt;Moving Pictures&lt;/title&gt;
+&lt;title language="fr"&gt;Images Mobiles&lt;/title&gt;</PRE
+> <A NAME="AEN4043"></A>
+<PRE 
+CLASS="screen"
+>&lt;title clear="true" language="de"&gt;&lt;/title&gt;</PRE
+> </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4044"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4263"></A>L'attribut <TT CLASS="literal">language</TT> est facultatif, pourvu qu'une seule balise <TT CLASS="literal">&lt;title&gt;&lt;/title&gt;</TT> apparaisse dans le paragraphe de nœud. Si vous appliquez plusieurs balises <TT CLASS="literal">&lt;title language="en"&gt;&lt;/title&gt;</TT> au paragraphe de nœud, l'attribut <TT CLASS="literal">language</TT> est obligatoire. </P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Astuce" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID4269"></A><B CLASS="tip">Astuce : </B><BR>OpenText vous recommande de toujours utiliser l'attribut <TT CLASS="literal">language</TT> pour la balise <TT CLASS="literal">title</TT> et, s'il n'y a qu'une seule balise <TT CLASS="literal">title</TT>, de spécifier le code de la langue par défaut du système pour l'attribut <TT CLASS="literal">language</TT> .</P>
+<P><A NAME="TMPID4275"></A>Si l'attribut <TT CLASS="literal">language</TT> n'est pas utilisé, l'importateur d'objet utilisera la langue par défaut du système.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4278"></A>Afin de pouvoir créer ou mettre à jour des titres multilingues, toutes les langues référencées par l'attribut <TT CLASS="literal">language</TT> doivent exister dans Content Server et être activées.</P></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4284"></A>Si <TT CLASS="literal">&lt;node type="&lt;<I CLASS="varname">any_type</I>>" action="create"</TT>, des titres multilingues seront créés, à condition que la <I CLASS="emphasis">langue</I> concernée existe et qu'elle est activée dans le système. Si <TT CLASS="literal">&lt;node action="update"</TT> ou <TT CLASS="literal">&lt;node action="sync"</TT>, les titres multilingues seront mis à jour si le <I CLASS="emphasis">titre</I> existe pour cet attribut <TT CLASS="literal">language</TT> . </P></TD></TR></TABLE> <table CLASS="caution">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="caution" ALIGN="CENTER"><IMG ALT="Attention" SRC="../../images/pi_caution.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID4293"></A><B CLASS="caution">Attention</B><BR>Sur la page <B CLASS="guilabel">Configurer l'importateur d'objet</B>, l'une des options proposées est la case à cocher <B CLASS="guilabel">Ajouter un titre à l'emplacement</B>. Si cette case est cochée, toutes les opérations de mise à jour, d'ajout de version et de suppression suivront le schéma suivant : le système prendra la première balise <TT CLASS="literal">&lt;title&gt;</TT> du paragraphe de nœud du script d'importation, ajoutera le contenu de la balise <TT CLASS="literal">&lt;title&gt;</TT> au contenu de la balise <TT CLASS="literal">&lt;location&gt;</TT> et procédera à la mise à jour, l'ajout de version ou la suppression sur cet objet.</P>
+<P><A NAME="TMPID4299"></A>Dans le cas où plusieurs titres sont définis à l'intérieur du paragraphe de nœud (comme dans le cas des systèmes multilingues), l'importateur d'objet n'accédera qu'au premier titre pour déterminer l'objet à mettre jour, auquel ajouter une version ou à supprimer. Si le premier titre n'est pas défini dans la langue préférée de l'utilisateur pour les métadonnées, l'objet risque d'être introuvable étant donné que la balise <TT CLASS="literal">&lt;location&gt;</TT> contient un composant dans la mauvaise langue.</P>
+<P><A NAME="TMPID4301"></A>Les utilisateurs doivent veiller à ce que le premier titre soit toujours défini dans la même langue que la balise <TT CLASS="literal">&lt;location&gt;</TT> ; ils peuvent aussi choisir de décocher la case <B CLASS="guilabel">Ajouter un titre à l'emplacement</B> sur la page <B CLASS="guilabel">Configurer l'importateur d'objet</B>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table> </TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

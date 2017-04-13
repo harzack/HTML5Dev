@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Document Conversion Service Error Messages</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-dcserrmsg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Content Server Error Messages';
+          header.title2 = 'Document Conversion Service Error Messages';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID17882"></A>The following table describes the error messages for the Document Conversion Service (DCS).</P>
+<P><A NAME="TMPID17883"></A>If these errors persist, contact OpenText Customer Support for additional information.</P>
+<DIV title="Error Messages for the Document Conversion Service" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="TAB-AID3"></A><B>Table 1-28: Error Messages for the Document Conversion Service</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">Number</TH>
+<TH SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">Message</TH>
+<TH SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">Description</TH>
+<TH SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">Remedy</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">100</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">Unable to read configuration</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">The DCS could not read the opentext.ini file supplied on the command line.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">Ensure that the opentext.ini file exists and that the DCS has sufficient access to read the file.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">101</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">Unable to write to log file</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">The DCS could not write to the specified <TT CLASS="literal">logfile</TT> parameter.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">Ensure that the path specified in the <B CLASS="guilabel">Log File</B> field on the <A href="../otadmin/ota-toconfigdcs-p.htm">Document Conversion Service </A> tab on the Admin Server Properties page is valid.<BR>Check that the DCS has sufficient access to write to the file.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">104</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">Unable to bind to admin port</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">The DCS could not bind to the specified Admin port.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">Ensure that the Admin port number specified in the <B CLASS="guilabel">Log File</B> field on the <A href="../otadmin/ota-toconfigdcs-p.htm">Document Conversion Service</A> tab on the Admin Server Properties page is a free socket port. To do this, click the <B CLASS="guilabel">Check port</B> link. If the Admin port is not available, change the port number to a number that you know is free.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">105</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">Admin port not specified</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">The Admin port is a required setting that was not specified.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">Check that the Admin port is specified on the command line argument. For more information about setting command line arguments, see <span><A href="../websystemobj/wbs-htmlcmdlnargs-rf.htm">Command Line Arguments</A></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">107</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">Missing DCS rules file</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">The DCS <TT CLASS="literal">rulesfile</TT> parameter is a required parameter that was not specified.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">Verify that the <B CLASS="guilabel">Rules File</B> field on the <A href="../otadmin/ota-toconfigdcs-p.htm">Document Conversion Service</A> tab on the Admin Server Properties page contains the following path:<BR><TT CLASS="literal">rulesfile=<I CLASS="emphasis">Content Server_home</I>/config/dcsviewrules.txt</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">108</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">The DCS rules file could not be opened</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">The specified <TT CLASS="literal">rulesfile</TT> parameter does not exist or could not be read by the DCS.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">Verify that the <B CLASS="guilabel">Rules File</B> field on the <A href="../otadmin/ota-toconfigdcs-p.htm">Document Conversion Service</A> tab on the Admin Server Properties page contains the following path:<BR><TT CLASS="literal">rulesfile=<I CLASS="emphasis">Content Server_home</I>/config/dcsviewrules.txt</TT>.<BR>Check that the DCS has sufficient access to read the file.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">109</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">DCS rules file syntax error</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">The DCS <TT CLASS="literal">rulesfile</TT> parameter has been modified and contains invalid syntax.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">Return the rules file to the version that was shipped with your current Content Server install.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">110</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">DCS rules file is invalid</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">The DCS <TT CLASS="literal">rulesfile</TT> parameter has been modified and contains illegal operations.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">Verify that the <B CLASS="guilabel">Rules File</B> field on the <A href="../otadmin/ota-toconfigdcs-p.htm">Document Conversion Service</A> tab on the Admin Server Properties page contains the following path:<BR><TT CLASS="literal">rulesfile=<I CLASS="emphasis">Content Server_home</I>/config/dcsviewrules.txt</TT>.<BR>Check that the DCS has sufficient access to read the file.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">111</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">Failed to load DCS library</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">One of the runtime loaded libraries required by the DCS could not be found.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">The DCS log file should identify the name of the library that could not be loaded. For example, “ERROR: Failed to load the library <TT CLASS="literal">dcssum.dll</TT>”.<BR>Ensure that the <I CLASS="emphasis">Content Server_home</I>/lib and <I CLASS="emphasis">Content Server_home</I>/filters directories are included in the system library path environment variables. On Windows, <I CLASS="emphasis">Content Server_home</I>/bin should be included in the PATH variable. On Solaris, <I CLASS="emphasis">Content Server_home</I>/lib should be included in the LD_LIBRARY_PATH variable.<BR>For more assistance, contact OpenText Customer Support.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">112</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">DCS library is missing lib parameter</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">One of the DCS libraries is missing the <TT CLASS="literal">lib</TT> parameter in its INI section.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">The DCS log file should identify the name of the library that could not be loaded. For example, “ERROR: Failed to load the library <TT CLASS="literal">dcssum.dll</TT>”.<BR>Verify that the corresponding conversion filter page of the <TT CLASS="filename">opentext.ini</TT> file specifies the name of the required library in the <TT CLASS="literal">lib</TT> parameter.<BR>Consult the corresponding section of the <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-intro-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-intro-bg.htm">Understanding the opentext.ini file</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-intro-bg" FMT=""></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">113</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">DCS library is invalid</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">One of the DCS libraries does not conform to the DCS library interface.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">To identify which library is causing the problem, change the DCS log level to the maximum value output by configuring the following parameter in the <TT CLASS="literal">[DCS]</TT> section of the <TT CLASS="filename">opentext.in</TT>i file:<BR><TT CLASS="literal">logLevel=4</TT><BR>After logging the activity of the DCS, contact OpenText Customer Support.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">114</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">DCS library could not be initialized</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">One of the DCS libraries encountered an error at initialization time.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">Ensure that the <I CLASS="emphasis">Content Server_home</I>/config directory and the <I CLASS="emphasis">Content Server_home</I>/filters directories are included in the system library path environment variables. On Windows, <I CLASS="emphasis">Content Server_home</I>/bin should be included in the PATH variable. On Solaris, <I CLASS="emphasis">Content Server_home</I>/lib should be included in the LD_LIBRARY_PATH variable.<BR>If the problem persists, change the DCS log level to the maximum value output by changing the following parameter in the <XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-dcs-rf" FMT="FIXTEXT" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-dcs-rf.htm">[DCS]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-dcs-rf" FMT="FIXTEXT"> section of the opentext.ini file:<BR><TT CLASS="literal">logLevel=4</TT><BR>After logging the activity of the DCS, contact OpenText Customer Support.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">117</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">DCS library could not be initialized</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">One of the DCS libraries encountered an error at initialization time.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">Ensure that the <I CLASS="emphasis">Content Server_home</I>/config and <I CLASS="emphasis">Content Server_home</I>/filters directories are included in the system library path environment variables. On Windows, <I CLASS="emphasis">Content Server_home</I>/bin should be included in the PATH variable. On Solaris, <I CLASS="emphasis">Content Server_home</I>/lib should be included in the LD_LIBRARY_PATH variable.<BR>If the problem persists, change the DCS log level to the maximum value output by changing the following parameter in the <XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-dcs-rf" FMT="FIXTEXT" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-dcs-rf.htm">[DCS]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-dcs-rf" FMT="FIXTEXT"> section of the opentext.ini file:<BR><TT CLASS="literal">logLevel=4</TT><BR>After logging the activity of the DCS, contact OpenText Customer Support.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="56" ALIGN="LEFT" VALIGN="TOP">118</TD>
+<TD SCOPE="COL" WIDTH="104" ALIGN="LEFT" VALIGN="TOP">Failed to load DCS request handler</TD>
+<TD SCOPE="COL" WIDTH="131" ALIGN="LEFT" VALIGN="TOP">The DCS IPool library (<TT CLASS="literal">dcsipool.dll</TT> on Windows) could not be loaded.</TD>
+<TD SCOPE="COL" WIDTH="209" ALIGN="LEFT" VALIGN="TOP">Ensure that the <I CLASS="emphasis">Content Server_home</I>/config and <I CLASS="emphasis">Content Server_home</I>/filters directories are included in the system library path environment variables. On Windows,<I CLASS="emphasis">Content Server_home</I>/bin should be included in the PATH variable. On Solaris, <I CLASS="emphasis">Content Server_home</I>/lib should be included in the LD_LIBRARY_PATH variable.<BR>If the problem persists, change the DCS log level to the maximum value output by changing the following parameter in the <XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-dcs-rf" FMT="FIXTEXT" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-dcs-rf.htm">[DCS]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-dcs-rf" FMT="FIXTEXT"> section of the opentext.ini file:<BR><TT CLASS="literal">logLevel=4</TT><BR>After logging the activity of the DCS, contact OpenText Customer Support.</TD></TR></TABLE></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

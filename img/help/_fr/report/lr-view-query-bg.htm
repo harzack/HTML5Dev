@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Afficher la requête</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-view-query-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Modèles SQL';
+          header.title2 = 'Afficher la requête';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID967"></A>Cette fonction est conçue pour les situations dans lesquelles certains utilisateurs doivent pouvoir visualiser la requête du rapport LiveReport sans avoir accès à l'écran d'édition. Dans certains cas, l'accès à l'écran d'édition peut se révéler potentiellement dangereux et incertain. Si certains développeurs ou utilisateurs ont besoin d'accéder au contenu de ces requêtes (pour étudier d'autres exemples, examiner un rapport, etc.), il est possible d'utiliser cette fonction pour leur accorder les autorisations nécessaires pour utiliser cette fonction et non la fonction d'édition. </P>
+<P><A NAME="TMPID968"></A>Cette image illustre le format fourni par cette fonction. </P>
+<DIV title="Afficher la requête" CLASS="figure">
+<P><A NAME="FIG-QUERVIEW"></A><IMG alt="Afficher la requête" SRC="lr_querview.png"></P>
+<P CLASS="figure" ALIGN="LEFT"><B>Figure 2-2 : Afficher la requête</B></P></DIV>
+<P><A NAME="TMPID972"></A>Il existe deux façons de configurer les autorisations de cette fonction. Par défaut, cette fonction est disponible uniquement pour les utilisateurs qui disposent au moins des autorisations <I CLASS="emphasis">Modifier</I> pour le rapport LiveReport. Si l'utilisateur n'a pas été autorisé par l'administrateur à créer des rapports LiveReport dans la page <B CLASS="guilabel">Gérer les privilèges relatifs aux objets et à l'utilisation</B>, il n'a pas accès à l'option <B CLASS="guilabel">Editer</B>, mais peut afficher la requête. </P>
+<P><A NAME="TMPID976"></A>De même, l'administrateur peut modifier ce comportement afin que les utilisateurs disposant des autorisations <I CLASS="emphasis">Voir</I> et <I CLASS="emphasis">Voir le contenu</I> puissent utiliser cette fonction. Pour ce faire, il suffit d'ajouter l'entrée suivante dans la section <TT CLASS="literal">[ReportExt]</TT> du fichier <TT CLASS="filename">opentext.ini</TT> : </P><A NAME="AEN983"></A>
+<PRE 
+CLASS="screen"
+>QueryVisibleWithSeeContents=true</PRE
+>
+<P><A NAME="TMPID982"></A>Pour toute instance de Content Server avec cette option activée, les utilisateurs disposant des autorisations <I CLASS="emphasis">Voir</I> et <I CLASS="emphasis">Voir le contenu</I> sur un rapport LiveReport pourront utiliser l'option Afficher la requête. </P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>topic Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-topic-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Control File Syntax';
+          header.title2 = 'topic Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TOPTAG01">topic</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TOPTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID3078"></A>Use <TT CLASS="LITERAL">type="topic"</TT> on the <TT CLASS="LITERAL">&lt;node&gt;</TT> tag to create, update, or delete a Topic.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TOPTAG03">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2945"></A>&lt;node type="topic" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TOPTAG04">Usage</A></P>
+<A NAME="AEN2947"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2948"></A><A NAME="TMPID3092"></A><TT CLASS="LITERAL">topic</TT> has an optional subordinate tag, <span><A HREF="llesoi-cfile-topic-rf.htm#BODYTAG1">body Tag</A></span>, which is detailed below.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2952"></A><A NAME="TMPID3096"></A>Creating, updating, or deleting a Topic can also require a number of other subordinate tags, such as the <TT CLASS="LITERAL">location</TT> tag. These other subordinate tags are detailed in <span><A HREF="llesoi-cfilesamp-bg.htm">Object Importer Tag Descriptions and Syntax</A></span>.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TOPTAG05">Example</A></P>
+<P><A NAME="TMPID3101"></A>To create a Topic, called “Topic 001”, attached to a Discussion, called “Discussion 001”, in the Enterprise Workspace:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2960"></A>&#13;&lt;import&gt;
+  &lt;node type="topic" action="create"&gt;
+    &lt;location&gt;Enterprise:Discussion 001&lt;/location&gt;
+    &lt;title language="en"&gt;Topic 001&lt;/title&gt;
+    &lt;body&gt;When should our next meeting occur?&lt;/body&gt;
+    &lt;createdby&gt;Admin&lt;/createdby&gt;
+    &lt;owner&gt;Admin&lt;owner&gt;
+    &lt;created&gt;20110105&lt;/created&gt;
+    &lt;modified&gt;20110113&lt;/modified&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="BODYTAG1">body Tag</A></P>
+<P><A NAME="TMPID3107"></A>The <TT CLASS="LITERAL">body</TT> tag adds the message body for the topic. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2964"></A>&lt;body&gt;This is the message body of the topic.&lt;/body&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2965"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3121"></A>The <TT CLASS="LITERAL">body</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="topic"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3125"></A>The <TT CLASS="LITERAL">body</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID3128"></A>The <TT CLASS="LITERAL">body</TT> tag is optional when:</P><A NAME="AEN2985"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2986"></A><A NAME="TMPID3132"></A><TT CLASS="LITERAL">&lt;node type="topic" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

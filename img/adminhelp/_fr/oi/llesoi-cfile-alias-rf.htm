@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle des raccourcis</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-alias-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Syntaxe du fichier de contrôle Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle des raccourcis';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="ALIASTAG01">alias</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="ALIASTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID1092"></A>Utilisez <TT CLASS="literal">type="alias"</TT> sur la balise <TT CLASS="literal">&lt;node&gt;</TT> pour créer, mettre à jour ou supprimer un raccourci.  </P>
+<P CLASS="bridgehead-subheading3"><A NAME="ALIASTAG03">Syntaxe</A></P><A NAME="AEN1063"></A>
+<PRE 
+CLASS="screen"
+>&lt;node type="alias" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="ALIASTAG04">Utilisation</A></P>
+<A NAME="AEN1065"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1066"></A><A NAME="TMPID1105"></A>La création d'un raccourci nécessite la <span><A HREF="llesoi-cfile-alias-rf.htm#LLESOI-CFILE-ALIAS2-RF">Balise alias</A></span>, décrite ci-dessous.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1069"></A><A NAME="TMPID1108"></A><span><A HREF="llesoi-cfile-alias-rf.htm#LLESOI-CFILE-ALIAS2-RF">Balise alias</A></span> est facultatif lors de la mise à jour ou la suppression d'un raccourci.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1072"></A><A NAME="TMPID1111"></A>La création, mise à jour ou suppression d'un raccourci peut également nécessiter des balises secondaires, telles que la balise <TT CLASS="literal">location</TT> . Ces balises subordonnées sont détaillées dans <span><A HREF="llesoi-cfilesamp-bg.htm">Descriptions et syntaxe des balises Importateur d'objet</A></span>. </P></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="ALIASTAG05">Exemple</A></P>
+<P><A NAME="TMPID1116"></A>Pour créer un raccourci vers le dossier « Projets » de l'espace de travail Entreprise à partir du dossier « Exemple »  :</P><A NAME="AEN1080"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="alias" action="create"&gt;
+    &lt;location&gt;Enterprise:Documentation&lt;/location&gt;
+    &lt;title language="en"&gt;Example&lt;/title&gt;
+    &lt;alias&gt;Enterprise:Projects&lt;/alias&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P><A NAME="TMPID1120"></A>Pour consulter d'autres exemples de balises <TT CLASS="literal">alias</TT>, consultez la section <span><A HREF="llesoi-cfile-alisamp-rf.htm">Exemples de fichier de contrôle d'importation de raccourcis</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CFILE-ALIAS2-RF">Balise alias</A></P>
+<P><A NAME="TMPID1125"></A>Utilisez la balise <TT CLASS="literal">alias</TT> pour indiquer un chemin d'accès complet à un objet existant dans Content Server. Séparez les éléments du chemin par deux-points, « : ». La syntaxe de cette balise est la suivante : <A NAME="AEN1089"></A>
+<PRE 
+CLASS="screen"
+>&lt;alias&gt;Enterprise:Projects:readme.txt&lt;/alias&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1090"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1141"></A>La balise <TT CLASS="literal">alias</TT> ne peut exister seule et doit être contenue dans une balise <TT CLASS="literal">&lt;node type="alias"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1145"></A>La balise <TT CLASS="literal">alias</TT> est obligatoire dans le cas suivant :</P><A NAME="AEN1107"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1108"></A><A NAME="TMPID1149"></A><TT CLASS="literal">&lt;node type="alias" action="create"&gt;</TT></P></LI></UL>
+<P class="before-ul"><A NAME="TMPID1151"></A>La balise <TT CLASS="literal">alias</TT> est facultative dans les cas suivants :</P><A NAME="AEN1113"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1114"></A><A NAME="TMPID1155"></A><TT CLASS="literal">&lt;node type="alias" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1117"></A><A NAME="TMPID1158"></A><TT CLASS="literal">&lt;node type="alias" action="delete"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

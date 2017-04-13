@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWFW100500-1409-H-UGD-EN-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webwork">
+<META mancondkey="lleswfp-cwm -- lleswfp-h-ugd -- llesfrm-cwm -- llesfrm-h-ugd -- lleswbn-h-ugd -- lleseps-h-ugd -- lleseps-h-agd -- llesesn-h-ugd -- llesfwf-h-ugd -- llesrt-h-ugd -- lleselk-h-ugd"><title>Example: Composing and Sending an Initiation Message</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-initiate-wf-ex.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Initiating an Email-Enabled Workflow';
+          header.title2 = 'Example: Composing and Sending an Initiation Message';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1827"></A>The following email message initiates an email-enabled Workflow named “Expense_Report_Approval”</P><A NAME="AEN1830"></A>
+<PRE 
+CLASS="screen"
+>&#13;To: Expense_Report_Approval@eLink.myServer.com 
+Subject: June Expense Report Approval
+Attached: c:\MyExpenses\June_report.xls
+
+From: "John Smith" jsmith@myCompany.com
+
+These are my expenses for the month of June. 
+If you have any questions, please let me know. Thanks!&#13;</PRE
+>
+<P><A NAME="TMPID1831"></A>After you send an initiation email, Content Server creates a unique instance of the Workflow and names it “Expense Report Approval”. Next, it copies the attached spreadsheet to the Workflow Attachments folder, and then copies the message text to the Comments section of the Workflow's <B CLASS="guilabel">Start</B> step. Finally, it directs Workflow processing to the first step after the <B CLASS="guilabel">Start</B> step.</P>
+<P><A NAME="TMPID1838"></A>If the initiation is successful, Content Server returns a confirmation email message. See <span><A HREF="wf-initiate-wf-ex.htm#INITIATE-CONFIRM-EMAIL"><NOBR>Figure&nbsp;1-1</NOBR></A></span>.</P>
+<DIV title="Initiation Confirmation Email Message" CLASS="figure">
+<P><A NAME="INITIATE-CONFIRM-EMAIL"></A><IMG alt="Initiation Confirmation Email Message" SRC="init_confirmed.png"></P>
+<P CLASS="figure" ALIGN="LEFT"><B>Figure 1-1: Initiation Confirmation Email Message</B></P></DIV>
+<P><A NAME="TMPID1844"></A>If the initiation request fails, Content Server sends an email message that describes what error it encountered and includes a link to a page where you can initiate the Workflow online.</P>
+<P><A NAME="TMPID1846"></A>After the Workflow is initiated, you can interact with it in the same way  you would a Workflow you initiated within Content Server. For example, using the sample above, John Smith can monitor the Workflow by viewing it on the <B CLASS="guilabel">My Workflows</B> page or in a Content Server Workflow Status item, if available, and users assigned to complete a task on the currently active step will see the task on their personal <B CLASS="guilabel">My Assignments</B> page.</P>
+<P><A NAME="TMPID1851"></A>When the Workflow has finished processing, Content Server sends a Completed email message to the users or groups who have Workflow manager permissions. See <span><A HREF="wf-initiate-wf-ex.htm#COMPLETED-EMAIL"><NOBR>Figure&nbsp;1-2</NOBR></A></span>.</P>
+<DIV title="Completed Email Message" CLASS="figure">
+<P><A NAME="COMPLETED-EMAIL"></A><IMG alt="Completed Email Message" SRC="wf_confirmed.png"></P>
+<P CLASS="figure" ALIGN="LEFT"><B>Figure 1-2: Completed Email Message</B></P></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

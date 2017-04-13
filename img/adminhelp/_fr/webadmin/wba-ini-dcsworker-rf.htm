@@ -1,0 +1,160 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>[DCSworker]</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-ini-dcsworker-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Compréhension du fichier opentext.ini';
+          header.title2 = '[DCSworker]';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID5948"></A>Les paramètres de la section <TT CLASS="literal">[DCSworker]</TT> définissent le comportement des processus de traitement gérés par le service de conversion de documents (DCS). Le DCS convertit des documents au format HTML ou texte brut pour permettre leur affichage et indexation. Le DCS envoie les documents à un processus de traitement nommé <TT CLASS="literal">dcsworker.exe</TT>. Ce processus de traitement délègue les opérations de conversion aux filtres de conversion appropriés après réception des requêtes du DCS. Il charge le filtre de conversion requis et procède à la conversion dans un environnement isolé. Ceci évite que des processus nuisibles n'interrompent le DCS.</P>
+<P><A NAME="TMPID5951"></A>La section <TT CLASS="literal">[DCSworker]</TT> du fichier <TT CLASS="filename"> opentext.ini</TT> contient des informations sur les paramètres suivants :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN5239"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID5964"></A><span><A href="../webadmin/wba-ini-dcsworker-rf.htm#FASTINIT">fastinit</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID5967"></A><span><A href="../webadmin/wba-ini-dcsworker-rf.htm#LIBDCSWORKER">lib</A></span></P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID5972"></A><span><A href="../webadmin/wba-ini-dcsworker-rf.htm#MAXCALLS">maxcalls</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID5975"></A><span><A href="../webadmin/wba-ini-dcsworker-rf.htm#TIMEOUT">timeout</A></span></P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID5980"></A><span><A href="../webadmin/wba-ini-dcsworker-rf.htm#WORKEREXE">workerexe</A></span></P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="FASTINIT">fastinit</A></P><A NAME="AEN5268"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5269"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID5987"></A>Indique que les filtres de conversion ne doivent pas être chargés tant qu'ils ne sont pas requis pour le DCS.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5272"></A><B>Syntaxe :</B></P>
+<P class="nr1"><A NAME="TMPID5990"></A><TT CLASS="literal">fastinit=TRUE</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5276"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID5994"></A><TT CLASS="literal">TRUE</TT> ou <TT CLASS="literal">FALSE</TT>. La valeur par défaut est <TT CLASS="literal">TRUE</TT>.</P>
+<P><A NAME="TMPID5998"></A>La définition de ce paramètre sur <TT CLASS="literal">TRUE</TT> demande au DCS, avant de charger le filtre de conversion, d'attendre qu'il soit requis pour le processus de conversion. La définition de ce paramètre sur <TT CLASS="literal">TRUE</TT> entraîne des performances plus rapides. </P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LIBDCSWORKER">lib</A></P><A NAME="AEN5286"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5287"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID6006"></A>Détermine le nom de la <I CLASS="emphasis">bibliothèque</I> que le DCS doit charger. Une bibliothèque est une liste d'opérations associées à un filtre de conversion que le DCS lit pour effectuer la conversion.</P>
+<table CLASS="caution">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="caution" ALIGN="CENTER"><IMG ALT="Attention" SRC="../../images/pi_caution.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6009"></A><B CLASS="caution">Attention</B><BR>La modification de la valeur de ce paramètre risque d'empêcher le DCS de fonctionner ou de fonctionner correctement. Ne modifiez pas la valeur de ce paramètre, sauf si le service d'assistance clientèle d'OpenText vous le demande.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5294"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID6013"></A>La valeur par défaut est <TT CLASS="literal">dcsworker</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MAXCALLS">maxcalls</A></P><A NAME="AEN5299"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5300"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID6020"></A>Indique le nombre maximum d'opérations de conversion qu'un processus de traitement doit effectuer avant d'être interrompu. Un processus de traitement s'interrompt une fois que son quota de conversion de documents a atteint la valeur définie par le paramètre <TT CLASS="literal">maxcalls</TT>. Ce mécanisme permet d'éviter que les filtres de conversion ayant des fuites de mémoire n'utilisent trop de mémoire.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5304"></A><B>Syntaxe :</B></P>
+<P class="nr1"><A NAME="TMPID6024"></A><TT CLASS="literal">maxcalls=200</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5308"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID6028"></A>La valeur par défaut est <TT CLASS="literal">200</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF67"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6031"></A><B CLASS="note">Note : </B><BR>Ce paramètre peut être personnalisé pour chaque filtre de conversion. Il suffit pour cela de configurer le paramètre <TT CLASS="literal">x-maxcalls</TT> dans la section relative au filtre de conversion approprié du fichier <TT CLASS="filename"> opentext.ini</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TIMEOUT">timeout</A></P><A NAME="AEN5317"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5318"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID6039"></A>Indique le temps d'attente maximum (en secondes) avant la fin d'un processus de traitement de conversion de documents.</P>
+<P><A NAME="TMPID6040"></A>Le DCS contrôle le temps nécessaire aux processus de traitement pour convertir des documents et interrompt les processus qui dépassent cette limite. Ce délai d'attente limite est défini par le paramètre <TT CLASS="literal">timeout</TT>.</P>
+<P><A NAME="TMPID6042"></A>Lorsque le processus de traitement tente de convertir un document corrompu ou comportant une anomalie, il échoue et renvoie un code d'erreur au processus de traitement. Toutefois, certains documents peuvent entraîner un blocage du système de filtrage qui tourne alors dans une boucle de traitement sans fin. Il peut arriver (rarement) que le filtre de conversion pris dans cette boucle sans fin épuise progressivement les ressources du système.</P>
+<P><A NAME="TMPID6043"></A>La valeur <TT CLASS="literal">timeout</TT> par défaut du processus de traitement est de 30 secondes. Passé ce délai, le processus s'interrompt. Toutefois, si le processus de traitement épuise la mémoire rapidement, il risque de consommer toute la mémoire disponible avant l'expiration du délai de 30 secondes. Le cas échéant, vous pouvez diminuer la valeur <TT CLASS="literal">timeout</TT> afin que le filtre de conversion n'épuise pas toute la mémoire avant l'expiration du délai.</P>
+<P><A NAME="TMPID6046"></A>La valeur du paramètre <TT CLASS="literal">timeout</TT> doit être aussi basse que possible, sans toutefois entraîner l'interruption du processus de conversion avant la conversion d'un document valable. Pour obtenir une estimation de la valeur <TT CLASS="literal">timeout</TT> appropriée, vous pouvez activer la journalisation pendant un laps de temps raisonnable, par exemple 24 heures, et prendre note du temps nécessaire au processus pour convertir un document valable. La durée de conversion valable maximale est généralement de quelques secondes. Une fois que vous avez défini cette valeur, vous pouvez modifier la valeur <TT CLASS="literal">timeout</TT> en multipliant par 1,5 ou 2 la durée de conversion valable maximale. Le temps supplémentaire permet de traiter des documents plus gros que ceux qui ont été convertis au cours de la période de test.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5331"></A><B>Syntaxe :</B></P>
+<P class="nr1"><A NAME="TMPID6052"></A><TT CLASS="literal">timeout=30</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5335"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID6056"></A>Un entier supérieur ou égal à un. La valeur par défaut est <TT CLASS="literal">30</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF68"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6059"></A><B CLASS="note">Note : </B><BR>Ce paramètre apparaît également dans la section <TT CLASS="literal">[FilterEngine]</TT> du fichier <TT CLASS="filename">opentext.ini</TT>. Ce paramètre exécute la même fonction que le paramètre <TT CLASS="literal">[FilterEngine]</TT> correspondant. Cependant, la définition de la valeur de ce paramètre dans la section <TT CLASS="literal">[DCSworker]</TT> écrase le paramètre de la section <TT CLASS="literal">[FilterEngine]</TT>. Si aucune valeur n'est définie dans la section <TT CLASS="literal">[DCSworker]</TT>, la valeur utilisée est celle de la section <TT CLASS="literal">[FilterEngine]</TT>.</P>
+<P><A NAME="TMPID6067"></A>Ce paramètre peut être personnalisé pour chaque filtre de conversion. Il suffit pour cela de configurer le paramètre <TT CLASS="literal">x-timeout</TT> dans la section relative au filtre de conversion approprié du fichier <TT CLASS="filename"> opentext.ini</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WORKEREXE">workerexe</A></P><A NAME="AEN5352"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5353"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID6075"></A>Indique le nom du programme de processus de traitement qu'utilise Content Server pour convertir des documents.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6078"></A><B CLASS="important">Important : </B><BR>OpenText vous recommande vivement de ne pas modifier la valeur de ce paramètre.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5360"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID6082"></A>Sous Windows, la valeur par défaut est <TT CLASS="literal">dcsworker.exe</TT>. Pour les autres plates-formes, la valeur par défaut est <TT CLASS="literal">dcsworker</TT>.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

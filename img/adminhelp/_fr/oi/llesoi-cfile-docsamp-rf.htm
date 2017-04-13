@@ -1,0 +1,164 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Exemples de fichier de contrôle d'importation de documents</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-docsamp-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Exemples de fichier de contrôle d\'importation de l\'importateur d\'objet';
+          header.title2 = 'Exemples de fichier de contrôle d\'importation de documents';
+           header.draw();
+  </script>
+
+<DIV title="Pour créer un document nommé 'My Guidelines' dans le dossier 'Documents' avec le type mime défini et une catégorie appliquée à tous les sous-éléments :   " CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF30"></A><B><IMG title="Pour créer un document nommé 'My Guidelines' dans le dossier 'Documents' avec le type mime défini et une catégorie appliquée à tous les sous-éléments :   " SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-18 : Pour créer un document nommé « My Guidelines » dans le dossier « Documents » avec le type mime défini et une catégorie appliquée à tous les sous-éléments :   </B></P><A NAME="AEN4248"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;My Guidelines&lt;/title&gt;
+    &lt;file&gt;c:\temp\guidelines.doc&lt;\file&gt;
+    &lt;mime&gt;application/msword&lt;/mime&gt;
+    &lt;category name="Content Server Categories:Test"&gt;
+      &lt;attribute name="date"&gt;20060214&lt;/attribute&gt;
+      &lt;attribute name="internal"&gt;TRUE&lt;/attribute&gt;
+      &lt;attribute name="user"&gt;Admin&lt;/attribute&gt;
+      &lt;subitems&gt;reapply&lt;/subitems&gt;
+    &lt;/category&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour créer un document nommé 'My Guidelines' dans le dossier 'Documents' avec le type mime défini et une catégorie appliquée à tous les sous-éléments :   " SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour ajouter une version au document 'My Guidelines' existant, lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF31"></A><B><IMG title="Pour ajouter une version au document 'My Guidelines' existant, lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-19 : Pour ajouter une version au document « My Guidelines » existant, lorsque la case « Ajouter un titre à l'emplacement » est cochée :</B></P><A NAME="AEN4254"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="addversion"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;My Guidelines&lt;/title&gt;
+    &lt;file&gt;c:\temp\new_guidelines.doc&lt;/file&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour ajouter une version au document 'My Guidelines' existant, lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour ajouter une version au document 'My Guidelines' existant, lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF32"></A><B><IMG title="Pour ajouter une version au document 'My Guidelines' existant, lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-20 : Pour ajouter une version au document « My Guidelines » existant, lorsque la case « Ajouter un titre à l'emplacement » est décochée :</B></P><A NAME="AEN4259"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="addversion"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents:My Guidelines&lt;/location&gt;
+    &lt;file&gt;c:\temp\new_guidelines.doc&lt;/file&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour ajouter une version au document 'My Guidelines' existant, lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Le code suivant permet d'ajouter une version au document 'guidelines.doc' existant, lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF33"></A><B><IMG title="Le code suivant permet d'ajouter une version au document 'guidelines.doc' existant, lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-21 : Le code suivant permet d'ajouter une version au document « guidelines.doc » existant, lorsque la case « Ajouter un titre à l'emplacement » est cochée :</B></P><A NAME="AEN4264"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;guidelines.doc&lt;/title&gt;
+    &lt;file&gt;c:\temp\new_guidelines.doc&lt;/file&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Le code suivant permet d'ajouter une version au document 'guidelines.doc' existant, lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Le code suivant permet d'ajouter une version au document 'guidelines.doc' existant, lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF34"></A><B><IMG title="Le code suivant permet d'ajouter une version au document 'guidelines.doc' existant, lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-22 : Le code suivant permet d'ajouter une version au document « guidelines.doc » existant, lorsque la case « Ajouter un titre à l'emplacement » est décochée :</B></P><A NAME="AEN4269"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents:guidelines.doc&lt;/location&gt;
+    &lt;file&gt;c:\temp\new_guidelines.doc&lt;/file&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Le code suivant permet d'ajouter une version au document 'guidelines.doc' existant, lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour mettre à jour la description du document 'guidelines.doc' existant, lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF35"></A><B><IMG title="Pour mettre à jour la description du document 'guidelines.doc' existant, lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-23 : Pour mettre à jour la description du document « guidelines.doc » existant, lorsque la case « Ajouter un titre à l'emplacement » est cochée :</B></P><A NAME="AEN4274"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;guidelines.doc&lt;/title&gt;
+    &lt;description language="en"&gt;Final drafts&lt;/description&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour mettre à jour la description du document 'guidelines.doc' existant, lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour mettre à jour la description du document 'guidelines.doc' existant, lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF36"></A><B><IMG title="Pour mettre à jour la description du document 'guidelines.doc' existant, lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-24 : Pour mettre à jour la description du document « guidelines.doc » existant, lorsque la case « Ajouter un titre à l'emplacement » est décochée :</B></P><A NAME="AEN4279"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents:guidelines.doc&lt;/location&gt;
+    &lt;description language="en"&gt;Final drafts&lt;/description&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour mettre à jour la description du document 'guidelines.doc' existant, lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour mettre à jour la description d'un document. Ce code peut fonctionner ou non car le type d'opération concerné est 'sync'. Si le document existe, la description sera mise à jour. Dans le cas contraire, une erreur sera générée car la balise '<file>' n'a pas été spécifiée. Dans cet exemple, la case 'Ajouter un titre à l'emplacement' est cochée :" CLASS="EXAMPLE">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF37"></A><B><IMG title="Pour mettre à jour la description d'un document. Ce code peut fonctionner ou non car le type d'opération concerné est 'sync'. Si le document existe, la description sera mise à jour. Dans le cas contraire, une erreur sera générée car la balise '<file>' n'a pas été spécifiée. Dans cet exemple, la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-25 : Pour mettre à jour la description d'un document. Ce code peut fonctionner ou non car le type d'opération concerné est <NOBR>sync</NOBR>. Si le document existe, la description sera mise à jour. Dans le cas contraire, une erreur sera générée car la balise <NOBR>&lt;file&gt;</NOBR> n'a pas été spécifiée. Dans cet exemple, la case « Ajouter un titre à l'emplacement » est cochée :</B></P><A NAME="AEN4285"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="sync"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;logo.jpg&lt;/title&gt;
+    &lt;description language="en"&gt;Final drafts&lt;/description&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour mettre à jour la description d'un document. Ce code peut fonctionner ou non car le type d'opération concerné est 'sync'. Si le document existe, la description sera mise à jour. Dans le cas contraire, une erreur sera générée car la balise '<file>' n'a pas été spécifiée. Dans cet exemple, la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour mettre à jour la description d'un document. Ce code peut fonctionner ou non car le type d'opération concerné est 'sync'. Si le document existe, la description sera mise à jour. Dans le cas contraire, une erreur sera générée car la balise '<file>' n'a pas été spécifiée. Dans cet exemple, la case 'Ajouter un titre à l'emplacement' est décochée :" CLASS="EXAMPLE">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF38"></A><B><IMG title="Pour mettre à jour la description d'un document. Ce code peut fonctionner ou non car le type d'opération concerné est 'sync'. Si le document existe, la description sera mise à jour. Dans le cas contraire, une erreur sera générée car la balise '<file>' n'a pas été spécifiée. Dans cet exemple, la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-26 : Pour mettre à jour la description d'un document. Ce code peut fonctionner ou non car le type d'opération concerné est <NOBR>sync</NOBR>. Si le document existe, la description sera mise à jour. Dans le cas contraire, une erreur sera générée car la balise <NOBR>&lt;file&gt;</NOBR> n'a pas été spécifiée. Dans cet exemple, la case « Ajouter un titre à l'emplacement » est décochée :</B></P><A NAME="AEN4291"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="sync"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents:logo.jpg&lt;/location&gt;
+    &lt;description language="en"&gt;Final drafts&lt;/description&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour mettre à jour la description d'un document. Ce code peut fonctionner ou non car le type d'opération concerné est 'sync'. Si le document existe, la description sera mise à jour. Dans le cas contraire, une erreur sera générée car la balise '<file>' n'a pas été spécifiée. Dans cet exemple, la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour supprimer un document nommé 'junk.txt' du dossier 'Temp' de l'espace de travail Entreprise lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF39"></A><B><IMG title="Pour supprimer un document nommé 'junk.txt' du dossier 'Temp' de l'espace de travail Entreprise lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-27 : Pour supprimer un document nommé « junk.txt » du dossier « Temp » de l'espace de travail Entreprise lorsque la case « Ajouter un titre à l'emplacement » est cochée :</B></P><A NAME="AEN4297"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="delete"&gt;
+    &lt;location&gt;Enterprise:Temp&lt;/location&gt;
+    &lt;title language="en"&gt;junk.txt&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour supprimer un document nommé 'junk.txt' du dossier 'Temp' de l'espace de travail Entreprise lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour supprimer un document nommé 'junk.txt' du dossier 'Temp' de l'espace de travail Entreprise lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF40"></A><B><IMG title="Pour supprimer un document nommé 'junk.txt' du dossier 'Temp' de l'espace de travail Entreprise lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-28 : Pour supprimer un document nommé « junk.txt » du dossier « Temp » de l'espace de travail Entreprise lorsque la case « Ajouter un titre à l'emplacement » est décochée :</B></P><A NAME="AEN4303"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="delete"&gt;
+    &lt;location&gt;Enterprise:Temp:junk.txt&lt;/location&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour supprimer un document nommé 'junk.txt' du dossier 'Temp' de l'espace de travail Entreprise lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

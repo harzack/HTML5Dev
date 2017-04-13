@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWFP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webwfp">
+<title>Opérations de création de versions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webdoc/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-versioning-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des opérations de l\'étape Gestionnaire d\'élément';
+          header.title2 = 'Opérations de création de versions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3926"></A>Vous pouvez configurer votre schéma de workflow afin d'effectuer automatiquement des opérations de création de versions pour des documents ou des documents composites dans Content Server ou dans le dossier Pièces jointes du schéma de workflow. Lorsque le processus du schéma de workflow atteint une étape <B CLASS="guilabel">Gestionnaire d'élément</B>, il exécute les opérations de création de version que vous avez définies dans son onglet <B CLASS="guilabel">Création de version</B>. Par exemple, si vous ajoutez un document au dossier Pièces jointes du schéma de workflow et que ce document est modifié lors de l'exécution du schéma de workflow, vous pouvez configurer l'étape pour qu'elle renvoie le document modifié en tant que version du document d'origine.</P>
+<P><A NAME="TMPID3930"></A>Pour les documents et les documents composites ajoutés aux schémas de workflow en tant que pièces jointes à partir de Content Server, l'étape peut exécuter de manière globale des opérations de création de version sur les éléments Content Server d'origine, en utilisant les pièces jointes au schéma de workflow comme sources. L'étape peut également effectuer des opérations de création de version sur des documents ou des documents composites spécifiques ajoutés en tant que pièces jointes du schéma de workflow ou stockés dans Content Server. Dans les deux cas, pour toute option de création de version indiquée explicitement et qui implique un document, l'étape crée toujours implicitement une version du document.</P>
+<P class="before-ul"><A NAME="TMPID3934"></A>Vous pouvez également configurer l'étape pour créer :</P><A NAME="AEN3876"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3877"></A><A NAME="TMPID3937"></A>des générations à partir de documents ou de documents composites ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3879"></A><A NAME="TMPID3939"></A>des révisions ou des versions de documents composites ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3881"></A><A NAME="TMPID3941"></A>des versions principales de documents qui utilisent la création de versions avancée.</P></LI></UL>
+<P><A NAME="TMPID3942"></A>Vous pouvez aussi déverrouiller les documents ou les documents composites d'origine.</P>
+<P><A NAME="TMPID3943"></A>Pour plus d'informations sur la création de version de documents et de documents composites, voir <span><XPROC NAME="ExtXrefStart" HREF="lleswbd-h-ugd.wd-overview-so" FMT="" NO1ST><A  HREF="../../../help/_fr/webdoc/wd-overview-so.htm">Utilisation des documents et des documents texte</A><XPROC NAME="ExtXrefEnd" HREF="lleswbd-h-ugd.wd-overview-so" FMT=""></span> et <span><XPROC NAME="ExtXrefStart" HREF="lleswbd-h-ugd.wd-releases-bg" FMT="" NO1ST><A  HREF="../../../help/_fr/webdoc/wd-releases-bg.htm">Utilisation des versions et des révisions</A><XPROC NAME="ExtXrefEnd" HREF="lleswbd-h-ugd.wd-releases-bg" FMT=""></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF50"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes : </B></P><A NAME="AEN3888"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3889"></A><A NAME="TMPID3949"></A>Il est impossible de créer une génération à partir d'un document composite qui ne possède pas une version ou une révision.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3891"></A><A NAME="TMPID3951"></A>Lorsque vous créez manuellement une génération à partir d'un document ou d'un document composite dans Content Server, vous devez indiquer explicitement l'emplacement cible où la génération sera créée. Cette règle ne s'applique pas à l'étape <B CLASS="guilabel">Gestionnaire d'élément</B> qui crée la génération dans le recueil où l'élément cible sélectionné est stocké.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF51">Utilisation des documents composites</A></P>
+<P><A NAME="TMPID3955"></A>Lorsque vous effectuez des opérations sur des documents composites, l'étape <B CLASS="guilabel">Gestionnaire d'élément</B> exécute des opérations sur les éléments qui portent des noms identiques. Par exemple, si un document composite source nommé « MesDocuments » contient les documents « DocumentA.doc », «  DocumentB.doc » et « DocumentC.doc », et que la cible est un document composite qui porte le même nom et qui contient les documents «  DocumentA.doc », « DocumentB.doc » et « DocumentX.doc », l'étape exécute les demandes de création de version pour « DocumentA.doc » et « DocumentB.doc », mais ignore « DocumentC.doc » et « DocumentX.doc ».</P>
+<P><A NAME="TMPID3968"></A>Si vous souhaitez créer une version de « DocumentX.doc » à partir de « DocumentC.doc », vous pouvez indiquer cette opération comme cible spécifique.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF52">Création de versions principales</A></P>
+<P><A NAME="TMPID3972"></A>Lorsque vous utilisez l'étape <B CLASS="guilabel">Gestionnaire d'élément</B> pour créer des versions d'un document, vous pouvez configurer l'étape pour qu'elle crée une version principale si le document utilise la création de version avancée. Le document défini comme source dans une demande de création d'une version principale peut utiliser la création de version standard ou avancée, mais le document défini comme cible doit utiliser la création de version avancée. Si vous configurez une étape pour qu'elle ajoute une version principale à un document qui utilise la création de version standard, l'étape <B CLASS="guilabel">Gestionnaire d'élément</B> ignore la demande de création de versions principale et crée une version standard.</P>
+<P><A NAME="TMPID3975"></A>Par exemple, si un document A utilise la création de version avancée et qu'un document B utilise la création de version standard, vous pouvez ajouter le document B en tant que version principale du document A. Toutefois, si vous souhaitez ajouter un document A en tant que version d'un document B, l'étape <B CLASS="guilabel">Gestionnaire d'élément</B> peut uniquement ajouter le document A en tant que version standard, car le document B n'utilise pas la création de version avancée. Par ailleurs, vous ne pouvez pas utiliser l'étape <B CLASS="guilabel">Gestionnaire d'élément</B> pour modifier le type de création de version d'un document.</P>
+<P><A NAME="TMPID3978"></A>Pour plus d'informations sur la création de versions avancée, reportez-vous à la rubrique <span><XPROC NAME="ExtXrefStart" HREF="lleswbd-h-ugd.wd-versions-bg" FMT="" NO1ST><A  HREF="../../../help/_fr/webdoc/wd-versions-bg.htm">Utilisation des versions</A><XPROC NAME="ExtXrefEnd" HREF="lleswbd-h-ugd.wd-versions-bg" FMT=""></span>.</P>
+<P><A NAME="TMPID3980"></A>Par défaut, la fonction de création de versions avancée est activée sur Content Server, mais l'administrateur peut la désactiver. Même si la fonction de création de version avancée est désactivée, l'onglet <B CLASS="guilabel">Création de version</B> affiche la case à cocher <B CLASS="guilabel">Créer une version principale</B>, qui vous permet de spécifier les demandes de versions principales. Si Content Server traite une étape <B CLASS="guilabel">Gestionnaire d'élément</B> contenant une demande de version principale alors que la création de version avancée est désactivée, le système crée des versions standard au lieu de versions principales.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF53"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3987"></A><B CLASS="note">Note : </B><BR>Avant que l'étape <B CLASS="guilabel">Gestionnaire d'élément</B> ne puisse créer une version principale d'un document, le compte utilisateur Content Server devant traiter l'étape doit disposer de l'autorisation Modifier pour le document.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF54">Configuration des opérations sur les versions pour les pièces jointes au schéma de workflow</A></P>
+<P class="before-ul"><A NAME="TMPID3991"></A>Spécifiez les opérations de création de version pour les documents et les documents composites de Content Server que vous avez ajoutés au dossier Pièces jointes du schéma de workflow. Pour toutes les pièces jointes de documents et de documents composites, vous pouvez spécifier les options suivantes :</P><A NAME="AEN3934"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3935"></A><A NAME="TMPID3995"></A><B CLASS="guilabel">Aucune</B>, pour indiquer qu'aucune nouvelle version de document ou de document composite d'origine n'est renvoyée vers Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3939"></A><A NAME="TMPID3999"></A><B CLASS="guilabel">Si modifié</B>, pour indiquer que seuls les documents ou les documents composites modifiés sont renvoyés vers Content Server comme nouvelles versions des éléments d'origine.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3943"></A><A NAME="TMPID4003"></A><B CLASS="guilabel">Tous</B>, pour indiquer que tous les documents ou les documents composites sont renvoyés vers Content Server comme nouvelles versions des éléments d'origine.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID4006"></A>Vous pouvez également configurer l'étape <B CLASS="guilabel">Gestionnaire d'élément</B> pour qu'elle crée une génération à partir de tous les documents et qu'elle exécute l'une des opérations suivantes pour tous les documents composites :</P><A NAME="AEN3949"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3950"></A><A NAME="TMPID4010"></A><B CLASS="guilabel">Aucune</B>, qui n'exécute aucune opération sur les documents composites.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3953"></A><A NAME="TMPID4013"></A><B CLASS="guilabel">Créer une version</B>, qui crée une version à partir des documents composites.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3956"></A><A NAME="TMPID4016"></A><B CLASS="guilabel">Créer une révision</B>, qui crée une révision à partir des documents composites.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3959"></A><A NAME="TMPID4019"></A><B CLASS="guilabel">Créer une génération</B>, qui crée une génération à partir des documents composites.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3962"></A><A NAME="TMPID4022"></A><B CLASS="guilabel">Créer une version et une génération</B>, qui crée une version et une génération à partir des documents composites.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3965"></A><A NAME="TMPID4025"></A><B CLASS="guilabel">Créer une révision et une génération</B>, qui crée une révision et une génération à partir des documents composites.</P></LI></UL>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="CONFVERSION">Configuration des opérations sur les versions pour les cibles spécifiques</A></P>
+<P><A NAME="TMPID4028"></A>Vous pouvez configurer l'étape <B CLASS="guilabel">Gestionnaire d'élément</B> pour exécuter des opérations de création de version sur des documents ou des documents composites ajoutés comme pièces jointes au schéma de workflow ou stockés dans Content Server. Configurez une demande de création de version pour chaque document ou document composite que vous souhaitez traiter.</P>
+<P class="before-ul"><A NAME="TMPID4031"></A>Une demande de création de version est composée de l'élément source (le document ou le document composite qui représente la version) et d'un élément cible (le document ou le document composite sur lequel la source est appliquée comme version). La source et la cible peuvent être :</P><A NAME="AEN3973"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3974"></A><A NAME="TMPID4034"></A>des pièces jointes au schéma de workflow ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3976"></A><A NAME="TMPID4036"></A>élément Content Server</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3979"></A><A NAME="TMPID4039"></A>un attribut de référence d'élément.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF55">Déverrouillage de cibles</A></P>
+<P><A NAME="TMPID4041"></A>Si l'élément cible est verrouillé, vous pouvez le déverrouiller lorsque l'opération est terminée.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF56">Création de générations</A></P>
+<P><A NAME="TMPID4043"></A>En complément de la version, vous pouvez créer une génération à partir de l'élément source. Vous pouvez également spécifier un nom pour la génération en remplaçant le nom par défaut.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF57">Création de versions et de révisions</A></P>
+<P><A NAME="TMPID4045"></A>En complément d'une version ou d'une génération, vous pouvez créer une version ou une révision à partir de l'élément source. Pour remplacer le nom de version ou de révision par défaut, saisissez un nouveau nom pour la version ou la révision.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wf-versioning-attach-p.htm" revision="">Pour configurer les opérations sur les versions pour les pièces jointes au schéma de workflow</A></p></li>
+<li><p><A  HREF="wf-versioning-targets-p.htm" revision="">Pour configurer les opérations sur les versions pour les cibles spécifiques</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

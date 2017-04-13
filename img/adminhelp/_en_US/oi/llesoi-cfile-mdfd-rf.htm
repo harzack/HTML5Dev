@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>modified Tag Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-mdfd-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Tag Descriptions and Syntax';
+          header.title2 = 'modified Tag Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="MDFDTAG01">Description</A></P>
+<P class="nr1"><A NAME="TMPID4105"></A>Use the <TT CLASS="LITERAL">modified</TT> tag to specify a different modify date for the object.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="MDFDTAG02">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3914"></A>&lt;modified&gt;20100715&lt;/modified&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="MDFDTAG03">Usage</A></P>
+<A NAME="AEN3916"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3917"></A><A NAME="TMPID4118"></A>The <TT CLASS="LITERAL">modified</TT> tag is not a required tag.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3920"></A><A NAME="TMPID4121"></A>The <TT CLASS="LITERAL">modified</TT> tag is optional when:</P><A NAME="AEN3923"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3924"></A><A NAME="TMPID4125"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="create"&gt;</TT></P></LI></UL>
+<P><A NAME="TMPID4129"></A>The exception to this rule relates to <TT CLASS="LITERAL">type="document"</TT>. See the <I CLASS="EMPHASIS">Notes</I> section below for further information.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="MDFDTAG04">Notes</A></P>
+<A NAME="AEN3933"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3934"></A><A NAME="TMPID4136"></A>By default, the <TT CLASS="LITERAL">modified</TT> tag is not applicable for Document objects, <TT CLASS="LITERAL">type="document"</TT>. If specified, the modified date will not be updated on the Document object.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3938"></A><A NAME="TMPID4140"></A>Dates must be in the format YYYYMMDD or YYYYMMDDHHMMSS, where HH refers to the 24-hour clock and is a value between 01 and 24. If YYYYMMDD is used, the time defaults to 000000. If this tag is not specified during create, the current system date is used.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3940"></A><A NAME="TMPID4142"></A>If you set the modified date to occur before the create date, Object Importer will return an error.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="MDFDTAG05">Example</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3944"></A>&#13;&lt;import&gt;
+  &lt;node type="reply" action="create"&gt;
+    &lt;location&gt;Enterprise:Discussion 001:Topic 001&lt;/location&gt;
+    &lt;title language="en"&gt;Reply 001&lt;/title&gt;
+    &lt;body&gt;This is a reply&lt;/body&gt;
+    &lt;createdby&gt;Admin&lt;/createdby&gt;
+    &lt;owner&gt;Admin&lt;/owner&gt;
+    &lt;created&gt;20040214&lt;/created&gt;
+    &lt;modified&gt;20041225&lt;modified&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

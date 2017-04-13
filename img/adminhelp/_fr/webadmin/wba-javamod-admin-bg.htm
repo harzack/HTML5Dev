@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWBA100011-H-AGD-EN-1">
+<META PiXprocLocator="webadmin">
+<META mancondkey="llesrep-h-agd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcs-h-ugd-en -- llesrcm-h-ugd-en -- llesrcm-h-agd -- llesapp-h-ugd -- casp-h-ise -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Administering Java Modules</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-javamod-admin-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Database Administration';
+          header.title2 = 'Administering Java Modules';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID15215"></A>To take advantage of Content Server features written in Java, you must install and configure an application server which processes servlets, JSPs, etc. However, if you do not want to use Java-based features, you must disable them so that users trying to access them will not get error messages.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="JAVAMOD-JVM">Java Virtual Machine (JVM) Settings</A></P>
+<P><A NAME="TMPID15219"></A>In order for Content Server to use JavaObjects, a Java Virtual Machine (JVM) is loaded in each Content Server thread. The <I CLASS="EMPHASIS">default</I> maximum amount of memory that each JVM can consume is 1 GB. A new configuration setting has been added to the <B CLASS="GUILABEL">Administer Java Module</B> page to allow the administrator to set this limit to a different value to improve system performance. The JVM setting <B CLASS="GUILABEL">Maximum Heap Size</B> allows you to set this limit.</P>
+<P><A NAME="TMPID15225"></A>You cannot set the maximum heap size larger than 2 GB. Once you have made a change to this setting, you must restart the servers.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="JAVAMOD-RMI">Remote Method Invocation (RMI)</A></P>
+<P><A NAME="TMPID15228"></A>Adding Java to Content Server requires a protocol that can seamlessly manage communication for Java requests and responses between an application server and regular OScript requests. RMI allows object-to-object communication between two Java Virtual Machines (JVMs), where one JVM can invoke methods belonging to an object stored in another JVM. RMI makes objects in separate JVMs look and act like local objects.</P>
+<P><A NAME="TMPID15230"></A>By default, when you install Content Server, it automatically assigns an RMI port number. If necessary, you can change the port number at a later time. Once you have made a change to this setting, you must restart the servers.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="JAVAMOD-APPSERV">Application Server</A></P>
+<P><A NAME="TMPID15234"></A>A configured application server is required for certain features in Content Server. Selecting the <B CLASS="GUILABEL">Configured</B> checkbox will enable those features. By default, this checkbox is cleared.</P>
+<P><A NAME="TMPID15237"></A>Once you have made a change to this setting, you must restart the servers.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="JAVAMOD-SAC">Secure Attribute for Cookies</A></P>
+<P><A NAME="TMPID15240"></A>This parameter prevents cookies from being sent over connections that are not secure. When the <B CLASS="GUILABEL">Secure Attribute For Cookies</B> parameter is enabled, a browser is only allowed to send the cookie if the request is being sent over a secure channel (for example, HTTPS). By default, this setting is not enabled.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="JAVAMOD-ACI">Allowed Client IPs</A></P>
+<P><A NAME="TMPID15244"></A>This parameter defines specific client IP addresses from which RMI connections are allowed to Content Server.</P>
+<P><A NAME="TMPID15246"></A>Once you have made a change to this setting, you must restart the servers.</P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-javamod-config-settings-p.htm" revision="">To Administer Java Module Settings</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

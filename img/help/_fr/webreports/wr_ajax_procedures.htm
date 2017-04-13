@@ -1,0 +1,213 @@
+<!-- wr_ajax_functions.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Ajax</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_ajax_functions.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Detailed Examples';
+        header.title2 = 'Ajax';
+        header.draw();
+
+</SCRIPT>
+
+
+<p class="body">
+Ajax (Asynchronous JavaScript and XML) is a method of interchanging information between web-based applications.  Some of it's benefits
+include the ability to bring information to the browser in small pieces, as the user requests it, and the ability to do this without redrawing the entire
+page.  If you're familiar with WebReports and simple web-based development, you can probably see some of the benefits this can bring to an individual report
+or an entire WebReports application.  Below are two examples where AJAX might be used.
+</p>
+
+<p class="gui" id="case1">
+<u>Case 1 - Updating a customview with a WebReport</u>
+</p>
+
+<p class="body">
+It has always been possible to use an IFRAME to run a WebReport within a customview.  This was and still is relatively easy to do by using the following
+in a customview.<br><br>
+<PRE>&lt;IFRAME SRC="<I>?func=ll&objId=xyz&objAction=RunReport</I>"&gt;&lt;/IFRAME&gt;</PRE>
+</p>
+
+<p class="body">
+Where xyz is the object id of the WebReport you want to run in the IFRAME.  This method has limitations but is very simple and can be used to good effect.<br><br>
+A more flexible approach is to use the Ajax functions bundled with WebReports.  The functions allow you to call a WebReport from a
+customview or another WebReport and use the returned data to dynamically update the current page.  Below is a simple example of what might be used in a customview to
+dynamically update it with information from a WebReport:<BR><BR>
+
+<PRE>
+&lt;SCRIPT SRC="/&lt;your support dir&gt;/webreports/library/ajax.js"&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT&gt;
+&nbsp;&nbsp;updatePage( 1234, 'customView' );
+&lt;/SCRIPT&gt;
+</PRE>
+
+
+<p class="body">
+This simple piece of code consists of the following:
+<ul>
+	<li>A HTML DIV element with an ID of "customView" (not shown in code above).  This element is inserted by Content Server and wraps the entire customview - we use Ajax to update the contents of this DIV.
+	If you wish to observe the DIV you need to perform a <I>view source</I> in your web browser and search on "customView".  Note that it is not necessary to use a DIV, any
+	HTML element where the attribute <B>innerHTML</B> is writable can be used.
+	<li>A JavaScript include file reference that contains the code to make and return the Ajax request.  Note that the tag <B>[LL_REPTAG_LIBPATH /]</B>
+	returns the path to a folder on the Content Server server which contains the library file <B>ajax.js</B>.  However, because we are referencing the include file
+	from a customview we need to use a qualified path.  In a WebReport we would only need the tag and file name.
+	<li>The next element is a call to the library function, <B>updatePage()</B>.  This function takes two parameters.  The first is the object id of the WebReport
+	we are using to retrieve the additional data (We could use a WebReports constant which will resolve to an object id if we are making the call from another WebReport).  The second parameter is
+	the id of the HTML element we wish to update - in this case we're updating a customview and we know all customviews are wrappered by a DIV with id, "customView"; this is what we'll update (note the
+	small c and large V as JavaScript is case sensitive).
+</ul>
+</p>
+<p class="body">
+At this point we have a folder and we're updating it's customview with data from a WebReport.  Although the information provided in the customview is
+dynamic, it is not context sensitive.  We could take this example a step further and make the information
+displayed in the customview relevant to the current folder.  By doing this we are able to use one centrally managed WebReport to provide dynamic information
+which is specific to each folder.  An example of this could involve displaying each folders category information in it's own customview.  To do this we need to
+pass an extra parameter to the WebReport so that we can retrieve the category information relevant to this folder.  Here's an example of what the updated call
+to <B>updatePage()</B> might look like:<BR><BR>
+
+<PRE>
+&lt;SCRIPT&gt;
+&nbsp;&nbsp;updatePage( 1234, 'customView', '&folderid=' + getURLParm( 'objId' ) );
+&lt;/SCRIPT&gt;
+</PRE>
+
+</p>
+<p class="body">
+The difference between this and the previous example is a third optional parameter, <B>folderid</B>, which can be used by the Ajax report to retrieve information specific to the folder we're in.  The
+function <B>getURLParm()</B> accepts a parameter name and returns the value that is associated with that parameter in the current URL.  In the example above
+we would end up with something looking like <NOBR><B>updatePage( 1234, 'customView', '&folderid=5678' )</B>.</NOBR>The point is illustrated diagrammatically below.<BR><BR>
+<IMG SRC="./wr_ajax_diagram.gif" BORDER="0">
+<BR>
+<B>Notes:</B><BR>
+<ul>
+	<li>If you run the Ajax WebReport on it's own, everything you see in the browser will be returned to the main report.  For this reason, remember to use
+	<B>[LL_WEBREPORT_EXCLUDEHTML /]</B> to turn off the standard Content Server headers, footers and include files.
+	<li>Although we have called this an Ajax example, it is not true Ajax as there is no XML component as we haven't changed the destination mime type.
+	<li>While the functions mentioned above have been included to help the average person achieve results as quickly as possible, more advanced users could
+	easily develop their own custom functions to achieve the same thing.
+</ul>
+</p>
+
+<p class="gui" id="case2">
+<u>Case 2 - Dynamically counting filter hits as the user types</u>
+</p>
+<p class="body">
+This example demonstrates a filter field that, as the user types, will be used to automatically update a HTML element showing how many results to
+expect when the query runs.  This type of functionality is particularly useful when dealing with large result sets as the user knows how many results
+to expect before issuing the query.  It can also be a great time saver where network latency is impacting performance.
+<BR><BR>
+First, create a very simple LiveReport (LiveReport Extensions must be installed) which counts the number of matches for a given string.  Something like:<BR><BR>
+<PRE>	select count(*) hits from dtree where name like '%1%'</PRE>
+</p>
+<p class="body">
+Define the parameter, <B>%1</B>, as type <B>insertString</B>.  The LiveReport should prompt for user input and count all items that start with the letters
+provided.<BR><BR>
+
+Next add a new WebReport that uses the above LiveReport as it's data source.  Edit this WebReport and create a very simple XML schema so that you have something
+that looks like:<BR>
+
+<PRE>
+&lt;?xml version="1.0" encoding="ISO-8859-1" ?&gt;
+[LL_WEBREPORT_STARTROW /]
+&lt;[LL_REPTAG_COLNAME1 /]&gt;[LL_REPTAG=HITS /]&lt;/[LL_REPTAG_COLNAME1 /]&gt;
+[LL_WEBREPORT_ENDROW /]
+</PRE>
+</p>
+<p class="body">
+Set the destination mime type to <B>text/xml</B> so that we can make use of the XML response.  Now run the report and verify
+that IE displays the page as XML with no errors.<BR><BR>
+
+At this point we have finished the WebReport that will return the count information, now we need to call this from where the user will run their query.<BR><BR>
+
+Create a second LiveReport that returns a list of dtree items based on the first part of their name (Like the first LiveReport, this requires an <B>insertString</B> parameter type).  As an example:<BR><BR>
+<PRE>	select * from dtree where name like '%1%'</PRE>
+</p>
+<p class="body">
+You will note that this is very similar to the previous query; the only difference being that we're bringing back the data set rather than a count.<BR><BR>
+
+Finally, create a second WebReport and use the new LiveReport as the data source.  Edit the reportview so that you have something like this:
+<BR><BR>
+<PRE>
+&lt;SCRIPT&gt;
+function updateHits( myFilter ) {
+
+	var url = '[LL_REPTAG_$AJAXWR LLURL:REPORT /]&inputLabel1=' + myFilter + '&prompting=done';
+	if (window.ActiveXObject) {
+		http_request = new ActiveXObject( "Msxml2.XMLHTTP" );
+	}
+	http_request.onreadystatechange = function() { displayHits(); };
+	http_request.open( 'GET', url, true );
+	http_request.send( null );
+}
+
+
+function displayHits( ) {
+	if (http_request.readyState == 4) {
+		document.getElementById("hitsText").innerHTML = "Matches: " + http_request.responseXML.childNodes[1].text;
+	}
+}
+&lt;/SCRIPT&gt;
+
+[LL_REPTAG_MYID NODEINFO:NAME /]
+[LL_REPTAG_MYID LLURL:FUNCTIONMENU /]
+[LL_REPTAG_MYID LLURL:UPALEVEL /]
+&lt;BR&gt;
+
+&lt;INPUT TYPE=TEXT ID="MYFILTER" ONKEYUP="updateHits(this.value);"&gt;
+&lt;INPUT TYPE=BUTTON VALUE="Run" ONCLICK="document.location='[LL_REPTAG_MYID LLURL:REPORT /]&inputLabel1=' + document.getElementById('MYFILTER').value"&gt;
+
+&lt;DIV ID="hitsText">Updates when you type&lt;/DIV&gt;
+&lt;TABLE&gt;
+&lt;TR&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME1 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;/TR&gt;
+
+[LL_WEBREPORT_STARTROW /]
+
+&lt;TR&gt;
+&lt;TD&gt;&nbsp;[LL_REPTAG_1 /]&lt;/TD&gt;
+&lt;TD&gt;&nbsp;[LL_REPTAG_2 /]&lt;/TD&gt;
+&lt;TD&gt;&nbsp;[LL_REPTAG_3 /]&lt;/TD&gt;
+&lt;TD&gt;&nbsp;[LL_REPTAG_4 /]&lt;/TD&gt;
+&lt;TD&gt;&nbsp;[LL_REPTAG_5 /]&lt;/TD&gt;
+&lt;/TR&gt;
+
+[LL_WEBREPORT_ENDROW /]
+
+&lt;/TABLE&gt;
+</PRE>
+</p>
+<p class="body">
+The interaction between the two WebReports is shown diagrammatically below.<BR>
+<IMG SRC="./wr_ajax_diagram2.gif" BORDER="0"><BR>
+<B>Notes:</B><BR>
+<ul>
+	<li>This report uses a constant, <B>AJAXWR</B>, which needs to be defined on the Constants tab by setting the object type to Content Server and
+	browsing for the Ajax report created above.
+	<li>This second WebReport also expects a parameter which, unless the report developer states otherwise, will cause a prompt when the report runs.
+	The developer could enter the parameter name, <B>inputLabel1</B> in this case, along with an empty default value and the prompt field set to no.
+	This will have the effect of causing all the results to be returned initially.  Obviously other values could be used.
+</ul>
+</p>
+
+<p class="body">
+The code above has been cut down to a minimum to demonstrate principles and techniques.  It takes no account of error paths, browsers other than Microsoft Internet Explorer, or Content Server permissions.  These things can all be easily added by the developer.
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

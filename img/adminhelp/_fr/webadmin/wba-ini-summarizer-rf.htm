@@ -1,0 +1,355 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<title>[Summarizer]</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/websystemobj/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-ini-summarizer-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Compréhension du fichier opentext.ini';
+          header.title2 = '[Summarizer]';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID10996"></A>La section <TT CLASS="literal">[Summarizer]</TT> du fichier <TT CLASS="filename">opentext.ini</TT> définit un aspect du service de conversion de documents, DCS. Ce service convertit des documents au format HTML ou texte brut pour permettre leur affichage et indexation. Les DCS sont gérés par les serveurs d'administration. Les services de conversion gérés par le DCS partagent les paramètres dans le fichier <TT CLASS="filename">opentext.ini</TT>. Ces paramètres définissent le comportement des services de conversion. La section <TT CLASS="literal">[Summarizer]</TT>, qui fait partie du DCS, est activée par défaut.</P>
+<P><A NAME="TMPID11001"></A>Le résumeur Content Server utilise les fonctions de recherche de Content Server pour fournir des résumés de document générés automatiquement. Si le résumeur est activé et si vos options d'affichage dans Content Server sont définies de manière à afficher les résumés, Content Server affiche les résumés de document sur la page <B CLASS="guilabel">Résultat de recherche</B>, une fois que vous avez effectué une recherche. Le résumeur génère des résumés en compilant des phrases d'après leur emplacement dans le document, les structures voisines et la signification statistique des mots dans les phrases. Ces phrases sont identifiées par rapport au fichier de fréquence d'occurrence des mots, qui est un fichier de configuration identifiant la fréquence statistique de mots issus d'un grand nombre de documents.</P>
+<P><A NAME="TMPID11007"></A>Le résumeur génère également les locutions clés associées à un document. Les locutions clés sont des locutions issues du document et représentatives du contenu. Par défaut, le résumeur identifie cinq locutions clés en fonction de plusieurs facteurs, notamment la répétition et l'emplacement des locutions dans le document. Si le document ne comporte pas cinq locutions clés appropriées, le résumeur génère autant de locutions clés que possible. Les locutions clés s'affichent également sur la page <B CLASS="guilabel">Résultat de recherche</B> une fois que vous avez effectué une recherche, à condition que les options d'affichage dans Content Server soient définies pour afficher les locutions clés et que le résumeur soit activé.</P>
+<P><A NAME="TMPID11010"></A>Le résumeur commence par marquer les fichiers source au moyen de jetons, afin d'identifier les mots, les abréviations, etc. Après avoir défini les éléments dans le fichier source, le résumeur identifie les séries de jetons qui constituent des phrases lisibles. Il analyse également la structure du fichier source afin d'identifier les régions les plus susceptibles de contenir des données de résumé valables. Le résumeur classe ensuite les phrases selon l'importance des mots dans le document et le fichier de fréquence d'occurrence des mots, puis génère le résumé. Si le résumeur ne parvient pas à résumer un fichier source, en raison de la structure de ce dernier ou de la lisibilité des phrases, le résumé se composera des dix premiers mots du fichier. Si le fichier source ne contient aucune unité lexicale, le résumeur ne peut pas générer de résumé ou de locutions clés.</P>
+<P class="before-ul"><A NAME="TMPID11011"></A>OpenText a conçu et configuré le résumeur afin qu'il traite les documents en anglais, mais vous pouvez le configurer pour obtenir des résumés dans d'autres langues. Si vous souhaitez personnaliser le résumeur, voici quelques informations importantes que vous devez savoir :</P><A NAME="AEN10116"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10117"></A><A NAME="TMPID11015"></A>Le résumeur peut résumer des documents en japonais, en français et en allemand, mais il a été testé pour l'anglais uniquement.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10119"></A><A NAME="TMPID11017"></A>Le résumeur traite la plupart des signes de ponctuation de fin de phrase des langues autres que l'anglais.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10121"></A><A NAME="TMPID11019"></A>Les documents en langue à codage multioctets peuvent être résumés. La segmentation est basée sur Unicode.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10123"></A><A NAME="TMPID11021"></A>Des problèmes peuvent survenir si vous effectuez des résumés dans des langues nécessitant une segmentation basée sur un dictionnaire.</P></LI></UL>
+<P><A NAME="TMPID11022"></A>La section <TT CLASS="literal">[Summarizer]</TT> du fichier <TT CLASS="filename">opentext.ini</TT> contient les paramètres suivants :</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11026"></A><B CLASS="important">Important : </B><BR>OpenText vous recommande vivement de ne pas modifier les valeurs de ces paramètres.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10131"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11038"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#SUMABBREVFILESMZ">SumAbbrevFile</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11041"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#SUMDEFFILESMZ">SumDefFile</A></span></P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11046"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#SUMDOCFREQFILESMZ">SumDocFreqFile</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11049"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#SUMSTOPWORDFILESMZ">SumStopWordFile</A></span></P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11054"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#SUMTAGFILEBSMZ">SumTagFile</A></span></P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID11056"></A>Outre ces paramètres, cette page contient également des informations sur les paramètres DCS suivants. Ces paramètres sont obligatoires et sont utilisés uniquement par le DCS.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10160"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11067"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#LIBSMZ">lib</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11070"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#SUMMARYSMZ">récapitulatif</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11073"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#SUMMARYHOTWORDSSMZ">summaryhotwords</A></span></P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11078"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#SUMMARYSENTENCESSMZ">summarysentences</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11081"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#SUMMARYSIZESMZ">summarysize</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11084"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#SUMMARYTITLESIZESMZ">summarytitlesize</A></span></P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11089"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#X-MAXCALLSSMZ">x-maxcalls</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11092"></A><span><A href="../webadmin/wba-ini-summarizer-rf.htm#X-TIMEOUTSMZ">x-timeout</A></span></P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMABBREVFILESMZ">SumAbbrevFile</A></P><A NAME="AEN10198"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10199"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID11099"></A>Détermine le chemin relatif et le nom du fichier d'abréviations utilisé par le résumeur pour définir les abréviations courantes et toutes les combinaisons de trois lettres ne constituant pas un mot.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10202"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11102"></A>Un chemin et un nom de fichier relatifs à l'emplacement du DCS sur votre installation Content Server. Par défaut, le fichier d'abréviations s'appelle <TT CLASS="filename">abbrev.eng</TT> et il est enregistré dans le répertoire config de votre installation Content Server.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMDEFFILESMZ">SumDefFile</A></P><A NAME="AEN10209"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10210"></A><B>Description :</B></P>
+<P class="before-ul nr1"><A NAME="TMPID11111"></A>Détermine le chemin relatif et le nom du fichier de définitions que le résumeur utilise pour définir son fonctionnement. Le fichier de définition contient cinq nombres (un par ligne) représentant les éléments suivants :</P><A NAME="AEN10213"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10214"></A><A NAME="TMPID11114"></A>Un multiplieur de taux pour les phrases situées dans les 20 premiers pour cent d'un document. Il s'agit probablement de phrases d'introduction, idéales pour constituer un résumé.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10216"></A><A NAME="TMPID11116"></A>Un nombre maximum d'unités lexicales autorisées dans une phrase de résumé. Une unité lexicale est une combinaison de lettres, de nombres, de traits et de références d'entité. Le résumeur identifie comme illisibles les phrases qui contiennent plus d'unités lexicales que la limite autorisée. Ces phrases ne seront pas utilisées pour constituer un résumé.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10218"></A><A NAME="TMPID11118"></A>Un nombre minimum d'unités lexicales autorisées dans une phrase de résumé. Le résumeur identifie comme illisibles les phrases qui contiennent moins d'unités lexicales que le nombre minimum requis. Ces phrases ne seront pas utilisées pour constituer un résumé.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10220"></A><A NAME="TMPID11120"></A>Un taux maximum d'unités non lexicales par rapport aux unités lexicales. Si le taux actuel d'unités non lexicales par rapport aux unités lexicales est supérieur à ce nombre, le résumeur identifie la phrase comme illisible. Cette phrase ne sera pas utilisée pour constituer un résumé.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10222"></A><A NAME="TMPID11122"></A>Le nombre de documents utilisés pour former les données relatives à la signification statistique des mots dans le fichier de fréquence d'occurrence des mots.</P></LI></UL></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10224"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11125"></A>Un chemin et un nom de fichier relatifs à l'emplacement du DCS sur votre installation Content Server. Par défaut, le fichier de définitions s'appelle <TT CLASS="filename">summdef.eng</TT> et il est enregistré dans le répertoire config de votre installation Content Server.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMDOCFREQFILESMZ">SumDocFreqFile</A></P><A NAME="AEN10231"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10232"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID11134"></A>Détermine le chemin relatif et le nom du fichier de fréquence d'occurrence des mots contenant les données nécessaires au résumeur pour calculer la signification statistique des mots dans les documents. Ce fichier contient une liste de mots présents dans plus de 1 000 documents sur les 1 371 876 utilisés par OpenText pour élaborer l'arrière-plan statistique des paramètres par défaut du résumeur.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10236"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11138"></A>Un chemin et un nom de fichier relatifs à l'emplacement du DCS sur votre installation Content Server. Par défaut, le fichier de fréquence d'occurrence des mots s'appelle <TT CLASS="filename">docfreq.eng</TT> et il est enregistré dans le répertoire config de votre installation Content Server.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMSTOPWORDFILESMZ">SumStopWordFile</A></P><A NAME="AEN10243"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10244"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID11147"></A>Détermine le chemin relatif et le nom du fichier de mots vides que le résumeur utilise pour définir une liste de mots vides courants. Les mots vides sont des mots n'ajoutant aucune valeur sémantique à une phrase. Il s'agit essentiellement de mots tels que « un(e) », « et » et « le/la ». En différenciant les mots vides et les mots ayant une importance sémantique, le résumeur identifie les mots susceptibles de contribuer à l'intérêt du document, en augmentant la pertinence de ses résumés et locutions clés.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10250"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11153"></A>Un chemin et un nom de fichier relatifs à l'emplacement du DCS sur votre installation Content Server. Par défaut, le fichier des mots vides s'appelle <TT CLASS="filename">stopword.eng</TT> et il est enregistré dans le répertoire config de votre installation Content Server.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMTAGFILEBSMZ">SumTagFile</A></P><A NAME="AEN10257"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10258"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID11162"></A>Désigne le chemin relatif et le nom du fichier de balises contenant une liste des balises de marquage présentes dans les documents. Par exemple, les balises de marquage HTML, XML et SGML. Un chiffre indiquant l'importance de la balise pour le résumeur se trouve en regard de chaque balise. Le tableau suivant présente la signification de chaque chiffre.</P>
+<P><A NAME="TMPID11163"></A>Tableau décrivant la plage des paramètres de signification des balises :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10262"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Numéro</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">0</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le résumeur ignore ces balises, mais pas les données qu'elles contiennent. Si une phrase débute avant cette balise et la contient, le résumeur ne sépare pas la phrase en deux phrases distinctes. Par défaut, les balises inconnues sont identifiées par ce chiffre.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">1</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le résumeur ignore ces balises, mais pas les données qu'elles contiennent. Si une phrase débute avant cette balise et la contient, le résumeur sépare la phrase en deux phrases distinctes.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">2</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le résumeur ignore ces balises et les données qu'elles contiennent.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">3</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Cette valeur marque comme phrases de résumé (de vue d'ensemble) les données contenues dans ces balises. Pour générer le résumé, le résumeur utilise les phrases du titre, du résumé et de la conclusion, dans cet ordre.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">4</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Cette valeur identifie comme phrases de conclusion les données contenues dans ces balises. Pour générer le résumé, le résumeur utilise les phrases du titre, du résumé et de la conclusion, dans cet ordre.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">5</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Cette valeur identifie comme phrases de titre les données contenues dans ces balises. Pour générer le résumé, le résumeur utilise les phrases du titre, du résumé et de la conclusion, dans cet ordre.</TD></TR></TABLE>
+</DIV></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10289"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11193"></A>Un chemin et un nom de fichier relatifs à l'emplacement du DCS sur votre installation Content Server. Par défaut, le fichier des balises s'appelle <TT CLASS="filename">tags.eng</TT> et il est enregistré dans le répertoire config de votre installation Content Server.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LIBSMZ">lib</A></P><A NAME="AEN10296"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10297"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID11202"></A>Détermine le nom de la <I CLASS="emphasis">bibliothèque</I> que le DCS doit charger. Une bibliothèque est une liste d'opérations associées à un filtre de conversion que le DCS lit pour effectuer la conversion.</P>
+<P><A NAME="TMPID11204"></A>La modification de la valeur de ce paramètre risque d'empêcher le DCS de fonctionner ou de fonctionner correctement.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11206"></A><B CLASS="important">Important : </B><BR>Ne modifiez pas la valeur de ce paramètre, sauf si le service d'assistance clientèle d'OpenText vous le demande. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10305"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11210"></A>La valeur par défaut est <TT CLASS="literal">dcssum</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMMARYSMZ">récapitulatif</A></P><A NAME="AEN10310"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10311"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID11217"></A>Indique si le DCS génère des résumés des documents qu'il convertit au format HTML. Si l'utilisateur définit les options d'affichage de recherche pour afficher les résumés, Content Server affiche ces résumés accompagnés des résultats de la recherche sur la page <B CLASS="guilabel">Résultat de recherche</B>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10316"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11222"></A><TT CLASS="literal">TRUE</TT> ou <TT CLASS="literal">FALSE</TT> ; la valeur <TT CLASS="literal">TRUE</TT> demande au DCS de générer des résumés. Par défaut, sur la ligne de commande de chaque DCS, le paramètre <TT CLASS="literal">summary</TT> est défini sur <TT CLASS="literal">TRUE</TT>.</P>
+<P><A NAME="TMPID11228"></A>Pour définir le paramètre <TT CLASS="literal">summary</TT> sur <TT CLASS="literal">FALSE</TT>, vous devez modifier <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbs-h-agd.wbs-htmlcmdlnargs-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/websystemobj/wbs-htmlcmdlnargs-rf.htm">Arguments de ligne de commande</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbs-h-agd.wbs-htmlcmdlnargs-rf" FMT=""></span> plutôt que le paramètre du fichier <TT CLASS="filename">opentext.ini</TT>, car les arguments définis sur la ligne de commande priment sur les paramètres généraux définis dans le fichier <TT CLASS="filename">opentext.ini</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMMARYHOTWORDSSMZ">summaryhotwords</A></P><A NAME="AEN10331"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10332"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID11239"></A>Indique le nombre de liens hypertexte utilisés par le résumeur pour générer le résumé d'un document. En réduisant cette valeur, vous pouvez accélérer la création des résumés mais beaucoup d'autres variables affectent également la vitesse de ce processus.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11241"></A><B CLASS="important">Important : </B><BR>OpenText vous recommande vivement de ne pas modifier la valeur de ce paramètre.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10338"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11245"></A>Un entier supérieur ou égal à un. La valeur par défaut est <TT CLASS="literal">20</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMMARYSENTENCESSMZ">summarysentences</A></P><A NAME="AEN10343"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10344"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID11252"></A>Indique le nombre de phrases à générer dans les résumés.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10347"></A><B>Syntaxe :</B></P>
+<P class="nr1"><A NAME="TMPID11255"></A><TT CLASS="literal">summarysentences=5</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10351"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11259"></A>Un entier supérieur ou égal à un. Par défaut, ce paramètre n'apparaît pas dans la section <TT CLASS="literal">[Summarizer]</TT> du fichier <TT CLASS="filename">opentext.ini</TT>, ce qui équivaut à <TT CLASS="literal">summarysentences=5</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMMARYSIZESMZ">summarysize</A></P><A NAME="AEN10358"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10359"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID11268"></A>Détermine la portion du document converti, en octets, utilisée par Content Server pour générer un résumé. Une valeur peu élevée limite le résumé aux &lt;<I CLASS="varname">n</I>> premiers octets du document. La modification de cette valeur risque également d'affecter les performances de conversion des documents plus importants.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11272"></A><B CLASS="important">Important : </B><BR>OpenText vous recommande vivement de ne pas modifier la valeur de ce paramètre.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10367"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11276"></A>Tout entier supérieur à un. La valeur par défaut est <TT CLASS="literal">256000</TT> octets.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMMARYTITLESIZESMZ">summarytitlesize</A></P><A NAME="AEN10372"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10373"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID11283"></A>Indique le nombre de caractères à afficher dans les titres des résultats de recherche pour certains documents. Ces documents proviennent de sources de données autres que la source de données Content Server Entreprise (sources de données Directory Walker ou Spider, par exemple).</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10377"></A><B>Syntaxe :</B></P>
+<P class="nr1"><A NAME="TMPID11287"></A><TT CLASS="literal">summarytitlesize=30</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10381"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11291"></A>Un entier. La valeur par défaut est <TT CLASS="literal">30</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="X-MAXCALLSSMZ">x-maxcalls</A></P><A NAME="AEN10386"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10387"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID11298"></A>Indique le nombre de réutilisations d'un processus pour le traitement des documents. Pendant la conversion de documents, le DCS charge un processus de traitement. Le processus de traitement charge le filtre de conversion approprié et l'utilise pour convertir le document. Pour améliorer les performances, le DCS réutilise le processus de traitement pour plusieurs conversions. Si le processus de traitement rencontre une erreur, il s'interrompt avant d'atteindre la valeur définie dans le fichier <TT CLASS="filename">opentext.ini</TT>.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11301"></A><B CLASS="important">Important : </B><BR>OpenText vous recommande vivement de ne pas modifier la valeur de ce paramètre.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10394"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11305"></A>La valeur par défaut est héritée du paramètre <TT CLASS="literal">maxcalls</TT> de la section <TT CLASS="literal">[DCSworker]</TT> du fichier <TT CLASS="filename">opentext.ini</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF94"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11310"></A><B CLASS="note">Note : </B><BR>Le paramètre <TT CLASS="literal">x-maxcalls</TT> est actif uniquement lorsque le filtre de conversion qu'il modifie est géré par un processus de traitement. Pour plus d'informations sur la configuration d'un processus de traitement, reportez-vous à la rubrique <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbs-h-agd.wbs-conf-server-log-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/websystemobj/wbs-conf-server-log-bg.htm">Configuration du journal du serveur</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbs-h-agd.wbs-conf-server-log-bg" FMT=""></span>.</P>
+<P><A NAME="TMPID11313"></A>Si vous définissez une valeur pour <TT CLASS="literal">x-maxcalls</TT>, la valeur de <TT CLASS="literal">maxcalls</TT> sera écrasée dans la section <TT CLASS="literal">[DCSworker]</TT> du fichier <TT CLASS="filename">opentext.ini</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="X-TIMEOUTSMZ">x-timeout</A></P><A NAME="AEN10410"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10411"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID11323"></A>Indique le temps d'attente maximum (en secondes) avant la fin d'un processus de traitement de conversion de documents. Configurez ce paramètre lorsque la valeur par défaut définie dans le paramètre <TT CLASS="literal">timeout</TT> n'est pas valable. Configurez le paramètre <TT CLASS="literal">timeout</TT> de la page <TT CLASS="filename">opentext.ini</TT> pour chaque filtre de conversion. Par exemple, certains filtres de conversion sont plus lents que d'autres. Dans ce cas, la valeur <TT CLASS="literal">timeout</TT> par défaut de 30 secondes peut ne pas être applicable, car le délai de conversion moyen est supérieur à cette valeur. Dans ce cas, vous pouvez modifier la valeur <TT CLASS="literal">x-timeout</TT> en choisissant une valeur plus élevée. </P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11330"></A><B CLASS="important">Important : </B><BR>OpenText vous recommande vivement de ne pas modifier la valeur de ce paramètre.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN10422"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID11334"></A>La valeur par défaut est héritée du paramètre <TT CLASS="literal">timeout</TT> de la section <TT CLASS="literal">[DCSworker]</TT> du fichier <TT CLASS="filename">opentext.ini</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF95"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11339"></A><B CLASS="note">Note : </B><BR>Le paramètre <TT CLASS="literal">x-timeout</TT> est actif uniquement lorsque le filtre de conversion qu'il modifie est géré par un processus de traitement. Pour plus d'informations sur la configuration d'un processus de traitement, reportez-vous à la rubrique <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbs-h-agd.wbs-conf-server-log-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/websystemobj/wbs-conf-server-log-bg.htm">Configuration du journal du serveur</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbs-h-agd.wbs-conf-server-log-bg" FMT=""></span>.</P>
+<P><A NAME="TMPID11342"></A>Si vous définissez une valeur pour <TT CLASS="literal">x-timeout</TT>, la valeur de <TT CLASS="literal">timeout</TT> sera écrasée dans la section <TT CLASS="literal">[DCSworker]</TT> du fichier <TT CLASS="filename">opentext.ini</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

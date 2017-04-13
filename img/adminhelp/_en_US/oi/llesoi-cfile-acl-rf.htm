@@ -1,0 +1,311 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>acl Tag Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-acl-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Tag Descriptions and Syntax';
+          header.title2 = 'acl Tag Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-ACL01">acl Tag</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="ACLTAG01">Description</A></P>
+<P class="nr1"><A NAME="TMPID3225"></A>Use the <TT CLASS="LITERAL">acl</TT> tag to add, update, or delete permissions for a given object. If an access control list, (ACL), exists for the object, the permissions on that existing ACL will be updated, otherwise the ACL will be added to the object.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="ACLTAG02">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3078"></A>&lt;acl user="jdoe" permissions="111111100"&gt;&lt;/acl&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="ACLTAG03">Usage</A></P>
+<A NAME="AEN3080"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3081"></A><A NAME="TMPID3238"></A>The <TT CLASS="LITERAL">acl</TT> tag is not a required tag.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3084"></A><A NAME="TMPID3241"></A>The <TT CLASS="LITERAL">acl</TT> tag is optional when:</P><A NAME="AEN3087"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3088"></A><A NAME="TMPID3245"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3093"></A><A NAME="TMPID3250"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3098"></A><A NAME="TMPID3255"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="sync"&gt;</TT></P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3103"></A><A NAME="TMPID3260"></A>If the <TT CLASS="LITERAL">acl</TT> tag is used, there are two required attributes:</P>
+<A NAME="AEN3106"></A>
+<OL TYPE="a">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3107"></A><A NAME="TMPID3264"></A>Either the <span><A HREF="llesoi-cfile-acl-rf.htm#PERATT01">permissions Attribute</A></span> or the <TT CLASS="LITERAL">action="remove"</TT> attribute.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3111"></A><A NAME="TMPID3268"></A>One of: <span><A HREF="llesoi-cfile-acl-rf.htm#BASEATT01">basegroup Attribute</A></span>, <span><A HREF="llesoi-cfile-acl-rf.htm#BASOWNATT01">baseowner Attribute</A></span>, <span><A HREF="llesoi-cfile-acl-rf.htm#GRPATT01">group Attribute</A></span>, <span><A HREF="llesoi-cfile-acl-rf.htm#ROLATT01">role Attribute</A></span>, <span><A HREF="llesoi-cfile-acl-rf.htm#STANATT01">standard Attribute</A></span>, or <span><A HREF="llesoi-cfile-acl-rf.htm#USRATT01">user Attribute</A></span>.</P></LI></OL></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="ACLTAG04">Example</A></P>
+<P><A NAME="TMPID3277"></A>To remove the user “jdoe” in the ACL list of the Folder “New Folder”:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3123"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise:New Folder&lt;/location&gt;
+    &lt;acl user="jdoe" action="remove"/&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P><A NAME="TMPID3281"></A>To view more <TT CLASS="LITERAL">acl</TT> tag examples, see <span><A HREF="llesoi-acl-bg.htm">acl Import Control File Examples</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="BASEATT01">basegroup Attribute</A></P>
+<P><A NAME="TMPID3286"></A>The <TT CLASS="LITERAL">basegroup</TT> attribute sets the basegroup name to which the permission will apply. In other words, you can both change the name of the owner group of the object and set the owner group's permissions in one step. This attribute's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3130"></A>&lt;acl basegroup="DefaultGroup" permissions="111111111"&gt;&lt;/acl&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3131"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3300"></A>The <TT CLASS="LITERAL">basegroup</TT> attribute is not required.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3303"></A>The <TT CLASS="LITERAL">basegroup</TT> attribute can be set to any group name which exists in Content Server. Group names are case-sensitive.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="BASOWNATT01">baseowner Attribute</A></P>
+<P><A NAME="TMPID3308"></A>The <TT CLASS="LITERAL">baseowner</TT> attribute sets the baseowner name to which the permission will apply. In other words, you can both change the name of the owner of the object and set the owner's permissions in one step. This attribute's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3151"></A>&lt;acl baseowner="Admin" permissions="111111111"&gt;&lt;/acl&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3152"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3322"></A>The <TT CLASS="LITERAL">baseowner</TT> attribute is not required.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3325"></A>The <TT CLASS="LITERAL">baseowner</TT> attribute can be set to any user name which exists in Content Server. User names are case-sensitive.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="GRPATT01">group Attribute</A></P>
+<P><A NAME="TMPID3330"></A>The <TT CLASS="LITERAL">group</TT> attribute sets the group name to which the permission will apply. This attribute's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3172"></A>&lt;acl group="Testing" permissions="111111100"&gt;&lt;/acl&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3173"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3344"></A>The <TT CLASS="LITERAL">group</TT> attribute is not required.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3347"></A>The <TT CLASS="LITERAL">group</TT> attribute can be set to any group name which exists in Content Server. Group names are case-sensitive.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PERATT01">permissions Attribute</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="PERATT02">Description</A></P>
+<P><A NAME="TMPID3354"></A>The <TT CLASS="LITERAL">permissions</TT> attribute sets the allowable permissions for the ACL.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="PERATT03">Usage for all objects except a Discussion</A></P>
+<A NAME="AEN3195"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3196"></A><A NAME="TMPID3360"></A>The <TT CLASS="LITERAL">permissions</TT> attribute is required if the <TT CLASS="LITERAL">action="remove"</TT> attribute is not present.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3200"></A><A NAME="TMPID3364"></A>For each <TT CLASS="LITERAL">permissions</TT> attribute, you must specify a permission string containing nine digits, where each digit is either a zero, which denies permission, or a one, which allows permission. The positions, from one to nine in the string, define the type of permission for all objects except Discussions.</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3203"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Position</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">1</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">See node. Setting a one in this position allows the user or group specified to see that the object exists.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">2</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">See contents of the node. Setting a one in this position allows the user or group specified to see that the object exists, and to see any contents of that object.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">3</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Modify the node. Setting a one in this position allows the user or group specified to see that the object exists, to modify the object, and to see any contents of that object.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">4</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Edit node permissions. Setting a one in this position allows the user or group specified to see that the object exists, to modify the object, and to see and modify any contents of that object.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">5</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Edit node attributes. Setting a one in this position allows the user or group specified to see that the object exists, to modify the object, to see and modify any contents of that object, and to modify any metadata associated with the object.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">6</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Add items to a node, for example add documents to a folder. The sixth digit in the string only applies to container nodes, such as a folder. When specifying the <TT CLASS="LITERAL">acl</TT> tag for a non-container object, such as a document, the sixth digit does not apply. As a best practice, non-container objects should have this bit set to zero, although there is no difference in how the object will behave after import, regardless of the value.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">7</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Delete node versions. Setting a one in this position allows the user or group specified to see that the object exists, and to delete versions of that object.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">8</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Delete node. Setting a one in this position allows the user or group specified to see that the object exists, and to delete the object.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">9</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Reserve node. Setting a one in this position allows the user or group specified to see that the object exists, and to reserve the object.</TD></TR></TABLE>
+</DIV></P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="PERATT04">Usage for a Discussion</A></P>
+<A NAME="AEN3241"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3242"></A><A NAME="TMPID3407"></A>The <TT CLASS="LITERAL">permissions</TT> attribute is required if the <TT CLASS="LITERAL">action="remove"</TT> attribute is not present.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3246"></A><A NAME="TMPID3411"></A>The <TT CLASS="LITERAL">permissions</TT> attribute of an <TT CLASS="LITERAL">acl</TT> tag applied to a <TT CLASS="LITERAL">discussion</TT> object functions differently from those applied to any other object.</P>
+<P><A NAME="TMPID3415"></A>Only those permissions settings listed below are supported for Discussions:</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3252"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">permissions Setting</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">permissions="000000000"</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Sets the acl for the discussion to “None”.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">permissions="111011111"</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Sets the acl for the discussion to “Write”.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">permissions="110000000"</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Sets the acl for the discussion to “Read”.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">permissions="111111111"</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Sets the acl for the discussion to “Administer”.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="ROLATT01">role Attribute</A></P>
+<P><A NAME="TMPID3451"></A>The <TT CLASS="LITERAL">role</TT> attribute sets the permissions for designated groups assigned to Projects in Content Server. This attribute's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3289"></A>&lt;acl role="members" permissions="111111111"&gt;&lt;/acl&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3290"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3466"></A>The <TT CLASS="LITERAL">role</TT> attribute is not required.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3469"></A>The <TT CLASS="LITERAL">role</TT> attribute is optionally available when <TT CLASS="LITERAL">&lt;node type="project" action="&lt;<I CLASS="VARNAME">any_action</I>>"&gt;</TT> only. The <TT CLASS="LITERAL">role</TT> attribute can only be applied to the child objects of Projects, and cannot be applied to the Project itself. A Folder is an example of a child object of a Project.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID3475"></A>The <TT CLASS="LITERAL">role</TT> attribute must be assigned one of the following values:</P><A NAME="AEN3312"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3313"></A><A NAME="TMPID3479"></A><B CLASS="HIGHLIGHT"><TT CLASS="LITERAL">coordinators</TT></B>: The permissions will be assigned to the designated coordinator group of a project.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3317"></A><A NAME="TMPID3483"></A><B CLASS="HIGHLIGHT"><TT CLASS="LITERAL">guests</TT></B>: The permissions will be assigned to the designated guest group of a project.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3321"></A><A NAME="TMPID3487"></A><B CLASS="HIGHLIGHT"><TT CLASS="LITERAL">members</TT></B>: The permissions will be assigned to the designated member group of a project.</P></LI></UL></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="STANATT01">standard Attribute</A></P>
+<P><A NAME="TMPID3492"></A>The <TT CLASS="LITERAL">standard</TT> attribute allows you to set the permissions for the basegroup, baseowner, or world, without requiring you to state a specific user or group. This attribute's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3328"></A>&lt;acl standard="owner" permissions="111111100"&gt;&lt;/acl&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3329"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3506"></A>The <TT CLASS="LITERAL">standard</TT> attribute is not required.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID3509"></A>The <TT CLASS="LITERAL">standard</TT> attribute must be assigned one of the following values:</P><A NAME="AEN3345"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3346"></A><A NAME="TMPID3513"></A><B CLASS="HIGHLIGHT"><TT CLASS="LITERAL">basegroup</TT></B>: The default group of a node.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3350"></A><A NAME="TMPID3517"></A><B CLASS="HIGHLIGHT"><TT CLASS="LITERAL">owner</TT></B>: The owner of a node.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3354"></A><A NAME="TMPID3521"></A><B CLASS="HIGHLIGHT"><TT CLASS="LITERAL">world</TT></B>: All users and groups.</P></LI></UL></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="USRATT01">user Attribute</A></P>
+<P><A NAME="TMPID3526"></A>The <TT CLASS="LITERAL">user</TT> attribute sets the user name to which the permission will apply. This attribute's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3361"></A>&lt;acl user="jdoe" permissions="111111110"&gt;&lt;/acl&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3362"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3540"></A>The <TT CLASS="LITERAL">user</TT> attribute is not required.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3543"></A>The <TT CLASS="LITERAL">user</TT> attribute can be set to any user name which exists in Content Server. User names are case-sensitive.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

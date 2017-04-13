@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWFW100500-H-AGD-EN-1">
+<META PiXprocLocator="webwork">
+<title>Administering Workflow Agent Parameters</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webwfp/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webnotify/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-wfagent-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Workflows';
+          header.title2 = 'Administering Workflow Agent Parameters';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID252"></A>The <B CLASS="GUILABEL">Configure Workflow Agent Parameters</B> page allows you to specify the intervals when the Workflow Agent runs, enable error notification, and set the task processing order. For more information on the Workflow Agent, see <span><XPROC NAME="ExtXrefStart" HREF="lleswfp-h-ugd.wf-agent-u" FMT="" NO1ST><A  HREF="../../../help/_en_US/webwfp/wf-agent-u.htm">Understanding the Workflow Agent</A><XPROC NAME="ExtXrefEnd" HREF="lleswfp-h-ugd.wf-agent-u" FMT=""></span>.</P>
+<P><A NAME="TMPID261"></A>When the Workflow Agent starts, it searches the Content Server database for all tasks with the status <B CLASS="GUILABEL">Ready for the Workflow Agent</B>. After the Workflow Agent finishes its run, it stops until the next scheduled start interval.</P>
+<P><A NAME="TMPID270"></A>Tasks are processed by the Workflow Agent or the Distributed Agent. How the tasks are processed depends on the selected processing order. If first in, first out (FIFO) order is enabled, the Workflow Agent processes the tasks. If FIFO is disabled, then the Workflow Agent uses Distributed Agents for parallel processing of the tasks.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-ENABLINGERRORNOTIFICATION">Enabling Error Notification</A></P>
+<P><A NAME="TMPID279"></A>You must enable Workflow Agent error notification to ensure that error messages are sent when processing fails. If you disable error notification, no user is notified if processing fails.</P>
+<P class="before-ul"><A NAME="TMPID282"></A>If the Workflow Agent encounters an error, it attempts to send an email message that alerts workflow managers and the step performer to the error and requests action to correct the problem. In order to send error messages, the Workflow Agent requires the following:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN274"></A><A NAME="TMPID289"></A>The email server's SMTP settings and the sender's email address must be specified.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN276"></A><A NAME="TMPID291"></A>Workflow managers and step assignees must specify their email address in their profiles.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID292"></A>You must <XPROC NAME="ExtXrefStart" HREF="lleswbn-h-agd.wbn-config-report-bg" FMT="FIXTEXT" NO1ST><A  HREF="../../../adminhelp/_en_US/webnotify/wbn-config-report-bg.htm">specify the email server's SMTP settings</A><XPROC NAME="ExtXrefEnd" HREF="lleswbn-h-agd.wbn-config-report-bg" FMT="FIXTEXT"> in the following sections:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN281"></A><A NAME="TMPID296"></A>SMTP Settings, where you can set the SMTP email server parameters.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN283"></A><A NAME="TMPID298"></A>Email Message Settings, where you can set the sender's email address.</P></LI></UL>
+<P><A NAME="TMPID299"></A>In addition, you can <XPROC NAME="ExtXrefStart" HREF="lleswbn-h-agd.wbn-using-email-bg" FMT="FIXTEXT" NO1ST><A  HREF="../../../adminhelp/_en_US/webnotify/wbn-using-email-bg.htm">test your settings</A><XPROC NAME="ExtXrefEnd" HREF="lleswbn-h-agd.wbn-using-email-bg" FMT="FIXTEXT">.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-SPECIFYINGPROCESSINGORDER">Specifying Processing Order</A></P>
+<P><A NAME="TMPID303"></A>You can specify that the Workflow Agent must process tasks in first in, first out (FIFO) order (that is, the order in which they are received) or in order by the results of a database query (which may vary with each query). If you have a small number of tasks to be processed, the setting may not make a difference.</P>
+<P><A NAME="TMPID306"></A>If you disable FIFO processing, the Workflow Agent does not sort tasks after it searches the database for all tasks to be processed; it completes the tasks in the order they appear in the search result. For increased throughput, disable the FIFO order.</P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wf-wfagent-p.htm" revision="">To Schedule the Workflow Agent</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

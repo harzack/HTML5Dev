@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Champs du modèle SQL</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-sqlfield-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Modèles SQL';
+          header.title2 = 'Champs du modèle SQL';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID728"></A>Cette section explique les champs disponibles dans le modèle SQL. Pour des exemples d'utilisation de ces champs, voir <span><A HREF="lr-urlpartem-bg.htm">Exemples de modèles</A></span>.</P>
+<DIV title="Champs du modèle SQL" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="LR-SQLTEM-TBL"></A><B>Tableau 2-1 : Champs du modèle SQL</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Nom du champ</TD></TR></TABLE></TD>
+<TD SCOPE="COL" WIDTH="354" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Description</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">#</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" WIDTH="354" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Numéro du modèle. Ce champ montre la référence utilisée pour insérer un modèle dans la requête SQL principale. Le symbole tilde (~) est utilisé avec le numéro de modèle pour indiquer l'emplacement où le modèle doit être inséré. Par exemple, « ~1 » indique l'emplacement où le modèle 1 doit être inséré, à condition que les diverses conditions soient remplies. Notez que si la requête SQL ne contient aucune référence de modèle, le modèle est inséré à la fin de la requête SQL.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Auto-Where</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" WIDTH="354" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Sélectionnez cette case à cocher pour ajouter automatiquement le mot de filtre correct, à savoir <TT CLASS="literal">WHERE</TT>, <TT CLASS="literal">AND</TT> ou <TT CLASS="literal">OR</TT>, au début d'un modèle. Cette option est utile en l'absence de clause <TT CLASS="literal">WHERE</TT> dans la requête SQL principale et lorsque l'ordre d'insertion des modèles n'est pas connu. Cette option utilise toujours <TT CLASS="literal">WHERE</TT> pour le premier modèle ajouté, puis <TT CLASS="literal">AND</TT> ou <TT CLASS="literal">OR</TT>, en fonction des mots qui figurent dans la source du modèle d'origine, pour chaque modèle suivant. Si la source du modèle ne contient aucun de ces mots, la valeur par défaut sera <TT CLASS="literal">WHERE</TT> ou <TT CLASS="literal">AND</TT>. La façon la plus simple d'utiliser cette fonction consiste à placer <TT CLASS="literal">OR</TT> ou <TT CLASS="literal">AND</TT> comme premier mot dans la source du modèle, puis la fonction remplace ce mot par <TT CLASS="literal">WHERE</TT> si le modèle est le premier à être inséré dans la requête SQL.</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour en savoir plus, voir <span><A HREF="lr-dynfil-bg.htm">Filtrage dynamique à l'aide de la fonction Auto-Where</A></span>. Pour des exemples d'utilisation de l'option <B CLASS="guilabel">Auto-Where</B>, voir <span><A HREF="lr-example1-bg.htm#LR-EXREUSETEM-EX">Réutilisation d'un modèle avec une entrée de variable</A></span> et <span><A HREF="lr-example1-bg.htm#LR-EXMULTVAR-EX">Réutilisation d'un modèle avec plusieurs entrées de variables</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Source SQL</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" WIDTH="354" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Le contenu du modèle potentiellement ajouté à la requête SQL est défini dans ce champ. Cette source peut inclure des paramètres normaux sous la forme : %1, %2, ainsi que des marqueurs sous la forme #1, #2 qui sont utilisés avec le paramètre URL, la condition <TT CLASS="literal">Inclure IF</TT>, décrit dans la ligne « Inclure IF » de ce tableau et dans <span><A HREF="lr-sqlfield-bg.htm#LR-SQLINCLIF">Inclure IF</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Auto Comma</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" WIDTH="354" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Sélectionnez cette case à cocher pour activer une fonction qui garantit que les variables séparées par une virgule présentent le bon nombre de virgules après la résolution des variables. Exemples de variables séparées par une virgule : <TT CLASS="literal">%1</TT>, <TT CLASS="literal">%2</TT> et <TT CLASS="literal">%3</TT>. Par exemple, si <TT CLASS="literal">%2</TT> aboutit à une chaîne vide, la liste est automatiquement convertie pour supprimer les virgules inutiles. Ainsi, <B CLASS="highlight">12,,24</B> est converti en <B CLASS="highlight">12,24</B>. Notez que la liste d'origine doit être correcte d'un point de vue syntaxique.</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour en savoir plus, voir <span><A HREF="lr-autcomm-bg.htm">Utilisation de la fonction Auto Comma</A></span>. Pour des exemples d'utilisation de l'option <B CLASS="guilabel">Auto Comma</B>, voir <span><A HREF="lr-example2-bg.htm#LR-EXTEMPEM-EX">Inclusion d'un modèle si l'un des paramètres n'est pas vide</A></span> et <span><A HREF="lr-example4-bg.htm#LR-EXCONDBE-EX">Affichage du comportement pour la condition : Certaines entrées ne sont pas définies sur l'indicateur</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Inclure IF</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" WIDTH="354" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les conditions d'inclusion d'un modèle sont sélectionnées à l'aide de cette option. Dans les descriptions ci-dessous, le terme « Entrée utilisateur » désigne les paramètres transmis au rapport LiveReport sous la forme <TT CLASS="literal">&amp;inputlabel1=somedata</TT>. La plupart des conditions du modèle dépendent du contenu d'une ou de plusieurs de ces entrées utilisateur et ces dernières peuvent être utilisées librement dans la source du modèle.</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour plus d'informations sur les conditions disponibles pour le champ <TT CLASS="literal">Inclure IF</TT>, voir <span><A HREF="lr-sqlfield-bg.htm#LR-SQLINCLIF">Inclure IF</A></span>. </TD></TR></TABLE> </TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LR-SQLINCLIF">Inclure IF</A></P>
+<P class="before-ul"><A NAME="TMPID810"></A>Les options disponibles pour le champ <TT CLASS="literal">Inclure IF</TT> sont :</P><A NAME="AEN814"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN815"></A><A NAME="TMPID814"></A><B CLASS="highlight">Obligatoire (aucune condition)</B> : le modèle est toujours inséré lorsque cette option est sélectionnée. Cette option permet de décomposer le code SQL en plus petits morceaux.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN818"></A><A NAME="TMPID817"></A><B CLASS="highlight">Paramètre URL</B> : cette option indique que ce modèle va être inséré si un paramètre nommé se trouve dans l'URL. Lorsque cette option est sélectionnée, un champ de texte <B CLASS="guilabel">Nom du paramètre</B> apparaît. Il permet de préciser le nom du paramètre URL qui entraîne l'insertion du modèle. Ce paramètre dans l'URL permet également d'indiquer les entrées utilisateur qui seront insérées dans le modèle lorsque des marqueurs sous la forme <TT CLASS="literal">#1</TT> ont été utilisés dans la source du modèle. Ces marqueurs indiquent l'emplacement dans la source où chaque entrée utilisateur sera insérée. Par exemple, un modèle peut être activé (inclus) à l'aide d'un paramètre URL sous la forme : <TT CLASS="literal">&amp;addtemplate=U2,U3</TT>. Cela indique une liste d'entrées utilisateur que le modèle peut employer. Chaque élément de la liste représente une entrée utilisateur. Par exemple, <TT CLASS="literal">U2 = USERINPUT 2</TT>. L'entrée utilisateur indiquée par le premier élément de la liste est insérée à la place du marqueur 1 (#1) donc dans cet exemple, #1 est remplacé par la valeur <TT CLASS="literal">&amp;inputlabel2</TT>. Le second élément identifie U3, de sorte que la valeur <TT CLASS="literal">&amp;inputlabel3</TT> remplace le marqueur 2 (#2). Plusieurs exemples de cette abstraction sont présentés plus loin dans ce document. Notez que le paramètre URL doit indiquer au moins autant d'entrées utilisateur que dans la source du modèle pour que le modèle soit inclus.</P>
+<P><A NAME="TMPID825"></A>Voir <span><A HREF="lr-example1-bg.htm">Utilisation d'un paramètre URL pour contrôler l'insertion du modèle</A></span> pour obtenir des exemples.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN829"></A><A NAME="TMPID828"></A><B CLASS="highlight">Aucune entrée définie sur l'indicateur</B> : cette option indique que l'inclusion du modèle dépend des paramètres des entrées utilisateur utilisées dans la source du modèle sous la forme d'un paramètre normal. Par exemple, %1. Lorsque cette option est sélectionnée, un champ de texte Valeur d'indicateur apparaît. Il indique la valeur utilisée comme indicateur dans les entrées utilisateur transmises. La valeur la plus couramment utilisée est une chaîne vide, mais d'autres valeurs sont possibles, notamment <B CLASS="guilabel">aucun</B> et <B CLASS="guilabel">tous</B>. Cette option indique que le modèle sera inclus uniquement si aucune entrée utilisateur n'a été définie sur l'indicateur spécifié. Par exemple, si un modèle utilise deux paramètres d'entrée et si l'un d'eux a été défini sur une chaîne vide, alors le modèle sera exclu.</P>
+<P><A NAME="TMPID832"></A>Voir <span><A HREF="lr-example2-bg.htm">Utilisation des valeurs d'entrée utilisateur pour contrôler l'insertion du modèle</A></span> pour obtenir des exemples.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN836"></A><A NAME="TMPID835"></A><B CLASS="highlight">Certaines entrées ne sont pas définies sur l'indicateur</B> : cette option ressemble beaucoup à la précédente ; toutefois, lorsque celle-ci est sélectionnée, le modèle est inclus sauf si toutes les valeurs d'entrée utilisées ont été définies sur l'indicateur spécifié. Par exemple, si le champ Valeur d'indicateur est vide (considéré comme une chaîne vide) et si deux entrées utilisateur sont utilisées dans le modèle, alors le modèle est inclus sauf si les deux entrées sont définies sur une chaîne vide.</P>
+<P><A NAME="TMPID837"></A>Voir <span><A HREF="lr-example2-bg.htm">Utilisation des valeurs d'entrée utilisateur pour contrôler l'insertion du modèle</A></span> pour obtenir des exemples.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN841"></A><A NAME="TMPID840"></A><B CLASS="highlight">Condition de modèle vraie</B> : avec cette option, le modèle est inclus si un autre modèle est jugé vrai ou non. L'option Modèle n° permet de spécifier la condition du modèle précédent à utiliser. Par exemple, si le numéro de modèle est défini sur 2, le modèle avec cette option activée sera inclus uniquement si le modèle 2 est jugé vrai.</P>
+<P><A NAME="TMPID842"></A>Cette condition est utile lorsque des morceaux de code SQL doivent être insérés dans différentes parties de la source SQL principale, en fonction de la même condition. L'un des morceaux SQL peut avoir les conditions réelles définies pour l'inclusion, tandis que les autres peuvent simplement utiliser l'option <TT CLASS="literal">Condition de modèle vraie</TT> pour faire référence à l'autre modèle.</P>
+<P><A NAME="TMPID844"></A>Pour un exemple de cette condition, voir <span><A HREF="lr-example3-bg.htm#LR-EXADDTEM-EX">Ajout de deux modèles en fonction d'une même condition</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN848"></A><A NAME="TMPID847"></A><B CLASS="highlight">Condition de modèle fausse</B> : avec cette option, le modèle est inclus si un autre modèle est jugé faux ou non. L'option Modèle n° permet de spécifier la condition du modèle précédent à utiliser. Par exemple, si le numéro de modèle est défini sur 2, le modèle sera inclus uniquement si le modèle 2 est jugé faux.</P>
+<P><A NAME="TMPID849"></A>Cette option est utile lorsque vous possédez deux modèles mutuellement exclusifs. Cette condition évite de calculer l'ensemble de conditions approprié pour inclure uniquement un modèle lorsque l'autre est exclu. Pour un exemple de cette condition, voir <span><A HREF="lr-example2-bg.htm#LR-EXTEMPEM-EX">Inclusion d'un modèle si l'un des paramètres n'est pas vide</A></span>.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="NGDLLES100502-H-UGD-FR-1">
+<META name="pvScheme" content="010203">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="ngd">
+<META mancondkey="ngdcore-h-ugd -- lleswbb-h-ugd -- ngdcore-ugd -- lleswfp-h-ugd -- llescls-h-ugd -- llesrcm-igd -- lleswat-h-ugd -- llescl-h-ugd -- llesrt-h-ugd -- lleswbd-h-ugd"><title>Utilisation des expressions régulières avec  Live Query Language  </title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ngdlles-lqlregex-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Recherche à l\'aide de requêtes complexes';
+          header.title2 = 'Utilisation des expressions régulières avec ';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4692"></A>Vous pouvez utiliser des expressions régulières dans les requêtes complexes en les plaçant entre guillemets (<TT CLASS="literal">"&nbsp;"</TT>) et en les faisant précéder du mot clé <TT CLASS="literal">QLREGEX</TT>.</P>
+<P><A NAME="TMPID4695"></A>Une expression régulière est constituée d'un jeu de chaînes correspondant à certains modèles. Pour spécifier ces modèles, les caractères spéciaux $, ^, ., *, +, ?, [, ], (, ), \, se comportent comme des opérateurs avec tous les caractères ordinaires restants. Un caractère ordinaire est une expression régulière simple correspondant à un caractère et rien d'autre (par exemple, <TT CLASS="literal">h</TT> correspond à <I CLASS="emphasis">h</I> et rien d'autre). Pour qu'un caractère spécial représente un caractère ordinaire, il doit être précédé d'une barre oblique inverse (\). Par exemple, <TT CLASS="literal">\$</TT> correspond à <I CLASS="emphasis">$</I>.</P>
+<P class="before-ul"><A NAME="TMPID4700"></A>Les indications ci-dessous décrivent comment utiliser les expressions régulières de la manière la plus efficace.</P><A NAME="AEN4400"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4401"></A><A NAME="TMPID4703"></A>Utilisée avec le mot clé <TT CLASS="literal">QLREGEX</TT> dans une recherche, l'expression régulière spécifiée est recherchée dans tous les mots des objets. Par exemple, <TT CLASS="literal">QLREGEX "cha"</TT> recherche les objets contenant au moins un mot avec <I CLASS="emphasis">cha</I>, comme <I CLASS="emphasis">chat</I>, <I CLASS="emphasis">charme</I>, <I CLASS="emphasis">marchand</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4409"></A><A NAME="TMPID4711"></A>Vous pouvez lier deux expressions quelconques (<TT CLASS="literal">&lt;<I CLASS="varname">x</I>></TT> et <TT CLASS="literal">&lt;<I CLASS="varname">y</I>></TT>) pour former une expression régulière qui correspond à une chaîne si <TT CLASS="literal">&lt;<I CLASS="varname">x</I>></TT> correspond au début de cette chaîne et <TT CLASS="literal">&lt;<I CLASS="varname">y</I>></TT> correspond au reste de la chaîne. Par exemple, <TT CLASS="literal">h\$</TT> correspond à <I CLASS="emphasis">h$</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4421"></A><A NAME="TMPID4723"></A>L'utilisation du mot clé <TT CLASS="literal">QLREGEX</TT> avec des expressions régulières dans des requêtes de locutions est presque toujours moins efficace que l'utilisation du mot clé <TT CLASS="literal">OR</TT> pour la création de la même requête, en raison des opérations de traitement nécessaires aux expressions régulières.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4425"></A><A NAME="TMPID4727"></A>En restreignant et en limitant les recherches, vous économisez du temps, en particulier pour les recherches de préfixes. Par exemple, pour rechercher les numéros de pièces 1995 commençant par <I CLASS="emphasis">d</I>, une requête utilisant <TT CLASS="literal">QLREGEX "^d"</TT> demande plus de temps que celle utilisant <TT CLASS="literal">QLREGEX "^d1995"</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4430"></A><A NAME="TMPID4732"></A>Evitez les recherches d'expressions régulières portant sur des suffixes courts tels que <I CLASS="emphasis">ez</I>, car le moteur de recherche doit analyser tous les mots de l'index de gauche à droite pour trouver les suffixes. Il est préférable de restreindre votre recherche en combinant des suffixes et des préfixes dans les expressions régulières ou d'utiliser l'opérateur <B CLASS="guilabel">Mot se terminant par</B>.</P></LI></UL>
+<P><A NAME="TMPID4735"></A>Vous pouvez utiliser la liste d'opérateurs suivante dans les expressions régulières pour décrire des jeux de chaînes.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4435"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Opérateur</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Correspond à un caractère quelconque.<BR>Par exemple, <TT CLASS="literal">\a.2</TT> correspond à tous les mots contenant une chaîne de trois caractères commençant par <I CLASS="emphasis">a</I> et se terminant par <I CLASS="emphasis">2</I> (comme <I CLASS="emphasis">ab2z</I>, <I CLASS="emphasis">aa2</I> ou <I CLASS="emphasis">aaa2zzz</I>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Délimite un jeu ou une étendue de caractères. Les règles suivantes s'appliquent : <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4760"></A>Vous pouvez mélanger les étendues de caractères et les caractères uniques.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4762"></A>Dans un jeu de caractères, <TT CLASS="literal">]</TT>, <TT CLASS="literal">-</TT> et <TT CLASS="literal">^</TT> ont une signification particulière ; tous les autres caractères ne représentent que leur propre caractère.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4767"></A>Le signe moins (<TT CLASS="literal">-</TT>) est un opérateur d'étendue entre deux caractères.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4770"></A><A NAME="AEN4390">L'accent circonflexe (<TT CLASS="literal">^</TT>) ne peut être utilisé qu'en première position dans un jeu de caractères.</P></TD></TR></TABLE>  Par exemple, <TT CLASS="literal">[abc]</TT> correspond à <I CLASS="emphasis">a</I>, <I CLASS="emphasis">b</I> ou <I CLASS="emphasis">c</I>. <TT CLASS="literal">[a-z]</TT> correspond à tout caractère en lettre minuscule. <TT CLASS="literal">[-$a0-9]</TT> correspond à <I CLASS="emphasis">-</I>,<I CLASS="emphasis"> $</I>, <I CLASS="emphasis">a</I> ou tout chiffre.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[^]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Commence un jeu de caractère qui complète le jeu de caractères spécifié (il correspond à n'importe quel caractère sauf ceux qui sont spécifiés). Si <TT CLASS="literal">-</TT> ou <TT CLASS="literal">]</TT> suit <TT CLASS="literal">[^</TT>, <TT CLASS="literal">-</TT> ou <TT CLASS="literal">]</TT> est considéré comme le premier caractère. <BR>Par exemple, <TT CLASS="literal">[^a-z]</TT> correspond à tout caractère, à l'exception des lettres de l'alphabet. <TT CLASS="literal">[^]^a-z0-9]</TT> correspond à tout caractère, à l'exception de <I CLASS="emphasis">]</I>, <I CLASS="emphasis">^</I> et des caractères alphanumériques.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">^</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Correspond à la chaîne vide au début d'un mot.<BR>Par exemple, <TT CLASS="literal">^sp</TT> correspond à toute occurrence de <I CLASS="emphasis">sp</I> au début d'un mot seulement (comme dans <I CLASS="emphasis">spécial</I>, mais pas dans <I CLASS="emphasis">aspect</I>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">*</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Correspond à la plus courte expression régulière qui précède l'opérateur zéro fois ou plus. Toutefois, l'opérateur <TT CLASS="literal">*</TT> suivant une expression régulière contenant <TT CLASS="literal">^</TT> au début d'un mot est interprété comme l'expression avec n'importe quelle fin (comme un caractère générique (*) dans les requêtes).<BR>Par exemple, <TT CLASS="literal">ad*</TT> correspond à <I CLASS="emphasis">a</I>, <I CLASS="emphasis">ad</I>, <I CLASS="emphasis">add</I>, etc.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">+</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Correspond à la plus courte expression régulière qui précède l'opérateur lorsque celle-ci apparaît au moins une fois.<BR>Par exemple, <TT CLASS="literal">tr[ei]+</TT> correspond à <I CLASS="emphasis">tre</I>, <I CLASS="emphasis">tri</I>, <I CLASS="emphasis">tree</I>, <I CLASS="emphasis">trie</I>, <I CLASS="emphasis">triie</I>, etc. Il ne correspond pas à <I CLASS="emphasis">tr</I>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">?</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Correspond à la plus courte expression régulière qui précède l'opérateur lorsque celle-ci apparaît zéro ou une fois. Par exemple, <TT CLASS="literal">se[ea]?</TT> correspond uniquement à <I CLASS="emphasis">se</I>, <I CLASS="emphasis">sea</I> et <I CLASS="emphasis">see</I>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">$</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Correspond à la chaîne vide à la fin d'un mot.<BR>Par exemple, <TT CLASS="literal">the+$</TT> correspond aux caractères <I CLASS="emphasis">the</I> lorsqu'ils apparaissent à la fin d'un mot ou d'une ligne.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">|</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Sépare deux alternatives. Si <TT CLASS="literal">x</TT> et <TT CLASS="literal">y</TT> sont des expressions régulières, alors <TT CLASS="literal">x|y</TT> correspond à tout ce à quoi correspond <TT CLASS="literal">x</TT> ou <TT CLASS="literal">y</TT>.<BR>Par exemple, <TT CLASS="literal">mer|lac</TT> correspond à <I CLASS="emphasis">mer</I> et <I CLASS="emphasis">lac</I> seulement. <TT CLASS="literal">[abc]</TT> peut également être écrit sous forme <TT CLASS="literal">a|b|c</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">()</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Groupe des éléments (comme des alternatives ou des expressions régulières complexes) de sorte que vous pouvez les associer avec d'autres expressions régulières et opérateurs.<BR>Par exemple, <TT CLASS="literal">(ro)?(co)+</TT> correspond à tout nombre non nul de chaînes <I CLASS="emphasis">co</I> précédées par rien ou <I CLASS="emphasis">ro</I> (comme <I CLASS="emphasis">co</I>, <I CLASS="emphasis">coco</I>, <I CLASS="emphasis">rococo</I>, etc.).</TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

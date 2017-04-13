@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Contrôle de l'accès IP aux composants de recherche</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-cntaccsrch-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des paramètres de sécurité pour la recherche et l\'indexation';
+          header.title2 = 'Contrôle de l\'accès IP aux composants de recherche';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID14955"></A>Le contrôle de l'accès IP aux composants de recherche vous permet d'augmenter le niveau de sécurité de votre système Content Server en limitant l'accès aux composants utilisés par la recherche. Pour ce faire, enregistrez les adresses IP des ordinateurs pour lesquels vous souhaitez autoriser l'accès. Content Server stocke alors les adresses IP dans la base de données Content Server et dans un fichier distant (<TT CLASS="literal">otsearch.policy</TT>) dans le répertoire config de chaque serveur Content Server (par exemple <I CLASS="emphasis">Content Server_accueil</I> /config). Etant donné que Content Server remplace le fichier distant chaque fois qu'il ajoute ou supprime une adresse IP du fichier, vous ne devez pas modifier le fichier manuellement.</P>
+<table CLASS="warning">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="warning" ALIGN="CENTER"><IMG ALT="Avertissement" SRC="../../images/pi_warning.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID14965"></A><B CLASS="warning">Avertissement</B><BR>Si aucune adresse IP n'est enregistrée, Content Server autorise l'accès à tous les ordinateurs. Toutefois, dès lors que des adresses IP ont été enregistrées, Content Server autorise l'accès uniquement aux ordinateurs possédant ces adresses IP. Par conséquent, vous devez enregistrer les adresses IP de tous les ordinateurs qui hébergent des serveurs et des serveurs d'administration afin d'éviter que le système de recherche ne réponde plus.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID14968"></A>Si vous enregistrez des adresses IP incorrectes et que vous n'êtes plus en mesure de contrôler l'accès IP au moyen de l'interface Content Server, vous pouvez restaurer l'accès en remplaçant le fichier distant actuel par un fichier distant vide, qui autorisera alors l'accès aux composants de recherche à toutes les adresses IP. Un fichier distant vide, nommé otsearch.policy.bak, est disponible dans le même répertoire que le fichier distant actuel ; ce fichier est généré lors de la première modification du fichier distant. Toutefois, alors que le système de recherche utilise le fichier distant lorsqu'il contrôle l'accès IP, l'interface Content Server affiche les valeurs stockées dans la base de données Content Server. De ce fait, après avoir remplacé le fichier distant, vous devez mettre à jour les valeurs dans l'interface Content Server.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-tocntaccsrch-p.htm" revision="">Pour contrôler l'accès IP aux composants de recherche</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

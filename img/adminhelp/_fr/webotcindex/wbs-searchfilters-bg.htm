@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Filtres de recherche</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/websbroker/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/websbroker/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-searchfilters-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion de la recherche';
+          header.title2 = 'Filtres de recherche';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID12088"></A>Les filtres de recherche permettent aux utilisateurs de générer une nouvelle requête de recherche, en fonction de leurs résultats de recherche, en sélectionnant les valeurs incluant des restrictions supplémentaires.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF257"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12090"></A><B CLASS="note">Note : </B><BR>Lorsque vous utilisez les filtres de recherche, les résultats de la recherche à distance sont exclus des valeurs et chiffres du filtre.</P>
+<P><A NAME="TMPID12091"></A>Actuellement, les filtres de recherche ne prennent pas en charge les régions Texte agrégatif.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID12092"></A>Les valeurs uniques avec des restrictions supplémentaires utilisées par les filtres de recherche présentent un nombre de résultats de recherche supérieur à la réalité. Cela se produit lorsqu'une valeur est supprimée de chaque objet, mais que la chaîne de valeur se trouve encore dans le dictionnaire. Deux méthodes permettent de savoir quand il faut la supprimer :</P><A NAME="AEN11334"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11335"></A><A NAME="TMPID12095"></A>Pour chaque suppression, recherchez chaque ID d'objet interne dans la structure de données des filtres de recherche pour voir si la valeur s'y trouve encore.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11337"></A><A NAME="TMPID12097"></A>Comptez chaque entrée du dictionnaire et décrémentez-la</P></LI></UL>
+<P><A NAME="TMPID12098"></A>Ces deux méthodes ne sont actuellement pas disponibles ; par conséquent, le plus grand nombre de résultats de recherche s'affiche parfois, jusqu'à ce que les filtres de recherche soient automatiquement corrigés au redémarrage du moteur de recherche.</P>
+<P><A NAME="TMPID12099"></A>Pour une présentation détaillée des filtres de recherche et de la façon dont les utilisateurs peuvent affiner leurs résultats de recherche, voir <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswbb-h-ugd.sr-tosearchwsrfilters-bg" FMT="" NO1ST><A  HREF="../../../help/_fr/websbroker/sr-tosearchwsrfilters-bg.htm">Utilisation des filtres de recherche</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswbb-h-ugd.sr-tosearchwsrfilters-bg" FMT=""></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF258">Filtres restreints</A></P>
+<P><A NAME="TMPID12102"></A>Si un filtre d'attribut est appliqué et que les utilisateurs ne disposent pas des autorisations pour la catégorie de l'attribut, <B CLASS="guilabel">(Filtres restreints)</B> apparaîtra dans les filtres actifs. Ceci indique que certains filtres appliqués affectent les résultats de recherche pour lesquels ils ne disposent pas des autorisations nécessaires. Ils ne peuvent pas supprimer un seul filtre restreint, mais ils peuvent cliquer sur le lien <B CLASS="guilabel">Supprimer tous les filtres</B>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF259">Recueils masqués</A></P>
+<P><A NAME="TMPID12106"></A>Les utilisateurs peuvent introduire des restrictions de filtres de recherche dans une requête enregistrée. Pour plus d'informations sur les requêtes enregistrées, voir <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswbb-h-agd.sr-workingwsvq" FMT="" NO1ST><i>Livelink Search Administration - websbroker Module (LLESWBB-H-AGD)</i><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswbb-h-agd.sr-workingwsvq" FMT=""></span>. Certaines restrictions peuvent contenir des informations pour lesquelles les utilisateurs ne disposent pas des autorisations nécessaires. S'ils exécutent une requête enregistrée pour laquelle ils ne disposent pas des autorisations nécessaires concernant les données de filtres (par exemple, s'il y a un filtre à l'emplacement du « Dossier A » et qu'ils ne disposent pas des autorisations pour ce dossier), les données sont marquées comme <B CLASS="guilabel">(masqué)</B> sur les pages Résultats de recherche et Recherche avancée.</P>
+<P title="Incomplete facet sets" CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBS-SEARCHFILTERS-RF">Ensembles de facettes incomplets</A></P>
+<P><A NAME="TMPID12112"></A>Vous pouvez augmenter le nombre maximum de valeurs de région de filtre de recherche prises en compte par le moteur de recherche en réglant le paramètre <TT CLASS="literal">MaximumNumberOfValuesPerFacet</TT> dans la section <TT CLASS="literal">[DataFlow_xxx]</TT> du fichier <TT CLASS="filename"> search.ini</TT>. Le moteur de recherche accumule uniquement <TT CLASS="literal">32767</TT> facettes par région, par défaut, donc si cette valeur est atteinte, l'ensemble de facettes des résultats de recherche est incomplet.</P>
+<P><A NAME="TMPID12117"></A>Lorsque le seuil est atteint, un indicateur, sous la forme d'un astérisque <TT CLASS="literal"><B CLASS="highlight">*</B></TT>, s'affiche dans la barre de titre de la région du filtre de recherche. Lorsque vous placez la souris sur l'astérisque <TT CLASS="literal"> <B CLASS="highlight">*</B></TT>, un message s'affiche, par exemple, « Plus de <I CLASS="emphasis">X</I> valeurs », où <I CLASS="emphasis"> X</I> correspond au nombre total de valeurs de facette de la région, pour indiquer que l'ensemble de facettes est incomplet.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF260"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12126"></A><B CLASS="note">Note : </B><BR>L'indicateur selon lequel l'ensemble de facettes est incomplet s'affiche uniquement pour les utilisateurs dotés d'autorisations Administration système et pour ceux qui appartiennent au groupe doté du privilège « Afficher les Comptes de résultats non autorisés ». Ces utilisateurs peuvent voir le compte de résultats de recherche réel du moteur de recherche. Pour plus d'informations, voir « Définition des comptes de résultats de recherche » dans <span><A href="../webotcindex/wbo-specindx-bg.htm">Gestion des processus de recherche</A></span>.</P>
+<P><A NAME="TMPID12130"></A>Les valeurs affichées pour le filtre de recherche sont des estimations.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webotcindex/wbs-searchfilters-p.htm" revision="">Pour configurer les filtres de recherche</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

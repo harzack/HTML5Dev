@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle des réponses</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-reply-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Syntaxe du fichier de contrôle Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle des réponses';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="REPTAG01">reply</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID2202"></A>Utilisez <TT CLASS="literal">type="reply"</TT> sur la balise <TT CLASS="literal">&lt;node&gt;</TT> pour créer, mettre à jour ou supprimer une réponse.  </P>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG03">Syntaxe</A></P><A NAME="AEN2120"></A>
+<PRE 
+CLASS="screen"
+>&lt;node type="reply" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG04">Utilisation</A></P>
+<A NAME="AEN2122"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2123"></A><A NAME="TMPID2215"></A>Utilisation La création d'une réponse peut nécessiter <span><A HREF="llesoi-cfile-reply-rf.htm#REPTAG06">Balise body</A></span>, décrite ci-dessous.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2126"></A><A NAME="TMPID2218"></A>La création, mise à jour ou suppression d'une réponse peut également nécessiter des balises subordonnées, telles que la balise <TT CLASS="literal">location</TT> . Ces balises subordonnées sont détaillées dans <span><A HREF="llesoi-cfilesamp-bg.htm">Descriptions et syntaxe des balises Importateur d'objet</A></span>.</P></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG05">Exemple</A></P>
+<P><A NAME="TMPID2223"></A>Pour créer une réponse nommée « Reply 001 », rattachée au sujet nommé « Topic 001 »qui fait partie de la « Discussion 001 » dans l'espace de travail Enterprise :</P><A NAME="AEN2135"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="reply" action="create"&gt;
+    &lt;location&gt;Enterprise:Discussion 001:Topic 001&lt;/location&gt;
+    &lt;title language="en"&gt;Reply 001&lt;/title&gt;
+    &lt;body&gt;This is a reply&lt;/body&gt;
+    &lt;createdby&gt;Admin&lt;/createdby&gt;
+    &lt;owner&gt;Admin&lt;/owner&gt;
+    &lt;created&gt;20110104&lt;/created&gt;
+    &lt;modified&gt;20110117&lt;modified&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="REPTAG06">Balise body</A></P>
+<P><A NAME="TMPID2230"></A>La balise <TT CLASS="literal">body</TT> permet d'ajouter un corps à la réponse. La syntaxe de cette balise est la suivante : <A NAME="AEN2139"></A>
+<PRE 
+CLASS="screen"
+>&lt;body&gt;This is a reply&lt;/body&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2140"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2244"></A>La balise <TT CLASS="literal">body</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="reply"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2248"></A>La balise <TT CLASS="literal">body</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2251"></A>La balise <TT CLASS="literal">body</TT> est facultative dans le cas suivant :</P><A NAME="AEN2160"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2161"></A><A NAME="TMPID2255"></A><TT CLASS="literal">&lt;node type="reply" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

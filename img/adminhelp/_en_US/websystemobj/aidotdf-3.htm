@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Text Extraction, View as Web Page, and Thumbnail Generation</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'aidotdf-3.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Document Filters';
+          header.title2 = 'Text Extraction, View as Web Page, and Thumbnail Generation';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID5614"></A>OpenText Document Filters  (OTDF) is the library that communicates with DCS to detect MIME types, provide text extraction, metadata extraction, and HTML view generation.</P>
+<P><A NAME="TMPID5617"></A>The library forwards TextExtraction, MIMEtype detection, and HTML view generation requests from DCS to OpenText Document Filters through the use of filenames or buffer content.</P>
+<P><A NAME="TMPID5620"></A>All text extracted by OTDF is returned to DCS using UTF-8 encoding. The text for HTML output can be extracted as metadata only output, or text only output.</P>
+<P><A NAME="TMPID5621"></A>OpenText Document Filters creates a temporary file stored on disk, except for Microsoft Office format 95-2013 documents, since it is not yet set up to handle extraction requests on buffer content for most formats.</P>
+<P><A NAME="TMPID5624"></A>OTDF will use the <TT CLASS="literal">TmpDir</TT> setting in the <TT CLASS="literal">TmpDir=<I CLASS="emphasis">directory-path</I></TT> parameter in the <TT CLASS="literal">[FilterEngine]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file as its temp directory location, instead of the previously used <TT CLASS="literal">Temp Dir</TT> setting in the <TT CLASS="filename">image.ini</TT> file. </P>
+<P><A NAME="TMPID5632"></A>The location of the temporary files is defined by the ‘tempdir’ setting in the <TT CLASS="filename">MachineNamexportxxxxxdcsServer.ini</TT> file.</P>
+<P><A NAME="TMPID5634"></A>When a file buffer is received for a format that OTDF does not support, a temporary file is created and used by OTDF while converting the buffer content. The name of the temporary file is <TT CLASS="filename">dcs_inDDMMYYHHMMSSfltrTHREADID</TT>. Each file is uniquely identified using the day, month, year, hour, minute, second it was created, and the processing thread identifier, for example <TT CLASS="filename">dcs__in170610124733fltr6184</TT>. The file is removed by OTDF when the conversion process is finished.</P>
+<P><A NAME="TMPID5637"></A>When a file is too large to return by buffer for pure indexing, or if a View as Web Page request is made that includes PNG images, an output file is created and used by OTDF and then passed back to the DCS. The name of this file is <TT CLASS="filename">dcs_outDDMMYYHHMMSSfltrTHREADID</TT>.</P>
+<P><A NAME="TMPID5639"></A>When performing a View as Web Page request OTDF creates an output image file and passes it to the DCS using a file named <TT CLASS="filename">dcs_outDDMMYYHHMMSSfltrTHREADID_x.png</TT>.</P>
+<P><A NAME="TMPID5641"></A>The <TT CLASS="literal">_x</TT> value is a further unique identifier since there can be many output image files.</P>
+<P><A NAME="TMPID5643"></A>All temporary file names are prepended with a <TT CLASS="literal">DCS</TT> prefix, so these temporary files can be cleaned up by OTDF when the conversion is completed.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/aidotdf-26.htm" revision="">MS Word, Excel, and PowerPoint</A></p></li>
+<li><p><A  href="../websystemobj/openofficeotdf.htm" revision="">Open Office formats</A></p></li>
+<li><p><A  href="../websystemobj/aidotdf-29.htm" revision="">MetaData Extraction</A></p></li>
+<li><p><A  href="../websystemobj/aidotdf-30.htm" revision="">Streaming Document Conversion</A></p></li>
+<li><p><A  href="../websystemobj/aidotdf-16.htm" revision="">MIME types</A></p></li>
+<li><p><A  href="../websystemobj/aidotdf-37.htm" revision="">Generating Thumbnails</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

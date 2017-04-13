@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBN100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webnotify">
+<META mancondkey="llesrcm-h-agd -- lleswba-h-agd -- llesrcs-h-agd"><title>Configuration des notifications</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbn-confignotif-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation des notifications';
+          header.title2 = 'Configuration des notifications';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID185"></A>La page <B CLASS="guilabel">Configurer la notification</B> vous permet d'activer et de désactiver les notifications, de définir l'URL de la page d'accueil Content Server, de configurer les paramètres SMTP, de définir les paramètres d'e-mail, de définir les paramètres de rapport et de définir les paramètres de programme de notification par défaut.</P>
+<P><A NAME="TMPID188"></A>Pour plus d'informations sur l'activation ou la désactivation des notifications, voir <span><A HREF="wbn-enable-disable-bg.htm">Activation et désactivation des notifications</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBN-MODNOT">Modification de l'URL pour les rapports de notification</A></P>
+<P><A NAME="TMPID192"></A>Notification utilise l'URL de votre serveur pour créer les liens HTTP vers les éléments Content Server des rapports de Notification. De ce fait, vous devez vous assurer que cette URL est correctement spécifiée sur la page <B CLASS="guilabel">Configurer la notification</B>.</P>
+<P><A NAME="TMPID195"></A>Normalement, il n'est pas nécessaire de modifier l'URL qui apparaît dans la zone <B CLASS="guilabel">URL de la page d'accueil de Content Server</B>. Toutefois, si les utilisateurs indiquent que les liens des rapports de notification ne fonctionnent pas, il se peut que l'URL soit incorrecte.</P>
+<P class="before-ul"><A NAME="TMPID198"></A>Pour modifier l'URL, respectez le format suivant :</P><A NAME="AEN143"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN144"></A><A NAME="TMPID201"></A><TT CLASS="literal">&lt;<I CLASS="varname">protocole</I>>://&lt;<I CLASS="varname">hôte</I>> :&lt;<I CLASS="varname">port</I>>/&lt;<I CLASS="varname">préfixe_URL</I>>/contentserver.exe</TT> si le serveur fonctionne sous Windows.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN151"></A><A NAME="TMPID208"></A><TT CLASS="literal">&lt;<I CLASS="varname">protocole</I>>://&lt;<I CLASS="varname">hôte</I>> :&lt;<I CLASS="varname">port</I>>/&lt;<I CLASS="varname">préfixe_URL</I>>/contentserver</TT> si le serveur fonctionne sous UNIX.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID214"></A>où :</P><A NAME="AEN159"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN160"></A><A NAME="TMPID217"></A>&lt;<I CLASS="varname">protocole</I>> est soit http, soit https.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN163"></A><A NAME="TMPID220"></A>&lt;<I CLASS="varname">hôte</I>> est le nom complet de l'hôte sur lequel réside le serveur HTTP. Par exemple, contentserverhost.mycorp.com.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN166"></A><A NAME="TMPID223"></A>&lt;<I CLASS="varname">port</I>> est le port récepteur du serveur HTTP.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN169"></A><A NAME="TMPID226"></A>&lt;<I CLASS="varname">préfixe_URL</I>> est le préfixe URL, ou raccourci de répertoire virtuel, mappé au répertoire &lt;<I CLASS="varname">Content Server_accueil</I>>/cgi du serveur HTTP.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="USEEMDEL">Utilisation de la messagerie pour envoyer des notifications</A></P>
+<P><A NAME="TMPID232"></A>La notification utilise des e-mails pour avertir les utilisateurs lorsque certains événements se sont produits et pour informer l'administrateur des erreurs qui ont pu se produire dans le système de notification.</P>
+<P><A NAME="TMPID233"></A>Toutes les adresses e-mail doivent être des adresses e-mail Internet valables, au format <TT CLASS="literal">compte@domaine</TT>, où <TT CLASS="literal">domaine</TT> correspond au domaine du serveur du compte de messagerie. Elles se présentent généralement sous la forme <TT CLASS="literal">monentreprise.com</TT>, <TT CLASS="literal">monorganisation.org</TT> ou <TT CLASS="literal">monétablissementscolaire.edu</TT>.</P>
+<P><A NAME="TMPID239"></A>La notification prend en charge le protocole SMTP (Simple Mail Transport Protocol) pour le transport des e-mails. Pour que Notification puisse fonctionner correctement, vous devez configurer les paramètres SMTP avec précision.</P>
+<P><A NAME="TMPID240"></A>La notification vous permet de tester l'envoi d'e-mails aux adresses qui s'affichent dans les champs <B CLASS="guilabel">Adresse de l'expéditeur par défaut</B>, <B CLASS="guilabel">Adresse de réponse par défaut</B> et <B CLASS="guilabel">Adresse sur erreur</B> de la page <B CLASS="guilabel">Configurer la notification</B>. Vous pouvez également tester l'envoi d'e-mails à d'autres adresses.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wbn-modify-url-p.htm" revision="">Pour modifier l'URL Content Server pour les rapports de notification</A></p></li>
+<li><p><A  HREF="wbn-set-smtp-param-p.htm" revision="">Pour définir les paramètres SMTP</A></p></li>
+<li><p><A  HREF="wbn-set-email-param-p.htm" revision="">Pour définir les paramètres d'e-mail</A></p></li>
+<li><p><A  HREF="wbn-config-set-p.htm" revision="">Pour configurer les paramètres de rapport</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

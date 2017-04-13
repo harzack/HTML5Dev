@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWDV100500-H-UGD-FR">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webdav">
+<META mancondkey="lleswbd-h-ugd"><title>Accès aux ressources WebDAV</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wd-mapuser-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Accès aux objets avec WebDAV';
+          header.title2 = 'Accès aux ressources WebDAV';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID193"></A>Lorsque vous tentez d'accéder à une ressource WebDAV, le système peut vous demander de vous authentifier à l'aide d'un nom d'utilisateur et d'un mot de passe. WebDAV prend notamment en charge les mécanismes d'identification <A HREF="wd-mapuser-bg.htm#A">Authentification Basique/Content Server </A> et <A HREF="wd-mapuser-bg.htm#B">Autres mécanismes d'authentification</A>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID200"></A><B CLASS="note">Note : </B><BR>Pour plus d'informations sur le mécanisme d'authentification utilisé par la ressource WebDAV à laquelle vous souhaitez accéder, consultez votre administrateur.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="A">Authentification Basique / Content Server</A></P>
+<P><A NAME="TMPID204"></A>Lorsque vous accédez à une ressource WebDAV, une boîte de dialogue vous demande de saisir un nom d'utilisateur et un mot de passe. Dans le cadre de l'authentification Basique/Content Server, vous saisissez le même nom d'utilisateur et le même mot de passe que ceux utilisés dans Content Server.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="B">Autres mécanismes d'authentification</A></P>
+<P><A NAME="TMPID209"></A>Lorsque vous accédez à une ressource WebDAV, une boîte de dialogue vous demande de saisir un nom d'utilisateur et un mot de passe. Saisissez un nom principal comme nom d'utilisateur, par exemple moi@LEDOMAINE.NET. Dans cet exemple, vous taperiez le mot de passe correspondant au nom « moi » d'ouverture de session du domaine « LEDOMAINE.NET » comme mot de passe.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF2"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID212"></A><B CLASS="note">Note : </B><BR>Pour pouvoir vous connecter à la ressource WebDAV, vous devez configurer votre navigateur Internet Explorer de la façon appropriée. Pour plus d'informations sur la configuration d'Internet Explorer, consultez le <I CLASS="emphasis">Guide d'installation et d'administration de WebDAV</I>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF3">Mappage des noms principaux aux utilisateurs Content Server</A></P>
+<P><A NAME="TMPID218"></A>Lorsque vous vous connectez à WebDAV avec un nom principal authentifié correctement, WebDAV le met en correspondance avec un utilisateur Content Server. Votre administrateur peut configurer WebDAV de manière à utiliser l'une des deux méthodes de mise en correspondance. Il s'agit des méthodes de mappage <A HREF="wd-mapuser-bg.htm#C">Nom identique</A> et <A HREF="wd-mapuser-bg.htm#D">Géré par l'utilisateur</A>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="C">Nom identique</A></P>
+<P><A NAME="TMPID226"></A>Avec la méthode Nom identique, le nom d'utilisateur Content Server est identique au nom d'ouverture de session de domaine du Nom principal. Par exemple, le nom principal « moi@LEDOMAINE.NET » est mappé à l'utilisateur Content Server appelé « moi ».</P>
+<P CLASS="bridgehead-subheading3"><A NAME="D">Géré par l'utilisateur</A></P>
+<P><A NAME="TMPID232"></A>Avec la méthode de mappage Géré par l'utilisateur, chaque utilisateur Content Server gère une liste de noms principaux mappés avec lui.</P>
+<DIV title="Pour déterminer si le mappage Géré par l'utilisateur est configuré dans 'WebDAV' :" CLASS="procedure">
+<P><B>Pour déterminer si le mappage Géré par l'utilisateur est configuré dans WebDAV :</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID238"></A>Dans Content Server, cliquez sur <B CLASS="guilabel">Outils</B> dans la barre de menu Global, puis sélectionnez <B CLASS="guilabel">Paramètres</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID243"></A>Si l'onglet <B CLASS="guilabel">Mappages d'utilisateurs WebDAV</B> est visible, cela signifie que le mappage Géré par l'utilisateur est configuré dans WebDAV.</P></LI></OL></DIV>
+<DIV title="Pour afficher et modifier les noms principaux qui vous correspondent :" CLASS="procedure">
+<P><B>Pour afficher et modifier les noms principaux qui vous correspondent :</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID250"></A>Dans Content Server, cliquez sur <B CLASS="guilabel">Outils</B> dans la barre de menu Global, puis sélectionnez <B CLASS="guilabel">Paramètres</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID255"></A>Sélectionnez l'onglet <B CLASS="guilabel">Mappages d'utilisateurs WebDAV</B>. La page affiche tous les noms principaux qui vous correspondent.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID259"></A>Cliquez sur <B CLASS="guilabel">Modifier les mappages</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID262"></A>La page Supprimer les mappages s'affiche, permettant de modifier les mappages d'utilisateurs.</P></LI></OL></DIV>
+<DIV title="Pour afficher et modifier les noms principaux mappés à un utilisateur :" CLASS="procedure">
+<P><B>Pour afficher et modifier les noms principaux mappés à un utilisateur :</B></P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF4"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID266"></A><B CLASS="note">Note : </B><BR>Cette fonctionnalité est disponible uniquement pour les utilisateurs disposant des privilèges administrateur.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID268"></A>Dans Content Server, cliquez sur <B CLASS="guilabel">Entreprise</B> dans la barre de menu Global, puis sélectionnez <B CLASS="guilabel">Utilisateurs et groupes</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID273"></A>Sélectionnez un utilisateur.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID275"></A>Cliquez sur <B CLASS="guilabel">Modifier</B> pour l'utilisateur, puis sélectionnez l'onglet <B CLASS="guilabel">Général</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID279"></A>La page affiche tous les noms principaux mappés à l'utilisateur.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID281"></A>Cliquez sur <B CLASS="guilabel">Modifier les mappages</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID284"></A>La page Supprimer les mappages s'affiche, permettant de modifier les mappages d'utilisateurs.</P></LI></OL></DIV>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wd-mapuser1-p.htm" revision="">Modifier les mappages d'utilisateurs WebDAV</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

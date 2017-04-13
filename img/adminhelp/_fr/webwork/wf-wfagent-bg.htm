@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWFW100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webwork">
+<title>Gestion des paramètres de l'agent de workflow</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webwfp/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webnotify/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-wfagent-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion des workflows';
+          header.title2 = 'Gestion des paramètres de l\'agent de workflow';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID246"></A>La page <B CLASS="guilabel">Configurer les paramètres de l'agent de workflow</B> vous permet de spécifier les intervalles d'exécution de l'agent de workflow, d'activer la notification d'erreurs et de définir l'ordre de traitement des tâches. Pour plus d'informations sur l'agent de workflow, voir <span><XPROC NAME="ExtXrefStart" HREF="lleswfp-h-ugd.wf-agent-u" FMT="" NO1ST><A  HREF="../../../help/_fr/webwfp/wf-agent-u.htm">Description de l`agent de workflow</A><XPROC NAME="ExtXrefEnd" HREF="lleswfp-h-ugd.wf-agent-u" FMT=""></span>.</P>
+<P><A NAME="TMPID249"></A>Lorsque l'agent de workflow démarre, il recherche dans la base de données Content Server toutes les tâches dont le statut indique qu'elles sont <B CLASS="guilabel">prêtes pour l'agent de workflow</B>. Lorsque l'agent de workflow a terminé le traitement des tâches, il s'arrête jusqu'au prochain intervalle de démarrage programmé.</P>
+<P><A NAME="TMPID252"></A>Les tâches sont traitées par l'agent de workflow ou l'agent distribué. La manière dont les tâches sont traitées dépend de l'ordre de traitement sélectionné. Si l'ordre FIFO est activé, l'agent de workflow traite les tâches. Si l'ordre FIFO est désactivé, l'agent de workflow utilise les agents distribués pour un traitement parallèle des tâches.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WF-ENABLINGERRORNOTIFICATION">Activation de la notification d'erreurs</A></P>
+<P><A NAME="TMPID255"></A>Vous devez activer la notification d'erreurs de l'Workflow Agent pour vous assurer que les messages d'erreur sont envoyés en cas d'échec du traitement. Si vous désactivez la notification d'erreurs, aucun utilisateur ne reçoit de notification en cas d'échec du traitement.</P>
+<P class="before-ul"><A NAME="TMPID258"></A>Si l'agent de workflow rencontre une erreur, il essaie d'envoyer un e-mail qui informe les gestionnaires des workflows et l'exécutant de l'étape de l'erreur et leur demande l'action à opérer pour corriger le problème. Pour envoyer les messages d'erreur, l'agent de workflow a besoin des informations suivantes :</P><A NAME="AEN259"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN260"></A><A NAME="TMPID261"></A>Les paramètres SMTP du serveur de messagerie et l'adresse e-mail de l'expéditeur doivent être spécifiés.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN262"></A><A NAME="TMPID263"></A>Les gestionnaires des workflows et les utilisateurs assignés à l'étape doivent spécifier leur adresse e-mail dans leur profil.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID264"></A>Vous devez <XPROC NAME="ExtXrefStart" HREF="lleswbn-h-agd.wbn-config-report-bg" FMT="FIXTEXT" NO1ST><A  HREF="../../../adminhelp/_fr/webnotify/wbn-config-report-bg.htm">spécifier les paramètres SMTP du serveur de messagerie</A><XPROC NAME="ExtXrefEnd" HREF="lleswbn-h-agd.wbn-config-report-bg" FMT="FIXTEXT"> dans les sections suivantes :</P><A NAME="AEN266"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN267"></A><A NAME="TMPID268"></A>Paramètres SMTP : vous permet de définir les paramètres SMTP du serveur de messagerie.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN269"></A><A NAME="TMPID270"></A>Paramètres de l'e-mail : vous permet de définir l'adresse e-mail de l'expéditeur.</P></LI></UL>
+<P><A NAME="TMPID271"></A>Vous pouvez par ailleurs  <XPROC NAME="ExtXrefStart" HREF="lleswbn-h-agd.wbn-using-email-bg" FMT="FIXTEXT" NO1ST><A  HREF="../../../adminhelp/_fr/webnotify/wbn-using-email-bg.htm">tester vos paramètres </A><XPROC NAME="ExtXrefEnd" HREF="lleswbn-h-agd.wbn-using-email-bg" FMT="FIXTEXT">.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WF-SPECIFYINGPROCESSINGORDER">Spécification de l'ordre de traitement</A></P>
+<P><A NAME="TMPID275"></A>Vous pouvez spécifier que l'agent de workflow doit traiter les tâches dans l'ordre dans lequel il les a reçues (ordre FIFO) ou selon un ordre défini par le résultat d'une requête de base de données (cet ordre peut varier d'une requête à l'autre). Si vous n'avez pas beaucoup de tâches à traiter, ce paramètre peut ne pas avoir beaucoup d'influence.</P>
+<P><A NAME="TMPID276"></A>Si vous désactivez l'ordre FIFO, l'agent de workflow ne trie pas les tâches après avoir recherché dans la base de données toutes les tâches à traiter ; il effectue les tâches dans l'ordre dans lequel elles apparaissent dans le résultat de la recherche. Pour augmenter le débit, désactivez l'ordre FIFO.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wf-wfagent-p.htm" revision="">Pour programmer l'agent de workflow</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

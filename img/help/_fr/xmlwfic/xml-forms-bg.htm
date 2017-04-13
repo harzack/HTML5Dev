@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Formulaires</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-forms-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Lots de travail';
+          header.title2 = 'Formulaires';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID1540"></A>Si le lot de travail de formulaires est inclus dans le schéma, les messages peuvent inclure des données de tous les formulaires qui sont disponibles pour l'étape. Chaque action concernée par l'échange traite uniquement les formulaires disponibles à l'étape correspondante. Les règles suivantes s'appliquent :</P><A NAME="AEN1497"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1498"></A><A NAME="TMPID1543"></A>Une action qui accepte un message de lancement à distance met uniquement à jour les formulaires disponibles à l'étape de départ du workflow.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1500"></A><A NAME="TMPID1545"></A>Une action acceptant un message de modification de tâche met uniquement à jour les formulaires disponibles dans la tâche de l'action.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1502"></A><A NAME="TMPID1547"></A>Une action qui accepte un message de modification de tâche met uniquement à jour les formulaires disponibles dans la tâche de l'action.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="AID-063">Représentation XML</A></P>
+<P><A NAME="TMPID1550"></A><TT CLASS="literal">&lt;forms&gt;</TT></P>
+<P><A NAME="TMPID1552"></A><TT CLASS="literal">&lt;form name="my form"&gt;</TT></P>
+<P><A NAME="TMPID1554"></A><TT CLASS="literal">&lt;attribute name="my att"&gt;</TT></P>
+<P><A NAME="TMPID1556"></A><TT CLASS="literal">&lt;value&gt;…&lt;/value&gt;</TT></P>
+<P><A NAME="TMPID1558"></A><TT CLASS="literal">…</TT></P>
+<P><A NAME="TMPID1560"></A><TT CLASS="literal">&lt;/attribute&gt;</TT></P>
+<P><A NAME="TMPID1562"></A><TT CLASS="literal">&lt;/form&gt;</TT></P>
+<P><A NAME="TMPID1564"></A><TT CLASS="literal">&lt;/forms&gt;</TT></P>
+<P><A NAME="TMPID1566"></A>En XML, le lot de formulaires est un élément forms qui contient un élément form enfant pour chaque formulaire disponible. Chaque élément form détermine le nom du formulaire et contient des éléments attribute pour chaque attribut du formulaire. Chaque élément attribut fournit le nom de l'attribut et dispose d'un élément enfant pour chaque valeur d'attribut définie. Pour les attributs d'un ensemble de types, chaque valeur contient davantage d'éléments attribute enfant.</P>
+<P><A NAME="TMPID1567"></A>Lorsque le lot de formulaire est mis à jour, les formulaires non mentionnés conservent leurs valeurs précédentes et les attributs non mentionnés au sein d'un formulaire conservent leurs valeurs précédentes. Pour supprimer les valeurs d'un attribut, vous devez fournir un élément attribut avec des éléments enfant sans valeur.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="AID-064">Espaces de noms XML (le cas échéant)</A></P>
+<P><A NAME="TMPID1570"></A><TT CLASS="literal">&lt;forms xmlns="http://www.opentext.com/llx/workflow/"&gt;</TT> </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="AID-065">Représentation HTML</A></P>
+<P><A NAME="TMPID1574"></A><TT CLASS="literal">forms_my_form_my_att_1=…</TT></P>
+<P><A NAME="TMPID1576"></A><TT CLASS="literal">forms_my_form_my_att_2=…</TT></P>
+<P><A NAME="TMPID1578"></A><TT CLASS="literal">…</TT></P>
+<P><A NAME="TMPID1580"></A>Dans les données de formulaire HTML, les noms des champs des attributs de formulaires sont générés à partir du nom de leurs attributs et du nom des formulaires dans lesquels ils apparaissent. Les noms de base HTML de tous les attributs apparaissent dans l'onglet de configuration du format personnalisé pour toutes les actions de l'étape du workflow.</P>
+<P><A NAME="TMPID1581"></A>Etant donné que Content Server accepte les valeurs multiples pour les attributs, chaque valeur de chaque attribut est numérotée. Les valeurs des sous-attributs dans les attributs définis ont deux index. Par exemple, <TT CLASS="literal">forms_my_form_setatt_textatt_2_3</TT> nomme la troisième valeur de l'attribut <TT CLASS="literal">textatt</TT> dans la seconde valeur de l'attribut <TT CLASS="literal">setatt</TT>.</P>
+<P><A NAME="TMPID1586"></A>Lorsque les attributs de formulaire sont mis à jour avec un message de données de formulaire HTML, vous pouvez écraser les valeurs avec le champ numéroté approprié, mais vous ne pouvez pas supprimer les valeurs qui existent déjà.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

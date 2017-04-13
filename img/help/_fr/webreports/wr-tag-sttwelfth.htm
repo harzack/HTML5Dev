@@ -1,0 +1,1253 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>NEXT, NODEACTION, NODEINFO</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-sttwelfth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sous-balises';
+          header.title2 = 'NEXT, NODEACTION, NODEINFO';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID6366"></A>Cette section apporte des informations sur les sous-balises suivantes : <span><A HREF="wr-tag-sttwelfth.htm#WR-TAG-STNEXT">NEXT</A></span>, <span><A HREF="wr-tag-sttwelfth.htm#WR-TAG-STNODEACTION">NODEACTION</A></span> et <span><A HREF="wr-tag-sttwelfth.htm#WR-TAG-STNODEINFO">NODEINFO</A></span>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STNEXT">NEXT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STNEXT-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGNEXT"></A><B CLASS="highlight">NEXT</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STNEXT-DESC">Description</A></P>
+<P><A NAME="TMPID6378"></A>Renvoie la même colonne à partir de la ligne de données suivante. Si vous utilisez cette sous-balise dans la dernière ligne de données, une chaîne vide est renvoyée.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STNODEACTION">NODEACTION</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STNODEACTION-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGNODEACTION"></A><B CLASS="highlight">NODEACTION:&lt;<I CLASS="varname">opération</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STNODEACTION-DESC">Description</A></P>
+<P><A NAME="TMPID6388"></A>Cette sous-balise offre une puissante fonctionnalité permettant d'exécuter diverses opérations sur les nœuds Content Server ; il est donc essentiel de bien comprendre son fonctionnement et ses effets avant de l'utiliser. La sous-balise elle-même se comporte comme toutes les autres sous-balises WebReports, à ceci près que <TT CLASS="literal">NODEACTION</TT> ne permet pas à l'utilisateur qui exécute le rapport d'effectuer une action, par exemple un déplacement, qu'il serait incapable d'exécuter depuis l'interface standard.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STNODEACTION-PARAM">Paramètres</A></P>
+<DIV title="Action : ADDVER" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL1"></A><B>Tableau 1-7 : Action : ADDVER</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:ADDVER:TEXT:&lt;<I CLASS="varname">chaîne de texte</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend un dataID renvoyé par la balise principale. Lui ajoute une version contenant la valeur spécifiée dans <I CLASS="emphasis">chaîne de texte</I>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:ADDVER:&lt;<I CLASS="varname">document</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend un dataID renvoyé par la balise principale. Lui ajoute une version intégrant le contenu de la dernière version du document spécifié par le paramètre <I CLASS="emphasis">document</I>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:ADDVER:&lt;<I CLASS="varname">document</I>>:INHERITATTRS:SOURCE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Identique à la balise précédente, excepté qu'elle hérite des données de catégorie et d'attribut du document source.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : CLASSIFICATION" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL2"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-8 : Action : CLASSIFICATION</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:CLASSIFICATION:ADD:&lt;<I CLASS="varname">ID de classement</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend un dataID renvoyé par la balise principale, puis ajoute le classement spécifié par le paramètre <I CLASS="emphasis">ID de classement</I>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:CLASSIFICATION:REMOVE:&lt;<I CLASS="varname">ID de classement</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend un dataID renvoyé par la balise principale, puis retire le classement spécifié par le paramètre <I CLASS="emphasis">ID de classement</I>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : COPY" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL3"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-9 : Action : COPY</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:COPY:&lt;<I CLASS="varname">recueil</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend un dataID renvoyé par la balise principale. Copie ce nœud à l'emplacement spécifié par le paramètre <I CLASS="emphasis">recueil</I>. Utilise le même nom pour toutes les versions.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:COPY:&lt;<I CLASS="varname">recueil</I>>:CURRENT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Balise identique à la précédente, excepté qu'elle utilise uniquement la dernière version la plus à jour du document source. Si l'objet source est un recueil, seule la dernière version des éléments contenus dans ce recueil sera copiée.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:COPY:&lt;<I CLASS="varname">recueil</I>>:INHERITATTRS:DESTINATION</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Hérite des données de catégorie et d'attribut de l'emplacement de destination.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:COPY:&lt;<I CLASS="varname">recueil</I>>:INHERITATTRS:MERGED</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Fusionne les données de catégorie et d'attribut du nœud source et de l'emplacement de destination.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:COPY:&lt;<I CLASS="varname">recueil</I>>:INHERITATTRS:SOURCE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Conserve les données de catégorie et d'attribut source lors de la copie vers l'emplacement de destination.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:COPY:&lt;<I CLASS="varname">recueil</I>>:INHERITPERMS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Hérite des autorisations du recueil de destination.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:COPY:&lt;<I CLASS="varname">recueil</I>>:INHERITRMOFF</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Le comportement par défaut de <TT CLASS="literal">NODEACTION</TT> est le même que si l'opération avait été effectuée via l'interface Content Server : un nœud copié hérite des classements RM du nouveau recueil parent. Cette option peut être utilisée pour stopper la transmission des classements RM. Lorsqu'un classement RM est déjà appliqué au nœud à copier, ce classement RM est conservé une fois l'événement de copie terminé. Cette option peut être utilisée pour remplacer les options « Administration de Records Management », « Objets gérés » et « Hériter à partir de », mais pas pour forcer la transmission (héritage) d'un classement RM si les paramètres RM appropriés n'ont pas été spécifiés.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:COPY:&lt;<I CLASS="varname">recueil</I>>:NEWNAME:&lt;<I CLASS="varname">nom</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Utilisez le paramètre facultatif NEWNAME pour spécifier un nouveau nom pour le nœud de destination.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:COPY:&lt;<I CLASS="varname">recueil</I>>:NOCHILDREN</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Copie uniquement le nœud spécifié, sans copier les nœuds enfants.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:COPY:&lt;<I CLASS="varname">recueil</I>>:UNIQUEONLY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Si le nom du nœud n'est pas unique au sein du recueil de destination, le nœud ne sera pas copié. Cette option peut être utilisée avec ou sans l'option <TT CLASS="literal">NEWNAME</TT>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P><A NAME="TMPID6552"></A>Vous pouvez utiliser les paramètres de copie dans n'importe quelle combinaison et dans n'importe quel ordre. Voir <span><A HREF="wr-tag-sttwelfth.htm#STNAP-TBL9"><NOBR>Tableau&nbsp;1-15</NOBR></A></span> ci-dessous pour obtenir un exemple de combinaison de plusieurs paramètres.</P>
+<DIV title="Action : CREATE" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL4"></A><B>Tableau 1-10 : Action : CREATE</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:CREATE:COMPOUNDDOC:&lt;<I CLASS="varname">recueil</I>>:&lt;<I CLASS="varname">nom</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Crée un nouveau document composite dans le <I CLASS="emphasis">recueil</I> spécifié. Les données présentes dans la balise principale sont ignorées.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:CREATE:DOC:&lt;<I CLASS="varname">recueil</I>>:&lt;<I CLASS="varname">nom</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend un dataID de document dans la balise principale. Le contenu de la dernière version de ce document est utilisé comme source pour un nouveau document, créé dans le <I CLASS="emphasis">recueil</I> spécifié.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:CREATE:FOLDER:&lt;<I CLASS="varname">recueil</I>>:&lt;<I CLASS="varname">nom</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Crée un nouveau dossier dans le <I CLASS="emphasis">recueil</I> spécifié. Les données présentes dans la balise principale sont ignorées.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:CREATE:GENERATION:&lt;<I CLASS="varname">recueil</I>>:&lt;<I CLASS="varname">nom</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Crée une génération à partir de la dernière version du nœud spécifié dans la balise principale. Vous pouvez également ajouter <TT CLASS="literal">:VERSIONNUM:&lt;<I CLASS="varname">numéro de version</I>></TT> pour créer une génération à partir d'une version particulière du nœud. Par exemple, <TT CLASS="literal">NODEACTION:CREATE:GENERATION:&lt;<I CLASS="varname">recueil</I>>:&lt;<I CLASS="varname">nom</I>>:VERSIONNUM:2</TT> créera une génération à partir de la version 2 du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:CREATE:RELEASE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Crée une version du document composite spécifié dans la balise principale. Vous pouvez également ajouter un nom pour cette version. Par exemple, <TT CLASS="literal">NODEACTION:CREATE:RELEASE</TT> créera une version utilisant le nom par défaut : « 1.0 », « 2.0 ». <TT CLASS="literal">NODEACTION:CREATE:RELEASE:"Release Name"</TT> créera une version appelée « Release Name ».</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:CREATE:SHORTCUT:&lt;<I CLASS="varname">recueil</I>>:&lt;<I CLASS="varname">nom</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Crée un raccourci pointant vers le nœud spécifié dans la balise principale.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:CREATE:URL:&lt;<I CLASS="varname">container</I>>:&lt;<I CLASS="varname">name</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend une URL renvoyée par la balise principale. L'URL doit être complète, par exemple, <TT CLASS="literal">http://</TT>. Cette option crée également un nouvel objet d'URL dans le <I CLASS="emphasis">recueil</I> spécifié.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P class="before-ul"><A NAME="TMPID6637"></A>Toutes les options <TT CLASS="literal">NODEACTION:CREATE</TT>, excepté <TT CLASS="literal">RELEASE</TT> et <TT CLASS="literal">REVISION</TT>, prennent en charge <TT CLASS="literal">INHERITATTRS</TT>, <TT CLASS="literal">INHERITPERMS</TT> et <TT CLASS="literal">UNIQUEONLY</TT>. <TT CLASS="literal">INHERITPERMS</TT> se comporte de la même manière que dans <TT CLASS="literal">NODEACTION:COPY</TT> et <TT CLASS="literal">NODEACTION:MOVE</TT>. <TT CLASS="literal">INHERITATTRS</TT> se comporte de manière légèrement différente, car il n'y a pas de concept de catégories existantes, excepté dans le cas d'un document utilisant un nœud existant pour obtenir le contenu. <TT CLASS="literal">INHERITATTRS</TT> prend en charge les options <TT CLASS="literal">SOURCE</TT> et <TT CLASS="literal">DESTINATION</TT> pour les documents et <TT CLASS="literal">DESTINATION</TT> uniquement pour les autres types d'objet. Sans précision de votre part, aucune catégorie n'est appliquée. <TT CLASS="literal">MERGE</TT> n'est pas prise en charge pour <TT CLASS="literal">NODEACTION:CREATE</TT>. <TT CLASS="literal">UNIQUEONLY</TT> renverra l'un des éléments suivants :</P><A NAME="AEN6137"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN6138"></A><A NAME="TMPID6657"></A>l'ID du nouveau nœud créé, le cas échéant ;</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN6140"></A><A NAME="TMPID6659"></A>l'ID d'un nœud existant, de même nom et de même sous-type, si l'existence de ce nœud a empêché la création d'un nouveau nœud ;</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN6142"></A><A NAME="TMPID6661"></A>une chaîne vide contenant un message d'erreur vierge indiquant que la création du nouveau nœud a échoué, car un nœud portant le même nom mais présentant un sous-type différent a empêché cette création.</P></LI></UL>
+<P><A NAME="TMPID6662"></A>Le message d'erreur peut être affiché à la place de la chaîne vide à l'aide de la balise <span><A HREF="wr-tag-stthirteenth.htm#WR-TAG-STONERROR">ONERROR</A></span>:LONG.</P>
+<DIV title="Action : DELETE" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL5"></A><B>Tableau 1-11 : Action : DELETE</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:DELETE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprime le nœud renvoyé par la balise principale.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : DISPLAY" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL6"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-12 : Action : DISPLAY</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:DISPLAY:LIST</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend un dataID renvoyé par la balise principale. Définit l'affichage de cet élément en mode <TT CLASS="literal">LIST</TT>, comme indiqué dans l'onglet général du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:DISPLAY:FEATURED</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend un dataID renvoyé par la balise principale. Définit l'affichage de cet élément en mode <TT CLASS="literal">FEATURED</TT>, comme indiqué dans l'onglet général du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:DISPLAY:HIDDEN</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend un dataID renvoyé par la balise principale. Définit l'affichage de cet élément en mode <TT CLASS="literal">HIDDEN</TT>, comme indiqué dans l'onglet général du nœud.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : LOCK" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL7"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-13 : Action : LOCK</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:LOCK:&lt;<I CLASS="varname">numéro de version</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Verrouille la version spécifiée d'un nœud. Voir également <TT CLASS="literal">NODEACTION:UNLOCK</TT>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : MAXVERS" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL8"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-14 : Action : MAXVERS</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:MAXVERS:&lt;<I CLASS="varname">versions</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Définit le nombre maximum de versions pour un document ou un affichage personnalisé, de la même manière que ce paramètre est défini dans l'onglet d'un objet donné. Content Server fournit un paramètre <TT CLASS="filename">opentext.ini</TT>, <TT CLASS="literal">VersionLimitDefault</TT>, qui définit le nombre maximum de versions par défaut. Cette valeur peut être configurée pour un nœud à l'aide du paramètre facultatif <TT CLASS="literal">DEFAULT</TT>. Par exemple, <TT CLASS="literal">[LL_REPTAG=DATAID NODEACTION:MAXVERS:DEFAULT /]</TT>. Pour configurer un nombre illimité de versions pour un nœud donné, servez-vous de l'option <TT CLASS="literal">NOLIMIT</TT>. Par exemple, <TT CLASS="literal">[LL_REPTAG=DATAID NODEACTION:MAXVERS:NOLIMIT /]</TT>. Voir également <TT CLASS="literal">NODEACTION:PURGEVERSIONS</TT>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : MOVE" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL9"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-15 : Action : MOVE</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:MOVE:&lt;<I CLASS="varname">recueil</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend un dataID renvoyé par la balise principale. Déplace ce nœud à l'emplacement spécifié par le paramètre « recueil ».</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:MOVE:&lt;<I CLASS="varname">recueil</I>>:INHERITATTRS:DESTINATION</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Déplace le nœud dans le « recueil » spécifié, dont il hérite des catégories et des attributs.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:MOVE:&lt;<I CLASS="varname">recueil</I>>:INHERITATTRS:MERGED</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Déplace le nœud dans le « recueil » spécifié et fusionne les catégories et les attributs du nœud source et de ce « recueil ».</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:MOVE:&lt;<I CLASS="varname">recueil</I>>:INHERITATTRS:SOURCE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Déplace le nœud dans le « recueil » spécifié, en conservant les catégories et les attributs du nœud source.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:MOVE:&lt;conteneur&gt;:INHERITPERMS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Déplace le nœud dans le « recueil » spécifié, dont il hérite des autorisations.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:MOVE:&lt;<I CLASS="varname">recueil</I>>:INHERITRMOFF</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Le comportement par défaut de <TT CLASS="literal">NODEACTION</TT> est le même que si l'opération avait été effectuée via l'interface Content Server : un nœud déplacé hérite des classements RM du nouveau recueil parent. Cette option peut être utilisée pour stopper la transmission des classements RM. Lorsqu'un classement RM est déjà appliqué au nœud à déplacer, ce classement RM est conservé une fois l'événement de déplacement terminé. Cette option peut être utilisée pour remplacer les options « Administration de Records Management », « Objets gérés » et « Hériter à partir de », mais pas pour forcer la transmission (héritage) d'un classement RM si les paramètres RM appropriés n'ont pas été spécifiés.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:MOVE:&lt;<I CLASS="varname">recueil</I>>:NEWNAME:&lt;<I CLASS="varname">nom</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Option facultative. Renomme le nœud déplacé.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:MOVE:&lt;<I CLASS="varname">recueil</I>>:UNIQUEONLY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Si le nom du nœud n'est pas unique au sein du recueil de destination, le nœud ne sera pas déplacé. Cette option peut être utilisée avec ou sans l'option <TT CLASS="literal">NEWNAME</TT>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P><A NAME="TMPID6852"></A>Vous pouvez utiliser les paramètres de déplacement ci-dessus dans n'importe quelle combinaison et dans n'importe quel ordre. Par exemple, utilisez <TT CLASS="literal">[LL_REPTAG=DATAID NODEACTION:MOVE:1234:INHERITATTRS:MERGED:INHERITPERMS:NEWNAME:"my node" /]</TT> pour combiner les catégories de source et de destination, hériter des autorisations de la destination et renommer le nœud déplacé avec le nom « mon nœud ». Pour joindre des éléments Content Server à un workflow lancé via un WebReport, dans l'onglet de destination, voir <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETWFATTACH">SETWFATTACH</A></span>. Pour plus d'informations, consultez <span><A HREF="wr-actionsubtags-info.htm">Sous-balises d'action</A></span>.</P>
+<DIV title="Action : MOVEPROVIDER" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL010"></A><B>Tableau 1-16 : Action : MOVEPROVIDER</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:MOVEPROVIDER:&lt;<I CLASS="varname">nom du fournisseur</I>>:&lt;<I CLASS="varname">numéro de version</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Modifie le fournisseur de stockage pour la version. Les fournisseurs de stockage disponibles peuvent être identifiés dans la page Administration <B CLASS="guilabel">Configurer les fournisseurs de stockage</B>. Pour sélectionner le fournisseur de stockage par défaut, utilisez <TT CLASS="literal">DEFAULT</TT> comme nom de fournisseur. Si aucun numéro de version n'a été spécifié, la dernière version sera assignée au nouveau fournisseur. Si <TT CLASS="literal">ALL</TT> est spécifié à la place du numéro de version, toutes les versions du nœud seront assignées au nouveau fournisseur. Les conséquences de cette sous-balise en termes de performances doivent être soigneusement étudiées avant toute utilisation ; en effet, celle-ci ne met pas seulement à jour la base de données, elle modifie également l'emplacement de stockage sous-jacent. Cela signifie qu'un nœud simple avec 30 versions entraînera le déplacement de 30 fichiers, et si chacun d'eux est un document de 1 Mo, la charge peut être considérable pour le système. Il est donc recommandé d'effectuer ce type d'opération en dehors des heures de bureau et de manière progressive.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : NICKNAME" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL011"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-17 : Action : NICKNAME</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:NICKNAME:&lt;<I CLASS="varname">nouveau surnom</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Configure le surnom du nœud renvoyé par la balise principale.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : OWNEDBY" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL012"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-18 : Action : OWNEDBY</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:OWNEDBY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Si l'utilisateur actuel dispose des autorisations nécessaires, cette balise modifie la propriété du nœud spécifié pour l'utilisateur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:OWNEDBY:&lt;<I CLASS="varname">nouvel ID</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Si l'utilisateur actuel dispose des autorisations nécessaires, cette balise modifie la propriété du nœud spécifié pour l'utilisateur par le paramètre &lt;<I CLASS="varname">nouvel ID</I>>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : PERMCOPY" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL013"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-19 : Action : PERMCOPY</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:PERMCOPY:&lt;<I CLASS="varname">ID du nœud source</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Copie les autorisations du nœud spécifié par le paramètre &lt;<I CLASS="varname">ID du nœud source</I>>, vers le nœud spécifié dans la balise principale.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : PROMOTE" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL014"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-20 : Action : PROMOTE</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:PROMOTE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Lorsque vous utilisez le contrôle de la version avancée sur un nœud, cette commande permet de faire de la dernière version la version principale.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : PURGEVERSIONS" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL015"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-21 : Action : PURGEVERSIONS</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:PURGEVERSIONS:KEEP:&lt;<I CLASS="varname">versions à conserver</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Elimine les versions du nœud, tout en conservant un nombre donné de versions.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:PURGEVERSIONS:REMOVE:&lt;<I CLASS="varname">versions à supprimer</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Elimine un nombre donné de versions du nœud. Si le nombre de versions à éliminer est supérieur ou égal au nombre de versions existantes, une seule version est conservée.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:PURGEVERSIONS:&lt;<I CLASS="varname">numéro de version</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Elimine une version donnée du nœud.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : RENAME" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL016"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-22 : Action : RENAME</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:RENAME:&lt;<I CLASS="varname">nouveau nom</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renomme le nœud renvoyé par la balise principale. Dans les environnements multilingues de la version Content Server 10, cette commande définit le nom dans la langue par défaut du système.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:RENAME:&lt;<I CLASS="varname">nouveau nom</I>>:&lt;<I CLASS="varname">langue</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Dans les environnements multilingues de la version Content Server 10, cette commande renomme le nœud renvoyé par la balise principale, dans la langue spécifiée. Par exemple, <TT CLASS="literal">NODEACTION:RENAME:"new name":"en_US"</TT> modifiera le nom anglais (US) du nœud. Notez que le paramètre &lt;<I CLASS="varname">langue</I>> est sensible à la casse et doit correspondre à une valeur de la colonne « Code de langue » de la page Administration <B CLASS="guilabel">Configurer les métadonnées multilingues</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:RENAME:&lt;<I CLASS="varname">nouveau nom</I>>:USERLANG</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Dans les environnements multilingues de la version Content Server 10, cette commande renomme le nœud renvoyé par la balise principale, dans la langue par défaut de l'utilisateur. Par exemple, dans le cas d'un utilisateur dont la langue par défaut est l'anglais, <TT CLASS="literal">NODEACTION:RENAME:"new name":USERLANG</TT> modifiera le nom anglais du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:RENAME:&lt;<I CLASS="varname">nouveau nom1</I>>:&lt;<I CLASS="varname">langue1</I>>:&lt;<I CLASS="varname">nouveau nom2</I>>:&lt;<I CLASS="varname">langue2</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Dans les environnements multilingues de la version Content Server 10, cette commande renomme le nœud renvoyé par la balise principale, dans plusieurs langues. Par exemple, <TT CLASS="literal">NODEACTION:RENAME:"new name":"en_US":"nouveau nom":"fr"</TT> remplacera le nom anglais (US) du nœud par « new name » et le nom français du nœud par « nouveau nom ».</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Notez que les paramètres &lt;<I CLASS="varname">langue</I>> sont sensibles à la casse et doivent correspondre à une valeur de la colonne <B CLASS="guilabel">Code de langue</B> de la page Administration <B CLASS="guilabel">Configurer les métadonnées multilingues</B>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : RENDITION" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL017"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-23 : Action : RENDITION</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:RENDITION:&lt;<I CLASS="varname">type</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Lance une présentation du type spécifié. Remarque : Cette fonctionnalité est disponible uniquement si le module Renditions est installé.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : RESERVE" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL018"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-24 : Action : RESERVE</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:RESERVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend un dataID renvoyé par la balise principale. Configure le nœud afin qu'il soit réservé par la personne qui exécute le WebReport.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:RESERVE:&lt;<I CLASS="varname">ID_utilisateur</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Variante facultative de la balise <TT CLASS="literal">RESERVE</TT>, cette commande permet à un utilisateur Content Server d'être défini comme initiateur de la réservation du nœud.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : RESTORE" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL019"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-25 : Action : RESTORE</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:RESTORE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Attend un dataID renvoyé par la balise principale. Le nœud est restauré avec le même nom et le même emplacement qu'avant sa suppression.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:RESTORE:&lt;<I CLASS="varname">nom</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Variante facultative de la balise <TT CLASS="literal">RESTORE</TT>, elle spécifie un nouveau nom pour le nœud de destination.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:RESTORE:&lt;<I CLASS="varname">nom</I>>:&lt;<I CLASS="varname">destination</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Variante facultative de la balise <TT CLASS="literal">RESTORE</TT>, elle spécifie un nouveau nom et une nouvelle destination pour le nœud de destination.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : UNLOCK" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL020"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-26 : Action : UNLOCK</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:UNLOCK:&lt;<I CLASS="varname">numéro de version</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Déverrouille la version spécifiée d'un nœud. Voir également <TT CLASS="literal">NODEACTION:LOCK</TT>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : UNRESERVE" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL021"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-27 : Action : UNRESERVE</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:UNRESERVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Annule la réservation du nœud renvoyé par la balise principale.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : UPDATE" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL022"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-28 : Action : UPDATE</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:UPDATE:DESCRIPTION:&lt;<I CLASS="varname">nouvelle description</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Met à jour le champ <B CLASS="guilabel">Description</B> d'un nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:UPDATE:TASKSTATUS:&lt;<I CLASS="varname">nouveau statut</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Met à jour le statut d'une tâche. Les valeurs valides pour le nouveau statut sont les suivantes :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID7231"></A>Annulé</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID7233"></A>Achevé</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID7235"></A>En cours</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID7237"></A>Problème</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID7239"></A>En suspens</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID7241"></A>En attente</P></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Lorsque vous choisissez le statut « Achevé », l'option Date d'achèvement de la tâche est définie sur la date et l'heure d'exécution du WebReport. Si vous choisissez un autre statut que « Achevé », la date d'achèvement de la tâche sera définie sur « Aucune ».</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Action : VERSIONCONTROL" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STNAP-TBL023"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-29 : Action : VERSIONCONTROL</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opération</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:VERSIONCONTROL:STANDARD</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Met à jour le paramètre Contrôle de la version d'un document avec l'option Standard - création linéaire de versions.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NODEACTION:VERSIONCONTROL:ADVANCED</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Met à jour le paramètre Contrôle de la version d'un document avec l'option Avancée - création de versions principales/secondaires.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STNODEINFO">NODEINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STNODEINFO-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGNODEINFO"></A><B CLASS="highlight">NODEINFO:&lt;<I CLASS="varname">format</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STNODEINFO-DESC">Description</A></P>
+<P><A NAME="TMPID7281"></A>Cette sous-balise renvoie des informations sur l'objet ou le nœud en cours, en fonction du paramètre de format spécifié. Le paramètre de format accepte comme valeur la plupart des colonnes de la table <TT CLASS="literal">DTREE</TT> de la base de données Content Server, ainsi que divers autres paramètres uniques aux WebReports. Les principaux champs sont répertoriés ci-dessous. La sous-balise agit soit sur l'ID de nœud, soit sur le surnom Content Server.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STNODEINFO-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN6765"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Format</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ASSIGNEDTO</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID de l'utilisateur qui a été assigné à cet objet, généralement une tâche.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATALOG</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une valeur numérique représentant la valeur de catalogue de l'objet.</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">0 = Répertorié, 1 = Mise en valeur et 2 = Masqué.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CHILDCOUNT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Nombre d'enfants du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CLASSIFICATION</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie un élément RecArray contenant l'ID et le nom de chaque classement du nœud dont l'ID a été spécifié dans la balise principale.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">COMMENT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Description du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CREATEDBY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID de l'utilisateur ayant créé le nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CREATEDATE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date de création du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">DATEASSIGNED</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date à laquelle le nœud a été assigné, généralement une tâche.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">DATECOMPLETED</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date à laquelle le nœud a été achevé, généralement une tâche.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">DATEDUE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date d'échéance du nœud, généralement une tâche.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">DATESTARTED</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date de démarrage du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">DEPTH</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie la profondeur hiérarchique d'un objet donné dans l'entreprise.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EXTENDEDDATA</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Données spécifiquement stockées pour le nœud. Pour pouvoir extraire des informations utiles de ces données, vous devez utiliser des sous-balises complémentaires, par exemple <TT CLASS="literal">ASSOC</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">GROUPID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID du groupe propriétaire du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Toutes les commandes <TT CLASS="literal">NODEINFO</TT> peuvent être lancées sur la base d'un surnom ou d'un ID de nœud. Cela signifie que l'utilisateur ne connaît pas nécessairement l'ID de nœud d'un élément ; dans ce cas, <TT CLASS="literal">NODEINFO:ID</TT> lui permet de le récupérer en fournissant son surnom.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">JSON</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Exporte l'enregistrement <TT CLASS="literal">NODEINFO</TT> sous forme de chaîne <TT CLASS="literal">JSON</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LOCATION</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une liste des ID de nœud séparés par des virgules, qui commence par l'entreprise et se termine par le nœud en cours.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">MAXVERSION</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Nombre maximum de versions pour le nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">MODIFYDATE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date de modification de l'objet.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NAME</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Nom du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">NICKNAME</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Surnom du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ORIGID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Récupère le dataID du nœud d'origine d'un raccourci ou d'une génération.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PARENTID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID du parent du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PATH</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Indique le chemin d'accès complet d'un nœud Content Server, à partir du nœud le plus haut. Cette information est donnée sous la forme d'une chaîne de texte, délimitée par des virgules et commençant par le nœud le plus haut. Par exemple : <TT CLASS="literal">Enterprise:Customers:ABC company</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PRIORITY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Priorité d'un nœud, généralement une tâche.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">RESERVED</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Statut de réservation numérique du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">RESERVEDBY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID de l'utilisateur ayant réservé le nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">RESERVEDDATE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date de réservation du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">SIZE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Taille du nœud en cours. Si l'option <TT CLASS="literal">DETAIL</TT> a été spécifiée, <TT CLASS="literal">NODEINFO:SIZE:DETAIL</TT>, la taille exacte est renvoyée. Vous pouvez également utiliser <TT CLASS="literal">NODEINFO:SIZE:BYTES</TT> pour extraire la taille exacte en octets, sous la forme d'un entier, ce qui offre davantage d'options de mise en forme.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">STATUS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Statut d'un nœud, généralement une tâche.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">SUBNAME</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Type de nœud exprimé en mots, par exemple Document ou Dossier.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">SUBTYPE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Type de nœud exprimé au format numérique ; parfois appelé sous-type.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">USERID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID de l'utilisateur propriétaire du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">VERSIONCONTROL</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie « Standard » ou « Avancée » en fonction du paramètre de contrôle de la version spécifié pour le nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">VERSIONNUM</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Numéro de la version en cours du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">VOLUMEID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ID de volume du nœud. L'ID de volume correspond généralement au recueil de plus haut niveau pour un objet. Ce champ est parfois appelé <TT CLASS="literal">OWNERID</TT>. Pour les objets stockés dans l'espace de travail Projet, un ID de projet négatif est renvoyé pour l'ID de volume.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

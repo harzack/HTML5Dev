@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESPAT100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="clustermgmt_10_5_0">
+<META mancondkey="lleswba-h-agd"><title>Microsoft SQL Server Settings</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'pat-ini-sqlserver.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Editing the Cluster Management config.ini File';
+          header.title2 = 'Microsoft SQL Server Settings';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID1021"></A>The Content Server Cluster Agent service obtains information on the Content Server database from the <TT CLASS="filename">opentext.ini</TT> file. In most cases, you do not need to set database connection information in the Cluster Management <TT CLASS="filename">config.ini</TT> file. However, you must set database connection information in the Cluster Management <TT CLASS="filename">config.ini</TT> file if:</P><A NAME="AEN970"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN971"></A><A NAME="TMPID1031"></A>Your Content Server database is stored in Microsoft SQL Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN975"></A><A NAME="TMPID1035"></A>The SQL Server Browser service is disabled.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN978"></A><A NAME="TMPID1038"></A>Microsoft SQL Server does not run on the default port (1433).</P></LI></UL>
+<P><A NAME="TMPID1040"></A>If all of the above conditions are true, set values for the following Cluster Management <TT CLASS="filename">config.ini</TT> settings:</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PAT-INI-MSSQLNAME">agent.db.mssql.servername</A></P><A NAME="AEN985"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN986"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID1048"></A><TT CLASS="literal">agent.db.mssql.servername=&lt;<I CLASS="varname">SQL_Server_server_name</I>></TT></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN991"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID1053"></A>The name of the computer running the installation of Microsoft SQL Server that houses the Content Server database.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN996"></A><B>Example:</B></P>
+<P class="nr1"><A NAME="TMPID1058"></A><TT CLASS="literal">agent.db.mssql.servername=mySQLServerhost.mydomain.com</TT></P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PAT-INI-MSSQLINSTANCE">agent.db.mssql.instancename</A></P>
+<P class="before-ul"><A NAME="TMPID1062"></A>Provide a value for this setting if there are multiple SQL Server instances on the computer specified in the <TT CLASS="literal">agent.db.mssql.servername</TT> setting.</P><A NAME="AEN1004"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1005"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID1068"></A><TT CLASS="literal">agent.db.mssql.instancename=&lt;<I CLASS="varname">SQL_Server_instance_name</I>></TT></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1010"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID1073"></A>The name of the SQL Server instance that houses the Content Server database.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1015"></A><B>Example:</B></P>
+<P class="nr1"><A NAME="TMPID1078"></A><TT CLASS="literal">agent.db.mssql.servername=mySQLServerInstance</TT></P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PAT-INI-MSSQLPORT">agent.db.mssql.port</A></P><A NAME="AEN1020"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1021"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID1085"></A><TT CLASS="literal">agent.db.mssql.port=&lt;<I CLASS="varname">SQL_Server_port</I>></TT></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1026"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID1090"></A>The port that SQL Server is configured to use.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1030"></A><B>Example:</B></P>
+<P class="nr1"><A NAME="TMPID1094"></A><TT CLASS="literal">agent.db.mssql.port=3456</TT></P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

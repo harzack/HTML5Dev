@@ -1,0 +1,80 @@
+<HTML>
+<!-- wr_specific_info.htm -->
+
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Properties Tabs</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+
+<BODY ONLOAD="checkFrame('wr_specific_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+	var header = new AdminHeader();
+	header.title1 = 'Working With WebReports';
+	header.title2 = 'Properties Tabs';
+	header.draw();
+</SCRIPT>
+
+<p class="body">
+As with all Content Server items, WebReports have a Properties page accessible from the item's function menu. In addition to the standard Content Server tabs there are some
+unique tabs which allow control over WebReport sources, destinations, constants and parameters. The basic features of these tabs and
+the Specific tab are described here.
+</p>
+
+<p class="body">
+<b><U>Specific</U></b><br><br>
+The specific tab for a WebReport is similar to the specific tab for a document. Document properties such as Current Version, Max. Versions and
+MIME Type are used to manage version control for the Reportview associated with the WebReport. In addition to these WebReports has the following unique fields:
+<ul>
+<li><P><SPAN class="gui">Run As</SPAN>.  This option allows the WebReport in question to execute as a specific user irrespective of who the person executing the report
+is logged in as.  Because this capability can surface data the person running the report might not normally be able to see, the ability to change this field is
+controlled by a privilege with <i>Usage Type</i> of <i>WebReports</i> and <i>Usage Name</i> of <i>Run As</i>.
+</P></li>
+<li><P><SPAN class="gui">Run/Export Audits Enabled</SPAN>. This option is unchecked by default and allows each WebReport to have additional audit events enabled
+so that every RUN or EXPORT event will generate an entry in the AUDIT log.  Default behavior is unchecked owing to the volume of audits that can be generated if this
+feature is used without careful consideration.</P></li>
+
+<li><P><SPAN class="gui">Require Secure Token</SPAN>.  (Content Server 10 and above only) This option enforces that a WebReport cannot be run in a single URL. This is to 
+allow protection against Cross Site Request Forgery. If parameters have been setup to prompt the user then the user will not notice any different behavior; however,
+if this option has been checked and no prompting has been defined, then an extra prompt screen will be displayed to the user prior to execution of
+the WebReport. This option is particularly recommended for WebReports that include action sub-tags. Note that this feature only applies to WebReports 
+being run through HTTP requests. if a WebReport has this option enabled but is being run as a SubWebReport, there is no special behavior.
+</P></li>
+
+<li><P><SPAN class="gui">Oscript Scripting Enabled</SPAN>. This option will only appear when the Reportview
+includes tags related to the Server Side Scripting feature. It is used to disable the execution of any scripts which may be defined and executed from the Reportview.
+For more information on this feature see <a href="wr_server_scripting_info.htm">Server Side Scripting with WebReports</a>.</P></li>
+</ul>
+</p>
+<DIV class="gui"><U>Constants</U></DIV>
+<p class="body">
+The Constants tab allows the creation and management of values that can be used in the Reportview (or other designated fields).
+For more information on constants see <a href="wr_constant_procedures.htm">Using Constants</a>.
+</p>
+
+<DIV class="gui"><U>Destination</U></DIV>
+<p class="body">
+The Destination tab allows the developer to specify where a report is delivered to.  This could be email, workflow initiation, or several other destinations.  For
+more information on destinations see <a href="wr_export_procedures.htm">Export Destinations</a>.
+</p>
+
+<DIV class="gui"><U>Parameters</U></DIV>
+<p class="body">
+The Parameters tab allows the developer to define parameter behavior for the WebReport.  This is used to control things like the prompt order, the default value
+and whether a parameter is mandatory or not.  For more details on parameters see <a href="wr_parameter_procedures.htm">Using Parameters</a>.
+</p>
+
+<DIV class="gui"><U>Source</U></DIV>
+<p class="body">
+The source tab allows the developer to specify different types of data source and the format which the source data will appear in.
+For more information on data sources see <a href="wr_changing_datasources.htm">Data Source Configuration</a>.
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

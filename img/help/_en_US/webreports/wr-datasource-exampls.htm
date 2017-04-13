@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Data Source Parameters Examples</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-datasource-exampls.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Data Source Parameters';
+          header.title2 = 'Data Source Parameters Examples';
+           header.draw();
+  </script>
+
+<DIV title="DSstartrow" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF43"></A><B><IMG title="DSstartrow" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-15: DSstartrow</B></P>
+<P class="nr1"><A NAME="TMPID18902"></A>If the data source has 100 rows of data, and a <TT CLASS="literal">DSstartrow</TT> of 21 is specified, without any <TT CLASS="literal">DSendrow</TT> or <TT CLASS="literal">DSmaxrows</TT> parameters, then only rows 21 through 100 would be used.</P><IMG title="DSstartrow" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="DSendrow" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF44"></A><B><IMG title="DSendrow" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-16: DSendrow</B></P>
+<P class="nr1"><A NAME="TMPID18908"></A>If the data source has 100 rows of data, and a <TT CLASS="literal">DSendrow</TT> of 75 is specified, without any <TT CLASS="literal">DSstartrow</TT> or <TT CLASS="literal">DSmaxrows</TT> parameters, then only rows 1 through 75 will be used.</P><IMG title="DSendrow" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="DSstartrow, DSendrow, and DSmaxrows" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF45"></A><B><IMG title="DSstartrow, DSendrow, and DSmaxrows" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-17: DSstartrow, DSendrow, and DSmaxrows</B></P>
+<P class="nr1"><A NAME="TMPID18914"></A>If the parameters <TT CLASS="literal">DSstartrow=1</TT>, <TT CLASS="literal">DSendrow=75</TT>, and <TT CLASS="literal">DSmaxrows=20</TT> are specified, only rows 1 through 20 will be used.</P>
+<P><A NAME="TMPID18918"></A>Further, if the parameters <TT CLASS="literal">DSstartrow=1</TT>, <TT CLASS="literal">DSendrow=20</TT>, and <TT CLASS="literal">DSmaxrows=100</TT> are specified, only rows 1 through 20 will be used.</P><IMG title="DSstartrow, DSendrow, and DSmaxrows" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Example of URL invocation" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF46"></A><B><IMG title="Example of URL invocation" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-18: Example of URL invocation</B></P>
+<P class="nr1"><A NAME="TMPID18924"></A>Consider the following:</P>
+<P><A NAME="TMPID18925"></A><TT CLASS="literal">?func=ll&amp;objId=1234&amp;objAction=RunReport&amp;sourceid=12345&amp;DSstartrow=11&amp;DSendrow=100&amp;DSmaxrows=50</TT></P>
+<P><A NAME="TMPID18927"></A>In this example, the data source identified by nodeid <TT CLASS="literal">12345</TT> will be used to supply data for the WebReport.</P>
+<P><A NAME="TMPID18929"></A>The data used will end at row 50, despite the <B CLASS="highlight">DSendrow</B> parameter being set to 100, because the <B CLASS="highlight">DSmaxrows</B> parameter is set to 50.</P><IMG title="Example of URL invocation" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

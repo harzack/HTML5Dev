@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>How Reportviews Are Processed</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-processing-order-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'How Reportviews Are Processed';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID21073"></A>For most WebReports development, it is not necessary to understand the details of how reportviews are processed; however, for some specialized and advanced situations this information can be useful. For example, in order to determine what tags can be used as parameters for other tags, there are some useful guidelines which will help to make these scenarios clearer.</P>
+<P><A NAME="TMPID21075"></A>In general, sub-tags can be used within data tags, and data tags can be used within content control tags; however, there are also cases where you can use various types of data tags within other data tags. The success of this type of nesting is dependent on the order in which each type of tag is processed.</P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN19856"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID21077"></A>In the following example, a parameter tag, <TT CLASS="literal">nodefield</TT>, is substituted as a parameter for the <TT CLASS="literal">NODEINFO</TT> sub-tag. The parameter tag <TT CLASS="literal">direction</TT> is inserted as the direction parameter for <TT CLASS="literal">[LL_WEBREPORT_SORT /]</TT>:</P>
+<P><A NAME="TMPID21082"></A><TT CLASS="literal">&#13;[LL_WEBREPORT_SORT "[LL_REPTAG=DATAID NODEINFO:[LL_REPTAG_&amp;nodefield /] /]" [LL_REPTAG_&amp;direction /] /]</TT></P>
+</DIV></P>
+<P class="before-ul"><A NAME="TMPID21084"></A>Officially only parameters, constants and column name tags are supported for insertion in data tags but other combinations should be possible subject to the processing order shown below. These data tags can be substituted into the following components in the reportview:</P><A NAME="AEN19865"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19866"></A><A NAME="TMPID21087"></A>Parameters of content control tags. Content control tags refer to any tag that has <TT CLASS="literal">[LL_WEBREPORT_</TT> as a prefix. An example of a content control tag is the sort direction parameter of a sort tag.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19869"></A><A NAME="TMPID21090"></A>Parameters of sub-tags.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-PROCESSING-ADVNOT">The Order in which the Tag Types are Processed</A></P>
+<P><A NAME="TMPID21093"></A>The following list describes the order in which the different tag types are processed. Understanding this processing order is useful to determine how tags may be used with each other. For example, passed parameters are processed before any sort tags are processed, therefore any information passed in the parameters can be used as part of the sort tag.</P>
+<A NAME="AEN19873"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19874"></A><A NAME="TMPID21096"></A>All passed parameter tag values are inserted from top to bottom of the reportview.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19876"></A><A NAME="TMPID21098"></A>All constant tag values are inserted from top to bottom of the reportview.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19878"></A><A NAME="TMPID21100"></A>All column name tag values are inserted from top to bottom of the reportview.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19880"></A><A NAME="TMPID21102"></A>All function tags are interpreted, and marked for later insertion, from top to bottom of the reportview.<TT CLASS="literal">@DATA</TT> tags are inserted at this point.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19883"></A><A NAME="TMPID21105"></A>All static tag values are inserted from top to bottom of the reportview. In other words, any tags that return static Content Server environment information which is not returned from the data source.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19886"></A><A NAME="TMPID21108"></A>The reportview is divided into three sections. All row data tags are interpreted, for later data insertion, in the row section.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19888"></A><A NAME="TMPID21110"></A>All variables are prepared and marked for later resolution from top to bottom of the reportview.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19890"></A><A NAME="TMPID21112"></A>All <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSORT">SORT</A></span> tags are processed and data manipulated. Sorts are performed in order of the <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSORT">SORT</A></span> tag's appearance, from top to bottom of the reportview.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19894"></A><A NAME="TMPID21116"></A>All report tag values, columns of data from the data source, are inserted from top to bottom of the row section from first row to last row, according to the sort order.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19896"></A><A NAME="TMPID21118"></A>All functions and variables are inserted from top to bottom of the reportview, this is where the current variable values will be resolved.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19898"></A><A NAME="TMPID21120"></A>All <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCIF">IF</A></span> and <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDIF">ENDIF</A></span> conditional tags are resolved from top to bottom of the reportview.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19902"></A><A NAME="TMPID21124"></A>All sub-webreports are invoked, and the resulting output inserted, from top to bottom of the reportview.</P></LI></OL>
+<P><A NAME="TMPID21125"></A>The way in which tags are created and specified in the reportview is validated each time a new version is added to the WebReport. This validation is provided to aid in finding any syntax errors that may exist in the reportview; however, sometimes this validation may interfere with more complicated tag structures. Advanced users may want to disable the validation to allow complex scenarios to be used; however, this should only be done after basic testing, with validation on, and preferably on a test system to avoid any possible run time errors that could be introduced. Validation can be turned off using this tag: <TT CLASS="literal">[LL_WEBREPORT_DEBUGON /]</TT></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

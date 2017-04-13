@@ -1,0 +1,430 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>CAPITALIZE, CAT, CATACTION, CATINFO, COLLAPSE, COMPRESS, CONCATVAR, CURRENTVAL</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stthird.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sous-balises';
+          header.title2 = 'CAPITALIZE, CAT, CATACTION, CATINFO, COLLAPSE, COMPRESS, CONCATVAR, CURRENTVAL';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4169"></A>Cette section apporte des informations sur les sous-balises suivantes : <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCAPITALIZE">CAPITALIZE</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCAT">CAT</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCATACTION">CATACTION</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCATINFO">CATINFO</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCOLLAPSE">COLLAPSE</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCOMPRESS">COMPRESS</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCONCATVAR">CONCATVAR</A></span> et <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCURRENTVAL">CURRENTVAL</A></span>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCAPITALIZE">CAPITALIZE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAPITALIZE-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGCAPITALIZE"></A><B CLASS="highlight">CAPITALIZE</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAPITALIZE-DESC">Description</A></P>
+<P><A NAME="TMPID4186"></A>La première lettre de chaque mot devient une majuscule alors que les lettres suivantes de chaque mot deviennent des minuscules.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCAT">CAT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAT-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGCAT"></A><B CLASS="highlight">CAT:&lt;<I CLASS="varname">params</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAT-DESC">Description</A></P>
+<P><A NAME="TMPID4196"></A>Renvoie des informations sur les catégories et attributs associés à l'ID d'objet actuel. Cette sous-balise prend en charge les ensembles d'attributs et les attributs à valeurs multiples, au moyen des opérateurs <TT CLASS="literal">MV</TT> et <TT CLASS="literal">SET</TT>. Par exemple, <TT CLASS="literal">[LL_REPTAG=DATAID <B CLASS="highlight">CAT:&lt;<I CLASS="varname">nom_catég</I>>:&lt;<I CLASS="varname">nom_attr</I>>:DISPLAY</B> /]</TT> renvoie la valeur d'attribut stockée dans la catégorie <TT CLASS="literal">&lt;<I CLASS="varname">nom_catég</I>></TT> et l'attribut <TT CLASS="literal">&lt;<I CLASS="varname">nom_attr</I>></TT>, pour tout type d'attribut. Si <TT CLASS="literal">&lt;<I CLASS="varname">nom_attr</I>></TT> est un attribut à valeurs multiples ou un ensemble d'attributs, une liste de valeurs séparées par des virgules est renvoyée. Si vous souhaitez renvoyer des données de catégorie pour une version spécifique d'un nœud, voir la sous-balise <span><A HREF="wr-tag-stnineteenth.htm#WR-TAG-SUBVERSIONCAT">VERSIONCAT</A></span>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAT-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3847"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Syntaxe</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si une ou plusieurs catégories assignées au nœud sont présentes ; renvoie Faux si tel n'est pas le cas.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:JSARRAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Option unique pour la sous-balise <TT CLASS="literal">CAT</TT>, qui résulte en une représentation d'objet JavaScript de toutes les données de catégories et d'attributs, avec prise en charge complète des ensembles et des valeurs multiples, pour un nœud spécifique. Pour plus d'informations sur cette fonction, voir l'aide avancée <TT CLASS="literal">JSARRAY</TT> des catégories.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:RAW </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette option résulte en une représentation Oscript plate de toutes les données de catégories et d'attributs associées à un nœud particulier.</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Voir Demander en tant que source de données, dans l'aide avancée, pour savoir comment utiliser cette sortie et les balises associées en tant que sources de données pour un autre WebReport.</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Voir la sous-balise <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span> pour savoir comment convertir cette fonction en une structure de données pouvant être interprétée par JavaScript au niveau du client.</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Voir les balises connexes <TT CLASS="literal">LLURL:FUNCTIONMENU:RAW</TT> et <TT CLASS="literal">LLURL:ADDITEM:ITEMMENU:RAW</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie une chaîne contenant la liste des noms des catégories, séparées par des points-virgules, assignées au nœud. Toute catégorie contenant des attributs obligatoires comporte un suffixe composé d'un point d'exclamation entouré de crochets <TT CLASS="literal">[!]</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:MAND</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si une catégorie contenant un attribut obligatoire est assignée au nœud ; renvoie Faux si tel n'est pas le cas.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si la catégorie &lt;<I CLASS="varname">nom_catég</I>> est présente ; renvoie Faux si tel n'est pas le cas.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une chaîne contenant la liste des valeurs d'attributs, séparées par des points-virgules, pour la catégorie spécifiée par &lt;<I CLASS="varname">nom_catég</I>>.</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN3893"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID4259"></A>Si des ensembles d'attributs ou des attributs à valeurs multiples sont contenus dans la catégorie, ils sont affichés conformément à la syntaxe suivante :</P>
+<P><A NAME="TMPID4260"></A><TT CLASS="literal">'attval1;attval2;[SET3:attval4,attval5,[MV6:attval7,attval8]];attval9'</TT></P>
+<P><A NAME="TMPID4262"></A>Ici, attval1, attval2 et attval9 sont des valeurs d'attributs standard.</P>
+<P><A NAME="TMPID4263"></A><TT CLASS="literal">[SET3:</TT> représente le début d'un ensemble d'attributs, où 3 est l'ID d'attribut de l'ensemble. Pour identifier un ID d'attribut, consultez la barre de statut du navigateur tout en passant la souris sur le nom de l'attribut dans la page de définition de catégorie.</P>
+<P><A NAME="TMPID4265"></A>L'ensemble d'attributs contient deux attributs standard, <TT CLASS="literal">attval4</TT> et <TT CLASS="literal">attval5</TT>, et un attribut à valeurs multiples qui commence par : <TT CLASS="literal">[MV6:</TT>, où 6 est l'ID d'attribut de l'attribut à valeurs multiples. L'attribut à valeurs multiples contient deux valeurs pour l'attribut 6, soit : <TT CLASS="literal">attval7</TT> et <TT CLASS="literal">attval8</TT>.</P>
+</DIV></P> </TD></TR></TABLE> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:ID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie l'ID de la catégorie &lt;<I CLASS="varname">nom_catég</I>>, si celle-ci est présente.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:&lt;<I CLASS="varname">nom_attr</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si l'attribut &lt;<I CLASS="varname">nom_attr</I>> existe avec une valeur non vide dans la catégorie &lt;<I CLASS="varname">nom_catég</I>> ; renvoie Faux si tel n'est pas le cas. Si &lt;<I CLASS="varname">nom_attr</I>> spécifie un ensemble d'attributs, il suffit d'une seule entrée parmi les valeurs des attributs de l'ensemble pour que la sous-balise renvoie Vrai. Si &lt;<I CLASS="varname">nom_attr</I>> spécifie un attribut à valeurs multiples, il suffit d'une seule entrée parmi ces valeurs pour que cette sous-balise renvoie Vrai. Le paramètre &lt;<I CLASS="varname">nom_attr</I>> peut également être imbriqué dans un ensemble d'attributs, sous forme d'attribut standard ou d'attribut à valeurs multiples.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:&lt;<I CLASS="varname">nom_attr</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie la valeur de l'attribut &lt;<I CLASS="varname">nom_attr</I>> pour la catégorie &lt;<I CLASS="varname">nom_catég</I>>. Si &lt;<I CLASS="varname">nom_attr</I>> est un ensemble d'attributs ou un attribut à valeurs multiples, une liste de valeurs séparées par des virgules est renvoyée.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:&lt;<I CLASS="varname">nom_attr</I>>:ID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie l'ID de l'attribut &lt;<I CLASS="varname">nom_attr</I>> pour la catégorie &lt;<I CLASS="varname">nom_catég</I>>, s'il est présent. Si &lt;<I CLASS="varname">nom_attr</I>> se trouve dans un ensemble d'attributs, l'ID est renvoyé si aucun attribut de nom &lt;<I CLASS="varname">nom_attr</I>> n'est présent au niveau supérieur dans la catégorie. Si l'attribut &lt;<I CLASS="varname">nom_attr</I>> est présent au niveau supérieur de la catégorie et dans un ensemble d'attributs de la même catégorie, l'ID de l'attribut au niveau supérieur, hors de l'ensemble, a la priorité.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:&lt;<I CLASS="varname">nom_attr</I>>:&lt;<I CLASS="varname">val_attr</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si l'attribut &lt;<I CLASS="varname">nom_attr</I>> de la valeur &lt;<I CLASS="varname">val_attr</I>> existe dans la catégorie &lt;<I CLASS="varname">nom_catég</I>> ; renvoie Faux si tel n'est pas le cas. L'attribut &lt;<I CLASS="varname">nom_attr</I>> peut faire partie d'un ensemble d'attributs, y compris à valeurs multiples, ou d'un attribut à valeurs multiples.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:COUNT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie le nombre d'attributs à valeurs multiples utilisés.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:&lt;<I CLASS="varname">n</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si un élément spécifique non vide est présent dans l'attribut à valeurs multiples &lt;<I CLASS="varname">nom_attr</I>>, pour la catégorie &lt;<I CLASS="varname">nom_catég</I>>, à l'emplacement d'index &lt;<I CLASS="varname">n</I>> ; renvoie Faux si tel n'est pas le cas. La valeur de &lt;<I CLASS="varname">n</I>> doit être un entier positif compris entre 1 et &lt;<I CLASS="varname">n</I>>, où &lt;<I CLASS="varname">n</I>> ne dépasse pas la longueur de l'attribut à valeurs multiples. Si &lt;<I CLASS="varname">n</I>> dépasse la longueur de l'attribut à valeurs multiples, une chaîne vide est renvoyée.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:&lt;<I CLASS="varname">n</I>>:&lt;<I CLASS="varname">val_attr</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si la valeur &lt;<I CLASS="varname">nom_attr</I>> est présente dans l'attribut à valeurs multiples &lt;<I CLASS="varname">nom_attr</I>>, pour la catégorie &lt;<I CLASS="varname">nom_catég</I>>, à l'emplacement d'index &lt;<I CLASS="varname">n</I>> ; renvoie Faux si tel n'est pas le cas. La valeur de &lt;<I CLASS="varname">n</I>> doit être un entier positif compris entre 1 et &lt;<I CLASS="varname">n</I>>, où &lt;<I CLASS="varname">n</I>> ne dépasse pas la longueur de l'attribut à valeurs multiples.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:&lt;<I CLASS="varname">n</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie la valeur présente dans l'attribut à valeurs multiples &lt;<I CLASS="varname">nom_attr</I>>, pour la catégorie &lt;<I CLASS="varname">nom_catég</I>>, à l'emplacement d'index &lt;<I CLASS="varname">n</I>>, où &lt;<I CLASS="varname">n</I>> est un entier positif compris entre 1 et &lt;<I CLASS="varname">n</I>>. La valeur de &lt;<I CLASS="varname">n</I>> doit être un entier positif compris entre 1 et &lt;<I CLASS="varname">n</I>>, où &lt;<I CLASS="varname">n</I>> ne dépasse pas la longueur de l'attribut à valeurs multiples.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:INDEX:&lt;<I CLASS="varname">val_attr</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie le premier index dans l'attribut à valeurs multiples, &lt;<I CLASS="varname">nom_attr</I>>, pour la catégorie, &lt;<I CLASS="varname">nom_catég</I>> où la valeur &lt;<I CLASS="varname">val_attr</I>> est égale à la valeur contenue dans l'attribut à valeurs multiples au niveau de l'index. Par exemple, si la valeur &lt;<I CLASS="varname">val_attr</I>> est présente pour la première fois au troisième élément de &lt;<I CLASS="varname">nom_attr</I>>, le nombre 3 est renvoyé.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:SET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">nom_attr</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilise l'opérateur &lt;<I CLASS="varname">SET</I>> permettant de référencer explicitement des ensembles d'attributs. Cet exemple renvoie Vrai si l'attribut &lt;<I CLASS="varname">nom_attr</I>> dans l'ensemble &lt;<I CLASS="varname">nom_ensemble</I>> n'est pas vide. Seuls les attributs présents dans &lt;<I CLASS="varname">nom_ensemble</I>> peuvent être référencés ; si &lt;<I CLASS="varname">nom_attr</I>> existe en dehors de l'ensemble, il n'est pas trouvé. Si &lt;<I CLASS="varname">nom_attr</I>> est un attribut à valeurs multiples, la valeur Vrai est renvoyée sous réserve qu'au moins un champ de cet attribut ne soit pas vide.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:SET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">nom_attr</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie la valeur présente dans l'attribut &lt;<I CLASS="varname">nom_attr</I>> pour la catégorie &lt;<I CLASS="varname">nom_catég</I>> si &lt;<I CLASS="varname">nom_attr</I>> est un attribut dans &lt;<I CLASS="varname">nom_ensemble</I>>. Si &lt;<I CLASS="varname">nom_attr</I>> est un attribut à valeurs multiples, une liste des valeurs définies, séparées par des virgules, est renvoyée. En l'absence de valeurs définies, soit dans un attribut à valeurs multiples, soit dans un attribut standard, une liste vide est renvoyée. </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:SET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">nom_attr</I>>:ID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie l'ID de l'attribut &lt;<I CLASS="varname">nom_attr</I>> dans l'ensemble &lt;<I CLASS="varname">nom_ensemble</I>>. Si l'attribut &lt;<I CLASS="varname">nom_attr</I>> existe en dehors de l'ensemble &lt;<I CLASS="varname">nom_ensemble</I>>, il n'est pas renvoyé. L'attribut &lt;<I CLASS="varname">nom_attr</I>> peut être un attribut standard ou à valeurs multiples.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:SET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">nom_attr</I>>:&lt;<I CLASS="varname">val_attr</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si l'attribut &lt;<I CLASS="varname">nom_attr</I>> existe avec une valeur égale à &lt;<I CLASS="varname">val_attr</I>> dans l'ensemble &lt;<I CLASS="varname">nom_ensemble</I>> ; renvoie Faux si tel n'est pas le cas. Si l'attribut &lt;<I CLASS="varname">nom_attr</I>> est un attribut à valeurs multiples, chaque élément est comparé à &lt;<I CLASS="varname">val_attr</I>> et Vrai est renvoyé si l'un d'entre eux est égal à cette valeur.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:SET:&lt;<I CLASS="varname">nom_ensemble</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:COUNT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie le nombre d'attributs à valeurs multiples renseignés.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:SET:&lt;<I CLASS="varname">nom_ensemble</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:&lt;<I CLASS="varname">n</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si un élément spécifique non vide est présent dans l'attribut à valeurs multiples &lt;<I CLASS="varname">nom_attr</I>>, dans un ensemble, pour la catégorie &lt;<I CLASS="varname">nom_catég</I>>, à l'emplacement d'index &lt;<I CLASS="varname">n</I>> ; renvoie Faux si tel n'est pas le cas. La valeur de &lt;<I CLASS="varname">n</I>> doit être un entier positif compris entre 1 et &lt;<I CLASS="varname">n</I>>, où &lt;<I CLASS="varname">n</I>> ne dépasse pas la longueur de l'attribut à valeurs multiples.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:SET:&lt;<I CLASS="varname">nom_ensemble</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:&lt;<I CLASS="varname">n</I>>:&lt;<I CLASS="varname">val_attr</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si la valeur &lt;<I CLASS="varname">val_attr</I>> est présente dans l'attribut à valeurs multiples &lt;<I CLASS="varname">nom_attr</I>>, dans un ensemble, pour la catégorie &lt;<I CLASS="varname">nom_catég</I>>, à l'emplacement d'index &lt;<I CLASS="varname">n</I>> ; renvoie Faux si tel n'est pas le cas. La valeur de &lt;<I CLASS="varname">n</I>> doit être un entier positif compris entre 1 et &lt;<I CLASS="varname">n</I>>, où &lt;<I CLASS="varname">n</I>> ne dépasse pas la longueur de l'attribut à valeurs multiples.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:SET:&lt;<I CLASS="varname">nom_ensemble</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:&lt;<I CLASS="varname">n</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie la valeur présente dans l'attribut à valeurs multiples &lt;<I CLASS="varname">nom_attr</I>>, dans un ensemble, pour la catégorie &lt;<I CLASS="varname">nom_catég</I>>, à l'emplacement d'index &lt;<I CLASS="varname">n</I>>, où &lt;<I CLASS="varname">n</I>> est un entier positif compris entre 1 et &lt;<I CLASS="varname">n</I>>. La valeur de &lt;<I CLASS="varname">n</I>> doit être un entier positif compris entre 1 et &lt;<I CLASS="varname">n</I>>, où &lt;<I CLASS="varname">n</I>> ne dépasse pas la longueur de l'attribut à valeurs multiples.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:SET:&lt;<I CLASS="varname">nom_ensemble</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:INDEX:&lt;<I CLASS="varname">val_attr</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie le premier index dans l'attribut à valeurs multiples &lt;<I CLASS="varname">nom_attr</I>>, dans un ensemble, pour la catégorie &lt;<I CLASS="varname">nom_catég</I>> où la valeur &lt;<I CLASS="varname">val_attr</I>> est égale à la valeur contenue dans l'attribut.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MVSET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">n</I>>:&lt;<I CLASS="varname">nom_attr</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si l'ensemble à valeurs multiples &lt;<I CLASS="varname">nom_ensemble</I>> comporte un attribut &lt;<I CLASS="varname">nom_attr</I>> non vide, à l'emplacement d'index &lt;<I CLASS="varname">n</I>>, dans la catégorie &lt;<I CLASS="varname">nom_catég</I>> ; renvoie Faux si tel n'est pas le cas.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MVSET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">n</I>>:&lt;<I CLASS="varname">nom_attr</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Affiche la valeur de l'attribut &lt;<I CLASS="varname">nom_attr</I>>, dans l'ensemble à valeurs multiples &lt;<I CLASS="varname">nom_ensemble</I>>, à l'emplacement d'index &lt;<I CLASS="varname">n</I>>, pour la catégorie &lt;<I CLASS="varname">nom_catég</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MVSET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">n</I>>:&lt;<I CLASS="varname">nom_attr</I>>:ID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Affiche l'ID de l'attribut &lt;<I CLASS="varname">nom_attr</I>>, dans l'ensemble à valeurs multiples &lt;<I CLASS="varname">nom_ensemble</I>>, à l'emplacement d'index &lt;<I CLASS="varname">n</I>>, pour la catégorie &lt;<I CLASS="varname">nom_catég</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MVSET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">n</I>>:&lt;<I CLASS="varname">nom_attr</I>>:&lt;<I CLASS="varname">val_attr</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si l'ensemble à valeurs multiples &lt;<I CLASS="varname">nom_ensemble</I>> comporte l'attribut &lt;<I CLASS="varname">nom_attr</I>>, à l'emplacement d'index &lt;<I CLASS="varname">n</I>>, pour la catégorie &lt;<I CLASS="varname">nom_catég</I>>, égal à la valeur &lt;<I CLASS="varname">val_attr</I>> ; renvoie Faux si tel n'est pas le cas.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MVSET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">n</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:COUNT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie le nombre d'attributs à valeurs multiples utilisés dans l'ensemble à valeurs multiples.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MVSET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">n</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:&lt;<I CLASS="varname">m</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si l'ensemble à valeurs multiples &lt;<I CLASS="varname">nom_ensemble</I>>, à l'emplacement d'index &lt;<I CLASS="varname">n</I>>, comporte un attribut à valeurs multiples &lt;<I CLASS="varname">nom_attr</I>> non vide, à l'emplacement d'index &lt;<I CLASS="varname">m</I>> ; renvoie Faux si tel n'est pas le cas.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MVSET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">n</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:&lt;<I CLASS="varname">m</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Affiche la valeur de l'attribut à valeurs multiples &lt;<I CLASS="varname">nom_attr</I>>, à l'emplacement d'index &lt;<I CLASS="varname">m</I>>, dans l'ensemble à valeurs multiples &lt;<I CLASS="varname">nom_ensemble</I>>, à l'emplacement d'index &lt;<I CLASS="varname">n</I>>, pour la catégorie &lt;<I CLASS="varname">nom_catég</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MVSET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">n</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:&lt;<I CLASS="varname">m</I>>:&lt;<I CLASS="varname">val_attr</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie Vrai si l'ensemble à valeurs multiples &lt;<I CLASS="varname">nom_ensemble</I>>, à l'emplacement d'index &lt;<I CLASS="varname">n</I>>, comporte un attribut à valeurs multiples &lt;<I CLASS="varname">nom_attr</I>>, à l'emplacement d'index &lt;<I CLASS="varname">m</I>>, dont la valeur est égale à la valeur spécifiée dans &lt;<I CLASS="varname">val_attr</I>> ; renvoie Faux si tel n'est pas le cas.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">nom_catég</I>>:MVSET:&lt;<I CLASS="varname">nom_ensemble</I>>:&lt;<I CLASS="varname">n</I>>:MV:&lt;<I CLASS="varname">nom_attr</I>>:INDEX:&lt;<I CLASS="varname">val_attr</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Renvoie le premier index dans l'attribut à valeurs multiples &lt;<I CLASS="varname">nom_attr</I>>, dans un ensemble à valeurs multiples et pour la catégorie &lt;<I CLASS="varname">nom_catég</I>> où la valeur &lt;<I CLASS="varname">val_attr</I>> est égale à la valeur contenue dans l'attribut à valeurs multiples.</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCATACTION">CATACTION</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATACTION-NAME">Syntaxe</A></P>
+<P><A NAME="CATACTION"></A><B CLASS="highlight">CATACTION:&lt;<I CLASS="varname">options</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATACTION-DESC">Description</A></P>
+<P class="before-ul"><A NAME="TMPID4588"></A>Cette sous-balise permet de modifier des métadonnées de catégories et d'attributs. Avec cette balise, vous pouvez :</P><A NAME="AEN4221"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN4222"></A><A NAME="TMPID4591"></A>ajouter une catégorie à un nœud ou la supprimer ;</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN4224"></A><A NAME="TMPID4593"></A>ajouter un attribut de catégorie, le définir ou le supprimer.</P></LI></UL>
+<P><A NAME="TMPID4594"></A>Le paramètre &lt;<I CLASS="varname">catégorie</I>> accepte le <TT CLASS="literal">DataID</TT> ou le nom de la catégorie. Le paramètre &lt;<I CLASS="varname">attribut</I>> accepte l'ID ou le nom de l'attribut. <TT CLASS="literal">[:Index]</TT> et <TT CLASS="literal">[:Set Index]</TT> sont des paramètres facultatifs pour cibler l'attribut souhaité dans un attribut à valeurs multiples et dans un ensemble à valeurs multiples. Ces valeurs sont définies sur 1 par défaut. Si vous utilisez le paramètre <TT CLASS="literal">[:Set Index]</TT> vous devez donner une valeur au paramètre <TT CLASS="literal">[:Index]</TT>. Le tableau ci-dessous décrit la syntaxe des différentes utilisations de la sous-balise <TT CLASS="literal">CATACTION</TT>. Chaque exemple attend le <TT CLASS="literal">DataID</TT> du nœud cible sur lequel <TT CLASS="literal">CATACTION</TT> va fonctionner. Les parties entre chevrons &lt;<I CLASS="varname"></I>> sont obligatoires ; les parties entre crochets [] sont facultatives.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATACTION-PARAM">Paramètres</A></P>
+<DIV title="Définition de valeurs d'attributs" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STCATAC-TBL001"></A><B>Tableau 1-3 : Définition de valeurs d'attributs</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Syntaxe</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:SETVALUE:&lt;<I CLASS="varname">catégorie</I>>:&lt;<I CLASS="varname">attribut</I>>[:Index][:Set Index]:&lt;<I CLASS="varname">valeur</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Définit la valeur d'un attribut donné à un index d'ensemble donné. Pour ajouter une ligne à un ensemble à valeurs multiples, spécifiez le mot-clé <TT CLASS="literal">ADDSETROW</TT> pour le paramètre <TT CLASS="literal">[:Set Index]</TT>. Une fois ajoutée, la nouvelle ligne peut être ciblée au moyen du mot-clé <TT CLASS="literal">NEWROW</TT> pour <TT CLASS="literal">[:Set Index]</TT>. Voir l'exemple ci-dessous.</TD></TR></TABLE> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:ADDVALUE:&lt;<I CLASS="varname">catégorie</I>>:&lt;<I CLASS="varname">attribut</I>>[:Index][:Set Index]:&lt;<I CLASS="varname">valeur</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Ajoute une valeur à la fin d'un attribut à valeurs multiples. Cette balise ignore le paramètre <TT CLASS="literal">[:Index]</TT>.</TD></TR></TABLE> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:INSERTVALUE:&lt;<I CLASS="varname">catégorie</I>>:&lt;<I CLASS="varname">attribut</I>>[:Index][:Set Index]:&lt;<I CLASS="varname">valeur</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Insère une valeur à l'index d'attribut spécifié. L'attribut existant à cet index et tous les attributs suivants se décalent d'un cran vers le bas.</TD></TR></TABLE> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">:NOCOMMIT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Vous pouvez ajouter l'option <TT CLASS="literal">:NOCOMMIT</TT> à la fin des options si vous souhaitez retarder l'exécution de la mise à jour de la catégorie. Cette option est particulièrement utile en présence d'instructions <TT CLASS="literal">CATACTION</TT> multiples, qui mettent à jour plusieurs attributs dans une catégorie. Pour exécuter les mises à jour, n'utilisez pas l'option <TT CLASS="literal">:NOCOMMIT</TT> à la fin de la dernière <TT CLASS="literal">CATACTION</TT> sur la catégorie concernée.</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN4296"></A><B>Exemple</B></P><A NAME="AEN4297"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_MYID CATACTION:SETVALUE:"Cat 2 Mandatory Attributes":"Attr01":"a":NOCOMMIT /]
+[LL_REPTAG_MYID CATACTION:SETVALUE:"Cat 2 Mandatory Attributes":"Attr02":"b" /]</PRE
+>
+<P class="nr1"><B>Exemple: </B><A NAME="TMPID4667"></A>Cet exemple met à jour une catégorie contenant deux attributs obligatoires. La première ligne définit la valeur de l'attribut <TT CLASS="literal">Attr01</TT>, mais sans que cette définition soit exécutée. La deuxième ligne définit la valeur de l'attribut <TT CLASS="literal">Attr02</TT>, puis exécute ces deux modifications immédiatement.</P>
+</DIV></P> </TD></TR></TABLE> </TD></TR></TABLE></DIV>
+<DIV title="Suppression de valeurs d'attributs" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STCATAC-TBL002"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-4 : Suppression de valeurs d'attributs</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Syntaxe</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:REMOVEVALUE:&lt;<I CLASS="varname">catégorie</I>>:&lt;<I CLASS="varname">attribut</I>>[:Index][:Set Index]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprime l'attribut présent à l'index donné. Le nombre de valeurs dans un attribut à valeurs multiples est ainsi réduit d'un, sauf si l'attribut comporte une seule valeur.</TD></TR></TABLE> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:CLEARVALUE:&lt;<I CLASS="varname">catégorie</I>>:&lt;<I CLASS="varname">attribut</I>>[:Index][:Set Index]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Définit la valeur de l'attribut, à l'index donné, sur null. Cela ne modifie pas le nombre de valeurs dans un attribut à valeurs multiples.</TD></TR></TABLE> </TD></TR></TABLE></DIV>
+<DIV title="Ajout et suppression de catégories" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STCATAC-TBL003"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-5 : Ajout et suppression de catégories</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Syntaxe</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:ADD:&lt;<I CLASS="varname">catégorie</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Ajoute la catégorie donnée au nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:REMOVE:&lt;<I CLASS="varname">catégorie</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Supprime la catégorie donnée du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:UPGRADE:&lt;<I CLASS="varname">catégorie</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Met à niveau la catégorie à la version la plus récente.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Obtention de données d'attributs" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STCATAC-TBL004"></A><B><FONT COLOR="WHITE">.</FONT><BR>Tableau 1-6 : Obtention de données d'attributs</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Syntaxe</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:GETVALUE:&lt;<I CLASS="varname">catégorie</I>>:&lt;<I CLASS="varname">attribut</I>>[:Index][:Set Index]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Affiche la valeur de l'attribut.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:SERIALIZE:&lt;<I CLASS="varname">catégorie</I>>:&lt;<I CLASS="varname">attribut</I>>[:Index][:Set Index]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une représentation JSON de la définition de l'attribut.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATACTION-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID4767"></A>Par exemple, étudiez le schéma « Catégorie de test » décrit <A HREF="http://192.168.0.199/LL971support/help/_en_US/webreports/wr_cats_n_atts.html" TARGET="_blank"> ici</A>. Utilisez la syntaxe suivante pour définir l'attribut « Catégorie de test » de l'espace de travail Entreprise sur « premier » : <TT CLASS="literal">[LL_REPTAG_"2000" CATACTION:SETVALUE:"Test Category":"TrialName":"first" /]</TT> </P>
+<P><A NAME="TMPID4773"></A>Pour supprimer la « Catégorie de test » de l'espace de travail Entreprise : <TT CLASS="literal">[LL_REPTAG_"2000" CATACTION:REMOVE:"Test Category" /]</TT></P>
+<P><A NAME="TMPID4776"></A>Examinez le schéma « Catégorie de test de type » décrit <A HREF="http://192.168.0.199/LL971support/help/_en_US/webreports/wr_catjsarray_info.html" TARGET="_blank"> ici</A>. Utilisez la syntaxe suivante pour ajouter une autre ligne à l'ensemble « Coordonnées du testeur » et renseigner ses champs. Le mot-clé <TT CLASS="literal">ADDSETROW</TT> s'applique uniquement à <TT CLASS="literal">SETVALUE</TT> ; en revanche, le mot-clé <TT CLASS="literal">NEWROW</TT> peut être utilisé avec les sous-balises <TT CLASS="literal">SETVALUE</TT>, <TT CLASS="literal">ADDVALUE</TT>, <TT CLASS="literal">INSERTVALUE</TT>, <TT CLASS="literal">REMOVEVALUE</TT> et <TT CLASS="literal">CLEARVALUE</TT>.</P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN4418"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID4789"></A>Dans cet exemple, nous ajoutons une nouvelle ligne de coordonnées à l'ensemble « Coordonnées du Testeur ».</P><A NAME="AEN4421"></A>
+<PRE 
+CLASS="screen"
+>[// Add a new row to the set using 'ADDSETROW'
+[LL_REPTAG_"2000" CATACTION:SETVALUE:"Type Testing Category":"First Name":1:ADDSETROW:"John" /]
+
+[// Target the new row added using the 'NEWROW' keyword
+[LL_REPTAG_"2000" CATACTION:SETVALUE:"Type Testing Category":"Last Name":1:NEWROW:"Smith" /]
+[LL_REPTAG_"2000" CATACTION:SETVALUE:"Type Testing Category":"Phone Number":1:NEWROW:"4168858129" /]
+[LL_REPTAG_"2000" CATACTION:SETVALUE:"Type Testing Category":"Associates":1:NEWROW:"Jane Smith" /]
+
+[// Append values to the multi-valued 'Associates' attribute
+[LL_REPTAG_"2000" CATACTION:ADDVALUE:"Type Testing Category":"Associates":2:NEWROW:"Fred Smith" /]
+[LL_REPTAG_"2000" CATACTION:ADDVALUE:"Type Testing Category":"Associates":3:NEWROW:"Fiona Smith" /]</PRE
+>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCATINFO">CATINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATINFO-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGCATINFO"></A><B CLASS="highlight">CATINFO:&lt;<I CLASS="varname">format</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATINFO-DESC">Description</A></P>
+<P><A NAME="TMPID4801"></A>Dans le cas d'un ID de catégorie Content Server valide, cette sous-balise renvoie les informations de catégorie au format indiqué dans le paramètre spécifié.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATINFO-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4431"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Format</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">CATINFO:VALIDVALUES:&lt;<I CLASS="varname">ID attribut</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une liste. Si l'attribut est un menu contextuel, la liste contient les valeurs valides indiquées dans la définition de l'attribut. Si tel n'est pas le cas, la liste est vide.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCOLLAPSE">COLLAPSE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCOLLAPSE-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGCOLLAPSE"></A><B CLASS="highlight">COLLAPSE</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCOLLAPSE-DESC">Description</A></P>
+<P><A NAME="TMPID4826"></A>Crée une chaîne réduite en supprimant toutes les espaces et toutes les tabulations de la chaîne d'origine.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCOMPRESS">COMPRESS</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCOMPRESS-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGCOMPRESS"></A><B CLASS="highlight">COMPRESS</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCOMPRESS-DESC">Description</A></P>
+<P><A NAME="TMPID4835"></A>Convertit toutes les séquences d'un ou plusieurs espaces ou d'une ou plusieurs tabulations horizontales en un seul espace.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCONCATVAR">CONCATVAR</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCONCATVAR-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGCONCATVAR"></A><B CLASS="highlight">CONCATVAR:&lt;<I CLASS="varname">nom_variable</I>></B></P>
+<P><A NAME="TMPID4843"></A>ou</P>
+<P><A NAME="TMPID4844"></A><B CLASS="highlight">CONCATVAR:&lt;<I CLASS="varname">nom_variable</I>>:&lt;<I CLASS="varname">chaîne_à_joindre</I>></B></P>
+<P><A NAME="TMPID4848"></A>ou</P>
+<P><A NAME="TMPID4849"></A><B CLASS="highlight">CONCATVAR:&lt;<I CLASS="varname">nom_variable</I>>:&lt;<I CLASS="varname">chaîne_à_joindre</I>>:NOBLANKS</B></P>
+<P><A NAME="TMPID4853"></A>ou</P>
+<P><A NAME="TMPID4854"></A><B CLASS="highlight">CONCATVAR:&lt;<I CLASS="varname">nom_variable</I>>:&lt;<I CLASS="varname">chaîne_à_joindre</I>>:UNIQUE</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCONCATVAR-DESC">Description</A></P>
+<P><A NAME="TMPID4860"></A>Concatène la valeur de la balise, après avoir mis en forme toutes les éventuelles sous-balises précédentes, avec le contenu actuel d'une variable qui pourra être référencée à l'aide du nom de variable spécifié. Le deuxième paramètre, facultatif, peut être utilisé pour spécifier un caractère ou une chaîne de caractères insérés avant que chaque nouvelle valeur soit concaténée à la variable. Si la chaîne spéciale <TT CLASS="literal">@EMAIL</TT> est utilisée en tant que « chaîne à joindre », le séparateur d'e-mail standard défini pour le système Content Server est inséré automatiquement. Le troisième paramètre facultatif peut être utilisé uniquement si une chaîne à joindre a été fournie. Lorsqu'il est utilisé, la syntaxe prend toujours la forme suivante : <TT CLASS="literal">NOBLANKS</TT>. Lorsque <TT CLASS="literal">NOBLANKS</TT> est utilisé, aucune chaîne à joindre n'est ajoutée pour les cellules de données vides. Vous pouvez également utiliser le paramètre <TT CLASS="literal">UNIQUE</TT> à la place du paramètre <TT CLASS="literal">NOBLANKS</TT>, afin d'assurer que seules des valeurs uniques sont ajoutées à la variable concaténée. Lors de sa première utilisation, cette sous-balise se comporte comme s'il existait déjà une variable de chaîne vide.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCONCATVAR-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID4870"></A>Par exemple, si les valeurs « Jean », « François » et « Dupont » sont renvoyées consécutivement par : <TT CLASS="literal">[LL_REPTAG=NAME CONCATVAR:names:";" /]</TT>, la variable : <A HREF="wr-tag-cdreptag06">[LL_REPTAG_%names /]</A> renvoie : « Jean; François; Dupont; ». Lorsque cette sous-balise est utilisée, la sortie de balise associée ne sera pas affichée, à moins que la sous-balise <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSHOW">SHOW</A></span> soit également utilisée.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCONCATVAR-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID4880"></A>Pour plus d'informations concernant l'utilisation de <TT CLASS="literal">CONCATVAR</TT>, des balises de variables et d'autres sous-balises associées à la gestion des variables, voir <span><A HREF="wr-variable-info.htm">Utilisation des variables</A></span>. Voir également <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span> et <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETVAR">SETVAR</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCURRENTVAL">CURRENTVAL</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCURRENTVAL-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGCURRENTVAL"></A><B CLASS="highlight">CURRENTVAL</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCURRENTVAL-DESC">Description</A></P>
+<P><A NAME="TMPID4893"></A>Affiche la valeur actuelle d'une variable, selon sa position dans l'affichage de rapport. Les sous-balises de variables sont traitées en commençant par le haut du fichier et en progressant vers le bas. Les lignes sont également traitées dans l'ordre, de 1 à &lt;<I CLASS="varname">n</I>>. Normalement, la balise de variable <TT CLASS="literal">[LL_REPTAG_%test /]</TT> renvoie la valeur finale d'une variable, quel que soit son emplacement dans l'affichage de rapport ; cependant, si la sous-balise <TT CLASS="literal">CURRENTVAL</TT> est incluse dans une balise de variable, la balise affiche sa valeur selon sa position dans l'affichage de rapport. Par exemple, <TT CLASS="literal">[LL_REPTAG_%test CURRENTVAL /]</TT> affiche la valeur actuelle de la variable appelée « test ». </P>
+<P><A NAME="TMPID4899"></A>La sortie de la sous-balise <TT CLASS="literal">CURRENTVAL</TT> peut être formatée au moyen d'autres sous-balises. Par exemple, <TT CLASS="literal">[LL_REPTAG_%test CURRENTVAL CAPITALIZE /]</TT> affiche la valeur en majuscules de la variable appelée « test ». </P>
+<P><A NAME="TMPID4903"></A>La sous-balise <TT CLASS="literal">CURRENTVAL</TT> peut également être utilisée avec d'autres sous-balises de variables, par exemple <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETVAR">SETVAR</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCONCATVAR">CONCATVAR</A></span> ou <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span>, afin de renvoyer la valeur de la variable qu'elles modifient, une fois les modifications effectuées. Lorsqu'elle est utilisée de cette façon, la variable <TT CLASS="literal">CURRENTVAL</TT> doit se trouver immédiatement à droite de la sous-balise de variable. Par exemple, <TT CLASS="literal">[LL_REPTAG=number ADDVAR:total CURRENTVAL /]</TT> affiche la valeur d'une variable appelée « total » après l'ajout effectué par la sous-balise <TT CLASS="literal">ADDVAR</TT>.</P>
+<P><A NAME="TMPID4912"></A>La sous-balise <TT CLASS="literal">CURRENTVAL</TT> permet également de fournir la valeur d'une variable à une autre sous-balise d'action, par exemple <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETFORM">SETFORM</A></span>. <TT CLASS="literal">[LL_REPTAG_%test CURRENTVAL CAPITALIZE SETFORM:champ1 /]</TT> utilise la valeur actuelle de la variable appelée « test », la convertit en majuscules, puis l'utilise pour renseigner un champ de formulaire appelé « champ1 ». </P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCURRENTVAL-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID4920"></A>Pour plus d'informations concernant l'utilisation de <TT CLASS="literal">CURRENTVAL</TT>, des balises de variables et d'autres sous-balises associées à la gestion des variables, voir <span><A HREF="wr-variable-info.htm">Utilisation des variables</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

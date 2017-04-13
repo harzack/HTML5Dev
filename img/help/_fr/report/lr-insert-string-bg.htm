@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<title>Insérer une chaîne</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="4">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-insert-string-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Entrées améliorées et paramètres de substitution';
+          header.title2 = 'Insérer une chaîne';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID273"></A>LiveReport Extensions fournit un nouveau type d'entrée appelé InsertString. Ce nouveau type d'entrée permet de transmettre une chaîne sous forme d'entrée au rapport LiveReport et de l'insérer directement dans la requête SQL sans conversion ni modification, par exemple l'ajout de guillemets autour de la chaîne. Entre autres choses, ce type d'entrée permet de transmettre des segments entiers de SQL dans le rapport LiveReport en tant que paramètre. Vous pouvez, par exemple, vous en servir pour transmettre d'autres conditions logiques WHERE ou AND à la requête SQL. </P>
+<P><A NAME="TMPID274"></A>Pour empêcher que cette flexibilité ne serve à transmettre des termes SQL indésirables à la requête SQL (par accident ou d'une autre façon), LiveReport Extensions fournit une option Mode sécurisé qui permet d'analyser et de bloquer les chaînes prédéfinies. Ce mode sécurisé est le mode par défaut, mais il peut être désactivé au besoin. Open Text déconseille la désactivation du mode sécurisé. Les concepteurs de rapports qui désactivent le mode sécurisé doivent veiller à placer le paramètre de substitution de l'entrée à un endroit de la requête SQL où aucune commande indésirable ne pourrait être formulée par des utilisateurs malveillants.  Que cette fonction ou LiveReport Extensions soient utilisés ou non, les concepteurs de rapports doivent toujours s'assurer de la sécurité des rapports LiveReport qu'ils créent. </P>
+<P><A NAME="TMPID275"></A>La fonction Modèle SQL constitue une alternative sûre et facile au contrôle de la rédaction d'une instruction SQL. Pour en savoir plus, voir <span><A HREF="lr-sql-templates-bg.htm">Modèles SQL</A></span>. </P>
+<P><A NAME="INSTRUSE"></A><B>Utilisation du type d'entrée InsertString –  </B>Pour utiliser cette fonction, sélectionnez le type InsertString dans la zone des entrées et définissez le paramètre % correspondant sur l'entrée utilisateur appropriée. Notez que la case à cocher Mode sécurisé apparaît une fois le type InsertString sélectionné. Vous devez la décocher uniquement si vous avez lu les remarques ci-dessus et comprenez les implications. </P>
+<P><A NAME="TMPID279"></A>Si un utilisateur exécutant un rapport LiveReport tente de transmettre un terme interdit par la fonction Mode sécurisé, un message d'erreur s'affiche. Par exemple : </P>
+<P><A NAME="TMPID280"></A><TT CLASS="literal">[** Terme(s) SQL rejeté(s) : {;}{DROP} passé via les paramètres]</TT></P>
+<P><A NAME="TMPID282"></A>Sélectionnez avec soin l'emplacement dans lequel la chaîne doit être insérée en plaçant le paramètre de substitution %1 ou %2 au point correspondant dans la requête SQL. Même en mode sécurisé, les concepteurs de rapports LiveReport doivent examiner attentivement les emplacements où ces substitutions sont autorisées et doivent toujours éviter de les placer au début ou à la fin de la requête SQL. En règle générale, cette fonction doit être utilisée lorsque la chaîne insérée fait partie d'une clause « where » ou d'une condition logique à l'intérieur de la clause where. </P>
+<P><A NAME="TMPID284"></A>Dans l'exemple suivant, le paramètre de substitution %1 du type InsertString est inclus dans une chaîne et entouré de caractères génériques %. Résultat : la requête permet de répertorier tous les objets de Content Server dont le nom contient la chaîne d'entrée. Notez qu'il est nécessaire d'éluder les symboles % en les répétant comme suit : %% est supprimé par LiveReport Extensions. Notez également que InsertStr n'ajoute PAS de guillemets au paramètre substitué (contrairement au type de chaîne String). </P>
+<P><A NAME="INSTRCONF"></A><B>Configuration du type d'entrée InsertString –  </B>Le type d'entrée InsertStr est normalement désactivé à la première installation du module. Pour l'activer, votre administrateur doit modifier le champ <TT CLASS="literal">InsertStrEnabled</TT> dans la section <TT CLASS="literal">[report]</TT> du fichier <TT CLASS="filename">opentext.ini</TT>. Pour en savoir plus, voir <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-ini-report-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-ini-report-rf.htm">[report]</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-ini-report-rf" FMT=""></span>. </P>
+<P><A NAME="TMPID291"></A>Une fois activé par l'administrateur, le mode sécurisé analyse tout le texte transmis à LiveReport dans tous les paramètres transmis, à la recherche des « termes interdits ». Par défaut, les termes suivants sont bloqués lorsque le mode sécurisé est activé : </P>
+<P><A NAME="TMPID293"></A><TT CLASS="literal">;(point-virgule),UPDATE,UPDATETEXT,WRITETEXT,REMOVE,DROP,CREATE,ALTER, INSERT, COMMIT,EXECUTE,FETCH,REVOKE,ROLLBACK,SAVE,TRUNCATE,UNION</TT> </P>
+<P><A NAME="TMPID295"></A>Si l'administrateur le souhaite, il peut modifier cette liste de termes interdits en modifiant le champ <TT CLASS="literal">blockedSQLterms</TT> dans la section <TT CLASS="literal">[report]</TT> du fichier <TT CLASS="filename">opentext.ini</TT> pour remplacer la liste par défaut ci-dessus. Pour en savoir plus, voir <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-ini-report-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-ini-report-rf.htm">[report]</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-ini-report-rf" FMT=""></span>. </P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

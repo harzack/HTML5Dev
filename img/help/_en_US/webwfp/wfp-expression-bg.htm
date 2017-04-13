@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWFP100500-H-UGD-EN-1">
+<META PiXprocLocator="webwfp">
+<META mancondkey="llesesn-h-ugd -- llespob-h-ugd -- lleswfm-h-ugd -- lleswbd-h-ugd -- llesfwf-h-ugd -- llesfrm-h-ugd -- lleschn-h-ugd -- lleswfw-uqs -- lleswfp-cwm -- lleswat-h-ugd -- llesafm-h-ugd -- llesxwe-h-ugd -- llesrt-h-ugd -- lleslfm-h-ugd -- lleswfw-h-ugd -- llesrcm-h-ugd"><title>Working with the Expression Builder</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wfp-expression-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Defining Steps and Links';
+          header.title2 = 'Working with the Expression Builder';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID3934"></A>The Expression Builder allows you to build conditional statements and complex expressions to do the following:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3318"></A><A NAME="TMPID3937"></A>Specify how the <B CLASS="GUILABEL">Evaluate</B> step routes the Workflow Map.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3322"></A><A NAME="TMPID3942"></A>Conditionally assign a <B CLASS="GUILABEL">User</B> or <B CLASS="GUILABEL">Form</B> step.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID3945"></A>For example, if an earlier <B CLASS="GUILABEL">User</B> step in a Workflow Map has a high priority, you can define an expression in an <B CLASS="GUILABEL">Evaluate</B> step that routes the Workflow Map along the true path to another <B CLASS="GUILABEL">User</B> step. If the step has a medium or low priority, you can define an expression that routes the Workflow Map along the false path to an <B CLASS="GUILABEL">Initiator</B> step. You can define expressions based on the following criteria:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3335"></A><A NAME="TMPID3958"></A>General, which is the status of the previous step, the last <B CLASS="GUILABEL">Milestone</B> step, or the Workflow Map in general (valid status values are OK, Executing, Step Late, Milestone Late, and Workflow Map Late).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3340"></A><A NAME="TMPID3965"></A>Priority, which is the priority of any previous <B CLASS="GUILABEL">User</B> step that has a priority.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3343"></A><A NAME="TMPID3968"></A>Disposition of an earlier step.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3345"></A><A NAME="TMPID3970"></A>Attributes, which are the Workflow Map attribute values. The Attributes option appears only if one or more attributes are defined for the Workflow Map.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3349"></A><A NAME="TMPID3976"></A>Forms, which are fields values in a Form added to the work package or in a <B CLASS="GUILABEL">Form</B> step. Forms are available only if the optional Content Server Forms module is installed.</P></LI></UL>
+<P><A NAME="TMPID3979"></A>For more information about Evaluate steps, see <span><A HREF="wf-evaluate-bg.htm">Defining an Evaluate Step</A></span>. For more information about User steps, see <span><A HREF="wf-user-step-bg.htm">Defining a User or Initiator Step</A></span>. For more information about using dispositions, see <span><A HREF="wf-user-step-u.htm">Understanding User and Initiator Steps</A></span>. For more information about attributes, see <span><A HREF="wf-attributes-bg.htm">Defining Attributes</A></span>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF25"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID3985"></A><B CLASS="NOTE">Note: </B><BR>The Executing status returns Workflow Maps and Sub-Workflow Maps that have a status of Executing. The OK status returns Workflow Maps and Sub-Workflow Maps that are executing and not late.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID3986"></A>You can use left and right parentheses to define complex expressions. For example, the following expression evaluates to true if the Workflow Map status is OK and an attribute named “Title” contains the word <TT CLASS="LITERAL">Research</TT>, but not if an attribute named “Author” contains the name <TT CLASS="LITERAL">Smith</TT>.</P>
+<PRE 
+CLASS="PROGRAMLISTING"
+><A NAME="AEN3366"></A>  1&nbsp;"Status = OK" AND ("Title contains Research") AND NOT ("Author contains Smith")</PRE
+>
+<P class="before-ul"><A NAME="TMPID3994"></A>You can also define complex expressions using the following search elements:</P>
+<UL>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3369"></A><A NAME="TMPID3997"></A>Value Delimiters </P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3372"></A><A NAME="TMPID4000"></A><TT CLASS="LITERAL">=</TT> (Equal to)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3375"></A><A NAME="TMPID4003"></A><TT CLASS="LITERAL">&lt;&gt;</TT> (Not equal to)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3378"></A><A NAME="TMPID4006"></A><TT CLASS="LITERAL">&lt;</TT> (Less than)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3381"></A><A NAME="TMPID4009"></A><TT CLASS="LITERAL">&gt;</TT> (Greater than)</P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3384"></A><A NAME="TMPID4012"></A>Text Delimiters </P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3387"></A><A NAME="TMPID4015"></A><TT CLASS="LITERAL">starts with</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3390"></A><A NAME="TMPID4018"></A><TT CLASS="LITERAL">ends with</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3393"></A><A NAME="TMPID4021"></A><TT CLASS="LITERAL">contains</TT></P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3396"></A><A NAME="TMPID4024"></A>Statement Delimiters </P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3399"></A><A NAME="TMPID4027"></A><TT CLASS="LITERAL">AND</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3402"></A><A NAME="TMPID4030"></A><TT CLASS="LITERAL">OR</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3405"></A><A NAME="TMPID4033"></A><TT CLASS="LITERAL">AND NOT</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3408"></A><A NAME="TMPID4036"></A><TT CLASS="LITERAL">OR NOT</TT></P></LI></UL></LI></UL>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wfp-expression-create-p.htm" revision="">To Define An Expression</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

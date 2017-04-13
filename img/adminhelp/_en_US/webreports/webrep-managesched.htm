@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<title>WebReports Scheduling</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'webrep-managesched.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'The WebReports Administration Section';
+          header.title2 = 'WebReports Scheduling';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID633"></A>The capability to schedule WebReports is provided in each WebReport's <B CLASS="guilabel">Destination</B> tab of its <B CLASS="guilabel">Properties</B> page. WebReports developers, users with <I CLASS="emphasis">reserve</I> permission, can set up execution schedules for individual WebReports to run without user intervention. Scheduled WebReports run in the background and output their results to a Content Server document node or to e-mail. The schedule allows for WebReports to run a fixed number of times or forever, starting from a specific date and time. The time between repeated WebReport runs can be from 5 minutes to 520 weeks. One schedule can be set per user per WebReport.</P>
+<P><A NAME="TMPID643"></A>By default, the WebReports scheduling agent is configured to run every 5 minutes, or 300 seconds. In some instances, it might be desirable to execute a WebReport in shorter increments than 5 minutes. In this case, the agent can be set to run in intervals as short as 60 seconds.</P>
+<P><A NAME="TMPID645"></A>The <B CLASS="guilabel">Sleep Interval</B> setting is entered in seconds, and must be at least 60 seconds or more. After submitting the form, a restart of Content Server is required so that the agents are adjusted with the new values. If any agent's <B CLASS="guilabel">Sleep Interval</B> is less than 300 seconds, or 5 minutes, the <B CLASS="guilabel">Destination</B> tab of that WebReport's <B CLASS="guilabel">Properties</B> page will change with an additional option to manually enter the <B CLASS="guilabel">Minutes</B> value for the scheduled report. This allows for more granular control of how often the WebReport will run.</P>
+<P><A NAME="TMPID652"></A>For example, to configure a WebReport to run every 2 minutes, set the <B CLASS="guilabel">Scheduling Agent Sleep Interval</B> to “120” seconds. Save the changes and restart Content Server. On the <B CLASS="guilabel">Destination</B> tab of the WebReport's <B CLASS="guilabel">Properties</B> page, the <B CLASS="guilabel">Enter Minutes (0-59)</B> button is now selectable. This turns the <B CLASS="guilabel">Minutes</B> field into a text field, allowing manual entry of the value. Enter “2” to have the WebReport execute every two minutes.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="webr-configsched.htm" revision="">Configuring Content Server for WebReports Scheduling</A></p></li>
+<li><p><A  HREF="webr-dataschem.htm" revision="">Database Schema</A></p></li>
+<li><p><A  HREF="webr-configagent-p.htm" revision="">To Configure the Scheduling Agent</A></p></li>
+<li><p><A  HREF="webr-mngesched-p.htm" revision="">To Manage Schedules</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESDSI100500-H-AGD-EN-1">
+<META PiXprocLocator="otds">
+<title>Administering Directory Services Integration</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'otds-administer-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Directory Services Integration Administration: <NOBR>OpenText Content Server Admin Online Help</NOBR>';
+          header.title2 = 'Administering Directory Services Integration';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID56"></A>The <B CLASS="GUILABEL">Directory Services Integration Administration</B> page in Content Server is used to configure how users will authenticate with Content Server. Content Server supports Single Sign On (SSO) and authentication services provided by the Web Server and OpenText Directory Services (OTDS) as well as internally provided authentication.</P>
+<P><A NAME="TMPID65"></A>You can configure the following authentication options, depending on which is appropriate for the Web server and external directory service that you intend to use with Content Server:</P>
+<div>
+<DL CLASS="VL"><A NAME="AEN65"></A>
+<DT class="vl"><A NAME="TMPID69"><B>Web Server Authentication</B></A></DT>
+<DD>
+<P class="before-ul nr1"><A NAME="TMPID71"></A>Your Web Server may be configured to authenticate users as they access Content Server URLs. For example, if you are using Microsoft Internet Information Services (IIS), your server may be configured to authenticate users with Integrated Windows Authentication (IWA), in which case IIS will populate the Web Server environment variable <TT CLASS="LITERAL">REMOTE_USER</TT> with the account name of the authenticated user. The format of the &lt;<I CLASS="VARNAME">username</I>> can be supplied and configured in the following forms, select the option that corresponds to the format of users' Log-in names in Content Server.</P>
+<UL>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN75"></A><A NAME="TMPID78"></A><B CLASS="HIGHLIGHT">Username only</B></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN78"></A><A NAME="TMPID81"></A><B CLASS="HIGHLIGHT">NT-style username</B> which can also be expressed as <TT CLASS="LITERAL">DOMAIN\username</TT>.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN82"></A><A NAME="TMPID85"></A><B CLASS="HIGHLIGHT">Resolve through OTDS</B> The value from <TT CLASS="LITERAL">REMOTE_USER</TT> is sent to OTDS in order to find the corresponding user name in Content Server. You must configure OpenText Directory Services. For more information, see <span><A HREF="otds-administer-bg.htm#VLE-OTDS">OTDS Authentication</A></span> and <span><XPROC NAME="ExtXrefStart" HREF="otds-agd.-" FMT="" NO1ST><i>OpenText Directory Services - Administration Guide (OTDS-AGD)</i><XPROC NAME="ExtXrefEnd" HREF="otds-agd.-" FMT=""></span>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF0"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID96"></A><B CLASS="NOTE">Note: </B><BR>A Web Access Management authentication handler must be configured on OTDS in order for this option to work.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P><A NAME="TMPID98"></A>Case sensitivity for the &lt;<I CLASS="VARNAME">username</I>> can be configured to preserve case or change case to all lowercase. You may wish to change case to lowercase when you have a case-sensitive database and synchronization is configured to lowercase.</P>
+<P><A NAME="TMPID100"></A>If Web Server authentication is enabled but user information is not available, authentication will try OTDS authentication or internal Content Server authentication depending on which method is configured.</P></DD>
+<DT class="vl"><A NAME="VLE-OTDS"></A><A NAME="TMPID104"><B>OTDS Authentication</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID107"></A>OTDS Authentication uses the OpenText Directory Services (OTDS) server to authenticate users. The Admin must first create a Content Server resource in OTDS. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="otds-agd.-" FMT="" NO1ST><i>OpenText Directory Services - Administration Guide (OTDS-AGD)</i><XPROC NAME="ExtXrefEnd" HREF="otds-agd.-" FMT=""></span>. During the process, a unique identifier, called the <I CLASS="EMPHASIS">resource ID</I>, is generated. The resource ID and the OpenText Directory Services server URL are required values, and must be entered to set up OTDS Authentication in Content Server. For more information about configuring OpenText Directory Services, see <span><XPROC NAME="ExtXrefStart" HREF="otds-agd.-" FMT="" NO1ST><i>OpenText Directory Services - Administration Guide (OTDS-AGD)</i><XPROC NAME="ExtXrefEnd" HREF="otds-agd.-" FMT=""></span>.</P>
+<P><A NAME="TMPID123"></A>If you want to enable OTDS Authentication at a later time, you can save the data without enabling authentication. Once authentication is enabled, all users currently signed in can continue to use Content Server.</P></DD>
+<DT class="vl"><A NAME="TMPID127"><B>Content Server Authentication</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID130"></A>Content Server Authentication can be used if you do not want to employ external authentication. Content Server can support both internal and external user populations. However, Content Server <I CLASS="EMPHASIS">does not</I> authenticate external users.</P></DD></DL></div>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="otds-administer-p.htm" revision="">To Configure Directory Services Integration Administration</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,387 @@
+<!-- wr_export_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Export Parameters</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_export_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Export Parameters';
+        header.draw();
+
+</SCRIPT>
+
+<p class="body">
+This section provides additional information on the use of Export Destinations. Specifically, it provides detail on how various export types can be controlled
+using URL parameters. This is particularly useful for developments where WebReport exports may be invoked from tailored web pages instead of the standard export
+interface described in the basic <a href="wr_export_procedures.htm">export procedures</a> documentation. For each export type, all of the available URL parameters are
+described along with an example of usage.
+</p>
+<p class="body">
+Each export destination has an explanatory table with the following columns<br>
+<ul>
+<li>Parameter Name - the name of the parameter as it would appear in the URL
+<li>Name in interface - this is the name which will appear in the grey box on the left hand side of the export screen
+<li>Mandatory - simply indicates whether the parameter is mandatory or not.  An export will fail if mandatory parameters are missing
+<li>Valid Values - these are the values which are supported for the specified parameter.  Note that when a value containing a space or other special character is
+passed, it must be escaped appropriately.
+<li>Replacement Tags - some parameters support WebReports replacement tags being passed in the URL.  This field incicates whether tag replacement is supported
+for the parameter.  Note that, as above, if these contain spaces, they must be appropriately escaped for use in a URL.
+</ul>
+</p>
+
+<p class="gui"><u>Exporting to Desktop</u></p>
+
+<p class="body"><b>Parameter Support:</b><BR><BR>
+<table border="1" cellpadding="5">
+	<tr class="body" bgcolor="lightgray" >
+		<td><B>Parameter Name</B></td>
+		<td><B>Name in Interface</B></td>
+		<td><B>Mandatory</B></td>
+		<td><B>Valid Values</B></td>
+		<td><B>Replacement Tags</B></td>
+	</tr>
+	<tr class="body">
+		<td>objAction</td>
+		<td>&nbsp;</td>
+		<td>Yes</td>
+		<td>RunReport</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>export_location</td>
+		<td>Output Destination</td>
+		<td>Yes</td>
+		<td>desktop</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>desktopDownloadName</td>
+		<td>Download File Name</td>
+		<td>No</td>
+		<td>Any text</td>
+		<td>Yes</td>
+	</tr>	
+	<tr class="body">
+		<td>mimetype</td>
+		<td>Export MIME Type</td>
+		<td>Yes</td>
+		<td>All values as shown in <i>Export MIME Type</i> field</td>
+		<td>No</td>
+	</tr>
+</table>
+</p>
+
+<p class="body"><b>Example of  URL invocation:</b><br><BR>
+?func=ll&objId=1234&objAction=RunReport&export_location=desktop&mimetype=application%2Fvnd.ms-excel<br><br>
+Here WebReport 1234 exports to desktop with a Mime type of application/vnd.ms-excel
+</p>
+
+<p class="body"><u><SPAN class="gui">Exporting to Content Server - Node</SPAN></u></p>
+<p class="body"><b>Parameter Support:</b><BR><BR>
+<table border="1" cellpadding="5">
+	<tr class="body" bgcolor="lightgray">
+		<td><B>Parameter Name</B></td>
+		<td><B>Name in Interface</B></td>
+		<td><B>Mandatory</B></td>
+		<td><B>Valid Values</B></td>
+		<td><B>Replacement Tags</B></td>
+	</tr>
+	<tr class="body">
+		<td>objAction</td>
+		<td>&nbsp;</td>
+		<td>Yes</td>
+		<td>RunReport</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>export_location</td>
+		<td>Output Destination</td>
+		<td>Yes</td>
+		<td>livelink</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>livelink_node</td>
+		<td>Export Type</td>
+		<td>Yes</td>
+		<td>livelinknode</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>newNode_ID</td>
+		<td>Create In</td>
+		<td>Yes</td>
+		<td>Any valid Content Server container ID</td>
+		<td>Yes</td>
+	</tr>
+	<tr class="body">
+		<td>nodeName</td>
+		<td>Name</td>
+		<td>Yes</td>
+		<td>Any valid Content Server node name</td>
+		<td>Yes</td>
+	</tr>
+	<tr class="body">
+		<td>mimetype</td>
+		<td>Export MIME Type</td>
+		<td>Yes</td>
+		<td>All values as shown in <i>Export MIME Type</i> field</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>expcomment</td>
+		<td>Description</td>
+		<td>No</td>
+		<td>A valid Content Server node description</td>
+		<td>Yes</td>
+	</tr>
+	<tr class="body">
+		<td>nexturl</td>
+		<td>&nbsp;</td>
+		<td>Yes</td>
+		<td>An escaped URL where the user will go following the export</td>
+		<td>No</td>
+	</tr>
+</table>
+</p>
+
+<p class="body"><b>Example of  URL invocation:</b><br><BR>
+?func=ll&objId=1234&objAction=RunReport&export_location=livelink&livelink_node=livelinknode&newNode_ID=2000&nodeName=%5BLL_REPTAG_DATE%20%2F%5D&mimetype=text%2Fplain&nexturl=...<br><br>
+Here WebReport 1234 exports to a new Content Server node with a mime-type of text/plain.  The resultant file will be placed in the folder with id 2000 with the name being the current date.<br><br>
+</p>
+
+<p class="body"><u><SPAN class="gui">Exporting to Content Server - Version</SPAN></u></p>
+<p class="body"><b>Parameter Support:</b><BR><BR>
+<table border="1" cellpadding="5">
+	<tr class="body" bgcolor="lightgray">
+		<td><B>Parameter Name</B></td>
+		<td><B>Name in Interface</B></td>
+		<td><B>Mandatory</B></td>
+		<td><B>Valid Values</B></td>
+		<td><B>Replacement Tags</B></td>
+	</tr>
+	<tr class="body">
+		<td>objAction</td>
+		<td>&nbsp;</td>
+		<td>Yes</td>
+		<td>RunReport</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>export_location</td>
+		<td>Output Destination</td>
+		<td>Yes</td>
+		<td>livelink</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>livelink_node</td>
+		<td>Export Type</td>
+		<td>Yes</td>
+		<td>livelinkversion</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>newVersion_ID</td>
+		<td>Add Version to</td>
+		<td>Yes</td>
+		<td>Any valid Content Server document or customview ID</td>
+		<td>Yes</td>
+	</tr>
+	<tr class="body">
+		<td>mimetype</td>
+		<td>Export MIME Type</td>
+		<td>Yes</td>
+		<td>All values as shown in <i>Export MIME Type</i> field</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>expcomment</td>
+		<td>Description</td>
+		<td>No</td>
+		<td>A valid Content Server version description</td>
+		<td>Yes</td>
+	</tr>
+	<tr class="body">
+		<td>nexturl</td>
+		<td>&nbsp;</td>
+		<td>Yes</td>
+		<td>An escaped URL where the user will go following the export</td>
+		<td>No</td>
+	</tr>
+</table>
+</p>
+
+<p class="body"><b>Example of  URL invocation:</b><br><BR>
+?func=ll&objId=1234&objAction=RunReport&export_location=livelink&livelink_node=livelinkversion&newVersion_ID=5678&mimetype=text%2Fplain&nexturl=...<br><br>
+Here WebReport 1234 adds a new Content Server document version with a Mime type of text/plain to the document id 5678.
+</p>
+
+<p class="body"><u><SPAN class="gui">Exporting to E-Mail</SPAN></u></p>
+
+<p class="body"><b>Parameter Support:</b><BR><BR>
+<table border="1" cellpadding="5">
+	<tr class="body" bgcolor="lightgray">
+		<td><B>Parameter Name</B></td>
+		<td><B>Name in Interface</B></td>
+		<td><B>Mandatory</B></td>
+		<td><B>Valid Values</B></td>
+		<td><B>Replacement Tags</B></td>
+	</tr>
+	<tr class="body">
+		<td>objAction</td>
+		<td>&nbsp;</td>
+		<td>Yes</td>
+		<td>RunReport</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>export_location</td>
+		<td>Output Destination</td>
+		<td>Yes</td>
+		<td>email</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>emailAddress</td>
+		<td>E-mail Address*</td>
+		<td>Yes</td>
+		<td>any valid email address</td>
+		<td>Yes</td>
+	</tr>
+	<tr class="body">
+		<td>newVersion_ID</td>
+		<td>E-mail Address*</td>
+		<td>Yes</td>
+		<td>The object id of a text file containing csv email addresses</td>
+		<td>Yes**</td>
+	</tr>
+	<tr class="body">
+		<td>usergroup_ID</td>
+		<td>E-mail Address*</td>
+		<td>Yes</td>
+		<td>A Content Server user id or group id</td>
+		<td>Yes</td>
+	</tr>
+	<tr class="body">
+		<td>emailSubject</td>
+		<td>E-mail Subject</td>
+		<td>No</td>
+		<td>Any text</td>
+		<td>Yes</td>
+	</tr>
+	<tr class="body">
+		<td>mimetype</td>
+		<td>Export MIME Type</td>
+		<td>Yes</td>
+		<td>All values as shown in <i>Export MIME Type</i> field</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>attachToEmail</td>
+		<td>Attach Results to Email</td>
+		<td>No</td>
+		<td>"on" or "off"</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>emailAttachmentName</td>
+		<td>Attachment Name</td>
+		<td>No</td>
+		<td>Any valid file name</td>
+		<td>Yes</td>
+	</tr>
+	<tr class="body">
+		<td>emailbody</td>
+		<td>E-mail Body Text</td>
+		<td>No</td>
+		<td>Text to appear in the body of the email</td>
+		<td>Yes</td>
+	</tr>
+	<tr class="body">
+		<td>nexturl</td>
+		<td>&nbsp;</td>
+		<td>Yes</td>
+		<td>An escaped URL where the user will go following the export</td>
+		<td>No</td>
+	</tr>
+</table>
+</p>
+<p class="body">*Only one of these is mandatory but it's possible to use all 3 if required.<br>
+**Replacement tags are supported to determine the value of newVersion_ID  (which must be a text document) but also can be contained within the document itself.</p>
+
+<p class="body"><b>Example of  URL invocation:</b><br><BR>
+?func=ll&objId=1234&objAction=RunReport&export_location=email&emailAddress=lbutler@resonatekt.com&emailSubject=Status%20Report&attachToEmail=on&emailbody=Please%20see%20attached&mimetype=application%2Fvnd.ms-excel&nexturl=...<br><br>
+Here WebReport 1234 sends an email to lbutler@resonatekt.com with the subject <i>Status Report</i>.  The report is attached to the email in Excel format with a default name (because emailAttachmentName isn't specified) and the email body
+has the text <i>Please see attached</i>.  <br><br>
+</p>
+
+<p class="body"><u><SPAN class="gui">Exporting to the Server</SPAN></u></p>
+
+<p class="body"><b>Parameter Support:</b><BR><BR>
+<table border="1" cellpadding="5">
+	<tr class="body" bgcolor="lightgray">
+		<td><B>Parameter Name</B></td>
+		<td><B>Name in Interface</B></td>
+		<td><B>Mandatory</B></td>
+		<td><B>Valid Values</B></td>
+		<td><B>Replacement Tags</B></td>
+	</tr>
+	<tr class="body">
+		<td>objAction</td>
+		<td>&nbsp;</td>
+		<td>Yes</td>
+		<td>RunReport</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>export_location</td>
+		<td>Output Destination</td>
+		<td>Yes</td>
+		<td>server</td>
+		<td>No</td>
+	</tr>
+	<tr class="body">
+		<td>serverFilePath</td>
+		<td>Server File Path</td>
+		<td>Yes</td>
+		<td>A valid file path on the server</td>
+		<td>Yes</td>
+	</tr>
+	<tr class="body">
+		<td>mimetype</td>
+		<td>Export MIME Type</td>
+		<td>No</td>
+		<td>All values as shown in <i>Export MIME Type</i> field</td>
+		<td>Yes</td>
+	</tr>
+	<tr class="body">
+		<td>nexturl</td>
+		<td>&nbsp;</td>
+		<td>Yes</td>
+		<td>An escaped URL where the user will go following the export</td>
+		<td>No</td>
+	</tr>
+</table>
+</p>
+
+<p class="body"><b>Example of  URL invocation:</b><br><BR>
+?func=ll&objId=1234&objAction=RunReport&export_location=server&serverFilePath=C:\export_testing\test_export.xml&nexturl=...<br><br>
+Here WebReport 1234 adds a new file to the server file system at C:\export_testing\test_export.xml.<br><br>
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>
+

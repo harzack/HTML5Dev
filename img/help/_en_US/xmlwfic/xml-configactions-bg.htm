@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-EN-1">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Configuring Workflow Interchange Step Actions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-configactions-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Designing a Workflow Interchange Step';
+          header.title2 = 'Configuring Workflow Interchange Step Actions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID438"></A>You can configure actions for a <B CLASS="GUILABEL">Workflow Interchange</B> step, which allows you to determine the actions that will take place when a <B CLASS="GUILABEL">Workflow Interchange</B> step becomes ready or when an active task receives a task edit request.</P>
+<DIV title="To configure Workflow Interchange step actions:" CLASS="PROCEDURE">
+<P><B>To configure Workflow Interchange step actions:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID444"></A>On the Workflow Map, double-click a <B CLASS="GUILABEL">Workflow Interchange</B> step.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID449"></A>Click the <B CLASS="GUILABEL">Actions</B> tab.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID452"></A>In the <B CLASS="GUILABEL">Step Ready</B> area, select one of the following actions in the <B CLASS="GUILABEL">When this step becomes ready</B> list:</P><A NAME="AEN443"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN444"></A><A NAME="TMPID457"></A><B CLASS="GUILABEL">Send an XML Initiation Message</B>, which sends an initiation message in XML format to a specific URL when the step becomes ready; for example, to initiate a Workflow in another Content Server system. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN448"></A><A NAME="TMPID461"></A><B CLASS="GUILABEL">Send an HTML Initiation Message</B>, which sends an initiation message in HTML form data format to a specific URL when the step becomes ready; for example, to send Workflow data to a custom servlet.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN451"></A><A NAME="TMPID464"></A><B CLASS="GUILABEL">Send an XML Response to a Remote Initiator</B>, which sends a task edit message to the callback URL when the step becomes ready, if the Workflow is initiated using the remote initiation mechanism. The remote initiator provides a callback URL in the initiation message. The parameters for this action include updated attribute information and a request to send on the source task. Use this action at the end of Workflows that support remote initiation. For more information about remote initiation, see <A HREF="xml-enablepackage-bg.htm">Enabling the Remote Initiation Work Package</A>.</P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF4"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID468"></A><B CLASS="NOTE">Note: </B><BR>If <B CLASS="GUILABEL">Send an XML Initiation Message</B> or <B CLASS="GUILABEL">Send an HTML Initiation Message</B> option was selected, you need to click the <B CLASS="GUILABEL">Edit</B> icon <IMG  src="../../../16pencil.gif">  to define the target URL of the action. For information about configuring actions, see <span><A HREF="xml-configgenparams2-p.htm">Configuring XML and HTML Initiation Action Properties</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID475"></A>Repeat step 3 for each action you want to add.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID477"></A>In the <B CLASS="GUILABEL">Step Completion</B> area, select one of the following options in the <B CLASS="GUILABEL">When the above actions have been performed</B> list:</P><A NAME="AEN468"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN469"></A><A NAME="TMPID482"></A><B CLASS="GUILABEL">Wait for a request</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN472"></A><A NAME="TMPID485"></A><B CLASS="GUILABEL">Finish task automatically</B></P></LI></UL></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID488"></A>If you select the <B CLASS="GUILABEL">Wait for a request</B> option, select one of the following options from the <B CLASS="GUILABEL">When a request is received</B> list:</P><A NAME="AEN479"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN480"></A><A NAME="TMPID493"></A><B CLASS="GUILABEL">Reject It</B>, which rejects any requests received. Any attempt to send a request to the task will return an HTTP error.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN483"></A><A NAME="TMPID496"></A><B CLASS="GUILABEL">Accept an XML Task Edit Message</B>, which lets the task process XML task edit messages; for example, to accept XML responses from Workflows you initiate remotely in other Content Server systems.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN487"></A><A NAME="TMPID500"></A><B CLASS="GUILABEL">Accept an HTML Task Edit Message</B>, which lets the task process HTML form data task edit messages; for example, to accept messages from legacy systems or HTML forms, or if you want other systems to attach documents to the Workflow.</P></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID503"></A>Click <B CLASS="GUILABEL">Add to Workflow Definition</B> and save the Workflow.</P></LI></OL></DIV>
+<P><A NAME="TMPID505"></A>For more information related to this procedure, see <span><A HREF="xml-configactions-bg.htm">Configuring Workflow Interchange Step Actions</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

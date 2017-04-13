@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>LLURL:SIDEBAR</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-llurlsidebar-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'LLURL:SIDEBAR';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID15648"></A>LLURL:SIDEBAR insère la sortie générée à partir des panneaux de facette vers un recueil de barre latérale dans un affichage de rapport ou un modèle. En raison de la nature de cette fonction, elle repose en grande partie sur une structure HTML prédéterminée qui implique une série de formulaires, de tables imbriquées et de DIV. L'affichage de rapport par défaut 13_navigation_flexible_cs10_avec_barre_latérale.txt comprend les éléments nécessaires pour que la fonctionnalité Barre latérale fonctionne. Il est donc conseillé de s'en servir comme exemple ou point de départ afin de créer des affichages de rapport personnalisés utilisant la fonction Barre latérale. Vous trouverez ci-dessous un schéma présentant les éléments HTML nécessaires et la mise en page suggérée pour un modèle/affichage de rapport. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-LLURLSDBRINS">Ce qui est inséré</A></P>
+<P><A NAME="TMPID15651"></A>La sous-balise LLURL:SIDEBAR attend le DataID d'un objet de recueil et renvoie le contenu de la barre latérale (y compris les panneaux de facette et le contenu de facette) pour ce recueil. Un certain nombre d'éléments de formulaires supplémentaires/d'appels de fonction Javascript dans CS10 doivent être définis sur le même ID afin de gérer le comportement cohérent de la barre latérale. Ils sont tous décrits et mis à jour avec les valeurs appropriées dans le modèle/l'affichage de rapport par défaut incluant la barre latérale. Le code LLURL:SIDEBAR renvoie les données facette/barre latérale renvoyées dans une cellule de tableau « sidebar-wrapper ». Par exemple <TT CLASS="literal">&lt;td valign="top" class="sidebar-wrapper"&gt;</TT> </P>
+<P><A NAME="TMPID15654"></A>Dans WebReports, la variable SBCONTAINER est définie en haut de l'affichage de rapport et est utilisée aux emplacements appropriés dans l'affichage de rapport. Pour utiliser un ID différent du dossier parent du WebReport, il est conseillé de mettre à jour cette variable avec le nouvel ID, comme cette dernière se trouve déjà à la position souhaitée. Par exemple, pour modifier la barre latérale et charger les données de facette pour un recueil avec un ID de 12345, définissez la variable SBCONTAINER comme suit : [LL_REPTAG_'12345' SETVAR:SBCONTAINER /]. </P>
+<P><A NAME="TMPID15655"></A><B CLASS="highlight">Exemple d'utilisation dans WebReports :</B> [LL_REPTAG_%SBCONTAINER LLURL:SIDEBAR /] </P>
+<P><A NAME="TMPID15657"></A><B CLASS="highlight">Exemple d'utilisation dans ActiveView :</B> [LL_REPTAG_%SBCONTAINER LLURL:SIDEBAR /] </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-LLURLSDBRPRF">Améliorations USERPREF</A></P>
+<P class="before-ul"><A NAME="TMPID15661"></A>Deux nouvelles options sont disponibles dans la sous-balise USERPREF et permettent à la barre latérale de se comporter conformément aux paramètres de chaque utilisateur. Ces nouveaux paramètres dans Content Server 10 se trouvent dans le menu Outils -&gt; Paramètres, dans l'onglet Général et peuvent être affichés à l'aide des sous-balises suivantes : </P><A NAME="AEN14923"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14924"></A><A NAME="TMPID15664"></A>USERPREF:GENERAL:SBLOCATION : renvoie droite ou gauche en fonction du paramètre Emplacement de la barre latérale</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14926"></A><A NAME="TMPID15666"></A>USERPREF:GENERAL:SBLOCATION : renvoie vrai ou faux en fonction du paramètre Afficher la barre latérale dans la navigation</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-LLURLSDBREX">Exemple</A></P>
+<P><A NAME="TMPID15669"></A>Utilisez [LL_REPTAG_USERID USERPREF:GENERAL:SIDEBAR /] afin de déterminer si l'utilisateur exécutant le WebReport souhaite que la barre latérale s'affiche lors de la navigation. </P>
+<P><A NAME="TMPID15670"></A><B CLASS="highlight">Structure HTML nécessaire :</B> Le schéma suivant indique les éléments HTML imbriqués nécessaires pour que les éléments de la barre latérale se chargent correctement</P>
+<P><IMG SRC="image036.png"></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

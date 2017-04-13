@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+
+	<!-- define a standard date/time that excludes the time zone -->
+
+	<xs:simpleType name="dateTimeNoTZ">
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:dateTime">
+					<xs:pattern value=".+T[^Z+\-]+"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value=""/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	
+	<!-- in export image ids are an integer but for historical reasons they can have empty content
+	     so we need to define an id that can be an integer as well as null -->
+	
+	<xs:simpleType name="nullableId">
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:integer">
+					<xs:pattern value="\d+"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value=""/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+
+	<xs:simpleType name="nullableBoolean">
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:boolean">
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:pattern value=""/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+
+	<xs:complexType  name="noderef">
+		<xs:simpleContent>
+			<xs:extension base="xs:integer">
+				<xs:attribute name="name" type="xs:string" />
+				<xs:attribute name="path" type="xs:string" />
+				<xs:attribute name="subtype" type="xs:integer" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	
+	<!-- livelink attributes -->
+	
+	<xs:attributeGroup name="livelinkAttributesGroup">
+		<xs:attribute name="appversion" type="xs:string" />
+		<xs:attribute name="src" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<!-- user attributes -->
+	
+	<xs:attributeGroup name="userAttributesGroup">
+		<xs:attribute name="id" type="xs:integer" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="firstname" type="xs:string" />
+		<xs:attribute name="lastname" type="xs:string" />
+		<xs:attribute name="groupid" type="xs:integer" />
+		<xs:attribute name="groupname" type="xs:string" />
+		<xs:attribute name="groupownerid" type="xs:integer" />
+		<xs:attribute name="grouptype" type="xs:integer" />
+		<xs:attribute name="ownerid" type="xs:integer" />
+		<xs:attribute name="spaceid" type="xs:integer" />
+		<xs:attribute name="type" type="xs:integer" />
+		<xs:attribute name="userprivileges" type="xs:integer" />
+		<xs:attribute name="deleted" type="xs:integer" />
+	</xs:attributeGroup>
+	
+	<!-- user info attributes -->
+	
+	<xs:attributeGroup name="userinfoAttributesGroup">
+		<xs:attribute name="domain" type="xs:string" />
+		<xs:attribute name="id" type="xs:integer" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="type" type="xs:integer" />
+		<xs:attribute name="typename" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<!-- cgi attributes -->
+	
+	<xs:attributeGroup name="cgiAttributesGroup">
+		<xs:attribute name="auth_type" type="xs:string" />
+		<xs:attribute name="content_length" type="xs:string" />
+		<xs:attribute name="content_type" type="xs:string" />
+		<xs:attribute name="gateway_interface" type="xs:string" />
+		<xs:attribute name="path_info" type="xs:string" />
+		<xs:attribute name="path_translated" type="xs:string" />
+		<xs:attribute name="query_string" type="xs:string" />
+		<xs:attribute name="remote_addr" type="xs:string" />
+		<xs:attribute name="remote_host" type="xs:string" />
+		<xs:attribute name="remote_user" type="xs:string" />
+		<xs:attribute name="request_method" type="xs:string" />
+		<xs:attribute name="script_name" type="xs:string" />
+		<xs:attribute name="server_name" type="xs:string" />
+		<xs:attribute name="server_port" type="xs:string" />
+		<xs:attribute name="server_protocol" type="xs:string" />
+		<xs:attribute name="server_software" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<xs:attributeGroup name="headerAttributesGroup">
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="value" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<!-- llnode attributes -->
+	
+	<xs:attributeGroup name="llnodeAttributesGroup">
+		<xs:attribute name="id" type="xs:integer" />
+		<xs:attribute name="parentid" type="xs:integer" />
+		<xs:attribute name="objtype" type="xs:string" />
+		<xs:attribute name="objname" type="xs:string" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="description" type="xs:string" />
+		<xs:attribute name="created" type="dateTimeNoTZ" />
+		<xs:attribute name="modified" type="dateTimeNoTZ" />
+		<xs:attribute name="createdby" type="xs:integer" />
+		<xs:attribute name="createdbyname" type="xs:string" />
+		<xs:attribute name="ownedby" type="xs:integer" />
+		<xs:attribute name="ownedbyname" type="xs:string" />
+		<xs:attribute name="versionnum" type="xs:integer" />
+		<xs:attribute name="mimetype" type="xs:string" />
+		<xs:attribute name="size" type="xs:integer" />
+	</xs:attributeGroup>
+	
+	<xs:attributeGroup name="metaAttributesGroup">
+		<xs:attribute name="name" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<!-- acl attributes -->
+	
+	<xs:attributeGroup name="aclAttributesGroup">
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="create" type="xs:boolean" />
+		<xs:attribute name="delete" type="xs:boolean" />
+		<xs:attribute name="deletever" type="xs:boolean" />
+		<xs:attribute name="editattr" type="xs:boolean" />
+		<xs:attribute name="editperm" type="xs:boolean" />
+		<xs:attribute name="modify" type="xs:boolean" />
+		<xs:attribute name="reserve" type="xs:boolean" />
+		<xs:attribute name="see" type="xs:boolean" />
+		<xs:attribute name="seecontent" type="xs:boolean" />
+		<xs:attribute name="permissions" type="xs:integer" />
+		<xs:attribute name="permtype" type="xs:integer" />
+		<xs:attribute name="rightid" type="xs:integer" />
+		<xs:attribute name="rightname" type="xs:string" />
+		<xs:attribute name="righttype" type="xs:integer" />
+	</xs:attributeGroup>
+	
+	<!-- node attributes -->
+	
+	<xs:attributeGroup name="nodeAttributesGroup">
+		<xs:attribute name="id" type="xs:integer"/>
+		<xs:attribute name="volumeid" type="xs:integer" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="type" type="xs:integer" />
+		<xs:attribute name="category" type="xs:integer" />
+		<xs:attribute name="parentid" type="xs:integer" />
+		<xs:attribute name="originalid" type="xs:integer" />
+		<xs:attribute name="originalvolid" type="xs:integer" />
+		<xs:attribute name="createdby" type="xs:integer" />
+		<xs:attribute name="comment" type="xs:string" />
+		<xs:attribute name="createdate" type="dateTimeNoTZ" />
+		<xs:attribute name="modifydate" type="dateTimeNoTZ" />
+		<xs:attribute name="maxversion" type="xs:integer" />
+		<xs:attribute name="versionnum" type="xs:integer" />
+		<xs:attribute name="subtype" type="xs:integer" />
+		<xs:attribute name="reserved" type="xs:integer" />
+		<xs:attribute name="reservedby" type="xs:integer" />
+		<xs:attribute name="reserveddate" type="dateTimeNoTZ" />
+		<xs:attribute name="systemperm" type="xs:integer" />
+		<xs:attribute name="userperm" type="xs:integer" />
+		<xs:attribute name="groupperm" type="xs:integer" />
+		<xs:attribute name="worldperm" type="xs:integer" />
+		<xs:attribute name="exatt1" type="xs:string" />
+		<xs:attribute name="exatt2" type="xs:string" />
+		<xs:attribute name="ordering" type="xs:integer" />
+		<xs:attribute name="major" type="xs:integer" />
+		<xs:attribute name="minor" type="xs:integer" />
+		<xs:attribute name="releaseref" type="xs:integer" />
+		<xs:attribute name="childcount" type="xs:integer" />
+		<xs:attribute name="userid" type="xs:integer" />
+		<xs:attribute name="groupid" type="xs:integer" />
+		<xs:attribute name="permid" type="xs:integer" />
+		<xs:attribute name="assignedto" type="xs:integer" />
+		<xs:attribute name="dateassigned" type="dateTimeNoTZ" />
+		<xs:attribute name="dateeffective" type="dateTimeNoTZ" />
+		<xs:attribute name="datedue" type="dateTimeNoTZ" />
+		<xs:attribute name="dateexpiration" type="dateTimeNoTZ" />
+		<xs:attribute name="datecompleted" type="dateTimeNoTZ" />
+		<xs:attribute name="datestarted" type="dateTimeNoTZ" />
+		<xs:attribute name="status" type="xs:integer" />
+		<xs:attribute name="priority" type="xs:integer" />
+		<xs:attribute name="gif" type="xs:string" />
+		<xs:attribute name="catalog" type="xs:integer" />
+		<xs:attribute name="cacheexpiration" type="xs:integer" />
+		<xs:attribute name="extendeddata" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<xs:attributeGroup name="versionAttributesGroup">
+		<xs:attribute name="id" type="xs:integer" />
+		<xs:attribute name="nodeid" type="xs:integer" />
+		<xs:attribute name="number" type="xs:integer" />
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="type" type="xs:integer" />
+		<xs:attribute name="owner" type="xs:integer" />
+		<xs:attribute name="comment" type="xs:string" />
+		<xs:attribute name="createdate" type="dateTimeNoTZ" />
+		<xs:attribute name="modifydate" type="dateTimeNoTZ" />
+		<xs:attribute name="locked" type="xs:boolean" />
+		<xs:attribute name="lockedby" type="xs:integer" />
+		<xs:attribute name="lockeddate" type="dateTimeNoTZ" />
+		<xs:attribute name="fileplatform" type="xs:string" />
+		<xs:attribute name="filename" type="xs:string" />
+		<xs:attribute name="filetype" type="xs:string" />
+		<xs:attribute name="filecreator" type="xs:integer" />
+		<xs:attribute name="filedatasize" type="xs:integer" />
+		<xs:attribute name="fileressize" type="xs:integer" />
+		<xs:attribute name="filecreatedate" type="dateTimeNoTZ" />
+		<xs:attribute name="filemodifydate" type="dateTimeNoTZ" />
+		<xs:attribute name="providername" type="xs:string" />
+		<xs:attribute name="providerid" type="xs:integer" />
+		<xs:attribute name="indexed" type="xs:boolean" />
+		<xs:attribute name="mimetype" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<xs:simpleType name="contentType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="base64" />
+			<xs:enumeration value="plain" />
+			<xs:enumeration value="cdata" />
+			<xs:enumeration value="" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:attributeGroup name="contentAttributesGroup">
+		<xs:attribute name="type" type="contentType" />
+		<xs:attribute name="filename" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<!-- System Attributes and System Attribute -->
+	
+	<xs:simpleType name="requiredType">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="1" />
+			<xs:enumeration value="0" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:attributeGroup name="systemAttributesGroup">
+		<xs:attribute name="AttrLen" type="xs:integer" />
+		<xs:attribute name="AttrName" type="xs:string" />
+		<xs:attribute name="AttrType" type="xs:integer" />
+		<xs:attribute name="AttrValue" type="xs:string" />
+		<xs:attribute name="DefValue" type="xs:string" />
+		<xs:attribute name="DispName" type="xs:string" />
+		<xs:attribute name="DispType" type="xs:string" />
+		<xs:attribute name="ValidVals" type="xs:string" />
+		<xs:attribute name="IsEditable" type="xs:boolean" />
+		<xs:attribute name="IsSystem" type="xs:boolean" />
+		<xs:attribute name="Required" type="requiredType" />
+	</xs:attributeGroup>
+
+	<xs:element name="systemattribute">	
+		<xs:complexType>
+			<xs:attributeGroup ref="systemAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="systemattributes">	
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="systemattribute" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	
+	<!-- livelink element definitions -->
+
+	<xs:element name="Nickname">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="domain" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="user">
+		<xs:complexType>
+			<xs:attributeGroup ref="userAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="cgi">
+		<xs:complexType>
+			<xs:attributeGroup ref="cgiAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="header">
+		<xs:complexType>
+			<xs:attributeGroup ref="headerAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="http">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="header" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+
+	<xs:element name="context">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="user" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="cgi" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="http" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="dependents">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="NodesExported" minOccurs="0" maxOccurs="1" />
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="NodesExported">
+		<xs:complexType>
+			<xs:attribute name="count" type="xs:integer"/>
+			<xs:attribute name="nodes" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- Categories and Attributes -->
+	
+	<xs:attributeGroup name="categoryAttributesGroup">
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="defid" type="xs:integer" />
+		<xs:attribute name="versionid" type="xs:integer" />
+		<xs:attribute name="disableInheritance" type="xs:boolean" />
+	</xs:attributeGroup>
+	
+	<xs:attributeGroup name="attributesetAttributesGroup">
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="attid" type="xs:integer" />
+	</xs:attributeGroup>
+	
+	<xs:attributeGroup name="attributeAttributesGroup">
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="attid" type="xs:integer" />
+		<xs:attribute name="type" type="xs:integer" />
+	</xs:attributeGroup>
+	
+	<xs:element name="category">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="AttributeSet" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attributeGroup ref="categoryAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="AttributeSet">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Attribute" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="AttributeSet" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attributeGroup ref="attributesetAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Attribute">
+		<xs:complexType mixed="true">
+			<xs:attributeGroup ref="attributeAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	
+	
+	<!-- llnode and llvolume elements -->
+
+	<xs:element name="acl">
+		<xs:complexType>
+			<xs:attributeGroup ref="aclAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="permission">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="acl" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="userinfo">
+		<xs:complexType>
+			<xs:attributeGroup ref="userinfoAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="extuserinfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="userinfo" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="content">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attributeGroup ref="contentAttributesGroup" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="version">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="content" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+			<xs:attributeGroup ref="versionAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="node">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="extuserinfo" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="permission" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="version" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attributeGroup ref="nodeAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+
+	<!-- shortcut -->
+
+	<xs:group name="shortcutMetaData">
+		<xs:sequence>
+			<xs:element name="originalnode" type="noderef" minOccurs="1" />
+		</xs:sequence>
+	</xs:group>
+
+	<!-- generation -->
+	
+	<xs:group name ="generationMetaData">
+		<xs:sequence>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="originalversion" type="xs:integer" />
+				</xs:sequence>					
+				<xs:sequence>
+					<xs:element name="originalrelease" type="xs:integer" />
+					<xs:element name="originalrevision" type="xs:integer" />
+				</xs:sequence>
+			</xs:choice>
+			<xs:element name="originalnode" type="noderef" minOccurs="1" />
+		</xs:sequence>
+	</xs:group>
+
+	<!-- workflow map -->
+	
+	<xs:group name="workflowMapMetaData">
+		<xs:sequence>
+			<xs:element name="mapdata" type="xs:string"/>
+		</xs:sequence>
+	</xs:group>
+	
+	
+	<!-- topic -->
+	
+	<xs:group name="topicMetaData">
+		<xs:sequence>
+			<xs:element name="message" type="xs:string"/>
+		</xs:sequence>
+	</xs:group>
+	
+	
+	<!-- compounddoc -->
+	
+	<xs:group name="compoundDocMetaData">
+		<xs:sequence>
+			<xs:element name="releasenum" type="nullableId"/>
+			<xs:element name="revisionnum" type="nullableId" />
+		</xs:sequence>
+	</xs:group>
+
+	<!-- url -->
+
+	<xs:group name="urlMetaData">
+		<xs:sequence>
+			<xs:element name="uri" type="xs:string"/>
+		</xs:sequence>
+	</xs:group>
+	
+	
+	<!-- poll -->
+	
+	<xs:element name="question">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="choice" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attributeGroup ref="questionAttributesGroup" />
+		</xs:complexType>
+	</xs:element> 
+	
+	<xs:attributeGroup name="questionAttributesGroup">
+		<xs:attribute name="comm" type="xs:string" />
+		<xs:attribute name="content" type="xs:string" />
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="selecttype" type="xs:integer" />
+		<xs:attribute name="writein" type="nullableBoolean" />
+	</xs:attributeGroup>
+	
+	<xs:element name="choice">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attributeGroup ref="choiceAttributesGroup" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:attributeGroup name="choiceAttributesGroup">
+		<xs:attribute name="id" type="xs:string" />
+		<xs:attribute name="idref" type="xs:string" />
+	</xs:attributeGroup>
+
+	<xs:attributeGroup name="pollresultsAttributesGroup">
+		<xs:attribute name="idref" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<xs:element name="pollresults">
+ 		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="choice" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attributeGroup ref="pollresultsAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="pollcomments">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="comment" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="polldata">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="record" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:group name="pollMetaData">
+		<xs:sequence>
+			<xs:element name="datestarted" type="dateTimeNoTZ" />
+			<xs:element name="dateexpiration" type="dateTimeNoTZ" />
+			<xs:element name="instruction" type="xs:string"/>
+			<xs:element name="imageid" type="nullableId"/>
+			<xs:element name="AddComment" type="xs:boolean" />
+			<xs:element name="ViewResult" type="xs:boolean" />
+			<xs:element name="ImageAlt" type="xs:string" />
+			<xs:element name="HidePollResults" type="nullableBoolean"/>
+			<xs:element name="AllowUsersToChangeTheirVote" type="nullableBoolean"/>
+			<xs:element name="SortResultsByNumOfVotes" type="nullableBoolean"/>
+			<xs:element ref="question" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="pollresults" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="pollcomments" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="polldata" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	
+	<!-- project -->
+
+	<xs:element name="Participant">
+		<xs:complexType>
+			<xs:attributeGroup ref="userinfoAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+
+	
+	<xs:element name="Coordinators">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Participant" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Members">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Participant" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="Guests">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Participant" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Participants">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Coordinators" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Members" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="Guests" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="Overview">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Section" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute name="numToDisplay" type="xs:integer" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Section">
+		<xs:complexType>
+			<xs:attributeGroup ref="sectionAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:attributeGroup name="sectionAttributesGroup">
+		<xs:attribute name="id" type="xs:integer" />
+		<xs:attribute name="name" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<xs:element name="Navigation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Component" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attributeGroup ref="navigationAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:attributeGroup name="navigationAttributesGroup">
+		<xs:attribute name="enabled" type="xs:boolean" />
+		<xs:attribute name="menuEnabled" type="xs:boolean" />
+		<xs:attribute name="startPage" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<xs:element name="Component">
+		<xs:complexType>
+			<xs:attributeGroup ref="componentAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:attributeGroup name="componentAttributesGroup">
+		<xs:attribute name="value" type="xs:integer" />
+		<xs:attribute name="name" type="xs:string" />
+	</xs:attributeGroup>
+	
+	<xs:group name="projectMetaData">
+		<xs:sequence>
+			<xs:element name="startdate" type="dateTimeNoTZ"/>
+			<xs:element name="targetdate" type="dateTimeNoTZ"/>
+			<xs:element name="mission" type="xs:string"/>
+			<xs:element name="goals" type="xs:string"/>
+			<xs:element name="objectives" type="xs:string"/>
+			<xs:element name="initiatives" type="xs:string"/>
+			<xs:element name="PublicAccess" type="xs:boolean"/>
+			<xs:element name="InheritParticipants" type="xs:boolean"/>
+			<xs:element name="MajorMinorContainer" type="xs:boolean" />
+			<xs:element ref="Participants" />
+			<xs:element ref="Overview" />
+			<xs:element ref="Navigation" />
+		</xs:sequence>
+	</xs:group>
+	
+
+	<!-- folder -->
+
+	<xs:group name="folderMetaData">
+		<xs:sequence>
+			<xs:element name="MajorMinorContainer" type="xs:boolean" />
+		</xs:sequence>
+	</xs:group>
+
+	
+	<!-- project template -->
+	
+	<xs:element name="FilteringValue">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Compounddoc" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+				<xs:element name="Document" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+				<xs:element name="IncludeCoordinators" minOccurs="0" maxOccurs="1" />
+				<xs:element name="IncludeGuests" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+				<xs:element name="IncludeMembers" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+				<xs:element name="IncludeMilestone" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+				<xs:element name="IncludeNews" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+				<xs:element name="IncludeReleaseRevision" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+				<xs:element name="IncludeReply" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+				<xs:element name="IncludeSubTask" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+				<xs:element name="IncludeTask" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+				<xs:element name="IncludeTaskGroup" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+				<xs:element name="IncludeTopic" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="NameSubstitution">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="StringToBeReplaced">
+					<xs:simpleType> 
+						<xs:restriction base="xs:string" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DefaultReplacementValue">
+					<xs:simpleType>
+						<xs:restriction base="xs:string" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element  name="DisplayLabel">
+					<xs:simpleType>
+						<xs:restriction base="xs:string" />
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="DisplayDescription">
+					<xs:simpleType>
+						<xs:restriction base="xs:string" />
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+		
+		
+	<xs:element name="NameSubstitutions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="NameSubstitution" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:group name="projectTemplateMetaData">
+		<xs:sequence>
+			<xs:element ref="FilteringValue" />
+			<xs:element ref="NameSubstitutions" />
+		</xs:sequence>
+	</xs:group>
+
+	<!-- task group -->
+	
+	<xs:group name="taskGroupMetaData">
+		<xs:sequence>
+			<xs:element name="milestone" type="xs:integer"/>
+		</xs:sequence>
+	</xs:group>
+	
+	<!-- task -->
+	
+	<xs:element name="AssignedTo">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:integer">
+					<xs:attributeGroup ref="userinfoAttributesGroup" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="AssigneeList">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="AssignedTo" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+		<!-- 
+			Note: we do not derive specific types for the status or priority because they are
+				are xlates. Tying them to a derived type would mean a different schema for
+				each langauage. So for now they are string types 
+		-->
+	     
+	
+	<xs:group name="taskMetaData">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element ref="AssignedTo" minOccurs="0"/>
+				<xs:element ref="AssigneeList" minOccurs="0"/>
+			</xs:choice>
+			<xs:element name="AcceptorOnly" type="xs:boolean"/>
+			<xs:element name="startdate" type="dateTimeNoTZ" />
+			<xs:element name="duedate" type="dateTimeNoTZ" />
+			<xs:element name="status" type="xs:string"/>
+			<xs:element name="completiondate" type="dateTimeNoTZ" />
+			<xs:element name="priority" type="xs:string"/>
+			<xs:element name="milestone" type="xs:integer"/>
+			<xs:element name="instructions" type="xs:string"/>
+			<xs:element name="comments" type="xs:string"/>
+		</xs:sequence>
+	</xs:group>
+	
+	<!-- task milestone -->
+	
+	<xs:group name="milestoneMetaData">
+		<xs:sequence>
+			<xs:element name="OriginalDate" type="dateTimeNoTZ" />
+			<xs:element name="CurrentDate" type="dateTimeNoTZ" />
+			<xs:element name="ActualDate" type="dateTimeNoTZ" />
+		</xs:sequence>
+	</xs:group>
+	
+	<!-- channel -->
+
+	<xs:group name="channelMetaData">
+		<xs:sequence>
+			<xs:element name="imageid" type="nullableId"/>
+		</xs:sequence>
+	</xs:group>
+
+
+
+	
+	<!-- news -->
+	
+
+	<xs:group name="newsMetaData">
+		<xs:sequence>
+			<xs:element name="effectivedate" type="dateTimeNoTZ" />
+			<xs:element name="expirationdate" type="dateTimeNoTZ" />
+			<xs:element name="imageid" type="nullableId"/>
+			<xs:element name="headline" type="xs:string" />
+			<xs:element name="story" type="xs:string" />
+		</xs:sequence>
+	</xs:group>
+
+	
+	<!-- livereport -->
+	
+	<xs:element name="reportdata">
+		<xs:simpleType>
+			<xs:restriction base="xs:string" />
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:group name="liveReportMetaData">
+		<xs:sequence>
+			<xs:element ref="reportdata" />
+		</xs:sequence>
+	</xs:group>
+
+
+	<!-- Definition of high-level content model -->
+
+	<xs:element name="llnode">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Nickname" minOccurs="0" maxOccurs="1" />
+				<xs:choice>
+					<xs:group ref="shortcutMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="generationMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="workflowMapMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="topicMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="compoundDocMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="urlMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="pollMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="projectMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="folderMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="projectTemplateMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="taskGroupMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="taskMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="milestoneMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="channelMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="newsMetaData" minOccurs="0" maxOccurs="1" />
+					<xs:group ref="liveReportMetaData" minOccurs="0" maxOccurs="1" />
+				</xs:choice>
+				<xs:element ref="systemattributes" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="category" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="node" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="version" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="llnode" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attributeGroup ref="llnodeAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="llvolume">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Nickname" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="systemattributes" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="category" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="node" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="llnode" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attributeGroup ref="llnodeAttributesGroup" />
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="livelink">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="context" minOccurs="0" maxOccurs="1" />
+				<xs:element ref="dependents" minOccurs="0" maxOccurs="1" />
+				<xs:choice>
+					<xs:element ref="llvolume" minOccurs="0" maxOccurs="1" />
+					<xs:element ref="llnode" minOccurs="0" maxOccurs="1" />
+				</xs:choice>
+			</xs:sequence>
+			<xs:attributeGroup ref="livelinkAttributesGroup" />
+		</xs:complexType>
+	</xs:element>		
+	
+	
+
+</xs:schema>

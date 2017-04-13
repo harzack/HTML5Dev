@@ -1,0 +1,684 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>UNESCAPESTR, UNESCAPEURL, UPPER, URLPARSE, URLTOPOST, USERACTION, USERINFO, USERINGROUP, USERPREF, USERPREFACTION</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-steighteenth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sub-Tags';
+          header.title2 = 'UNESCAPESTR, UNESCAPEURL, UPPER, URLPARSE, URLTOPOST, USERACTION, USERINFO, USERINGROUP, USERPREF, USERPREFACTION';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID15036"></A>This section details the sub-tags: <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUNESCAPESTR">UNESCAPESTR</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUNESCAPEURL">UNESCAPEURL</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUPPER">UPPER</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBURLPARSE">URLPARSE</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBURLTOPOST">URLTOPOST</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERACTION">USERACTION</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERINFO">USERINFO</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERINGROUP">USERINGROUP</A></span>, <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERPREF">USERPREF</A></span> and <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERPREFACTION">USERPREFACTION</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUNESCAPESTR">UNESCAPESTR</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="UNESCAPESTR-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGUNESCAPESTR"></A><B CLASS="highlight">UNESCAPESTR</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="UNESCAPESTR-DESC">Description</A></P>
+<P><A NAME="TMPID15055"></A>Converts escaped characters to their equivalents. For example, a <TT CLASS="literal">\r</TT> would be converted to an actual carriage return character.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="UNESCAPESTR-EXAMP">Example</A></P>
+<P><A NAME="TMPID15059"></A><TT CLASS="literal">[LL_REPTAG=NAME UNESCAPESTR /]</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUNESCAPEURL">UNESCAPEURL</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="UNESCAPEURL-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGUNESCAPEURL"></A><B CLASS="highlight">UNESCAPEURL</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="UNESCAPEURL-DESC">Description</A></P>
+<P><A NAME="TMPID15069"></A>Unescapes a previously escaped URL. The plus-sign character (+) will be converted to a space. In addition, hexadecimal non-alphanumeric characters, represented by <TT CLASS="literal">%&lt;<I CLASS="varname">xx</I>></TT>, where &lt;<I CLASS="varname">xx</I>> is hexadecimal notation, will be converted to their ASCII equivalent.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="UNESCAPEURL-EXAMP">Example</A></P>
+<P><A NAME="TMPID15075"></A><TT CLASS="literal">[LL_REPTAG_"http%3A%2F%2Fjoe%2Efred%2Ecom" UNESCAPEURL /]</TT> returns “http://joe.fred.com”.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUPPER">UPPER</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="UPPER-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGUPPER"></A><B CLASS="highlight">UPPER</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="UPPER-DESC">Description</A></P>
+<P><A NAME="TMPID15086"></A>Sets all text in the field to upper case.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBURLPARSE">URLPARSE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="URLPARSE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGURLPARSE"></A><B CLASS="highlight">URLPARSE</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="URLPARSE-DESC">Description</A></P>
+<P><A NAME="TMPID15095"></A>Parses a URL and returns the anchor, domain, parameters as an <TT CLASS="literal">ASSOC</TT>, path, port, protocol, and query as an <TT CLASS="literal">ASSOC</TT>.</P>
+<P><A NAME="TMPID15098"></A>The <TT CLASS="literal">URLPARSE</TT> sub-tag can be combined with the <TT CLASS="literal">[LL_REPTAG_MYURL /]</TT> data tag to fetch attributes of the current URL.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="URLPARSE-EXAMPL">Example</A></P><A NAME="AEN13916"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_"http://localhost:8080/livelink/livelink.exe?func=llworkspace#anchor" URLPARSE /]</PRE
+>
+<P><A NAME="TMPID15104"></A>returns:</P>
+<P><A NAME="TMPID15105"></A><TT CLASS="literal">A&lt;<I CLASS="varname">1,?,'anchor'='anchor','domain'='localhost','parameters'=A&lt;<I CLASS="varname">1,?,'func'='llworkspace'</I>>,'path'='/livelink/livelink.exe','port'='8080','protocol'='http','query'='func=llworkspace'</I>></TT></P>
+<P>
+<DIV CLASS="informalexample">
+<P class="nr1"><A NAME="AEN13922"></A><B>Example: </B><A NAME="TMPID15110"></A>The following tag in a standard WebReport, <TT CLASS="literal">[LL_REPTAG_MYURL URLPARSE ASSOC:"parameters" ASSOC:"objaction" /]</TT> returns “RunReport”.</P>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="URLPARSE-RELINFO">Description</A></P>
+<P><A NAME="TMPID15115"></A>For more information, see <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> and <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBURLTOPOST">URLTOPOST</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBURLTOPOST">URLTOPOST</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="URLTOPOST-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGURLTOPOST"></A><B CLASS="highlight">URLTOPOST</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="URLTOPOST-DESC">Description</A></P>
+<P><A NAME="TMPID15126"></A>For any valid URL, converts the <TT CLASS="literal">GET</TT> form URL into a <TT CLASS="literal">POST</TT> request by creating a series of appropriately named <TT CLASS="literal">FORM</TT> fields with corresponding values. If the URL contains a prefix, prior to any parameters, the prefix is abandoned and only the parameters are converted into form fields.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="URLTOPOST-EXAMP">Example</A></P>
+<P><A NAME="TMPID15132"></A>For example, the following URL: <TT CLASS="literal">/Livelink971/livelink.exe?func=ll&amp;objId=157220&amp;objAction=RunReport&amp;reqcacheid=1005851343</TT> converts into the following lines of HTML:</P>
+<P><A NAME="TMPID15134"></A><A NAME="AEN13943"></A>
+<PRE 
+CLASS="screen"
+>&lt;<I
+CLASS="varname"
+>INPUT TYPE="HIDDEN" NAME="func" VALUE="ll"</I
+>>
+&lt;<I
+CLASS="varname"
+>INPUT TYPE="HIDDEN" NAME="objId" VALUE="157220"</I
+>>
+&lt;<I
+CLASS="varname"
+>INPUT TYPE="HIDDEN" NAME="objAction" VALUE="RunReport"</I
+>>
+&lt;<I
+CLASS="varname"
+>INPUT TYPE="HIDDEN" NAME="reqcacheid" VALUE="1005851343"</I
+>></PRE
+></P>
+<P CLASS="bridgehead-subheading3"><A NAME="URLTOPOST-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID15142"></A>For more information, see <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBURLPARSE">URLPARSE</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUSERACTION">USERACTION</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERACTION-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGUSERACTION"></A><B CLASS="highlight">USERACTION:&lt;<I CLASS="varname">operation</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERACTION-DESC">Description</A></P>
+<P><A NAME="TMPID15153"></A>This sub-tag provides the ability to manipulate users and groups in large volumes at the server. Users running a report containing this sub-tag are only able to perform operations with the same level of permissions/privileges as through the regular user interface.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERACTION-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN13959"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Action</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:ADD:&lt;<I CLASS="varname">group or user ID</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Adds a user or group to the group returned from the main tag.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:CREATEGROUP</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Creates a new group with the name returned from the main tag. Supports an optional parameter, <TT CLASS="literal">LEADERID:&lt;<I CLASS="varname">userID</I>></TT> to set the group leader.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:CREATEUSER:&lt;<I CLASS="varname">password</I>>:&lt;<I CLASS="varname">department</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Creates a new user with default permissions, Login and Public Access,  using the name returned from the main tag.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:DELETE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Deletes the user or group returned by the main tag.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:DEPARTMENT:&lt;<I CLASS="varname">group ID or name</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Changes the Department group for the user returned by the main tag.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:GROUPLEADER:&lt;<I CLASS="varname">group or user ID</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Sets the user or group as group leader of the group returned from the main tag.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:PRIVILEGE:&lt;<I CLASS="varname">privilege</I>>:TRUE/FALSE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Sets a privilege value for the user returned by the main tag. Privilege values correspond to the checkboxes in the <B CLASS="guilabel">Privileges</B> section on the <B CLASS="guilabel">Edit User</B> page. This sub-tag accepts the following values for &lt;<I CLASS="varname">privilege</I>>:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID15211"></A><B CLASS="highlight">LoginEnabled</B>: corresponds to the <B CLASS="guilabel">Log-in enabled</B> checkbox.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID15215"></A><B CLASS="highlight">PublicAccessEnabled</B>: corresponds to the <B CLASS="guilabel">Public Access enabled</B> checkbox.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID15219"></A><B CLASS="highlight">CanCreateModifyUsers</B>: corresponds to the <B CLASS="guilabel">Can create/modify users</B> checkbox.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID15223"></A><B CLASS="highlight">CanCreateModifyGroups</B>: corresponds to the <B CLASS="guilabel">Can create/modify groups</B> checkbox.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID15227"></A><B CLASS="highlight">UserAdministrationRights</B>: corresponds to the <B CLASS="guilabel">User administration rights</B> checkbox.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID15231"></A><B CLASS="highlight">SystemAdministrationRights</B>: corresponds to the <B CLASS="guilabel">System administration rights</B> checkbox.</P></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This sub-tag will only work for users with the User Administration privilege, and users will only be able to set privileges that they have themselves.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:REMOVE:&lt;<I CLASS="varname">group or user ID</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Removes a user or group from the group returned in the main tag.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF32"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID15242"></A><B CLASS="note">Note: </B><BR>You can't remove a user from a group whose Department is the same group. In Content Server a user must be part of a Department.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:RENAME:&lt;<I CLASS="varname">name</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renames the user or group.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERACTION:UNSETGROUPLEADER</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Unsets the group leader of the group returned from the main tag.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERACTION-EXAMP">Example</A></P>
+<P><A NAME="TMPID15257"></A><TT CLASS="literal">[LL_REPTAG=GROUPID USERACTION:ADD:38832 /]</TT> adds the user with ID=38832 to the group returned in the <TT CLASS="literal">GROUPID</TT> column.</P>
+<P>
+<DIV CLASS="informalexample">
+<P class="nr1"><A NAME="AEN14066"></A><B>Example: </B><A NAME="TMPID15261"></A><TT CLASS="literal">[LL_REPTAG=newname USERACTION:CREATEGROUP:LEADERID:4526 /]</TT> creates a new group called whatever is in the “newname” column and sets the leader of that group to be the user “4526”.</P>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P class="nr1"><A NAME="AEN14071"></A><B>Example: </B><A NAME="TMPID15266"></A><TT CLASS="literal">[LL_REPTAG_'jbloggs' USERACTION:CREATEUSER:'aardv4rk':'DefaultGroup' /]</TT> creates a new user with the username “jbloggs”, the password “aardv4rk” and the department “DefaultGroup”. </P>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P class="nr1"><A NAME="AEN14077"></A><B>Example: </B><A NAME="TMPID15272"></A><TT CLASS="literal">[LL_REPTAG_'1234' USERACTION:GROUPLEADER:9876 /]</TT> sets the user or group with ID=9876 to be the group leader of the group with ID=1234.</P>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P class="nr1"><A NAME="AEN14080"></A><B>Example: </B><A NAME="TMPID15275"></A><TT CLASS="literal">[LL_REPTAG_'1234' USERACTION:UNSETGROUPLEADER /]</TT> unsets the group leader of the group with ID=1234.</P>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUSERINFO">USERINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINFO-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGUSERINFO"></A><B CLASS="highlight">USERINFO:&lt;<I CLASS="varname">format</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINFO-DESC">Description</A></P>
+<P><A NAME="TMPID15286"></A>For a valid Content Server user ID, user login name, group ID, or group name, this sub-tag will return user or group metadata corresponding to the &lt;<I CLASS="varname">format</I>> parameter that has been provided.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINFO-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN14093"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Format</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns an Assoc containing metadata for the user or group, with the exception of the <TT CLASS="literal">UserPWD</TT>, password, field.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Can be chained with the <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> sub-tag to retrieve specific information not available from the other <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERINFO">USERINFO</A></span> tags.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:CONTACT</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the contact information for the user.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:EDITABLE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns <TT CLASS="literal">TRUE</TT> if the user running the WebReport has permission to edit the user or group in the main tag, else it will return <TT CLASS="literal">FALSE</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:FIRSTNAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's first name.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:FULLNAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the full name of the user, using the format which has been globally defined for the Content Server system, for example “Joseph R. Smith”.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:GROUPID</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the ID of the user's base group.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:GROUPNAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the name of this user's base group.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:ID</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the ID of the user or group.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:LASTNAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's last name.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:LEADERID</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">If the main tag contains a group ID or name, the user ID of the user who is the leader of the group is returned.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:MAILADDRESS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's email address.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:MEMBERS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the group's members as a RecArray.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:MIDDLENAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's middle name.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:NAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the login ID of a user or the name of a group.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:PRIVILEGES</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns an Assoc containing boolean values corresponding to the user's privileges.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Can be chained with the <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> sub-tag to a value for a specific privilege. For a list of available values for the optional &lt;<I CLASS="varname">privilege</I>> parameter, see the <B CLASS="guilabel">Parameters</B> section of the <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERACTION">USERACTION</A></span> sub-tag.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This sub-tag will only return data if the WebReport is run by a user with User Administration privileges.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:PWS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the objectID of the <B CLASS="guilabel">Personal Workspace</B> of the user specified in the main tag.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The <TT CLASS="literal">USERINFO:PWS</TT> sub-tag can return a link to a user's <B CLASS="guilabel">Personal Workspace</B> if it is used with the <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLLURL">LLURL</A></span> sub-tag.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERINFO:TITLE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's title.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINFO-EXAMPL">Examples</A></P>
+<P><A NAME="TMPID15404"></A><TT CLASS="literal">[LL_REPTAG_'1000' USERINFO ASSOC:Gender /]</TT></P>
+<P>
+<DIV CLASS="informalexample">
+<P class="nr1"><A NAME="AEN14211"></A><B>Example: </B><A NAME="TMPID15407"></A><TT CLASS="literal">[LL_REPTAG_USERID USERINFO:PRIVILEGES ASSOC:UserAdministrationRights /]</TT> will return TRUE or FALSE based on the value of the “UserAdministrationRights” boolean.</P>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P class="nr1"><A NAME="AEN14215"></A><B>Example: </B><A NAME="TMPID15411"></A><TT CLASS="literal">[LL_REPTAG_USERID USERINFO:PWS LLURL:BROWSE /]</TT> will provide a URL to access the <B CLASS="guilabel">Personal Workspace</B> of the user executing the WebReport.</P>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINFO-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID15416"></A>For more information, see <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span>, <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLLURL">LLURL</A></span>, and the <B CLASS="guilabel">Parameters</B> section of <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERACTION">USERACTION</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUSERINGROUP">USERINGROUP</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINGROUP-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGUSERINGROUP"></A><B CLASS="highlight">USERINGROUP</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINGROUP-DESC">Description</A></P>
+<P><A NAME="TMPID15429"></A>Returns TRUE if the current user, the user running the WebReport, is a member of the group returned by the main tag. If the main tag is not associated with a valid group ID, then FALSE is returned.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERINGROUP-EXAMP">Example</A></P><A NAME="AEN14232"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_IF "[LL_REPTAG=ID USERINGROUP /]" == "TRUE" /]
+   I AM IN GROUP: [LL_REPTAG=NAME /]
+[LL_WEBREPORT_ENDIF /]</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUSERPREF">USERPREF</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREF-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGUSERPREF"></A><B CLASS="highlight">USERPREF:&lt;<I CLASS="varname">tab</I>>:&lt;<I CLASS="varname">setting</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREF-DESC">Description</A></P>
+<P><A NAME="TMPID15443"></A>For a valid Content Server user ID this sub-tag will return the user's settings found when you select <B CLASS="guilabel">Settings</B> from the <B CLASS="guilabel">Tools</B> menu.</P>
+<P><A NAME="TMPID15447"></A>Some sub-tags return an Oscript Assoc and can be further manipulated using the <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span> sub-tag.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREF-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN14247"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Format</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns an Oscript Assoc containing the values of all the settings from the <B CLASS="guilabel">General</B> tab of the <B CLASS="guilabel">My General Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:DFTSTARTPAGE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's setting in the <B CLASS="guilabel">Default Start Page</B> field on the <B CLASS="guilabel">General</B> tab of the <B CLASS="guilabel">My General Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:ENHANCEDKYBD</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns TRUE or FALSE based on the user's setting in the <B CLASS="guilabel">Enhanced Keyboard Accessibility Mode</B> field on the <B CLASS="guilabel">General</B> tab of the <B CLASS="guilabel">My General Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:LANGUAGE:CODE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the code of the user's preferred language. Will default to the system default language if not specified.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Examples of return values include “_en_US” and “_fr”.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:LANGUAGE:NAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the display name of the user's preferred language. Will default to the system default language if not specified.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Examples of return values include: “English ( United States )” and “French”.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:METADATALANGUAGE:CODE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the code of the user's preferred metadata language as set in the <B CLASS="guilabel">Metadata Language</B> field on the <B CLASS="guilabel">General</B> tab of the <B CLASS="guilabel">My General Settings</B> page. Will default to the system default metadata language if not specified.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Examples of return values include “_en_GB” and “_fr”.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:METADATALANGUAGE:NAME</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the display name of the user's preferred metadata language as set in the <B CLASS="guilabel">Metadata Language</B> field on the <B CLASS="guilabel">General</B> tab of the <B CLASS="guilabel">My General Settings</B> page. Will default to the system default metadata language if not specified.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Examples of return values include “English ( United Kingdom )” and “French”.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:MODDUR</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the number of days set in the <B CLASS="guilabel">Modified Indicator Duration</B> field on the <B CLASS="guilabel">General</B> tab of the <B CLASS="guilabel">My General Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:NAVSTYLE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's setting in the <B CLASS="guilabel">Navigation Style</B> field on the <B CLASS="guilabel">General</B> tab of the <B CLASS="guilabel">My General Settings</B> page. This will return one of three values:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15537"></A>a blank string, if no preference is selected</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15539"></A>trail</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15541"></A>dropdown</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:NEWDUR</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the number of days set in the <B CLASS="guilabel">New Indicator Duration</B> field on the <B CLASS="guilabel">General</B> tab of the <B CLASS="guilabel">My General Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:SBLOCATION</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns <TT CLASS="literal">left</TT> or <TT CLASS="literal">right</TT> based on the user's setting in the <B CLASS="guilabel">Sidebar Location</B> field on the <B CLASS="guilabel">General</B> tab of the <B CLASS="guilabel">My General Settings</B> page. Only available in Content Server 10.0 and higher.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:SIDEBAR</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns <TT CLASS="literal">TRUE</TT> or <TT CLASS="literal">FALSE</TT> based on the user's setting in the <B CLASS="guilabel">Show Sidebar in Browse</B> field on the <B CLASS="guilabel">General</B> tab of the <B CLASS="guilabel">My General Settings</B> page. Only available in Content Server 10.0 and higher.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">GENERAL:SHOWITEMDESC</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns <TT CLASS="literal">TRUE</TT> or <TT CLASS="literal">FALSE</TT> based on the user's setting in the <B CLASS="guilabel">Show Item Descriptions on Detail View</B> field on the <B CLASS="guilabel">General</B> tab of the <B CLASS="guilabel">My General Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">COLORS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns an Oscript Assoc containing the values of all the settings from the <B CLASS="guilabel">Color</B> tab of the <B CLASS="guilabel">My Color Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">COLORS:ROW1</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the hexidecimal value from the <TT CLASS="literal">Row1</TT> field on the <B CLASS="guilabel">Color</B> tab of the <B CLASS="guilabel">My Color Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">COLORS:ROW2</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the hexidecimal value from the <TT CLASS="literal">Row2</TT> field on the <B CLASS="guilabel">Color</B> tab of the <B CLASS="guilabel">My Color Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns an Oscript Assoc containing the values of all the settings from the <B CLASS="guilabel">Discussion</B> tab of the <B CLASS="guilabel">My Discussion Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION:DFTPERIODFROM</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's setting from the <B CLASS="guilabel">Default Period From</B> field on the <B CLASS="guilabel">Discussion</B> tab of the <B CLASS="guilabel">My Discussion Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION:DFTVIEW</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's setting from the <B CLASS="guilabel">Default View</B> field on the <B CLASS="guilabel">Discussion</B> tab of the <B CLASS="guilabel">My Discussion Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION:FILTERPREF</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's setting from the <B CLASS="guilabel">Filter Preference</B> field on the <B CLASS="guilabel">Discussion</B> tab of the <B CLASS="guilabel">My Discussion Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION:POSTINGPREF</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns <TT CLASS="literal">TRUE</TT> or <TT CLASS="literal">FALSE</TT> based on the user's setting from the <B CLASS="guilabel">Posting Preference</B> field on the <B CLASS="guilabel">Discussion</B> tab of the <B CLASS="guilabel">My Discussion Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION:REPLYPREF</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns <TT CLASS="literal">TRUE</TT> or <TT CLASS="literal">FALSE</TT> based on the user's setting from the <B CLASS="guilabel">Reply Preference</B> field on the <B CLASS="guilabel">Discussion</B> tab of the <B CLASS="guilabel">My Discussion Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DISCUSSION:VIEWITEMOPTIONS </B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns <TT CLASS="literal">TRUE</TT> or <TT CLASS="literal">FALSE</TT> based on the user's setting from the <B CLASS="guilabel">View Item Options</B> field on the <B CLASS="guilabel">Discussion</B> tab of the <B CLASS="guilabel">My Discussion Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns an Oscript Assoc containing the values of all the settings from the <B CLASS="guilabel">Workflow</B> tab of the <B CLASS="guilabel">My Workflow Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:WFSTARTPAGE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's setting from the <B CLASS="guilabel">Starting Page</B> field of the <B CLASS="guilabel">Workflow Assignments</B> section on the <B CLASS="guilabel">Workflow</B> tab of the <B CLASS="guilabel">My Workflow Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:PROXY</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's setting from the <B CLASS="guilabel">Proxy</B> field of the <B CLASS="guilabel">Workflow Assignments</B> section on the <B CLASS="guilabel">Workflow</B> tab of the <B CLASS="guilabel">My Workflow Settings</B> page.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">If workflow user proxies are disallowed, or the user does not have a proxy value set, this sub-tag will return the user ID in the main tag.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:ASSIGNMENTSSHOW</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns an Oscript Assoc containing the values of all the settings, including any expression data, from the <B CLASS="guilabel">Show</B> field of the <B CLASS="guilabel">Workflow Assignments</B> section on the <B CLASS="guilabel">Workflow</B> tab of the <B CLASS="guilabel">My Workflow Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:AUTOOPEN</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns <TT CLASS="literal">TRUE</TT> or <TT CLASS="literal">FALSE</TT> based on whether the <B CLASS="guilabel">Automatically open the next assignment in the same workflow if assigned to me</B> box is selected in the <B CLASS="guilabel">Options</B> section of the <B CLASS="guilabel">Workflow Assignments</B> section of the <B CLASS="guilabel">Workflow</B> tab on the <B CLASS="guilabel">My Workflow Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:INCLUDEWFASSGN</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns <TT CLASS="literal">TRUE</TT> or <TT CLASS="literal">FALSE</TT> based on whether the <B CLASS="guilabel">Include workflow assignments on 'My Assignments' page</B> box is selected in the <B CLASS="guilabel">Options</B> section of the <B CLASS="guilabel">Workflow Assignments</B> section of the <B CLASS="guilabel">Workflow</B> tab on the <B CLASS="guilabel">My Workflow Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:STATUSSHOW </B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns an Oscript Assoc containing the values of all the settings, including any expression data, from the <B CLASS="guilabel">Show</B> field of the <B CLASS="guilabel">Workflow Statuses</B> section on the <B CLASS="guilabel">Workflow</B> tab of the <B CLASS="guilabel">My Workflow Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:SORTORDER</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's setting from the <B CLASS="guilabel">Sort Order</B> field of the <B CLASS="guilabel">Workflow Statuses</B> section of the <B CLASS="guilabel">Workflow</B> tab on the <B CLASS="guilabel">My Workflow Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:DFTWFTAB</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's setting from the <B CLASS="guilabel">Default My Workflows Tab</B> field of the <B CLASS="guilabel">Workflow</B> tab on the <B CLASS="guilabel">My Workflow Settings</B> page.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">WORKFLOW:MAXITEMS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the user's setting from the <B CLASS="guilabel">Maximum Items Per Page</B> field of the <B CLASS="guilabel">Workflow</B> tab on the <B CLASS="guilabel">My Workflow Settings</B> page.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREF-EXAMP">Example</A></P>
+<P><A NAME="TMPID15761"></A><TT CLASS="literal">[LL_REPTAG=USERID USERPREF:GENERAL:STARTPAGE /]</TT> will return the user's <B CLASS="guilabel">Start Page</B> setting.</P>
+<P class="before-ul"><A NAME="TMPID15764"></A>Possible return values from this sub-tag are:</P><A NAME="AEN14564"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN14565"></A><A NAME="TMPID15767"></A>Enterprise Workspace</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN14567"></A><A NAME="TMPID15769"></A>My Workspace</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN14569"></A><A NAME="TMPID15771"></A>About Content Server</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN14572"></A><A NAME="TMPID15774"></A>My Home</P></LI></UL>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREF-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID15777"></A>Some sub-tags return an Oscript Assoc, and can therefore be further manipulated using the <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span> sub-tag.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBUSERPREFACTION">USERPREFACTION</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREFACTION-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGUSERPREFACTION"></A><B CLASS="highlight">USERPREFACTION</B>&lt;<I CLASS="varname">operation</I>></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREFACTION-DESC">Description</A></P>
+<P><A NAME="TMPID15788"></A>For a valid Content Server user ID, this sub-tag will update the user's settings found on the <B CLASS="guilabel">Settings</B> page. You access the <B CLASS="guilabel">Settings</B> page from the Content Server menu bar by selecting <B CLASS="guilabel">Settings</B> from the <B CLASS="guilabel">Tools</B> menu.</P>
+<P><A NAME="TMPID15795"></A>This sub-tag will only work if run by a user who has been granted sufficient privileges.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREFACTION-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN14592"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Format</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERPREFACTION:WORKFLOW:PROXY:&lt;<I CLASS="varname">UserID</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Sets the value of the <B CLASS="guilabel">Proxy</B> field of the <B CLASS="guilabel">Workflow Assignments</B> section on the <B CLASS="guilabel">Workflow</B> tab of the <B CLASS="guilabel">My Workflow Settings</B> page.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The value of the <B CLASS="guilabel">Proxy</B> field will be set to the user ID specified in the &lt;<I CLASS="varname">UserID</I>> parameter.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">USERPREFACTION:WORKFLOW:PROXY:“none”</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Clears the value from the <B CLASS="guilabel">Proxy</B> field of the <B CLASS="guilabel">Workflow Assignments</B> section on the <B CLASS="guilabel">Workflow</B> tab of the <B CLASS="guilabel">My Workflow Settings</B> page.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The value of the <B CLASS="guilabel">Proxy</B> field will be set to “none”.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="USERPREFACTION-EXAMP">Example</A></P>
+<P><A NAME="TMPID15833"></A><TT CLASS="literal">[LL_REPTAG=&lt;<I CLASS="varname">XXX</I>> USERPREFACTION:WORKFLOW:PROXY:1000 /]</TT> will set the value of the <B CLASS="guilabel">Proxy</B> user to “1000”, the Admin user.</P>
+<P>
+<DIV CLASS="informalexample">
+<P class="nr1"><A NAME="AEN14635"></A><B>Example: </B><A NAME="TMPID15839"></A><TT CLASS="literal">[LL_REPTAG=&lt;<I CLASS="varname">XXX</I>> USERPREFACTION:WORKFLOW:PROXY:"none" /]</TT> will clear the value in the <B CLASS="guilabel">Proxy</B> field.</P>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

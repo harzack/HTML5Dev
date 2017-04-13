@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Maintenance des flux de données</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-specdflw-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion des flux de données';
+          header.title2 = 'Maintenance des flux de données';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3264"></A>Une fois que vous avez créé un flux de données, vous pouvez gérer ses IPools et processus de flux de données. Vous pouvez lancer, arrêter, vider, tester, resynchroniser et déplacer les flux de données et leurs composants. Pour plus d'informations sur les flux de données, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-datafwfd-so.htm">Gestion des flux de données</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF75">Démarrage et arrêt des flux de données</A></P>
+<P><A NAME="TMPID3267"></A>Lorsque vous gérez un flux de données, vous pouvez arrêter ou lancer tous	les processus de flux de données en même temps. Certaines tâches de gestion des flux de données (par exemple, le test ou l'élimination d'un flux de données) peuvent nécessiter leur suspension. Si un flux de données	contient un ou plusieurs processus devenus inactifs dans le cadre de leur fonctionnement normal, vous souhaitez peut-être le suspendre pour le reprendre ensuite. Par exemple, le processus Directory Walker du flux de données d'aide devient inactif après avoir parcouru les répertoires d'aide. Si vous ajoutez un module Content Server (tels que Content Server Classifications), vous devez mettre à jour l'index de l'aide pour que les fichiers d'aide associés au nouveau module soient ajoutés à l'index de l'aide.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF76">Définition des règles de contrôle</A></P>
+<P><A NAME="TMPID3272"></A>Vous pouvez également définir des règles de contrôle pour les IPools et les processus des flux de données. Les règles de contrôle permettent de définir des options telles que le nombre de messages IPool associés à un processus particulier dans un flux de données. Pour plus d'informations sur la définition des règles de contrôle, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-setdflowcntrlrls-bg.htm">Ajout de règles de contrôle de flux de données</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF77">Test des flux de données</A></P>
+<P><A NAME="TMPID3275"></A>Pour que les données circulent convenablement dans un flux de données, les chemins spécifiés pour les IPools de lecture et d'écriture de chacun de leurs processus doivent être valables et précis. Si vous avez l'impression que les données ne circulent pas correctement dans un flux de données, vous pouvez le tester. Lors de ce test, Content Server suspend le flux de données, supprime le contenu de tous les répertoires iPool, puis essaie d'envoyer un message test via le flux de données. Si Content Server rencontre une erreur, un message d'erreur s'affiche. S'il n'y a pas d'erreurs, Content Server affiche le contenu du dossier préfixe_processus Dossier source de données. Pour réparer un flux de données défectueux, cliquez sur le bouton <B CLASS="guilabel">Informations</B> de l'IPool de l'onglet <B CLASS="guilabel">Spécifique</B> de la page Propriétés de chaque processus et assurez-vous que les chemins affichés dans les champs <B CLASS="guilabel">Lire</B> et <B CLASS="guilabel">Ecrire</B> sont valables et précis, puis recommencez le test.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF78">Elimination des flux de données</A></P>
+<P><A NAME="TMPID3284"></A>Si l'un des processus d'un flux de données semble avoir des difficultés à traiter le volume de données en cours d'écriture dans son IPool source, vous pouvez éliminer le flux de données. L'élimination d'un flux de données le suspend et supprime tous les messages IPool en attente à l'intérieur.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF79">Resynchronisation des flux de données</A></P>
+<P><A NAME="TMPID3286"></A>Si un ou plusieurs répertoires IPool ont été supprimés par inadvertance dans un flux de données, vous pouvez les recréer en resynchronisant le flux de données. Lors de la resynchronisation, Content Server lit les informations stockées dans la base de données relatives à l'emplacement des répertoires iPool, puis les recrée ou les répare si nécessaire. Une fois que vous avez resynchronisé un flux de données, testez-le en envoyant un message test via les IPools.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF80">Maintenance des composants individuels d'un flux de données</A></P>
+<P><A NAME="TMPID3289"></A>Vous pouvez également gérer les composants individuels d'un flux de données. Vous pouvez déplacer les iPools et les processus d'un flux de données, lancer ou arrêter des processus individuels, configurer les options de lancement ou d'arrêt des processus ou resynchroniser les processus avec la base de données Content Server.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF81">Resynchronisation des processus de flux de données </A></P>
+<P class="before-ul"><A NAME="TMPID3292"></A>Le serveur stocke des informations sur tous les processus de flux de données qu'il contrôle dans la base de données Content Server. Chaque serveur d'administration gère des informations sur les processus de flux de données qu'il gère dans un fichier <TT CLASS="filename"> otadmin.cfg</TT>. Les informations figurant dans le fichier <TT CLASS="filename">otadmin.cfg</TT> d'un serveur d'administration doivent toujours correspondre aux informations correspondantes dans la base de données Content Server. Dans les cas suivants, ces informations peuvent diverger :</P><A NAME="AEN2666"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2667"></A><A NAME="TMPID3299"></A>Les informations relatives à un processus de flux de données particulier dans le fichier <TT CLASS="filename">otadmin.cfg</TT> d'un serveur d'administration enregistré sont corrompues ou ont été supprimées.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2670"></A><A NAME="TMPID3302"></A>Les informations relatives à un processus de flux de données particulier dans la base de données Content Server ont été modifiées et les modifications correspondantes n'ont pas pu être effectuées dans le fichier <TT CLASS="filename">otadmin.cfg</TT> du serveur d'administration qui gère le processus. Cela peut arriver si les commandes SQL qui modifient ces informations sont envoyées directement à la base de données Content Server. OpenText vous recommande vivement de ne pas envoyer de commandes SQL directement à la base de données Content Server. </P></LI></UL>
+<P><A NAME="TMPID3308"></A>Si les informations d'un processus de flux de données particulier stockées dans la base de données Content Server vous semblent inexactes ou manquantes dans le fichier <TT CLASS="filename"> otadmin.cfg</TT> du serveur d'administration qui gère le processus, vous pouvez <I CLASS="emphasis">resynchroniser</I> le processus. Lors de la resynchronisation d'un processus, les informations relatives au processus enregistrées dans la base de données Content Server sont écrites dans le fichier <TT CLASS="filename">otadmin.cfg</TT> du serveur d'administration qui gère le processus.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF82"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3315"></A><B CLASS="note">Note : </B><BR>Les informations relatives au processus Distributeur de mise à jour sont également enregistrées dans le fichier <TT CLASS="filename">search.ini</TT>. Le fichier <TT CLASS="filename">search.ini</TT> est un fichier de configuration qui contient les paramètres des composants des systèmes d'indexation et de recherche (par exemple, partitions, moteurs d'indexation et moteurs de recherche). La resynchronisation du processus Distributeur de mise à jour écrit les informations relatives au processus dans les fichiers <TT CLASS="filename">otadmin.cfg</TT> et <TT CLASS="filename">search.ini</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-mntdflw-p.htm" revision="">Pour assurer la maintenance d'un flux de données</A></p></li>
+<li><p><A  href="../websystemobj/wbs-stopallproc-p.htm" revision="">Pour arrêter tous les processus</A></p></li>
+<li><p><A  href="../websystemobj/wbs-stopindproc-p.htm" revision="">Pour arrêter des processus individuels</A></p></li>
+<li><p><A  href="../websystemobj/wbs-startallproc-p.htm" revision="">Pour lancer tous les processus</A></p></li>
+<li><p><A  href="../websystemobj/wbs-startindproc-p.htm" revision="">Pour lancer des processus individuels</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

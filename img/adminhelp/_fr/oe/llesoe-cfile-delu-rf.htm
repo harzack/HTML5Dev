@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOE100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="objectexporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle de la balise deletedusers</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoe-cfile-delu-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Syntaxe du fichier de contrôle exportateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle de la balise deletedusers';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="OEDELU01">Balise deletedusers</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="OEDELU02">Description</A></P>
+<P class="nr1"><A NAME="TMPID362"></A>Par défaut, l'exportateur d'objet exportera les utilisateurs et les groupes supprimés. Pour éviter que ces données soient exportées, utilisez la balise <TT CLASS="literal">&lt;deletedusers&gt;FALSE&lt;/deletedusers&gt;</TT>.  </P>
+<P CLASS="bridgehead-subheading3"><A NAME="OEDELU03">Syntaxe</A></P><A NAME="AEN359"></A>
+<PRE 
+CLASS="screen"
+>&lt;deletedusers&gt;FALSE&lt;/deletedusers&gt;</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="OEDELU04">Utilisation</A></P>
+<A NAME="AEN361"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN362"></A><A NAME="TMPID374"></A>La balise <TT CLASS="literal">deletedusers</TT> est facultative.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN365"></A><A NAME="TMPID377"></A>La balise <TT CLASS="literal">deletedusers</TT> a des attributs facultatifs : <span><A HREF="llesoe-cfile-delu-rf.htm#OEOWN01">Attribut owner</A></span>, <span><A HREF="llesoe-cfile-delu-rf.htm#OEOWNGRP01">Attribut ownergroup</A></span> et <span><A HREF="llesoe-cfile-delu-rf.htm#OECREAT01">Attribut creator</A></span>. Ces attributs sont décrits ci-dessous :</P></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="OEDELU05">Exemple</A></P><A NAME="AEN372"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;export&gt;
+  &lt;node&gt;
+    &lt;location&gt;Enterprise:Folder_001&lt;/location&gt;
+    &lt;docstorage&gt;c:\docs&lt;docstorage&gt;
+    &lt;deletedusers owner="Admin" ownergroup="DefaultGroup" creator="Admin"&gt;FALSE&lt;/deletedusers&gt;
+  &lt;/node&gt;
+&lt;/export&gt;</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="OEOWN01">Attribut owner</A></P>
+<P><A NAME="TMPID387"></A>L'attribut <TT CLASS="literal">owner</TT> définit une valeur qui peut être établie par défaut sur une autre valeur si un utilisateur ou un groupe supprimé est rencontré. La syntaxe de cet attribut est la suivante : <A NAME="AEN376"></A>
+<PRE 
+CLASS="screen"
+>&lt;deletedusers owner="Admin" ownergroup="DefaultGroup" creator="Admin"&gt;FALSE&lt;/deletedusers&gt;</PRE
+> </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN377"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">L'attribut <TT CLASS="literal">owner</TT> est facultatif si la balise <TT CLASS="literal">deletedusers</TT> est utilisée.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="OEOWNGRP01">Attribut ownergroup</A></P>
+<P><A NAME="TMPID404"></A>L'attribut <TT CLASS="literal">ownergroup</TT> définit une valeur qui peut être établie par défaut sur une autre valeur si un utilisateur ou un groupe supprimé est rencontré. La syntaxe de cet attribut est la suivante : <A NAME="AEN392"></A>
+<PRE 
+CLASS="screen"
+>&lt;deletedusers owner="Admin" ownergroup="DefaultGroup" creator="Admin"&gt;FALSE&lt;/deletedusers&gt;</PRE
+> </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN393"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">L'attribut <TT CLASS="literal">ownergroup</TT> est facultatif si la balise <TT CLASS="literal">deletedusers</TT> est utilisée.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="OECREAT01">Attribut creator</A></P>
+<P><A NAME="TMPID421"></A>L'attribut <TT CLASS="literal">creator</TT> définit une valeur qui peut être établie par défaut sur une autre valeur si un utilisateur ou un groupe supprimé est rencontré. La syntaxe de cet attribut est la suivante : <A NAME="AEN408"></A>
+<PRE 
+CLASS="screen"
+>&lt;deletedusers owner="Admin" ownergroup="DefaultGroup" creator="Admin"&gt;FALSE&lt;/deletedusers&gt;</PRE
+> </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN409"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">L'attribut <TT CLASS="literal">creator</TT> est facultatif si la balise <TT CLASS="literal">deletedusers</TT> est utilisée.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

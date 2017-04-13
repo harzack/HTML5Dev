@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESCLS100500-H-AGD-FR">
+<META name="PiXprocLocator" content="classification">
+<META mancondkey="llescor-pgd -- llescls-h-ugd -- llesrcm-igd -- lleswat-h-ugd -- llesrcm-h-ugd -- llescls-h-ggd -- lleswbs-h-agd -- llesrt-h-ugd -- llescl-h-ugd -- lleswba-h-agd -- llesrcm-h-agd -- llesapp-h-ugd"><title>Maintenance des classements</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'c-maint-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administration de Classements';
+          header.title2 = 'Maintenance des classements';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID956"></A>La rubrique Maintenance des classements décrit les tâches possibles et les paramètres de maintenance relatifs au module Classements. Ces tâches et paramètres vous permettent d'ajuster le fonctionnement du module afin d'obtenir des performances optimales.</P>
+<P><A NAME="TMPID957"></A>Les tâches de maintenance incluent la régénération du fichier de requête des classements, la suppression ou le reclassement d'éléments associés avec un classement, la gestion des objets en attente de classement, l'élimination de classements, l'élimination de la base de données des classements rejetés et la configuration des paramètres du fichier <TT CLASS="filename">opentext.ini</TT> pour les classements.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF28">Régénération du fichier de requête de classement</A></P>
+<P><A NAME="TMPID960"></A>Le fichier de requête de classement (<TT CLASS="filename">queries.in</TT>) est un fichier système dans lequel sont enregistrées toutes les informations de Requête de profil pour les classements assistés et automatiques. Il se trouve dans le répertoire &lt;<I CLASS="varname">content_server_home</I>>/config. Si vous n'avez pas activé la fonctionnalité de Classement intelligent, ce fichier est absent de votre système. Pour en savoir plus, voir <span><A HREF="c-enableic-bg.htm">Activation de la fonctionnalité de Classement intelligent</A></span>. Le fichier <TT CLASS="filename">queries.in</TT> est modifié lorsqu'un classement est mis à jour dans Content Server via le bouton <B CLASS="guilabel">Enregistrer en tant que profil</B>, ou lorsqu'un nœud de classement est supprimé.</P>
+<P class="before-ul"><A NAME="TMPID967"></A>Vous devez régénérer le fichier de requête de classement afin de mettre à jour les informations de Requête de profil qu'il contient dans les cas suivants :</P><A NAME="AEN890"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN891"></A><A NAME="TMPID970"></A>après avoir importé un Arbre de classement ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN893"></A><A NAME="TMPID972"></A>après avoir remplacé le type de gestion « manuel » d'un classement par « assisté » ou « automatique », si ce classement avait été précédemment configuré sur « assisté » ou sur « automatique » ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN895"></A><A NAME="TMPID974"></A>lorsque le OpenText Customer Support vous le demande.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF29">Gestion des objets en attente</A></P>
+<P><A NAME="TMPID978"></A>Lorsque vous ajoutez à Content Server un élément et que cet élément est un objet géré, Content Server examine cet élément et détermine s'il répond aux critères définis dans le profil de chaque classement assisté. Si l'élément répond aux critères du profil, Content Server propose le classement à associer à cet élément. Vous pouvez accepter ce classement, le rejeter ou différer votre décision en laissant le statut de l'élément en attente.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF30"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID983"></A><B CLASS="note">Note : </B><BR>Pour plus d'informations sur l'activation des types d'objet géré, reportez-vous à la rubrique <span><A HREF="c-addmanobj-p.htm">Pour activer des types d'objet géré supplémentaires</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF31">Elimination de classements</A></P>
+<P><A NAME="TMPID986"></A>Vous pouvez supprimer des classements de deux façons différentes : en les dissociant ou en les éliminant. Lorsque vous dissociez un classement, Content Server vérifie que vous disposez de l'autorisation de dissocier ce classement, ainsi que tous les classements qu'il contient, avant de dissocier les éléments en question. De plus, Content Server met à jour la base de données et, le cas échéant, le fichier de requête de classement de chaque classement supprimé.</P>
+<table CLASS="caution">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="caution" ALIGN="CENTER"><IMG ALT="Attention" SRC="../../images/pi_caution.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID990"></A><B CLASS="caution">Attention</B><BR>La durée du processus varie selon la taille de la hiérarchie de classement et peut prendre du temps.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID991"></A>Eliminer des classements consiste à dissocier rapidement une hiérarchie de classements de taille importante (par exemple, un Arbre de classement, un classement et tous les classements qu'il contient). Le processus d'élimination, tout comme la dissociation, permet de supprimer tous les classements, mais est plus rapide car les autorisations associées à chaque classement ne sont pas vérifiées. En outre, le fichier de requête de classement n'est mis à jour qu'une seule fois. Vous pouvez, par exemple, éliminer une hiérarchie de classements si vous importez un Arbre de classement comportant un nombre élevé de classements (nombre supérieur à 1 000) et que l'importation échoue.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF32">Elimination de classements rejetés de la base de données</A></P>
+<P><A NAME="TMPID993"></A>A chaque fois que vous rejetez un classement proposé par le système, ce dernier enregistre le rejet dans une base de données Content Server afin de ne pas proposer ce classement pour le même élément par la suite. Lorsque les données atteignent une certaine taille, elles peuvent toutefois provoquer un ralentissement du système. </P>
+<P><A NAME="TMPID995"></A>En éliminant des classements rejetés de la base de données, vous supprimez des entrées en fonction du nombre de jours dans la base de données que vous avez spécifiée. La valeur par défaut est 45 jours. Les entrées de 45 jours et plus sont éliminées.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF33"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID997"></A><B CLASS="note">Note : </B><BR>Si vous éliminez certains classements de la base de données Content Server, il se peut que des classements rejetés pour certains objets vous soient de nouveau proposés automatiquement par la suite.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="c-regenquerfile-p.htm" revision="">Pour régénérer le fichier de requête de classement</A></p></li>
+<li><p><A  HREF="c-manclass-p.htm" revision="">Pour gérer un classement</A></p></li>
+<li><p><A  HREF="c-manpenddoc-p.htm" revision="">Pour gérer les objets en attente</A></p></li>
+<li><p><A  HREF="c-purgelgclass-p.htm" revision="">Pour éliminer des classements</A></p></li>
+<li><p><A  HREF="c-purgeclass-p.htm" revision="">Pour éliminer de la base de données certains classements rejetés</A></p></li>
+<li><p><A  HREF="c-otini-bg.htm" revision="">Paramètres du fichier opentext.ini pour Classements</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

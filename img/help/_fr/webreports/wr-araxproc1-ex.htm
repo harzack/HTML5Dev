@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Cas 1 - Mise à jour d'une vue personnalisée avec un WebReport</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-araxproc1-ex.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Exemples AJAX';
+          header.title2 = 'Cas 1 - Mise à jour d\'une vue personnalisée avec un WebReport';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID18366"></A>Il a toujours été possible d'utiliser un IFRAME pour exécuter un WebReport dans une vue personnalisée. Cette procédure était et est toujours relativement simple à réaliser en utilisant le code suivant dans une vue personnalisée : <TT CLASS="literal">&lt;IFRAME SRC="?func=ll&amp;objId=xyz&amp;objAction=RunReport"&gt;&lt;/IFRAME&gt;</TT>, </P>
+<P><A NAME="TMPID18368"></A>où <TT CLASS="literal">xyz</TT> est l'ID de l'objet du WebReport que vous voulez exécuter dans l'IFRAME. Cette méthode a ses limites, mais elle est très simple et peut être utilisée à bon escient. </P>
+<P><A NAME="TMPID18370"></A>Une approche plus flexible consiste à utiliser les fonctions Ajax associées aux WebReports. Les fonctions vous permettent d'appeler un WebReport à partir d'une vue personnalisée ou d'un autre WebReport et d'utiliser les données renvoyées pour mettre à jour la page actuelle de manière dynamique. Vous trouverez ci-dessous un exemple simple de ce qui peut être utilisé dans une vue personnalisée pour la mettre à jour de manière dynamique avec les informations d'un WebReport : </P><A NAME="AEN17611"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="/&lt;your support dir&gt;/webreports/library/ajax.js"&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT&gt;
+  updatePage( 1234, 'customView' );
+&lt;/SCRIPT&gt;</PRE
+>
+<P class="before-ul"><A NAME="TMPID18372"></A>Cette simple partie de code est constituée des éléments suivants : </P><A NAME="AEN17613"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17614"></A><A NAME="TMPID18375"></A>Un élément HTML DIV avec un ID « customView », non visible dans le code ci-dessus. Cet élément est inséré par Content Server et inclut l'ensemble de la vue personnalisée. Ce code utilise Ajax pour mettre à jour les contenus de cette balise DIV. Si vous souhaitez étudier la balise DIV, vous devez afficher la source dans votre navigateur Web et chercher dans « customView ». Notez qu'il n'est pas nécessaire d'utiliser une balise DIV, tout élément HTML pour lequel l'attribut <TT CLASS="literal">innerHTML</TT> est inscriptible peut être utilisé. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17620"></A><A NAME="TMPID18381"></A>Une référence de fichier à inclure JavaScript qui contient le code permettant d'émettre et de renvoyer la requête Ajax. Notez que la balise <TT CLASS="literal">[LL_REPTAG_LIBPATH /]</TT> renvoie le chemin vers un dossier sur le serveur hébergeant Content Server qui contient le fichier de bibliothèque <TT CLASS="filename">ajax.js</TT>. Cependant, puisque nous référençons le fichier à inclure à partir d'une vue personnalisée, nous devons utiliser un chemin complet. Dans un WebReport, nous aurions seulement besoin de la balise et du nom du fichier. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17625"></A><A NAME="TMPID18386"></A>L'élément suivant est un appel de la fonction bibliothèque updatePage(). Cette fonction comprend deux paramètres. Le premier est l'ID d'objet du WebReport que nous utilisons pour récupérer les données supplémentaires. Nous pourrions utiliser une constante WebReport, qui deviendra un ID d'objet si nous effectuons l'appel depuis un autre WebReport. Le second paramètre est l'ID de l'élément HTML que nous souhaitons mettre à jour. Dans ce cas, nous mettons à jour une vue personnalisée et nous savons que toutes les vues personnalisées sont incluses dans une balise DIV avec ID, « customView » ; voilà ce que nous allons mettre à jour, vous remarquerez que « c » est inscrit en minuscules et « V » en majuscules, car JavaScript est sensible à la casse. </P></LI></UL>
+<P><A NAME="TMPID18390"></A>A ce stade, nous avons un dossier et nous mettons à jour sa vue personnalisée grâce aux données provenant d'un WebReport. Si les informations fournies dans la vue personnalisée sont dynamiques, elles ne sont pas contextuelles. Nous pourrions aller plus loin avec cet exemple et rendre les informations affichées dans la vue personnalisée pertinentes pour le dossier actuel. De ce fait, nous pouvons utiliser un WebReport géré de manière centralisée pour fournir des informations dynamiques spécifiques à chaque dossier. Il serait par exemple possible d'afficher les informations relatives à chaque catégorie de dossiers dans une vue personnalisée propre. Pour ce faire, nous devons transmettre un paramètre supplémentaire au WebReport, afin de récupérer les informations relatives à la catégorie pertinentes pour ce dossier. Voici un exemple de ce à quoi pourrait ressembler l'appel de updatePage() mis à jour : </P><A NAME="AEN17631"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT&gt;
+  updatePage( 1234, 'customView', '&amp;folderid=' + getURLParm( 'objId' ) );
+&lt;/SCRIPT&gt;</PRE
+>
+<P><A NAME="TMPID18392"></A>La différence entre cet exemple et le précédent est un troisième paramètre facultatif <TT CLASS="literal">folderid</TT>, qui peut être utilisé par le rapport Ajax pour récupérer les informations spécifiques au dossier dans lequel nous nous trouvons. La fonction <TT CLASS="literal">getURLParm()</TT> accepte un nom de paramètre et renvoie la valeur associée à ce paramètre dans l'URL actuelle. Dans l'exemple ci-dessus, nous obtiendrions quelque chose comme <TT CLASS="literal">updatePage( 1234, 'customView', '&amp;folderid=5678' )</TT>. Ce point est illustré par le diagramme ci-dessous. </P>
+<P><IMG SRC="image038.png"></P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF60"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes : </B></P><A NAME="AEN17638"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17639"></A><A NAME="TMPID18400"></A>Si vous exécutez le WebReport Ajax seul, tout ce que vous voyez dans le navigateur sera renvoyé vers le rapport principal. N'oubliez donc pas d'utiliser <TT CLASS="literal">[LL_WEBREPORT_EXCLUDEHTML /]</TT> pour désactiver les en-têtes, pieds de page et fichiers à inclure standard Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17643"></A><A NAME="TMPID18404"></A>Nous avons appelé cette démonstration un exemple Ajax, mais ce n'est pas véritablement le cas : nous n'avons pas modifié le type mime de destination, il n'existe donc pas de composant XML. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17645"></A><A NAME="TMPID18406"></A>Si les fonctions susmentionnées ont été incluses pour aider l'utilisateur moyen à obtenir des résultats aussi rapidement que possible, des utilisateurs plus expérimentés pourraient aisément développer leurs propres fonctions personnalisées pour obtenir le même résultat. </P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

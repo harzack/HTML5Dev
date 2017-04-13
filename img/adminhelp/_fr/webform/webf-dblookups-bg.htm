@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWFM100500-H-AGD-FR">
+<META name="PiXprocLocator" content="webform">
+<META mancondkey="lleswba-h-agd"><title>Gestion des consultations de base de données sécurisées</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'webf-dblookups-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administration de Web Forms';
+          header.title2 = 'Gestion des consultations de base de données sécurisées';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID157"></A>Vous pouvez utiliser les consultations de base de données sécurisées pour créer une instruction SQL pouvant être exécutée en réponse à l'action d'un utilisateur sur une vue HTML Web Form.</P>
+<P><A NAME="TMPID158"></A>Une consultation nécessite une connexion de base de données Web Forms sécurisée. Cette connexion définit la base de données sur laquelle l'instruction SQL est exécutée. La connexion de base de données sécurisée doit d'abord être créée.</P>
+<P><A NAME="TMPID160"></A>L'<B CLASS="GUILABEL">instruction SQL à exécuter</B> définit l'instruction SQL qui sera exécutée dans la connexion de base de données spécifiée et peut éventuellement accepter des paramètres issus de la vue HTML Web Form. Pour définir les valeurs récupérées du formulaire de l'instruction SQL, utilisez la syntaxe de définition SQL standard en ajoutant <TT CLASS="LITERAL">:A&lt;n&gt;</TT> à l'instruction SQL pour représenter le paramètre. Par exemple, <TT CLASS="LITERAL">:A1</TT> sera remplacé par la valeur du premier paramètre et <TT CLASS="LITERAL">:A-2</TT> par la valeur du deuxième paramètre.</P>
+<P><A NAME="TMPID165"></A>Les consultations de base de données sécurisées peuvent être configurées dans la page <B CLASS="GUILABEL">Gestion des consultations de base de données sécurisées</B> de la section <B CLASS="GUILABEL">Administration des consultations de bases de données des formulaires Web</B> en ajoutant un élément de consultation de base de données Web Forms. Si vous cochez la case <B CLASS="GUILABEL">Résultat du filtre basé sur les autorisations</B>, l'<B CLASS="GUILABEL">instruction SQL à exécuter</B> doit inclure les colonnes <B CLASS="GUILABEL">DataID</B>, <B CLASS="GUILABEL">OwnerID</B> et <B CLASS="GUILABEL">PermID</B> du tableau DTree dans une base de données Content Server. Avec ces trois colonnes, la recherche s'effectue et seules les lignes pour lesquelles l'utilisateur actuel bénéficie d'une <B CLASS="GUILABEL">Visualisation de l'accès</B> sont renvoyées dans les données de sortie. Les lignes pour lesquelles l'utilisateur actuel ne bénéficie pas d'une <B CLASS="GUILABEL">Visualisation de l'accès</B> sont supprimées des données de sortie.</P>
+<P><A NAME="TMPID176"></A>Le <B CLASS="GUILABEL">Nom</B> doit être unique et la valeur du <B CLASS="GUILABEL">Nom</B> doit être spécifiée dans le JavaScript de la vue HTML Web Form afin de préciser la recherche à exécuter. <B CLASS="GUILABEL">Nom</B>, <B CLASS="GUILABEL">Description</B>, <B CLASS="GUILABEL">Catégories</B> et <B CLASS="GUILABEL">Créer dans</B> sont des paramètres standard qui peuvent être utilisés lors de l'ajout de tout élément à Content Server.</P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="webf-dblookups-p.htm" revision="">Pour créer une consultation de base de données</A></p></li>
+<li><p><A  HREF="webf-listdblookups-p.htm" revision="">Pour modifier les propriétés de consultation de Web Forms</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

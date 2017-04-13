@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Ajout de règles de contrôle de flux de données</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-setdflowcntrlrls-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion des règles de contrôle';
+          header.title2 = 'Ajout de règles de contrôle de flux de données';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID8420"></A>Les règles de contrôle de flux de données gèrent les flux de données de votre site Content Server. Elles vous permettent de définir l'état ou la condition que les flux de données peuvent rencontrer et d'associer certaines actions à ces conditions. Par exemple, vous pouvez créer une règle de contrôle de flux de données qui ordonne à Content Server d'arrêter le flux et d'envoyer un e-mail d'alerte relatif aux objets système lorsque des erreurs surviennent dans un processus de flux de données particulier.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF162"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID8424"></A><B CLASS="note">Note : </B><BR>Content Server envoie des e-mails d'alerte relatifs aux objets système aux destinataires spécifiés sur la page Configurer l'envoi d'e-mails d'alerte relatifs aux objets système. Pour plus d'informations, reportez-vous à la rubrique <span><A href="../websovmgmt/sov-cnfsoaed-p.htm">Pour activer la recherche d'erreurs et l'envoi d'e-mails</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID8427"></A>Vous pouvez créer des règles de contrôle de flux de données basées sur le nombre de messages IPool d'un flux de données, le temps qu'un flux de données reste inactif ou bloqué, les erreurs de processus d'un flux de données ou la quantité d'espace disque disponible sur l'ordinateur où est exécuté le flux de données. </P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF163">Nombre de messages</A></P>
+<P><A NAME="TMPID8429"></A>Une règle de contrôle Nombre de messages démarre ou arrête une alimentation ou un lecteur IPool et envoie des e-mails d'alerte relatifs aux objets système lorsque le nombre de messages IPool d'un flux de données est supérieur ou inférieur à un nombre spécifié. Par exemple, si vous voulez que Content Server envoie un message d'information lorsque le nombre de messages IPool dépasse 200 dans une alimentation iPool, vous pouvez créer une règle de contrôle qui identifie cette condition.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF164">Flux de données discrets</A></P>
+<P><A NAME="TMPID8432"></A>Une règle de contrôle Flux de données silencieux démarre ou arrête une alimentation ou un lecteur IPool et envoie des e-mails d'alerte relatifs aux objets système lorsqu'un flux de données reste silencieux (c'est-à-dire qu'il ne reçoit aucun message IPool) pendant un certain temps. Les flux de données silencieux sont des flux de données dont les processus s'exécutent normalement et ne contiennent pas de messages IPool. Par exemple, si vous voulez que Content Server envoie un message d'erreur lorsqu'un flux de données ne contient aucun message IPool pendant 30 minutes, vous pouvez créer une règle de contrôle qui identifie cette condition.</P>
+<P><A NAME="TMPID8434"></A>Cette règle de contrôle est particulièrement utile pour les flux de données comportant un niveau faible, comme les flux de données d'aide, car elle vous permet de fermer automatiquement les flux de données qui ne sont plus actifs. Vous pouvez également utiliser cette règle de contrôle de flux de données pour signaler des problèmes dans un flux de données comportant un volume élevé.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF165">Flux de données bloqués</A></P>
+<P><A NAME="TMPID8436"></A>Une règle de contrôle Flux de données bloqué arrête une alimentation IPool ou le flux de données et envoie des e-mails d'alerte relatifs aux objets système lorsqu'un flux de données est bloqué pendant un certain temps. Les flux de données bloqués sont des flux de données dont les processus s'exécutent, mais ne traitent pas les messages IPool reçus par le flux de données. Par exemple, si vous voulez que Content Server envoie un message d'erreur grave et arrête l'alimentation IPool lorsqu'un flux de données est bloqué pendant plus de six heures, vous pouvez créer une règle de contrôle qui identifie ces conditions.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF166">Erreur de processus dans le flux de données</A></P>
+<P><A NAME="TMPID8439"></A>Une règle de contrôle Erreur du processus dans le flux de données arrête le flux de données et envoie des e-mails d'alerte relatifs aux objets système lorsque des erreurs surviennent pendant l'exécution de l'un des processus du flux de données. Si une erreur de processus se produit, un message décrivant la condition d'erreur spécifique s'affiche dans l'onglet <B CLASS="guilabel">Infos spécifiques</B> de la page Propriétés du processus de flux de données correspondant. Vous pouvez fonder les règles de contrôle de flux de données sur l'existence d'erreurs de processus dans un flux de données, mais vous ne pouvez pas les fonder sur une erreur de processus spécifique.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF167">Espace disque</A></P>
+<P><A NAME="TMPID8442"></A>Une règle de contrôle Espace disque démarre ou arrête une alimentation IPool, un lecteur IPool ou le flux de données et envoie des e-mails d'alerte relatifs aux objets système lorsqu'une certaine quantité d'espace disque est disponible. Par exemple, si vous voulez arrêter un lecteur IPool et envoyer un message d'avertissement lorsqu'une certaine quantité d'espace disque n'est plus disponible, vous pouvez créer une règle de contrôle chargée d'identifier ces conditions.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-cntrlipool-p.htm" revision="">Pour ajouter une règle de contrôle basée sur des messages IPool</A></p></li>
+<li><p><A  href="../websystemobj/wbs-cntrlrlqdflw-p.htm" revision="">Pour ajouter une règle de contrôle basée sur des flux de données silencieux</A></p></li>
+<li><p><A  href="../websystemobj/wbs-cntrlsdflw-p.htm" revision="">Pour ajouter une règle de contrôle basée sur des flux de données bloqués</A></p></li>
+<li><p><A  href="../websystemobj/wbs-cntrlrldspc-p.htm" revision="">Pour ajouter une règle de contrôle basée sur l'espace disque</A></p></li>
+<li><p><A  href="../websystemobj/wbs-cntrlperr-p.htm" revision="">Pour ajouter une règle de contrôle basée sur des erreurs de processus</A></p></li>
+<li><p><A  href="../websystemobj/wbs-toeditcntrlrl-p.htm" revision="">Pour modifier une règle de contrôle</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Sauvegarde et restauration des index</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-ibrbackupoverview-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion de la recherche';
+          header.title2 = 'Sauvegarde et restauration des index';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID10150"></A>L'index d'une source de données permet aux utilisateurs Content Server de rechercher des éléments dans cette source de données. Si un index a été supprimé ou si vous pensez que son contenu est corrompu, vous pouvez le recréer en éliminant son flux de données et en réindexant sa source de données. Cependant, dans le cas d'une source de données importante, telle que l'espace de travail Entreprise de Content Server, les opérations d'élimination et de réindexation peuvent prendre du temps. Nous vous conseillons donc de sauvegarder régulièrement vos index. Les sauvegardes d'index vous permettent de restaurer un index tel qu'il était auparavant sans avoir à effectuer une réindexation complète. Les opérations de sauvegarde et de restauration agissant uniquement sur l'index, elles sont beaucoup plus rapides que la réindexation d'une source de données importante.</P>
+<P><A NAME="TMPID10153"></A>Content Server sauvegarde un index en copiant tous les fichiers nécessaires de l'emplacement de l'index dans un répertoire de destination. Vous pouvez ensuite utiliser le logiciel de sauvegarde de votre société pour effectuer une copie de sauvegarde du répertoire de destination. Lorsque vous restaurez l'index, vous copiez les fichiers appropriés dans un répertoire et indiquez cet emplacement au processus de restauration.</P>
+<P class="before-ul"><A NAME="TMPID10155"></A>Dans Content Server, il existe deux types de sauvegarde que vous pouvez utiliser en même temps :</P><A NAME="AEN9433"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9434"></A><A NAME="TMPID10159"></A><I CLASS="emphasis">Complet </I>: Une sauvegarde de type « Complet » permet d'enregistrer l'intégralité de l'index dans un répertoire de destination. Toute sauvegarde existant précédemment dans cet emplacement est écrasée. Vous ne pouvez conserver qu'une seule sauvegarde de ce type au même emplacement pour un même index.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9437"></A><A NAME="TMPID10162"></A><I CLASS="emphasis">Différentiel </I>: Une sauvegarde de type « Différentiel » permet d'enregistrer uniquement les données qui ont changé dans l'index depuis la sauvegarde précédente. Dans la plupart des cas, cela signifie que ce type de sauvegarde nécessite moins d'espace disque que la sauvegarde de type « Complet » ; cependant, Content Server fusionnant à intervalle régulier, cela n'est pas toujours le cas. Supposons par exemple qu'il existe quatre fragments d'index lorsque vous effectuez votre première sauvegarde complète. La sauvegarde complète enregistre les quatre fragments d'index. Supposons ensuite qu'une opération de fusion a lieu. Vous avez alors un fragment d'index qui contient les quatre fragments d'index précédents. Si vous effectuez une sauvegarde différentielle à ce moment-là, le fragment d'index restant est enregistré, mais il nécessitera peut-être autant, voire plus, d'espace disque que la sauvegarde complète précédente.</P>
+<DIV title="Fusion et sauvegarde différentielle" CLASS="figure">
+<P><A NAME="INCRFRAGS"></A><IMG alt="Fusion et sauvegarde différentielle"  src="../../../otadmin/incrfrags.gif"></P>
+<P CLASS="figure" ALIGN="LEFT"><B>Figure 1-4 : Fusion et sauvegarde différentielle</B></P></DIV></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF199">Mise en place d'une stratégie de sauvegarde</A></P>
+<P><A NAME="TMPID10169"></A>Pour profiter pleinement des fonctions de sauvegarde et de restauration, vous devez élaborer une stratégie qui déterminera la fréquence et les types de sauvegarde qui sont appropriés pour votre site. Pour la plupart des sites, OpenText recommande de planifier des sauvegardes complètes moins régulièrement et des sauvegardes différentielles plus régulièrement. Vous pouvez par exemple planifier une sauvegarde complète une fois par semaine et des sauvegardes différentielles tous les soirs.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF200">Automatisation des sauvegardes d'index</A></P>
+<P><A NAME="TMPID10172"></A>Un gestionnaire de sauvegarde vous permet de programmer des processus de sauvegarde automatisés afin de mettre en place une stratégie de sauvegarde. Un gestionnaire de sauvegarde est un dossier Content Server spécial contenant des processus de sauvegarde planifiés qui sont associés à une source de données spécifique. Dans le gestionnaire de sauvegarde, vous pouvez créer, modifier ou supprimer des processus de sauvegarde programmés. Avant de pouvoir sauvegarder l'index d'une source de données, cette dernière doit disposer d'un gestionnaire de sauvegarde. Si la source de données n'en a pas, vous devez en créer un.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF201">Sauvegarde manuelle des index</A></P>
+<P><A NAME="TMPID10175"></A>Vous pouvez à tout moment démarrer des processus de sauvegarde de façon manuelle à l'aide de l'Assistant de sauvegarde, à condition qu'aucun autre processus de sauvegarde ne soit en cours d'exécution sur la source de données que vous voulez sauvegarder. Si vous essayez de démarrer de façon manuelle un processus de sauvegarde sur une source de données qui ne dispose pas de gestionnaire de sauvegarde, Content Server vous invite à en créer un.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF202"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10178"></A><B CLASS="note">Note : </B><BR>OpenText vous recommande d'automatiser les sauvegardes d'index.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF203">Affichage de l'historique des sauvegardes</A></P>
+<P><A NAME="TMPID10181"></A>Si vous voulez voir les sauvegardes précédemment effectuées sur une source de données, vous pouvez consulter l'historique des sauvegardes.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF204">Restauration des index</A></P>
+<P><A NAME="TMPID10183"></A>Si un index est endommagé ou corrompu et que vous l'avez sauvegardé, vous pouvez utiliser l'Assistant de restauration pour rétablir l'index tel qu'il était au moment de la sauvegarde la plus récente. Vous pouvez ensuite démarrer le processus d'extraction ou producteur pour cette source de données afin d'extraire toutes les modifications de la base de données depuis la dernière sauvegarde.</P>
+<P><A NAME="TMPID10184"></A>Avant de pouvoir restaurer un index, vous devez récupérer les sauvegardes de cet index depuis le référentiel de sauvegarde de votre société et copier ces fichiers dans un emplacement temporaire. L'Assistant de restauration de Content Server replace ensuite ces fichiers dans l'emplacement principal de l'index. Vous devez également arrêter les processus d'indexation et de recherche ainsi que le gestionnaire de sauvegarde avant de restaurer un index. Cela permet d'éviter qu'une sauvegarde automatique (programmée) se produise lors de l'opération de restauration.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../otadmin/ota-ibrautomate-bg.htm" revision="">Automatisation des sauvegardes d'index</A></p></li>
+<li><p><A  href="../otadmin/ota-ibrmanual-bg.htm" revision="">Sauvegarde manuelle des index</A></p></li>
+<li><p><A  href="../otadmin/ota-ibrviewbackuphist-bg.htm" revision="">Affichage de l'historique des sauvegardes</A></p></li>
+<li><p><A  href="../otadmin/ota-ibrrestoreindex-bg.htm" revision="">Restauration des index</A></p></li>
+<li><p><A  href="../otadmin/ota-ibrspecinfbackupmgr-rf.htm" revision="">Utilisation d'un gestionnaire de sauvegarde</A></p></li>
+<li><p><A  href="../otadmin/ota-ibrspecinfbackup-rf.htm" revision="">Utilisation d'un processus de sauvegarde</A></p></li>
+<li><p><A  href="../otadmin/ota-datetimevar-rf.htm" revision="">Variables Date et Heure</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

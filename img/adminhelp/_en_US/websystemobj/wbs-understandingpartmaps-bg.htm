@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Working with Partition Maps</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-understandingpartmaps-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Partitions';
+          header.title2 = 'Working with Partition Maps';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID9445"></A>A <I CLASS="emphasis">partition map</I> is a representation of a data source's Indexing and Searching system. Viewing a partition map allows you to see all of the components in an Indexing and Searching system (for example, partitions, Index Engines, and Search Engines), therefore making it an effective way to administer the system. For example, you can monitor the status of each component simultaneously, which helps you to maintain the performance of indexing and searching at your site.</P>
+<P><A NAME="TMPID9447"></A>From a partition map, you can monitor the space being used at each partition and the current mode of the partition, which helps you to know when new partitions are required. The space being used is listed as a percentage full value and represents the amount of disk or memory space (whichever is higher) currently occupied by the content and metadata of indexed documents. The mode indicates whether the partition's index is still accepting new items for indexing (Read/Write), accepting updates to existing indexed items only (Update Only), or not accepting any further updates (Read Only).</P>
+<table CLASS="warning">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="warning" ALIGN="CENTER"><IMG ALT="Warning" SRC="../../images/pi_warning.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9449"></A><B CLASS="warning">Warning</B><BR>When you change a partition to Read Only, the Index Engine for that partition shuts itself down and will not index any items that are either updated or deleted.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF170"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9451"></A><B CLASS="note">Note: </B><BR>OpenText recommends that normally you do not use Read Only and Update Only modes.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID9453"></A>If you decide to re-index an item by modifying it in the GUI or by re-inserting it into <I CLASS="emphasis">dtreenotify</I>, the Update Distributor will ping all running Index Engines to check if the item already exists. Since the Index Engine for the Read Only partition is shut down, it will not return a response to the ping. The Update Distributor will assume that this item is new and will add it to another Read/Write partition and create duplicate items. </P>
+<P><A NAME="TMPID9455"></A>If items in your Content Server system will be updated through the user interface or the SDK then you should not use Read Only partition mode. For example, when a Content Server system is used for litigation purposes, an index must remain unmodified, as in an email archiving system.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF171"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9459"></A><B CLASS="note">Note: </B><BR>For information about the amount of disk or memory space to be allocated to the content and metadata of indexed documents, see <span><A href="../websystemobj/wbs-configpartitions-bg.htm">Configuring Partitions</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID9461"></A>You can also configure the properties of each partition map component from a partition map, and you can add and delete components. If you need to perform maintenance on an Indexing and Searching system, you can stop and then start or restart the partition map, which stops and then starts all its indexing and searching processes. Stopping indexing and searching processes stops all indexing and searching for a data source. When you want to customize indexing and searching behavior for an Indexing and Searching system, you configure a partition map.</P>
+<P><A NAME="TMPID9462"></A>When you create a data source's index using Content Server Templates, a partition map is created for the data source automatically. If you create a data source's index by creating the system objects that are associated with it individually, you add a partition map yourself. For more information about adding index components individually, see <span><A href="../websystemobj/wbs-creindexindiv-so.htm">Creating Index Components Individually</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF172">Administering Partition Map Components</A></P>
+<P class="before-ul"><A NAME="TMPID9466"></A>Administering processes also involves monitoring the status of each process. A process can have one of the following statuses: </P><A NAME="AEN8747"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8748"></A><A NAME="TMPID9469"></A><B CLASS="highlight">Running</B>, which is indicated by a blue check mark.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8751"></A><A NAME="TMPID9472"></A><B CLASS="highlight">Idle</B> (not running), which is indicated by a gray check mark.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8754"></A><A NAME="TMPID9475"></A><B CLASS="highlight">Processing</B> or <B CLASS="highlight">Waiting</B>, which is indicated by a yellow check mark.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8758"></A><A NAME="TMPID9479"></A><B CLASS="highlight">Error</B>, which is indicated by a red X.</P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF173">Configuring Partition Maps</A></P>
+<P><A NAME="TMPID9482"></A>Configuring a partition map involves specifying parameters that customize how indexing and searching operates for a data source's index. For example, you can specify the file cleanup interval, which allows unused files in a partition's indexes to be deleted automatically. You can also specify rules that determine which documents are indexed. Specifically, you set a number of parameters that detect whether documents have a large number of unique words. If a document has too many unique words, the document will not be indexed. Specifying parameters to prevent certain documents from being indexed can improve your system's performance because the wordlist that your system maintains will be smaller.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF174">Configuring Index Merging</A></P>
+<P><A NAME="TMPID9484"></A>When you configure a partition map, you can also customize the merge operations for a data source's index. Index merging allows <I CLASS="emphasis">subindexes</I> (subdirectories in a partition's index) to be merged, which reduces the size of each partition's index. You can configure index merging operations for your site to prevent them from occurring unnecessarily. Periodically, however, Content Server merges subindexes to remove deleted data from the index, which can optimize search performance. You can specify the number of subindexes that cause a merge operation to occur. If the number of subindexes exceeds the target number, a merge occurs between the smallest consecutive grouping of two or three subindexes. You can also specify the oldest creation date and the merge ratio, which also determine which subindexes are candidates for a merge. For example, if the subindexes' creation dates are older than a specific date, they are considered for a merge so that deleted data can be removed. In addition, if the merge ratio is set to <TT CLASS="literal">3</TT> (which is equivalent to 3:1) and some combination of the subindexes in a consecutive grouping is at least one third of the size of the largest subindex, the grouping is considered for a merge. Merges of three subindexes (at most) occur between the subindexes that have the largest combined file size first. Only one merge per partition occurs at a time.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-toviewpartmaps-p.htm" revision="">To View a Partition Map</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

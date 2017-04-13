@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-EN-1">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>HTTP Request/Response Exchanges</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-httpexchanges-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Message Fields and Formats';
+          header.title2 = 'HTTP Request/Response Exchanges';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1039"></A>Every HTTP request or response has a content type that determines the basic format of the data it carries. Different types of XML Workflow Interchange actions support different content types for exchanges.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="HTTPHTMLFORMDATA">HTML Form Data Exchanges </A></P>
+<P><A NAME="TMPID1055"></A>HTML sending actions send requests using the multipart/form-data content type, as defined in Internet Request for Comments 1867. The request contains data fields for an initiation message or task edit message as determined by the action's message type and customization parameters.</P>
+<P class="before-ul"><A NAME="TMPID1056"></A>There are three possible replies to this type of request:</P><A NAME="AEN1044"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1045"></A><A NAME="TMPID1059"></A>HTTP error status code (between 400 and 599) with a status message to indicate an error.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1047"></A><A NAME="TMPID1061"></A>Successful status code (between 200 and 299) with no data or with HTML data to indicate success.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1049"></A><A NAME="TMPID1063"></A>Successful status code and multipart/form-data content type used to indicate success and update fields in the initiating task. This type of response is an HTML OK message and supports the same fields in the same format as the request.</P></LI></UL>
+<P><A NAME="TMPID1064"></A>HTML accepting actions are designed to process requests from HTML sending actions and will accept POST requests using the multipart/form-data content type. The action's message type and customization parameters determine which fields are processed. Any fields that are not processed are ignored.</P>
+<P class="before-ul"><A NAME="TMPID1065"></A>An HTML accepting action generates one of the following responses:</P><A NAME="AEN1053"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1054"></A><A NAME="TMPID1068"></A>HTTP error status with a status message to indicate an error.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1056"></A><A NAME="TMPID1070"></A>OK status (code 200) and HTML data to indicate success.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1058"></A><A NAME="TMPID1072"></A>OK status (code 200) and multipart/form-data to indicate success and return new information to the caller. This sort of response is returned from successfully accepted initiation messages to provide the caller with information about the Workflow that is initiated.</P></LI></UL>
+<P><A NAME="TMPID1073"></A>HTML accepting actions also accept GET requests that contain no data. In response, they return multipart/form-data containing the current values for most of the fields filled in with a POST. This is the kind of request a Web browser performs if you click the URL link. The browser downloads the form data, which you can use as a convenient template for a future upload.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="HTTPXMLEXCHANGES">XML Exchanges</A></P>
+<P><A NAME="TMPID1081"></A>XML sending actions send requests using the text/xml content type, indicating that the data is an XML document conforming to the XML 1.0 Recommendation (http://www.w3.org). The request is an XML initiation message or task edit message formatted according to any customized parameters of the action.</P>
+<P class="before-ul"><A NAME="TMPID1082"></A>There are three possible replies to this type of request:</P><A NAME="AEN1069"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1070"></A><A NAME="TMPID1085"></A>HTTP error status code (between 400 and 599) with a status message to indicate an error. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1072"></A><A NAME="TMPID1087"></A>Successful status code (between 200 and 299) with no data or with non-XML data to indicate success. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1074"></A><A NAME="TMPID1089"></A>Successful status code and text/xml content type with an XML error message or an XML OK message. An error message indicates a processing failure and can include a status string describing the error. An OK message indicates success and updates fields in the calling task. The action accepts the same XML format for responses that it generates for the request, as determined by its message type and customization parameters. </P></LI></UL>
+<P><A NAME="TMPID1090"></A>XML accepting actions are designed to process requests from XML sending actions. They accept POST requests using the text/xml content type carrying an XML message in the format determined by the action's message type and customization parameters. An XML accept action returns either an HTTP error condition, an XML error message to indicate failure, or an XML OK message to indicate success.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

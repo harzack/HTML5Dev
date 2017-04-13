@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESFRM100500-H-UGD-EN-1">
+<META PiXprocLocator="form">
+<title>Defining a Form</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webwfp/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/formwfpaint/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'f-add-form-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Using Forms';
+          header.title2 = 'Defining a Form';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID975"></A>You can add a Form to a container item when you want to make a Form available to users.</P>
+<P><A NAME="TMPID978"></A>Before you can add a Form, you must define a Form Template. For more information about defining Form Templates, see <span><A HREF="f-add-template-bg.htm">Defining a Form Template</A></span>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF15"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID984"></A><B CLASS="NOTE">Note: </B><BR>Required fields are honored only for Forms with a submission mechanism.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="REVSUB">Choosing Revision and Submission Mechanisms</A></P>
+<P class="before-ul"><A NAME="TMPID987"></A>When you add a Form, you must specify revision and submission mechanisms. A revision mechanism provides interim data storage so that you can reopen a previously submitted Form and continue to edit it later. A submission mechanism provides permanent data storage or processing and resets the Form's fields to their default values for the next time the Form is opened. You must select at least one of the following mechanism strategies for each Form:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN984"></A><A NAME="TMPID994"></A><A HREF="f-add-form-bg.htm#F-REVISIONMECH">Revision mechanism only</A></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN987"></A><A NAME="TMPID997"></A><A HREF="f-add-form-bg.htm#F-SUBMISSIONMECH">Submission mechanism only</A></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN990"></A><A NAME="TMPID1000"></A><A HREF="f-add-form-bg.htm#F-REVISIONSUBMISSIONMECH">Revision and submission mechanism</A></P></LI></UL>
+<P><A NAME="TMPID1002"></A>After you choose a mechanism strategy, you must select the type of mechanisms you want to use.</P>
+<P><A NAME="TMPID1003"></A>The following flowchart demonstrates how to determine the revision and submission options required for a Form.</P>
+<DIV title="How to determine the revision and submission options required for a 'Form'" CLASS="FIGURE">
+<P><A NAME="FIG-DETREVFRM"></A><IMG alt="How to determine the revision and submission options required for a 'Form'" SRC="form.gif"></P>
+<P CLASS="FIGURE" ALIGN="LEFT"><B>Figure 1-1: How to determine the revision and submission options required for a Form</B></P></DIV>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF16"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1010"></A><B CLASS="NOTE">Note: </B><BR>The availability of the SQL Table options depends on the Form Template on which the Form is based. For more information about defining Form Templates, see <span><A HREF="f-add-template-bg.htm">Defining a Form Template</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="F-REVISIONMECH">Using a Revision Mechanism Only</A></P>
+<P><A NAME="TMPID1017"></A>If you select a revision mechanism, you can store interim Form data. The next time a user opens a Form after having modified it, Content Server displays the previously entered values and allows the user to edit them. Users activate the revision mechanism by clicking the Form button that passes data to Content Server.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="F-SUBMISSIONMECH">Using a Submission Mechanism Only</A></P>
+<P class="before-ul"><A NAME="TMPID1025"></A>If you select a submission mechanism, you can store or process final Form data. After a user modifies and submits a Form, the next time a user opens a Form after having modified and submitted it, Content Server resets its fields and other elements to their default values. Users activate the submission mechanism in one of the following ways:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1020"></A><A NAME="TMPID1032"></A>If the Form has no revision mechanism, by clicking the Form button that passes data to the server (typically <B CLASS="GUILABEL">Save</B>, <B CLASS="GUILABEL">Send</B>, or <B CLASS="GUILABEL">Apply</B>).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1027"></A><A NAME="TMPID1039"></A>If the Form also has a revision mechanism, by clicking the Form's <B CLASS="GUILABEL">Submit</B> link in the <B CLASS="GUILABEL">Actions</B> column.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="F-REVISIONSUBMISSIONMECH">Using a Revisions and Submission Mechanism</A></P>
+<P><A NAME="TMPID1045"></A>If you select both a revision and a submission mechanism, you can store or process both interim and final Form data. Users activate the revision mechanism by clicking the Form button that passes data to the server (typically <B CLASS="GUILABEL">Save</B>, <B CLASS="GUILABEL">Send</B>, or <B CLASS="GUILABEL">Apply</B>).</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF17"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1052"></A><B CLASS="NOTE">Note: </B><BR>Your administrator may create additional custom mechanisms.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="F-CHOOSESUBMISSIONREVISION">Choosing Submission and Revision Mechanism Types</A></P>
+<P class="before-ul"><A NAME="TMPID1055"></A>Depending on your privileges and the Form Template on which your Form is based, you can select the following revision and storage mechanism types:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1046"></A><A NAME="TMPID1060"></A><A HREF="f-add-form-bg.htm#F-CSVERSIONS">Content Server Versions</A></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1050"></A><A NAME="TMPID1064"></A><A HREF="f-add-form-bg.htm#F-SQLTABLE">SQL Table</A></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1053"></A><A NAME="TMPID1067"></A><A HREF="f-add-form-bg.htm#F-INITIATEWORKFLOW">Initiate Workflow</A></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1056"></A><A NAME="TMPID1070"></A><A HREF="f-add-form-bg.htm#F-USERREVISABLERECORDSCS">User Revisable Records (Content Server)</A></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1060"></A><A NAME="TMPID1074"></A><A HREF="f-add-form-bg.htm#F-USERREVISABLERECORDSSQL">User Revisable Records (SQL)</A></P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="F-CSVERSIONS">Using the Content Server Versions Mechanism</A></P>
+<P><A NAME="TMPID1079"></A>Content Server Versions is available as a revision mechanism for any Form. This mechanism stores Form data as Versions of the Form in the Content Server database. Saved Form data is accessible through the Form's <B CLASS="GUILABEL">Versions Info</B> page (similar to Document Versions) but not by LiveReports or external applications. Content Server indexes the saved Form data so that it can be found by Content Server Search. However, you need Administer permission for the Form to see Form data on the <B CLASS="GUILABEL">Search Result</B> page.</P>
+<P><A NAME="TMPID1093"></A>See the <span><A HREF="f-travreq-ex-p.htm">Travel Request Form Example</A></span> and <span><A HREF="f-exprep-ex-p.htm">Expense Report Form Example</A></span> for a demonstration of the Versions mechanism. </P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="F-SQLTABLE">Using the SQL Table Mechanism</A></P>
+<P class="before-ul"><A NAME="TMPID1098"></A>The SQL Table Revision Mechanism is available if the following two conditions are met:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1084"></A><A NAME="TMPID1101"></A>The Form is based on a template that is associated with a database table.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1087"></A><A NAME="TMPID1104"></A>You have the Form Revisable Storage usage privilege.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID1106"></A>SQL Table Submission Mechanism is available if the following two conditions are met:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1092"></A><A NAME="TMPID1109"></A>The Form is based on a template that is associated with a database table.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1095"></A><A NAME="TMPID1112"></A>You have the Form Submittable Storage usage privilege.</P></LI></UL>
+<P><A NAME="TMPID1114"></A>This mechanism stores Form data as records in a Content Server database table. The table is associated with the Form Template on which the Form is based. Saved Form data is accessible by LiveReports and external applications, as well as through the Form's <B CLASS="GUILABEL">Versions Info</B> page (similar to Document Versions). Content Server indexes the saved Form data so that it can be found by Content Server Search. However, you need Administer permission for the Form to view Form data.</P>
+<P><A NAME="TMPID1126"></A>The <span><A HREF="f-tcard-ex-p.htm">Time Card Form Example</A></span>, <span><A HREF="f-survey-ex-p.htm">Survey Form Example</A></span>, and <span><A HREF="f-travreq-ex-p.htm">Travel Request Form Example</A></span> demonstrate the SQL Table mechanism.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="F-INITIATEWORKFLOW">Using the Initiate Workflow Mechanism</A></P>
+<P><A NAME="TMPID1132"></A>The Initiate Workflow mechanism is available as a submission mechanism for any Form. When a user submits a Form that uses the Initiate Workflow mechanism, Content Server initiates a Workflow instance based on a Workflow Map you associate with the Form. The mechanism stores Form data in the Workflow Map's work package. The Form data is accessible in the context of the Workflow only. For more information about Workflow Maps, see <span><XPROC NAME="ExtXrefStart" HREF="lleswfp-h-ugd.wfp-main-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/webwfp/wfp-main-bg.htm">Introducing Workflows</A><XPROC NAME="ExtXrefEnd" HREF="lleswfp-h-ugd.wfp-main-bg" FMT=""></span>.</P>
+<P class="before-ul"><A NAME="TMPID1140"></A>For the Initiate Workflow mechanism to work properly, you must do the following in the Workflow Map:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1125"></A><A NAME="TMPID1143"></A>Enable Forms in the work package.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1128"></A><A NAME="TMPID1146"></A>Add a Form based on the Form Template to the work package.</P></LI></UL>
+<P><A NAME="TMPID1149"></A>For more information about enabling and adding Forms to the Workflow Map work package, see <span><XPROC NAME="ExtXrefStart" HREF="llesfwf-h-ugd.wf-forms-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/formwfpaint/wf-forms-bg.htm">Adding Forms to the Work Package</A><XPROC NAME="ExtXrefEnd" HREF="llesfwf-h-ugd.wf-forms-bg" FMT=""></span>.</P>
+<P class="before-ul"><A NAME="TMPID1152"></A>By default, when users initiate a Workflow, they are required to read instructions and complete optional tasks before the Workflow proceeds. If you want Content Server to initiate the Workflow associated with a Form <I CLASS="EMPHASIS">without</I> requiring an action when a user submits the Form, you must do the following in the Workflow Map's Start step:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1141"></A><A NAME="TMPID1159"></A>Clear the <B CLASS="GUILABEL">Prompt for title at initiation</B> check box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1144"></A><A NAME="TMPID1162"></A>Clear the <B CLASS="GUILABEL">Display at Initiation</B> check box.</P></LI></UL>
+<P><A NAME="TMPID1164"></A>For more information about defining the Start step, see <span><XPROC NAME="ExtXrefStart" HREF="lleswfp-h-ugd.wf-start-step-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/webwfp/wf-start-step-bg.htm">Defining a Start Step</A><XPROC NAME="ExtXrefEnd" HREF="lleswfp-h-ugd.wf-start-step-bg" FMT=""></span>.</P>
+<P><A NAME="TMPID1166"></A>You can also create a custom view of the Form and modify it to provide access to the Workflow <B CLASS="GUILABEL">Attachments</B> page of the Workflow. If the Workflow that is initiated by the Form includes attachments, you can allow Form users to access Workflow Attachments directly from the Form. Form users can perform the same tasks on the Workflow <B CLASS="GUILABEL">Attachments</B> page, such as viewing or adding Documents, that they could if they navigated to the Workflow <B CLASS="GUILABEL">Attachments</B> page in the Workflow. After the user supplies the Form data and submits it, the Documents added or modified in the Workflow Attachments area are copied to the Workflow's <B CLASS="GUILABEL">Attachment</B> page and available within the Workflow. For more information about adding a custom button or displaying the attachments in a frame embedded in the Form, see the <span><XPROC NAME="ExtXrefStart" HREF="llesfrm-cwm.-" FMT="" NO1ST><i>Open Text Forms - Forms Designer's Guide (LLESFRM-CWM)</i><XPROC NAME="ExtXrefEnd" HREF="llesfrm-cwm.-" FMT=""></span>.</P>
+<P><A NAME="TMPID1179"></A>See the <span><A HREF="f-vacreq-ex-p.htm">Vacation Request Form Example</A></span> and <span><A HREF="f-exprep-ex-p.htm">Expense Report Form Example</A></span> for a demonstration of the Initiate Workflow mechanism.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="F-USERREVISABLERECORDSCS">Using the User Revisable Records (Content Server) Mechanism</A></P>
+<P><A NAME="TMPID1185"></A>The User Revisable Records (Content Server) mechanism is available as a submission mechanism for any Form. This mechanism stores Form data as versions of the Form in the Content Server database. Submitted Form data is stored for each user who fills out the Form. The user can retrieve the stored data at a later time and modify it.</P>
+<P><A NAME="TMPID1193"></A>See the <span><A HREF="f-travprof-ex-p.htm">Travel Profile Form Example</A></span> for a demonstration of the User Revisable Records (Content Server) mechanism.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="F-USERREVISABLERECORDSSQL">User Revisable Records (SQL)</A></P>
+<P><A NAME="TMPID1198"></A>The User Revisable Records (SQL) mechanism is available as a submission mechanism for any Form. This mechanism stores Form data as records in a Content Server database table. The table is associated with the Form Template on which the Form is based.</P>
+<P><A NAME="TMPID1204"></A>Saved Form data is accessible by LiveReports and external applications. Content Server indexes the saved Form data so that it can be found by Content Server Search. However, you need Administer permission for the Form to see Form data on the <B CLASS="GUILABEL">Search Result</B> page. Submitted Form data is stored for each user who fills out the Form. The user can retrieve the stored data at a later time and modify it.</P>
+<P><A NAME="TMPID1214"></A>See the <span><A HREF="f-travprof-ex-p.htm">Travel Profile Form Example</A></span> for a demonstration of the User Revisable Records (SQL) mechanism.</P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="f-add-form-p.htm" revision="">To Add a Form</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWDV100500-H-UGD-FR">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webdav">
+<META mancondkey="lleswbd-h-ugd"><title>Clients WebDAV sous Windows XP</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wd-clientsonxp-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation de WebDAV pour la création de contenu';
+          header.title2 = 'Clients WebDAV sous Windows XP';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID614"></A>Il existe deux clients WebDAV différents sous Windows XP. Les deux clients vous permettent de glisser-déposer des fichiers et dossiers de l'Explorateur Windows vers Content Server, mais l'accès à WebDAV depuis Windows XP se fait différemment en fonction du client que vous utilisez. Voici les deux clients WebDAV disponibles sous Windows XP :</P><A NAME="AEN589"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN590"></A><A NAME="TMPID621"></A><TT CLASS="literal">Redirecteur WebDAV</TT>, qui est un pilote de système de fichiers vous permettant d'accéder aux serveurs WebDAV à l'aide de chemins UNC du type \\monhote\livelinkdav. Pour le reste du système, le serveur WebDAV ressemble à n'importe quel lecteur réseau. Vous pouvez mapper des lettres de lecteur et accéder à votre serveur WebDAV depuis des applications qui ne connaissent pas du tout WebDAV.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN597"></A><A NAME="TMPID628"></A><TT CLASS="literal">Dossiers Web</TT>, qui est un client WebDAV identique à celui proposé dans Windows 2000 et Office 2003/2007/2010/2013, vous permet de naviguer dans votre serveur WebDAV depuis l'Explorateur Windows ou Internet Explorer. Il vous permet d'accéder au serveur WebDAV à l'aide d'URL HTTP de WebDAV plutôt qu'avec des chemins UNC.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF13">Utilisation du redirecteur WebDAV</A></P>
+<P class="before-ul"><A NAME="TMPID636"></A>Notez bien les informations suivantes si vous choisissez d'utiliser le redirecteur WebDAV comme client WebDAV :</P><A NAME="AEN609"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN610"></A><A NAME="TMPID641"></A>Il fournit à toutes les applications un accès à WebDAV.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN613"></A><A NAME="TMPID644"></A>Il comporte certains bugs qui limitent sa compatibilité avec de nombreux serveurs WebDAV. Bien que WebDAV 3.1.0 comprenne des solutions de rechange explicites lorsque cela est possible, certaines suites d'opérations peuvent encore échouer et doivent être répétées.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN617"></A><A NAME="TMPID648"></A>Lorsque vous ouvrez un document à l'aide du redirecteur WebDAV, l'application accède au document comme s'il était sur un disque local ou sur un lecteur réseau, sans reconnaître que le document se trouve en réalité à un emplacement distant. Cela peut entraîner des actions inappropriées comme la création de fichiers temporaires dans le même répertoire.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN620"></A><A NAME="TMPID651"></A>Les applications Microsoft Office et quelques applications tierces offrent une bonne prise en charge interne de WebDAV. Elles peuvent communiquer avec les serveurs WebDAV à l'aide d'URL HTTP et savent quel comportement adopter dans ces emplacements distants. Par exemple, elles réserveront un document lorsque vous le modifiez. Lorsque vous ouvrez un document à l'aide du redirecteur WebDAV, ces fonctions ne sont pas activées car l'application ne sait pas que le document est situé sur un serveur WebDAV.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN626"></A><A NAME="TMPID657"></A>Lorsque vous utilisez le redirecteur WebDAV, certaines opérations d'arrière-plan (examen du contenu de tous les documents d'un dossier pour générer des miniatures, par exemple) peuvent entraîner des temps de réponse plus longs, car elles doivent être effectuées sur le réseau.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF14">Utilisation des dossiers Web</A></P>
+<P class="before-ul"><A NAME="TMPID660"></A>Rappelez-vous les informations suivantes si vous choisissez d'utiliser les dossiers Web comme client WebDAV :</P><A NAME="AEN632"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN633"></A><A NAME="TMPID664"></A>Bien que le client Dossiers Web ne fournisse pas de capacités WebDAV à toutes les applications, il s'agit d'un client éprouvé qui comporte peu de bugs et intègre très bien les applications Microsoft Office.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN636"></A><A NAME="TMPID667"></A>Lorsque vous ouvrez un document Microsoft Office via le client Dossiers Web, ce dernier commande à l'application d'ouvrir l'URL HTTP. Comme l'application sait que le document est situé sur un serveur WebDAV, elle le réserve pendant que vous le modifiez et empêche la création de fichiers temporaires dans le même dossier.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN639"></A><A NAME="TMPID670"></A>La navigation via Dossiers Web est efficace. Comme l'Explorateur Windows sait que les dossiers sont situés sur un serveur distant, il limite l'accès à leur contenu pour réduire le trafic sur le réseau. Les opérations qu'il exécute normalement en arrière-plan (examen du contenu de tous les documents d'un dossier pour générer des miniatures, par exemple) ne sont pas effectuées par le client Dossiers Web.</P></LI></UL>
+<P><A NAME="TMPID671"></A>Dans la plupart des cas, le client Dossiers Web est plus approprié que le redirecteur WebDAV pour accéder à WebDAV.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF15">Choix d'un client WebDAV</A></P>
+<P><A NAME="TMPID676"></A>Lorsque vous ouvrez un document Microsoft Office pour le modifier à l'aide de la fonction Modification WebDAV depuis Content Server, l'application est appelée grâce à l'URL HTTP de la même manière qu'elle le serait avec le client Dossiers Web. L'application sait que le document est situé sur un serveur distant et se comporte de manière appropriée dans Content Server.</P>
+<P class="before-ul"><A NAME="TMPID680"></A>Lorsque vous cliquez sur un lien WebDAV, activez un affichage du dossier WebDAV depuis Content Server ou ouvrez un emplacement WebDAV de manière explicite dans l'Explorateur Windows, ce dernier utilise le redirecteur WebDAV si c'est possible et convertit l'URL HTTP en chemin d'accès UNC. Vous ne pouvez pas indiquer de manière explicite à l'Explorateur Windows d'utiliser Dossiers Web à la place du redirecteur WebDAV mais, dans certaines situations, il choisira Dossiers Web automatiquement :</P><A NAME="AEN656"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN657"></A><A NAME="TMPID688"></A>Le redirecteur WebDAV fonctionne uniquement avec HTTP (pas avec HTTPS) sur le port 80 par défaut. Lorsque vous vous connectez à un dossier sur un serveur sécurisé ou sur un serveur utilisant un port différent, l'Explorateur Windows utilise le client Dossiers Web.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN660"></A><A NAME="TMPID691"></A>Le redirecteur WebDAV est mis en œuvre par le service WebClient dans Windows XP. Si ce service est désactivé, le redirecteur WebDAV n'est pas disponible et l'Explorateur Windows utilise le client Dossiers Web à la place.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF16">Désactivation du service WebClient</A></P>
+<P><A NAME="TMPID695"></A>L'administrateur de domaine peut créer un script pour désactiver le service WebClient pour tous les utilisateurs. Toutefois, certaines applications peuvent nécessiter ce service pour fonctionner correctement. Par exemple, le client Web Microsoft Sharepoint requiert explicitement le redirecteur WebDAV pour générer son mode Explorateur de dossiers partagés lorsque c'est possible. Ce mode n'est pas disponible si le service WebClient est désactivé.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

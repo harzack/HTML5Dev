@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<title>Configuring Faceted Browsing</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webdoc/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-fb-configfacsb-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring and Customizing Faceted Browsing';
+          header.title2 = 'Configuring Faceted Browsing';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1568"></A> Faceted Browsing is one of the navigational tools available to your users. It allows users to browse through items in Content Server using groupings of metadata, or facets, to progressively narrow their search. Faceted Browsing is enabled by default and is installed with default facets and document classes defined. As the administrator, you need to assess the usage needs of your users in order to determine how you will customize faceted browsing. This section describes how to configure faceted browsing for all users so that the facets available are relevant to your system's content. It will detail how to configure the sidebar for all users, set up your knowledge managers, and add document classes, facets, facet trees, and columns. For information regarding how to use faceted browsing, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbd-h-ugd.fb-overview-so" FMT="" NO1ST><A  HREF="../../../help/_en_US/webdoc/fb-overview-so.htm">Using Faceted Browsing</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbd-h-ugd.fb-overview-so" FMT=""></span> in the User help.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="FBENABLE">Enabling Faceted Browsing</A></P>
+<P><A NAME="TMPID1576"></A> The administrator decides whether faceted browsing is enabled for all users. Faceted browsing is enabled by default, at install, for your users. It is accessed by users through the <B CLASS="guilabel">Content Filter</B> sidebar.</P>
+<P><A NAME="TMPID1581"></A>For information about enabling and configuring the <B CLASS="guilabel">Content Filter</B> sidebar, see <span><A href="../webadmin/wba-fb-configsb-p.htm">To Configure the Sidebar</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="FBKMENABLE">Configuring Knowledge Managers</A></P>
+<P><A NAME="TMPID1586"></A> The administrator must decide who, in your organization, has sufficient knowledge of your organization's data content to serve as a Knowledge Manager? Only an administrator can define a knowledge manager. The system administrator gives the person designated as a knowledge manager the privileges and permissions necessary to access the Facets Volume so that they can administer the faceted browsing setup. Your Knowledge Manager(s) structure how faceted browsing will function for your organization. A good idea when beginning is to create a Knowledge Manager group in Content Server and then populate that group with the users who will be assigned the Knowledge Manager privilege.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="FBDCENABLE">Configuring Document Classes</A></P>
+<P><A NAME="TMPID1596"></A> Document classes are used as facet data sources. No document class can be deleted if it is being used as a data source for a facet. In the event you attempt to remove a document class that is being used as a data source for a facet, a dialgue box will appear informing you that the document class cannot be deleted.</P>
+<P class="before-ul"><A NAME="TMPID1608"></A>After you have created a document class, you need to configure your document class. A link to the procedure to create and configure a document class can be found below. During the configuration process, you are required to select all MIMETypes that you want to add to your new document class in the <B CLASS="guilabel">Configure MIMEType alias</B> page. These MIMETypes are categorized as follows:</P><A NAME="AEN1448"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1449"></A><B>MIMETypes in use</B></P>
+<P class="nr1"><A NAME="TMPID1613"></A>This is a list of MIMETypes that have already been added to your Content Server system.  Any document, graphic file, or other item that has been added to a location in Content Server has a MIMEType.  That MIMEType is listed in this section.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1454"></A><B>MIMEType Aliases</B></P>
+<P class="nr1"><A NAME="TMPID1618"></A>This is a list of MIMETypes aliases that have already been defined within all document classes.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1457"></A><B>Known MIMETypes</B></P>
+<P class="nr1"><A NAME="TMPID1621"></A>This is a list of all known MIMETypes that have not previously been listed in the <B CLASS="guilabel">MIMETypes in use</B> field.  If a MIMEType appears in this field then it is not a MIMEType of an item added to your Content Server system.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="FBDTENABLE">Configuring the Date Format</A></P>
+<P><A NAME="TMPID1626"></A> Date facets have an auto-traversal with the following levels: Relative, Century, Decade, Year, Month, and Day. The relative date might be <B CLASS="guilabel">yesterday</B> or <B CLASS="guilabel">today</B>. The century, decade, and year dates display as four digit years. The day will display in the format that is set as the short date format on your Content Server installation. The way that the sidebar displays the month and year can be configured by the administrator.</P>
+<P><A NAME="TMPID1641"></A>By default, any date facet will display the month in the format Month Year, where Month is the full name of the month, and Year is the four digit year. You can change this default date format by modifying the [Lang_en_US] section of the<TT CLASS="filename">_home/config/opentext.ini</TT> file.</P>
+<P class="before-ul"><A NAME="TMPID1643"></A>Options available for use are:</P><A NAME="AEN1481"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1482"></A><B>%b</B></P>
+<P class="nr1"><A NAME="TMPID1647"></A>The three-character abbreviated month name. For example: Jan, Feb, Mar.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1485"></A><B>%B</B></P>
+<P class="nr1"><A NAME="TMPID1650"></A>The full month name.  For example: January, February, March.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1488"></A><B>%m</B></P>
+<P class="nr1"><A NAME="TMPID1653"></A>The two-digit month.  For example: 01, 02, 03.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1491"></A><B>%Y</B></P>
+<P class="nr1"><A NAME="TMPID1656"></A>The year, including the century.  For example: 1993, 2002, 2010.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1494"></A><B>%y</B></P>
+<P class="nr1"><A NAME="TMPID1659"></A>The two-digit year.  For example: 93, 02, 10.</P></LI></UL>
+<P><A NAME="TMPID1660"></A>For general information about modifying the opentext.ini file, see <span><A href="../webadmin/wba-ini-modifying-rf.htm">Modifying the opentext.ini file</A></span>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-fb-config-kmgr-p.htm" revision="">To Set Up Knowledge Managers</A></p></li>
+<li><p><A  href="../webadmin/wba-fb-add-docclass-p.htm" revision="">To Add Document Classes</A></p></li>
+<li><p><A  href="../webadmin/wba-fb-chngdte-p.htm" revision="">To Change the Date Format for Facets</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

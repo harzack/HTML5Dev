@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOE100500-H-AGD-EN-1">
+<META PiXprocLocator="objectexporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>The exclude Tag Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoe-cfile-excl-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Exporter Control File Syntax';
+          header.title2 = 'The exclude Tag Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="OEEXCL01">exclude Tag</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="OEEXCL02">Description</A></P>
+<P class="nr1"><A NAME="TMPID512"></A>Each time you run an export, the following object types are exported: alias, compound document, custom view, discussion, document, folder, project, reply, topic, and url. To prevent a particular object type from being exported, use the <TT CLASS="LITERAL">exclude</TT> tag. &#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="OEEXCL03">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN494"></A>&#13;&lt;exclude&gt;
+  &lt;object&gt;alias&lt;/object&gt;
+&lt;/exclude&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="OEEXCL04">Usage</A></P>
+<A NAME="AEN496"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN497"></A><A NAME="TMPID527"></A>The <TT CLASS="LITERAL">exclude</TT> tag is optional.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN500"></A><A NAME="TMPID530"></A>If it is used, the <TT CLASS="LITERAL">exclude</TT> tag has one required subordinate tag, the <span><A HREF="llesoe-cfile-excl-rf.htm#OEOBJ01">object Tag</A></span>, which is detailed below.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="OEEXCL05">Notes</A></P>
+<P><A NAME="TMPID535"></A>If container objects, such as folders, are excluded, objects in the excluded containers will not be exported.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="OEEXCL06">Example</A></P>
+<P><A NAME="TMPID538"></A>In this example, all objects in the Enterprise Workspace, except Compound Documents and Custom Views, will be exported to <TT CLASS="FILENAME">c:\docs</TT></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN509"></A>&#13;&lt;export&gt;
+  &lt;node&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;docstorage&gt;c:\docs&lt;docstorage&gt;
+    &lt;exclude&gt;
+      &lt;object&gt;compounddoc&lt;/object&gt;
+      &lt;object&gt;customview&lt;/object&gt;
+    &lt;/exclude&gt;
+  &lt;/node&gt;
+&lt;/export&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="OEOBJ01">object Tag</A></P>
+<P><A NAME="TMPID543"></A>The <TT CLASS="LITERAL">object</TT> tag sets the name of the object to be excluded. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN513"></A>&lt;object&gt;discussion&lt;/object&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN514"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID557"></A>The <TT CLASS="LITERAL">object</TT> tag is required when the <TT CLASS="LITERAL">exclude</TT> tag is used.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID561"></A>Allowable values for use with the <TT CLASS="LITERAL">object</TT> tag are: <TT CLASS="LITERAL">alias</TT>, <TT CLASS="LITERAL">compounddoc</TT>, <TT CLASS="LITERAL">customview</TT>, <TT CLASS="LITERAL">discussion</TT>, <TT CLASS="LITERAL">document</TT>, <TT CLASS="LITERAL">folder</TT>, <TT CLASS="LITERAL">project</TT>, <TT CLASS="LITERAL">reply</TT>, <TT CLASS="LITERAL">topic</TT>, and <TT CLASS="LITERAL">url</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

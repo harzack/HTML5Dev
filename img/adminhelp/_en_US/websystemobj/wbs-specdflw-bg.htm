@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Maintaining Data Flows</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-specdflw-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Data Flows';
+          header.title2 = 'Maintaining Data Flows';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3266"></A>After you create a data flow, you can maintain its data interchange pools (IPools) and data flow processes. You can start, stop, flush, test, resynchronize, and move data flows and their components. For more information about data flows, see <span><A href="../websystemobj/wbs-datafwfd-so.htm">Administering Data Flows</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF75">Starting and Stopping Data Flows</A></P>
+<P><A NAME="TMPID3269"></A>When you maintain a data flow, you can stop or start all	data flow processes at once. Certain data flow administration tasks (for example, testing or flushing a data flow) may require you to suspend a data flow. If a data flow	contains one or more processes that have become idle as part of their normal operation, you may want to suspend a data flow and then resume it. For example, the Directory Walker process in the Help Data Flow becomes idle after it walks the help directories. If you add a Content Server module (such asContent Server Classifications), you must update the Help index so that the help files that are associated with the new module are added to the Help index.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF76">Setting Control Rules</A></P>
+<P><A NAME="TMPID3274"></A>In addition, you can set control rules for a data flow's IPools and processes. Control rules allow you to set options such as the number of IPool messages associated with a particular process in a data flow. For more information about setting control rules, see <span><A href="../websystemobj/wbs-setdflowcntrlrls-bg.htm">Adding Data Flow Control Rules</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF77">Testing Data Flows</A></P>
+<P><A NAME="TMPID3277"></A>For data to flow successfully through a data flow, the paths specified for the read and write IPools of each of its processes must be valid and accurate. If you suspect that data is not flowing properly through a data flow, you can test it. When you test a data flow, Content Server suspends the data flow, deletes the contents of all IPool directories, and then attempts to send a test message through the data flow. If Content Server encounters an error, it displays an error message. If there are no errors, Content Server displays the contents of the processes_prefix Data Source Folder. To repair a failing data flow, click the IPool's <B CLASS="guilabel">Information</B> button on the <B CLASS="guilabel">Specific</B> tab of each process's Properties pages and ensure that the paths displayed in the <B CLASS="guilabel">Read</B> and <B CLASS="guilabel">Write</B> fields are valid and accurate, and then repeat the test.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF78">Flushing Data Flows</A></P>
+<P><A NAME="TMPID3286"></A>If one of the processes in a data flow appears to have trouble handling the amount of data being written to its source IPool, you can flush the data flow. Flushing a data flow suspends the data flow and deletes all pending IPool messages from the data flow.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF79">Resynchronizing Data Flows</A></P>
+<P><A NAME="TMPID3288"></A>If one or more of the IPool directories in a data flow has been inadvertently deleted, you can recreate them by resynchronizing the data flow. When you resynchronize, Content Server reads the information that it has stored in the database about the location of the IPool directories and then recreates or repairs them as necessary. After you resynchronize a data flow, test the flow of data by sending a test message through the IPools.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF80">Maintaining Individual Data Flow Components</A></P>
+<P><A NAME="TMPID3291"></A>You can also maintain the individual components of a data flow. You can move a data flow's IPools and processes, start or stop individual processes, configure process's start or stop options, or resynchronize processes with the Content Server database.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF81">Resynchronizing Data Flow Processes </A></P>
+<P class="before-ul"><A NAME="TMPID3294"></A>The Server stores information about all the data flow processes that it controls in the Content Server database. Each Admin server maintains information about the data flow processes that it manages in an <TT CLASS="filename">otadmin.cfg</TT> file. At all times, the information in an Admin server's <TT CLASS="filename">otadmin.cfg</TT> file must match the corresponding information in the Content Server database. In the following circumstances, this information may become mismatched:</P><A NAME="AEN2669"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2670"></A><A NAME="TMPID3301"></A>The information about a particular data flow process in the <TT CLASS="filename">otadmin.cfg</TT> file of a registered Admin server is corrupt or has been deleted.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2673"></A><A NAME="TMPID3304"></A>The information about a particular data flow process in the Content Server database has been changed in a way that did not allow the corresponding changes to be made in the <TT CLASS="filename">otadmin.cfg</TT> file of the Admin server that manages the process. This may happen if SQL commands that modify this information are issued directly to the Content Server database. OpenText strongly recommends that you do not issue SQL commands directly to the Content Server database in this way. </P></LI></UL>
+<P><A NAME="TMPID3310"></A>If you suspect that the information stored in the Content Server database about a particular data flow process is inaccurate or missing in the <TT CLASS="filename">otadmin.cfg</TT> file of the Admin server that manages the process, you can <I CLASS="emphasis">resynchronize</I> the process. Resynchronizing a process writes the information recorded about the process in the Content Server database to the <TT CLASS="filename">otadmin.cfg</TT> file of the Admin server that manages the process.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF82"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3317"></A><B CLASS="note">Note: </B><BR>Information about the Update Distributor process is also recorded in the <TT CLASS="filename">search.ini</TT> file. The <TT CLASS="filename">search.ini</TT> file is a configuration file that contains settings for the components of Indexing and Searching systems (for example, partitions, Index Engines, and Search Engines). Resynchronizing the Update Distributor process writes information about the process to the <TT CLASS="filename">otadmin.cfg</TT> and <TT CLASS="filename">search.ini</TT> files.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-mntdflw-p.htm" revision="">To Maintain a Data Flow</A></p></li>
+<li><p><A  href="../websystemobj/wbs-stopallproc-p.htm" revision="">To Stop All Processes</A></p></li>
+<li><p><A  href="../websystemobj/wbs-stopindproc-p.htm" revision="">To Stop Individual Processes</A></p></li>
+<li><p><A  href="../websystemobj/wbs-startallproc-p.htm" revision="">To Start All Processes</A></p></li>
+<li><p><A  href="../websystemobj/wbs-startindproc-p.htm" revision="">To Start Individual Processes</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>location Tag Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-loc-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Tag Descriptions and Syntax';
+          header.title2 = 'location Tag Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LOCTAG01">Description</A></P>
+<table CLASS="IMPORTANT">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="IMPORTANT"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID4032"></A><B CLASS="IMPORTANT">Important: </B><BR>This is a mandatory tag regardless of object type or import action.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="nr1"><A NAME="TMPID4033"></A>The <TT CLASS="LITERAL">location</TT> tag specifies the location of the object. The path must be absolute, starting at the top of the hierarchy, with each level separated by colons, “:”.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LOCTAG02">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3848"></A>&lt;location&gt;Enterprise:Projects&lt;/location&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LOCTAG03">Usage</A></P>
+<P><A NAME="TMPID4045"></A>This is a mandatory tag regardless of object type or import action.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LOCTAG04">Notes</A></P>
+<A NAME="AEN3852"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P><A NAME="AEN3853"></A><B>If <NOBR>action="create"</NOBR> is used:</B></P>
+<P class="nr1"><A NAME="TMPID4052"></A>The <TT CLASS="LITERAL">&lt;location&gt;&lt;/location&gt;</TT> tag represents the path in Content Server where the object is to be created. Depending on how the Object Importer has been configured, the path may be created if it does not exist. Path creation only applies to the <TT CLASS="LITERAL">action="create"</TT>.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN3861"></A><B>If <NOBR>action="update"</NOBR> is used:</B></P>
+<P class="nr1"><A NAME="TMPID4060"></A>The <TT CLASS="LITERAL">&lt;location&gt;&lt;/location&gt;</TT> tag represents either the path in Content Server to the object that is to be updated, or the path in Content Server to the parent object. Which path depends on the <B CLASS="GUILABEL">Add Title to Location</B> setting in the configuration section. For example, to update a document called <TT CLASS="FILENAME">readme.txt</TT> which is located in the “Projects” folder of the Enterprise Workspace:</P>
+<P><A NAME="TMPID4067"></A>If the <B CLASS="GUILABEL">Add Title to Location</B> check box is selected, the syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3873"></A>&#13;&lt;location&gt;Enterprise:Projects&lt;/location&gt;
+&lt;title language="en"&gt;readme.txt&lt;/title&gt;</PRE
+></P>
+<P><A NAME="TMPID4070"></A>If the <B CLASS="GUILABEL">Add Title to Location</B> check box is cleared, the syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3876"></A>&lt;location&gt;Enterprise:Projects:readme.txt&lt;/location&gt;</PRE
+></P></LI>
+<LI class="vlli">
+<P><A NAME="AEN3877"></A><B>If <NOBR>action="sync"</NOBR> is used:</B></P>
+<P class="nr1"><A NAME="TMPID4076"></A>The <TT CLASS="LITERAL">&lt;location&gt;&lt;/location&gt;</TT> tag represents the path in Content Server where the object is to be created or updated.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN3883"></A><B>If <NOBR>action="addversion"</NOBR> is used:</B></P>
+<P class="nr1"><A NAME="TMPID4082"></A>The <TT CLASS="LITERAL">&lt;location&gt;&lt;/location&gt;</TT> tag represents the path in Content Server where the object is to be created.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN3889"></A><B>If <NOBR>action="delete"</NOBR> is used:</B></P>
+<P class="nr1"><A NAME="TMPID4088"></A>The <TT CLASS="LITERAL">&lt;location&gt;&lt;/location&gt;</TT> tag represents the path in Content Server to the object that is to be deleted. The syntax rules relating to the <B CLASS="GUILABEL">Add Title to Location</B> setting, stated above for <TT CLASS="LITERAL">action="update"</TT>, apply to <TT CLASS="LITERAL">action="delete"</TT> as well.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LOGTAG05">Example</A></P>
+<P><A NAME="TMPID4096"></A>To create a Project called “Standard Project” in the “Documentation” folder of the Enterprise Workspace when the <B CLASS="GUILABEL">Add Title to Location</B> check box is selected:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3903"></A>&#13;&lt;import&gt;
+  &lt;node type="project" action="create"&gt;
+    &lt;location&gt;Enterprise:Documentation&lt;/location&gt;
+    &lt;title language="en"&gt;Standard Project&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

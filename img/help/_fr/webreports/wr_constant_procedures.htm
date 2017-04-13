@@ -1,0 +1,119 @@
+<!-- wr_constant_procedures.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Using Constants</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_constant_procedures.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Working With WebReports';
+        header.title2 = 'Using Constants';
+        header.draw();
+
+</SCRIPT>
+
+
+
+<p class="body">
+  <b><u>Defining Constants for the WebReport Manually</u></b><br><br>
+Use the procedure below where you have constants you want to define but have not yet used in the WebReport.  Once defined here you can reference
+them in the reportview.
+<ul>
+  <li class="body" type="disc">Select the constants tab for the WebReport using the function option:  <SPAN class="gui">Properties -&gt;&nbsp;Constants</SPAN></li>
+  <li class="body" type="disc">Select the <img src="../../images/add_row.gif" border="0" width="16" height="16" alt="Add Row Icon "> button to add a new constant (if no other constants have been defined the <SPAN class="gui">Click here to add new constant...</SPAN> option can also be used)</li>
+  <li class="body" type="disc">Using the new, blank row which is created add a constant name, constant value, and optionally a constant description. Note: the
+  constant name should not include spaces. The constant value provides the optional capability to browse for a Livelink object.  This option automatically inserts an object ID into the value field</li>
+  <li class="body" type="disc">Select the <SPAN class="gui">Update</SPAN> button from the bottom of the screen</li>
+</ul>
+</p>
+
+
+<p class="body">
+  <b><u>Defining Constants for the WebReport Automatically</u></b><br><br>
+Use this method where you have made reference to a constant or multiple constants in the reportview and want to quickly populate them on the constants tab.  This method
+saves time on the method above as it allows the constants to be populated on mass.  It also, where possible, will determine the constant type programmatically.  Where this is
+not possible, the constant will be of type string.
+<ul>
+  <li class="body" type="disc">Select the constants tab for the WebReport using the function option:  <SPAN class="gui">Properties -&gt;&nbsp;Constants</SPAN></li>
+  <li class="body" type="disc">Select the <img src="../../../get.gif" border="0" alt="Extract constants from reportview icon"> button to add all the constants that are used in the reportview.  Note that this icon
+  only appears when the reportview contains constants that are not defined on the constants tab.</li>
+  <li class="body" type="disc">For all the new constants, enter their constant value, and optionally a constant description.
+  <li class="body" type="disc">Select the <SPAN class="gui">Update</SPAN> button from the bottom of the screen</li>
+</ul>
+</p>
+
+
+
+
+<p class="body">
+  <b><u>Referencing Constants in the WebReport Reportview</u></b>
+<br><br>
+Once a constant has been defined, the corresponding value can be inserted into the reportview as many times as required (it is not necessary to define a constant prior to adding the corresponding tag in the reportview. It may be faster to define them via the automatic method above once you have finished changing the reportview).
+<br><br>
+Example usage, if a constant called reportID had been stored to reference another WebReport, the syntax used could be as follows:
+<pre>
+	<nobr>?func=ll&objid=<SPAN class="gui">[LL_REPTAG_$reportID /]</SPAN>&objaction=runreport</nobr>
+</pre>
+</p>
+
+
+<p class="body">
+A more appropriate example would be to use the same constant with LLURL as follows:
+<pre>
+	<SPAN class="gui">[LL_REPTAG_$reportID LLURL:REPORT /]</SPAN>
+</pre>
+</p>
+
+
+<p class="body">
+which should resolve to <nobr>?func=ll&objid=xyz&objaction=runreport</nobr> where xyz is the value of the constant reportID.  The benefit of this approach is that if Livelink changes the way this URL works the report will continue to function whereas
+the first method would require changes to the report.
+<br><br>
+If working in the WebReports online editor it is possible to use the drag-and-drop interface to speedup some activities.
+<ul>
+  <li class="body" type="disc">You can drag and drop constants by selecting the appropriate constant from the dropdown list and then dragging the
+  <img src="../../../copyto.gif" border="0" alt="Copy Tag to Clipboard"> icon to the point in the reportview where you want to insert the constant.</li>
+	<li>You can open the constants tab in a new window by selecting the constants hyperlink before the dropdown</li>
+	<li>You can update the list of constants in the dropdown by clicking the <img src="../../../upgradable.gif" border="0" alt="Copy Tag to Clipboard"> icon.  This
+	has the effect of updating the list without reloading the page.</li>
+	<li>Constants appearing in the dropdown list with a star (*) next to them are <a href="wr_constant_info.htm#constname">Global Constants</a>.  These can be used the same as regular constants, the
+	difference being that they are defined in a different WebReport</li>
+</ul>
+</p>
+
+
+<p class="body">
+A full description of the constants tag and the sub-tags which can be used with it can be found in the <a href="wr_tag_syntax.htm#constname">Tag Syntax Guide</a>.  A more
+detailed discussion on the subject of constants can be found <a href="wr_constant_info.htm#constname">here</a> in the Advanced Information section.
+</p>
+
+<p class="infin">
+<b><u>Deleting WebReport Constants</u></b>
+</p>
+<p class="body">
+Select the constants tab for the WebReport using the function option: <SPAN class="gui">Properties -&gt;&nbsp;Constants</SPAN>.
+</p>
+<ul>
+  <li>Select the <img src="../../images/delete-row.gif" border="0" alt="Delete Row Icon"> button for the constant to be deleted and accept the warning message by selecting <SPAN class="gui">OK</SPAN>.</li>
+  <li>Select the <SPAN class="gui">Update</SPAN> button from the bottom of the screen.</li>
+</ul>
+</p>
+<p class="body">
+Alternatively:
+<ul>
+  <li>Select the <img src="../../../uncheck.gif" border="0" alt="Clear all constants from this tab"> button to delete all the constant definitions for the entire WebReport.</li>
+  <li>Select the <SPAN class="gui">Update</SPAN> button from the bottom of the screen.</li>
+</ul>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

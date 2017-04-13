@@ -1,0 +1,147 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Configuration du classement avancé</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/recommender/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbo-configadvrank-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion de la recherche';
+          header.title2 = 'Configuration du classement avancé';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID13039"></A>La pertinence du score du résultat de la recherche d'un élément est basée sur plusieurs paramètres pouvant être réglés et ajustés pour refléter les besoins de votre application. Dans la plupart des cas, la configuration est composée des pondérations et des régions. Les pondérations indiquent l'importance du paramètre dans l'établissement du score.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF284"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID13041"></A><B CLASS="note">Note : </B><BR>Ces valeurs de pondération sont relatives. Paramétrer toutes les pondérations comme élevées équivaut à paramétrer toutes les pondérations sur une valeur moyenne. La différence de pondération est finalement ce qui importe.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID13042"></A>Le calcul du taux du résultat de la recherche d'un élément est basé sur une <I CLASS="emphasis">moyenne pondérée</I> de son <I CLASS="emphasis">taux de requête</I> et de ses <I CLASS="emphasis">taux de critères avancés</I>. Un taux de requête est la mesure du rapprochement d'un élément avec une requête. Plus un élément se rapproche d'une requête, plus son taux de requête est élevé. Les critères avancés sont des moyens supplémentaires de déterminer le taux d'un élément. Comme pour le taux de requête, plus un élément correspond aux critères avancés (par exemple, s'il s'agit d'un type MIME spécifique), plus le taux de critères avancés qui lui est associé est élevé. Les requêtes ont une valeur pondérée et chaque critère avancé a sa propre valeur pondérée. Plus la valeur pondérée est élevée, plus ce taux affecte le taux du résultat de la recherche. La combinaison du score de requête d'un objet et de ses scores de critères avancés constituent une moyenne pondérée qui permet d'obtenir le score du résultat de la recherche de l'objet. Les critères avancés incluent les éléments suivants :</P><A NAME="AEN12288"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12289"></A><A NAME="TMPID13048"></A><B CLASS="guilabel">Classement du champ</B>, basé sur les régions de métadonnées d'un élément. Les régions de métadonnées stockent des informations (les métadonnées) sur les éléments indexés (par exemple, résumé, emplacement, type MIME, date de création et taille). Lors de la configuration du classement du champ, vous spécifiez les régions de métadonnées les plus importantes. Si le terme d'une requête correspond aux métadonnées d'une région spécifiée (par exemple, OTSummary), l'élément reçoit un taux plus élevé. Pour plus d'informations sur les régions d'index, reportez-vous à la rubrique <span><A href="../webotcindex/wbo-confrgix-bg.htm">Configuration des régions d'index</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12293"></A><A NAME="TMPID13052"></A><B CLASS="guilabel">Classement par date</B>, basé sur une ou plusieurs régions de métadonnées par date d'un élément. Lors de la configuration du classement par date, vous spécifiez la région de métadonnées par date (par exemple, OTModifyDate) utilisée pour calculer le taux d'un élément. Les éléments les plus proches de la date réelle reçoivent les taux les plus élevés.</P>
+<P><A NAME="TMPID13054"></A>La pertinence de la date est calculée à l'aide d'un taux de désuétude à partir de la date actuelle. Le taux de désuétude est l'une des valeurs configurables. Les petites valeurs pour les taux de désuétude réduisent le score des éléments plus anciens plus rapidement. Voici une approximation simplifiée de l'algorithme :</P>
+<P><A NAME="TMPID13055"></A><TT CLASS="literal">Date Relevance = decay / (recentness + decay)</TT> </P>
+<P><A NAME="TMPID13057"></A>En pratique, une valeur très agressive qui favorise nettement les objets récents a un taux de désuétude de 20 jours.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12300"></A><A NAME="TMPID13059"></A><B CLASS="guilabel">Classement par type</B>, basé sur les régions de métadonnées par type enum d'un élément. Par exemple, lors de la configuration d'un classement par type, vous pouvez spécifier les régions de métadonnées par type enum (par exemple, OTFilterMIMEType) les plus importantes. Les éléments auxquels vous avez attribué une valeur (par exemple, application/msword ou text/plain) reçoivent des taux plus élevés.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12303"></A><A NAME="TMPID13062"></A><B CLASS="guilabel">Score de l'objet</B>, basé sur la région de métadonnées OTObjectScore d'un élément. Cette région est une mesure de la valeur placée sur un élément par les utilisateurs du système. Lorsque vous configurez le score de l'objet, vous spécifiez également les valeurs pondérées pour les trois critères qui constituent le score de l'objet : la pondération des favoris (nombre de fois qu'un élément a été ajouté aux Favoris des utilisateurs), la pondération des raccourcis (nombre de raccourcis associés à l'élément) et la pondération des accès (nombre d'accès à l'objet). Plus la pondération est élevée par rapport aux autres deux, plus elle a d'influence sur le score de l'objet. Pour que la pondération des accès contribue au score de l'objet, l'Assistant de recommandation doit être activé. Pour plus d'informations sur l'activation de l'Assistant de recommandation, reportez-vous à la rubrique <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/llesrec-h-agd.rec-admrec-so" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/recommender/rec-admrec-so.htm">Administration de l`Assistant de recommandation</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/llesrec-h-agd.rec-admrec-so" FMT=""></span>. Lorsque vous modifiez les valeurs pondérales, Content Server peut mettre à jour la région OTObjectScore pour tous les éléments présents dans l'index. Mais plutôt que de réindexer entièrement la source de données Entreprise, ce qui prendrait un temps considérable pour les index volumineux, Content Server réduit l'impact sur les performances en utilisant un système d'extraction à faible impact pour mettre les éléments à jour. Si l'impact sur les performances est toujours trop important, vous pouvez désactiver le classement avancé des objets en définissant le paramètre ObjectRankEnabled du fichier opentext.ini sur <TT CLASS="literal">FALSE</TT>. Pour en savoir plus, voir <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-options-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-ini-options-rf.htm">[options]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-options-rf" FMT=""></span>.</P></LI></UL>
+<P><A NAME="TMPID13069"></A>Lors de la configuration du classement avancé, vous indiquez un nombre entier qui établit la pondération associée aux requêtes et/ou aux critères avancés. Le tableau suivant fournit des informations sur le format à utiliser lors de la configuration de chacune des options de classement avancé.</P>
+<P><A NAME="TMPID13070"></A><B CLASS="highlight">Format pour les options de classement avancé</B></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN12314"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Option de classement avancé</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Format</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Pondération de la requête</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">L'entier de la <TT CLASS="literal">pondération</TT> établit la valeur de base globale par rapport à laquelle d'autres options de calcul de pertinence sont calculées.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les pondérations vont de <TT CLASS="literal">1</TT> à l'infini, mais si vous ne spécifiez aucune valeur, <TT CLASS="literal">100</TT> est utilisé par défaut.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF285"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID13090"></A><B CLASS="note">Note : </B><BR>Toutes les valeurs de <TT CLASS="literal">pondération</TT> de tous les champs doivent être exprimées en nombres entiers.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Classement du champ</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">regionName,weight</TT>, où <TT CLASS="literal">regionName</TT> représente le nom d'une région de métadonnées et où <TT CLASS="literal">w</TT> représente un nombre entier qui établit l'importance de cette option de classement.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cet exemple de configuration d'un classement de champ, <TT CLASS="literal">"OTSummary",15</TT>, classe la région du résumé d'un document à une valeur de 15 par rapport à la valeur de base de 100.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour configurer plusieurs valeurs de classement de champ, utilisez une liste séparée par des points-virgules : <TT CLASS="literal"> "regionName1",weight1;"regionName2",weight2</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Classement par date</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">regionName</TT>,<TT CLASS="literal">decay</TT> ,<TT CLASS="literal">weight</TT> où <TT CLASS="literal">regionName</TT> est le nom d'une région de métadonnées de date.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">La valeur <TT CLASS="literal">perte</TT> définit le nombre de jours pour le score d'un élément. Lorsqu'un élément vieillit (en incréments de ce nombre), un score inférieur lui est assigné. Par exemple, si vous définissez la valeur <TT CLASS="literal">perte</TT> sur <TT CLASS="literal">10</TT> et qu'un élément a été créé ou modifié au cours des dix derniers jours, le score le plus élevé lui est assigné. Si un élément a été créé ou modifié au cours des 20 derniers jours, un taux inférieur lui est assigné. Le taux de l'élément continue de diminuer, en fonction du nombre de jours écoulés depuis sa création ou sa modification. Si le nombre de jours écoulés depuis la création ou la modification d'un élément est trop élevé, un taux de zéro est assigné à cet élément.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">L'exemple de configuration de classement de date <TT CLASS="literal">"OTModifyDate",10,5</TT>, définit la région de la date de modification de l'élément sur un taux de désuétude de 10 et le classe à une valeur de 5 epar rapport à la valeur de base de 100.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour configurer plusieurs valeurs de classement par date, utilisez une liste séparée par points-virgules au format suivant : <TT CLASS="literal">"regionName1",decay1,weight1;"regionName2",decay2,weight2</TT> </TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Classement par type</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">regionName,textWeight:text,regionWeight</TT>, où <TT CLASS="literal">regionName</TT> est la région de métadonnées de type MIME du fichier.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">textWeight</TT> est la pondération relative pour cette chaîne de texte dans la région et doit être un nombre entier compris entre 1 et 100, et <TT CLASS="literal">text</TT> est une chaîne à vérifier. Si elle est trouvée, la valeur textWeight associée est utilisée.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">regionWeight</TT> est l'importance relative par rapport aux autres éléments de calcul de la pertinence.</TD></TR></TABLE>Cet exemple de configuration d'un classement de type utilise la région du type MIME du fichier, un textWeight de 20, la chaîne de texte qui définit les documents MS Word, et l'importance relative comparée à d'autres éléments à 30 : <TT CLASS="literal">"OTFilterMIMEType",20:"application/msword",30</TT> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour configurer plusieurs valeurs de classement par type, utilisez une liste séparée par points-virgules au format suivant : <TT CLASS="literal">"regionName1",textWeight1:"text1",regionWeight1;"regionName2",textWeight2:"text2",regionWeight2</TT> </TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Vous pouvez répertorier de nombreux paramètres <TT CLASS="literal">regionName</TT> et <TT CLASS="literal">text</TT>, séparés par deux-points. Par exemple : <TT CLASS="literal"> "OTFilterMIMEType",20:"application/msword",50:"text/plain",20:"application/vnd.ms-excel";"OTSubType",10:"144",10</TT> </TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Score de l'objet</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">"OTObjectScore",weight</TT> représente la valeur placée sur un objet par les utilisateurs Content Server, qui vous permet d'ajuster davantage la pondération donnée aux classements de recherche.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cet exemple définit la région qui mesure la valeur d'un utilisateur d'un élément de 100 :<TT CLASS="literal">"OTObjectScore",100</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les valeurs <B CLASS="guilabel">Pondération des favoris</B>, <B CLASS="guilabel">Pondération des raccourcis</B> et <B CLASS="guilabel">Pondération des accès</B> vous permettent de spécifier les pondérations utilisées par le système d'indexation, basées sur des facteurs comme des références au nombre d'accès, lorsqu'il calcule le score de l'objet. L'addition des pondérations n'a pas besoin de correspondre à un nombre spécifique puisqu'elles représentent l'importance relative des trois facteurs.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webotcindex/wbo-toconfigadvrank-p.htm" revision="">Pour configurer un classement avancé</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

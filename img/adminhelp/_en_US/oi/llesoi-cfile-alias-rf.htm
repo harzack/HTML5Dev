@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>alias Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-alias-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Control File Syntax';
+          header.title2 = 'alias Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="ALIASTAG01">alias</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="ALIASTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID1208"></A>Use <TT CLASS="LITERAL">type="alias"</TT> on the <TT CLASS="LITERAL">&lt;node&gt;</TT> tag to create, update, or delete an Alias.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="ALIASTAG03">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1165"></A>&lt;node type="alias" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="ALIASTAG04">Usage</A></P>
+<A NAME="AEN1167"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1168"></A><A NAME="TMPID1222"></A>Creating an Alias requires the <span><A HREF="llesoi-cfile-alias-rf.htm#LLESOI-CFILE-ALIAS2-RF">alias Tag</A></span>, which is detailed below.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1171"></A><A NAME="TMPID1225"></A>The <span><A HREF="llesoi-cfile-alias-rf.htm#LLESOI-CFILE-ALIAS2-RF">alias Tag</A></span> is optional when updating or deleting an Alias.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1174"></A><A NAME="TMPID1228"></A>Creating, updating, or deleting an Alias can also require subordinate tags, such as the <TT CLASS="LITERAL">location</TT> tag. These subordinate tags are detailed in <span><A HREF="llesoi-cfilesamp-bg.htm">Object Importer Tag Descriptions and Syntax</A></span>.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="ALIASTAG05">Example</A></P>
+<P><A NAME="TMPID1233"></A>To create an Alias to the “Projects” folder in the Enterprise Workspace from the “Example” folder:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1182"></A>&#13;&lt;import&gt;
+  &lt;node type="alias" action="create"&gt;
+    &lt;location&gt;Enterprise:Documentation&lt;/location&gt;
+    &lt;title language="en"&gt;Example&lt;/title&gt;
+    &lt;alias&gt;Enterprise:Projects&lt;/alias&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P><A NAME="TMPID1237"></A>To view more <TT CLASS="LITERAL">alias</TT> examples, see <span><A HREF="llesoi-cfile-alisamp-rf.htm">alias Import Control File Examples</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-ALIAS2-RF">alias Tag</A></P>
+<P><A NAME="TMPID1242"></A>Use the <TT CLASS="LITERAL">alias</TT> tag to specify a full path to an existing object in Content Server. Separate each item in the path using colons, “:”. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1191"></A>&lt;alias&gt;Enterprise:Projects:readme.txt&lt;/alias&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1192"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1258"></A>The <TT CLASS="LITERAL">alias</TT> tag cannot exist on its own and must be contained within a <TT CLASS="LITERAL">&lt;node type="alias"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1262"></A>The <TT CLASS="LITERAL">alias</TT> tag is required when:</P><A NAME="AEN1209"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1210"></A><A NAME="TMPID1266"></A><TT CLASS="LITERAL">&lt;node type="alias" action="create"&gt;</TT></P></LI></UL>
+<P class="before-ul"><A NAME="TMPID1268"></A>The <TT CLASS="LITERAL">alias</TT> tag is optional when:</P><A NAME="AEN1215"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1216"></A><A NAME="TMPID1272"></A><TT CLASS="LITERAL">&lt;node type="alias" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1219"></A><A NAME="TMPID1275"></A><TT CLASS="LITERAL">&lt;node type="alias" action="delete"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

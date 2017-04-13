@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>To Modify the MIME Types List</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-doctypes-01-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Modifying the MIME Types List';
+          header.title2 = 'To Modify the MIME Types List';
+           header.draw();
+  </script>
+  <A NAME="PROC-AID59"></A>
+<DIV title="To modify the MIME types list:" CLASS="procedure">
+<P><B><A NAME="PROC-AID59"></A>To modify the MIME types list:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID12187"></A>Open the <TT CLASS="filename">Content Server_home/config/mime.types</TT> file in a text editor.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12191"></A>To add a new MIME type to the <TT CLASS="filename">mime.types</TT> file, add the MIME type on its own line in the format:</P>
+<P><A NAME="TMPID12193"></A><TT CLASS="literal">&lt;<I CLASS="varname">mime_type</I>> &lt;<I CLASS="varname">file_extension1</I>> &lt;<I CLASS="varname">file_extension2</I>> ...</TT></P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF102"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12199"></A><B CLASS="note">Note: </B><BR>It is not necessary to map a file extension to the MIME type.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12201"></A>To map a new file extension to an existing MIME type, append the extension to the MIME type's row, separating it from any other file extensions with a space.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12203"></A>To remove a MIME type entry, delete its line from the <TT CLASS="filename">mime.types</TT> file.</P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12206"></A><B CLASS="tip">Tip: </B><BR>If you are not sure whether or not to permanently remove the MIME type, comment out the MIME type's line by inserting a <TT CLASS="literal">#</TT> character at the beginning of the line instead of deleting it. This way, if you do need to use this MIME type in the future, you can remove the <TT CLASS="literal">#</TT> character.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12210"></A>Save and close the <TT CLASS="filename">mime.types</TT> file.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12213"></A>Restart the admin servers and the Web application server.</P>
+<P><A NAME="TMPID12214"></A>If the updated list of MIME types does not immediately appear in the <B CLASS="guilabel">MIME Types</B> list on the <B CLASS="guilabel">Specific Info</B> page of a document, you may need to reload your Web browser.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

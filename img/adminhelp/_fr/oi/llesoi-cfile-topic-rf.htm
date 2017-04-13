@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle des sujets</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-topic-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Syntaxe du fichier de contrôle Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle des sujets';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TOPTAG01">topic</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOPTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID2945"></A>Utilisez <TT CLASS="literal">type="topic"</TT> sur la balise <TT CLASS="literal">&lt;node&gt;</TT> pour créer, mettre à jour ou supprimer un sujet.  </P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOPTAG03">Syntaxe</A></P><A NAME="AEN2826"></A>
+<PRE 
+CLASS="screen"
+>&lt;node type="topic" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="TOPTAG04">Utilisation</A></P>
+<A NAME="AEN2828"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2829"></A><A NAME="TMPID2958"></A><TT CLASS="literal">topic</TT> dispose d'une balise subordonnée facultative, <span><A HREF="llesoi-cfile-topic-rf.htm#BODYTAG1">Balise body</A></span>, décrite ci-dessous.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2833"></A><A NAME="TMPID2962"></A>La création, mise à jour ou suppression d'un sujet peut également nécessiter un certain nombre de balises subordonnées, telles que la balise <TT CLASS="literal">location</TT> . Ces autres balises subordonnées sont détaillées dans <span><A HREF="llesoi-cfilesamp-bg.htm">Descriptions et syntaxe des balises Importateur d'objet</A></span>.</P></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="TOPTAG05">Exemple</A></P>
+<P><A NAME="TMPID2967"></A>Pour créer un sujet nommé « Topic 001 », rattaché à la discussion nommée « Discussion 001 »dans l'espace de travail Enterprise :</P><A NAME="AEN2841"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="topic" action="create"&gt;
+    &lt;location&gt;Enterprise:Discussion 001&lt;/location&gt;
+    &lt;title language="en"&gt;Topic 001&lt;/title&gt;
+    &lt;body&gt;When should our next meeting occur?&lt;/body&gt;
+    &lt;createdby&gt;Admin&lt;/createdby&gt;
+    &lt;owner&gt;Admin&lt;owner&gt;
+    &lt;created&gt;20110105&lt;/created&gt;
+    &lt;modified&gt;20110113&lt;/modified&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="BODYTAG1">Balise body</A></P>
+<P><A NAME="TMPID2973"></A>La balise <TT CLASS="literal">body</TT> permet d'ajouter le corps du sujet. La syntaxe de cette balise est la suivante : <A NAME="AEN2845"></A>
+<PRE 
+CLASS="screen"
+>&lt;body&gt;This is the message body of the topic.&lt;/body&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2846"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2987"></A>La balise <TT CLASS="literal">body</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="topic"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2991"></A>La balise <TT CLASS="literal">body</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2994"></A>La balise <TT CLASS="literal">body</TT> est facultative dans le cas suivant :</P><A NAME="AEN2866"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2867"></A><A NAME="TMPID2998"></A><TT CLASS="literal">&lt;node type="topic" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

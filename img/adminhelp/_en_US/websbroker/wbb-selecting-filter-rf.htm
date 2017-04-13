@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Understanding Document Conversion Filters</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbb-selecting-filter-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Data Flow Processes';
+          header.title2 = 'Understanding Document Conversion Filters';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID8643"></A>Most items stored in Content Server are not inherently indexable, making it necessary to run them through a conversion filter. Conversion filters convert items from their native MIME types (for example, Microsoft Word, Adobe, PDF, or ASCII text) to a format that can be indexed: either HTML or raw text. This conversion process occurs in data flows and is called the Document Conversion process. When items are converted for viewing or hit highlighting, the conversion process, named the Document Conversion Service (DCS), is managed by an Admin server. For more information about the Document Conversion Service, see <span><A href="../otadmin/ota-settingupdcs-bg.htm">Setting Up the Document Conversion Service</A></span>.</P>
+<P class="before-ul"><A NAME="TMPID8646"></A>Content Server provides three types of conversion filters:</P><A NAME="AEN7928"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7929"></A><A NAME="TMPID8650"></A>OpenText Document Filters (IM Filter)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7932"></A><A NAME="TMPID8653"></A>Quality Document Filter (QDF)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7934"></A><A NAME="TMPID8655"></A>XPDF</P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF157">OpenText Document Filters (IM Filter)</A></P>
+<P><A NAME="TMPID8658"></A>OpenText Document Filters uses filter packs to convert items from their native file formats (for example, Microsoft Word, Microsoft Excel, or Adobe PDF) to a simple text format (for example, HTML or text) for viewing or indexing in Content Server. The IM Filter is used to display Content Server items.</P>
+<P><A NAME="TMPID8662"></A>The IM Filter converts documents from their native formats to HTML or plain text for viewing and indexing purposes. After documents are converted most can be displayed, using the View as Web Page feature, as raster images. Files in Word, Excel or RTF formats are displayed as text which can be searched and indexed.</P>
+<P><A NAME="TMPID8663"></A>The IM Filter is the library that communicates with DCS to provide text extraction and metadata extraction. The library forwards TextExtraction and MIMEtype detection requests from DCS to DCSIm through the use of filenames or buffer content. All text extracted by DCSIm is returned to DCS using UTF-8 encoding.</P>
+<P><A NAME="TMPID8664"></A>Since DCSIm is not yet set up to handle extraction requests on buffer content for most formats, it creates a temporary file stored on disk, except for Microsoft Office format 95-2010 documents.</P>
+<P><A NAME="TMPID8665"></A>You configure the IM Filter by modifying the [DCSIm] section of the opentext.ini file. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-dcsim-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-dcsim-rf.htm">[DCSIm]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-dcsim-rf" FMT=""></span>, and the OpenText Document Filters Administrator's Guide in the OpenText OpenText Knowledge Center: <A HREF="https://knowledge.opentext.com/knowledge/piroot/llescf/v100501/llescf-agd/docovw.xml" TARGET="_blank">https://knowledge.opentext.com/knowledge/piroot/llescf/v100000/llescf-agd/en/docovw.xml</A>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF158">QDF</A></P>
+<P><A NAME="TMPID8673"></A>By default, Content Server uses QDFs to convert data. QDFs are conversion filters that have been custom-designed to filter items quickly because they output raw text instead of HTML, removing all formatting. QDFs have been designed to run in memory rather than to be read from disk, which also contributes to their speed.</P>
+<P><A NAME="TMPID8675"></A>You configure QDFs by modifying the <TT CLASS="literal">[QDF]</TT> section of the opentext.ini file. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-qdf-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-qdf-rf.htm">[QDF]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-qdf-rf" FMT=""></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

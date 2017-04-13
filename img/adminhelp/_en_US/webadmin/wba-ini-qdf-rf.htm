@@ -1,0 +1,467 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<title>[QDF]</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/websbroker/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/websystemobj/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-ini-qdf-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Understanding the opentext.ini file';
+          header.title2 = '[QDF]';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID10096"></A>The settings in the <TT CLASS="literal">[QDF]</TT> section control the configuration of the Quality Document Filters, QDFs, that the Document Conversion Service, DCS, uses. The QDFs convert documents from their native formats to HTML or plain text for viewing and indexing purposes. The details of this conversion process vary, depending on the native file format. For example, the QDFs convert Microsoft Outlook files to HTML or plain text for indexing. If available, the QDFs use the Unicode version of a Microsoft Outlook file by default; however, if the Unicode format is not available, the QDFs use the RTF version. If neither the Unicode nor the RTF versions are available, the QDFs use the HTML version. If neither the Unicode, nor the RTF, nor the HTML versions are available, the QDFs use a plain-text version. In cases where the QDFs use the RTF or HTML version of a Microsoft Outlook file for indexing, the content is extracted and returned to the DCS as if it were an attachment. The QDFs RTF filtering mechanism then converts the RTF content to HTML or plain text for indexing. For more information about QDFs, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbb-h-agd.wbb-selecting-filter-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/websbroker/wbb-selecting-filter-rf.htm">Understanding Document Conversion Filters</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbb-h-agd.wbb-selecting-filter-rf" FMT=""></span>.</P>
+<P><A NAME="TMPID10099"></A>The <TT CLASS="literal">[QDF]</TT> section also configures the extraction of custom OLE document properties from supported Microsoft Office documents. The exported metadata region names are identical to the OLE document property names, with two exceptions: they have the prefix <TT CLASS="literal">OTDoc</TT> and discard all whitespace and slash characters.</P>
+<P><A NAME="TMPID10102"></A>The <TT CLASS="literal">[QDF]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file contains information about the following parameters:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN9259"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10115"></A><span><A href="../webadmin/wba-ini-qdf-rf.htm#DEFAULTLATINENCODINGQDF">DefaultLatinEncoding</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10118"></A><span><A href="../webadmin/wba-ini-qdf-rf.htm#LIBQDF">lib</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10121"></A><span><A href="../webadmin/wba-ini-qdf-rf.htm#SHOWCDATAQDF">showcdata</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10124"></A><span><A href="../webadmin/wba-ini-qdf-rf.htm#MAXFILESUNZIPQDF">maxfilesunzip</A></span></P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10129"></A><span><A href="../webadmin/wba-ini-qdf-rf.htm#MINASIANAVGLENGTHQDF">MinAsianAvgLength</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10132"></A><span><A href="../webadmin/wba-ini-qdf-rf.htm#MINASIANTEXTRATIOQDF">MinAsianTextRatio</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10135"></A><span><A href="../webadmin/wba-ini-qdf-rf.htm#MINASIANTOKENSQDF">MinAsianTokens</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10138"></A><span><A href="../webadmin/wba-ini-qdf-rf.htm#MINHIGHLOWRATIOFOREUCQDF">MinHighLowRatioForEUC</A></span></P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10143"></A><span><A href="../webadmin/wba-ini-qdf-rf.htm#MINHIGHLOWRATIOFORSJISQDF">MinHighLowRatioForSJIS</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10146"></A><span><A href="../webadmin/wba-ini-qdf-rf.htm#OUTPUTOLEINFOQDF">outputoleinfo</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10149"></A><span><A href="../webadmin/wba-ini-qdf-rf.htm#X-MAXCALLSQDF">x-maxcalls</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10152"></A><span><A href="../webadmin/wba-ini-qdf-rf.htm#X-TIMEOUTQDF">x-timeout</A></span></P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="DEFAULTLATINENCODINGQDF">DefaultLatinEncoding</A></P><A NAME="AEN9309"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9310"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10159"></A>Specifies the default Latin character set to detect.</P>
+<P><A NAME="TMPID10160"></A>A character set can have multiple mappings. For example, the ISO-8859-* and EUC character sets each have several regional variations. Because these variations overlap significantly, you can specify the default character set that the QDFs will detect.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9314"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10163"></A><TT CLASS="literal">DefaultLatinEncoding=ISO-8859-1</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9318"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10167"></A><TT CLASS="literal">ISO-8859-1</TT> ~ <TT CLASS="literal">ISO-8859-15</TT>, <TT CLASS="literal">WinANSI</TT>. By default, this parameter does not appear in the opentext.ini file, which is equivalent to <TT CLASS="literal">DefaultLatinEncoding=ISO-8859-1</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LIBQDF">lib</A></P><A NAME="AEN9326"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9327"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10177"></A>Specifies the name of the library to be loaded by the DCS. A library is a list of operations associated with a conversion filter that the DCS reads to perform the conversion. This parameter is a required setting for the DCS.</P>
+<P><A NAME="TMPID10178"></A>Modifying the value of this parameter may prevent the DCS from functioning, or from functioning properly.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10180"></A><B CLASS="important">Important: </B><BR>Do not modify the value of this parameter unless directed to do by OpenText Customer Support.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9334"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10184"></A>The default value is <TT CLASS="literal">dcsqdf</TT>. </P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SHOWCDATAQDF">showcdata</A></P><A NAME="AEN9339"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9340"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10191"></A>Specifies whether CDATA sections in Extensible Markup Language, XML, documents should be extracted so that they can be indexed by the DCS.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9343"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10194"></A><TT CLASS="literal">showcdata=FALSE</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9347"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10198"></A><TT CLASS="literal">TRUE</TT> or <TT CLASS="literal">FALSE</TT>, where <TT CLASS="literal">FALSE</TT>	instructs the DCS to omit CDATA sections when extracting data from XML documents so that they can be indexed. The default value is <TT CLASS="literal">FALSE</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF85"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10204"></A><B CLASS="note">Note: </B><BR>Setting this parameter to <TT CLASS="literal">TRUE</TT> may affect search performance.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MAXFILESUNZIPQDF">maxfilesunzip</A></P><A NAME="AEN9358"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9359"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10211"></A>Specifies the maximum number of files that the QDFs extract from a compressed file during conversion. The files that are extracted are determined by the order in which the file creator originally added them.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF86"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10213"></A><B CLASS="note">Note: </B><BR>Recursive processing of compressed files is supported by the DCS rules file configuration. That is, an LZH file within an LZH file, or a ZIP file within an LZH file.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9364"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10216"></A><TT CLASS="literal">maxfilesunzip=250</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9368"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10220"></A>A positive integer. The default value is <TT CLASS="literal">250</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MINASIANAVGLENGTHQDF">MinAsianAvgLength</A></P><A NAME="AEN9373"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9374"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10227"></A>Specifies the minimum average run length of adjacent multibyte tokens.</P>
+<P><A NAME="TMPID10228"></A>Once the QDFs have determined that a file does not contain only 7-bit characters, Asian character set detection typically occurs. If the value of the <TT CLASS="literal">MinHighLowRatioForSJIS</TT> or <TT CLASS="literal">MinHighLowRatioForEUC</TT> parameters is satisfied, the QDFs will scan some text to determine the character set in use.</P>
+<P><A NAME="TMPID10231"></A>When scanning multibyte text, the QDFs perform some additional text evaluations. For example, the QDFs determine the average run length of adjacent multibyte tokens to determine whether the scanned text contains actual Asian text or just instances of some tokens. In order to be evaluated, the average run length of adjacent tokens must be longer than the minimum value set for the <TT CLASS="literal">MinAsianAvgLength</TT> parameter.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF87"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10234"></A><B CLASS="note">Note: </B><BR>When determining the average run length of adjacent multibyte tokens, the QDFs ignore all white space in the scanned text.</P>
+<P><A NAME="TMPID10235"></A>For more information about the additional conditions that must be satisfied for mulitbyte text evaluation to occur, see the <TT CLASS="literal">MinAsianTextRatio</TT> and <TT CLASS="literal">MinAsianTokens</TT> parameters.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9387"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10240"></A><TT CLASS="literal">MinAsianAvgLength=6</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9391"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10244"></A>An integer greater than <TT CLASS="literal">1</TT>. The default value is <TT CLASS="literal">6</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MINASIANTEXTRATIOQDF">MinAsianTextRatio</A></P><A NAME="AEN9397"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9398"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10252"></A>Specifies the percentage of bytes of Asian text that must be exceeded during Asian text detection.</P>
+<P><A NAME="TMPID10253"></A>Once the QDFs have determined that a file does not contain only 7-bit characters, Asian character set detection typically occurs. If the value of the <TT CLASS="literal">MinHighLowRatioForSJIS</TT> or <TT CLASS="literal">MinHighLowRatioForEUC</TT> parameters is satisfied, the QDFs will scan some text to determine the character set in use.</P>
+<P class="before-ul"><A NAME="TMPID10256"></A>When scanning multibyte text, the QDFs perform some additional text evaluations. First, the QDFs determine the average run length of adjacent multibyte tokens. For more information, see the <TT CLASS="literal"><A href="../webadmin/wba-ini-qdf-rf.htm#MINASIANAVGLENGTHQDF">MinAsianAvgLength</A></TT> parameter. Then, one or both of the following conditions must be satisfied:</P><A NAME="AEN9407"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9408"></A><A NAME="TMPID10261"></A>The percentage of bytes of Asian tokens in the text exceeds the value specified by the <TT CLASS="literal">MinAsianTextRatio</TT> parameter.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9411"></A><A NAME="TMPID10264"></A>The number of identified tokens exceeds the value specified by the <TT CLASS="literal">MinAsianTokens</TT> parameter. For more information, see the <TT CLASS="literal"><A href="../webadmin/wba-ini-qdf-rf.htm#MINASIANTOKENSQDF">MinAsianTokens</A></TT> parameter.</P></LI></UL></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9416"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10270"></A><TT CLASS="literal">MinAsianTextRatio=50</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9420"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10274"></A>An integer between <TT CLASS="literal">1</TT> and <TT CLASS="literal">100</TT>. The default value is <TT CLASS="literal">50</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MINASIANTOKENSQDF">MinAsianTokens</A></P><A NAME="AEN9427"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9428"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10283"></A>Specifies the number of multibyte tokens that must be identified during Asian text detection.</P>
+<P><A NAME="TMPID10284"></A>Once the QDFs have determined that a file does not contain only 7-bit characters, Asian character set detection typically occurs. If the value of the <TT CLASS="literal">MinHighLowRatioForSJIS</TT> or <TT CLASS="literal">MinHighLowRatioForEUC</TT> parameters is satisfied, the QDFs will scan some text to determine the character set in use.</P>
+<P class="before-ul"><A NAME="TMPID10287"></A>When scanning multibyte text, the QDFs perform some additional text evaluations. First, the QDFs determine the average run length of adjacent multibyte tokens. For more information, see the <TT CLASS="literal"><A href="../webadmin/wba-ini-qdf-rf.htm#MINASIANAVGLENGTHQDF">MinAsianAvgLength</A></TT> parameter. Then, one or both of the following conditions must be satisfied:</P><A NAME="AEN9437"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9438"></A><A NAME="TMPID10292"></A>The percentage of bytes of Asian tokens in the text exceeds the value specified by the <TT CLASS="literal">MinAsianTextRatio</TT> parameter. For more information, see the <TT CLASS="literal"><A href="../webadmin/wba-ini-qdf-rf.htm#MINASIANTEXTRATIOQDF">MinAsianTextRatio</A></TT> parameter.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9443"></A><A NAME="TMPID10297"></A>The number of identified tokens exceeds the value specified by the <TT CLASS="literal">MinAsianTokens</TT> parameter. </P></LI></UL></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9446"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10301"></A><TT CLASS="literal">MinAsianTokens=5000</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9450"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10305"></A>An integer greater than <TT CLASS="literal">0</TT>. The default value is <TT CLASS="literal">5000</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MINHIGHLOWRATIOFOREUCQDF">MinHighLowRatioForEUC</A></P><A NAME="AEN9456"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9457"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10313"></A>Specifies the ratio of high to low bytes that must be exceeded in order for Asian character set detection to occur in EUC files.</P>
+<P><A NAME="TMPID10314"></A>Once the QDFs have determined that a file does not contain only 7-bit characters, Asian character set detection typically occurs. This level of character set detection can be time consuming and may delay the MIME type detection operations. So, depending on the content of the documents at your Content Server site, you may not want this level of detection to occur or may only want it to occur when a certain ratio of high to low byte characters is exceeded within a document. You can manipulate this ratio by changing the value of the <TT CLASS="literal">MinHighLowRatioForEUC</TT> parameter.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9463"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10319"></A><TT CLASS="literal">MinHighLowRatioForEUC=60</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9467"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10323"></A>An integer between <TT CLASS="literal">1</TT> and <TT CLASS="literal">100</TT>. The default value is <TT CLASS="literal">60</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MINHIGHLOWRATIOFORSJISQDF">MinHighLowRatioForSJIS</A></P><A NAME="AEN9474"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9475"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10332"></A>Specifies the ratio of high to low bytes that must be exceeded in order for Asian character set detection to occur in Shift-JIS files.</P>
+<P><A NAME="TMPID10333"></A>Once the QDFs have determined that a file does not contain only 7-bit characters, Asian character set detection typically occurs. This level of character set detection can be time consuming and may delay the MIME type detection operations. So, depending on the content of the documents at your Content Server site, you may not want this level of detection to occur or may want it to occur only when a certain ratio of high to low byte characters is exceeded within a document. You can manipulate this ratio by changing the value of the <TT CLASS="literal">MinHighLowRatioForSJIS</TT> parameter.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9481"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10338"></A><TT CLASS="literal">MinHighLowRatioForSJIS=50</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9485"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10342"></A>An integer between <TT CLASS="literal">1</TT> and <TT CLASS="literal">100</TT>. The default value is <TT CLASS="literal">50</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="OUTPUTOLEINFOQDF">outputoleinfo</A></P><A NAME="AEN9492"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9493"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10351"></A>Specifies whether the QDFs should extract OLE properties from the document and export these properties as Content Server metadata regions. OLE is a program-integration technology that is supported by all Microsoft Office programs. OLE allows information to be shared among different programs.</P>
+<P><A NAME="TMPID10353"></A>If this parameter is enabled, the QDFs extract the standard OLE properties as well as any custom OLE properties associated with a document. The standard OLE properties are extracted and exported as the following metadata regions in Content Server:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN9499"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10364"></A>OTDocTitle</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10366"></A>OTDocSubject</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10368"></A>OTDocAuthor</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10370"></A>OTDocKeywords</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10372"></A>OTDocComments</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10374"></A>OTDocTemplate</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10376"></A>OTDocLastSavedBy</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10378"></A>OTDocRevisionNumber</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10380"></A>OTDocTotalEditingTime</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10382"></A>OTDocLastPrinted</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10384"></A>OTDocCreateTimeDate</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10386"></A>OTDocLastSavedTimeDate</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10388"></A>OTDocNumberofPages</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10390"></A>OTDocNumberofWords</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10392"></A>OTDocNumberofCharacters</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10394"></A>OTDocThumbnail</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10396"></A>OTDocNameofCreatingApplication</P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10400"></A>OTDocSecurity</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10402"></A>OTDocCategory</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10404"></A>OTDocPresentationTarget</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10406"></A>OTDocBytes</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10408"></A>OTDocLines</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10410"></A>OTDocParagraphs</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10412"></A>OTDocSlides</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10414"></A>OTDocNotes</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10416"></A>OTDocHiddenSlides</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10418"></A>OTDocMMClips</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10420"></A>OTDocScaleCrop</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10422"></A>OTDocHeadingPairs</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10424"></A>OTDocTitlesofParts</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10426"></A>OTDocManager</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10428"></A>OTDocCompany</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID10430"></A>OTDocLinksUpToDate</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID10431"></A>The following is an example of exported metadata regions displayed in a search result:</P>
+<P><IMG alt="Sample search result" SRC="../webadmin/sample_qdf_ole_properties.gif"></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9577"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10435"></A><TT CLASS="literal">outputoleinfo=TRUE</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9581"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10439"></A><TT CLASS="literal">TRUE</TT> or <TT CLASS="literal">FALSE</TT>, where <TT CLASS="literal">TRUE</TT> instructs a QDF to extract the OLE-embedded metadata from the file. The default <TT CLASS="filename">opentext.ini</TT> configuration file shipped with Content Server has a value of  <TT CLASS="literal">TRUE</TT>. The assumed default value, if not specified in the configuration file, is <TT CLASS="literal">FALSE</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="X-MAXCALLSQDF">x-maxcalls</A></P><A NAME="AEN9592"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9593"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10452"></A>Specifies the number of times a worker process is reused for processing documents. During document conversion, the DCS loads a worker process. The worker process loads the appropriate conversion filter and uses it to convert the document. To increase performance, the DCS reuses the worker process for multiple conversions. If the worker process encounters an error, the process is stopped before reaching the value specified in the <TT CLASS="filename">opentext.ini</TT> file.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10455"></A><B CLASS="important">Important: </B><BR>OpenText strongly recommends that you do not modify the value of this parameter.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9600"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10459"></A>The default value is inherited from the <TT CLASS="literal">maxcalls</TT> parameter of the <TT CLASS="literal">[DCSworker]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF88"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10464"></A><B CLASS="note">Note: </B><BR>The <TT CLASS="literal">x-maxcalls</TT> parameter is only functional when the conversion filter it modifies is managed by a worker process. For more information about configuring a worker process, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbs-h-agd.wbs-conf-server-log-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/websystemobj/wbs-conf-server-log-bg.htm">Configuring Server Logging</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbs-h-agd.wbs-conf-server-log-bg" FMT=""></span>.</P>
+<P><A NAME="TMPID10467"></A>Specifying a value for <TT CLASS="literal">x-maxcalls</TT> will override the value of <TT CLASS="literal">maxcalls</TT> in the <TT CLASS="literal">[DCSworker]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="X-TIMEOUTQDF">x-timeout</A></P><A NAME="AEN9616"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9617"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10477"></A>Specifies the maximum number of seconds to wait before terminating a document conversion worker process. You configure this parameter when the default value specified in the <TT CLASS="literal">timeout</TT> parameter is inappropriate. You configure the <TT CLASS="literal">timeout</TT> parameter for each conversion filter. For example, some conversion filters convert documents more slowly than other conversion filters. In this case, the <TT CLASS="literal">timeout</TT> default value of 30 seconds may not be applicable, as the average conversion time is longer than this value. In this case, you can modify the <TT CLASS="literal">x-timeout</TT> value to a higher and more appropriate value.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10483"></A><B CLASS="important">Important: </B><BR>OpenText strongly recommends that you do not modify the value of this parameter.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9627"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10487"></A>The default value is inherited from the <TT CLASS="literal">timeout</TT> parameter of the <TT CLASS="literal">[DCSworker]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF89"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10492"></A><B CLASS="note">Note: </B><BR>The <TT CLASS="literal">x-timeout</TT> parameter is only functional when the conversion filter it modifies is managed by a worker process. For more information about configuring a worker process, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbs-h-agd.wbs-conf-server-log-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/websystemobj/wbs-conf-server-log-bg.htm">Configuring Server Logging</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbs-h-agd.wbs-conf-server-log-bg" FMT=""></span>.</P>
+<P><A NAME="TMPID10495"></A>Specifying a value for <TT CLASS="literal">x-timeout</TT> will override the value of <TT CLASS="literal">timeout</TT> in the <TT CLASS="literal">[DCSworker]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

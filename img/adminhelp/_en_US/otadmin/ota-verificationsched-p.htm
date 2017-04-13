@@ -1,0 +1,386 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Index Verification Configuration</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-verificationsched-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Index Verification';
+          header.title2 = 'Index Verification Configuration';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID11005"></A>The Index Verification Configuration page within Content Server is accessed from the System Object Volume page.</P>
+<P class="before-ul"><A NAME="TMPID11007"></A>The configuration values are grouped into the following sections for convenience:</P><A NAME="AEN10280"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10281"></A><A NAME="TMPID11010"></A><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDSCHEDULE">Verification Schedule</A></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10284"></A><A NAME="TMPID11013"></A><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Verification Rules</A></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10287"></A><A NAME="TMPID11016"></A><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDCORRECTION">Correction Options</A></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10290"></A><A NAME="TMPID11019"></A><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDREPORT">Verification Report</A></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10293"></A><A NAME="TMPID11022"></A><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDNOTIFICATIONS">Notifications</A></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10296"></A><A NAME="TMPID11025"></A><A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDCHECKSUM">Checksum Integrity Status</A></P></LI></UL>
+<P><A NAME="TMPID11027"></A>Each of these sections is described in detail below. When you have finished reviewing and modifying the configuration settings, click the <B CLASS="guilabel">Update</B> button at the bottom of the page to start the Verification process at the next time you defined in the Verification Schedule section.</P>
+<DIV title="To access the Configure Index Verification page:" CLASS="procedure">
+<P><B><A NAME="AEN10301ttl"></A>To access the Configure Index Verification page:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID11032"></A>On the Administration page, in the Search Administration section, click the <B CLASS="guilabel">Open the System Object Volume</B> link.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID11035"></A>On the System Object Volume page, click the Enterprise Data Source folder's <B CLASS="guilabel">Functions</B> icon and then chose <B CLASS="guilabel">Maintenance</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID11039"></A>On the Content Server Data Source Maintenance page, click the <B CLASS="guilabel">Configure search index verification</B> radio button.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID11043"></A>On the <B CLASS="guilabel">Configure Index Verification</B> page, use the information for each section to configure your Content Server installation.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID11047"></A>Click the <B CLASS="guilabel">OK</B> button.</P></LI></OL></DIV>
+<P><A NAME="TMPID11049"></A>When you have finished, click the <B CLASS="guilabel">Update</B> button to start the verification process at the next time you defined in the <B CLASS="guilabel">Verification Schedule</B> section. You can click <B CLASS="guilabel">Verification Reports</B> to open, download or email a report, or click <B CLASS="guilabel">Verification Status</B> to see the current or previous verification activity on the Index Verification Status page.</P>
+<P><A NAME="TMPID11054"></A>You can perform most administrative tasks relating to Index verification on the Configure Index Verification page which contains a number of different sections and fields, as described in these tables:</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF209">Verification Schedule</A></P>
+<P><A NAME="TMPID11056"></A>The Verification Schedule section of the configuration page is used to control the execution of the Verifier.  There are two basic modes of operation: make one pass through the index then stop; or perform continuous verification.</P>
+<P><A NAME="TMPID11057"></A>Continuous verification is generally recommended for most applications. This mode will proactively identify problems with the search index, and possibly correct problems without administrator intervention.</P>
+<P><A NAME="TMPID11058"></A>A description of each control in the Verification Schedule section follows:</P>
+<DIV title="Verification Schedule" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="VERIFSCHEDSCHEDULE"></A><B>Table 1-13: Verification Schedule</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Mode</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Select how verification will run:<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11074"></A><B CLASS="guilabel">Disabled</B> – No verification is scheduled.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11077"></A><B CLASS="guilabel">Run Once</B> – Verification is scheduled, and will make one iteration through the validation process then stop.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11080"></A><B CLASS="guilabel">Run Continuously</B> – Verification is scheduled. When an iteration is completed, verification will restart at the beginning.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Suspend Verification</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Pause the verification process, and resume the process from the current location. Suspending verification is useful when performing other resource-intensive administration tasks. When suspended, the button will change to <B CLASS="guilabel">Resume</B>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Run On These Days</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Select the days of the week on which the verification process should run.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">At these hours</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Select the hours of the day on which the verification process should run.  Typically, verification would be scheduled for off-peak hours, perhaps between midnight and 5 AM.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Maximum Load</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The verification process is designed to control the load it places on the system. The percentage control determines the relative time spent active versus waiting. A higher percentage executes faster and increases the load on the system. Verification will check a number of objects, then pause for a period of time based upon this load setting. Note that this value is an approximate target, not an exact figure.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Reset Error Counts</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Causes the verifier to discard all status and progress information, essentially resetting the verifier.  Correction retries, unfixable and error records are discarded. A reset is generally recommended after making any structural changes to the search configuration or after changes to extraction or verification rules.</TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF210">Verification Rules</A></P>
+<P><A NAME="TMPID11099"></A>The Verification Rules section controls which objects are considered for verification, and identifies what tests should be performed.</P>
+<P><A NAME="TMPID11100"></A>The verifier inherits a definition of what should be indexed from the Content Server Extractor. The controls in this section represent additional constraints on verification in addition to the Extractor constraints.</P>
+<DIV title="Verification Rules" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="VERIFSCHEDRULES"></A><B>Table 1-14: Verification Rules</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Maximum Object Age</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Verification can be limited to recent objects only. The age is specified in months, measured from the time at which an object is tested. The definition of recent is based upon the Content Server <B CLASS="guilabel">Last modified</B> date. For example, to restrict verification to objects that were modified in Content Server within the last two years, enter 24 months.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Maximum Versions Per Object</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The upper limit on the number of versions of the object to correct. If versions 20, 13, 10, 9, 4, 3, 1 of an object exist, then entering 5 will test versions 20, 13, 10, 9, 4, but versions below 4 would not be tested.<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF211"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11122"></A><B CLASS="note">Note: </B><BR>Depending on the type of object, this setting may be capped at the Extractor setting for <B CLASS="guilabel">Maximum Versions to Extract</B>. Subtypes 144, 145 and 146 are not affected by the Extractor setting.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Minimum Object Age</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Content Server uses asynchronous and batch processes when indexing and updating objects in the Search Engine. This causes a delay between synchronizing the status of an object in Content Server and updates to the object in the Search Engine.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This Minimum Object Age represents the grace period for the delay. Any objects added or modified within this interval are NOT tested for correctness in order to eliminate “false positives” (discrepancies on objects which have not yet been completely processed are not reported). A value of 30 minutes is usually sufficient, but longer values may be needed for applications where large indexing backlogs are possible.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Test For Missing Objects</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">If selected, verification will look for objects which are missing from the index.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">When making the determination of whether objects are missing from the index, the contents of all the partitions are considered, regardless of their modes or the settings for which partition types should be checked.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Test For Orphaned Objects</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">If selected, verification will look for objects in the index which should have been removed.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The <B CLASS="guilabel">Maximum Versions Per Object</B> setting is used in cases where the dataID exists in Content Server and therefore the current version number can be determined. It is orphaned if it exists in the index and there is no corresponding object managed within Content Server.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Test For Stale Objects</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If selected, Verification will look for objects that exist in the index, but which have an incorrect <B CLASS="guilabel">Last modified</B> date.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Test For Metadata Integrity Errors</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If selected, verification will identify objects for which the Search Engine has identified incorrect metadata checksums.  To be effective, Search Engine configuration may be required, refer to the <A href="../otadmin/ota-verificationsched-bg.htm#VERIFSCHEDDEPENDENCIES">Dependencies</A> section.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Threshold for Content Warnings</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If identification of objects where the content was not correctly indexed is necessary, select the appropriate warning threshold.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Test for Metadata Warnings</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If identification of objects where metadata fields could not be indexed is necessary, enter the threshold for the number of bad fields for an object.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Check Read-Write Partitions</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If selected, verification will examine objects in all read-write partitions for correctness.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Check Update-Only Partitions</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If selected, verification will examine objects in update-only partitions for correctness.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Check Read-Only Partitions</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If selected, verification will examine objects in all read-only partitions for correctness.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Object Sub-Types</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">All Content Server object subtypes are checked for correctness by default. This allows you to restrict verification to a subset of object subtypes. Click the edit icon to display a list of all available subtypes in the system, then select the subtypes to include or exclude from testing.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Object MIME-TYPES</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">All Content Server document MIME types are checked for correctness by default. This allows you to restrict verification to a subset of MIME types. Click the edit icon to display a list of all available MIME types in the system, then select the MIME types to include or exclude from testing<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF212"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11177"></A><B CLASS="note">Note: </B><BR>There are several metadata fields in Content Server that may contain a MIME-TYPE. The OTLLMIMEType metadata field is used here.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>.</TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF213">Correction Options</A></P>
+<P><A NAME="TMPID11180"></A>In addition to reporting on the correctness of objects in the index using the Verification rules, the correction feature can be used to fix discrepancies between the index and objects managed within Content Server.</P>
+<P><A NAME="TMPID11182"></A>When correction is enabled, the current extraction rules are applied – not the extraction rules that were in place when the object was indexed. If the extraction rules have changed since objects were indexed, then correction will attempt to realign the contents of the index with the current extraction rules.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF214"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11184"></A><B CLASS="note">Note: </B><BR>Changing extraction rules may trigger significant correction activity.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID11185"></A>Correction tracks the number of attempts  made to fix an object. If the object cannot be fixed in three consecutive verification passes, then it is marked as unfixable and skipped in future correction attempts. The <B CLASS="guilabel">Reset Error Counts</B> feature in the <B CLASS="guilabel">Verification Schedule</B> section can be used to clear this tracking and provide a fresh start to correction. The objects which can be corrected are a subset of the objects which are verified. The rules for object verification are applied, and additional correction constraints in the table below are possible in the correction options section.</P>
+<P><A NAME="TMPID11188"></A>Objects in Read-Only partitions cannot be corrected.</P>
+<DIV title="Correction Options " CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="VERIFSCHEDCORRECTION"></A><B>Table 1-15: Correction Options </B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Enable Correction</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">When selected, enables the correction process.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Maximum Object Age</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">This instructs the verifier to limit correction to recent objects only. The age is specified in months, measured from the time at which an object is tested. The definition of recent is based upon the Content Server <B CLASS="guilabel">Last modified</B> date. For example, to restrict correction to objects that were last modified in Content Server within the last two years, enter 24 months. This value cannot be greater than the corresponding value in the <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Verification Rules</A> section.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Maximum Versions Per Object</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The upper limit on the number of versions of the object to correct. If versions 20, 13, 10, 9, 4, 3, 1 of an object exist, then entering 5 will test versions 20, 13, 10, 9, 4, but versions below 4 would not be tested.<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF215"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11213"></A><B CLASS="note">Note: </B><BR>This value cannot be greater than the corresponding value in the <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Verification Rules</A> section.</P>
+<P><A NAME="TMPID11215"></A>Depending on the type of object, this setting may be capped at the Extractor setting for <B CLASS="guilabel">Maximum Versions to Extract</B>. Subtypes 144, 145 and 146 are not affected by the Extractor setting.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Add Missing Archived Objects</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">If selected, verification will attempt to add missing objects that are currently stored in Archive Server. Archival systems may have long access times or limited access bandwidth. This feature is intended to limit the extraction of content from archive sources.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">All corrections extract the full content if the metadata is not correct, so the content is probably not correct also. When not selected, objects in archive servers are not corrected at all.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF216"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID11223"></A><B CLASS="note">Note: </B><BR>This control will only be visible if Archive Server is installed.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Add Missing Objects</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If selected, verification will attempt to add objects that are missing from the index. In the <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Verification Rules</A>, <B CLASS="guilabel">Test for Missing Objects</B> must be selected.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Remove Orphaned Objects</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If selected, verification will attempt to remove orphaned objects from the index. In the <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Verification Rules</A>, <B CLASS="guilabel">Test for Orphaned Objects</B> must be selected.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Update Stale Objects</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If selected, verification will attempt to correct objects that have an incorrect <B CLASS="guilabel">Last modified</B> date in the index. In the <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Verification Rules</A>, <B CLASS="guilabel">Test for Stale Objects</B> must be selected.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Fix Metadata Integrity Errors</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If selected, the content and metadata for the object with errors will be re-indexed. In the<A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Verification Rules</A> section, <B CLASS="guilabel">Test for Metadata Integrity Errors</B> must be selected.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Fix Read-Write Partitions</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If selected, verification will attempt to correct objects located in partitions that are set to read-write mode. In the <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Verification Rules</A>, <B CLASS="guilabel">Check Read-Write Partitions</B> must be selected.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Fix Update-Only Partitions</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">If selected, verification will attempt to correct objects located in partitions that are set to Update-Only mode. In the <A href="../otadmin/ota-verificationsched-p.htm#VERIFSCHEDRULES">Verification Rules</A>, <B CLASS="guilabel">Check Update-Only Partitions</B>  must be selected.</TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF217">Verification Report</A></P>
+<P><A NAME="TMPID11256"></A>The Verification Report section defines how reports are created.</P>
+<P><A NAME="TMPID11257"></A>When an index verification and correction iteration is completed, a report is generated containing summary and detailed information about incorrect objects. This report is stored in the System Object Volume folder within Content Server. The report is created in a comma-separated values (CSV) format, for import into spreadsheets and other applications to review and analyze. More information about the report contents is available in <span><A href="../otadmin/ota-verificationsreport-bg.htm">Viewing the Index Verification Reports</A></span>. This section of the verification page allows you to specify how the report should be created.</P>
+<DIV title="Verification Report" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="VERIFSCHEDREPORT"></A><B>Table 1-16: Verification Report</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Maximum Errors In Detail Report</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The maximum number of objects known to be incorrect which should be included in a detailed listing of objects with errors. This limits the number of entries in the detailed section of the report, but does not affect the number of errors that will be detected, corrected, or included in the report statistics.</TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF218">Notifications</A></P>
+<P><A NAME="TMPID11274"></A>The Notifications section defines which notices are sent to administrators as part of the verification process.</P>
+<P><A NAME="TMPID11275"></A>Notifications are delivered using the standard Content Server notification system. For each possible notification, control over the message severity and the message to be included is available.</P>
+<DIV title="Notifications" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="VERIFSCHEDNOTIFICATIONS"></A><B>Table 1-17: Notifications</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Verification Complete</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11292"></A><B CLASS="guilabel">Enabled</B> – When selected, administrators are sent a notice when a verification iteration completes.</P></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID11296"></A><B CLASS="guilabel">Type of Message</B>:</P><A NAME="AEN10570"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10571"></A><A NAME="TMPID11300"></A><B CLASS="guilabel">correction</B>, a previously reported error has been rectified</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10574"></A><A NAME="TMPID11303"></A><B CLASS="guilabel">information</B>, general status and other system information</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10577"></A><A NAME="TMPID11306"></A><B CLASS="guilabel">warning</B> , non-critical errors in the system</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10580"></A><A NAME="TMPID11309"></A><B CLASS="guilabel">error</B>, error messages and severe error messages</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10583"></A><A NAME="TMPID11312"></A><B CLASS="guilabel">severe error</B>, critical system errors such as index verification shutting down</P></LI></UL></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11316"></A><B CLASS="guilabel">Message</B> – The text to be included in the notification email.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Error Threshold</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11323"></A><B CLASS="guilabel">Enabled</B> – When selected, administrators are sent a notice when the number of errors detected during a verification iteration exceeds the specified error count. This notification happens immediately, not upon completion of the verification process.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11326"></A><B CLASS="guilabel">Notify when number of errors &gt;=</B> – The number of errors is the sum of missing, orphaned and incorrect objects. Exceeding this value triggers the notification.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11329"></A><B CLASS="guilabel">Type of Message</B> – Select the type of message to send: correction, information, warning, error, severe error.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11332"></A><B CLASS="guilabel">Message</B> – The text to be included in the notification email.</P></TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF219">Checksum Integrity</A></P>
+<P><A NAME="TMPID11335"></A><B CLASS="highlight">This process runs independently of the verification and correction agent.</B></P>
+<P><A NAME="TMPID11337"></A>The Checksum Integrity feature will query the Search Engines on a periodic basis and trigger administrator notifications if serious data integrity errors exist.</P>
+<P><A NAME="TMPID11338"></A>The Search Engine has a feature that computes checksums on metadata regions when an object is first indexed, then performs continuous testing to verify that the checksum is correct as a low-priority background task. This process is designed to detect any corruption of metadata that may occur over time. The integrity status feature, when enabled, queries the Search Engines on a regular basis to obtain the number of checksum errors. If the number of errors increases, then the administrator should be alerted to check that the hardware and configuration of the Search Engines is operating correctly. </P>
+<P><A NAME="TMPID11339"></A>The Checksum integrity feature uses the same configuration of the Metadata Integrity required for verification and correction. Refer to the <span><A href="../otadmin/ota-verificationsched-bg.htm#VERIFSCHEDDEPENDENCIES">Dependencies</A></span> section for more information.</P>
+<P><A NAME="TMPID11341"></A>There is no separate report detailing objects exhibiting these errors. However, the verification report captures statistics on these errors, and identifies objects with metadata integrity errors.</P>
+<DIV title="Checksum Integrity Status" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="VERIFSCHEDCHECKSUM"></A><B>Table 1-18: Checksum Integrity Status</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Enabled</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">When selected, enables the checksum integrity process.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Metadata Integrity</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11360"></A><B CLASS="guilabel">Notify when number of total integrity errors &gt;=</B> – The total number of checksum integrity errors.</P>
+<P><A NAME="TMPID11362"></A>OpenText suggests an initial value of ‘1000’.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11365"></A><B CLASS="guilabel">or when number of new integrity errors &gt;= </B>— The number of new checksum integrity errors.</P>
+<P><A NAME="TMPID11367"></A>OpenText suggests an initial value of ‘100’.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID11370"></A><B CLASS="guilabel">Type of Message</B> – Select the type of message to send:</P><A NAME="AEN10644"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10645"></A><A NAME="TMPID11374"></A><B CLASS="guilabel">correction</B>, a previously reported error has been rectified</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10648"></A><A NAME="TMPID11377"></A><B CLASS="guilabel">information</B>, general status and other system information</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10651"></A><A NAME="TMPID11380"></A><B CLASS="guilabel">warning</B> , non-critical errors in the system</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10654"></A><A NAME="TMPID11383"></A><B CLASS="guilabel">error</B>, error messages and severe error messages</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10657"></A><A NAME="TMPID11386"></A><B CLASS="guilabel">severe error</B>, critical system errors such as index verification shutting down</P>
+<P><A NAME="TMPID11388"></A>Checksum errors are relatively serious, so OpenText suggests a severe error message level.</P></LI></UL></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11391"></A><B CLASS="guilabel">Message</B> – The text to send in the message.</P></TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

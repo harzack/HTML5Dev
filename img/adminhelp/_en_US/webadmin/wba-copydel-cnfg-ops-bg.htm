@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Configuring the Operations for Copy, Delete and Move</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-copydel-cnfg-ops-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working with Copy and Delete Item Operations';
+          header.title2 = 'Configuring the Operations for Copy, Delete and Move';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID16528"></A>You can specify how Content Server commits batch copy or delete operations to the database—either individually or as a group. Content Server defaults to single processing, which means if a single item fails, then the entire batch rolls back to its original state and nothing becomes committed to the database. In group processing, if an item fails, it does not cause the entire operation to fail. All items that process successfully will commit to the database.</P>
+<P><A NAME="TMPID16531"></A>In the <B CLASS="guilabel">Delete</B> section, you can enable the <B CLASS="guilabel">Delay deletion from storage provider</B> option. If this option is enabled, when an item is deleted, its content is not deleted immediately. The content is deleted through the Provider Blob Deletion Failure Retry scheduled activity instead. If you enable the <B CLASS="guilabel">Delay deletion from storage provider</B> setting, you must also enable the <B CLASS="guilabel">Provider Blob Deletion Failure Retry</B> scheduled activity on the Configure Schedule Activity page. For more information, see <span><A href="../webadmin/wba-blobdeletion-admin-bg.htm">Administering Blob Deletion Failures</A></span>.</P>
+<P><A NAME="TMPID16537"></A>You can configure the move throttle control settings when moving objects from on location of Content Server to another. For users to move items in Content Server, you must enable the move throttle control and specify a maximum number of objects they are allowed to move at one time.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF149"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID16541"></A><B CLASS="note">Note: </B><BR>Nodes cannot be moved even if the number of objects selected for a move operation is less than the maximum limit.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-copydel-cnfg-ops-p.htm" revision="">To Modify the Copy, Delete, and Move Operation Settings</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

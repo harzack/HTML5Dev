@@ -1,0 +1,382 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREC100500-1409-H-AGD-EN-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="recommender">
+<META mancondkey="llesels-h-ugd -- lleswba-h-agd"><title>Exporting Recommendation Data to XML</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'rec-expxmlrec-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Recommender';
+          header.title2 = 'Exporting Recommendation Data to XML';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID580"></A>To export XML data for a user's recommendations, append <TT CLASS="literal">&amp;outputxml=true</TT> to the end of the Content Server URL for the page, or enter the following URL: <TT CLASS="literal">&lt;<I CLASS="varname">protocol</I>>://&lt;<I CLASS="varname">host</I>>/&lt;<I CLASS="varname">URL_prefix</I>>/Content Server.exe?func=Personal.Recommendations&amp;outputxml=true</TT> </P>
+<P class="before-ul"><A NAME="TMPID588"></A>where:</P><A NAME="AEN571"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN572"></A><A NAME="TMPID591"></A><TT CLASS="literal">&lt;<I CLASS="varname">protocol</I>></TT> is either http or https,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN576"></A><A NAME="TMPID595"></A><TT CLASS="literal">&lt;<I CLASS="varname">host</I>></TT> is your fully qualified host address (for example, Content Serverhost.mycorp.com), and </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN581"></A><A NAME="TMPID600"></A><TT CLASS="literal">&lt;<I CLASS="varname">URL_prefix</I>></TT> is the virtual directory shortcut mapped to the <TT CLASS="literal">&lt;<I CLASS="varname">Content Server_home</I>>/cgi</TT> directory in the HTTP server.</P></LI></UL>
+<P><A NAME="TMPID606"></A>This command outputs the recommendations for the user who is currently logged in to the Admin server. </P>
+<P><A NAME="TMPID607"></A>The DTD that defines this XML output is included in installations as <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/module/recommender_&lt;<I CLASS="varname">x</I>>_&lt;<I CLASS="varname">x</I>>_&lt;<I CLASS="varname">x</I>>/config/recommender_xml_output.dtd</TT>, where &lt;<I CLASS="varname">x</I>>_&lt;<I CLASS="varname">x</I>>_&lt;<I CLASS="varname">x</I>> is the version number of the Recommender module. For example, for Recommender 10.5.0, the file is located in: <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/module/recommender_10_5_0/config/recommender_xml_output.dtd</TT>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="REC-EXPXMLUND">Understanding XML Output</A></P>
+<P><A NAME="TMPID624"></A>The first part of the XML output is a header section that defines the XML file and the type of data that the file contains (in this case, recommendation data). This section consists of the following XML declaration, which specifies the XML version and the character encoding used in the file, and the <TT CLASS="literal">PersonalRecommendations</TT> element: </P>
+<P><A NAME="TMPID626"></A><TT CLASS="literal">&lt;?xml version="1.0" ?&gt;&lt;PersonalRecommendations&gt;</TT> </P>
+<P><A NAME="TMPID628"></A>Next, the XML file contains one section for each of the Recommender components that displays information on the Recommendations page. It defines each section with a tag.</P>
+<DIV title="XML Tags that Define 'Recommender' Components" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="REC-TAB-3"></A><B>Table 1-3: XML Tags that Define Recommender Components</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="BOTTOM">Element</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="BOTTOM">Component</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;whatsnew&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">What's New</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;mostactive&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Most Active</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;toppicks&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Top Picks</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;history&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Recently Accessed Items</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;userslikeme&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">People With Similar Interests</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;docsinterest&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Documents of Interest</B></TD></TR></TABLE></DIV>
+<P><A NAME="TMPID671"></A>Each of these tags has a <TT CLASS="literal">DisplayName</TT> attribute, which specifies the name that appears in the GUI for the element (for example, <TT CLASS="literal">&lt;whatsnew DisplayName="What's New"&gt;</TT>). </P>
+<P><A NAME="TMPID674"></A>The <B CLASS="guilabel">What's New</B>, <B CLASS="guilabel">Most Active</B>, <B CLASS="guilabel">Top Picks</B>, <B CLASS="guilabel">Documents of Interest</B>, and <B CLASS="guilabel">Recently Accessed Items</B> components consist of tables of items, so they are defined by the same tags in the XML output. The following table describes the tags, in the order that they appear. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF8"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID681"></A><B CLASS="note">Note: </B><BR>In this table, several XML tags share the same name (for example, <TT CLASS="literal">&lt;dc_link&gt;</TT>). This apparent duplication is necessary because the table lists all the tags that appear, in the order that they appear.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="XML Tags for Item-Based Components" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="REC-TAB-4"></A><B>Table 1-4: XML Tags for Item-Based Components</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="BOTTOM">Tag</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="BOTTOM">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;browseview&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain the table of items.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;header&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain the header of the table of items.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;column&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain column labels that appear in the header of the table. The order in which the column labels appear in these tags is the order in which they appear in the user interface.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the column heading for the table (for example, <TT CLASS="literal">Type</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;tagname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the tag name for the column. The tag name associates the column heading with the corresponding column.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;contents&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information that appears in the body of the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;object&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a row in the body of the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_subtype&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about the item type for each item in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_subtype_img&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about the image that represents an item's item type.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_imgpath&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the path of the image that represents an item's item type.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_imgalt&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the ALT text for an item's item type image (for example, <TT CLASS="literal">Document</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the link for fetching an item.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_name&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about an item's name.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the name of the item as it is displayed in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the link for fetching an item.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_name_new&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Not used in the current version of Recommender.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_functions&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Not used in the current version of Recommender.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_location&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about an item's location.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_location_img&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about the image that accompanies each item's location.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_imgpath&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the path of the image that accompanies each item's location.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_imgalt&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the ALT text for the location image (for example, <TT CLASS="literal">Enterprise Workspace</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the location of an item as it is displayed in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the link that leads to the location of an item.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_name_new&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Not used in the current version of Recommender.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_size&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about an item's  size.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_size_displaysize&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the size of an item as it is displayed in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_modifydate&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about an item's modification date.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_date&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the modification date of an item as it is displayed in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_rating&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about an item's overall rating in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_rating_img&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about the image that represents an item's overall rating in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_imgpath&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the path of the image that represents an item's overall rating in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_imgalt&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the ALT text for the rating image (for example, <TT CLASS="literal">Click to rate this item</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the link that leads to the <B CLASS="guilabel">Ratings</B> tab of the item's Properties page in the table.</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID833"></A>The <B CLASS="guilabel">People With Similar Interests</B> component consists of a table of users. The following table describes the tags, in the order that they appear. </P>
+<DIV title="XML Elements for the People With Similar Interests Component" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="REC-TAB-5"></A><B>Table 1-5: XML Elements for the People With Similar Interests Component</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="BOTTOM">Element</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="BOTTOM">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;browseview&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain the table of users.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;header&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain the header of the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;column&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain column labels that appear in the header of the table. The order in which the column labels appear in these tags is the order in which they appear in the user interface.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the column heading for the table (for example, <TT CLASS="literal">User Name</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;tagname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the tagname for the column. The tagname associates the column heading with the corresponding column.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;contents&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information that appears in the body of the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;object&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a row in the body of the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_username&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a series of tags that contain information about a user in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the login name of the user as it is displayed in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_imgpath&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the path of the image that accompanies each user in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the link that leads to information about a user in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_firstname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the first name of a user in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_lastname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the last name of a user in the table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_department&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies the department of a user in the table.</TD></TR></TABLE></DIV>
+<DIV title="Example File" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF9"></A><B><FONT COLOR="WHITE">.</FONT><BR><IMG title="Example File" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-1: Example File</B></P>
+<P class="nr1"><A NAME="TMPID904"></A>The following is an example of exported recommendation data. In this case, the only recommendations are the following: in <B CLASS="guilabel">What's New</B>, the file kf.pdf, and in <B CLASS="guilabel">People With Similar Interests</B>, the user <TT CLASS="literal">bdouglas</TT>. </P><A NAME="AEN889"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;?xml version="1.0" ?&gt;
+
+&lt;PersonalRecommendations&gt;
+
+&lt;whatsnew DisplayName="What's New"&gt;
+&lt;!-- File: dc/sectionbrowseviewxml.html --&gt;
+  &lt;browseview&gt;
+    &lt;header&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Type&lt;/displayname&gt;
+        &lt;tagname&gt;dc_subtype&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Name&lt;/displayname&gt;
+        &lt;tagname&gt;dc_name&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Functions&lt;/displayname&gt;
+        &lt;tagname&gt;dc_functions&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Location&lt;/displayname&gt;
+        &lt;tagname&gt;dc_location&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Size&lt;/displayname&gt;
+        &lt;tagname&gt;dc_size&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Modified Date&lt;/displayname&gt;
+        &lt;tagname&gt;dc_modifydate&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Rating&lt;/displayname&gt;
+        &lt;tagname&gt;recommender_rating&lt;/tagname&gt;
+      &lt;/column&gt;
+    &lt;/header&gt;
+    &lt;contents&gt;
+      &lt;object&gt;
+        &lt;dc_subtype&gt;
+          &lt;dc_subtype_img&gt;
+            &lt;dc_imgpath&gt;/910support/webdoc/apppdf.gif&lt;/dc_imgpath&gt;
+            &lt;dc_imgalt&gt;Document&lt;/dc_imgalt&gt;
+            &lt;dc_link&gt;/910/.exe/kf.pdf?func=doc.Fetch&amp;nodeId=4618&amp;docTitle=kf%2Epdf&lt;/dc_link&gt;
+          &lt;/dc_subtype_img&gt;
+        &lt;/dc_subtype&gt;
+        &lt;dc_name&gt;
+          &lt;dc_displayname&gt;kf.pdf&lt;/dc_displayname&gt;
+          &lt;dc_link&gt;/910/.exe/kf.pdf?func=doc.Fetch&amp;nodeId=4618&amp;docTitle=kf%2Epdf&lt;/dc_link&gt;
+          &lt;dc_name_new/&gt;
+        &lt;/dc_name&gt;
+        &lt;dc_functions&gt;
+        &lt;/dc_functions&gt;
+        &lt;dc_location&gt;
+          &lt;dc_location_img&gt;
+            &lt;dc_imgpath&gt;/910support/webdoc/icon_library.gif&lt;/dc_imgpath&gt;
+            &lt;dc_imgalt&gt;Enterprise Workspace&lt;/dc_imgalt&gt;
+          &lt;/dc_location_img&gt;
+          &lt;dc_displayname&gt;Enterprise&lt;/dc_displayname&gt;
+          &lt;dc_link&gt;/910/.exe?func=ll&amp;objId=2000&amp;objAction=browse&amp;sort=name&lt;/dc_link&gt;
+          &lt;dc_name_new/&gt;
+        &lt;/dc_location&gt;
+        &lt;dc_size&gt;
+          &lt;dc_size_displaysize&gt;60731 KB&lt;/dc_size_displaysize&gt;
+        &lt;/dc_size&gt;
+        &lt;dc_modifydate&gt;
+          &lt;dc_date&gt;10/08/2002 04:07 PM&lt;/dc_date&gt;
+        &lt;/dc_modifydate&gt;
+        &lt;recommender_rating&gt;
+          &lt;recommender_rating_img&gt;
+            &lt;recommender_imgpath&gt;/910support/recommender/ratinggifs/star/star0.gif&lt;/recommender_imgpath&gt;
+            &lt;recommender_imgalt&gt;Click to rate this item.&lt;/recommender_imgalt&gt;
+            &lt;recommender_link&gt;?func=ll&amp;objid=4618&amp;objAction=Ratings&lt;/recommender_link&gt;
+          &lt;/recommender_rating_img&gt;
+        &lt;/recommender_rating&gt;
+      &lt;/object&gt;
+    &lt;/contents&gt;
+  &lt;/browseview&gt;
+&lt;!-- End File: dc/sectionbrowseviewxml.html --&gt;
+&lt;/whatsnew&gt;
+
+&lt;mostactive DisplayName="Most Active"&gt;
+&lt;/mostactive&gt;
+
+&lt;toppicks DisplayName="Top Picks"&gt;
+&lt;/toppicks&gt;
+
+&lt;history DisplayName="Recently Accessed Items"&gt;
+&lt;/history&gt;
+
+&lt;userslikeme DisplayName="People With Similar Interests"&gt;
+&lt;!-- File: dc/sectionbrowseviewxml.html --&gt;
+  &lt;browseview&gt;
+    &lt;header&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;User Name&lt;/displayname&gt;
+        &lt;tagname&gt;recommender_username&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;First Name&lt;/displayname&gt;
+        &lt;tagname&gt;recommender_firstname&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Last Name&lt;/displayname&gt;
+        &lt;tagname&gt;recommender_lastname&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Department&lt;/displayname&gt;
+        &lt;tagname&gt;recommender_department&lt;/tagname&gt;
+      &lt;/column&gt;
+    &lt;/header&gt;
+    &lt;contents&gt;
+      &lt;object&gt;
+        &lt;recommender_username&gt;
+          &lt;recommender_username&gt;
+            &lt;recommender_displayname&gt;bdouglas&lt;/recommender_displayname&gt;
+            &lt;recommender_imgpath&gt;/910support/guy.gif&lt;/recommender_imgpath&gt;
+            &lt;recommender_link&gt;&lt;A HREF="#" onClick="javascript:window.open('?func=user.userdialog&amp;userID=4613','UserDialog','width=460,height=365,resizable=yes,scrollbars=yes,menubar=no')"&gt;bdouglas&lt;/A&gt;&lt;/recommender_link&gt;
+          &lt;/recommender_username&gt;
+        &lt;/recommender_username&gt;
+        &lt;recommender_firstname&gt;
+          &lt;recommender_firstname&gt;Beverly&lt;/recommender_firstname&gt;
+        &lt;/recommender_firstname&gt;
+        &lt;recommender_lastname&gt;
+          &lt;recommender_lastname&gt;Douglas&lt;/recommender_lastname&gt;
+        &lt;/recommender_lastname&gt;
+        &lt;recommender_department&gt;
+          &lt;recommender_department&gt;DefaultGroup&lt;/recommender_department&gt;
+        &lt;/recommender_department&gt;
+      &lt;/object&gt;
+    &lt;/contents&gt;
+  &lt;/browseview&gt;
+&lt;!-- End File: dc/sectionbrowseviewxml.html --&gt;
+&lt;/userslikeme&gt;
+
+&lt;docsinterest DisplayName="Documents Of Interest"&gt;
+&lt;/docsinterest&gt;
+
+&lt;/PersonalRecommendations&gt;</PRE
+><IMG title="Example File" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

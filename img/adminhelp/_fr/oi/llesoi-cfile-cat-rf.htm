@@ -1,0 +1,273 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle de la balise category</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-cat-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Descriptions et syntaxe des balises Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle de la balise category';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CATTAG01">Balise category</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CATTAG2">Description</A></P>
+<P class="nr1"><A NAME="TMPID3413"></A>La balise <TT CLASS="literal">category</TT> spécifie un nom de catégorie à appliquer à un objet.  </P>
+<P CLASS="bridgehead-subheading3"><A NAME="CATTAG3">Syntaxe</A></P><A NAME="AEN3266"></A>
+<PRE 
+CLASS="screen"
+>&lt;category name="Content Server Categories:Test"&gt;&lt;/category&gt;</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="CATTAG4">Utilisation</A></P>
+<A NAME="AEN3269"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3270"></A><A NAME="TMPID3426"></A>La balise <TT CLASS="literal">category</TT> n'est pas obligatoire.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3273"></A><A NAME="TMPID3429"></A>La balise <TT CLASS="literal">category</TT> est facultative dans les cas suivants :</P><A NAME="AEN3276"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3277"></A><A NAME="TMPID3433"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3282"></A><A NAME="TMPID3438"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3287"></A><A NAME="TMPID3443"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="sync"&gt;</TT></P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3292"></A><A NAME="TMPID3448"></A>La création ou la mise à jour d'une catégorie peut inclure un certain nombre de balises subordonnées : <span><A HREF="llesoi-cfile-cat-rf.htm#ATTRIBTAG01">Balise attribute</A></span>, <span><A HREF="llesoi-cfile-cat-rf.htm#LLESOI-CFILE-NONIN-RF">Balise noninherit</A></span>, <span><A HREF="llesoi-cfile-cat-rf.htm#LLESOI-CFILE-SETAT-RF">Balise setattribute</A></span> et <span><A HREF="llesoi-cfile-cat-rf.htm#LLESOI-CFILE-SUBIT-RF">Balise subitems</A></span>. Ces balises subordonnées sont détaillées ci-dessous.</P></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="CATTAG5">Notes</A></P>
+<A NAME="AEN3299"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3300"></A><A NAME="TMPID3457"></A>La catégorie, ainsi que tous les attributs référencés, doivent exister dans Content Server pour que la balise puisse être utilisée. Si ces éléments n'existent pas dans Content Server, la catégorie ne sera pas créée et un message d'erreur apparaîtra dans le fichier journal.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3304"></A><A NAME="TMPID3461"></A>Si la catégorie a été précédemment appliquée à l'objet, directement ou par héritage, seules les données d'attribut spécifiées seront mises à jour. Dans le cas contraire, la catégorie sera ajoutée et toutes les données d'attribut seront mises à jour.</P>
+<P><A NAME="TMPID3462"></A>Si la catégorie a changé dans Content Server, celle appliquée à l'objet doit être « mise à jour » avant de modifier les données de catégorie à l'aide de Object Importer. Cette opération peut être réalisée dans l'onglet Catégories d'un objet donné via l'interface Content Server standard.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3311"></A><A NAME="TMPID3468"></A>Vous pouvez appliquer autant de catégories que vous le souhaitez aux objets à l'aide de Object Importer. En revanche, vous ne pouvez pas supprimer de catégorie d'un objet à l'aide de Object Importer.</P></LI></OL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="ATTRIBTAG01">Balise attribute</A></P>
+<P><A NAME="TMPID3473"></A>La balise <TT CLASS="literal">attribute</TT> permet d'attribuer une valeur à un attribut existant. La syntaxe de cette balise est la suivante : <A NAME="AEN3318"></A>
+<PRE 
+CLASS="screen"
+>&lt;attribute name="Name"&gt;John Doe&lt;/attribute&gt;</PRE
+> <A NAME="AEN3319"></A>
+<PRE 
+CLASS="screen"
+>&lt;attribute name ="xyz" clear="true"&gt;&lt;/attribute&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3320"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exemple</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3492"></A>La balise <TT CLASS="literal">attribute</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3495"></A>La balise <TT CLASS="literal">attribute</TT> ne peut exister seule et doit être contenue dans une balise <TT CLASS="literal">category</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3499"></A>Les balises <TT CLASS="literal">attribute</TT> multilignes sont admises dans le fichier de contrôle d'importation.</P></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3504"></A>Le nombre et la syntaxe des valeurs d'un attribut dépendent des valeurs configurées et appliquées à l'attribut dans Content Server.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3507"></A>Si l'attribut accepte des valeurs multiples, ces dernières peuvent être ajoutées en spécifiant des balises à attributs multiples dans le fichier de contrôle d'importation.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3509"></A>Pour effacer la valeur d'un attribut, utilisez <TT CLASS="literal">clear="true"</TT>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">4. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3512"></A>Les dates doivent être au format AAAAMMJJ ou AAAAMMJJHHMMSS, où la valeur HH se rapporte au format 24 heures et doit être comprise entre 01 et 24. Si le format AAAMMJJ est utilisé, l'heure prend par défaut la valeur 000000.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">5. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3514"></A>Lorsque vous définissez un type d'attribut pour une case à cocher, utilisez la syntaxe suivante : <TT CLASS="literal">TRUE</TT> pour l'état activé et <TT CLASS="literal">FALSE</TT> pour l'état désactivé.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">6. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3518"></A>Toutes les valeurs doivent être spécifiées lors de la mise à jour d'un attribut à valeurs multiples (Multi-Value Attribute, MVA). Par exemple, si un attribut contient cinq valeurs avant la mise à jour et que le fichier de contrôle d'importation indique trois valeurs, le MVA ne contiendra que ces trois valeurs après la mise à jour.</P></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <A NAME="AEN3363"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;category name="Content Server Categories:Test"&gt;
+      &lt;attribute name="Name"&gt;John Doe&lt;/attribute&gt;
+      &lt;attribute name="DateOfBirth"&gt;19650216&lt;/attribute&gt;
+    &lt;/category&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+> <A NAME="AEN3365"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;category name="Content Server Categories:Test"&gt;
+      &lt;attribute name="Color"&gt;Red&lt;/attribute&gt;
+      &lt;attribute name="Color"&gt;Green&lt;/attribute&gt;
+      &lt;attribute name="Color"&gt;Blue&lt;/attribute&gt;
+    &lt;/category&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CFILE-NONIN-RF">Balise noninherit</A></P>
+<P><A NAME="TMPID3526"></A>La balise <TT CLASS="literal">noninherit</TT> détermine si l'héritage peut être activé ou désactivé pour les catégories. La syntaxe de cette balise est la suivante : <A NAME="AEN3370"></A>
+<PRE 
+CLASS="screen"
+>&lt;noninherit&gt;FALSE&lt;/noninherit&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3371"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exemple</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3544"></A>La balise <TT CLASS="literal">noninherit</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3547"></A>La balise <TT CLASS="literal">noninherit</TT> ne peut exister seule et doit être contenue dans une balise <TT CLASS="literal">category</TT> .</P></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3553"></A>La balise <TT CLASS="literal">noninherit</TT> doit être définie sur <TT CLASS="literal">TRUE</TT> ou <TT CLASS="literal">FALSE</TT>.</P>
+<P><A NAME="TMPID3557"></A>Si la balise <TT CLASS="literal">noninherit</TT> est définie sur <TT CLASS="literal">TRUE</TT>, l'héritage peut être activé pour les catégories. Si la balise <TT CLASS="literal">noninherit</TT> est définie sur <TT CLASS="literal">FALSE</TT>, l'héritage peut être désactivé pour les catégories.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3563"></A>Le comportement d'héritage par défaut découle de l'objet parent.</P></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <A NAME="AEN3407"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;category name="Content Server Categories:Test"&gt;
+      &lt;attribute name="Name"&gt;Jane Doe&lt;/attribute&gt;
+      &lt;noninherit&gt;FALSE&lt;/noninherit&gt;
+    &lt;/category&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CFILE-SETAT-RF">Balise setattribute</A></P>
+<P><A NAME="TMPID3569"></A>En plus des attributs classiques, les attributs setattribute sont également pris en charge. La balise <TT CLASS="literal">setattribute</TT> permet d'attribuer une valeur à un attribut setattribute existant. La syntaxe de cette balise est la suivante : <A NAME="AEN3412"></A>
+<PRE 
+CLASS="screen"
+>&lt;setattribute name="Fruit"&gt;&lt;/setattribute&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3413"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exemple</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3585"></A>La balise <TT CLASS="literal">setattribute</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3588"></A>La balise <TT CLASS="literal">setattribute</TT> ne peut exister seule et doit être contenue dans une balise <TT CLASS="literal">category</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3592"></A>La balise <TT CLASS="literal">setattribute</TT> peut contenir des attributs.</P></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <A NAME="AEN3436"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;category name="Content Server Categories:SetTest"&gt;
+      &lt;setattribute name="Fruit"&gt;
+        &lt;attribute name="Name"&gt;Orange&lt;/attribute&gt;
+        &lt;attribute name="Color"&gt;Orange&lt;/attribute&gt;
+      &lt;/setattribute&gt;
+    &lt;/category&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CFILE-SUBIT-RF">Balise subitems</A></P>
+<P><A NAME="TMPID3599"></A>La balise <TT CLASS="literal">subitems</TT> permet d'appliquer une catégorie et ses valeurs d'attribut de manière récursive à tous les objets enfants de l'objet actuel. La syntaxe de cette balise est la suivante : <A NAME="AEN3441"></A>
+<PRE 
+CLASS="screen"
+>&lt;subitems&gt;reapply&lt;/subitems&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3442"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exemple</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3617"></A>La balise <TT CLASS="literal">subitems</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3620"></A>La balise <TT CLASS="literal">subitems</TT> ne peut exister seule et doit être contenue dans une balise <TT CLASS="literal">category</TT> .</P></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">La seule valeur acceptée pour la balise <TT CLASS="literal">subitems</TT> est <TT CLASS="literal">reapply</TT>.</TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <A NAME="AEN3468"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;category name="Content Server Categories:Test"&gt;
+      &lt;attribute name="Name"&gt;Jane Doe&lt;/attribute&gt;
+      &lt;subitems&gt;reapply&lt;/subitems&gt;
+    &lt;/category&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+> </TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

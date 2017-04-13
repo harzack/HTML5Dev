@@ -1,0 +1,77 @@
+<!-- wr_wrpowerview_info.html -->
+<!-- Copyright 2007 Resonate KT Ltd  -->
+
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Forms with WR Power View</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_powerview_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = "Forms with WR Power View";
+        header.draw();
+
+</SCRIPT>
+
+
+<p class="body">
+WR Power View is an option available in form templates that allows developers of WebForms to quickly leverage WebReports' unique ability to lookup and manipulate data from different sources but in the context of a form.  
+<br><br>
+Forms developers are presented with the option to add a WR Power View to a form template in addition to the traditional HTML view.  This new form view behaves in a similar way to an HTML view with some useful additions:
+	<ul>
+		<P><li>Native support for existing form tags like <b>[LL_FormTag_1_1_2_1 /]</b> and <b>[LL_FUNC /]</b> meaning that Power Views are backwards compatible with HTML views.  To leverage this capability, simply download the latest version of your form view and add it as a reportview version to a new WebReport added from the WR Power View option.</li></P>
+		<P><li>Full support for WebReports static tags, constants and parameters which can be used together with form tags.</li></P>
+		<P><li>Call an unlimited number of WebReports (through sub-WebReports calls) inside the view enabling dynamic population of lookup fields from data sources both inside and outside Livelink.</li></P>
+		<P><li>Select a WR Power View for a workflow form and use WebReports parameter tags ([LL_REPTAG_& /]) to access information about the executing workflow (e.g. workid, subworkid, taskid, mapid) then use these to lookup further information specific to the current step, user or workflow instance.</li></P>
+		<P><li>Use dummy forms in order to run reports inside a workflow.</li></P>
+	</ul>
+</p>
+
+<p class="body">
+To make immediate use of the of these features:
+<ul>
+		<P><li>From the form template function menu select "Export as HTML" then save the file to your desktop.</li></P>
+		<P><li>Go to Properties - Views tab of from template and select "Add View" followed by "WR Power View".</li></P>
+		<P><li>When selecting the reportview browse for the file saved to your desktop in the first step.</li></P>
+		<P><li>Open the WebReports tag guide and start making immediate use of the 100+ tags inside your form view.</li></P>
+</ul>
+</p>
+ <P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP">
+Technical Notes
+</p> 
+<p class="before-ul"> 
+<b>Note that the WebForms module must be installed for this feature to work. </b>
+</p>
+<p class=body>
+A WR Power View is designed to combine normal WebForms processing features along with WebReports tag processing.  It is designed to allow that WebForms tags could provide text to be used in WebReports tags/sub-tags and or 
+WebReports tags could return text that might affect WebForms tags.  To achieve these aims a WR Power View is processed as follows:
+</p>
+<ul>
+<P><li>A simple parse of the WebForm's tags is performed by the WebReports processing engine. This involves any WebForms tag that can be simply substituted (e.g. <b>[LL_FormTag_1_1_2_1 /]</b>. This simple parsing 
+will not resolve any WebForms LOOP sections and will not resolve any tags that are dependent on the LOOP structure. This simple parsing also does not manage any HTML changes such as insertion of SELECTED for the 
+correct item in a SELECT statement</li></P>
+<P><li>Normal WebReports parsing is performed and all normal WebReports tag substitution is completed</li></P>
+<P><li>A simple parse is performed again by WebReports to resolve any form's tags that remain and or which might have been created as a result of the WebReports processing</li></P>
+</ul>
+
+<p class=body>
+A specialized content control tag called <a href="wr_tag_syntax.htm#webreportformparseoff">[LL_WEBREPORT_FORMPARSEOFF /]</a> has been provided for certain situations where the standard WebForms processing is not desirable. 
+Because WebForms attempts to interpret some form fields (e.g. SELECT fields), any changes to these fields (or the addition of fields that are not in an expected format) may cause the WebForms code to break or malfunction. In 
+these cases, a developer can use this tag to disable the standard WebForms processing.  When this is disabled, any WebForms tags are processed using the "simple parsing" provided by WebReports. Note that besides ignoring 
+all HTML syntax this simple parsing does not handle any WebForms looping structures. Another benefit of using this tag is that it will normally improve performance for rendering a WR Power View. 
+</p>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

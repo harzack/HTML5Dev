@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Enveloppe sendxml pour feuilles de style</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-sendxml-msg-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Messages et enveloppes';
+          header.title2 = 'Enveloppe sendxml pour feuilles de style';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1214"></A>Lorsque des actions XML sont configurées de façon à traiter des messages avec des feuilles de style, tous les messages sortants sont inclus dans des éléments sendxml avant d'être envoyés à la feuille de style pour être convertis. La feuille de style doit produire un élément <TT CLASS="literal">sendxml</TT> pour pouvoir envoyer le message converti. Ceci permet à une feuille de style de distinguer les messages entrants et sortants, et de contrôler dans une certaine mesure le traitement des messages en plus de leur format.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="AID-025">Représentation XML</A></P>
+<P><A NAME="TMPID1218"></A><TT CLASS="literal">&lt;sendxml filename="…" contenttype="…"&gt;…&lt;/sendxml&gt;</TT> </P>
+<P><A NAME="TMPID1220"></A>L'enveloppe sendxml est un élément sendxml qui contient le message à envoyer.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="AID-026">Espaces de noms XML (le cas échéant)</A></P>
+<P><A NAME="TMPID1223"></A><TT CLASS="literal">&lt;sendxml xmlns="http://www.opentext.com/llx/"&gt;</TT> </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="AID-027">Représentation HTML</A></P>
+<P><A NAME="TMPID1227"></A>L'enveloppe sendxml n'est pas utilisée dans les échanges HTML.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="AID-028">Contenu du message</A></P>
+<P class="before-ul"><A NAME="TMPID1230"></A>Une enveloppe sendxml contient les éléments suivants :</P><A NAME="AEN1212"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1213"></A><A NAME="TMPID1233"></A>Nom de fichier</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1215"></A><A NAME="TMPID1235"></A>type de contenu ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1217"></A><A NAME="TMPID1237"></A>message.</P></LI></UL>
+<P><A NAME="TMPID1238"></A>Une enveloppe sendxml doit contenir un élément enfant unique pour le message à envoyer. Les attributs <TT CLASS="literal">filename</TT> et <TT CLASS="literal">contenttype</TT> sont facultatifs et peuvent être utilisés pour modifier le traitement du message. Si le message est envoyé à un répertoire à l'aide du protocole PUT HTTP, l'attribut filename contient le nom de fichier à utiliser pour stocker le message dans ce répertoire. L'attribut <TT CLASS="literal">contenttype</TT> contient le type MIME du message à envoyer. La valeur par défaut est text/xml, mais elle peut être modifiée par une feuille de style. Si la feuille de style change le type de contenu en text/html, le message est écrit en utilisant les règles de sortie XSLT pour HTML.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

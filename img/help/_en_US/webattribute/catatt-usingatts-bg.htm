@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWAT100500-H-UGD-EN-1">
+<META PiXprocLocator="webattribute">
+<title>Working With Attributes</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webuser/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'catatt-usingatts-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working With Categories and Attributes';
+          header.title2 = 'Working With Attributes';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID482"></A>When using Content Server Search, you can include one or more attributes in your search criteria. You can even search for attributes that have a specific value. Custom attributes also let you create relationships between items that would otherwise be unrelated. In addition to being indexed, attributes are stored in the Content Server database. This means that you can run a LiveReport to extract information based upon attributes.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF13">Attribute Types</A></P>
+<P><A NAME="TMPID486"></A>You must add at least one attribute to each Category, but you can add as many attributes as you need. Each attribute can have multiple values, shown as multiple rows. You must unlock the number of rows to permit users to add rows beyond the default number. To enable users to use an attribute when searching, you must enable the Show in Search parameter.</P>
+<P><A NAME="TMPID487"></A>Most attributes can be made required. If you apply a Category to a Folder, and if that Category includes required attributes, then whenever a user adds an item to that Folder, he or she will be required to supply values for those attributes.</P>
+<P><A NAME="TMPID488"></A>The following table describes the types of custom attributes that are available in Content Server.</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN493"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Attribute Type</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Text Popup</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Adds a menu containing a set of predetermined values, such as a <B CLASS="GUILABEL">Color</B> popup menu that contains the values <B CLASS="GUILABEL">Red</B>, <B CLASS="GUILABEL">Blue</B>, and <B CLASS="GUILABEL">Yellow</B>. This attribute can contain any letter, number, or symbol combination. The maximum number of characters allowed for each value is 254.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Text Field</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Adds a field for entering alphanumeric text, such as a <B CLASS="GUILABEL">Name</B> field for typing a customer's name. This attribute can contain any letter, number, or symbol combination. The default size is 32 characters, and the maximum is 254.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Multiline Text Field</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Adds a field for entering a relatively large amount of alphanumeric text, such as a <B CLASS="GUILABEL">Comments</B> field for typing an explanation or description. The default size (Display Length) is 32 characters, and the maximum is 254. If the default size is exceeded, a multiline text field will automatically scroll to the right until reaching the maximum number of characters.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Checkbox</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Add an option to toggle a value on or off. This attribute cannot be required.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">User Field</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Adds an option to find and select a Content Server user. For information about finding groups, see <span><XPROC NAME="ExtXrefStart" HREF="lleswbu-h-ugd.ug-finding-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/webuser/ug-finding-bg.htm">Finding Users and Groups</A><XPROC NAME="ExtXrefEnd" HREF="lleswbu-h-ugd.ug-finding-bg" FMT=""></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date Field</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Adds a menu to enter a date. A time field can be included.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date Popup</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Adds an option to choose from a predefined set of dates.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Integer Field</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Adds a field for entering whole numbers. Values can be positive or negative, but no special characters (such as currency symbols or decimal points) can be included.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Integer Popup</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Adds a field or popup for choosing whole numbers that are predefined by the Category designer. Values can be positive or negative, but no special characters (such as currency symbols or decimal points) can be included.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Set</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">A special attribute type within a Category that contains two or more attributes that have a strong relationship between them. A Set is like a Category within a Category. For example, you may want to know the date that a specific user reviewed a Document (two attributes: Date and Reviewer), or the product code of a product that a customer is complaining about (three attributes: Code Number, Product Name, and Customer Name). A Set cannot be required; to require values within a Set, mark each attribute individually as Required.</TD></TR></TABLE>
+</DIV></P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="catatt-addcatat-p.htm" revision="">To Add or Edit an Attribute</A></p></li>
+<li><p><A  HREF="catatt-editatt-p.htm" revision="">To Edit an Item’s Attribute Values</A></p></li>
+<li><p><A  HREF="catatt-attr-textf-p.htm" revision="">To Define a Text Field Attribute</A></p></li>
+<li><p><A  HREF="catatt-attr-textp-p.htm" revision="">To Define a Text Popup Attribute</A></p></li>
+<li><p><A  HREF="catatt-attr-textm-p.htm" revision="">To Define a Text Multiline Attribute</A></p></li>
+<li><p><A  HREF="catatt-attr-chkbx-p.htm" revision="">To Define a Flag Checkbox Attribute</A></p></li>
+<li><p><A  HREF="catatt-attr-usrf-p.htm" revision="">To Define a User Field Attribute</A></p></li>
+<li><p><A  HREF="catatt-attr-datef-p.htm" revision="">To Define a Date Field Attribute</A></p></li>
+<li><p><A  HREF="catatt-attr-datep-p.htm" revision="">To Define a Date Popup Attribute</A></p></li>
+<li><p><A  HREF="catatt-attr-intf-p.htm" revision="">To Define an Integer Field Attribute</A></p></li>
+<li><p><A  HREF="catatt-attr-intp-p.htm" revision="">To Define an Integer Popup Attribute</A></p></li>
+<li><p><A  HREF="catatt-attr-set-p.htm" revision="">To Define an Attribute Set</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

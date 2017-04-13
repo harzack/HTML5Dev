@@ -1,0 +1,183 @@
+<!-- wr_sort_info.htm -->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+	<TITLE>Sorting with WebReports</TITLE>
+	<LINK REL="stylesheet" HREF="../../ix21.css">	  
+	<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+	<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+
+<BODY ONLOAD="checkFrame('wr_sort_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+
+<SCRIPT LANGUAGE="JavaScript">
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Sorting with WebReports';
+        header.draw();
+</SCRIPT>
+
+<p class="body">
+The WebReport content control tag <SPAN class="gui">
+[LL_WEBREPORT_SORT &lt;Sort Keys&gt; &lt;Global Direction&gt; /]</span>
+makes it possible to sort data using one or more columns from the data source specified as sort keys.
+</p>
+<p class="body">
+Each sort key contains a quoted column reference followed by an optional colon and direction parameter that specifies if values should be assorted in ascending or descending order.
+E.g.
+</p>
+<SPAN class="gui">
+[LL_WEBREPORT_SORT&nbsp;"dataid":DESC&nbsp;/]
+</span>
+<p class="body">
+There are three different ways to specify the column reference for each sort key:
+</p>
+<ul type="disc">
+	<li>Specify a column number from the data source.  A numeric value representing the column number from left
+    to right in the data source can be used. E.g. <SPAN class="gui">[LL_WEBREPORT_SORT "1" /]</SPAN></li>
+    <li>Specify a column name from the data source.  A text value representing the name of one of the columns
+    used in the data source can be used. E.g. <SPAN class="gui">[LL_WEBREPORT_SORT "dataid" /]</SPAN></li>
+    <li>Specify a WebReports tag and sub-tags to be used as a sort key. This function allows the sort to be based
+    on different criteria than the normal data returned by the column.
+    For example: <SPAN class="gui">[LL_WEBREPORT_SORT "[LL_REPTAG=DATAID NODEINFO:NAME /]" /]</SPAN> <BR>
+    In this example, rather than sorting on the dataid column, the sort will be based on the name of the dtree object
+    which is returned by NODEINFO:NAME.
+    </li>
+</ul>
+<p class="body">
+Multiple sort columns can be specified allowing the user to sort within a sort and so on.  As an example, we could sort by the first column, then within this we could sort on the second column, and within this, the third column.
+Here's how the syntax might look followed by an example of the output.<br>
+<br>
+[LL_WEBREPORT_SORT "1" "2" "3" /]
+<br><br>
+<table class="body" border="1" summary="">
+<tr bgcolor="lightgray"><td><B>col 1</B></td><td><B>col 2</B></td><td><B>col 3</B></td></tr>
+<tr><td>a</td><td>27</td><td>zucchini</td></tr>
+<tr><td>b</td><td>1</td><td>apple</td></tr>
+<tr><td>b</td><td>8</td><td>carrot</td></tr>
+<tr><td>b</td><td>8</td><td>zucchini</td></tr>
+<tr><td>d</td><td>1</td><td>potato</td></tr>
+</table>
+</p>
+
+<p class="body">
+The methods above can be combined to provide sorting on multiple key values as shown in the following examples:
+</p>
+<SPAN class="body">
+[LL_WEBREPORT_SORT&nbsp;<b>"1":ASC</b>&nbsp; <b>"name"</b>&nbsp; <b>"[LL_REPTAG_3 DECODE:1:Active:2:Inactive&nbsp;/]":ASC</b>&nbsp;/]<br>
+Sorts by the first column explicitly in the ascending direction, then the name column, also in the ascending direction (by default), then, depending on the value in column 3 we either sort on the column Active or Inactive, also ascending.
+<br><br>
+[LL_WEBREPORT_SORT&nbsp;<b>"1"</b>&nbsp; <b>"name":DESC</b>&nbsp; <b>"[LL_REPTAG_3&nbsp;DECODE:1:Active:2:Inactive&nbsp;/]"</b>&nbsp;/]<br>
+Sorts the first column ascending (by default), then the name column descending, then depending on the value in the third column either the Active or Inactive columns.
+
+</SPAN>
+
+<p class="body">
+In addition to the direction parameter that can be optionally specified for each sort key, the SORT function also supports a global direction parameter to specify
+the sort direction (ascending or descending) to be used for all sort keys that don't have a direction specified. <b>DESC</b> or <b>ASC</b> should be used
+(some older syntaxes are still supported).
+If this parameter is not specified, the direction defaults to ASC (ascending).
+E.g. </p>
+<SPAN class="gui">
+[LL_WEBREPORT_SORT "1" "2" DESC /]<br>
+</SPAN>
+<p class="body">
+In this example, the data set would be sorted in descending order of column 1 followed by descending order of column 2.
+</p>
+<p class="body">
+<b><u>Advanced Notes</u></b>
+</p>
+<p class="body">
+This tag is always placed within a row section (i.e. after the [LL_WEBREPORT_STARTROW /] and before
+[LL_WEBREPORT_ENDROW /]). It is possible to have multiple SORT tags in a row section but this is normally unnecessary since each SORT tag supports multiple keys.
+</p>
+<p class="body">
+When using a WebReport tag and sub-tags as the sort parameter, any results which are numeric or in a valid date
+form as defined in the Livelink system, will be sorted as integer and date types respectively.
+</P>
+<p class="body">
+When using the SORT tag, it is possible to use parameter or constant tags as part of the tag syntax. This is
+useful to allow content to be sorted according to a value that has been passed as a parameter or a constant. E.g. <br>
+</p>
+<SPAN class="gui">
+[LL_WEBREPORT_SORT&nbsp;"[LL_REPTAG=DATAID NODEINFO:[LL_REPTAG_&nodefield&nbsp;/]&nbsp;/]":[LL_REPTAG_&direction&nbsp;/]&nbsp;/]
+</SPAN>
+<p class="body">
+In the example above, a URL parameter could be passed to specify which NODEINFO:<field> should be used. A direction
+could also be passed in this example. Note that for the &nodefield parameter the tag would not work correctly if no
+value had been passed as nodefield.  The Parameter Default feature should be used to provide a default parameter in
+situations like this.
+</p>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP">
+Pre-defined Sort Parameters
+</p>
+<p class="body">																							 
+This feature allows complex sort keys to be associated with simple references that can be passed in the URL.  This feature is particularly useful when setting up reports that are sorting using WebReports tags and sub-tags. 
+When the user selects  a column for sorting, it can be difficult to pass the necessary tag syntax in the URL in order for the SORT tag to execute. To solve this problem, this feature provides the ability to specify:
+<ul>
+<li>The name of one or more parameters that should be checked in the URL</li>
+<li>A series of reference words and their associated tag syntax</li>
+</ul>			  
+When this is set up correctly, each specified parameter is checked to see if one of the predefined reference words has been found.  If a specified reference word is found in the URL parm then the corresponding syntax 
+for this word is inserted into the SORT tag. 
+</p>
+<p class="body">
+Note that Content Server 10 doesn't allow alphanumeric sort parameter names, so 'colA' will work, but 'col1' will throw an error.
+</p>
+<p class="body">  
+In order to provide this functionality, two "directives" are provided that can be included within the SORT tag. The concept of a "directive" exists in other content control tags such as the INSERTJSON tag. It refers to a syntax 
+command preceded by an @ symbol. Each directive may have one or more additional pieces of information.  The two directives supported by SORT are @PARMNAMES AND @PREDEFKEY. These directives are explained in depth below. 	
+</p>
+<table width=100% border=1 cellpadding=5>
+<tr> 
+<td> 
+ <b>@PARMNAMES</b>  <b>SORTCOL:</b>&lt;sortcolname&gt <b>SORTDIR:</b>&lt;directioncolname&gt
+</td>
+<td>   
+One or more of these directives can optionally be specified. If none of these directives are specified (and a predefined key - 
+as below - is specified) then it is assumed that the parameters &sort and &direction will be used
+to pass any sort or directional references.  For each @PARMNAMES directive that is supplied, an alternative URL parameter name 
+can be specified for either the sort column or the sort direction. The ability to specify more than one 
+@PARMNAMES directive allows multiple sort columns to be specified.  These parameters are used in the order of the @PARMNAMES 
+directives specified in the SORT tag.  For example, given the following set of directives:
+<br>
+<b>@PARMNAMES</b>  <b>SORTCOL:</b>sortcolA <b>SORTDIR:</b>coldirA 
+<br>
+<b>@PARMNAMES</b>  <b>SORTCOL:</b>sortcolB <b>SORTDIR:</b>coldirB 
+<br>
+<b>@PARMNAMES</b>  <b>SORTCOL:</b>sortcolC <b>SORTDIR:</b>coldirC
+<br>
+If the URL contained:<b>&sortcolC=parentid&sortcolA=Name&sortcolB=dataid</b>	  <br>
+The SORT would execute based on: <b>Name</b>, <b>DataID</b> and then <b>ParentID</b> - in that sequence. 	 <br>
+Note that normally the value of each of these parameters will specify one of the predefined keys as setup by the 
+PREDEFKEY directive below. 
+</td>
+</tr>	  
+<tr> 
+<td> 
+<b>@PREDEFKEY <br>
+REF:</b>&lt;reference key&gt <br>
+<b>PARM:</b>"&lt;tag/sub-tag syntax&gt;" 
+</td>
+<td>   
+This directive is used to setup a simple identifier that can be used to reference a complex tag/sub-tag type sort key.  This allows the client application to specify a simple key as a sort parameter rather than a large chunk of WebReports tag 
+and sub-tag information. For example, if a particular column contains the following syntax: 
+<b>[LL_REPTAG=DATAID CAT:somecat:attr1:DISPLAY /]</b> and we want to be able to sort using this
+data, we could setup a key as follows:<br>
+<b>@PREDEFKEY REF:colC PARM:"[LL_REPTAG=DATAID CAT:somecat:attr1:DISPLAY /]"</b> <BR>	 
+With this definition in place, <b>&sort=colC</b> in the URL (or POST request) would tell the SORT tag to use 
+<b>[LL_REPTAG=DATAID CAT:somecat:attr1:DISPLAY /]</b> as a SORT key. Several such predefined keys can be created, one for each and every column that could be sorted. Usually this feature is only used where the sort key is complex, such as in the example above.
+
+</td>
+</tr>
+</table>
+
+</p>
+				  
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

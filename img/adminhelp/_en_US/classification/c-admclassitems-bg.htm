@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESCLS100500-H-AGD-EN">
+<META PiXprocLocator="classification">
+<title>Configuring Item Types as Classifiable</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/recman/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'c-admclassitems-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Classifications  Options';
+          header.title2 = 'Configuring Item Types as Classifiable';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID470"></A>Item types that can be classified are called <I CLASS="EMPHASIS">managed objects</I>. You can configure four default item types in Content Server as managed objects:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN474"></A><A NAME="TMPID475"></A>Compound Documents</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN476"></A><A NAME="TMPID477"></A>Documents</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN478"></A><A NAME="TMPID479"></A>Text Documents</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN480"></A><A NAME="TMPID481"></A>Folders</P></LI></UL>
+<P><A NAME="TMPID482"></A>For example, if you make the <I CLASS="EMPHASIS">Documents</I> item type a managed object, Content Server users can manually classify Documents, or you can configure Content Server to automatically classify or suggest Classifications for Documents using the Intelligent Classifications functionality. For more information about automatic and assisted Classifications, see <span><A HREF="c-addclassadm-bg.htm">Adding Classifications</A></span>.</P>
+<P><A NAME="TMPID487"></A>If you want to allow additional Content Server item types to be configurable as managed objects (for example, URLs or Projects), you do so by adding the item type to the Managed Objects administration page. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="llesrcm-h-agd.rm-manobjects-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/recman/rm-manobjects-bg.htm">Configuring Managed Objects</A><XPROC NAME="ExtXrefEnd" HREF="llesrcm-h-agd.rm-manobjects-bg" FMT=""></span>.</P>
+<P class="otModuleHide if-elservice-show BRIDGEHEAD-SUBHEADING2 BH2SEP" id="C-ELSOJECTS-BG" ><A NAME="C-ELSOJECTS-BG">Enterprise Library Services Objects Within a Classification</A></P>
+<P CLASS="otModuleHide if-elservice-show" id="TMPID491"><A NAME="TMPID491"></A>You cannot classify OpenText Enterprise Library object types by default. You must manually make them classifiable by editing the value of the <TT CLASS="LITERAL">SubTypes</TT>  parameter in the <TT CLASS="LITERAL">[Classification]</TT> section of the <TT CLASS="FILENAME">opentext.ini</TT> file, and then selecting them on the Managed Objects page.  For more information, see <span><A HREF="c-otini-bg.htm">opentext.ini File Settings for Classifications</A></span></P>
+<P CLASS="otModuleHide if-elservice-show" id="TMPID498"><A NAME="TMPID498"></A>Once configured, you can classify OpenText Enterprise Library items using the Manual, Assisted, or Automatic classification method. Classification inheritance rules apply to OpenText Enterprise Library container objects such as Folder, and Item. </P>
+<table class="otModuleHide if-elservice-show NOTE" id="TMP4REF11" >
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF11"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID504"></A><B CLASS="NOTE">Note: </B><BR>Because Variants contain content (in the actual document and in the search index) and Items contain metadata, Variants are classified independently from Items. When Content Server classifies OpenText Enterprise Library objects based on content, only Variants are classified and content-based queries will only return Variants in the search results. When you add a new Variant, it inherits Classifications from the Item, provided the Item and Variant are classifiable subtypes. Prior to classifying Enterprise Library Services items, you must make them available for classification. For more information, see <span><A HREF="c-classexcont-bg.htm">Classify Existing Content Using Intelligent Classification Functionality</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

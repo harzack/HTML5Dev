@@ -1,0 +1,157 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWBD100500-H-UGD-EN-1">
+<META PiXprocLocator="webdoc">
+<title>Working with Versions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/root/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wd-versions-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Managing Versions and Generations';
+          header.title2 = 'Working with Versions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID660"></A>The purpose of creating a Version in Content Server is to preserve an existing item whenever it is modified. Since versioning is governed by permissions, only users with the proper permissions can manually add a Version to an item. For more information about permissions, see <span><XPROC NAME="ExtXrefStart" HREF="../webdoc/llesrt-h-ugd.perms-managing-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/root/perms-managing-bg.htm">Managing Permissions</A><XPROC NAME="ExtXrefEnd" HREF="../webdoc/llesrt-h-ugd.perms-managing-bg" FMT=""></span>.</P>
+<P class="before-ul"><A NAME="TMPID663"></A>Items that can have Versions are called <I CLASS="GLOSSTERM">versionable</I> items. Content Server maintains Versions for the following item types:</P><A NAME="AEN686"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN687"></A><A NAME="TMPID668"></A>Documents</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN689"></A><A NAME="TMPID670"></A>Compound Documents</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN691"></A><A NAME="TMPID672"></A>Text Documents</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN693"></A><A NAME="TMPID674"></A>Categories</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN695"></A><A NAME="TMPID676"></A>Workflow Maps</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN697"></A><A NAME="TMPID678"></A>Project Templates</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN699"></A><A NAME="TMPID680"></A>Extensible Markup Language Document Type Definitions (XML DTDs)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN701"></A><A NAME="TMPID682"></A>Custom Views</P></LI></UL>
+<P><A NAME="TMPID683"></A>Content Server uses two types of versioning systems: <I CLASS="GLOSSTERM">standard versioning</I> and <I CLASS="GLOSSTERM">advanced versioning</I>. Standard versioning is used for all versionable Content Server item types; advanced versioning is used for Documents and Text Documents. Advanced versioning is enabled by default, but can be disabled by your administrator. If advanced versioning is disabled, standard versioning will be used for all Content Server items, including Documents and Text Documents.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF18"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID690"></A><B CLASS="NOTE">Note: </B><BR>Compound Documents have their own kinds of Versions called <I CLASS="GLOSSTERM">Releases</I> and <I CLASS="GLOSSTERM">Revisions</I>. For more information, see <span><A href="../webdoc/wd-releases-bg.htm">Working with Releases and Revisions</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WD-USE-STAND">Using Standard Versioning</A></P>
+<P><A NAME="TMPID696"></A>Standard versioning, also known as <I CLASS="EMPHASIS">linear versioning</I>, displays Versions as whole integers. For example: 1, 2, 3, 4. When you add a new versionable item to Content Server, it becomes <I CLASS="EMPHASIS">both</I> an object in the system and a Version of that item. If you then add a Version to the item, it becomes the current Version and represents the object in Content Server. For example, when you add a spreadsheet to Content Server it exists as a Document object <I CLASS="EMPHASIS">and</I> the first Version of the Document. If you add a modified version of the spreadsheet, it becomes the Document object and the second Version. The original spreadsheet is preserved in Content Server as the Document's first Version.</P>
+<P><A NAME="TMPID704"></A>When changes to an item are made, Content Server automatically adds a new Version. You can also add a new Version of an item when you unreserve it. For more information about reserving and unreserving Content Server items, see <span><XPROC NAME="ExtXrefStart" HREF="../webdoc/llesrt-h-ugd.ll-gen-items-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/root/ll-gen-items-bg.htm">Working with General Items</A><XPROC NAME="ExtXrefEnd" HREF="../webdoc/llesrt-h-ugd.ll-gen-items-bg" FMT=""></span>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF19"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID709"></A><B CLASS="NOTE">Note: </B><BR>Versions of an item or Document cannot be reserved. If you want to prevent other users from making changes to, or downloading, a Version of an item or Document, you must <I CLASS="EMPHASIS">lock</I> it.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="WD-ACCESS-STAND">Accessing Standard Versions</A></P>
+<P><A NAME="TMPID713"></A>You can quickly access, and work with, previous Versions of any versioned item from the <B CLASS="GUILABEL">Versions</B> tab of the item's <B CLASS="GUILABEL">Properties</B> page. Every Version has its own <B CLASS="GUILABEL">Functions</B> icon, which you can use to open, view, download, delete, lock or unlock a Version.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF20"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID718"></A><B CLASS="NOTE">Note: </B><BR>When you delete an item that has a standard Version, you delete the current Version <I CLASS="EMPHASIS">and</I> all previous Versions.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID720"></A>By default, Content Server retains an unlimited number of previous Versions, but you can limit the number of Versions on an item-by-item basis. When the <I CLASS="GLOSSTERM">Version limit</I> is reached, Content Server automatically purges an item's oldest Version when a new Version is added. You can also purge Versions manually.</P>
+<P><A NAME="TMPID724"></A>You can lock a Version to prevent it from being deleted or purged. Content Server does not include locked Versions in the maximum number of Versions to be retained.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WD-USE-ADV-VERS">Using Advanced Versioning</A></P>
+<P><A NAME="TMPID728"></A><I CLASS="EMPHASIS">Advanced versioning</I> allows users to add a Document or a Document sub-type, such as a Text Document, to Content Server as a <I CLASS="EMPHASIS">major Version</I> or <I CLASS="EMPHASIS">minor Version</I> when the Document is created. A Document's <B CLASS="GUILABEL">Version</B> tab on its <B CLASS="GUILABEL">Properties</B> page displays major Versions as whole numbers and minor Versions as decimals. For example, major Versions are displayed as 1.0, 2.0 and 3.0; minor Versions are displayed as 0.1, 0.2 and 0.3. When you add a Document, it is added as minor Version number 0.1. If a Version is added to an existing Document, its Version number will be the next minor Version number. For example, if the latest Version number of a Document is 1.2, and a Version is added, the new Version added will become 1.3.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF21"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID736"></A><B CLASS="NOTE">Note: </B><BR>Advanced versioning is enabled by default; however, your administrator can disabled advanced versioning.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID737"></A>If advanced versioning is not enabled, Versions are automatically added using standard versioning. When advanced versioning is disabled on an existing item that has major or minor Versions associated with it, the Version numbers display using standard versioning. For example, 1, 2, 3 and 4. However, existing major or minor Version numbers are preserved in case advanced versioning is re-enabled at a later time.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="WD-ACCESS-ADV-VERS">Accessing Advanced Versions</A></P>
+<P><A NAME="TMPID740"></A>The functions that you can perform on an advanced Version depends on the permissions you have for that particular item. Like standard Versions, every major or minor Version of a Document has its own <B CLASS="GUILABEL">Functions</B> icon, which you can use to open, view, download, delete and lock Versions. If a Document is reserved, you can add a major or minor Version when you unreserve the Document. The following table describes the permissions that are required to perform certain functions on Versions.</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN758"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Permission</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Available Functions</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">See Contents</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">See major Versions</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Reserve</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">See major and minor Versions<BR>Add minor Versions</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Delete Versions</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">See major and minor Versions<BR>Delete minor Versions</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Delete</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">See major and minor Versions<BR>Delete major and minor Versions</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Edit Permissions</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Add major and minor Versions<BR>Promote Versions<BR>Modify Version control settings (change between standard and advanced versioning)</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID766"></A>Users with the Edit permission for a Folder or Project can force all Documents added to that container to use advanced versioning. If this option is selected, the option to choose a type of versioning for the Document you are adding does not appear. The option to force Documents to use advanced versioning can be applied to a specific item, only Folders and Projects within the item, or the specific item and the Folders and Projects within the item. Also, users with the Edit permission can promote minor and major Versions of a Document to its next major Version. Major Versions cannot be “demoted” to minor Versions.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF22"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID769"></A><B CLASS="NOTE">Note: </B><BR>A Document added to Content Server as a minor Version appears in Content Server with a generic document icon next to it and has an unspecified mime type until a major Version of the Document is added, or it is promoted to a major Version.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID772"></A>You can view an item's Versions on the <B CLASS="GUILABEL">Version</B> tab of the item's <B CLASS="GUILABEL">Properties</B> page. The information you see on this page depends on your permissions. If you have:</P><A NAME="AEN791"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN792"></A><A NAME="TMPID777"></A><B CLASS="HIGHLIGHT">Full access</B>, which means the user has been granted the Edit permission to an item, the <B CLASS="GUILABEL">Versions</B> tab of the item's <B CLASS="GUILABEL">Properties</B> page displays all major and minor Versions.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN797"></A><A NAME="TMPID782"></A><B CLASS="HIGHLIGHT">Limited access</B>, which means the user has been granted See Contents permission to an item, the <B CLASS="GUILABEL">Version</B> tab of the item's <B CLASS="GUILABEL">Properties</B> page displays only major Versions.</P></LI></UL>
+<P><A NAME="TMPID786"></A>Your administrator also has the ability to allow users to view only major Versions of a Document. If this option is enabled, and no minor Versions for the Document exist, either you will be able to see the Documents, without being able to access them, or the Documents will be hidden altogether. By default, users with access to only major Versions can see that minor Versions exist, but cannot view, open, download, or perform any other functions on them.</P>
+<P><A NAME="TMPID791"></A>As with standard versioning, Content Server retains an unlimited number of previous Versions, but you can limit the number of Versions that are retained on an item-by-item basis. When a Document with major and minor Versions reaches its maximum Version limit, Content Server automatically purges the oldest minor Version. You can purge minor Versions manually, in the same way that you purge standard Versions. Your ability to delete or purge minor Versions of a Document, and your ability to delete major Documents is controlled by permissions. In order to delete minor Versions, you must have the Delete Versions permission for the Document; in order to delete major Versions of a Document, you must have the Delete permission for the Document.</P>
+<P><A NAME="TMPID794"></A>Since <I CLASS="EMPHASIS">locked</I> Versions cannot be deleted, you can prevent major and minor Versions from being deleted by locking them. Locking minor Versions also prevents them from being purged. Major versions cannot be purged, whether or not they are locked; they can only be deleted.</P>
+<P><A NAME="TMPID796"></A>The behavior of certain functions in Content Server, such as moving or copying an item, is affected by advanced Versioning. For more information about the functions that are affected by advanced versioning, see <span><A href="../webdoc/fn-advanced-version-behavior-rt.htm">Understanding Advanced Versioning Behavior for Content Server Features and Functions</A></span>.</P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webdoc/fn-add-version-p.htm" revision="">To Add a Version</A></p></li>
+<li><p><A  href="../webdoc/fn-unreserve-add-version-p.htm" revision="">To Unreserve a Document and Add a Version</A></p></li>
+<li><p><A  href="../webdoc/fn-work-versions-p.htm" revision="">To Work with Versions</A></p></li>
+<li><p><A  href="../webdoc/fn-set-version-limit-p.htm" revision="">To Set a Version Limit</A></p></li>
+<li><p><A  href="../webdoc/fn-purge-version-p.htm" revision="">To Purge Versions</A></p></li>
+<li><p><A  href="../webdoc/fn-convert-version-p.htm" revision="">To Convert a Standard or Advanced Version</A></p></li>
+<li><p><A  href="../webdoc/fn-promote-version-to-major-p.htm" revision="">To Promote a Version to Major</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

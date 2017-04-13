@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Configuration des actions d'une étape de Workflow Interchange</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-configactions-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Conception d\'une étape Workflow Interchange ';
+          header.title2 = 'Configuration des actions d\'une étape de Workflow Interchange';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID416"></A>Vous avez la possibilité de configurer les actions d'une étape <B CLASS="guilabel">Workflow Interchange</B>. Cela vous permet de déterminer les actions réalisées lorsqu'une étape <B CLASS="guilabel">Workflow Interchange</B> est prête ou lorsqu'une tâche active reçoit une requête de modification de tâche.</P>
+<DIV title="Pour configurer des actions d'une étape de Workflow Interchange :" CLASS="procedure">
+<P><B>Pour configurer des actions d'une étape de Workflow Interchange :</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID422"></A>Dans l'éditeur de schéma de workflow, double-cliquez sur une étape <B CLASS="guilabel">Workflow Interchange</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID425"></A>Cliquez sur l'onglet <B CLASS="guilabel">Actions</B>.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID428"></A>Dans la zone <B CLASS="guilabel">Etape prête</B>, sélectionnez l'une des actions suivantes dans la liste <B CLASS="guilabel">Lorsque cette étape est en cours de préparation</B> :</P><A NAME="AEN430"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN431"></A><A NAME="TMPID433"></A><B CLASS="guilabel">Envoyer un message de lancement XML</B>, qui envoie un message de lancement au format XML à une URL spécifique une fois l'étape prête, par exemple pour lancer un workflow dans un autre système Content Server ; </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN435"></A><A NAME="TMPID437"></A><B CLASS="guilabel">Envoyer un message de lancement HTML</B>, qui envoie un message de lancement au format de données de formulaire HTML à une URL spécifique une fois l'étape prête, par exemple pour envoyer des données de workflow à un servlet personnalisé ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN438"></A><A NAME="TMPID440"></A><B CLASS="guilabel">Envoyer une réponse XML à l'initiateur à distance</B>, qui envoie un message de modification de tâche à l'URL de rappel une fois l'étape prête, si le workflow est lancé en utilisant le mécanisme de lancement à distance. L'initiateur à distance fournit une URL de rappel dans le message de lancement. Les paramètres de cette action comprennent les informations mises à jour sur les attributs et une demande de suivi de la tâche source. Utilisez cette action à la fin des workflows prenant en charge le lancement à distance. Pour plus d'informations sur le lancement à distance, reportez-vous à <A HREF="xml-enablepackage-bg.htm">Activation du lot de travail de lancement à distance</A>.</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF4"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID444"></A><B CLASS="note">Note : </B><BR>Si l'option <B CLASS="guilabel">Envoyer un message de lancement XML</B> ou <B CLASS="guilabel">Envoyer un message de lancement HTML</B> était sélectionnée, vous devez cliquer sur l'icône <B CLASS="guilabel">Modifier</B> <IMG  src="../../../16pencil.gif">  pour définir l'URL cible de l'action. Pour plus d'informations sur la configuration d'actions, voir <span><A HREF="xml-configgenparams2-p.htm">Configuration des propriétés d'une action de lancement XML et HTML</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID451"></A>Répétez l'étape 3 pour chaque action à ajouter.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID453"></A>Dans la zone <B CLASS="guilabel">Exécution de l'étape</B>, sélectionnez l'une des options suivantes dans la liste <B CLASS="guilabel">Lorsque les actions ci-dessus ont été exécutées</B> :</P><A NAME="AEN455"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN456"></A><A NAME="TMPID458"></A><B CLASS="guilabel">Attente d'une requête</B></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN459"></A><A NAME="TMPID461"></A><B CLASS="guilabel">Terminer la tâche automatiquement</B></P></LI></UL></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID464"></A>Si vous sélectionnez l'option <B CLASS="guilabel">Attente d'une requête</B>, sélectionnez l'une des options suivantes dans la liste <B CLASS="guilabel">Lorsqu'une requête est reçue</B> :</P><A NAME="AEN466"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN467"></A><A NAME="TMPID469"></A><B CLASS="guilabel">Rejeter</B>, qui rejette toutes les requêtes reçues. Toute tentative d'envoi d'une requête à une tâche renverra une erreur HTTP.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN470"></A><A NAME="TMPID472"></A><B CLASS="guilabel">Accepter un message de modification de la tâche XML</B>, qui permet à la tâche de traiter les messages de modification de tâche XML, par exemple pour accepter les réponses XML des workflows que vous lancez à distance sur d'autres systèmes Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN474"></A><A NAME="TMPID476"></A><B CLASS="guilabel">Accepter un message de modification de la tâche HTML</B>, qui permet à la tâche de traiter les messages de modification de tâche avec données de formulaires HTML, par exemple pour accepter les messages de systèmes hérités ou de formulaires HTML, ou si vous souhaitez qu'il soit possible de joindre des documents d'autres systèmes au workflow.</P></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID479"></A>Cliquez sur <B CLASS="guilabel">Ajouter à la définition du workflow</B>, puis enregistrez le workflow.</P></LI></OL></DIV>
+<P><A NAME="TMPID481"></A>Pour plus d'informations sur cette procédure, reportez-vous à la rubrique <span><A HREF="xml-configactions-bg.htm">Configuration des actions d'une étape de Workflow Interchange</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

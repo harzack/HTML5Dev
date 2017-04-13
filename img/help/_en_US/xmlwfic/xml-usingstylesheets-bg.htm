@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-EN-1">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Using Stylesheets for Message Processing</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-usingstylesheets-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Messaging Actions';
+          header.title2 = 'Using Stylesheets for Message Processing';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID903"></A>Stylesheets used for processing messages in XML Workflow Interchange must conform to version 1.0 of the XSLT specification (<A HREF="http://www.w3.org/" TARGET="_blank">http://www.w3.org</A>).</P>
+<P class="before-ul"><A NAME="TMPID906"></A>When used for translating an incoming message or acknowledgement, the stylesheet receives the message from the external system as input. As output, the stylesheet produces one of the following:</P><A NAME="AEN896"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN897"></A><A NAME="TMPID909"></A>A message in the default XML format for the action, which is then processed by XML Workflow Interchange.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN900"></A><A NAME="TMPID912"></A>An <I CLASS="EMPHASIS">error</I> element that describes a problem with the incoming message. If the action is part of a <B CLASS="GUILABEL">Workflow Interchange</B> step, the error is logged and displayed to the assignee for the step.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN904"></A><A NAME="TMPID916"></A>An <I CLASS="EMPHASIS">OK</I> element that indicates success. No processing of the incoming message is performed, but the action is considered successful. A stylesheet can return <I CLASS="EMPHASIS">OK</I> to ignore an incoming initiation or task edit message.</P></LI></UL>
+<P><A NAME="TMPID919"></A>When a stylesheet is used for translating an outgoing message or acknowledgement, the Workflow Interchange system will generate the outgoing message in the default XML format, encapsulate it in a <I CLASS="EMPHASIS">sendxml</I> element, and pass it to the stylesheet as input. Because outgoing messages are distinguished by the <I CLASS="EMPHASIS">sendxml</I> element, the same stylesheet can often be used for both incoming and outgoing messages.</P>
+<P class="before-ul"><A NAME="TMPID922"></A>As output, the stylesheet produces one of the following:</P><A NAME="AEN912"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN913"></A><A NAME="TMPID925"></A>A <I CLASS="EMPHASIS">sendxml</I> element containing the new outgoing message. This message is sent to the target system.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN916"></A><A NAME="TMPID928"></A>A reply in the default XML format for the action. No message is sent to the target system, but the stylesheet output is processed as if it were received in acknowledgement to a successful send.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN918"></A><A NAME="TMPID930"></A>An <I CLASS="EMPHASIS">error</I> element that describes a problem with the outgoing message. The error is logged and displayed to the assignee for the step, and no message is sent.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN921"></A><A NAME="TMPID933"></A>An <I CLASS="EMPHASIS">OK</I> element that indicates success. No outgoing message is sent.</P></LI></UL>
+<P><A NAME="TMPID935"></A>For more information on the default message formats and the <I CLASS="EMPHASIS">sendxml</I>, <I CLASS="EMPHASIS">error</I>, and <I CLASS="EMPHASIS">OK</I> elements, see <A HREF="xml-configgenparams3-p.htm">Message Fields and Formats</A>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

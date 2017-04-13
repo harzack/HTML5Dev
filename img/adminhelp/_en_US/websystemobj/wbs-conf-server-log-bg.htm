@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Configuring Server Logging</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-conf-server-log-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Data Flow Processes';
+          header.title2 = 'Configuring Server Logging';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID8141"></A>Content Server allows you to log the activities of the Server (<TT CLASS="literal">llserver</TT>), the Content Server CGI program (<TT CLASS="literal">Content Server</TT>), the Content Server Servlet, and the Enterprise Extractor process (<TT CLASS="literal">indexupdate</TT>). When debug logging is enabled, Content Server writes the associated log files to the <TT CLASS="literal">Content Server</TT>/logs directory. By default, debug logging is disabled.</P>
+<P><A NAME="TMPID8152"></A>You set the debug log level in the <B CLASS="guilabel">Content Server Debug Level</B> drop-down list on the Configure Debug Settings page. When you change the debug log level, you modify the same setting in the <B CLASS="guilabel">Content Server logging</B> drop-down list on the Configure Server Parameters page. Options <B CLASS="guilabel">0</B>, <B CLASS="guilabel">1</B>, <B CLASS="guilabel">2</B>, and <B CLASS="guilabel">11</B> in the <B CLASS="guilabel">Content Server Debug Level</B> drop-down list correspond respectively to the <B CLASS="guilabel">No logging</B>, <B CLASS="guilabel">Thread logging</B>, <B CLASS="guilabel">Detailed thread logging</B>, and <B CLASS="guilabel">Thread and CGI logging</B> options in the <B CLASS="guilabel">Content Server logging</B> drop-down list.</P>
+<P><A NAME="TMPID8169"></A>The following table describes each level of debug logging:</P>
+<DIV title="Debug Logging Levels" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="TAB-AID13"></A><B>Table 1-5: Debug Logging Levels</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TH>
+<TH SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TH>
+<TH SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TH>
+<TH SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP">Log Level</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">Log Files Generated</TD>
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP">Description</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP"> 1</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP"> &nbsp;</TD>
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP"> llserver.out</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">Generated each time the Server restarts.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP"> sockserv1.out</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">Generated each time the Server restarts.</TD>
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP"> thread<TT CLASS="literal">n</TT>.out</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">One file per thread is generated and continuously updated to record the data that the Server sends out on its threads. The content of these files is partially controlled by thread log options.</TD>
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP">2</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">Level 1 +</TD>
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP"> receiver<TT CLASS="literal">n</TT>.out</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">One file per thread is generated to record the activities on the receiver threads.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP"> 11</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP"> Level 2 +</TD>
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP"> llclient<TT CLASS="literal">nnn</TT>.out</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">One file is generated each time an end-user Web browser sends the Content Server CGI program a request. The number <TT CLASS="literal">nnn</TT> is generated by Content Server.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP"> servletclient<TT CLASS="literal">nnn</TT>.out</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">One file is generated for each thread number (as determined by your Servlet container's Java Virtual Machine). Each time an end-user Web browser sends the Content Server Servlet a request, a new servletclient<TT CLASS="literal">nnn</TT>.out file is created. If a file with that number (<TT CLASS="literal">nnn</TT>) already exists, the request's information is appended to the end of the existing file.</TD>
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP"> llindexupdate<TT CLASS="literal">nnn</TT>.out</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">One file is generated each time the Enterprise Extractor starts (once per minute). The number <TT CLASS="literal">nnn</TT> is generated by Content Server.</TD>
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP"> indexupdateOut<TT CLASS="literal">nnn</TT>.out</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">One file is generated each time the Enterprise Extractor stops (once per minute). The number <TT CLASS="literal">nnn</TT> is generated by Content Server.</TD>
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP">0</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="84" ALIGN="LEFT" VALIGN="TOP">None</TD>
+<TD SCOPE="COL" WIDTH="165" ALIGN="LEFT" VALIGN="TOP">None of the level 1, 2, or 11 files are generated.</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID8250"></A>You can set values on the Configure Debug Settings page to enable or disable logging for the Content Server server and to configure thread log options.</P>
+<P><A NAME="TMPID8252"></A>The number of thread<TT CLASS="literal">n</TT>.out and receiver<TT CLASS="literal">n</TT>.out files is equal to the number of threads on which the Server runs. If you are diagnosing a problem, you can temporarily set the Server to run on a single thread. This allows you to find diagnostic information in a single file. Because running on a single thread severely impairs the performance of the Server, OpenText recommends that you run in single-thread mode during periods of low usage only and that you return the Server to its original thread setting after you complete your diagnosis.</P>
+<table CLASS="caution">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="caution" ALIGN="CENTER"><IMG ALT="Caution" SRC="../../images/pi_caution.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID8257"></A><B CLASS="caution">Caution</B><BR>In Microsoft Windows Server 2008 and later, log files written by Content Server may appear to be zero bytes in size until the Content Server services are restarted.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-conf-server-log-p.htm" revision="">To Configure Server Logging</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

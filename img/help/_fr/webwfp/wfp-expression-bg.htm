@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWFP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webwfp">
+<META mancondkey="lleschn-h-ugd -- llesfrm-h-ugd -- lleswfw-h-ugd -- lleswfw-uqs -- lleswat-h-ugd -- llesesn-h-ugd -- llesrt-h-ugd -- lleswfp-cwm -- llesxwe-h-ugd -- llesafm-h-ugd -- llesrcm-h-ugd -- llespob-h-ugd -- lleslfm-h-ugd -- llesfwf-h-ugd -- lleswfm-h-ugd -- lleswbd-h-ugd"><title>Utilisation du générateur d'expressions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wfp-expression-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des étapes et des liens';
+          header.title2 = 'Utilisation du générateur d\'expressions';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID2838"></A>Le générateur d'expressions vous permet de créer des conditions et des expressions complexes pour effectuer les actions suivantes :</P><A NAME="AEN2794"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2795"></A><A NAME="TMPID2841"></A>Spécifier comment l'étape <B CLASS="guilabel">Evaluation</B> achemine le schéma de workflow.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2798"></A><A NAME="TMPID2844"></A>Assigner une étape <B CLASS="guilabel">Utilisateur</B> ou <B CLASS="guilabel">Formulaire</B> selon certaines conditions.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID2847"></A>Par exemple, si une précédente étape <B CLASS="guilabel">Utilisateur</B> d'un schéma de workflow a une priorité élevée, vous pouvez définir une expression dans une étape <B CLASS="guilabel">Evaluation</B> pour acheminer le schéma de workflow sur le chemin approprié, vers une autre étape <B CLASS="guilabel">Utilisateur</B>. Si l'étape a une priorité moyenne ou faible, vous pouvez définir une expression pour acheminer le schéma de workflow sur un chemin faux vers une étape <B CLASS="guilabel">Initiateur</B>. Pour définir les expressions, vous pouvez vous baser sur les critères suivants :</P><A NAME="AEN2807"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2808"></A><A NAME="TMPID2854"></A>Général, qui est le statut de l'étape précédente, de la dernière étape <B CLASS="guilabel">Clé</B> ou du schéma de workflow en général (les valeurs de statut valides sont OK, En cours d'exécution, Etape en retard, En retard par rapport à l'étape clé et schéma de workflow en retard).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2811"></A><A NAME="TMPID2857"></A>Priorité, qui est la priorité de toute étape <B CLASS="guilabel">Utilisateur</B> précédente qui a une priorité.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2814"></A><A NAME="TMPID2860"></A>Décision d'une étape précédente.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2816"></A><A NAME="TMPID2862"></A>Attributs, qui sont les valeurs des attributs du schéma de workflow. L'option Attributs n'apparaît que si un ou plusieurs attributs sont définis pour le schéma de workflow.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2818"></A><A NAME="TMPID2864"></A>Formulaires, qui sont les valeurs des champs dans un formulaire ajouté au lot de travail ou à l'étape <B CLASS="guilabel">Formulaire</B>. Les formulaires ne sont disponibles que si le module optionnel Content Server Forms est installé.</P></LI></UL>
+<P><A NAME="TMPID2867"></A>Pour plus d'informations sur les étapes Evaluer, reportez-vous à la rubrique <span><A HREF="wf-evaluate-bg.htm">Configuration d'une étape Evaluer</A></span>. Pour plus d'informations sur les étapes utilisateur, reportez-vous à la rubrique <span><A HREF="wf-user-step-bg.htm">Configuration d\'une étape Utilisateur ou Initiateur</A></span>. Pour plus d'informations sur l'utilisation des décisions, reportez-vous à la rubrique <span><A HREF="wf-user-step-u.htm">Etapes Utilisateur et Initiateur</A></span>. Pour plus d'informations sur les attributs, consultez la section <span><A HREF="wf-attributes-bg.htm">Définition des attributs</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF25"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID2873"></A><B CLASS="note">Note : </B><BR>Le statut En cours d'exécution renvoie des schémas de workflow et des schémas de sous-workflow qui ont le statut En cours d'exécution. Le statut OK renvoie des schémas de workflow et des schémas de sous-workflow qui sont en cours d'exécution et qui ne sont pas en retard.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID2874"></A>Vous pouvez utiliser les parenthèses pour définir des expressions complexes. Par exemple, l'expression qui suit renvoie la valeur vrai si le statut du schéma de workflow est OK et qu'un attribut nommé « Titre » contient le mot <TT CLASS="literal">Recherche</TT>, sauf si l'attribut nommé « Auteur » contient le nom <TT CLASS="literal">Dupont</TT>.</P><A NAME="AEN2834"></A>
+<PRE 
+CLASS="programlisting"
+>  1&nbsp;"Status = OK" AND ("Title contains Research") AND NOT ("Author contains Smith")</PRE
+>
+<P class="before-ul"><A NAME="TMPID2880"></A>Vous pouvez également définir des expressions complexes à l'aide des éléments de recherche suivant :</P><A NAME="AEN2836"></A>
+<UL>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN2837"></A><A NAME="TMPID2883"></A>Délimiteurs de valeur </P><A NAME="AEN2839"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2840"></A><A NAME="TMPID2886"></A><TT CLASS="literal">=</TT> (Egal à)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2843"></A><A NAME="TMPID2889"></A><TT CLASS="literal">&lt;&gt;</TT>(Différent de)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2846"></A><A NAME="TMPID2892"></A><TT CLASS="literal">&lt;</TT> (Inférieur à)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2849"></A><A NAME="TMPID2895"></A><TT CLASS="literal">&gt;</TT> (Supérieur à)</P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN2852"></A><A NAME="TMPID2898"></A>Délimiteurs de texte </P><A NAME="AEN2854"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2855"></A><A NAME="TMPID2901"></A><TT CLASS="literal">commence par</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2858"></A><A NAME="TMPID2904"></A><TT CLASS="literal">finit par</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2861"></A><A NAME="TMPID2907"></A><TT CLASS="literal">contient</TT></P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN2864"></A><A NAME="TMPID2910"></A>Délimiteurs d'instruction </P><A NAME="AEN2866"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2867"></A><A NAME="TMPID2913"></A><TT CLASS="literal">ET</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2870"></A><A NAME="TMPID2916"></A><TT CLASS="literal">OR</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2873"></A><A NAME="TMPID2919"></A><TT CLASS="literal">AND NOT</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2876"></A><A NAME="TMPID2922"></A><TT CLASS="literal">OR NOT</TT></P></LI></UL></LI></UL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wfp-expression-create-p.htm" revision="">Pour définir une expression</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

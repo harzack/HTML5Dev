@@ -1,0 +1,163 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>SORT, STARTROW, STARTSCRIPT, SUBWEBREPORT, SUPPRESSERRORLOG</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-cceighth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Balises de contrôle de contenu';
+          header.title2 = 'SORT, STARTROW, STARTSCRIPT, SUBWEBREPORT, SUPPRESSERRORLOG';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID2547"></A>Cette section apporte des informations sur les balises de contrôle de contenu : <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSORT">SORT</A></span>, <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTROW">STARTROW</A></span>, <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTSCRIPT">STARTSCRIPT</A></span>, <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSUBWEBREPORT">SUBWEBREPORT</A></span> et <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSUPPRESSERRORLOG">SUPPRESSERRORLOG</A></span>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCSORT">SORT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SORT-NAME">Syntaxe</A></P>
+<P><A NAME="WEBREPORTSORT"></A><B CLASS="highlight">[LL_WEBREPORT_SORT « &lt;<I CLASS="varname">Clé de tri</I>>  »:[ASC/DESC] &lt;<I CLASS="varname">Clés de tri supplémentaires</I>> [Ordre général] [« USECASE »] &lt;<I CLASS="varname">Directives</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SORT-DESC">Description</A></P>
+<P><A NAME="TMPID2566"></A>Utilisée pour trier l'ensemble de données de rapport, sur la base de la colonne spécifiée. Cette balise doit être utilisée dans la section de modèle de ligne, entre les balises <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTROW">STARTROW</A></span> et <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDROW">ENDROW</A></span>. La colonne à trier peut être spécifiée soit par son nom, soit par son numéro. Vous pouvez donc utiliser le numéro de la colonne de données, renvoyé de droite à gauche, ou son nom pour effectuer le tri. Si une balise de rapport est utilisée, le rapport peut également être trié en fonction du résultat de la balise et des sous-balises spécifiées.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="SORT-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2435"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Paramètre</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Clés de tri</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Chaque clé est composée d'un numéro/nom de colonne de référence ou d'une combinaison balise/sous-balise WebReports encadrée par des guillemets simples ou doubles ; cet élément est suivi, de manière facultative, de deux points et d'un paramètre d'ordre, comme illustré dans l'exemple de syntaxe.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Ordre général</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette valeur peut être <TT CLASS="literal">DESC</TT> ou <TT CLASS="literal">ASC</TT> ; la valeur par défaut étant <TT CLASS="literal">ASC</TT>. Les ordres spécifiés pour chaque clé de tri individuelle remplacent l'ordre général. </TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Directives</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette valeur peut être l'une des « directives » au format <TT CLASS="literal">@PREDEFKEY</TT>, <TT CLASS="literal">@PARMNAMES</TT>, avec toute information requise associée. Elle est utilisée pour prédéfinir les clés de tri pouvant être associées aux valeurs d'URL simples. Par exemple, <TT CLASS="literal">&amp;sortcol=col1</TT> peut être utilisé pour déclencher une clé de tri de type <TT CLASS="literal">[LL_REPTAG=DATAID CAT:cat1:attr1:display /]</TT>. Pour plus d'informations, consultez <span><A HREF="wr-sort-info.htm">Tri des résultats</A></span>.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SORT-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID2604"></A><A NAME="AEN2472"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_SORT "DATAID" /]
+[LL_WEBREPORT_SORT "DATAID" "[LL_REPTAG=DATAID NODEINFO:NAME /]" /]
+[LL_WEBREPORT_SORT "PARENTID":DESC "[LL_REPTAG=DATAID NODEINFO:NAME /]":ASC /]
+[LL_WEBREPORT_SORT "PARENTID" "[LL_REPTAG=DATAID NODEINFO:NAME /]" /]</PRE
+> </P>
+<P><A NAME="TMPID2606"></A>Dans le premier exemple ci-dessus, le tri est effectué en suivant l'ordre des ID de données numériques.</P>
+<P><A NAME="TMPID2607"></A>Dans le deuxième exemple, le tri est effectué sur la base du nom de nœud, même s'ils utilisent tous deux la même colonne de rapport.</P>
+<P><A NAME="TMPID2608"></A>Dans le troisième exemple, le tri s'effectue tout d'abord sur la colonne parentID, dans l'ordre décroissant, puis sur le nom dans l'ordre croissant.</P>
+<P><A NAME="TMPID2609"></A>Le quatrième exemple est identique au troisième, excepté que la colonne parentID est triée selon l'ordre par défaut, à savoir l'ordre croissant.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="SORT-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID2612"></A>La balise <TT CLASS="literal">SORT</TT> prend également en charge une série de directives qui permettent de prédéfinir les clés de tri et de les associer à des paramètres d'URL simple. Voir <span><A HREF="wr-sort-info.htm">Tri des résultats</A></span> pour plus de détails.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCSTARTROW">STARTROW</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STARTROW-NAME">Syntaxe</A></P>
+<P><A NAME="WEBREPORTSTARTROW"></A><B CLASS="highlight">[LL_WEBREPORT_STARTROW /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STARTROW-DESC">Description</A></P>
+<P><A NAME="TMPID2623"></A>Balise utilisée pour marquer le début du modèle de ligne qui sera appliqué à chaque ligne de données, c'est-à-dire le modèle de ligne de rapport. En d'autres termes, tous les éléments de code situés entre cette balise et <TT CLASS="literal">[LL_WEBREPORT_ENDROW /]</TT> seront répétés pour chaque ligne de données dans la source de données. </P>
+<P><A NAME="TMPID2625"></A><B CLASS="highlight">Utilisation du modèle de ligne de rapport</B> : cette section de l'affichage de rapport, placée entre les balises <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTROW">STARTROW</A></span> et <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDROW">ENDROW</A></span>, peut être utilisée pour générer des lignes table HTML répétées ou pour assigner des données de rapport à un tableau JavaScript, pour un affichage et une utilisation ultérieurs des données. </P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID2630"></A><B CLASS="important">Important : </B><BR>Le code situé entre ces balises sera répété pour chaque ligne de la source de données associée. Si les balises <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTROW">STARTROW</A></span> et <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDROW">ENDROW</A></span> sont omises, toutes les sources de données seront ignorées.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCSTARTSCRIPT">STARTSCRIPT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STARTSCRIPT-NAME">Syntaxe</A></P>
+<P><A NAME="STARTSCRIPT"></A><B CLASS="highlight">[LL_WEBREPORT_STARTSCRIPT NAME:&lt;<I CLASS="varname">nom de script</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STARTSCRIPT-DESC">Description</A></P>
+<P><A NAME="TMPID2642"></A>Définit un bloc Oscript côté serveur, pouvant être appelé par la balise <span><A HREF="wr-tag-ccsecond.htm#WR-TAG-CCCALL">CALL</A></span>. Chaque bloc de script porte le nom défini par le paramètre &lt;<I CLASS="varname">nom de script</I>>. Il est possible, de manière facultative, de déclarer une ou plusieurs fonctions Oscript à l'intérieur du bloc de script. La première fonction transmet deux paramètres. Le premier paramètre est de type dynamique, auquel sont affectées l'Assoc « context » contenant les données du rapport. Le second paramètre est une List Oscript contenant les arguments indiqués dans la balise <span><A HREF="wr-tag-ccsecond.htm#WR-TAG-CCCALL">CALL</A></span>, le cas échéant. Lorsqu'un bloc de script est appelé, la première fonction Oscript déclarée dans le bloc est exécutée. Les autres fonctions Oscript déclarées dans le même bloc de script peuvent être appelées par cette première fonction. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF13"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID2648"></A><B CLASS="note">Note : </B><BR>Le mode script côté serveur doit être activé par un administrateur, au niveau du serveur et pour chaque WebReport, toutes les fois où un nouvel affichage de rapport est ajouté. Les scripts sont rendus inactifs, excepté lorsqu'ils sont activés. Le mode script côté serveur est un outil puissant, qu'il faut toutefois utiliser avec beaucoup de précaution. Avant de s'en servir, il est recommandé aux utilisateurs de lire attentivement l'ensemble de la documentation disponible à ce sujet. Voir <span><A HREF="wr-server-scripting-info.htm">Ecriture de script côté serveur</A></span> pour obtenir une synthèse sur ce thème et consultez le Guide d'utilisation WebReports (format PDF), via la base de connaissances, qui contient une documentation complète et de nombreux exemples.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="STARTSCRIPT-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID2652"></A><A NAME="AEN2512"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_STARTSCRIPT NAME:&lt;<I
+CLASS="varname"
+>script name</I
+>> /]
+function String anyName(Dynamic c, List args)
+String result
+... 
+return result
+end
+[LL_WEBREPORT_ENDSCRIPT /]</PRE
+></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCSUBWEBREPORT">SUBWEBREPORT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SUBWEBREPORT-NAME">Syntaxe</A></P>
+<P><A NAME="SUBWR"></A><B CLASS="highlight">[LL_WEBREPORT_SUBWEBREPORT NODEID:&lt;<I CLASS="varname">nodeid du sous-rapport WebReport</I>>PARM:&lt;<I CLASS="varname">nom parm1</I>>:&lt;<I CLASS="varname">valeur parm1</I>>PARM:&lt;<I CLASS="varname">nom parm2</I>>:&lt;<I CLASS="varname">valeur parm2</I>> ... &lt;<I CLASS="varname">options</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SUBWEBREPORT-DESC">Description</A></P>
+<P class="before-ul"><A NAME="TMPID2669"></A>Utilisée pour appeler un autre WebReport (un « sous-rapport WebReport »), dont les résultats seront renvoyés et insérés dans le rapport parent, à l'endroit où la balise est placée. Les sous-rapports WebReport peuvent être considérés comme des « sous-routines », qui font partie des résultats de rapport globaux. Cette balise est particulièrement utile lorsque vous souhaitez collecter les résultats de plusieurs requêtes différentes, par exemple des requêtes SQL LiveReport, et les présenter dans un rapport unique. Ainsi, il est souvent plus facile d'utiliser plusieurs requêtes SQL simples à la place d'une seule requête complexe. Vous pouvez également préférer combiner les résultats d'une requête SQL avec ceux d'une autre requête de recherche. </P><A NAME="AEN2528"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2529"></A><A NAME="TMPID2674"></A>Spécifiez le sous-rapport WebReport sur la base de son ID de nœud dans le paramètre <TT CLASS="literal">NODEID</TT>. Dans le deuxième exemple ci-dessus, une constante WebReport est utilisée pour spécifier l'ID de nœud du sous-rapport WebReport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2532"></A><A NAME="TMPID2677"></A>De manière facultative, les paramètres qui seraient normalement transmis à un WebReport via l'URL d'appel peuvent être spécifiés à l'aide de la construction <TT CLASS="literal">PARM:&lt;<I CLASS="varname">nom parm</I>>:&lt;<I CLASS="varname">valeur parm</I>></TT>. Pour transmettre les paramètres pouvant contenir des espaces ou le signe : (deux points), servez-vous de guillemets simples ou doubles pour délimiter la valeur des paramètres, comme indiqué dans le premier exemple ci-dessus. Les paramètres du rapport LiveReport « InputLabel » peuvent également être transmis à l'aide de <TT CLASS="literal">PARM</TT>. Si des paramètres requis n'ont pas été configurés, les valeurs par défaut sont utilisées, si elles-mêmes ont été définies dans le sous-rapport WebReport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2539"></A><A NAME="TMPID2684"></A>La balise <TT CLASS="literal">LL_WEBREPORT_SUBWEBREPORT</TT> peut être placée n'importe où dans l'affichage de rapport, mais toute utilisation au sein de la section de ligne doit être gérée avec précaution si le parent ou le sous-rapport WebReport risque de renvoyer un ensemble de résultats important, ce qui pourrait ralentir les performances.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2542"></A><A NAME="TMPID2687"></A>Lorsque l'action par défaut définie pour un sous-rapport WebReport est l'exportation des résultats du rapport, plutôt que l'envoi de ceux-ci au navigateur, le message de statut standard sera inséré dans le rapport parent et les résultats du sous-rapport WebReport seront exportés.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2544"></A><A NAME="TMPID2689"></A>Portée des paramètres et constantes : les constantes et les paramètres de tous les rapports parents sont pris en compte dans un sous-rapport WebReport. Dans le cas où une même constante ou un même paramètre serait utilisé par différents rapports pour contenir des valeurs différentes, la valeur renvoyée sera celle définie en dernier, c'est-à-dire celle définie par le rapport le plus profondément imbriqué.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2546"></A><A NAME="TMPID2691"></A>Les sous-rapports WebReport peuvent eux-mêmes appeler un sous-rapport WebReport ; les rapports peuvent être imbriqués sur un maximum de cinq niveaux, bien que ce chiffre puisse être modifié par l'administrateur Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2549"></A><A NAME="TMPID2694"></A>Si la destination du sous-rapport WebReport est un nœud Content Server, le nodeID peut être renvoyé au WebReport appelant, en ajoutant l'argument <TT CLASS="literal">SHOWNODEID</TT> à l'appel <TT CLASS="literal">SUBWEBREPORT</TT>. Par exemple, <TT CLASS="literal">[LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$mySubReport /] SHOWNODEID /]</TT> </P></LI></UL>
+<P CLASS="bridgehead-subheading3"><A NAME="SUBWEBREPORT-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID2701"></A><A NAME="AEN2557"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_SUBWEBREPORT NODEID:68873 PARM:InputLabel1:299 PARM:myStatus:"awaiting review" /]
+[LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$mySubReport /] /]
+[LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$mySubReport /] SHOWNODEID /]</PRE
+> </P>
+<P CLASS="bridgehead-subheading3"><A NAME="SUBWEBREPORT-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID2705"></A>Pour plus d'informations, consultez <span><A HREF="wr-requestds-info.htm#WR-REQUESTDS-EX1">Appel d'un sous-rapport WebReport</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCSUPPRESSERRORLOG">SUPPRESSERRORLOG</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SUPPRESSERRORLOG-NAME">Syntaxe</A></P>
+<P><A NAME="WEBREPORTSUPPRESSERRORLOG"></A><B CLASS="highlight">[LL_WEBREPORT_SUPPRESSERRORLOG /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SUPPRESSERRORLOG-DESC">Description</A></P>
+<P><A NAME="TMPID2715"></A>Empêche l'affichage des messages d'erreur dans la sortie. Des erreurs peuvent se produire en cas de saisie ou de placement incorrect des balises.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

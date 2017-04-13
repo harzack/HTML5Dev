@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Making Templates Dependent on Other Templates</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-example3-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Template Examples';
+          header.title2 = 'Making Templates Dependent on Other Templates';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1462"></A>There are two <B CLASS="guilabel">Include IF</B> conditions that are dependent on other templates. These two conditions are: <TT CLASS="literal">Template Condition True</TT> and <TT CLASS="literal">Template Condition False</TT>. In each case, a <B CLASS="guilabel">Template #</B> field is provided in order to input the number of whichever template's condition will be used to control this one. For more information about these conditions, see the “Include IF” row in <span><A HREF="lr-sqlfield-bg.htm">SQL Template Fields</A></span> and <span><A HREF="lr-sqlfield-bg.htm#LR-SQLINCLIF">Include IF</A></span>.</P>
+<DIV title="Adding two templates based on a single condition" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXADDTEM-EX"></A><B><IMG title="Adding two templates based on a single condition" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-7: Adding two templates based on a single condition</B></P>
+<P class="nr1"><A NAME="TMPID1472"></A>This example shows two templates where one template is conditional on <TT CLASS="literal">&amp;inputlabel1</TT> not being set to an empty string, and the second template is dependent on the first template. In this example we show a situation where the developer has decided that if the subtype has not been included as a filter clause, then it will not be required as a column. If <TT CLASS="literal">&amp;inputlabel1</TT> is not a blank string then both the <B CLASS="guilabel">Where</B> template and the column <B CLASS="guilabel">Select template</B> are included.</P>
+<A NAME="AEN1478"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1479"></A><A NAME="TMPID1479"></A>In the <B CLASS="guilabel">Main SQL Source</B>, in the <B CLASS="guilabel">SQL</B> field, type:</P><A NAME="AEN1483"></A>
+<PRE 
+CLASS="screen"
+>select name~2
+from sampleTable
+~1</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1484"></A><A NAME="TMPID1484"></A>In the <B CLASS="guilabel">Template Setup</B>, in the <B CLASS="guilabel">Templates</B> area, define <B CLASS="guilabel">~1</B>:</P><A NAME="AEN1489"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1490"></A><A NAME="TMPID1490"></A>Do not select the <B CLASS="guilabel">Auto-Where</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1493"></A><A NAME="TMPID1493"></A>In the <B CLASS="guilabel">SQL Source</B> field, type: “where subtype = %1”</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1497"></A><A NAME="TMPID1497"></A>Do not select the <B CLASS="guilabel">Auto-Comma</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1500"></A><A NAME="TMPID1500"></A>From the <B CLASS="guilabel">Include IF</B> list, select “No inputs set to flag”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1504"></A><A NAME="TMPID1504"></A>In the <B CLASS="guilabel">Options</B> field, ensure the <B CLASS="guilabel">Flag Value</B> field is empty.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1508"></A><A NAME="TMPID1508"></A>In the <B CLASS="guilabel">Template Setup</B>, in the <B CLASS="guilabel">Templates</B> area, define <B CLASS="guilabel">~2</B>:</P><A NAME="AEN1513"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1514"></A><A NAME="TMPID1514"></A>Do not select the <B CLASS="guilabel">Auto-Where</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1517"></A><A NAME="TMPID1517"></A>In the <B CLASS="guilabel">SQL Source</B> field, type: “, subtype”</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1521"></A><A NAME="TMPID1521"></A>Do not select the <B CLASS="guilabel">Auto-Comma</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1524"></A><A NAME="TMPID1524"></A>From the <B CLASS="guilabel">Include IF</B> list, select “Template condition true”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1528"></A><A NAME="TMPID1528"></A>In the <B CLASS="guilabel">Options</B> field, in the <B CLASS="guilabel">Template #</B> field, type “1”.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1533"></A><A NAME="TMPID1533"></A>In the <B CLASS="guilabel">Inputs</B> area, include a generic input. For example, include an input of type <TT CLASS="literal">STRING</TT> with a <B CLASS="guilabel">Prompt</B> called “Subtype”.</P></LI></OL>
+<P><A NAME="TMPID1538"></A>If you access the following URL:</P><A NAME="AEN1540"></A>
+<PRE 
+CLASS="screen"
+>...&amp;inputLabel1=grommet&amp;nextURL=...</PRE
+>
+<P><A NAME="TMPID1540"></A>The resulting SQL will contain, in the <B CLASS="guilabel">SQL Source</B> field, “select name , subtype from sampleTable where subtype ='grommet'”.</P><IMG title="Adding two templates based on a single condition" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

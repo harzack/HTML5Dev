@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESTRP100500-1406-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-06">
+<META name="PiXprocLocator" content="transport">
+<META mancondkey="llesrt-h-ugd -- lleswbd-h-ugd"><title>Deploying a Workbench</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'trp-deployingapp-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working with Transport';
+          header.title2 = 'Deploying a Workbench';
+           header.draw();
+  </script>
+
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF20"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID427"></A><B CLASS="note">Note: </B><BR>You must be a Warehouse Administrator to deploy a Workbench. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul nr1"><A NAME="TMPID428"></A>To deploy a Workbench to the target system, you perform the following steps:</P><A NAME="AEN431"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN432"></A><A NAME="TMPID431"></A>Download the Transport Box from the source system, and save the file to an external location (for example, a USB stick or network location).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN434"></A><A NAME="TMPID433"></A>Create a Workbench in the target system’s Transport Warehouse. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN436"></A><A NAME="TMPID435"></A>Upload the Transport Box to the target system using the <B CLASS="guilabel">Add Item</B> menu. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN439"></A><A NAME="TMPID438"></A>Unpack the Transport Box to a Workbench on the target system. After you unpack the box, the Workbench that you specified the box be unpacked appears, where you can view the files that were transported.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF21"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID440"></A><B CLASS="note">Note: </B><BR>If you have multiple Boxes that contain items you want to deploy to the target system, you can unpack them to the same Workbench and deploy them to Content Server at the same time. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN444"></A><A NAME="TMPID443"></A>Review the Workbench to ensure that item dependencies are met for each item.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN446"></A><A NAME="TMPID445"></A>Deploy the Workbench. The Deploy Workbench page shows the number of items in the Workbench and a description for the Workbench, if one was provided when it was created. The Deploy Workbench page also shows a list of the items that will be deployed with the following information for each item: the type, name, the location the item will be created in, and the status of the item (whether the item is ready to deploy or missing dependencies). If an item is missing dependencies, or not ready to deploy for another reason, it will not be created when the Workbench is deployed. If an item being deployed has the same name as an item in the parent container to which it is being added, it will be added as a new version.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF22">Handling Transport Dependencies</A></P>
+<P><A NAME="TMPID447"></A>Transport scans the system to verify that item dependencies are met. For example, if an item you are transporting has permissions assigned to it or has an assigned Classification, Transport scans Content Server to verify that the permission and Classification exist. If a Workbench is deployed with an assigned user or group that does not exist on the target system, the permissions on the Workbench are removed; if the user or group exists on the target system, permissions on the Workbench are automatically assigned.</P>
+<P class="before-ul"><A NAME="TMPID449"></A>When you open an item on the Workbench, the Overview page appears, and contains the following information:</P><A NAME="AEN452"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN453"></A><A NAME="TMPID452"></A><B CLASS="guilabel">Name</B> – the current name of the item</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN456"></A><A NAME="TMPID455"></A><B CLASS="guilabel">Version</B> – the current version number of the item to be deployed</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN459"></A><A NAME="TMPID458"></A><B CLASS="guilabel">Size</B> – the size of the item</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN462"></A><A NAME="TMPID461"></A><B CLASS="guilabel">Created by</B> – the user name that created the item</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN465"></A><A NAME="TMPID464"></A><B CLASS="guilabel">Created date</B> – the date the original item was created</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN468"></A><A NAME="TMPID467"></A><B CLASS="guilabel">Parent</B> – the folder that the original item was located</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN471"></A><A NAME="TMPID470"></A><B CLASS="guilabel">Originating Site Name</B> – the Content Server instance where the original item was located</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN475"></A><A NAME="TMPID474"></A><B CLASS="guilabel">Description</B> – the description of the item, if one was provided when the item was created</P></LI></UL>
+<P><A NAME="TMPID476"></A>If the item you are deploying has dependencies on other items, they are listed on the item’s Overview page. The following information is available for each dependent item: the item type and name, whether the item exists on the target system, and whether the item exists on the current Workbench. If the dependent item exists on the Workbench, a green check mark appears indicating that the item is ready to deploy.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID478"></A><B CLASS="important">Important: </B><BR>All dependent items must be in the target system to deploy a Workbench. The <B CLASS="guilabel">Deploy</B> button will be disabled until all dependencies are met.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID480"></A>If an item has a dependency on more than one item with the same item type and name, it cannot be deployed. If any item is not ready to be deployed, you can use the <B CLASS="guilabel">Edit</B> button to make changes before starting the deployment. If the parent container of an item does not exist on the target system, you can change the parent container to one that does exist.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF23"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID483"></A><B CLASS="note">Note: </B><BR>The dependency columns <B CLASS="guilabel">Exists on this instance</B> and <B CLASS="guilabel">Exists in Workbench</B>, are only visible to Warehouse Administrators. Also, only Warehouse Administrators can edit item dependencies. The <B CLASS="guilabel">Edit</B> button will not be visible unless you are a Warehouse Administrator.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="trp-export-boxes-p.htm" revision="">To Download a Box</A></p></li>
+<li><p><A  HREF="trp-import-boxes-p.htm" revision="">To Import a Box</A></p></li>
+<li><p><A  HREF="trp-unpack-box-towrkbnch-p.htm" revision="">To Unpack a Box to a Workbench</A></p></li>
+<li><p><A  HREF="trp-edit-parent-cont-p.htm" revision="">To Change an item's Parent Container</A></p></li>
+<li><p><A  HREF="trp-deploy-obj-p.htm" revision="">To Deploy an item</A></p></li>
+<li><p><A  HREF="trp-deploy-workbench-p.htm" revision="">To Deploy a Workbench</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

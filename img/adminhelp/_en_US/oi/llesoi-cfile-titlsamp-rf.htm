@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>title Import Control File Examples</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-titlsamp-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Import Control File Examples';
+          header.title2 = 'title Import Control File Examples';
+           header.draw();
+  </script>
+
+<DIV title="To create a 'Documents' Folder in the 'Projects' Folder of the Enterprise Workspace, giving the 'Client' group 'See & See Contents' permissions, while removing permissions from the public group. Titles are created in English, French, and Italian.:   " CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF57"></A><B><IMG title="To create a 'Documents' Folder in the 'Projects' Folder of the Enterprise Workspace, giving the 'Client' group 'See & See Contents' permissions, while removing permissions from the public group. Titles are created in English, French, and Italian.:   " SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-48: To create a “Documents” Folder in the “Projects” Folder of the Enterprise Workspace, giving the “Client” group <I CLASS="EMPHASIS">See &amp; See Contents</I> permissions, while removing permissions from the public group. Titles are created in English, French, and Italian.: &#13;</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4566"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects&lt;/location&gt;
+    &lt;title language="en"&gt;Documents&lt;/title&gt;
+    &lt;title language="fr"&gt;Documents&lt;/title&gt;
+    &lt;title language="it"&gt;Documenti&lt;/title&gt;
+    &lt;acl group="Client" permissions="100000000"&gt;&lt;/acl&gt;
+    &lt;acl standard="world" permissions="000000000"&gt;&lt;/acl&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To create a 'Documents' Folder in the 'Projects' Folder of the Enterprise Workspace, giving the 'Client' group 'See & See Contents' permissions, while removing permissions from the public group. Titles are created in English, French, and Italian.:   " SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To update an existing Folder by removing permissions from the public group, and removing the Italian title from the Folder, when the 'Add Title to Location' check box is selected:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF58"></A><B><IMG title="To update an existing Folder by removing permissions from the public group, and removing the Italian title from the Folder, when the 'Add Title to Location' check box is selected:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-49: To update an existing Folder by removing permissions from the public group, and removing the Italian title from the Folder, when the “Add Title to Location” check box is selected:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4570"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects&lt;/location&gt;
+    &lt;title language="en"&gt;Documents&lt;/title&gt;
+    &lt;title clear="true" language="it"&gt;&lt;/title&gt;
+    &lt;acl standard="world" permissions="000000000"&gt;&lt;/acl&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To update an existing Folder by removing permissions from the public group, and removing the Italian title from the Folder, when the 'Add Title to Location' check box is selected:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To update an existing Folder by removing permissions from the public group, and removing the Italian title from the Folder, when the 'Add Title to Location' check box is cleared:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF59"></A><B><IMG title="To update an existing Folder by removing permissions from the public group, and removing the Italian title from the Folder, when the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-50: To update an existing Folder by removing permissions from the public group, and removing the Italian title from the Folder, when the “Add Title to Location” check box is cleared:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4574"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title clear="true" language="it"&gt;&lt;/title&gt;
+    &lt;acl standard="world" permissions="000000000"&gt;&lt;/acl&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To update an existing Folder by removing permissions from the public group, and removing the Italian title from the Folder, when the 'Add Title to Location' check box is cleared:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

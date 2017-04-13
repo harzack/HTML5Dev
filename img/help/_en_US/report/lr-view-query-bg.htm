@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>View Query</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-view-query-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'SQL Templates';
+          header.title2 = 'View Query';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1017"></A>This feature is designed for situations where it is necessary to allow certain users to see the LiveReport Query without giving them access to the actual edit screen. In some situations, access to the Edit screen can be potentially dangerous and insecure. If certain developers or users need access to the contents of these queries (for example to learn from other examples or to observe what a particular report does) it is possible through this feature to give them appropriate permissions to use this feature but not the Edit feature.</P>
+<P><A NAME="TMPID1018"></A>This image illustrates the format that this feature provides.</P>
+<DIV title="View Query" CLASS="figure">
+<P><A NAME="FIG-QUERVIEW"></A><IMG alt="View Query" SRC="lr_querview.png"></P>
+<P CLASS="figure" ALIGN="LEFT"><B>Figure 1-3: View Query</B></P></DIV>
+<P><A NAME="TMPID1022"></A>There are two possible ways of configuring permissions for this feature. By default, this feature is only available to users who have at least <I CLASS="emphasis">Modify</I> permissions for the LiveReport. If the user has not been set up, by the administrator, to create LiveReports from the <B CLASS="guilabel">Administer Object and Usage Privileges</B> page, then they will not have access to the <B CLASS="guilabel">Edit</B> option but they will have access to view the query.</P>
+<P><A NAME="TMPID1026"></A>Alternatively, it is possible for your administrator to change this behavior so that users with <I CLASS="emphasis">See</I> and <I CLASS="emphasis">See Contents</I> permissions can use this feature. This is done by adding the following entry to the <TT CLASS="literal">[ReportExt]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file:</P><A NAME="AEN1032"></A>
+<PRE 
+CLASS="screen"
+>QueryVisibleWithSeeContents=true</PRE
+>
+<P><A NAME="TMPID1032"></A>For any Content Server that has this option set, users with <I CLASS="emphasis">See</I> and <I CLASS="emphasis">See Contents</I> permissions on a LiveReport will be able to use the View Query option.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

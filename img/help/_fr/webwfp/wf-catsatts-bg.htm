@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWFP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webwfp">
+<title>Utilisation des catégories et des attributs dans les schémas de workflow</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/form/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-catsatts-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des opérations de l\'étape Gestionnaire d\'élément';
+          header.title2 = 'Utilisation des catégories et des attributs dans les schémas de workflow';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID4154"></A>Vous pouvez configurer un schéma de workflow pour exécuter automatiquement des opérations de catégories et d'attributs sur des éléments Content Server, des pièces jointes du schéma de workflow, des attributs du schéma de workflow et des champs dans les formulaires ajoutés au schéma de workflow. Lorsque le processus du schéma de workflow atteint une étape <B CLASS="guilabel">Gestionnaire d'élément</B>, il effectue les opérations de catégories et d'attributs que vous avez définies. Les actions que vous pouvez effectuer sont :</P><A NAME="AEN4098"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4099"></A><A NAME="TMPID4159"></A>L'ajout, la modification ou la suppression de catégories et d'attributs d'un élément Content Server</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4102"></A><A NAME="TMPID4162"></A>La modification des valeurs actuelles des attributs du schéma de workflow ou des champs dans un formulaire ajouté au schéma de workflow</P></LI></UL>
+<table class="otModuleShow if-llesfrm-h-ugd-hide note" id="TMP4REF58" >
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF58"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID4164"></A><B CLASS="note">Note : </B><BR>Avant de pouvoir exécuter des opérations de catégories et d'attributs dans des champs de formulaire, votre administrateur doit installer le module Content Server Forms sur votre serveur Content Server.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID4167"></A>Les opérations que vous définissez sont basées sur un mappage entre les valeurs d'un attribut de catégorie Content Server et un attribut du schéma de workflow ou un champ de formulaire (et non les définitions d'attributs). Les actions de transfert de données que vous indiquez s'appliquent uniquement aux valeurs contenues dans chaque instance de l'attribut ou du champ. Prenons l'exemple d'un schéma de workflow contenant l'attribut de workflow de type Entier : Liste déroulante suivant :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4110"></A>
+<TH SCOPE="COL" WIDTH="138" ALIGN="LEFT" VALIGN="TOP">Nom</TH>
+<TH SCOPE="COL" WIDTH="394" ALIGN="LEFT" VALIGN="TOP">Valeurs légales</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="138" ALIGN="LEFT" VALIGN="TOP">Prix</TD>
+<TD SCOPE="COL" WIDTH="394" ALIGN="LEFT" VALIGN="TOP">5, 10, 15, 20, 25, 30</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID4181"></A>Dans notre exemple, votre serveur Content Server contient un attribut de catégorie de type Entier : Liste déroulante :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4124"></A>
+<TH SCOPE="COL" WIDTH="138" ALIGN="LEFT" VALIGN="TOP">Nom</TH>
+<TH SCOPE="COL" WIDTH="394" ALIGN="LEFT" VALIGN="TOP">Valeurs légales</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="138" ALIGN="LEFT" VALIGN="TOP">Coût</TD>
+<TD SCOPE="COL" WIDTH="394" ALIGN="LEFT" VALIGN="TOP">0, 10, 20, 30</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID4195"></A>Vous pouvez créer une définition de mappage entre les attributs Prix et Coût mais les opérations que vous effectuez peuvent uniquement s'appliquer aux valeurs légales communes de chaque attribut (10, 20, 30). Il n'est pas possible de définir une opération qui modifiera l'attribut Coût pour accepter la valeur 5. Si les attributs n'ont pas de valeurs communes, vous pouvez également définir un mappage mais vous ne pouvez pas exécuter d'opération entre les attributs.</P>
+<table class="otModuleHide if-llesfrm-h-ugd-show note" id="TMP4REF59" >
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF59"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID4197"></A><B CLASS="note">Note : </B><BR>Les champs de formulaire de type Ensemble ne sont pas pris en charge dans les opérations de catégories.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF60">Choix des catégories et des attributs et configuration des mappages</A></P>
+<P class="before-ul"><A NAME="TMPID4199"></A>Pour définir des opérations de catégories pour votre schéma de workflow, vous devez effectuer les tâches suivantes :</P><A NAME="AEN4141"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4142"></A><A NAME="TMPID4202"></A>Choisir les catégories Content Server que vous souhaitez utiliser. Les catégories que vous choisissez sont affichées dans l'onglet <B CLASS="guilabel">Définitions</B>.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID4205"></A>Pour définir les opérations d'attributs, vous devez exécuter ces tâches supplémentaires :</P><A NAME="AEN4147"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4148"></A><A NAME="TMPID4208"></A>Choisir les attributs de catégorie que vous souhaitez utiliser. Vous pouvez choisir un ou plusieurs attributs pour chaque catégorie.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4150"></A><A NAME="TMPID4210"></A>Définir un mappage entre les attributs de catégorie que vous avez sélectionnés et les attributs du schéma de workflow ou les champs de formulaire.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF61">Définition d'un mappage entre les attributs de catégorie et les attributs du schéma de workflow ou les champs de formulaire</A></P>
+<P><A NAME="TMPID4212"></A>Une fois que vous avez choisi les catégories et les attributs que vous souhaitez utiliser, vous créez une relation, appelée <I CLASS="emphasis">mappage</I>, entre chaque attribut de catégorie et un attribut du schéma de workflow ou un champ du formulaire. Vous ne pouvez sélectionner que les attributs du schéma de workflow ou les champs du formulaire qui possèdent le même type d'attribut que celui de la catégorie. Par exemple, si un attribut de catégorie est de type Texte : Liste déroulante, vous pouvez créer un mappage uniquement avec les attributs du schéma de workflow ou les champs du formulaire qui sont du même type.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF62">Spécification de l'élément et de l'opération</A></P>
+<P class="before-ul"><A NAME="TMPID4215"></A>Une fois que vous avez sélectionné les catégories et les attributs, vous devez indiquer l'élément sur lequel l'opération de transfert de données est effectuée et le type d'opération que l'étape va exécuter. L'élément sur lequel l'opération de transfert de données est effectuée peut être l'un des suivants :</P><A NAME="AEN4157"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4158"></A><A NAME="TMPID4218"></A>Une pièce jointe du schéma de workflow, un élément Content Server, un dossier créé par une définition de dossier sur la même étape ou un attribut de référence d'élément qui renvoie vers un élément Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4162"></A><A NAME="TMPID4222"></A>Les attributs du schéma de workflow ou les champs du formulaire, ce qui permet la mise à jour des valeurs des attributs du schéma de workflow avec les valeurs des attributs de catégorie auxquels ils sont mappés.</P></LI></UL>
+<P><A NAME="TMPID4223"></A>Pour plus d'informations sur les définitions de dossier et les attributs de référence d'élément, voir <span><A HREF="wf-folders-bg.htm">Création de dossier</A></span> et <span><A HREF="wf-attributes-bg.htm">Définition des attributs</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF63"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes : </B></P><A NAME="AEN4168"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4169"></A><A NAME="TMPID4229"></A>Les définitions de dossier sont uniquement disponibles si vous avez défini plus d'une définition de dossier pour la même étape <B CLASS="guilabel">Gestionnaire d'élément</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4172"></A><A NAME="TMPID4232"></A>Un attribut de référence d'élément est uniquement disponible si vous en avez configuré un pour le schéma de workflow.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID4233"></A>Une fois que vous avez spécifié un élément, sélectionnez les opérations de transfert de données à accomplir pour l'étape. Vous pouvez effectuer les opérations suivantes :</P><A NAME="AEN4175"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4176"></A><A NAME="TMPID4236"></A><B CLASS="guilabel">Mettre à jour les valeurs de l'attribut du schéma de workflow ou du champ du formulaire</B>, qui permet de mettre à jour les attributs du schéma de workflow ou les champs du formulaire avec les valeurs des attributs de catégories auxquelles ils sont mappés.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4179"></A><A NAME="TMPID4239"></A><B CLASS="guilabel">Enlever des catégories</B>, qui permet de supprimer les catégories et les attributs sélectionnés pour l'élément spécifié.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4182"></A><A NAME="TMPID4242"></A><B CLASS="guilabel">Ajouter des catégories</B>, qui permet d'ajouter des catégories et des attributs que vous avez sélectionnés pour l'élément spécifié.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4185"></A><A NAME="TMPID4245"></A><B CLASS="guilabel">Définir des valeurs d'attribut</B>, qui permet de mettre à jour les valeurs d'attribut de la catégorie avec les attributs du schéma de workflow ou des champs du formulaire mappés.</P></LI></UL>
+<P><A NAME="TMPID4247"></A>Par exemple, pour mettre à jour un attribut de schéma de workflow avec la valeur de l'attribut de la catégorie sur lequel vous avez créé un mappage, spécifiez un document comme élément, puis choisissez les attributs du schéma de workflow comme opération sur les données. Pour ajouter les catégories et les attributs que vous avez sélectionnés, spécifiez le document comme élément, puis choisissez l'opération <B CLASS="guilabel">Ajouter des catégories</B>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wf-catsatts-addcat-p.htm" revision="">Pour choisir une catégorie</A></p></li>
+<li><p><A  HREF="wf-catsatts-addatt-p.htm" revision="">Pour choisir un attribut</A></p></li>
+<li><p><A  HREF="wf-catsatts-addmap-p.htm" revision="">Pour définir un mappage d'attribut</A></p></li>
+<li><p><A  HREF="wf-catsatts-item-op-p.htm" revision="">Pour spécifier un élément et une opération</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

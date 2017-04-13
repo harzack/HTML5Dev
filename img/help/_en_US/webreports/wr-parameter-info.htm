@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Using Parameters</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-parameter-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working with WebReports';
+          header.title2 = 'Using Parameters';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1458"></A>When running a WebReport, parameters can be included in the URL for the WebReport itself as well as for the associated data source. These two parameter types, WebReport parameters and Data Source parameters, are described below.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-PARAM-WRP">WebReport Parameters</A></P>
+<P><A NAME="TMPID1461"></A>There are several parameters which are used to control the behavior of the WebReport. Many of these parameters are designed to allow WebReport designers to construct unique URLs to modify the WebReport behavior according to application requirements.</P>
+<P><A NAME="TMPID1462"></A>A list of available parameters for data sources can be found in <span><A HREF="wr-datasource-info.htm">Data Source Parameters</A></span>. A list of parameters to control exporting can be found in <span><A HREF="wr-export-info.htm">Export Parameters</A></span>.</P>
+<P><A NAME="TMPID1465"></A>In addition to these built-in parameters, the WebReports module also supports the creation and use of unique parameters as defined by the WebReport developers. These are passed by placing <TT CLASS="literal">&amp;parmname=data</TT> in the parameter list of the URL where <TT CLASS="literal">parmname</TT> can be any string of standard alpha-numeric characters.</P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN1359"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID1469"></A>?func=ll&amp;objId=47478&amp;objAction=RunReport&amp;myparm=testdata&amp;nexturl=</P>
+<P><A NAME="TMPID1470"></A>This data is then accessible within the reportview using the defined tag syntax. Using this example, <TT CLASS="literal">[LL_REPTAG_&amp;myparm /]</TT> will return “testdata”. Sub-tags can be used to modify the data returned by a parameter tag.</P>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-PARAM-DSP">Data Source Parameters</A></P>
+<P><A NAME="TMPID1475"></A>The data sources, LiveReports and Search Queries allow input parameters to be defined and collected when the report is run:</P>
+<A NAME="AEN1366"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1367"></A><A NAME="TMPID1478"></A><I CLASS="emphasis">When a LiveReport is being used as the data source</I>, the standard LiveReport prompting will be allowed prior to the WebReport executing if no parameters have been supplied in the URL. In this scenario, when the WebReport is run, the user is presented with the LiveReport prompts much as if they had run the LiveReport directly. Once the user has entered the required prompts then the WebReport continues as normal.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1370"></A><A NAME="TMPID1481"></A><I CLASS="emphasis">When a WebReport has been defined with a saved query as the data source</I>, it is possible to insert variables into the full text search specification of the saved query. For example, the term <TT CLASS="literal">%1</TT> can be placed in the <B CLASS="guilabel">Full Text Search Terms</B> field of any full text search boxes. These variables will be substituted with any corresponding parameters in the URL. URL parameters follow the same convention as a LiveReport.</P>
+<P><A NAME="TMPID1485"></A>For example, <TT CLASS="literal">inputlabel&lt;<I CLASS="varname">x</I>>=value</TT>, where &lt;<I CLASS="varname">x</I>> is a number from 1 to 99 which corresponds with variables <TT CLASS="literal">%1</TT>, <TT CLASS="literal">%2</TT> and so on.</P></LI></OL>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN1381"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID1492"></A><TT CLASS="literal">...?func=ll&amp;objId=47478&amp;objAction=RunReport&amp;inputLabel1=WebReport&amp;nexturl=...</TT></P>
+<P><A NAME="TMPID1494"></A>In this example, a variable such as <TT CLASS="literal">%1</TT> would be replaced with the word “WebReport” by using a URL parameter in the form: <TT CLASS="literal">inputlabel1=WebReport</TT>.</P>
+</DIV></P>
+<P><A NAME="TMPID1498"></A>These variables can also be used in complex queries as part of the Content Server Query Language, LQL. Additional information about using search can be found in the online help.</P>
+<P><A NAME="TMPID1500"></A>If a WebReport is run by invoking its URL from a user developed page, for example from an HTML document or another WebReport, then it is possible to supply the necessary input parameters for both the WebReport and any data source in the URL that is used to invoke the WebReport. If all required LiveReport parameters are passed within the URL, the user will not be prompted for the input parameters in the normal way.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-DEFPARAM">Default Parameters</A></P>
+<P><A NAME="TMPID1503"></A>WebReports provides a feature to allow defaults to be set for any parameters that would normally be passed through the URL. When a default value is set for a parameter, then this value will be used if no corresponding parameter is found in the URL.</P>
+<P><A NAME="TMPID1504"></A>For more information about default parameters, see <span><A HREF="wr-parameter-procedures.htm">WebReport Parameters Procedures</A></span>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-parameter-tabset.htm" revision="">Parameter Tab Settings</A></p></li>
+<li><p><A  HREF="wr-parameter-types.htm" revision="">Parameter Types</A></p></li>
+<li><p><A  HREF="wr-parameter-procedures.htm" revision="">WebReport Parameters Procedures</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

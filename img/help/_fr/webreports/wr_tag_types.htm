@@ -1,0 +1,55 @@
+<HTML>
+	<!-- wr_tag_types.htm -->
+	<HEAD>
+		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+		<TITLE>Tags Overview</TITLE>
+		<LINK REL="stylesheet" HREF="../../ix21.css">
+		<script language="JavaScript" src="../../llhelp.js">
+		</script>
+	</HEAD>
+	<BODY ONLOAD="checkFrame('wr_tag_types.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+		<SCRIPT LANGUAGE="JavaScript">
+			var header = new AdminHeader();
+			header.title1 = 'WebReports: OpenText Content Server User Online Help';
+			header.title2 = 'Tags Overview';
+			header.draw();
+		</SCRIPT>
+
+		<p class="body">
+		Broadly speaking there are three types of tags in WebReports:
+		</p>
+		<p class="body">
+			<b><a class="body" href="wr_tag_syntax.htm#contenttags" title="View a table of content tags">Content Control Tags</a></b><br>
+			These tags are always prefixed with: <SPAN class="gui">[LL_WEBREPORT_</SPAN>.  They are used to control the way in which the output content is built.
+			For example, it is possible to enable or disable the standard Livelink header and footer. The most important content control tags
+			are used to define which part of the reportview is applied to each row of data source Data.
+		</p>
+		<p class="body">
+			<b><a class="body" href="wr_tag_syntax.htm#datatags" title="View a table of all static/data tags">Data Tags</a></b><br>
+			Data tags are always prefixed with: <SPAN class="gui">[LL_REPTAG</SPAN>. They can further be broken down into Column Data Tags and Static Tags.
+			For every column in the associated data source, column data tags exist to reference which pieces of report data are to be included in the output. These tags allow either the column number (e.g. <SPAN class="gui">[LL_REPTAG_2 /]</SPAN>)
+			or the column name (e.g. <SPAN class="gui">[LL_REPTAG=DATAID /]</SPAN>) to be used.</p>
+			<p class="body">
+			Static tags are used to insert information from Content Server which is not associated with report rows.  For example, the date and time, the name of the user running the WebReport,
+			or various URLs that might help with building hyperlinks in the report output. (E.g. <SPAN class="gui">[LL_REPTAG_NEXTURL /]</SPAN>)
+			<br> Note: WebReport tags are case sensitive (always use uppercase) and space sensitive (ensure there is a space before the '/]' at the end of the tag).
+		</p>
+		<p class="body">
+			<b><a class="body" href="wr_tag_syntax.htm#subtags" title="View a table of content tags">Sub-tags</a></b><br>
+			Any Content Server data tags e.g. [LL_REPTAG...  can contain a list of formatting sub-tags separated by spaces which allow actions to be taken on the actual data pulled from the data source. Several
+			of these sub-tags can be used for the same tag if required. If multiple sub-tags are used they are processed from left to right so that the output of each sub-tag operation
+			is passed to the next sub-tag.
+			E.g.In the following tag the output would be lowercase. [LL_REPTAG_1 <SPAN class="gui">UPPER LOWER</SPAN> /]
+			</p>
+			<p class="body">
+			Some sub-tags use additional parameters. For example, in the following tag a sub-tag called REPLACE is used which requires 2 parameters (one for
+			the string to be replaced, and one for the string to replace with.  [LL_REPTAG_1 <SPAN class="gui">REPLACE:_dummy:genius</SPAN> /] <br>
+			Any sub-tag parameters are added using the colon (:) symbol.  Some parameters may need to use quotes to specify parameters that require spaces.
+			In the previous example if the string to be replaced was 'test value', the syntax would be:
+			[LL_REPTAG_1 <SPAN class="gui">REPLACE:"test value":"new value"</SPAN> /]<br>
+		</p>
+		<SCRIPT LANGUAGE="JavaScript">
+			new AdminFooter().draw();
+		</SCRIPT>
+	</body>
+</HTML>

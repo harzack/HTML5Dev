@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>To Add a New Spider Data Flow</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-sp-addspiderdataflow-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Adding a Spider Process';
+          header.title2 = 'To Add a New Spider Data Flow';
+           header.draw();
+  </script>
+  <A NAME="PROCID-WBS1226"></A>
+<DIV title="To add a new Spider data flow:" CLASS="procedure">
+<P><B><A NAME="PROCID-WBS1226"></A>To add a new Spider data flow:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID4536"></A>On the Administration page, in the <B CLASS="guilabel">Search Administration</B> section, click the <B CLASS="guilabel">Open the System Object Volume</B> link.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4540"></A>On the <B CLASS="guilabel">Add Item</B> menu, click <B CLASS="guilabel">Spider Data Source</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4544"></A>On the <B CLASS="guilabel">Create New Spider Data Source</B> page, in the <B CLASS="guilabel">Common Information</B> section, in the <B CLASS="guilabel">Processes Prefix</B> field, type the character string that you want to use as an identifier for the data flow processes.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4549"></A>From the <B CLASS="guilabel">Slice Replacement</B> drop-down list, if necessary, click the Content Server search slice to which multiple projects will be indexed.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4553"></A>In the <B CLASS="guilabel">Partitions</B> field, type a number to specify the number of partitions into which this data source should be divided.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4556"></A>In the <B CLASS="guilabel">Port</B> field, type a value representing the series of port numbers on which you want the processes that are associated with this Spider data source to listen. The port number that you specify and the next 12 (at least) consecutive port numbers must not be used by another data source in your system. The number of consecutive port numbers that will be used depends on the number of partitions that you specify in the <B CLASS="guilabel">Partitions</B> field. Creating a Spider data flow requires eight port numbers, and for each partition, four additional port numbers. Valid values range from <TT CLASS="literal">1025</TT> to <TT CLASS="literal">65530</TT>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4562"></A>In the <B CLASS="guilabel">Spider Information</B> section, from the <B CLASS="guilabel">Host</B> drop-down list, click the shortcut of the Admin server on whose host you want the Spider data flow process to run.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4566"></A>In the <B CLASS="guilabel">Write Directory</B> field, type the absolute path of the directory (relative to the Admin server on which the Spider data flow runs) where you want the Spider process to write data, or use the <B CLASS="guilabel">Browse</B> button. You must choose a directory on a drive on a primary Content Server host, and the directory must differ from the write directories of other Enterprise data sources.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID4571"></A>In the <B CLASS="guilabel">Spider Servers</B> area, enter the:</P><A NAME="AEN3943"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3944"></A><A NAME="TMPID4575"></A><B CLASS="guilabel">Host</B> name of the Spider server installation. If needed, under <B CLASS="guilabel">Action</B>, click the <B CLASS="guilabel">Duplicate</B> <IMG  src="../../../add-row.gif">  button to add more Spider servers.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3950"></A><A NAME="TMPID4581"></A><B CLASS="guilabel">Port</B> number of the Spider server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3953"></A><A NAME="TMPID4584"></A><B CLASS="guilabel">Password</B> to access the Spider server, if defined.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3956"></A><A NAME="TMPID4587"></A><B CLASS="guilabel">Project Specifications</B> for this data source to index. Click the <B CLASS="guilabel">List Projects</B> link to display a list of Spider Server Projects, and their Port numbers, that are defined on the <B CLASS="guilabel">Host</B>, and click the ones to include. You can also type the specification directly, using the format <TT CLASS="literal">project name, project port</TT>, separated by <TT CLASS="literal">;</TT> (semi-colon). Or, if needed, you can highlight and delete projects.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3963"></A><A NAME="TMPID4594"></A>Under <B CLASS="guilabel">Action</B>, click the <B CLASS="guilabel">Administer Spider Server</B> <IMG  src="../../../ico-pencil.gif">  button to modify settings on the Spider server, including Web site URLs and crawling specifications.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3968"></A><A NAME="TMPID4599"></A>If needed, click the <B CLASS="guilabel">Remove</B> <IMG  src="../../../delete-row.gif">  button to remove unneeded Spider server definitions.</P></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4603"></A>In the <B CLASS="guilabel">Intermediate: Document Conversion</B> section, from the <B CLASS="guilabel">Host</B> drop-down list, click the shortcut of the Admin server on whose host you want the Document Conversion process to run.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4607"></A>In the <B CLASS="guilabel">Read Directory</B> field, type the absolute path of the directory where you want the Document Conversion process to read data, or use the <B CLASS="guilabel">Browse</B> button. Specify the directory path as it is mapped or mounted on the host of the Admin server on which the Document Conversion process runs. This directory must be the same directory as the <B CLASS="guilabel">Write Directory</B> that you specified in the <B CLASS="guilabel">Spider Information</B> section.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4613"></A>In the <B CLASS="guilabel">Write Directory</B> field, type the absolute path of the directory where you want the Document Conversion process to write converted data, or use the <B CLASS="guilabel">Browse</B> button. Specify the directory path as it is mapped or mounted on the host of the Admin server on which the Document Conversion process runs. OpenText strongly recommends that you choose a directory on a drive that is local to the host of the Admin server that runs the Document Conversion process. This directory must also differ from the write directories of other Enterprise data sources.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4618"></A>In the <B CLASS="guilabel">Consumer: Content Server Index</B> section, from the <B CLASS="guilabel">Host</B> drop-down list, click the shortcut of the Admin server on whose host you want the Content Server Index process to run.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4623"></A>In the <B CLASS="guilabel">Read Directory</B> field, type the absolute path of the directory where you want the Content Server Index process to read data, or use the <B CLASS="guilabel">Browse</B> button. Specify the directory path as it is mapped or mounted on the host of the Admin server on which the Content Server Index process runs. This directory must be the same directory as the <B CLASS="guilabel">Write Base</B> directory that you specified in the <B CLASS="guilabel">Spider Information</B> section.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4630"></A>In the <B CLASS="guilabel">Write Directory</B> field, type the absolute path of the directory where you want the Content Server Index process to write converted data, or use the <B CLASS="guilabel">Browse</B> button. Specify the directory path as it is mapped or mounted on the host of the Admin server on which the Content Server Index process runs. OpenText strongly recommends that you choose a directory on a drive that is local to the host of the Admin server that runs the Content Server Index process. This directory must also differ from the write directories of other Enterprise data sources.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4635"></A>In the <B CLASS="guilabel">Start Options</B> section, select the <B CLASS="guilabel">Start Processes in Data Flow</B> check box, to start the data flow processes as soon as they are created.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID4639"></A>Click the <B CLASS="guilabel">Create Processes</B> button. Content Server creates the data flow processes and displays a Status page.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

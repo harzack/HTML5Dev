@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>To Add a Partition</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-toaddpartition-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Adding Index Components';
+          header.title2 = 'To Add a Partition';
+           header.draw();
+  </script>
+  <A NAME="PROID-WBS1216"></A>
+<DIV title="To add a partition:" CLASS="procedure">
+<P><B><A NAME="PROID-WBS1216"></A>To add a partition:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID1326"></A>On the System Object Volume page, click the <B CLASS="guilabel">processes_prefix Data Source Folder</B> link of the data source folder for the data source to which you want to add a partition.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID1329"></A>Click the <B CLASS="guilabel">processes_prefix Partition Map</B> link.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID1332"></A>Click <B CLASS="guilabel">Partition</B> on the <B CLASS="guilabel">Add Item</B> menu.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID1336"></A>On the Planning Page step in the Add Partition Wizard, review the information presented, and then click the <B CLASS="guilabel">Next</B> button.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF34"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1339"></A><B CLASS="note">Note: </B><BR>You should have all required information—such as the index size and values, the Partition Name, the index location, and the four unused ports—before you launch the wizard. Do your planning first to determine a suitable configuration.</P>
+<P><A NAME="TMPID1340"></A>Your server requires additional RAM to support the new index partition. For a Standard partition, with a maximum content disk size of 50,000 MB, and a maximum metadata memory size of 1,000 MB, you should provide an additional 2.4 GB of RAM before you create the new partition.</P>
+<P><A NAME="TMPID1341"></A>Any ports you specify must be free and unused. You can use the <B CLASS="guilabel">Check port</B> links in the Wizard to verify this. Consult your network administrator if you are unsure which ports to use. You do not need to specify the ports for your existing Admin servers or Server processes, only the ports required for the new partition.</P>
+<P><A NAME="TMPID1343"></A>You should specify the exact path of your new index as the index location, for example, <TT CLASS="literal">C:\opentext\index\enterprise\index2</TT>. The last subfolder (<TT CLASS="literal">index2</TT> in the example) should not exist yet. It will be created for you. Do not use the index root folder (typically <TT CLASS="literal">C:\opentext\index</TT> or <TT CLASS="literal">C:\opentext\index\enterprise</TT>). It is important to specify the folder carefully. The wizard neither suggests a suitable folder, nor does it prevent you from using an unsuitable one.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID1349"></A>At the Partition step, do the following:</P><A NAME="AEN1360"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1361"></A><A NAME="TMPID1352"></A>Type a name for the partition in the <B CLASS="guilabel">Name</B> field.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1364"></A><A NAME="TMPID1355"></A>If you want to customize the amount of disk space to be allocated to indexed content in the partition's index, type a value in the <B CLASS="guilabel">Maximum Content Disk Size</B> field.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1367"></A><A NAME="TMPID1358"></A>If you want to customize the amount of memory space to be allocated to indexed metadata in the partition's index, type a value in the <B CLASS="guilabel">Maximum Metadata Memory Size</B> field.</P></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID1361"></A>Click the <B CLASS="guilabel">Next</B> button.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID1364"></A>On the Index Engine step, do the following:</P><A NAME="AEN1375"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1376"></A><A NAME="TMPID1367"></A>In the <B CLASS="guilabel">Name</B> field, type a name for the Index Engine.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1379"></A><A NAME="TMPID1370"></A>Click an Admin server in the <B CLASS="guilabel">Host</B> drop-down list to specify the server on which the Index Engine will run.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1382"></A><A NAME="TMPID1373"></A>Type an <B CLASS="highlight">unused</B> port number in the <B CLASS="guilabel">Admin Port</B> field to specify the port that the Index Engine uses to run on an Admin server. Click the <B CLASS="guilabel">Check port</B> link to check if a port number is available.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1387"></A><A NAME="TMPID1378"></A>Type an <B CLASS="highlight">unused</B> port number in the <B CLASS="guilabel">Server Port</B> field to specify the port that socket processes use to communicate with the Index Engine.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1391"></A><A NAME="TMPID1382"></A>Type the absolute path for a <B CLASS="highlight">new</B> index location in the <B CLASS="guilabel">Index Directory</B> field for this partition's index.</P></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID1386"></A>Click the <B CLASS="guilabel">Next</B> button.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID1389"></A>At the Search Engines step, provide information to add a Search Engine to each Search Federator in your Indexing and Searching system. Type the following in each section on the page:</P><A NAME="AEN1400"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1401"></A><A NAME="TMPID1392"></A>In the <B CLASS="guilabel">Name</B> field, type a name for the Search Engine.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1404"></A><A NAME="TMPID1395"></A>Click an Admin server in the <B CLASS="guilabel">Host</B> drop-down list to specify the server on which the Search Engine will run.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1407"></A><A NAME="TMPID1398"></A>Type an <B CLASS="highlight">unused</B> port number in the <B CLASS="guilabel">Admin Port</B> field to specify the port that the Index Engine uses to run on an Admin server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1411"></A><A NAME="TMPID1402"></A>Type an <B CLASS="highlight">unused</B> port number in the <B CLASS="guilabel">Server Port</B> field to specify the port that socket processes use to communicate with the Index Engine.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1415"></A><A NAME="TMPID1406"></A>Type the absolute path for a <B CLASS="highlight">new</B> index location in the <B CLASS="guilabel">Index Directory</B> field for this partition's index. The Index Engine that you add will search this index.</P></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID1410"></A>At the Summary step, review the information that you provided for the new partition, the Index Engine and each Index Engine, and then click the <B CLASS="guilabel">Finish</B> button to add the processes.</P></LI></OL></DIV>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF35"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1413"></A><B CLASS="note">Note: </B><BR>If you run into a problem and exit the wizard, you may need to delete the incomplete partition map manually.</P>
+<P><A NAME="TMPID1414"></A>Once you have exited the wizard and created the new partition, restart the partition map. If you wish, you can now switch old partitions to <B CLASS="guilabel">Read Only</B> or <B CLASS="guilabel">Update Only</B>. (Whether you do or not depends on your configuration and requirements.)</P>
+<P><A NAME="TMPID1417"></A>For more information, see <span><A href="../websystemobj/wbs-adminpart-so.htm">Administering Partitions</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

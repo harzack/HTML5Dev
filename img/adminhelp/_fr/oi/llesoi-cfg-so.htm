@@ -1,0 +1,193 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<title>Configuration de l'importateur d'objet</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webnotify/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfg-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Object Importer: <NOBR>OpenText Content Server Aide en ligne administrateur</NOBR>';
+          header.title2 = 'Configuration de l\'importateur d\'objet';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID50"></A>OpenText Object Importer permet d'importer automatiquement des fichiers du système de fichiers local vers Content Server. Il est possible de configurer le fichier de contrôle qui gère le processus. Le fichier de contrôle permet de spécifier vers quel emplacement de Content Server sont téléchargés les objets et l'endroit du système de fichiers où se trouvent les objets à télécharger. Vous disposez également du contrôle total des autorisations, titre, attributs et autres métadonnées de chaque objet dans Content Server. Les types d'objet Content Server suivants peuvent être importés :  </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN62"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type d'objet</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Syntaxe Importateur d'objet</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Raccourci</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">alias</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Document composite</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">compounddoc <I CLASS="emphasis">ou</I> cd <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">OpenText vous conseille d'utiliser <TT CLASS="literal">compounddoc</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Vue personnalisée</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">customview</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Discussion</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">discussion</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Document</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">document</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Dossier</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">folder</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Projet</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">project</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Réponse</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">reply</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tâche</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">task</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Groupe de tâches</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">taskgroup</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Liste de tâches</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">tasklist</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Point de repère de tâches</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">taskmilestone</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Sujet</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">topic</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">URL</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">url</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CFG-BG">Utilisation de la configuration de l'importateur d'objet</A></P>
+<P class="before-ul"><A NAME="TMPID119"></A>La page <B CLASS="guilabel">Configurer l'importateur d'objet</B> permet de définir comment se déroulent les processus d'importation d'objets. Vous devez spécifier les chemins complets vers les répertoires de fichier de contrôle, de travail et de journaux sur la page <B CLASS="guilabel">Configurer l'importateur d'objet</B>. Vous devez d'abord créer les trois répertoires et vous assurer qu'ils sont visibles pour Content Server :    </P><A NAME="AEN135"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN136"></A><A NAME="TMPID138"></A>L'importateur d'objet recherche les fichiers d'importation dans le répertoire du fichier de contrôle. Voici un exemple de répertoire de fichier de contrôle valide :  <TT CLASS="filename">C:\OPENTEXT\object_importer\controlfile</TT>, où <TT CLASS="filename">C:\OPENTEXT</TT> est la valeur par défaut pour Content Server.  </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN143"></A><A NAME="TMPID145"></A>Le répertoire de travail est l'emplacement où l'importateur d'objet traite l'importation. Voici un exemple de répertoire de fichier de travail valide :  <TT CLASS="filename">C:\OPENTEXT\object_importer\working</TT>, où <TT CLASS="filename">C:\OPENTEXT</TT> est la valeur par défaut pour Content Server.  </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN150"></A><A NAME="TMPID152"></A>Le répertoire des journaux est l'emplacement où l'importateur d'objet copie les fichiers journaux. Pour afficher et supprimer des fichiers journaux de la page Importateur d'objet <B CLASS="guilabel">Afficher les fichiers journaux d'importation</B>, ce répertoire doit se trouver dans <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\logs</TT> ou <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\object_importer</TT>. Voici un exemple de répertoire de fichier journal valide :  <TT CLASS="filename">C:\OPENTEXT\object_importer\logfiles</TT>, où <TT CLASS="filename">C:\OPENTEXT</TT> est la valeur par défaut pour Content Server. </P></LI></UL>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID166"></A><B CLASS="important">Important : </B><BR>Les répertoires de fichier de contrôle, de travail et de journaux doivent être créés et visibles pour Content Server. Vous devez les spécifier sur la page <B CLASS="guilabel">Configurer l'importateur d'objet</B> pour que les importations puissent avoir lieu.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID169"></A>En plus de la configuration spécifique à l'importateur d'objet détaillée plus haut, vous devez également :</P><A NAME="AEN169"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN170"></A><A NAME="TMPID172"></A>Vous assurer que l'adresse e-mail de l'utilisateur Admin est définie dans la page du compte de l'utilisateur Admin. Vous accédez à cette page en sélectionnant <B CLASS="guilabel">Utilisateurs et groupes</B> dans le menu <B CLASS="guilabel">Entreprise</B>. Recherchez l'utilisateur Admin sur la page <B CLASS="guilabel">Utilisateurs et groupes</B>, puis cliquez sur <B CLASS="guilabel">Modifier</B> en regard du nom de l'utilisateur Admin. Entrez l'adresse e-mail de l'utilisateur Admin.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN176"></A><A NAME="TMPID178"></A>Complétez la page <B CLASS="guilabel">Notifications</B>. Il n'est pas nécessaire que la page <B CLASS="guilabel">Notifications</B> soit activée. Pour plus d'informations sur la page <B CLASS="guilabel">Notifications</B>, reportez-vous à la rubrique <I CLASS="emphasis">Configuration des notifications, des rapports, des événements et des paramètres</I> dans <span><XPROC NAME="ExtXrefStart" HREF="lleswbn-h-agd.wbn-config-report-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webnotify/wbn-config-report-bg.htm">Suppression des événements en suspens</A><XPROC NAME="ExtXrefEnd" HREF="lleswbn-h-agd.wbn-config-report-bg" FMT=""></span>. </P></LI></UL>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID185"></A><B CLASS="important">Important : </B><BR>Lorsque l'adresse e-mail de l'utilisateur Admin n'est pas définie ou lorsque la page <B CLASS="guilabel">Notifications</B> n'est pas complétée, les importations n'ont pas lieu.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-DB-BG">Utilisation de l'administration de la base de données Importateur d'objet</A></P>
+<P><A NAME="TMPID189"></A>Utilisez la page <B CLASS="guilabel">Administration des données</B> pour gérer le schéma de la base de données requis pour cette application. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-IMPSTAT-BG">Utilisation de l'état de l'importation</A></P>
+<P><A NAME="TMPID196"></A>La page <B CLASS="guilabel">Etat de l'importation</B> vous permet de vérifier l'état des threads d'importation en cours d'exécution. Si aucun thread d'importation n'est en cours d'exécution lorsque vous cliquez sur le lien <B CLASS="guilabel">Etat de l'importation</B>, Content Server affichera une liste d'état vide. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-MANIMPORT-BG">Utilisation de l'importation manuelle d'objet de l'importateur d'objet</A></P>
+<P><A NAME="TMPID204"></A>La page <B CLASS="guilabel">Importation manuelle d'objet</B> vous permet d'importer manuellement des documents vers Content Server plutôt que de procéder à une importation planifiée. L'importation manuelle est généralement utilisée dans les environnements de test. Les fichiers de contrôle utilisés lors d'une importation manuelle ne sont jamais supprimés.</P>
+<P><A NAME="TMPID207"></A>Lorsque vous procédez à une importation manuelle d'objet, il n'est pas nécessaire que le fichier de contrôle se trouve sur la machine où Content Server est installé.  </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF0"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID212"></A><B CLASS="note">Note : </B><BR>Lors des importations manuelles d'un grand nombre de fichiers, il est possible que lors de l'ajout de nombreux objets à Content Server, le navigateur signale une erreur ou semble planter. Cela ne veut toutefois pas dire que l'importation a échouée.</P><A NAME="AEN210"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN211"></A><A NAME="TMPID216"></A>Si vous voyez s'afficher une boîte de dialogue d'erreur, cliquez sur <B CLASS="guilabel">OK</B> puis sur le lien <B CLASS="guilabel">Accueil Admin</B>. Sur la page <B CLASS="guilabel">Administration de l'importateur d'objet</B>, cliquez sur le lien <B CLASS="guilabel">Afficher l'état de l'importation</B> pour visualiser l'état de l'importation. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN217"></A><A NAME="TMPID222"></A>Si le navigateur semble ne pas fonctionner et qu'aucun message d'erreur n'est généré, sur la page <B CLASS="guilabel">Administration de l'importateur d'objet</B>, cliquez sur le lien <B CLASS="guilabel">Afficher l'état de l'importation</B> pour visualiser l'état de l'importation. </P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-SCHED-BG">Utilisation de la programmation de l'importateur d'objet</A></P>
+<P><A NAME="TMPID227"></A>La page <B CLASS="guilabel">Programmer les tâches d'importation</B> vous permet définir quels agents de programmation sont activés ainsi que leur programmes respectifs. Les notifications Content Server doivent être configurées avant de programmer des importations automatiques. Pour plus d'informations, consultez la section <span><A HREF="llesoi-cfg-so.htm#LLESOI-CFG-BG">Utilisation de la configuration de l'importateur d'objet</A></span>. </P>
+<P><A NAME="TMPID233"></A>Le module Object Importer s'exécute sur un seul thread. De ce fait, une seule instance de l'importateur peut s'exécuter sur chaque installation Content Server. Le module Object Importer peut être installé sur plusieurs machines connectées à la même base de données Content Server afin de réduire le temps requis pour importer de grandes quantités de données. Les informations de la page <B CLASS="guilabel">Programmer les tâches d'importation</B> s'appliquent à toutes les instances Content Server connectées à la même base de données. Chaque instance de Content Server, jusqu'à un maximum de dix, peut exécuter son propre agent d'importation unique.  </P>
+<P><A NAME="TMPID244"></A>Si vous exécutez plusieurs instances de Content Server, vous devrez ajouter ce qui suit à la section [scheduleactivity] dans le fichier <TT CLASS="filename">opentext.ini</TT> de chaque serveur :</P>
+<P><A NAME="TMPID247"></A><TT CLASS="literal">2990=0</TT> <BR><TT CLASS="literal">2991=0</TT> <BR><TT CLASS="literal">2992=0</TT> <BR><TT CLASS="literal">2993=0</TT> <BR><TT CLASS="literal">2994=0</TT> <BR><TT CLASS="literal">2995=0</TT> <BR><TT CLASS="literal">2996=0</TT> <BR><TT CLASS="literal">2997=0</TT> <BR><TT CLASS="literal">2998=0</TT> <BR><TT CLASS="literal">2999=0</TT></P>
+<P><A NAME="TMPID258"></A>Redémarrez chaque serveur après avoir modifié et enregistré le fichier <TT CLASS="filename">opentext.ini</TT> . Notez le nom de la machine et l'ID d'agent pour vous y référer ultérieurement.</P>
+<P><A NAME="TMPID260"></A>Activez un agent différent par machine en définissant l'ID d'agent égal à un, par exemple <TT CLASS="literal">2991=1</TT>. En général, lorsque plusieurs instances de Content Server sont déployées, les agents de programmation sont désactivés sur toutes les machines sauf une. Le module Object Importer requiert que les agents de programmation soient activés sur toutes les machines devant importer des objets. D'autres ID d'agent peuvent être désactivés en définissant leur valeur sur zéro.</P>
+<P><A NAME="TMPID264"></A>Ce qui suit doit être ajouté au fichier <TT CLASS="filename">opentext.ini</TT> sur toutes les machines sauf celle qui fait office d'agent :   </P>
+<P><A NAME="TMPID272"></A><TT CLASS="literal">[options]</TT> <BR><TT CLASS="literal">EnableAgents=TRUE</TT> <BR> <BR><TT CLASS="literal">[loader]</TT> <BR><TT CLASS="literal">load=sockserv;agents</TT> <BR> <BR><TT CLASS="literal">[scheduleactivity]</TT> <BR><TT CLASS="literal">1000=0</TT> <BR><TT CLASS="literal">4000=0</TT> <BR><TT CLASS="literal">8900=0</TT> <BR><TT CLASS="literal">8999=0</TT> <BR><TT CLASS="literal">9000=0</TT> <BR><TT CLASS="literal">3502=0</TT> </P>
+<P><A NAME="TMPID284"></A>Redémarrez chaque serveur après avoir modifié et enregistré le fichier <TT CLASS="filename">opentext.ini</TT> . Notez le nom de la machine et l'ID d'agent pour vous y référer ultérieurement.</P>
+<P><A NAME="TMPID286"></A>Pour plus d'informations sur la modification du fichier <TT CLASS="filename">opentext.ini</TT>,  consultez la section <I CLASS="emphasis">Compréhension du fichier opentext.ini</I> dans <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-ini-intro-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-ini-intro-bg.htm">Compréhension du fichier opentext.ini</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-ini-intro-bg" FMT=""></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-VALID-BG">Utilisation de la validation Importateur d'objet</A></P>
+<P><A NAME="TMPID292"></A>La page <B CLASS="guilabel">Validation</B> vous permet d'exécuter un fichier de contrôle de l'importation à l'aide d'un outil de validation pour rechercher la présence d'erreurs. Cet outil de validation recherche notamment des erreurs d'importation associées à l'importation de métadonnées multilingues. </P>
+<P><A NAME="TMPID296"></A>L'importateur d'objet traite le fichier de contrôle de l'importation pour valider que des conditions spécifiques sont respectées. L'importation effective des données n'aura pas lieu.</P>
+<P><A NAME="TMPID297"></A>Une fois que vous avez sélectionné le fichier de contrôle de l'importation et que vous avez exécuté l'outil de validation sur ce dernier, Content Server affiche une nouvelle page indiquant les résultats de la validation. Cette nouvelle page inclut un lien vers la page <B CLASS="guilabel">Importation manuelle d'objet</B>. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID301"></A><B CLASS="note">Note : </B><BR>L'outil de validation n'identifie pas toutes les erreurs graves que votre fichier de contrôle de l'importation peut rencontrer. Même après avoir exécuté cet outil et avoir supprimé toutes les erreurs générées par ce dernier, il est possible que l'importation échoue.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-VIEWLOGS-BG">Utilisation des fichiers journaux Object Importer</A></P>
+<P><A NAME="TMPID305"></A>La page <B CLASS="guilabel">Afficher les fichiers journaux d'importation</B> répertorie les fichiers situés dans le répertoire des journaux pour une instance particulière de Content Server. </P>
+<P><A NAME="TMPID310"></A>La page <B CLASS="guilabel">Afficher les fichiers journaux d'importation</B> répertorie le nom du fichier temporaire sur le serveur et non celui du fichier de contrôle. Chaque importation crée jusqu'à trois fichiers associés :</P>
+<A NAME="AEN304"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN305"></A><A NAME="TMPID314"></A>Tous les fichiers ayant l'extension <TT CLASS="filename">.log</TT> sont des fichiers journaux. Ils signalent toute erreur intervenue pendant le processus d'importation.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN308"></A><A NAME="TMPID317"></A>Tous les fichiers qui se terminent par <TT CLASS="filename">_uncreated.xml</TT> contiennent des données du fichier de contrôle qui n'a pas pu être créé.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN311"></A><A NAME="TMPID320"></A>Tous les fichiers qui se terminent par <TT CLASS="filename">_unprocessed.xml</TT> contiennent des données du fichier de contrôle qui n'a jamais été traité en raison d'une interruption de l'importation. </P></LI></OL>
+<P><A NAME="TMPID322"></A>Les fichiers journaux générés par l'importateur d'objet sont ouverts en mode annexe pour éviter tout remplacement accidentel.</P>
+<P><A NAME="TMPID323"></A>Aucun des fichiers journaux utilisés par l'importateur d'objet ne sera visible sur la page Importateur d'objet <B CLASS="guilabel">Afficher les fichiers journaux d'importation</B>.</P>
+<P><A NAME="TMPID325"></A>Il se peut que vous souhaitiez renommer les fichiers XML non traités ou non créés avant de les réutiliser pour éviter tout problème de convention de dénomination tel que : <TT CLASS="filename">test_unprocessed_unprocessed.xml</TT> </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="llesoi-cfg-p.htm" revision="">Configurer l'importateur d'objet</A></p></li>
+<li><p><A  HREF="llesoi-db-p.htm" revision="">Pour administrer la base de données de l'importateur d'objet</A></p></li>
+<li><p><A  HREF="llesoi-impstat-p.htm" revision="">Afficher des informations relatives à l'état de l'importation</A></p></li>
+<li><p><A  HREF="llesoi-manimport-p.htm" revision="">Importer manuellement un document</A></p></li>
+<li><p><A  HREF="llesoi-sched-p.htm" revision="">Configurer ou désactiver des programmes d'importation</A></p></li>
+<li><p><A  HREF="llesoi-valid-p.htm" revision="">Valider un fichier de contrôle d'importation</A></p></li>
+<li><p><A  HREF="llesoi-viewlog-p.htm" revision="">Afficher ou supprimer des fichiers journaux</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

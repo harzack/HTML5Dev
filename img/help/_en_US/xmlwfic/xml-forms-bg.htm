@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-EN-1">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Forms</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-forms-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Work Packages';
+          header.title2 = 'Forms';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID1568"></A>If the forms work package is included in the map, then messages can include data from all forms that are available to the step. Each action involved in the exchange will only process forms that are made available in its step. The following rules apply:</P><A NAME="AEN1510"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1511"></A><A NAME="TMPID1571"></A>An action that accepts a remote initiation message only updates forms that are made available in the start step of the Workflow.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1513"></A><A NAME="TMPID1573"></A>An action that accepts a task edit message only updates forms that are made available in the action's task.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1515"></A><A NAME="TMPID1575"></A>An action that sends a message will only send data for forms that are made available in the action's task.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-063">XML Representation</A></P>
+<P><A NAME="TMPID1578"></A><TT CLASS="LITERAL">&lt;forms&gt;</TT></P>
+<P><A NAME="TMPID1580"></A><TT CLASS="LITERAL">&lt;form name="my form"&gt;</TT></P>
+<P><A NAME="TMPID1582"></A><TT CLASS="LITERAL">&lt;attribute name="my att"&gt;</TT></P>
+<P><A NAME="TMPID1584"></A><TT CLASS="LITERAL">&lt;value&gt;…&lt;/value&gt;</TT></P>
+<P><A NAME="TMPID1586"></A><TT CLASS="LITERAL">…</TT></P>
+<P><A NAME="TMPID1588"></A><TT CLASS="LITERAL">&lt;/attribute&gt;</TT></P>
+<P><A NAME="TMPID1590"></A><TT CLASS="LITERAL">&lt;/form&gt;</TT></P>
+<P><A NAME="TMPID1592"></A><TT CLASS="LITERAL">&lt;/forms&gt;</TT></P>
+<P><A NAME="TMPID1594"></A>In XML, the forms package is a forms element that contains one form child element for each available form. Each form element gives the name of the form and contains attribute elements for each of the form's attributes. Each attribute element gives the name of the attribute and has one child element for each defined attribute value. For attributes of type set, each value contains more attribute child elements.</P>
+<P><A NAME="TMPID1595"></A>When the forms package is updated, unmentioned forms retain their previous values, and unmentioned attributes within a form retain their previous values. To delete the values of an attribute, you must provide an attribute element with no value child elements.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-064">XML Namespaces (if used)</A></P>
+<P><A NAME="TMPID1598"></A><TT CLASS="LITERAL">&lt;forms xmlns="http://www.opentext.com/llx/workflow/"&gt;</TT></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-065">HTML Representation</A></P>
+<P><A NAME="TMPID1602"></A><TT CLASS="LITERAL">forms_my_form_my_att_1=…</TT></P>
+<P><A NAME="TMPID1604"></A><TT CLASS="LITERAL">forms_my_form_my_att_2=…</TT></P>
+<P><A NAME="TMPID1606"></A><TT CLASS="LITERAL">…</TT></P>
+<P><A NAME="TMPID1608"></A>In HTML form data, form attributes have field names that are generated from their attribute names and the name of the forms they appear in. The HTML base names for all attributes appear in the custom format configuration tab for any action in the Workflow step.</P>
+<P><A NAME="TMPID1609"></A>Because Content Server supports multiple values for attributes, each value of each attribute is numbered. Values of sub-attributes inside set attributes will have two indexes. For example, <TT CLASS="LITERAL">forms_my_form_setatt_textatt_2_3</TT> names the third value for the <TT CLASS="LITERAL">textatt</TT> attribute in the second value for the <TT CLASS="LITERAL">setatt</TT> attribute.</P>
+<P><A NAME="TMPID1614"></A>When form attributes are updated with an HTML form data message, you can overwrite individual values with the appropriately numbered field, but cannot delete values that already exist.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

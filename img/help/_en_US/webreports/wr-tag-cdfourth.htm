@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>DATASOURCE, DATE, DATEFORMATS, DATETIME, DBTYPE</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-cdfourth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Column Data Tags';
+          header.title2 = 'DATASOURCE, DATE, DATEFORMATS, DATETIME, DBTYPE';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3687"></A>This section details the column data tags: <span><A HREF="wr-tag-cdfourth.htm#WR-TAG-CDDATASOURCE">DATASOURCE</A></span>, <span><A HREF="wr-tag-cdfourth.htm#WR-TAG-CDDATE">DATE</A></span>, <span><A HREF="wr-tag-cdfourth.htm#WR-TAG-CDDATEFORMATS">DATEFORMATS</A></span>, <span><A HREF="wr-tag-cdfourth.htm#WR-TAG-CDDATETIME">DATETIME</A></span>, and <span><A HREF="wr-tag-cdfourth.htm#WR-TAG-CDDBTYPE">DBTYPE</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDDATASOURCE">DATASOURCE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATASOURCE-NAME">Syntax</A></P>
+<P><A NAME="REPORTTAGDATASOURCE"></A><B CLASS="highlight">[LL_REPTAG_DATASOURCE /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATASOURCE-DESC">Description</A></P>
+<P><A NAME="TMPID3701"></A>Returns the data source as a RecArray. This can be used for special processing outside the main row section.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATASOURCE-EXAMPL">Example</A></P>
+<P><A NAME="TMPID3704"></A>The following example shows how the <TT CLASS="literal">LL_WEBREPORT_FOR</TT> loop tag can be used to iterate each row.</P><A NAME="AEN3367"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_FOR DATA:[LL_REPTAG_DATASOURCE /] VAR:row /]
+   [LL_REPTAG_%row CURRENTVAL RECORD:NAME /]
+[LL_WEBREPORT_ENDFOR /]</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATASOURCE-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID3709"></A>See also <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSETDATASOURCE">SETDATASOURCE</A></span>, <span><A HREF="wr-tag-ccfourth.htm#WEBREPORTFOR">[LL_WEBREPORT_FOR VAR:varName DATA:collection /]</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECORD">RECORD</A></span>, and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECARRAY">RECARRAY</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDDATE">DATE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATE-NAME">Syntax</A></P>
+<P><A NAME="REPORTTAGDATE"></A><B CLASS="highlight">[LL_REPTAG_DATE /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATE-DESC">Description</A></P>
+<P><A NAME="TMPID3722"></A>Inserts the date on which the WebReport was executed.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATE-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID3725"></A>See also <span><A HREF="wr-tag-cdfourth.htm#WR-TAG-CDDATETIME">DATETIME</A></span> and <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTODATE">TODATE</A></span>. For formatting options see the <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span> sub-tag.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDDATEFORMATS">DATEFORMATS</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATEFORMATS-NAME">Syntax</A></P>
+<P><A NAME="REPORTTAGDATEFORMATS"></A><B CLASS="highlight">[LL_REPTAG_DATEFORMATS /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATEFORMATS-DESC">Description</A></P>
+<P><A NAME="TMPID3737"></A>Content Server has three configurable date masks: Long, Short, and Input. This data tag returns an ASSOC with the system configured date masks, which can be individual retrieved with the ASSOC sub-tag.</P>
+<P><A NAME="TMPID3739"></A>The date masks are compatible with Javascript.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATEFORMATS-EXAMPL">Example</A></P>
+<P><A NAME="TMPID3742"></A>For example, <TT CLASS="literal">[LL_REPTAG_DATEFORMATS /]</TT> returns:</P>
+<P><A NAME="TMPID3744"></A>A&lt;<I CLASS="varname">1,?,'INPUT'='%m/%d/%Y %I:%M %p','LONG'='%m/%d/%Y %I:%M %p','SHORT'='%m/%d/%Y'</I>></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDDATETIME">DATETIME</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATETIME-NAME">Syntax</A></P>
+<P><A NAME="REPORTTAGDATETIME"></A><B CLASS="highlight">[LL_REPTAG_DATETIME /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATETIME-DESC">Description</A></P>
+<P><A NAME="TMPID3754"></A>Inserts the date and time when the WebReport was executed. For formatting options see the <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span> sub-tag.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDATETIME-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID3758"></A>See also <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span> and <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTODATE">TODATE</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDDBTYPE">DBTYPE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDBTYPE-NAME">Syntax</A></P>
+<P><A NAME="REPORTTAGDBTYPE"></A><B CLASS="highlight">[LL_REPTAG_DBTYPE /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDBTYPE-DESC">Description</A></P>
+<P><A NAME="TMPID3769"></A>Returns the type of database being used on the server. Valid return values are 'ORACLE', 'MSSQL', and 'UNKNOWN'.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDDBTYPE-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID3772"></A>See also <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span> and <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTODATE">TODATE</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

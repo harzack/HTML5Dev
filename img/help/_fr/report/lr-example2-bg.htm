@@ -1,0 +1,166 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Utilisation des valeurs d'entrée utilisateur pour contrôler l'insertion du modèle</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-example2-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Exemples de modèles';
+          header.title2 = 'Utilisation des valeurs d\'entrée utilisateur pour contrôler l\'insertion du modèle';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1212"></A>Outre l'utilisation de paramètres URL uniques pour contrôler l'insertion de modèles, il est possible de spécifier simplement l'insertion ou non d'un modèle en fonction de la valeur d'un ou de plusieurs paramètres d'entrée utilisateur utilisés dans le modèle. Examinez le modèle suivant : </P><A NAME="AEN1215"></A>
+<PRE 
+CLASS="screen"
+>NAME = %1 AND DATAID &gt; %2</PRE
+>
+<P><A NAME="TMPID1214"></A>Une fois le modèle configuré, nous pouvons spécifier un indicateur qui servira à déterminer si le modèle est inclus ou non. Par exemple, il est possible de définir une valeur de chaîne vide. </P>
+<P><A NAME="TMPID1215"></A>Nous pouvons décider que si l'un des indicateurs est défini sur une chaîne vide, le modèle n'est pas utilisé ou que le modèle est exclu si les deux paramètres sont définis sur une chaîne vide. </P>
+<P><A NAME="TMPID1216"></A>En règle générale, l'indicateur spécifié est une chaîne vide, ce qui permet d'exclure les modèles si un ou plusieurs des paramètres ne sont pas utilisés. </P>
+<DIV title="Exclusion d'un modèle si l'un des paramètres est vide" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXEXLTEM-EX"></A><B><IMG title="Exclusion d'un modèle si l'un des paramètres est vide" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 2-4 : Exclusion d'un modèle si l'un des paramètres est vide</B></P>
+<P class="nr1"><A NAME="TMPID1219"></A>Dans cet exemple, deux URL différentes sont présentées pour illustrer les effets de différents paramètres d'entrée sur la source SQL exécutée. Le modèle est configuré pour utiliser une seule entrée utilisateur (%1). La condition <B CLASS="guilabel">Inclure IF</B> est définie sur <B CLASS="guilabel">Aucune entrée définie sur l'indicateur</B>, ce qui signifie que si l'entrée utilisateur est définie sur l'indicateur spécifié, le modèle n'est PAS inclus. Dans ce cas, la <B CLASS="guilabel">Valeur d'indicateur</B> est une chaîne vide, autrement dit, si <TT CLASS="literal">&amp;inputlabel1</TT> n'est pas inclus dans l'URL ou si <TT CLASS="literal">&amp;inputlabel1=</TT> n'est défini sur rien, par exemple sur une chaîne vide, le modèle n'est pas inclus. Si <TT CLASS="literal">inputlabel1</TT> est défini sur autre chose, le modèle est inclus. Dans l'URL 1, une valeur a été spécifiée pour <TT CLASS="literal">&amp;inputlabel1</TT>, donc le modèle est inclus. Dans l'URL 2 <TT CLASS="literal">&amp;inputlabel1</TT> a été laissé vide, donc le modèle n'est pas inclus. Notez que la section des paramètres de ce rapport LiveReport n'est pas affichée, mais %1 a été défini de façon à correspondre avec l'entrée utilisateur 1. </P>
+<A NAME="AEN1230"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1231"></A><A NAME="TMPID1230"></A>Dans <B CLASS="guilabel">Source SQL principale</B>, dans le champ <B CLASS="guilabel">SQL</B>, saisissez :</P><A NAME="AEN1235"></A>
+<PRE 
+CLASS="screen"
+>select * from DTREE
+~1</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1236"></A><A NAME="TMPID1235"></A>Dans <B CLASS="guilabel">Configuration du modèle</B>, dans la zone <B CLASS="guilabel">Modèles</B>, définissez <B CLASS="guilabel">~1</B> :</P><A NAME="AEN1241"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1242"></A><A NAME="TMPID1241"></A>Ne sélectionnez pas la case <B CLASS="guilabel">Auto-Where</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1245"></A><A NAME="TMPID1244"></A>Dans le champ <B CLASS="guilabel">Source SQL</B>, saisissez « where name = %1 ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1249"></A><A NAME="TMPID1248"></A>Ne sélectionnez pas la case <B CLASS="guilabel">Auto-Comma</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1252"></A><A NAME="TMPID1251"></A>Dans la liste <B CLASS="guilabel">Inclure IF</B>, sélectionnez « Aucune entrée définie sur l'indicateur ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1256"></A><A NAME="TMPID1255"></A>Dans le champ <B CLASS="guilabel">Options</B>, laissez le champ <B CLASS="guilabel">Valeur d'indicateur</B> vide. Notez que ce champ ne contient aucun texte pour indiquer que la valeur d'indicateur est une chaîne vide.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1260"></A><A NAME="TMPID1259"></A>Dans la zone <B CLASS="guilabel">Entrées</B>, ajoutez des entrées génériques. Par exemple, incluez une entrée de type <TT CLASS="literal">STRING</TT> avec une <B CLASS="guilabel">Invite</B> appelée « name ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1266"></A><A NAME="TMPID1265"></A>Dans la zone <B CLASS="guilabel">Paramètres</B>, incluez un champ d'entrée utilisateur. </P></LI></OL>
+<P><A NAME="TMPID1267"></A>Si vous accédez à l'exemple URL1 suivant :</P><A NAME="AEN1270"></A>
+<PRE 
+CLASS="screen"
+>...&amp;inputLabel1=New WebReport&amp;nextURL=...</PRE
+>
+<P><A NAME="TMPID1269"></A>Notez qu'avec ce type de condition, il n'est pas nécessaire d'inclure d'autres paramètres, car l'inclusion du modèle est simplement basée sur le contenu des paramètres d'entrée utilisateur normaux. </P>
+<P><A NAME="TMPID1270"></A>Le code SQL qui résulte d'URL1 contient, dans le champ <B CLASS="guilabel">Source SQL</B>, « select * from DTREE where name = 'New Web Report' ».</P>
+<P><A NAME="TMPID1273"></A>Si vous accédez à l'exemple URL2 suivant :</P><A NAME="AEN1276"></A>
+<PRE 
+CLASS="screen"
+>...&amp;inputLabel1=&amp;nextURL=...</PRE
+>
+<P><A NAME="TMPID1275"></A>Notez qu'en l'absence de texte entre le signe égal (=) et le début du paramètre suivant (&amp;) ou la fin de l'URL, le paramètre est défini sur une chaîne vide. </P>
+<P><A NAME="TMPID1276"></A>Le code SQL qui résulte d'URL2 contient, dans le champ <B CLASS="guilabel">Source SQL</B>, « select * from DTREE ».</P><IMG title="Exclusion d'un modèle si l'un des paramètres est vide" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Exclusion d'un modèle si l'un des différents paramètres est défini sur l'indicateur" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXPARFLAG-EX"></A><B><IMG title="Exclusion d'un modèle si l'un des différents paramètres est défini sur l'indicateur" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 2-5 : Exclusion d'un modèle si l'un des différents paramètres est défini sur l'indicateur</B></P>
+<P class="nr1"><A NAME="TMPID1281"></A>Cet exemple est similaire au précédent, à la différence près que le modèle contient plusieurs paramètres d'entrée utilisateur. Dans ce cas, nous voulons exclure le modèle si l'une de ces entrées utilisateur est définie sur l'indicateur « null ». Pour ce faire, nous utilisons encore la condition <B CLASS="guilabel">Inclure IF</B> de <B CLASS="guilabel">Aucune entrée définie sur l'indicateur</B>, mais dans cet exemple, nous utilisons les caractères de texte « null » comme <B CLASS="guilabel">Valeur d'indicateur</B>. Dans ce cas, si l'entrée <TT CLASS="literal">&amp;inputlabel1</TT>, <TT CLASS="literal">&amp;inputlabel2</TT> ou <TT CLASS="literal">&amp;inputlabel3</TT> est définie sur la chaîne de texte « null », le modèle n'est pas inclus. Dans notre exemple d'URL, <TT CLASS="literal">&amp;inputlabel1</TT> est définie sur « null », donc le modèle n'est pas inclus dans la requête SQL. </P>
+<A NAME="AEN1295"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1296"></A><A NAME="TMPID1295"></A>Dans <B CLASS="guilabel">Source SQL principale</B>, dans le champ <B CLASS="guilabel">SQL</B>, saisissez :</P><A NAME="AEN1300"></A>
+<PRE 
+CLASS="screen"
+>select * from sampleTable
+~1</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1301"></A><A NAME="TMPID1300"></A>Dans <B CLASS="guilabel">Configuration du modèle</B>, dans la zone <B CLASS="guilabel">Modèles</B>, définissez <B CLASS="guilabel">~1</B> :</P><A NAME="AEN1306"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1307"></A><A NAME="TMPID1306"></A>Ne sélectionnez pas la case <B CLASS="guilabel">Auto-Where</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1310"></A><A NAME="TMPID1309"></A>Dans le champ <B CLASS="guilabel">Source SQL</B>, saisissez :</P><A NAME="AEN1313"></A>
+<PRE 
+CLASS="screen"
+>where color LIKE %1
+and type LIKE %2
+and subtype LIKE %3</PRE
+></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1314"></A><A NAME="TMPID1313"></A>Ne sélectionnez pas la case <B CLASS="guilabel">Auto-Comma</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1317"></A><A NAME="TMPID1316"></A>Dans la liste <B CLASS="guilabel">Inclure IF</B>, sélectionnez « Aucune entrée définie sur l'indicateur ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1321"></A><A NAME="TMPID1320"></A>Dans le champ <B CLASS="guilabel">Options</B>, dans le champ <B CLASS="guilabel">Valeur d'indicateur</B>, saisissez « null ».</P></LI></UL></LI></OL>
+<P><A NAME="TMPID1324"></A>Si vous accédez à l'URL suivante :</P><A NAME="AEN1327"></A>
+<PRE 
+CLASS="screen"
+>...&amp;inputLabel1=null&amp;inputLabel2=widget&amp;inputLabel3=grommet&amp;nextURL=...</PRE
+>
+<P><A NAME="TMPID1326"></A>Le code SQL qui en résulte contient, dans le champ <B CLASS="guilabel">Source SQL</B>, « select * from sampleTable ».</P><IMG title="Exclusion d'un modèle si l'un des différents paramètres est défini sur l'indicateur" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Inclusion d'un modèle si l'un des paramètres n'est pas vide" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXTEMPEM-EX"></A><B><IMG title="Inclusion d'un modèle si l'un des paramètres n'est pas vide" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 2-6 : Inclusion d'un modèle si l'un des paramètres n'est pas vide</B></P>
+<P class="nr1"><A NAME="TMPID1331"></A>Cet exemple présente l'une des conditions les moins utilisées. Dans cet exemple simpliste, le nombre de colonnes sélectionnables est variable. Si au moins l'un de ces paramètres d'entrée utilisateur n'est pas vide, nous voulons inclure le modèle. A l'aide de la condition <B CLASS="guilabel">Inclure IF</B> <B CLASS="guilabel">Certaines entrées ne sont pas définies sur l'indicateur</B>, nous spécifions que le modèle est inclus sauf si tous les paramètres d'entrée utilisateur sont définis sur l'indicateur, ici une chaîne vide. Notez que nous utilisons également la fonction <B CLASS="guilabel">Auto Comma</B> dans cet exemple pour vérifier que le nombre de virgules dans la liste est correct d'un point de vue syntaxique. Cette fonction est expliquée plus en détail dans <span><A HREF="lr-autcomm-bg.htm">Utilisation de la fonction Auto Comma</A></span> et dans la ligne « Auto Comma » de <span><A HREF="lr-sqlfield-bg.htm">Champs du modèle SQL</A></span>. Dans cet exemple, nous utilisons également un second modèle qui sera inséré uniquement si le premier modèle est exclu. La condition <B CLASS="guilabel">Inclure IF</B> est expliquée plus loin dans la ligne « Inclure IF » de <span><A HREF="lr-sqlfield-bg.htm">Champs du modèle SQL</A></span> et dans <span><A HREF="lr-sqlfield-bg.htm#LR-SQLINCLIF">Inclure IF</A></span>. </P>
+<A NAME="AEN1344"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1345"></A><A NAME="TMPID1344"></A>Dans <B CLASS="guilabel">Source SQL principale</B>, dans le champ <B CLASS="guilabel">SQL</B>, saisissez :</P><A NAME="AEN1349"></A>
+<PRE 
+CLASS="screen"
+>select ~1~2
+from sampleTable</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1350"></A><A NAME="TMPID1349"></A>Dans <B CLASS="guilabel">Configuration du modèle</B>, dans la zone <B CLASS="guilabel">Modèles</B>, définissez <B CLASS="guilabel">~1</B> :</P><A NAME="AEN1355"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1356"></A><A NAME="TMPID1355"></A>Ne sélectionnez pas la case <B CLASS="guilabel">Auto-Where</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1359"></A><A NAME="TMPID1358"></A>Dans le champ <B CLASS="guilabel">Source SQL</B>, saisissez : « %1, %2, %3 » </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1363"></A><A NAME="TMPID1362"></A>Sélectionnez la case <B CLASS="guilabel">Auto-Comma</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1366"></A><A NAME="TMPID1365"></A>Dans la liste <B CLASS="guilabel">Inclure IF</B>, sélectionnez « Certaines entrées ne sont pas définies sur l'indicateur ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1370"></A><A NAME="TMPID1369"></A>Dans le champ <B CLASS="guilabel">Options</B>, assurez-vous que le champ <B CLASS="guilabel">Valeur d'indicateur</B> est vide.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1374"></A><A NAME="TMPID1373"></A>Dans <B CLASS="guilabel">Configuration du modèle</B>, dans la zone <B CLASS="guilabel">Modèles</B>, définissez <B CLASS="guilabel">~2</B> :</P><A NAME="AEN1379"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1380"></A><A NAME="TMPID1379"></A>Ne sélectionnez pas la case <B CLASS="guilabel">Auto-Where</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1383"></A><A NAME="TMPID1382"></A>Dans le champ <B CLASS="guilabel">Source SQL</B>, saisissez : « * » </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1387"></A><A NAME="TMPID1386"></A>Sélectionnez la case <B CLASS="guilabel">Auto-Comma</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1390"></A><A NAME="TMPID1389"></A>Dans la liste <B CLASS="guilabel">Inclure IF</B>, sélectionnez « Condition de modèle fausse ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1394"></A><A NAME="TMPID1393"></A>Dans le champ <B CLASS="guilabel">Options</B>, dans le champ <B CLASS="guilabel">Modèle n°</B>, saisissez « 1 ».</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1399"></A><A NAME="TMPID1398"></A>Dans la zone <B CLASS="guilabel">Entrées</B>, ajoutez des entrées génériques. Par exemple, incluez trois entrées de type <TT CLASS="literal">STRING</TT> avec des <B CLASS="guilabel">Invite</B>s appelées « name », « type » et « subtype ».</P></LI></OL>
+<P><A NAME="TMPID1405"></A>Si vous accédez à l'URL suivante :</P><A NAME="AEN1408"></A>
+<PRE 
+CLASS="screen"
+>...&amp;inputLabel1=Parts&amp;inputLabel2=&amp;inputLabel3=grommet&amp;nextURL=...</PRE
+>
+<P><A NAME="TMPID1407"></A>Le code SQL qui en résulte contient, dans le champ <B CLASS="guilabel">Source SQL</B>, « select Parts,grommet from sampleTable ».</P><IMG title="Inclusion d'un modèle si l'un des paramètres n'est pas vide" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

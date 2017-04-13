@@ -1,0 +1,142 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Configuration requise des fichiers XML Activator</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xma-xmlapi-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des processus de flux de données';
+          header.title2 = 'Configuration requise des fichiers XML Activator';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID7025"></A>Les fichiers XML générés par vos applications tierces doivent suivre certaines règles pour pouvoir fonctionner correctement avec des processus <span><A href="../webxmlactivator/xma-pdataflow-bg.htm">Création d'un flux de données producteur XML Activator</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF132">Emplacement</A></P>
+<P><A NAME="TMPID7028"></A>Les fichiers XML copiés par une application tierce dans des répertoires pour être lus par un processus XML Activator doivent être entièrement fermés. L'application tierce peut répondre à cette exigence en écrivant les fichiers dans un répertoire local, puis en déplaçant ces fichiers dans le répertoire entrant du processus XML Activator.</P>
+<P><A NAME="TMPID7029"></A>Les processus XML Activator répondent également à cette exigence en envoyant des fichiers entièrement fermés vers les répertoires requis par les applications tierces.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF133">Nom</A></P>
+<P><A NAME="TMPID7031"></A>Les processus XML Activator lisent les fichiers dans l'ordre lexicographique (dictionnaire). Cela signifie que les applications tierces doivent nommer leurs fichiers en conséquence pour que le traitement se déroule correctement.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF134">Suppression</A></P>
+<P><A NAME="TMPID7033"></A>Lorsqu'une application tierce a fini de lire les fichiers XML qui lui ont été envoyés par un processus XML Activator, elle doit supprimer ces fichiers de son répertoire de lecture.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF135">Format</A></P>
+<P><A NAME="TMPID7035"></A>En plus de leur contenu (des données binaires ou du texte, par exemple), les fichiers XML générés par des applications tierces doivent inclure des données XML qui correspondent aux messages IPool. Ces données XML indiquent au processus XML Activator ce qu'il doit faire du contenu correspondant. Le tableau suivant décrit les paires Clé IPool-Valeur, que vous incluez dans les fichiers XML comme éléments balisés et qui constituent les messages IPool. Cependant, vous pouvez fournir les données <TT CLASS="literal">OTURN</TT> et <TT CLASS="literal">Operation</TT> sous différents noms de balise si vous spécifiez dans Content Server d'autres mises en correspondance des balises dans les champs <B CLASS="guilabel">Balise d'identificateur</B> et <B CLASS="guilabel">Balise d'opération</B> du processus XML Activator. Vous pouvez configurer ces champs dans l'onglet <B CLASS="guilabel">Infos spécifiques</B> de la page Propriétés de chaque processus XML Activator.</P>
+<DIV title="Paires Clé IPool-Valeur" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="IPOOLKEYVALUE"></A><B>Tableau 1-5 : Paires Clé IPool-Valeur</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Clé</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Balise XML</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Valeur</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTURN</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;OTUrn&gt;</TT>, à moins que vous n'ayez spécifié une autre balise pour <TT CLASS="literal">OTURN</TT> dans Content Server.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Chaîne continuelle et unique qui identifie l'<I CLASS="emphasis">objet de données</I> (contenu inclus dans un fichier XML spécifique). Si vous n'incluez pas cet élément dans un fichier XML, le processus XML Activator en génère un automatiquement. Cependant, l'élément <TT CLASS="literal">OTURN</TT> généré automatiquement n'est pas récupérable. Vous ne pouvez donc pas utiliser de processus XML Activator pour mettre à jour ou supprimer des documents possédant des éléments <TT CLASS="literal">OTURN</TT> générés automatiquement.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">Opération</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;Operation&gt;</TT>, à moins que vous n'ayez spécifié une autre balise pour <TT CLASS="literal">Operation</TT> dans Content Server.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Action effectuée par Content Server sur l'objet de données. Cette valeur est définie sur <TT CLASS="literal">AddOrReplace</TT> ou <TT CLASS="literal">Delete</TT>. Si vous n'incluez pas cet élément dans un fichier XML, XML Activator définit par défaut sa valeur sur <TT CLASS="literal">AddOrReplace</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">Contenu</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;Content attribute="valeur"&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Objet de données. Par défaut, <TT CLASS="literal">attribute</TT> est défini sur <TT CLASS="literal">Encoding</TT>, <TT CLASS="literal">valeur</TT> est défini sur <TT CLASS="literal">Base64</TT> et le type de codage binaire pour le contenu est <TT CLASS="literal">Base64</TT>. Vous pouvez changer ces paramètres en spécifiant d'autres paramètres pour les champs <B CLASS="guilabel">Balise de contenu</B>, <B CLASS="guilabel">Attribut de balise</B>, <B CLASS="guilabel">Valeur d'attribut de balise</B> et <B CLASS="guilabel">Codage</B>, dans cet ordre, dans l'onglet <B CLASS="guilabel">Infos spécifiques</B> de la page Propriétés de chaque processus XML Activator. Toutes les balises HTML, XML ou SGML incluses dans la balise <TT CLASS="literal">Content</TT> sont traitées comme élément du <TT CLASS="literal">contenu</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">Metadata</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;Metadata&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Série de champs, sous forme de texte balisé, décrivant l'objet de données. Les champs de métadonnées agissent comme des attributs que des utilisateurs peuvent utiliser pour les recherches en mettant en correspondance des données avec des régions Content Server existantes ou avec des régions définies dans le fichier .tok du processus XML Activator. Le tableau suivant vous présente les champs de métadonnées requis, chacun d'entre eux correspondant à une région Content Server. Pour plus d'informations sur la définition de régions dans les fichiers .tok, reportez-vous à la documentation des développeurs Content Server.</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID7104"></A>Le tableau suivant décrit les champs de métadonnées qu'OpenText vous recommande d'inclure dans chaque fichier XML. Chaque champ correspond à une région Content Server. Si vous n'incluez pas ces champs, les utilisateurs Content Server ne pourront pas les rechercher dans Content Server.</P>
+<P><A NAME="TMPID7109"></A>Les noms de balise que vous utilisez doivent correspondre aux noms des champs de métadonnées, à moins que vous n'ayez spécifié d'autres mises en correspondance des balises dans Content Server dans le champ <B CLASS="guilabel">Liste des métadonnées</B> du processus XML Activator, qui se trouve dans l'onglet <B CLASS="guilabel">Infos spécifiques</B> de la page Propriétés du processus. Vous pouvez également inclure autant de champs de métadonnées supplémentaires que nécessaire en incluant les informations dans les balises dont les noms correspondent aux régions Content Server ou dont les noms sont mis en correspondance avec des régions dans le champ <B CLASS="guilabel">Liste des métadonnées</B> du processus XML Activator. Pour plus d'informations sur la mise en correspondance de balises de métadonnées lors de l'ajout ou de la configuration d'un processus XML Activator, consultez l'<I CLASS="emphasis">aide en ligne administrateur Content Server</I>.</P>
+<P><A NAME="TMPID7117"></A>Champs de métadonnées requis</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN6404"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Champ</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTName</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom de l'objet de données.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTOwnerID</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Identificateur unique du propriétaire de l'objet de données.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTLocation</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Emplacement d'origine de l'objet de données.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCreateDate</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date de création de l'objet de données.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCreateTime</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heure de création de l'objet de données.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTModifyDate</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date de la dernière modification de l'objet de données.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTModifyTime</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heure de la dernière modification de l'objet de données.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCreatedBy</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Numéro de nœud du créateur de l'objet de données.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCreatedByName</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom de connexion du créateur de l'objet de données.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCreatedByFullName</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom complet du créateur de l'objet de données.</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID7166"></A>Pour définir <TT CLASS="literal">AddOrReplace</TT> comme valeur de <TT CLASS="literal">Operation</TT>, structurez ainsi votre fichier XML :</P><A NAME="AEN6455"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;?xml version="x.x"?&gt;
+&lt;Top_Level_Tag&gt;
+   &lt;OTUrn&gt;OTURN&lt;/OTUrn&gt;
+   &lt;Operation&gt;AddOrReplace&lt;/Operation&gt;
+   &lt;Content attribute="value"&gt;Content data&lt;/Content&gt;
+   &lt;Metadata&gt;
+      &lt;OTName&gt;Data object name&lt;/OTName&gt;
+      &lt;OTOwnerID&gt;Owner ID number&lt;/OTOwnerID&gt;
+      &lt;OTLocation&gt;Original location&lt;/OTLocation&gt;
+      &lt;OTCreateDate&gt;Creation date&lt;/OTCreateDate&gt;
+      &lt;OTCreateTime&gt;Creation time&lt;/OTCreateTime&gt;
+      &lt;OTModifyDate&gt;Date last modified&lt;/OTModifyDate&gt;
+      &lt;OTModifyTime&gt;Time last modified&lt;/OTModifyTime&gt;
+      &lt;OTCreatedBy&gt;
+         Node number of creator
+      &lt;/OTCreatedBy&gt;
+      &lt;OTCreatedByName&gt;
+         Login name of creator
+      &lt;/OTCreatedByName&gt;
+      &lt;OTCreatedByFullName&gt;
+         Full name of creator
+      &lt;/OTCreatedByFullName&gt;
+   &lt;/Metadata&gt;
+&lt;/Top_Level_Tag&gt;</PRE
+>
+<P><A NAME="TMPID7170"></A>Pour définir Delete comme valeur de Operation, structurez ainsi votre fichier XML, en incluant uniquement OTURN et Operation. N'incluez pas de contenu ou de métadonnées car cette Operation supprime les données qui existent déjà dans l'index et est identifiée par son élément OTURN.</P><A NAME="AEN6457"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;?xml version="x.x"?&gt;
+&lt;Top_Level_Tag&gt;
+   &lt;OTUrn&gt;OTURN&lt;/OTUrn&gt;
+   &lt;Operation&gt;Delete&lt;/Operation&gt;
+&lt;/Top_Level_Tag&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

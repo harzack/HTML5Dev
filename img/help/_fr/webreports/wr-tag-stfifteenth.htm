@@ -1,0 +1,734 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>RANGE, RECARRAY, RECORD, REDIRECT, REPLACE, RMACTION, RMCLASS, RMHOLDACTION, RMHOLDINFO, RMINFO, RMTYPE, ROUND, RPAD, RSI</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stfifteenth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sous-balises';
+          header.title2 = 'RANGE, RECARRAY, RECORD, REDIRECT, REPLACE, RMACTION, RMCLASS, RMHOLDACTION, RMHOLDINFO, RMINFO, RMTYPE, ROUND, RPAD, RSI';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID8739"></A>Cette section apporte des informations sur les sous-balises suivantes : <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRANGE">RANGE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECARRAY">RECARRAY</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECORD">RECORD</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STREDIRECT">REDIRECT</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STREPLACE">REPLACE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STROUND">ROUND</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRPAD">RPAD</A></span> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">ISA</A></span>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRANGE">RANGE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRANGE-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGRANGE"></A><B CLASS="highlight">RANGE:&lt;<I CLASS="varname">index de début</I>></B></P>
+<P><A NAME="TMPID8761"></A>ou</P>
+<P><A NAME="TMPID8762"></A><B CLASS="highlight">RANGE:&lt;<I CLASS="varname">index de début</I>>:&lt;<I CLASS="varname">index de fin</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRANGE-DESC">Description</A></P>
+<P><A NAME="TMPID8768"></A>Pour toute liste au format : <TT CLASS="literal">{'item1','item2'}</TT>, cette sous-balise renvoie une plage de la liste d'origine, selon l'index de début et l'index de fin spécifiés, ce dernier étant facultatif. Cette sous-balise est identique à la sous-balise <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSLICE">SLICE</A></span>, mais elle fonctionne uniquement avec des <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>. Tous les index s'appliquent à partir de la valeur 1 (un), si bien que la plage inclut tous les caractères depuis l'&lt;<I CLASS="varname">index de début</I>>, celui-ci étant compris, jusqu'à l'&lt;<I CLASS="varname">index de fin</I>>, celui-ci étant compris, sous réserve que ce dernier soit spécifié. Si l'index de fin est omis ou dépasse la longueur totale de la chaîne, le reste de la chaîne est utilisé. Une <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> respecte la convention <TT CLASS="literal">LIST</TT> de Content Server, où le premier caractère est une <B CLASS="highlight">{</B>, le dernier caractère une <B CLASS="highlight">}</B> et chaque élément est séparé par une virgule. La sortie de cette sous-balise est une liste au même format. Une <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> peut être déréférencée au moyen de la sous-balise <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRANGE-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID8783"></A>Ces différents exemples de la sous-balise <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRANGE">RANGE</A></span> illustrent les différents résultats produits, en supposant que la balise associée contienne la liste suivante : <TT CLASS="literal">{'Apple','Pear','Orange','Mango'}</TT></P>
+<P><A NAME="TMPID8786"></A><B CLASS="highlight">RANGE:3</B> renvoie : <TT CLASS="literal">{'Orange','Mango'}</TT></P>
+<P><A NAME="TMPID8789"></A><B CLASS="highlight">RANGE:2:3</B> renvoie : <TT CLASS="literal">{'Pear','Orange'}</TT></P>
+<P><A NAME="TMPID8792"></A><B CLASS="highlight">RANGE:3:100</B> renvoie : <TT CLASS="literal">{'Orange','Mango'}</TT></P>
+<P><A NAME="TMPID8795"></A><B CLASS="highlight">RANGE:2:3 LIST:1</B> renvoie : <TT CLASS="literal">'Pear'</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRECARRAY">RECARRAY</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRECARRAY-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGRECARRAY"></A><B CLASS="highlight">RECARRAY:&lt;<I CLASS="varname">index_ligne</I>>:&lt;<I CLASS="varname">index_colonne</I>></B></P>
+<P><A NAME="TMPID8806"></A>ou</P>
+<P><A NAME="TMPID8807"></A><B CLASS="highlight">RECARRAY:&lt;<I CLASS="varname">index_ligne</I>>:&lt;<I CLASS="varname">nom_champ</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRECARRAY-DESC">Description</A></P>
+<P><A NAME="TMPID8813"></A>Permet l'indexation du type de données <TT CLASS="literal">RECARRAY</TT> de Content Server. Si la colonne extraite de la source de données est un <TT CLASS="literal">RECARRAY</TT>, c'est-à-dire une structure de données Content Server constituée d'une <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> de <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECORD">RECORD</A></span>, la valeur du champ spécifié par &lt;<I CLASS="varname">index_ligne</I>> et &lt;<I CLASS="varname">index_colonne</I>> ou &lt;<I CLASS="varname">nom_champ</I>> est renvoyée, et cette valeur uniquement. Notez que cette sous-balise peut être utilisée de manière répétitive et/ou en combinaison avec d'autres sous-balises, comme <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> et <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>, pour accéder à des informations dans des structures de données complexes.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRECARRAY-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID8827"></A>Voir également : <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span>, <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECORD">RECORD</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRECORD">RECORD</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRECORD-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGRECORD"></A><B CLASS="highlight">RECORD:&lt;<I CLASS="varname">index</I>></B></P>
+<P><A NAME="TMPID8838"></A>ou</P>
+<P><A NAME="TMPID8839"></A><B CLASS="highlight">RECORD:&lt;<I CLASS="varname">nom_champ</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRECORD-DESC">Description</A></P>
+<P><A NAME="TMPID8844"></A>Permet l'indexation du type de données <TT CLASS="literal">RECORD</TT> de Content Server. Si la colonne extraite d'une source de données est un <TT CLASS="literal">RECORD</TT>, une structure de données Content Server, la valeur du champ spécifié par &lt;<I CLASS="varname">index</I>> ou par &lt;<I CLASS="varname">nom_champ</I>> est renvoyée, et cette valeur uniquement. Notez que cette sous-balise peut être utilisée de manière répétitive et/ou en combinaison avec d'autres sous-balises, comme <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> et <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>, pour accéder à des informations dans des structures de données complexes.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRECORD-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID8855"></A>Voir également : <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span>, <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECARRAY">RECARRAY</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STREDIRECT">REDIRECT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREDIRECT-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGREDIRECT"></A><B CLASS="highlight">REDIRECT</B></P>
+<P><A NAME="TMPID8865"></A>ou</P>
+<P><A NAME="TMPID8866"></A><B CLASS="highlight">RECORD:&lt;<I CLASS="varname">nom_champ</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREDIRECT-DESC">Description</A></P>
+<P><A NAME="TMPID8871"></A>Redirige le navigateur vers l'URL spécifiée dans la balise principale.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STREPLACE">REPLACE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREPLACE-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGREPLACE"></A><B CLASS="highlight">REPLACE:&lt;<I CLASS="varname">param1</I>>:&lt;<I CLASS="varname">param2</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STREPLACE-DESC">Description</A></P>
+<P><A NAME="TMPID8882"></A>Effectue une action « remplacer tout » sur les éléments de données provenant de la source de données. Toutes les occurrences de la chaîne &lt;<I CLASS="varname">param1</I>> sont remplacées par &lt;<I CLASS="varname">param2</I>>. Par exemple, si l'expression <TT CLASS="literal">[LL_REPTAG=PRIORITY REPLACE:3:Low /]</TT> est utilisée, chaque occurrence du nombre « 3 » dans le champ <B CLASS="guilabel">Priorité</B> est remplacée par le mot « Faible ». Notez l'absence d'espace entre <TT CLASS="literal">REPLACE</TT>, &lt;<I CLASS="varname">param1</I>> et &lt;<I CLASS="varname">param2</I>>. Utilisez uniquement les deux-points en guise de séparateur.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMACTION">RMACTION</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMACTION-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGRMACTION"></A><B CLASS="highlight">RMACTION:&lt;<I CLASS="varname">param</I>>:&lt;<I CLASS="varname">nouvelle_valeur</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMACTION-DESC">Description</A></P>
+<P><A NAME="TMPID8903"></A>Permet de modifier les données Records Management présentes dans l'onglet <B CLASS="guilabel">Détails des documents</B> de Documents, c'est-à-dire des nœuds Content Server tels que des documents, gérés au moyen du module Records Management. Si le module Records Management n'est pas installé, cette sous-balise ne renvoie rien, quelles que soient les options indiquées.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMACTION-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN8313"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP">Opérateur</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Description dans l'interface Content Server</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:RECORDDATE:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date du document</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:STATUS:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Statut. Indiquez le code à 3 lettres.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:STATUSDATE:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date du statut</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:RECEIVEDDATE:&lt;<I CLASS="varname">nouvelle valeur</I>> </B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date de réception</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:ESSENTIAL:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Essentiel. Indiquez le code à 3 lettres.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:OFFICIAL:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Officiel. Indique TRUE ou FALSE.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:STORAGEMEDIUM:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Support de stockage. Indiquez le code à 3 lettres.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:ACCESSION:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Acquisition</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:SUBJECT:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Objet</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:AUTHOR:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Auteur ou émetteur</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:ADDRESSEE:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Destinataire(s)</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:OTHERADDRESSEE:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Autre(s) destinataire(s)</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:ORIGINATIONORG:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Organisation d'origine</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:UPDATECYCLE:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Période de cycle de mise à jour. Les valeurs admises sont 1, 2 ou 3.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:NEXTREVIEWDATE:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date de la prochaine révision</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMACTION:LASTREVIEWDATE:&lt;<I CLASS="varname">nouvelle valeur</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date de la dernière révision</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMACTION-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID9012"></A>Voir également <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">ISA</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMCLASS">RMCLASS</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMCLASS-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGRMCLASS"></A><B CLASS="highlight">RMCLASS:&lt;<I CLASS="varname">param</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMCLASS-DESC">Description</A></P>
+<P><A NAME="TMPID9028"></A>Fournit des informations de métadonnées uniques aux objets de classement RM. Nécessite que le dataid du classement RM proprement dit soit renvoyé à partir de la balise principale. Pour accéder aux détails d'un classement RM à partir du nœud auquel il est appliqué, vous pouvez utiliser la sous-balise <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span> : <TT CLASS="literal">[LL_REPTAG=DATAID RMINFO:CLASSID RMCLASS:&lt;<I CLASS="varname">param</I>> /]</TT>. Vous pouvez accéder d'une façon similaire aux détails d'ISA au moyen de la sous-balise <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">ISA</A></span>. Par exemple, <TT CLASS="literal">[LL_REPTAG=DATAID RMINFO:CLASSID RMCLASS:RSI RSI:URL /]</TT> obtient l'URL pour ouvrir un ISA seulement sur la base du dataid du nœud auquel l'ISA/le classement RM est appliqué. Notez qu'un classement RM est simplement un type de nœud Content Server standard et donc que les métadonnées de base associées au nœud sont disponibles au moyen de la sous-balise <span><A HREF="wr-tag-sttwelfth.htm#WR-TAG-STNODEINFO">NODEINFO</A></span> Par exemple, <TT CLASS="literal">[LL_REPTAG=DATAID NODEINFO:CREATEDATE /]</TT> renvoie la date de création du classement RM. En revanche, RMCLASS renvoie des métadonnées propres au sous-type d'objet de classement RM, qui sont présentes uniquement sur l'onglet spécifique de tels objets. Si le module Records Management n'est pas installé, cette sous-balise ne renvoie rien, quelles que soient les options indiquées.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMCLASS-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN8443"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Opérateur</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description dans l'interface Content Server</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:FILENUMBER</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Numéro de fichier</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:CREATIONDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date de création</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:STATUS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Etat</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:STATUSDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date du statut</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:ESSENTIAL</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Essentiel</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:STORAGEMEDIUM</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Support de stockage</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:DISPOSITIONAUTH</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Autorité de sort final</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:UPDATECYCLE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Période de cycle de mise à jour</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:CLOSED</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Indicateur Fermé</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:RSI</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ISA</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:SUBJECT</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Objet</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:KEYWORDS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Keywords</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:LASTADDDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date du dernier ajout</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMCLASS:SELECTABLE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Sélectionnable</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMCLASS-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID9119"></A>Voir également <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">ISA</A></span> pour d'autres fonctionnalités Records Management.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMHOLDACT">RMHOLDACTION</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDACT-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGRMHOLDACTION"></A><B CLASS="highlight">RMHOLDACTION:&lt;<I CLASS="varname">params</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDACT-DESC">Description</A></P>
+<P><A NAME="TMPID9135"></A>Permet d'effectuer différentes actions relatives aux attentes, comme créer, appliquer et enlever des attentes ou créer des types d'attentes.</P>
+<P><A NAME="TMPID9136"></A>Si le module Records Management n'est pas installé, cette sous-balise ne renvoie rien, quelles que soient les options indiquées.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDACT-PARAM">Paramètres</A></P><A NAME="AEN8542"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN8543"></A><B>Modificateur : RMHOLDACTION:APPLY:&lt;<I CLASS="varname">ID ou nom d'attente</I>></B></P>
+<P class="nr1"><A NAME="TMPID9143"></A><B CLASS="highlight">Description</B> : applique une attente au nœud spécifié dans la balise principale.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN8548"></A><B>Modificateur : RMHOLDACTION:REMOVE:&lt;<I CLASS="varname">ID ou nom d'attente</I>></B></P>
+<P class="nr1"><A NAME="TMPID9148"></A><B CLASS="highlight">Description</B> : enlève une attente au nœud spécifié dans la balise principale.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN8553"></A><B>Modificateur : RMHOLDACTION:CREATE:HOLD:&lt;<I CLASS="varname">params</I>></B></P>
+<P class="nr1"><A NAME="TMPID9153"></A><B CLASS="highlight">Description</B> : crée une nouvelle attente. Les données présentes dans la balise principale sont ignorées. Vous pouvez utiliser les paramètres suivants :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN8558"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Nom du paramètre</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Détails</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Nom de l'attente</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Obligatoire. Est converti en majuscules</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Date d'application</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Obligatoire. Doit être une chaîne de date valide, par exemple « yyyy-mm-dd ».</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Type d'attente</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Obligatoire. Doit correspondre à l'un des types d'attentes existants</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Autre ID d'attente</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Facultatif.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Commentaire</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Facultatif.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Date à interrompre</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Facultatif. Si ce paramètre est défini, il doit être une chaîne de date valide, par exemple « yyyy-mm-dd ».</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P>
+<P><A NAME="TMPID9194"></A>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN8602"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID9196"></A>L'instruction suivante crée une attente appelée « Attente 1 », avec la date d'application « 1er mars 2012 », du type « Type d'attente 1 » :</P><A NAME="AEN8607"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'123456' RMHOLDACTION:CREATE:HOLD:"Hold 1":"2012-03-01":"Hold Type 1" /]</PRE
+>
+<P><A NAME="TMPID9201"></A>L'exemple suivant crée une attente appelée « Attente 2 », avec une date d'application du « 1er mars 2012 », de type « Type d'attente 2 », avec un « autre ID d'attente » vide, un commentaire « un commentaire » et une date à interrompre du « 15 mars 2012 ».</P><A NAME="AEN8615"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'123456' RMHOLDACTION:CREATE:HOLD:"Hold 2":"2012-03-01":"Hold Type 1":"":"a comment":"2012-03-15" /]</PRE
+>
+</DIV></P></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN8616"></A><B>Modificateur : RMHOLDACTION:CREATE:TYPE:&lt;<I CLASS="varname">params</I>></B></P>
+<P class="nr1"><A NAME="TMPID9212"></A><B CLASS="highlight">Description</B> : crée un nouveau type d'attente. Vous pouvez utiliser les paramètres suivants :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN8621"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Nom du paramètre</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Détails</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP">Code</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Obligatoire. Est converti en majuscules.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP">Période par défaut</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Obligatoire. Doit être un entier.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP">Description</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Facultatif. Est converti en majuscules</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P>
+<P><A NAME="TMPID9233"></A>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN8645"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID9235"></A>Cet exemple crée un type d'attente appelé « TYPE D'ATTENTE 1 » avec une période par défaut de 30 :</P><A NAME="AEN8648"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'123456' RMHOLDACTION:CREATE:TYPE:"Hold Type 1":30 /]</PRE
+>
+<P><A NAME="TMPID9238"></A>L'exemple suivant crée un type d'attente appelé « TYPE D'ATTENTE 2 », avec une période par défaut de 30 et la description « DESCRIPTION DE TYPE D'ATTENTE 2 ».</P><A NAME="AEN8652"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'123456' RMHOLDACTION:CREATE:TYPE:"Hold Type 2":30:"Hold Type 2 Description /]</PRE
+>
+</DIV></P></P></LI></UL>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDACT-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID9244"></A>Voir également <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">ISA</A></span> pour d'autres fonctionnalités Records Management.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDINFO-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGRMHOLDINFO"></A><B CLASS="highlight">RMHOLDINFO:&lt;<I CLASS="varname">param</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDINFO-DESC">Description</A></P>
+<P><A NAME="TMPID9260"></A>Permet d'accéder aux données d'attentes Records Management présentes sur l'onglet <B CLASS="highlight">Attentes</B> de l'ID du nœud spécifié dans la balise principale. Si le module Records Management n'est pas installé, cette sous-balise ne renvoie rien, quelles que soient les options indiquées.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDINFO-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN8670"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Opérateur</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP">RMHOLDINFO:ALL</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie un RecArray contenant toutes les attentes appliquées au nœud, directement mais aussi indirectement par héritage. Ajoutez <TT CLASS="literal">:INCLUDECHILDREN</TT> pour inclure les attentes des enfants du nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP">RMHOLDINFO:DIRECT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie un RecArray contenant toutes les attentes appliquées directement au nœud.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDINFO-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID9282"></A><TT CLASS="literal">[LL_REPTAG_&amp;PARM1 MODULUS:7 /]</TT> renvoie 6 si <TT CLASS="literal">PARM1</TT> contient « 2001 ».</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMHOLDINFO-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID9288"></A>Voir également <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">ISA</A></span> pour d'autres fonctionnalités Records Management.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMINFO">RMINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMINFO-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGRMINFO"></A><B CLASS="highlight">RMINFO:&lt;<I CLASS="varname">param</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMINFO-DESC">Description</A></P>
+<P><A NAME="TMPID9304"></A>Permet d'accéder aux données Records Management présentes dans l'onglet <B CLASS="guilabel">Détails des documents</B> de Documents, c'est-à-dire des nœuds Content Server tels que des documents, gérés au moyen du module Records Management. Les trois options <TT CLASS="literal">RMCLASSIFICATION</TT>, <TT CLASS="literal">FILENUMBER</TT> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">ISA</A></span> concernent davantage le classement RM, mais elles sont fournies ici afin que toutes les données provenant de l'onglet <B CLASS="guilabel">Détail des documents</B> soient renvoyées avec cette seule sous-balise, exactement au même format. Si vous souhaitez renvoyer des données un peu plus génériques que ces trois options, voir la sous-balise <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>.</P>
+<P><A NAME="TMPID9312"></A>Si le module Records Management n'est pas installé, cette sous-balise ne renvoie rien, quelles que soient les options indiquées.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMINFO-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN8719"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Opérateur</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RECORDOFFICER</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Archiviste</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RECORDDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date du document</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RECORDTYPE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Type de document</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:STATUS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Etat</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:STATUSDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date du statut</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RECEIVEDDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date de réception</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:ESSENTIAL</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Essentiel</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:OFFICIAL</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Officiel</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:STORAGEMEDIUM</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Support de stockage</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:ACCESSION</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Acquisition</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:SUBJECT</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Objet</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RECORDSMANAGERGROUP</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Groupe de gestionnaires de documents</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:AUTHOR </B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Auteur ou émetteur</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:ADDRESSEE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Destinataire(s)</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:OTHERADDRESSEE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Autre(s) destinataire(s)</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:ORIGINATIONORG </B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Organisation d'origine</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:UPDATECYCLE </B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Période de cycle de mise à jour</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:NEXTREVIEWDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date de la prochaine révision</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:LASTREVIEWDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date de la dernière révision</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:CLASSID</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Dataid du classement RM <I CLASS="emphasis">principal</I> appliqué à ce nœud. En utilisant cette option de sous-balise, vous pouvez accéder facilement à la sous-balise RMCLASS. Par exemple, <TT CLASS="literal">[LL_REPTAG=DATA RMINFO:CLASSID RMCLASS:RSI /]</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RMCLASSIFICATION</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Chemin du classement RM principal appliqué à ce nœud.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:RSI</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ISA associé au classement RM principal appliqué à ce nœud. Notez que l'ISA renvoyé par cette sous-balise peut être différent de celui renvoyé par <TT CLASS="literal">RMCLASS:RSI</TT>, qui est l'ISA appliqué au classement RM proprement dit.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMINFO:FILENUMBER</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Numéro de fichier du classement RM principal appliqué à ce nœud.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMINFO-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID9442"></A>Voir également <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">ISA</A></span> pour d'autres fonctionnalités Records Management.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRMTYPE">RMTYPE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMTYPE-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGRMTYPE"></A><B CLASS="highlight">RMTYPE:&lt;<I CLASS="varname">param</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMTYPE-DESC">Description</A></P>
+<P><A NAME="TMPID9458"></A>Permet d'accéder aux métadonnées propres à l'objet Type de document du module Records Management. Pour plus d'informations sur l'accès aux données ISA à partir du nœud de classement RM, voir la sous-balise <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>. Si le module Records Management n'est pas installé, cette sous-balise ne renvoie rien, quelles que soient les options indiquées.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMTYPE-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN8865"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Opérateur</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description dans l'interface Content Server</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMTYPE:RSI</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ISA</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RMTYPE:DEFAULTTYPE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Type par défaut</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRMTYPE-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID9482"></A>Voir également <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRSI">ISA</A></span> pour d'autres fonctionnalités Records Management.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STROUND">ROUND</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STROUND-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGROUND"></A><B CLASS="highlight">ROUND:&lt;<I CLASS="varname">valeur d'arrondi</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STROUND-DESC">Description</A></P>
+<P><A NAME="TMPID9498"></A>Arrondit une valeur numérique selon la valeur spécifiée par le paramètre de <TT CLASS="literal">ROUND</TT>. Si le paramètre de <TT CLASS="literal">ROUND</TT> n'est pas spécifié, il prend la valeur 2 par défaut.</P>
+<P><A NAME="TMPID9501"></A>Le paramètre de <TT CLASS="literal">ROUND</TT> doit être un entier ou un réel. Cet entier ou ce réel doit être supérieur ou égal à 0. Une erreur survient si la balise ne contient pas un entier ou un réel valide. En l'absence de portion décimale, la valeur arrondie est complétée par des zéros, conformément au paramètre de <TT CLASS="literal">ROUND</TT> spécifié. Voir le deuxième exemple ci-dessous.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STROUND-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID9506"></A><TT CLASS="literal">25.479 ROUND:2</TT> renvoie : « 25.48 »</P>
+<P><A NAME="TMPID9509"></A><TT CLASS="literal">45 ROUND:3</TT> renvoie : « 45.000 » // des zéros sont ajoutés</P>
+<P><A NAME="TMPID9512"></A><TT CLASS="literal">50.99 ROUND:0</TT> renvoie : « 51 »</P>
+<P><A NAME="TMPID9515"></A><TT CLASS="literal">-4.545 ROUND:1</TT> renvoie : « -4.5 »</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRPAD">RPAD</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRPAD-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGRPAD"></A><B CLASS="highlight">RPAD:&lt;<I CLASS="varname">caractère de complément</I>>:&lt;<I CLASS="varname">largeur</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRPAD-DESC">Description</A></P>
+<P><A NAME="TMPID9528"></A>Ajoute des caractères de complément à droite de la donnée existante. Ajoute suffisamment de caractères pour remplir le champ jusqu'à la largeur spécifiée. En présence d'une mantisse, seule la largeur du nombre suivant les points décimaux est utilisée.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRPAD-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID9531"></A>Par exemple, soit une balise de donnée renvoyant le nombre 123.456. L'expression <TT CLASS="literal">[LL_REPTAG_1 RPAD:9:5 /]</TT> renvoie : 123.45699.</P>
+<P><A NAME="TMPID9533"></A>Si la balise de donnée renvoie le nombre 123, l'expression <TT CLASS="literal">[LL_REPTAG_1 RPAD:9:5 /]</TT> renvoie : 12399.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STRSI">ISA</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRSI-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGRSI"></A><B CLASS="highlight">RSI:&lt;<I CLASS="varname">param</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRSI-DESC">Description</A></P>
+<P><A NAME="TMPID9544"></A>Un identificateur de séries d'archives (ISA) permet aux gestionnaires de documents d'appliquer des informations de conservation et de destruction à des archives électroniques dans Livelink. Vous pouvez définir de nouveaux ISA ou modifier des ISA existants au moyen du menu Entreprise, option Records Management suivie par le lien ISA. Cette sous-balise permet d'accéder aux métadonnées associées à l'ISA souhaité. Pour plus d'informations sur l'accès aux données ISA à partir du nœud de classement RM, voir la sous-balise <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>. Si le module Records Management n'est pas installé, cette sous-balise ne renvoie rien, quelles que soient les options indiquées.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRSI-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN8942"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Opérateur</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description dans l'interface Content Server</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:RSI</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ISA</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:TITLE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Titre</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:DESCRIPTION</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Description</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:SUBJECT</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Objet</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:STATUS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Etat</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:STATUSDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date du statut</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:DISCONTINUE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Interruption</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:DISCONTINUEDATE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date d'interruption</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:DISCONTINUECOMMENT</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Commentaire sur l'interruption</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RSI:URL</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">URL requise pour accéder à un ISA donné. Par exemple : <TT CLASS="literal">...?func=RecMan.EditRSI&amp;item=XX...</TT></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STRSI-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID9609"></A>Voir également <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMACTION">RMACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMCLASS">RMCLASS</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDACT">RMHOLDACTION</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMHOLDINFO">RMHOLDINFO</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMINFO">RMINFO</A></span> et <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRMTYPE">RMTYPE</A></span> pour d'autres fonctionnalités Records Management.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

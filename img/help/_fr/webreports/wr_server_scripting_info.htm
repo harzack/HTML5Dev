@@ -1,0 +1,170 @@
+<!-- wr_server_scripting_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Server-Side Scripting</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_server_scripting_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Server-Side Scripting';
+        header.draw();
+
+</SCRIPT>
+
+<p class="body">
+<b>For a complete guide to server-side scripting please refer to the printable WebReports User Guide available for download from the Knowledge Center.  The following is a brief introduction only.
+</b>
+</p>
+
+<p class="body">
+Although WebReports provides a number of tags to control what is included and excluded in a WebReport, there remain tasks that demand the power of a fully fledged scripting language at the server, before the report reaches a client.  In WebReports version 4.0 onwards the optional ability to embed a section of script within a reportview was provided.
+</p>
+<p class="body">
+This feature offers tremendous power and flexibility for reporting or web application developers.  As with many powerful features, it follows that this capability also has potential risks if used improperly.  To reduce these to a minimum WebReports scripting has been carefully secured and constrained in a configurable way that allows each Livelink instance to choose precisely which script features should be enabled and which not.
+</p>
+<p class="body">
+Presently, the only script language supported is Oscript.  Oscript has the advantage of running natively on the Livelink platform and hence offers excellent performance.  Although technically it is not required for creating WebReports with Oscript, developers with access to the Livelink SDK will benefit from the Livelink Builder's debugging facilities.  In practice, for anything but relatively simple scripts access to the Livelink Builder debugger will be essential to allow developers to step through their code and debug it.
+</p>
+<p class="body">
+This user guide explains how to implement a script within a WebReport, but does not cover how to write Oscript or provide a reference for Oscript syntax.  For more information about Oscript consult the Livelink SDK documentation such as the Livelink Builder help, or contact Open Text for details of Livelink SDK training.
+</p>
+
+
+<p class="body">
+<u><SPAN class="gui">Security</SPAN></u>
+</p>
+
+<p class="body">
+There are a number of layered security measures to ensure that WebReports scripting is as safe as possible:
+<ul>
+<li>If not required, the entire feature can be turned off globally by the Livelink Administrator.  Users may wish to check with their Administrator that the feature is active before attempting to use it.
+<li>Even if the feature is on globally, it must be enabled for each individual WebReport that uses it, every time a new reportview version is added to the WebReport.  Any user who can create a WebReport can include the tags to define and call scripts it, but the tags will remain disabled until a System Administrator reviews and enables scripting for the report.  Disabled reports will run, but will ignore and not execute scripts.
+<li>The functions available within Oscript are heavily restricted by default.  For example you may not access Global variables or many of the Builder built-in packages such as CAPI, DAPI, File, etc.  What is and is not available can be configured by the Livelink Administrator.
+</ul>
+</p>
+
+
+
+<p class="body">
+<u><SPAN class="gui">Enabling Scripting for a WebReport</SPAN></u>
+</p>
+
+<p class="body">
+Only users with the system administration rights privilege have the ability to enable scripting for a particular WebReport.  There are three different ways of doing this:
+<ul>
+<li>Add the new Reportview version.  When a System Administrator adds a reportview containing scripting it is automatically enabled.
+<li>Go to the Properties -> Specific tab for the WebReport and check the Oscript Scripting Enabled checkbox which will appear if scripting is present in the reportview.
+<li>Use the WebReports admin page Manage WebReports Scripting to review all WebReports that contain scripting and enable (or disabled) them by checking (un-checking) the check box.
+</ul>
+</p>
+
+<p class="body">
+Clearly, users without the system administration rights privilege will find developing a WebReport that contains scripting a tedious process since each new version of their WebReport will need to be enabled by someone who does have that privilege.  This is one reason why it make sense to develop scripted WebReports on a non-production instance where the developer may be granted the system administration rights privilege.
+</p>
+
+<p class="body">
+The only exception to this is that any user may create a WebReport from a default reportview that contains Oscript and it will be enabled automatically without the need for a System Administrator to enable it.  If the reportview for the WebReport is later edited or a new version added, then its Oscript will be disabled unless re-enabled by a System Administrator.  Because default reportviews are "pre-enabled" it is essential that any reportviews containing Oscript that are to be made default reportviews (by placing them in the default reportview folder - See the WebReports Installation and Administration Guide) must be tested and approved.
+</p>
+
+
+<p class="body">
+<u><SPAN class="gui">Oscript Restrictions</SPAN></u>
+</p>
+
+<p class="body">
+WebReports uses a scheme of restrictions to make Oscript in the reportview more secure.  These are:
+</p>
+
+<p class="body">
+<ul>
+<li>No access to global variables via the $ symbol
+<li>No ability to declare Object, ObjRef or Frame variables
+<li>No ability to use parenthesis like this .() to evaluate the contents of a variable.  For example you cannot do this as .(s) is not permitted:
+<pre>
+Assoc 	myAssoc
+String	s = 'item1'
+myAssoc.item1 = 'first item'
+echo ( myAssoc.(s) )
+</pre>
+<li>All Builder Packages are restricted except those listed below
+<li>Some functions within certain restricted Builder Packages are permitted (see list below)
+</ul>
+</p>
+
+
+<p class="body">
+<b>Permitted packages:</b> 'Assoc', 'Bytes', 'Date', 'List', 'Math', 'Pattern', 'RecArray', 'Str', 'String', 'Boolean', 'Undefined', 'Void', 'Integer', 'Real', 'Record'
+</p>
+
+<p class="body">
+<b>Permitted functions within otherwise restricted packages:</b> 'Scheduler.debugbreak', 'Web.CRLF', 'Web.Escape', 'Web.Unescape', 'Web.DecodeForURL', 'Web.EncodeForURL', 'Web.Format', 'Web.EscapeHTML', 'Web.EscapeXML'
+</p>
+
+
+
+
+
+
+
+
+<p class="body">
+<u><SPAN class="gui">Recommendations for Developing Scripted Reportviews</SPAN></u>
+</p>
+
+<p class="body">
+WebReports with server-side scripting should be developed on a non-production Livelink instance.  Preferably this instance would be running the Livelink Builder to aid in debugging and the developer would have the system administration rights privilege.  After the WebReports have been developed and tested to ensure they are fit for use in production they can be moved to the production instance using XMLExport and Import (or one by one, using download reportview etc).
+</p>
+
+<p class="body">
+Once in place on the production instance, a System Administrator should use the WebReports admin page Manage WebReports Scripting to review all the reports and enable them if they are satisfied that the reports and in particular, the scripting aspects, are safe.  The kinds of pitfalls to check for are:
+<ul>
+<li>Possibility of infinite loops which could tie up threads on the Livelink server
+<li>Possibility of consuming too much memory through unrestrained data creation or iterations
+<li>Lack of checks for undefined data or passed parameters (i.e. the script must check for and handle undefined parameters)
+<li>Presence of the scheduler.debugbreak() statement which is useful during development but not desirable for production.
+</ul>
+</p>
+
+<p class="body">
+The first two of these represent the risks with the greatest potential to impact Livelink.
+</p>
+
+<p class="body">
+<u><SPAN class="gui">Defining and Calling a Script</SPAN></u>
+</p>
+
+<p class="body">
+Scripts are both defined and called within a single reportview.  The definition of a script may appear anywhere in the reportview and calls to a script can occur before its definition.  This is because script definitions are parsed, compiled and cached before a WebReport runs, in most cases at the time the new reportview version is added. However, to make reportviews easier to understand it makes sense to locate the script definitions in the header section.
+<br><br>
+To define a script, use the following:
+</p>
+<pre>
+[LL_WEBREPORT_STARTSCRIPT NAME:myFunc /]
+function String anyName(Dynamic c)
+   String s = 'Testing'
+   return s
+end
+[LL_WEBREPORT_ENDSCRIPT /]
+</pre>
+<p class="body">
+When called this simple script returns the string 'Testing' to the reportview.  The string will be inserted into the resulting report output where the call to the script was made.  To call the script use:
+</p>
+<pre>
+[LL_WEBREPORT_CALL NAME:myFunc /]
+<pre>
+<p class="body">
+This tag will cause the script named myFunc to be executed and any result returned by it to be inserted into the report output in place of the tag.  Scripts can be called from anywhere in the reportview.
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

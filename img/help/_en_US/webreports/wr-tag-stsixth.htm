@@ -1,0 +1,174 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>FETCHURL, FIELDS, FILTER, FORMAT, FROMJSON, FROMLIST</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stsixth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sub-Tags';
+          header.title2 = 'FETCHURL, FIELDS, FILTER, FORMAT, FROMJSON, FROMLIST';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID7776"></A>This section details the sub-tags <span><A HREF="wr-tag-stsixth.htm#WR-TAG-STFETCHURL">FETCHURL</A></span>, <span><A HREF="wr-tag-stsixth.htm#WR-TAG-STFIELDS">FIELDS</A></span>, <span><A HREF="wr-tag-stsixth.htm#WR-TAG-STFILTER">FILTER</A></span>, and <span><A HREF="wr-tag-stsixth.htm#WR-TAG-STFORMAT">FORMAT</A></span>, <span><A HREF="wr-tag-stsixth.htm#WR-TAG-STFROMJSON">FROMJSON</A></span>, and <span><A HREF="wr-tag-stsixth.htm#WR-TAG-STFROMLIST">FROMLIST</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STFETCHURL">FETCHURL</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFETCHURL-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGFETCHURL"></A><B CLASS="highlight">FETCHURL</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFETCHURL-DESC">Description</A></P>
+<P><A NAME="TMPID7791"></A>Returns the HTML content of a URL.</P>
+<P><A NAME="TMPID7792"></A><TT CLASS="literal">FETCHURL</TT> can only access non-secured external web resources, as the underlying component does not have the ability to authenticate. For this reason, requests to Content Server instances are not supported.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF23"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID7796"></A><B CLASS="note">Note: </B><BR><TT CLASS="literal">FETCHURL</TT> requests are performed synchronously, so multiple requests can affect the performance of a WebReport. The number of <TT CLASS="literal">FETCHURL</TT> requests should be limited as much as possible.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STFIELDS">FIELDS</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFIELDS-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGFIELDS"></A><B CLASS="highlight">FIELDS</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFIELDS-DESC">Description</A></P>
+<P><A NAME="TMPID7807"></A>This tag accepts a RecArray, Record, or Assoc and returns the fieldnames of the structure as a List.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFIELDS-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID7810"></A>For more information, see <span><A HREF="wr-tag-stnineteenth.htm#WR-TAG-SUBVALUES">VALUES</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STFILTER">FILTER</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFILTER-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGFILTER"></A><B CLASS="highlight">FILTER:&lt;<I CLASS="varname">condition</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFILTER-DESC">Description</A></P>
+<P><A NAME="TMPID7821"></A>This sub-tag operates on a RecArray and returns a new RecArray with the records removed that do not meet the condition. A filter condition must contain a column_name, operator, and value. Spaces are required between the &lt;<I CLASS="varname">column_name</I>>, &lt;<I CLASS="varname">operator</I>>, and &lt;<I CLASS="varname">value</I>>.</P>
+<P><A NAME="TMPID7825"></A>This sub-tag is similar to the <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STEXCLUDE">EXCLUDE</A></span> sub-tag, except that it includes records meeting the condition instead of excluding them.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFILTER-EXAMPL">Example</A></P>
+<P><A NAME="TMPID7829"></A>For example, a RecArray containing a <TT CLASS="literal">USERID</TT> column could be filtered for the current user with:</P><A NAME="AEN7045"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_DATASOURCE FILTER:'"USERID" == "[LL_REPTAG_USERID /]"' /]</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="STFILTER-RELINFO">Related Information</A></P>
+<P class="before-ul"><A NAME="TMPID7834"></A>For more information, see:</P><A NAME="AEN7048"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7049"></A><A NAME="TMPID7837"></A>The list of <span><A HREF="wr-logicexpression-info.htm#OPERATORS">Operators</A></span> under <span><A HREF="wr-logicexpression-info.htm">Logical Expressions</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN7053"></A><A NAME="TMPID7841"></A>The <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STEXCLUDE">EXCLUDE</A></span> sub-tag.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STFORMAT">FORMAT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFORMAT-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGFORMAT"></A><B CLASS="highlight">FORMAT</B></P>
+<P><A NAME="TMPID7849"></A>or</P>
+<P><A NAME="TMPID7850"></A><B CLASS="highlight">FORMAT:&lt;<I CLASS="varname">rule</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFORMAT-DESC">Description</A></P>
+<P><A NAME="TMPID7855"></A>This sub-tag automatically formats the main tag into a readable format, when possible. Various checks are made on the context and data to determine how to format the data. The sub-tag is useful whenever automatic formatting is desired. It has no effect if a formatting rule cannot be determined.</P>
+<P><A NAME="TMPID7856"></A>The sub-tag also accepts an optional parameter to force the formatting rule. This is useful when a data type is known or a specific rule is desired. Valid formatting rules include <TT CLASS="literal">USER</TT>, <TT CLASS="literal">GROUP</TT>, <TT CLASS="literal">DATE</TT>, <TT CLASS="literal">SUBTYPE</TT>, <TT CLASS="literal">PERMISSION</TT>, and <TT CLASS="literal">BOOLEAN</TT>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFORMAT-EXAMPL">Example</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN7074"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Tag</TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Return Value</TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">[LL_REPTAG_'true' FORMAT /]</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">[LL_REPTAG=SUBTYPE FORMAT /]</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Folder</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">[LL_REPTAG_'144' FORMAT:SUBTYPE /]</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Document</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">[LL_REPTAG=UPERMISSIONS FORMAT /]</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">See, See Contents</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">[LL_REPTAG_'12321' FORMAT:USER /]</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">John Doe</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STFROMJSON">FROMJSON</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFROMJSON-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGFROMJSON"></A><B CLASS="highlight">FROMJSON</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFROMJSON-DESC">Description</A></P>
+<P><A NAME="TMPID7909"></A>Decodes a JSON string to an Assoc or List.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFROMJSON-EXAMPL">Example</A></P><A NAME="AEN7116"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'{"firstname":"John","lastname":"Doe"}' FROMJSON  /]</PRE
+>
+<P><A NAME="TMPID7913"></A>returns: <TT CLASS="literal">A&lt;<I CLASS="varname">1,N,'firstname'='John','lastname'='Doe'</I>></TT></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN7120"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID7917"></A>A specific use of the tag might be to decode a <TT CLASS="literal">JSON</TT> string from an <TT CLASS="literal">AJAX POST</TT> request. For example, if a request is made with: <TT CLASS="literal">&amp;names=["John","Bob","Sally"]</TT>, the value of the parameter can be fetched with the <TT CLASS="literal">[LL_REPTAG_&amp;names /]</TT> tag. To get the second element, use <span><A HREF="wr-tag-stsixth.htm#WR-TAG-STFROMJSON">FROMJSON</A></span> and <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>:</P><A NAME="AEN7128"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_&amp;names FROMJSON LIST:2 /] [// returns "Bob"</PRE
+>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFROMJSON-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID7927"></A>For more information, see <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span>, <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>, and <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STFROMLIST">FROMLIST</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFROMLIST-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGFROMLIST"></A><B CLASS="highlight">FROMLIST:&lt;<I CLASS="varname">delimiter</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFROMLIST-DESC">Description</A></P>
+<P><A NAME="TMPID7940"></A>Accepts a List and returns a catenation of the elements. An optional delimiter can be specified to override the default space and comma “,” delimiter.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFROMLIST-EXAMPL">Example</A></P><A NAME="AEN7143"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_"{'one','two','three'}" FROMLIST:";" /]</PRE
+>
+<P><A NAME="TMPID7945"></A>returns: <TT CLASS="literal">one;two;three</TT>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STFROMLIST-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID7949"></A>For more information, see <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

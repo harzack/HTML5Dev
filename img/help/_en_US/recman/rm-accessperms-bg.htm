@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESRCM100500-H-UGD-EN">
+<META PiXprocLocator="recman">
+<title>Setting Access Restriction Behavior</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/root/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'rm-accessperms-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Records Management';
+          header.title2 = 'Setting Access Restriction Behavior';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF5">Permission Settings for Classified Objects and Objects Marked as Official</A></P>
+<P class="nr1"><A NAME="TMPID787"></A>The <B CLASS="GUILABEL">Access Permissions</B> tab enables you to force permissions settings on objects when they are <I CLASS="EMPHASIS">classified</I> or <I CLASS="EMPHASIS">marked official</I>. Users must have sufficient <I CLASS="EMPHASIS">standard</I> permissions to mark items official, remove the official marking, or finalize a record. You set the permissions for these functions on the <B CLASS="GUILABEL">Access Permissions</B> tab. For more information about the standard Content Server permissions, see <span><XPROC NAME="ExtXrefStart" HREF="llesrt-h-ugd.ll-perms-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/root/ll-perms-bg.htm">Understanding Permissions</A><XPROC NAME="ExtXrefEnd" HREF="llesrt-h-ugd.ll-perms-bg" FMT=""></span>.</P>
+<P class="before-ul"><A NAME="TMPID795"></A>The following behaviors can be applied to objects when they are <I CLASS="EMPHASIS">classified</I>:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN801"></A><A NAME="TMPID799"></A><B CLASS="GUILABEL">Use existing access restrictions</B>, which does not change an object's Access List permissions when a user classifies the object</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN804"></A><A NAME="TMPID802"></A><B CLASS="GUILABEL">Add to access list</B>, which adds the permissions from the RM Classification Access List to an object's existing Access List permissions when a user classifies the object. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN807"></A><A NAME="TMPID805"></A><B CLASS="GUILABEL">Replace access list</B>, which removes an object's existing Access List permissions and replaces them with the RM Classification Access List permissions when a user classifies the object</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID807"></A>The Mark Official functionality (and associated rules) can be applied to managed items, with the exception of Polls and Generations of items, that have the read/write permissions. The standard ACL permissions map to the read/write permissions: See (None), See/See Content (Read), Modify (Write), and Edit (Administer). The following behavior can be applied to objects that are <I CLASS="EMPHASIS">marked official</I>:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN813"></A><A NAME="TMPID811"></A><B CLASS="GUILABEL">Use existing access restrictions</B>, which downgrades an object's existing Access List permissions to <I CLASS="EMPHASIS">See, See Contents</I> when a user marks the object as official. The Records Manager group is also added with full rights when permissions are downgraded.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN817"></A><A NAME="TMPID815"></A><B CLASS="GUILABEL">Add to access list</B>, which adds the permissions from the Primary RM Classification Access List to an object's existing Access List permissions, and then downgrades them to <I CLASS="EMPHASIS">See, See Contents</I> when a user marks the object as official. The Records Managers group is also added with full rights when permissions are downgraded.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN821"></A><A NAME="TMPID819"></A><B CLASS="GUILABEL">Replace access list</B>, which removes an object's existing Access List permissions, replaces them with the Primary RM Classification Access List permissions, and then downgrades them to <I CLASS="EMPHASIS">See, See Contents</I> when a user marks the object as official. The Records Manager group is also added with full rights when permissions are downgraded.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF6"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID823"></A><B CLASS="NOTE">Note: </B><BR>Downgrades are applied only to subtypes that have the Downgrade Permissions setting enabled.</P>
+<P><A NAME="TMPID824"></A>Since Polls and Generations of items in Content Server cannot be reserved, the Mark Official functionality cannot be completed for these types of items.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="rm-accessperms-p.htm" revision="">To Change Access Permissions</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

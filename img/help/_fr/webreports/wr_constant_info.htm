@@ -1,0 +1,63 @@
+<!-- wr_constant_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Constant Usage</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_constant_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Constant Usage';
+        header.draw();
+
+</SCRIPT>
+
+<p class="body">
+The WebReports <b>Constants</b> feature provides the capability to pre-define data which can be inserted into the report output. This feature is typically
+useful in the following situations:
+<br>
+<ul>
+  <P><li>Where information in the WebReport might require changing periodically, a constant can be used to allow easy maintenance which can be performed by a
+  	non-technical person.</li></P>
+  <P><li>Where values must be manually defined (such as attribute numbers), constants make it easy to define and maintain these.</li></P>
+  <P><li>Where the same reportview is to be used for multiple WebReports in different ways, each WebReport can have different constant settings.</li></P>
+  <P><li>Where a reportview is being created with references which may vary between systems, constants allow system transparency to be managed.
+  <BR>Note that the XML import/export feature attempts to translate any references to Content Server objects between systems.</li></P>
+</ul>
+</p>
+
+<p class="body">
+<b><u>Global Constants</u></b>
+<br><BR>
+Global Constants are an extension  of standard constants and provide the ability to centrally manage constants for a particular collection of WebReports
+that rely on the same data.  This is particularly useful where the user has a group of WebReports, Forms and other Content Server objects that are working
+together to create an application.  Each WebReport can refer to a single Global Constant report defined at the top of its constants page.
+<BR><BR>
+The concept would be to have all WebReports for a particular application point to a single WebReport that is used to manage the constants for the entire
+application.  The benefit of this is that once a constant is defined in your global report it is available to all WebReports that point to that WebReport.
+This is a big time saver when you consider that a WebReports application may be built from 50 or more WebReports and other objects which all need to refer
+to each other.
+<BR><BR>
+Global constants can be "daisy-chained" so that one WebReport points to another and so on.  Even so, global constants adhere to Content Server permissions, so if
+a user does not have permission to see a given WebReport they will not be able to make use of the constants defined in it.
+<BR><BR>
+When working in the online editor, global constants appear with a star (*) next to them in the dropdown list.
+</p>
+<p class="body">
+<b><u>Server Specific Constants (INI Preferences)</u></b>
+<BR><BR>
+It is possible to reference preferences specified in the opentext.ini file using the standard constant syntax. This is subject to some limitations. 
+For more information see the help section on <A HREF="wr_preferences_info.htm">Using INI Preferences</A>.
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

@@ -1,0 +1,177 @@
+<!-- wr_datasource_livelinkcategory.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Catgory as a Data Source</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_datasource_livelinkcategory.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Category as a Data Source';
+        header.draw();
+
+</SCRIPT>
+
+<!-- ***** INTRODUCTION ***** -->
+<p class="body">
+A WebReport can use a <b>Content Server Category</b> as a data source.  A user may select one or many Content Server Categories,
+then select one or many Attributes within each Category.  The WebReport will process a SQL query against the
+Content Server database DTree and LLAttrData tables and return one record for each Content Server item with the selected Categories applied.
+<br><br>
+
+
+<!-- ***** LIST OF DATA RETURNED ***** -->
+Each record returned from the query will contain the following values:
+<br><BR>
+	<table class="body" border="1" summary="">
+		<tr bgcolor="lightgray">
+			<td nowrap><B>Field</B></td>
+			<td nowrap><B>Description</B></td>
+		</tr>
+
+		<tr>
+			<td nowrap>DataID</td>
+			<td class="body">The DataID for the object as stored in the DTree database table</td>
+		</tr>
+		<tr>
+			<td nowrap>ParentID</td>
+			<td class="body">The ParentID for the object as stored in the DTree database table</td>
+		</tr>
+		<tr>
+			<td nowrap>SubType</td>
+			<td class="body">The Subtype for the object as stored in the DTree database table</td>
+		</tr>
+		<tr>
+			<td nowrap>Name</td>
+			<td class="body">The Name for the object as stored in the DTree database table</td>
+		</tr>
+		<tr>
+			<td nowrap>Attribute Values</td>
+			<td class="body">The current value for each selected Attribute as stored in the LLAttrData
+			                 table.  The column header will be the attribute system name (i.e. the original
+			                 attribute name with spaces replaced by underscores).
+			</td>
+		</tr>
+	</table>
+
+</p>
+<br>
+
+<!-- ***** CATEGORY DATA SOURCE FEATURES ***** -->
+<p class="gui"><u>Category Data Source Features</u></p>
+<p class="body">
+When the <b>Content Server Category</b> data source is selected, the following features are
+available:
+
+<ul>
+	<li><b>Browse Livelink Button</b> - Use the <i>Browse Livelink</i> button to select
+	       a Content Server Category.  After a Category has been selected, the page will refresh
+	       with a display of all Attributes within the Category.
+	</li>
+	<li><b>Select Attributes</b> - Select the checkbox next to a specific Attribute to
+	       include the attribute within the query results.  When an attribute has been
+	       selected, the Parameter Menu will be displayed for that attribute.  When an
+	       attribute is de-selected, the Parameter Menu will be removed for that attribute.
+	</li>
+	<li><b>Check All/Uncheck All Buttons</b> - Use the <i>Check All</i> and <i>Uncheck All</i>
+	       buttons to check or uncheck all checkboxes for the specified category.
+	</li>
+	<li><b>Delete Category</b> - Use the <i>Delete Category</i> &nbsp;<img src="../../../delete-row.gif">&nbsp;
+	       icon to delete a specified category.
+	</li>
+	<li><b>Add Category</b> - Use the <i>Add Category</i> &nbsp;<img src="../../../add-row.gif">&nbsp;
+	       icon to add another category.  The Add Category icon will only be displayed at
+	       the end of the current listing of categories.  The Content Server Administrator may
+	       configure the number of categories that may be included in the Data Source list
+	       and the Add Category icon will not be displayed when the limit has been reached.
+	</li>
+	<li><b>Category And/Or Join Operator</b> - For each new Category, select either And/Or
+	       radio button to specify whether the categories will be joined in the query with
+	       an <i>inner join</i> (And) or a <i>left outer join</i> (Or).
+	</li>
+</ul>
+</p>
+
+<!-- ***** PARAMETER MENU ***** -->
+<p class="gui"><u>Using Parameters with Category Data Source</u></p>
+
+<p class="body">
+The WebReport designer may define Category/Attributes as
+<a href="wr_parameter_info.htm">WebReport Parameters</a> and specify a query
+operator from the WebReport Data Source page.
+<br><br>
+When a Category/Attribute has been checked on the Data Source page, a new <b>Add Parameter Menu</b>
+&nbsp;<img src="../../../webreports/wr_catparams_add.gif">&nbsp; icon will be displayed, from which a query operator may be selected.
+When a query operator has been selected from the Parameter Menu, the attribute is now available
+via the "Parameter Extraction" process on the Parameters tab. When an attribute has a selected
+parameter query operator, the <b>Edit Parameter Menu</b> &nbsp;<img src="../../../webreports/wr_catparams_edit.gif">&nbsp; icon
+will be displayed and a checkmark &nbsp;<img src="../../../webreports/wr_tinycheck.gif">&nbsp; will be displayed next to the selected
+query operator.
+
+If an attribute is currently used as a parameter and the query operator is changed from the
+Data Source page, the query will now be based on the newly selected query operator.  The
+WebReport designer will be prompted with the option to update the display text on the Parameter page;
+regardless of the display text on the Parameter page, the SQL Query processed will always use the query
+operator as selected on the Parameter Menu on the Data Source page.
+<br><br>
+To clear a selected query operator from the parameter menu, either:
+
+<ul>
+ 	<li>Select another query operator from the same menu to set a new query operator, or
+ 	<li>Select the existing query operator to reset the query operator to undefined.
+</ul>
+</p>
+
+<!-- ***** DATA SOURCE ACTIONS ***** -->
+<p class="gui"><u>Category Data Source Actions</u></p>
+
+<p class="body">
+Three additional actions are available to the WebReport designer when Category is the
+selected data source.
+<ul>
+	<li><b>View SQL</b> - Select the View SQL button to view the generated SQL for currently
+		   selected categories, attributes and defined parameters.
+
+		   <ol>
+	       	  <li>Only a WebReport designer with Modify privileges may view the SQL.
+	       	  </li>
+	      </ol>
+	</li>
+	<li><b>Filter Results by User Permissions</b> - When this checkbox is checked, the query
+	       results will be limited based on the permissions of the user running the WebReport.
+	       The user must have <b>SEE</b> permission level to view a specific item.
+	       <br><br>
+	       NOTES:
+	       <ol>
+	       	  <li>The default value for this feature is <i>CHECKED</i>; only a user with Content Server
+	       		  Administrator privileges may modify this feature.
+	       	  </li>
+	       	  <li>The permissions filter is applied to query results as a separate process
+	       		  after the database query has completed processing.
+	       	  </li>
+	       </ol>
+	</li>
+	<li><b>Maximum Number of Results</b> - An integer value indicating the maximum number of results
+	 	   to be returned by the database query.  Note that the number of items displayed may be less
+	 	   than the defined <i>Maximum Number of Results</i> when the permissions filter is applied
+	 	   after the query return.<br>
+		   The WebReport Designer may select a value no greater than the value defined by the
+		   Content Server Administrator.
+	</li>
+</ul>
+
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>
+

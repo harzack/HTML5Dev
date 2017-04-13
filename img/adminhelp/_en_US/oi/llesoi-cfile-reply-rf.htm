@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>reply Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-reply-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Control File Syntax';
+          header.title2 = 'reply Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="REPTAG01">reply</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="REPTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID2329"></A>Use <TT CLASS="LITERAL">type="reply"</TT> on the <TT CLASS="LITERAL">&lt;node&gt;</TT> tag to create, update, or delete a Reply.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="REPTAG03">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2233"></A>&lt;node type="reply" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="REPTAG04">Usage</A></P>
+<A NAME="AEN2235"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2236"></A><A NAME="TMPID2343"></A>Creating a Reply might require the <span><A HREF="llesoi-cfile-reply-rf.htm#REPTAG06">body Tag</A></span>, which is detailed below.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2239"></A><A NAME="TMPID2346"></A>Creating, updating, or deleting a Reply can also require subordinate tags, such as the <TT CLASS="LITERAL">location</TT> tag. These subordinate tags are detailed in <span><A HREF="llesoi-cfilesamp-bg.htm">Object Importer Tag Descriptions and Syntax</A></span>.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="REPTAG05">Example</A></P>
+<P><A NAME="TMPID2351"></A>To create a Reply, called “Reply 001”, attached to the Topic called “Topic 001”, which is part of the “Discussion 001” in the Enterprise Workpace:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2248"></A>&#13;&lt;import&gt;
+  &lt;node type="reply" action="create"&gt;
+    &lt;location&gt;Enterprise:Discussion 001:Topic 001&lt;/location&gt;
+    &lt;title language="en"&gt;Reply 001&lt;/title&gt;
+    &lt;body&gt;This is a reply&lt;/body&gt;
+    &lt;createdby&gt;Admin&lt;/createdby&gt;
+    &lt;owner&gt;Admin&lt;/owner&gt;
+    &lt;created&gt;20110104&lt;/created&gt;
+    &lt;modified&gt;20110117&lt;modified&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="REPTAG06">body Tag</A></P>
+<P><A NAME="TMPID2358"></A>The <TT CLASS="LITERAL">body</TT> tag allows you to add a message body for the reply. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2252"></A>&lt;body&gt;This is a reply&lt;/body&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2253"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2372"></A>The <TT CLASS="LITERAL">body</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="reply"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2376"></A>The <TT CLASS="LITERAL">body</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2379"></A>The <TT CLASS="LITERAL">body</TT> tag is optional when:</P><A NAME="AEN2273"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2274"></A><A NAME="TMPID2383"></A><TT CLASS="LITERAL">&lt;node type="reply" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

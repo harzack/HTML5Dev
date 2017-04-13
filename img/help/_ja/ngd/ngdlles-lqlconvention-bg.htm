@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="NGDLLES100502-H-UGD-JA-1">
+<META name="pvScheme" content="010203">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="ngd">
+<META mancondkey="ngdcore-h-ugd -- lleswbb-h-ugd -- ngdcore-ugd -- lleswfp-h-ugd -- llescls-h-ugd -- llesrcm-igd -- lleswat-h-ugd -- llescl-h-ugd -- llesrt-h-ugd -- lleswbd-h-ugd"><title> Live Query Language   の表記法の理解</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ngdlles-lqlconvention-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = '複合クエリを使用した検索';
+          header.title2 = '';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3858"></A><A NAME="AEN3589"></A><SPAN CLASS="phrase">Live Query Language </SPAN> (LQL) 表記法は、複合クエリの構文を定義します。 </P>
+<P><A NAME="TMPID3863"></A>フレーズは、二重引用符 ("") で囲まれた 1 つ以上の単語の固定シーケンスです。例えば、<TT CLASS="literal">"good"</TT> や <TT CLASS="literal">"for better or for worse"</TT> はフレーズとなります。ただし、rice のような 1 単語のフレーズの二重引用符は、省略することができます。</P>
+<P class="before-ul"><A NAME="TMPID3866"></A>フレーズを構築する時は、次の規則が適用されます。</P><A NAME="AEN3595"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3596"></A><A NAME="TMPID3869"></A>空白文字 (タブやスペースなど) は、単語の終わりを意味します。</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3598"></A><A NAME="TMPID3871"></A>Content Server は、文字列に句読点が含まれていても <TT CLASS="literal">"www.opentext.com"</TT> のように空白がない場合は 1 つのフレーズとして解釈します。</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3602"></A><A NAME="TMPID3875"></A><TT CLASS="literal">rice</TT> のような 1 単語のフレーズの二重引用符は、省略することができます。</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3605"></A><A NAME="TMPID3878"></A><TT CLASS="literal">qlnear</TT> のような予約されているキーワードを検索条件として使用する時は、そのキーワードの二重引用符を省略できません。例えば、オンライン ヘルプ システムで、<TT CLASS="literal">qlnear</TT> キーワードに関する情報を検索する場合は、クエリとして <TT CLASS="command">"qlnear"</TT> を指定し、適切なヘルプ スライスを選択する必要があります。</P></LI></UL>
+<P><A NAME="TMPID3882"></A>アスタリスク (<TT CLASS="literal">*</TT>) はクエリの文字のプレースホルダとして使用できます。例えば、アスタリスクを使用して語尾が異なる単語の最後を表すには、<TT CLASS="command">account*</TT> と入力すれば、<B CLASS="emphasis">account</B>、 <B CLASS="emphasis">accounts</B>、<B CLASS="emphasis">accountant</B>、 <B CLASS="emphasis">accounting</B> などの単語を含むアイテムを検索できます。</P>
+<P><A NAME="TMPID3889"></A><A NAME="AEN3587">デフォルトでは、Content Server は左から右にクエリ文字を処理します。かっこ (<TT CLASS="literal">()</TT>) を使用してデフォルトの順序より優先的に処理するようにします。これにより、Content Server によってかっこ内の式が最初に評価されます。例えば、「<TT CLASS="literal">(grow OR farm) AND (wheat OR grain)</TT>」 と入力すると、<B CLASS="emphasis">grow</B> または <B CLASS="emphasis">farm</B> のインスタンスを少なくとも 1 つ含み、<B CLASS="emphasis">wheat</B> または <B CLASS="emphasis">grain</B> のインスタンスを少なくとも 1 つ含むアイテムが検索されます。</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

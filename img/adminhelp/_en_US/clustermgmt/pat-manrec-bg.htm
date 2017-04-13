@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESPAT100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="clustermgmt_10_5_0">
+<META mancondkey="lleswba-h-agd"><title>Rolling Back a Hotfix Deployment (Using the Manifest Recovery)</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'pat-manrec-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Content Server Cluster Management';
+          header.title2 = 'Rolling Back a Hotfix Deployment (Using the Manifest Recovery)';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID869"></A>Each time you use Cluster Management to install one or more hotfixes, Cluster Management creates a backup folder in the <TT CLASS="filename">&lt;<I CLASS="varname">Content_Server_home</I>>/clustermanagement/recovery/</TT> folder. The name of the backup folder is based on the date and time that you installed the hotfixes. </P>
+<P>
+<DIV CLASS="informalexample">
+<P class="nr1"><A NAME="AEN818"></A><B>Example: </B><A NAME="TMPID873"></A>The <TT CLASS="filename">patchdeployment-2014-03-18-16-10-25</TT> folder corresponds to a hotfix deployment performed on March 18, 2014 at 16:10:25.</P>
+</DIV></P>
+<P><A NAME="TMPID875"></A>A backup folder contains a recovery manifest and a compressed archive containing Content Server application folders and files.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PAT-MANREC-MANIF-BG">The Recovery Manifest</A></P>
+<P><A NAME="TMPID879"></A>The recovery manifest file (<TT CLASS="filename">recovery_manifest.xml</TT>) contains information on the contents of the backup folder and on the various steps that you must take to roll back a hotfix deployment.</P>
+<P><A NAME="TMPID881"></A>The information in the recovery manifest appears in three sections:</P>
+<div>
+<DL CLASS="vl">
+<DT class="vl"><A NAME="AEN827"></A><A NAME="TMPID884"><B>recoveryFilesArchive</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID886"></A>This section shows the location of the compressed archive containing the Content Server application folders and files that were changed by the hotfix deployment. The folders are in the state they were in before the hotfixes were applied. Restoring these folders to the &lt;<I CLASS="varname">Content_Server_home</I>> folder reverses the effects of the hotfix deployment on the Content Server application files.</P></DD>
+<DT class="vl"><A NAME="TMPID891"><B>removeFiles</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID893"></A>This section lists files that you must manually delete to complete the rollback of the hotfix deployment.</P></DD>
+<DT class="vl"><A NAME="TMPID895"><B>impacts</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID897"></A>This section lists Content Server components (the Content Server database, external file store and search index) that could be modified by a hotfix. A value of <TT CLASS="literal">true</TT> indicates that the component was changed. If <TT CLASS="literal">Database Schema</TT>, <TT CLASS="literal">Content in the File Store</TT>, or <TT CLASS="literal">Search Index</TT> has a value of <TT CLASS="literal">true</TT>, you must restore a Content Server backup set to completely roll back the hotfix deployment.</P></DD></DL></div>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PAT-MANREC-ARCHIVE-BG">The Compressed Archive</A></P>
+<P><A NAME="TMPID908"></A>A compressed archive file called <TT CLASS="filename">recovery_files[.zip]</TT> contains backup copies of the Content Server files and folders that were affected by the hotfix deployment. Restoring these files and folders restores the Content Server application folder to the state it was in before the hotfix deployment.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="pat-manrec-p.htm" revision="">Rolling Back a Hotfix Deployment</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

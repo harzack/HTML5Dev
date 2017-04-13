@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBB100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websbroker">
+<title>Using Search Filters</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/root/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'sr-tosearchwsrfilters-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working with Search Results';
+          header.title2 = 'Using Search Filters';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1219"></A>Search Filters are a feature of Content Server that can assist with understanding and refining Search Results. When they are enabled, Search Filters are displayed in a panel beside Search Results. Similar to Browse Filters, you can hide or show the Search Filter panel by clicking on the orange bar that displays when your mouse is over the edge of the Search Results display area. The location on the left or right is based on your preferences, specified by the <B CLASS="guilabel">Sidebar Location</B> setting on your <B CLASS="guilabel">My General Settings</B> page. For details, see <span><XPROC NAME="ExtXrefStart" HREF="llesrt-h-ugd.livelink-settings-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/root/livelink-settings-bg.htm">Changing Your Personal Settings</A><XPROC NAME="ExtXrefEnd" HREF="llesrt-h-ugd.livelink-settings-bg" FMT=""></span>.</P>
+<P><A NAME="TMPID1224"></A>A Search Filter is comprised of a title bar and a list of values. The title bar shows the “Display Name” of the metadata field used for the Search Filter. The behavior of the list of values will differ based on the type of metadata displayed in the filter, but in general is comprised of a value for the metadata and a count which indicates how frequently that value shows up in the results. When you select a value in a Search Filter, a new search request is generated which includes the additional restrictions of the selection.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF24"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1227"></A><B CLASS="note">Note: </B><BR>Search Filters are configured by your Content Server system administrator. There may be significant differences between your actual system and the typical configurations described here.</P>
+<P><A NAME="TMPID1229"></A>When using Search Filters, Remote Search results are excluded from the filter values and counts.</P>
+<P><A NAME="TMPID1230"></A>Search Filters currently does not support Aggregate-Text regions.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID1231"></A>When Search Filters are applied, they are displayed at the top of the panel. You can remove a filter by clicking the small <B CLASS="guilabel">x</B> icon beside it, or remove all the current filters by clicking the <B CLASS="guilabel">Remove all filters</B> link. On then Advanced Search page, active Search Filters are also displayed, and can be likewise removed.</P>
+<P><A NAME="TMPID1234"></A>Content Server asks the search system to provide information for Filters when the search query  is performed. In some cases, there may be no results for the requested filters, in which case the Filter is not displayed. This can result in Filters not appearing, and is normal behavior.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF25">Restricted Filters</A></P>
+<P><A NAME="TMPID1237"></A>If an attribute filter is applied, and you do not have permissions for the attribute's Category, you will see <B CLASS="guilabel">(Restricted Filters)</B> displayed in the active Filters. This indicates there are some    filters applied that affect the Search Results that you don't have permissions to see. You cannot remove a single restricted Filter, but you can click the <B CLASS="guilabel">Remove all filters</B> link.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF26">Hidden Containers</A></P>
+<P><A NAME="TMPID1241"></A>You can introduce Search Filters constraints into a saved Query. For information about saved Queries, see <span><A HREF="sr-workingwsvq.htm">Working with Saved Searches</A></span>. Some constraints may contain information that you don't have permissions to see. If you run a saved Query where you don't have permission for the Filter data, for example, if there is a Filter on the location “Folder A”, and you don't have permissions to see this folder, the data is marked as <B CLASS="guilabel">(hidden)</B> on the Search Results and Advanced Search pages.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF27">Differences from Browse Filters</A></P>
+<P><A NAME="TMPID1246"></A>Search Filters may often be used for the same purposes as Content Filters, but there are some  important differences between the two, and the differences in behavior are normal.</P>
+<P><A NAME="TMPID1247"></A>You should expect to see  different filters and value counts when using Search Filters. The Search Filters are based upon the capabilities of a full text Search Engine, and the Content Filters are based on system information. For example, the Search Filters might display information from Microsoft Office documents that is not known to Content Filters.</P>
+<P class="before-ul"><A NAME="TMPID1248"></A>The values and counts in Search Filters are estimates. You will often encounter situations where selecting a filter value will display more or fewer results than indicated by the estimate. You may even get no results. There are many reasons that the estimates may be different than the actual values, including:</P><A NAME="AEN1237"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1238"></A><A NAME="TMPID1251"></A>Time delays between adding or changing objects and the search index being updated.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1240"></A><A NAME="TMPID1253"></A>The estimating process cannot anticipate permission restrictions.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1242"></A><A NAME="TMPID1255"></A>The search index operates on word matching, not on exact strings.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1244"></A><A NAME="TMPID1257"></A>The Search Engine ignores most punctuation and special symbols.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1246"></A><A NAME="TMPID1259"></A>For performance optimization, the Search Engine will limit the number of unique values that it will consider when generating Search Filters.</P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF28">Types of Search Filters</A></P><A NAME="AEN1249"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1250"></A><A NAME="TMPID1263"></A><B>Text –  </B></P>
+<P><A NAME="TMPID1265"></A>If the metadata field is comprised of Text in the Search Engine, it is displayed  as a Text style Search Filter. Text Filters display values for the metadata fields that occur most frequently in the current Search Results. Text Filters are configured to display few or many filter values, and you can switch between these states using the <B title="Less..." CLASS="guilabel">Less…</B> or <B title="More..." CLASS="guilabel">More…</B> links in the panel. Text filters are optimized for strings of 32 characters or less.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1256"></A><B>Dates</B></P>
+<P class="nr1"><A NAME="TMPID1270"></A>If the metadata field is of type Date in the Search Engine, the Search Filter is enhanced to include tab sheets. Date filters represent recent dates, from the current day backwards. The default tab sheet has convenient representations for intervals of time. If you know more specifically which date is of interest, additional tabs contain specific recent days, weeks, months and years that can be used to refine the search query.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1259"></A><B>Classifications and Categories</B></P>
+<P class="nr1"><A NAME="TMPID1273"></A>When used as Search Filters, these metadata fields are checked for permissions. Depending on the situation, these will be displayed as (hidden) or removed from the Filters entirely.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1262"></A><B>Container</B></P>
+<P class="nr1"><A NAME="TMPID1276"></A>Several metadata fields represent locations in Content Server. Filters for these fields display a string that shows the name of the folder, plus the name of the next higher folder, in the form <TT CLASS="literal">…grandparent : foldername</TT>. If the string does not fit in the available space, it is truncated on the left and preceded by an ellipsis (<TT CLASS="literal">…</TT>). In some cases, if you do not have permission to see the name of the folder, it may display as (hidden).</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1268"></A><B>Integers</B></P>
+<P class="nr1"><A NAME="TMPID1282"></A>Metadata fields that contain integers will display the most common integer values for the current Search Results. <B title="More..." CLASS="guilabel">More…</B> and <B title="Less..." CLASS="guilabel">Less…</B> links control the number of values to display. Note that some Text fields may appear to be Integer fields. Usually, there is little difference. One difference is that a Text field will treat <TT CLASS="literal">007</TT> and <TT CLASS="literal">7</TT> as distinct values, whereas an Integer filter will consider these both as the number <TT CLASS="literal">7</TT>.</P></LI></UL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="sr-tosearchwsrfilters-p.htm" revision="">To Use Search Filters with Advanced Search</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

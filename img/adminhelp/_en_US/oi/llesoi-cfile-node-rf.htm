@@ -1,0 +1,155 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>node Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-node-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Control File Syntax';
+          header.title2 = 'node Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="NODETAG01">Description</A></P>
+<P class="nr1"><A NAME="TMPID1052"></A>Control files are used to create, update, synchronize, and delete objects. Each control file consists of one or more <TT CLASS="LITERAL">&lt;node&gt;</TT> paragraphs, with each paragraph describing actions against a particular object.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="NODETAG02">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1015"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="create"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="en"&gt;Temp&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="NODETAG03">Usage</A></P>
+<A NAME="AEN1017"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1018"></A><A NAME="TMPID1065"></A>The <TT CLASS="LITERAL">node</TT> tag is a required tag for every control file. The <TT CLASS="LITERAL">&lt;node&gt;</TT> tag's two attributes, <span><A HREF="llesoi-cfile-node-rf.htm#NODETAG05">type Attribute</A></span> and <span><A HREF="llesoi-cfile-node-rf.htm#LLESOI-CFILENODE2">action Attribute</A></span>, are required attributes on every <TT CLASS="LITERAL">&lt;node&gt;</TT> tag.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1025"></A><A NAME="TMPID1072"></A>The <TT CLASS="LITERAL">&lt;node&gt;</TT> tag can also contain multiple subordinate tags. These subordinate tags are detailed in <span><A HREF="llesoi-cfilesamp-bg.htm">Object Importer Tag Descriptions and Syntax</A></span>.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="NODETAG04">Attributes</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="NODETAG05">type Attribute</A></P>
+<P><A NAME="TMPID1079"></A>The following object types can be imported into Content Server:</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1033"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Object Type</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Syntax</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Alias</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="alias"</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Compound Document</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="compounddoc"</TT> or <TT CLASS="LITERAL">type="cd"</TT>
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">OpenText recommends that you use <TT CLASS="LITERAL">compounddoc</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Custom View</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="customview"</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Discussion</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="discussion"</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Document</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="document"</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Folder</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP"><TT CLASS="LITERAL">type="folder"</TT></TD></TR></TABLE>
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">The Folder object type contains no unique metadata.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Project</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="project"</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Reply</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="reply"</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Task</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="task"</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Task Group</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="taskgroup"</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Task List</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="tasklist"</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Task Milestone</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="taskmilestone"</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Topic</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="topic"</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">URL</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">type="url"</TT></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="LLESOI-CFILENODE2">action Attribute</A></P>
+<P><A NAME="TMPID1154"></A>The following are valid actions for the import of objects and data from the file system to Content Server:</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1107"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Action</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Syntax</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Create</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">action="create"</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Creates objects, such as folders, in Content Server, or imports data, such as documents, into Content Server from the file system.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Update</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">action="update"</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Updates general object metadata, specific object metadata, permissions, and category &amp; attribute data. Examples of general object metadata include name and description. Examples of specific object metadata include mime type, url, and alias.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Synchronize</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">action="sync"</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Performs either a create or an update depending on whether the object exists in Content Server.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Add Version</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">action="addversion"</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Performs an update by adding a new version of an existing Content Server object.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Delete</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">action="delete"</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Deletes objects in Content Server.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

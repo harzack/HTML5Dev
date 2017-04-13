@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Considérations sur l'affichage</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-actionsubtags-dispcons.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sous-balises d\'action';
+          header.title2 = 'Considérations sur l\'affichage';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID13156"></A>Normalement, l'utilisation d'une sous-balise d'action dans une balise signifie que les données de la balise ne sont pas renvoyées dans la sortie du WebReport. Si les données de la balise doivent également être affichées dans la sortie du rapport, la sous-balise <TT CLASS="literal">SHOW</TT> doit être utilisée. Celle-ci est généralement placée la plus à droite dans la liste des sous-balises. Notez que cette sous-balise affiche la valeur d'origine de la balise, avant que l'action soit effectuée. Pour les sous-balises d'action sur les variables, il est important de noter qu'aucun calcul sur les variables n'est inclus dans les données affichées. Les exemples ci-dessous décrivent ces faits plus en détail. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF18"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID13159"></A><B CLASS="note">Note : </B><BR>Les exemples ci-dessous utilisent tous une « balise littérale » qui renvoie la valeur fixe spécifiée entre guillemets. Cette balise est parfois utile lorsqu'un nombre donné doit être utilisé par les sous-balises d'action, par exemple pour ajouter un nombre particulier. Ici, elle est principalement utilisée pour simplifier les exemples.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN12440"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Exemple</TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Description</TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_"2" <B CLASS="highlight">SETVAR:test</B> /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Une variable appelée <B CLASS="highlight">test</B> est créée et définie sur la valeur : <B CLASS="highlight">2</B>. Elle n'est pas affichée dans le rapport. Les exemples successifs supposent que la variable <B CLASS="highlight">test</B> est définie sur cette valeur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_"123" <B CLASS="highlight">ADDVAR:test</B> /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">La valeur <B CLASS="highlight">123</B> est ajoutée à la variable nommée <B CLASS="highlight">test</B> ; la nouvelle valeur de <B CLASS="highlight">test</B> est désormais <B CLASS="highlight">125</B>. Rien n'est affiché dans le rapport.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_"123" ADDVAR:test <B CLASS="highlight">SHOW</B> /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">La valeur <B CLASS="highlight">123</B> est ajoutée à la variable nommée <B CLASS="highlight">test</B>, en supposant que cette variable <B CLASS="highlight">test</B> est toujours définie sur <B CLASS="highlight">2</B>. La nouvelle valeur de <B CLASS="highlight">test</B> est égale à <B CLASS="highlight">125</B>. La valeur de la balise, soit <B CLASS="highlight">123</B>, s'affiche dans le rapport.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_"123" <B CLASS="highlight">DEC</B> ADDVAR:test SHOW /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">La valeur <B CLASS="highlight">123</B> est décrémentée par la sous-balise DEC, si bien que la valeur devient <B CLASS="highlight">122</B>. Elle est ensuite ajoutée à la variable nommée <B CLASS="highlight">test</B> ; la nouvelle valeur de <B CLASS="highlight">test</B> est désormais <B CLASS="highlight">124</B>. La valeur de la balise, une fois modifiée par la sous-balise DEC, soit <B CLASS="highlight">122</B>, s'affiche dans le rapport.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

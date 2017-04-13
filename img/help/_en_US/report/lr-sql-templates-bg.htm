@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>SQL Templates</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-sql-templates-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working with LiveReports';
+          header.title2 = 'SQL Templates';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID749"></A>LiveReport introduces the concept of templates to the traditional LiveReports object. Templates provide the ability to setup pre-defined blocks of SQL code that can be included or excluded at run time based on pre-defined conditions. This concept is particularly useful when setting up ad-hoc reporting type applications. The ability to dynamically add or remove data filters or to dynamically change the returned data set is very important in ad-hoc reporting. Previously, the problem was that only data values can be passed to the LiveReport via the URL. There is no way to add additional filter clauses, such as <TT CLASS="literal">AND NAME = 'test'</TT>, once the LiveReport has been created. If all of the possible filter clauses are added when the LiveReport is first created, then the SQL query may fail unless valid values are passed for each of these clauses. Normally this would require wild cards to be passed for any of these clauses that were not required in order to ensure the SQL query returned the correct number of results.</P>
+<P><A NAME="TMPID751"></A>As an initial step to deal with this problem, the <TT CLASS="literal">InsertStr</TT> type parameter helped with this requirement by allowing variable amounts of SQL to be inserted into the SQL source. The main problem with this approach is that in some cases large amounts of SQL are being passed via the URL. Typically in this approach an entire SQL clause, for example <TT CLASS="literal">AND Name = 'test'</TT>, is passed to the LiveReport.</P>
+<P><A NAME="TMPID754"></A>The template feature allows that any optional SQL clauses can be predefined in the actual LiveReport. Each template is setup so that only the parts of the data that need to be variable, for example <TT CLASS="literal">= 'test'</TT>, are passed in the URL. Each template can be setup so that a predetermined condition must be met in order for the template to be included. These conditions are described in depth within this document but in general template inclusion is managed according to whether certain variables are set to pre-determined “flag values” or whether a predefined parameter is set in the URL.</P>
+<P><A NAME="TMPID757"></A>For example, and building on the simple example provided above, a template could look like this: <TT CLASS="literal">AND Name = %1</TT>. Assuming that <TT CLASS="literal">%1</TT> is a user input type parameter of type <TT CLASS="literal">String</TT>, the template could be setup so it is only included if <TT CLASS="literal">%1</TT> is not set to a blank string. This would ensure that the text “AND Name = %1” is only included in the SQL query if <TT CLASS="literal">%1</TT> were passed with a non blank value in the URL.</P>
+<P><A NAME="TMPID764"></A>The template feature provides the ability to create SQL segments which can optionally be added to the main SQL query. This feature provides many new capabilities but in particular makes it easier to support applications where a variable number of WHERE/AND clauses may be required in a query.</P>
+<P><A NAME="TMPID765"></A>For each template it is possible to define what conditions will determine whether the optional SQL Source is used or not. This is selected using the <TT CLASS="literal">Include IF</TT> option, for more information see the “Include IF” row in <span><A HREF="lr-sqlfield-bg.htm">SQL Template Fields</A></span> and <span><A HREF="lr-sqlfield-bg.htm#LR-SQLINCLIF">Include IF</A></span>. Each template field is explained below. Note that each template includes a <B CLASS="guilabel">View Template Behavior</B> icon on the far right hand side which provides an illustration of how the template will be interpreted based on its current settings.</P>
+<DIV title="SQL Template Screen" CLASS="figure">
+<P><A NAME="FIG-SQLTEMP"></A><IMG alt="SQL Template Screen" SRC="lr_sqltem.png"></P>
+<P CLASS="figure" ALIGN="LEFT"><B>Figure 1-2: SQL Template Screen</B></P></DIV>
+<P><A NAME="TMPID774"></A>Additional templates can be created using the plus symbol icon. Templates can be removed by clearing the text in any <B CLASS="guilabel">SQL Source box</B> and then saving the LiveReport.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="lr-sqlfield-bg.htm" revision="">SQL Template Fields</A></p></li>
+<li><p><A  HREF="lr-using-templ-bg.htm" revision="">Using Templates</A></p></li>
+<li><p><A  HREF="lr-enhanc-sql-bg.htm" revision="">Enhanced SQL editing</A></p></li>
+<li><p><A  HREF="lr-view-sql-bg.htm" revision="">View SQL Source</A></p></li>
+<li><p><A  HREF="lr-view-query-bg.htm" revision="">View Query</A></p></li>
+<li><p><A  HREF="lr-urlpartem-bg.htm" revision="">Template Examples</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

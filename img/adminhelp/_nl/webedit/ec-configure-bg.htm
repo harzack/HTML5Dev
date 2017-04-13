@@ -1,0 +1,155 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBE100502-H-AGD-EN-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="webedit">
+<title>Configuring Web Edit Settings</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ec-configure-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Item Administration: <NOBR>Web Edit Administration</NOBR>';
+          header.title2 = 'Configuring Web Edit Settings';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID45"></A>On the <B CLASS="guilabel">Web Edit Administration</B> page, you can specify the editor used when editing a supported document type, disable automatic installation from the Web, set the MIME type for supported documents, and specify supported document types for the Add New functionality.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF0">Setting Editor Precedence</A></P>
+<P><A NAME="TMPID48"></A>Set the Editor precedence to indicate which editor should be used when editing a supported  document. The editors available for configuration depend on the Content Server modules in use, but can include OpenText Office Editor and  OpenText WebDAV. When you set the Editor preference, you assign a numeric value to each editor, assigning higher values to the editors with greater precedence.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF1">Specifying  Office Editor Settings</A></P>
+<P><A NAME="TMPID56"></A>You can specify the name of the repository as you want it to appear in the <B CLASS="guilabel">Location</B> column in the Office Editor desktop client. If you do not provide a name, Office Editor will create one using the <TT CLASS="literal">&lt;host&gt;/&lt;contentserverfolder&gt;</TT> format. If there is more than one repository with the same name, the most recently configured repository is used, and a number is appended to each of the previous versions. For example, a duplicate instance would be renamed to <B CLASS="guilabel">Content Server (2)</B>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF2"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID64"></A><B CLASS="note">Note: </B><BR>The repository name that you specify is not used if Enterprise Connect is installed on the client. In this case, the name of the Enterprise Connect plug-in is used instead.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID94"></A>When you select the <B CLASS="guilabel">Enable Installer Download</B> check box, you enable users to download and install the Office Editor client from the Content Server Web UI. This is the default setting. If you clear this check box, users will not be able to download and install, and you must arrange for any installations or upgrades.</P>
+<P class="before-ul"><A NAME="TMPID98"></A>You can control when users upgrade to the most recent version of the Office Editor client using the options in the <B CLASS="guilabel">When a new version is available</B> list. When users working with an older version of the Office Editor client try to open or edit a document, you can specify one of the following options:</P><A NAME="AEN73"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN74"></A><A NAME="TMPID105"></A>Never prompt users to upgrade by choosing <B CLASS="guilabel">Do not display or prompt for upgrade</B>. This is the default setting.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN77"></A><A NAME="TMPID108"></A>Allow users to either upgrade or continue working by choosing <B CLASS="guilabel">Provide users with the option to upgrade, or continue using any compatible older version</B>. Users receive a message prompting them to either upgrade to the most recent version of the Office Editor client using the link provided, or continue working with their current version.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN81"></A><A NAME="TMPID112"></A>Force users to upgrade before they can proceed by choosing <B CLASS="guilabel">Force users to upgrade</B>. Users receive a message prompting them to upgrade to the most recent version of the Office Editor client using the link provided. </P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF5"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID116"></A><B CLASS="note">Note: </B><BR>If you select either the <B CLASS="guilabel">Provide users with the option to upgrade, or continue using any compatible older version</B> or the <B CLASS="guilabel">Force users to upgrade</B> option, you must also select the <B CLASS="guilabel">Enable Installer Download</B> check box to allow users to install the Office Editor client.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID121"></A>You can configure how the Open function in Content Server works. You can specify that all documents are opened using  the Content Server default implementation (doc.Fetch). In this case, Office Editor is not used when users open a document. Select this option if you want users to be able to open Content Server documents without having to install Office Editor. Alternatively, you can specify that all supported MIME types, as determined by the options you specify in the <B CLASS="guilabel">MIME Types for Office Editor</B> section, are opened using Office Editor. In this case, Office Editor automatically downloads the document to the document cache and then opens it from there.</P>
+<P><A NAME="TMPID131"></A>You can enable or disable caching of recently used documents. By default, all documents are retained in the document cache. If you clear the <B CLASS="guilabel">Enable Document Caching</B> check box, unused documents are deleted from the cache. For example, if the check box is cleared, and the user opens, edits, and then closes a document, the document will be removed from the document cache. Documents that are in a conflict state remain in the document cache until the conflict is resolved. Also, documents that are in use remain in the cache until they are closed. This setting only applies to the following types of documents.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN102"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.docx </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.docm</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> .doc</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.dotx </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.dotm</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.dot</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.xlsx</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.xlsm </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> .xlsb</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.xls</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.xltx</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.xltm</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.xlt</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.pptx</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.pptm</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.ppt </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.potx</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.potm</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> .pot</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.ppsx</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.ppsm</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.pps</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.ppam</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.ppa</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.mpp</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.mpt </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.vsdx </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.vssx</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.vstx</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.vsdm</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.vssm</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.vstm</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.vsd</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.vdw</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.vsw</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.vss</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.vst </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.pdf</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.wpd</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR></TABLE>
+</DIV></P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF6"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes: </B></P><A NAME="AEN160"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN161"></A><A NAME="TMPID194"></A>This setting only applies to documents that are edited from the Content Server Web UI using Office Editor, where Enterprise Connect is not installed. You must make additional changes in Enterprise Connect to apply this setting to documents edited in Enterprise Connect. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="ngdcore-igd.-" FMT="" NO1ST><i>OpenText Enterprise Connect - Installation Guide (NGDCORE-IGD)</i><XPROC NAME="ExtXrefEnd" HREF="ngdcore-igd.-" FMT=""></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN169"></A><A NAME="TMPID202"></A>Users must restart the Office Editor client to apply any changes that you make to this setting.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF7">Specifying MIME Types</A></P>
+<P><A NAME="TMPID216"></A>You can specify the MIME types that editors support, to indicate which documents can be modified when using a specific editor. For the selected editor, you specify the  MIME types that you want to support for Microsoft Word, Excel, PowerPoint, Project, and Visio documents. For example, you can specify that Office Editor supports all MIME types or just specified ones. You can edit the list of supported MIME types as required. If you are using WebDAV as your editor, you can edit the list of supported MIME types as well. </P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF10">Specifying Supported New Document Types</A></P>
+<P><A NAME="TMPID260"></A>You specify the supported document types for the Add New document functionality by enabling or disabling specific document types.  For example, you may want to allow users to add new Microsoft Word documents, but not PowerPoint documents. The supported document types that  you specify display in the <B CLASS="guilabel">Add New</B> list on the <B CLASS="guilabel">Add Document</B> page.</P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID264"></A><B CLASS="tip">Tip: </B><BR>You can modify default documents for the Add New functionality. When a user chooses to add a new  document, the default document that you specified automatically opens in the associated desktop program. For example, you can modify a Word 2010 document by replacing  the default blank document in the <TT CLASS="literal">support\webedit</TT> directory of your Content Server installation with the custom default document that you want to use.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="ec-configure-p.htm" revision="">To Configure Web Edit Settings</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,163 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Utilisation d'un paramètre URL pour contrôler l'insertion du modèle</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-example1-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Exemples de modèles';
+          header.title2 = 'Utilisation d\'un paramètre URL pour contrôler l\'insertion du modèle';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1004"></A>La condition Paramètre URL permet de spécifier le nom d'un paramètre dans l'URL qui entraîne l'insertion du modèle. Elle peut être utilisée de deux façons. Dans l'exemple le plus simple, le paramètre URL doit uniquement être défini sur true (vrai), par exemple, <TT CLASS="literal">&amp;someparm=true</TT>. L'option Paramètre URL pour l'insertion de modèles permet également de spécifier les paramètres d'entrée de l'URL à utiliser dans le modèle. Cette fonction s'avère utile lorsque quelques entrées peuvent servir à fournir des données à plusieurs modèles et que le même modèle peut être réutilisé avec différentes entrées insérées. Notez que dans ce cas, même si le mot true (vrai) n'est pas transmis via le paramètre, le modèle est inclus à condition que le nombre d'entrées utilisateur spécifié dans l'URL corresponde aux paramètres requis dans la source du modèle. Vous trouverez plus de détails dans les exemples suivants. </P>
+<DIV title="Ajout d'une clause d'ordre à la requête SQL" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXORDCL-EX"></A><B><IMG title="Ajout d'une clause d'ordre à la requête SQL" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 2-1 : Ajout d'une clause d'ordre à la requête SQL</B></P>
+<P class="nr1"><A NAME="TMPID1008"></A>Dans cet exemple simple, un modèle est défini à l'aide d'une clause <TT CLASS="literal">ORDER BY</TT> qui est insérée si le paramètre <TT CLASS="literal">&amp;nameorder=true</TT> est inclus dans l'URL. Le marqueur <TT CLASS="literal">~1</TT> dans la source SQL indique que si le modèle est ajouté, il l'est après la requête principale. Notez que, si <TT CLASS="literal">&amp;nameorder</TT> n'est pas inclus dans l'URL ou si l'URL inclut <TT CLASS="literal">&amp;nameorder=false</TT>, le marqueur <TT CLASS="literal">~1</TT> est remplacé par une chaîne vide (rien). </P>
+<A NAME="AEN1017"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1018"></A><A NAME="TMPID1017"></A>Dans <B CLASS="guilabel">Source SQL principale</B>, dans le champ <B CLASS="guilabel">SQL</B>, saisissez :</P><A NAME="AEN1022"></A>
+<PRE 
+CLASS="screen"
+>select * from DTREE
+~1</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1023"></A><A NAME="TMPID1022"></A>Dans <B CLASS="guilabel">Configuration du modèle</B>, dans la zone <B CLASS="guilabel">Modèles</B>, définissez <B CLASS="guilabel">~1</B> :</P><A NAME="AEN1028"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1029"></A><A NAME="TMPID1028"></A>Ne sélectionnez pas la case <B CLASS="guilabel">Auto-Where</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1032"></A><A NAME="TMPID1031"></A>Dans le champ <B CLASS="guilabel">Source SQL</B>, saisissez « order by Name ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1036"></A><A NAME="TMPID1035"></A>Ne sélectionnez pas la case <B CLASS="guilabel">Auto-Comma</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1039"></A><A NAME="TMPID1038"></A>Dans la liste <B CLASS="guilabel">Inclure IF</B>, sélectionnez « Paramètre URL ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1043"></A><A NAME="TMPID1042"></A>Dans le champ <B CLASS="guilabel">Options</B>, saisissez « nameorder » comme <B CLASS="guilabel">Nom du paramètre</B>.</P></LI></UL></LI></OL>
+<P><A NAME="TMPID1046"></A>Si vous accédez à l'URL suivante :</P><A NAME="AEN1049"></A>
+<PRE 
+CLASS="screen"
+>.../livelink.exe?func=ll&amp;objAction=RunReport&amp;objId=32666&amp;nameorder=true...</PRE
+>
+<P><A NAME="TMPID1048"></A>Le code SQL qui en résulte contient, dans le champ <B CLASS="guilabel">Source SQL</B>, « select * from DTREE order by Name ».</P><IMG title="Ajout d'une clause d'ordre à la requête SQL" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Réutilisation d'un modèle avec une entrée de variable" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXREUSETEM-EX"></A><B><IMG title="Réutilisation d'un modèle avec une entrée de variable" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 2-2 : Réutilisation d'un modèle avec une entrée de variable</B></P>
+<P class="nr1"><A NAME="TMPID1053"></A>Dans cet exemple, le même modèle est ajouté plusieurs fois à l'aide d'un paramètre d'entrée utilisateur différent à chaque fois. Cela permet de construire plusieurs clauses <TT CLASS="literal">OR</TT>. L'utilisation de la fonction <B CLASS="guilabel">Auto-Where</B> permet d'ajouter automatiquement <TT CLASS="literal">WHERE</TT> à la place de <TT CLASS="literal">OR</TT> lorsque le premier modèle est inséré, puis d'utiliser <TT CLASS="literal">OR</TT> pour chaque modèle suivant inséré. </P>
+<A NAME="AEN1061"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1062"></A><A NAME="TMPID1061"></A>Dans <B CLASS="guilabel">Source SQL principale</B>, dans le champ <B CLASS="guilabel">SQL</B>, saisissez :</P><A NAME="AEN1066"></A>
+<PRE 
+CLASS="screen"
+>select * from DTREE
+~1</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1067"></A><A NAME="TMPID1066"></A>Dans <B CLASS="guilabel">Configuration du modèle</B>, dans la zone <B CLASS="guilabel">Modèles</B>, définissez <B CLASS="guilabel">~1</B> :</P><A NAME="AEN1072"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1073"></A><A NAME="TMPID1072"></A>Sélectionnez la case <B CLASS="guilabel">Auto-Where</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1076"></A><A NAME="TMPID1075"></A>Dans le champ <B CLASS="guilabel">Source SQL</B>, saisissez « OR name = #1 ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1080"></A><A NAME="TMPID1079"></A>Ne sélectionnez pas la case <B CLASS="guilabel">Auto-Comma</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1083"></A><A NAME="TMPID1082"></A>Dans la liste <B CLASS="guilabel">Inclure IF</B>, sélectionnez « Paramètre URL ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1087"></A><A NAME="TMPID1086"></A>Dans le champ <B CLASS="guilabel">Options</B>, saisissez « nameclause » comme <B CLASS="guilabel">Nom du paramètre</B>.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1092"></A><A NAME="TMPID1091"></A>Dans la zone <B CLASS="guilabel">Entrées</B>, ajoutez des entrées génériques. Par exemple, incluez trois entrées différentes, de type <TT CLASS="literal">STRING</TT>, appelées « Parm 1 », « Parm 2 » et « Parm 3 ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1099"></A><A NAME="TMPID1098"></A>Dans la zone <B CLASS="guilabel">Paramètres</B>, incluez trois champs d'entrée utilisateur. </P></LI></OL>
+<P><A NAME="TMPID1100"></A>Si vous accédez à l'URL suivante, notez que seuls les paramètres sont affichés :</P><A NAME="AEN1103"></A>
+<PRE 
+CLASS="screen"
+>&amp;nameclause=U1 &amp;nameclause=U2 &amp;nameclause=U3
+&amp;inputlabel1=cat &amp;inputlabel2=dog &amp;inputlabel3=frog</PRE
+>
+<P><A NAME="TMPID1102"></A>Le code SQL qui en résulte contient, dans le champ <B CLASS="guilabel">Source SQL</B>, « select * from DTREE WHERE name = 'cat' OR name = 'dog' OR name = 'frog' ».</P><IMG title="Réutilisation d'un modèle avec une entrée de variable" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Réutilisation d'un modèle avec plusieurs entrées de variables" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXMULTVAR-EX"></A><B><IMG title="Réutilisation d'un modèle avec plusieurs entrées de variables" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 2-3 : Réutilisation d'un modèle avec plusieurs entrées de variables</B></P>
+<P class="nr1"><A NAME="TMPID1107"></A>Cet exemple est similaire au précédent, mais le modèle spécifie deux variables à insérer. Ainsi, si le paramètre URL indique au moins deux entrées utilisateur, comme dans l'exemple précédent, le modèle n'est pas inclus. Cet exemple montre deux modèles différents, avec des objectifs légèrement différents. L'un prend en charge une correspondance directe à l'aide du signe égal (=) et l'autre prend en charge une correspondance partielle à l'aide de <TT CLASS="literal">LIKE</TT>. L'un ou l'autre peut être sélectionné à l'aide des noms de paramètres appropriés, <TT CLASS="literal">likecompare</TT> ou <TT CLASS="literal">equalscompare</TT>. Ces deux paramètres sont transmis avec une liste des entrées utilisateur à utiliser dans la requête SQL. Par exemple, « U1,U2 » désigne l'utilisation de <TT CLASS="literal">inputlabel1</TT> et <TT CLASS="literal">inputlabel2</TT>. </P>
+<A NAME="AEN1116"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1117"></A><A NAME="TMPID1116"></A>Dans <B CLASS="guilabel">Source SQL principale</B>, dans le champ <B CLASS="guilabel">SQL</B>, saisissez</P><A NAME="AEN1121"></A>
+<PRE 
+CLASS="screen"
+>select * from DTREE
+~1
+~2</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1122"></A><A NAME="TMPID1121"></A>Dans <B CLASS="guilabel">Configuration du modèle</B>, dans la zone <B CLASS="guilabel">Modèles</B>, définissez <B CLASS="guilabel">~1</B> :</P><A NAME="AEN1127"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1128"></A><A NAME="TMPID1127"></A>Sélectionnez la case <B CLASS="guilabel">Auto-Where</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1131"></A><A NAME="TMPID1130"></A>Dans le champ <B CLASS="guilabel">Source SQL</B>, saisissez « AND #1 LIKE #2 ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1135"></A><A NAME="TMPID1134"></A>Ne sélectionnez pas la case <B CLASS="guilabel">Auto-Comma</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1138"></A><A NAME="TMPID1137"></A>Dans la liste <B CLASS="guilabel">Inclure IF</B>, sélectionnez « Paramètre URL ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1142"></A><A NAME="TMPID1141"></A>Dans le champ <B CLASS="guilabel">Options</B>, saisissez « likecompare » comme <B CLASS="guilabel">Nom du paramètre</B>.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1147"></A><A NAME="TMPID1146"></A>Dans <B CLASS="guilabel">Configuration du modèle</B>, dans la zone <B CLASS="guilabel">Modèles</B>, définissez <B CLASS="guilabel">~2</B> :</P><A NAME="AEN1152"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1153"></A><A NAME="TMPID1152"></A>Sélectionnez la case <B CLASS="guilabel">Auto-Where</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1156"></A><A NAME="TMPID1155"></A>Dans le champ <B CLASS="guilabel">Source SQL</B>, saisissez « AND #1 = #2 ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1160"></A><A NAME="TMPID1159"></A>Ne sélectionnez pas la case <B CLASS="guilabel">Auto-Comma</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1163"></A><A NAME="TMPID1162"></A>Dans la liste <B CLASS="guilabel">Inclure IF</B>, sélectionnez « Paramètre URL ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1167"></A><A NAME="TMPID1166"></A>Dans le champ <B CLASS="guilabel">Options</B>, saisissez « equalscompare » comme <B CLASS="guilabel">Nom du paramètre</B>.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1172"></A><A NAME="TMPID1171"></A>Dans la zone <B CLASS="guilabel">Entrées</B>, ajoutez quatre entrées génériques :</P><A NAME="AEN1175"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN1176"></A><A NAME="TMPID1175"></A>Une entrée de <B CLASS="guilabel">Type</B> <TT CLASS="literal">InsertString</TT> avec une <B CLASS="guilabel">Invite</B> de « fieldname ».</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN1182"></A><A NAME="TMPID1181"></A>Une entrée de <B CLASS="guilabel">Type</B> <TT CLASS="literal">String</TT> avec une <B CLASS="guilabel">Invite</B> de « fieldvalue ».</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN1188"></A><A NAME="TMPID1187"></A>Une entrée de <B CLASS="guilabel">Type</B> <TT CLASS="literal">InsertString</TT> avec une <B CLASS="guilabel">Invite</B> de « fieldname2 ».</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN1194"></A><A NAME="TMPID1193"></A>Une entrée de <B CLASS="guilabel">Type</B> <TT CLASS="literal">String</TT> avec une <B CLASS="guilabel">Invite</B> de « fieldvalue2 ».</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1200"></A><A NAME="TMPID1199"></A>Dans la zone <B CLASS="guilabel">Paramètres</B>, incluez quatre champs d'entrée utilisateur. </P></LI></OL>
+<P><A NAME="TMPID1201"></A>Si vous accédez à l'URL suivante, notez que seuls les paramètres sont affichés :</P><A NAME="AEN1204"></A>
+<PRE 
+CLASS="screen"
+>&amp;likecompare=u1,u2&amp;equalscompare=u3,u4
+&amp;inputLabel1=name&amp;inputLabel2=%new%&amp;inputLabel3=dataid&amp;inputLabel4=12345</PRE
+>
+<P><A NAME="TMPID1203"></A>Le code SQL qui en résulte contient, dans le champ <B CLASS="guilabel">Source SQL</B>, « select * from DTREE WHERE name LIKE '%new%' AND dataid = '12345' ».</P>
+<DIV title="Représentation graphique de cet exemple" CLASS="figure">
+<P><A NAME="FIG-SQLEX3"></A><IMG alt="Représentation graphique de cet exemple" SRC="lr_examp3.png"></P>
+<P><IMG alt="Représentation graphique de cet exemple" SRC="lr_exmple3a.png"></P>
+<P CLASS="figure" ALIGN="LEFT"><B>Figure 2-3 : Représentation graphique de cet exemple</B></P></DIV><IMG title="Réutilisation d'un modèle avec plusieurs entrées de variables" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

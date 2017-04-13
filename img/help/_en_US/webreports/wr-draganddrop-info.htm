@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Drag and Drop Functionality</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-draganddrop-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'Drag and Drop Functionality';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID18934"></A>The ability to use Drag and Drop functionality is now included with WebReports and ActiveViews. The core functionality for Drag and Drop is contained within a WebReport reportview that can be called from another WebReport, enabling drag and drop for the parent container for the initiating WebReport.</P>
+<P><A NAME="TMPID18935"></A>Integrating drag and drop functionality into WebReports and ActiveView consist of two main steps. The first step is to add a new tab for the user to click to switch into Drag and Drop mode for the container, and the second step requires a viewable WebReport that contains the actual Drag and Drop functionality. The execution of these two steps is straightforward, but varies slightly between WebReports and ActiveView.</P>
+<DIV title="Step 1: The Core Drag and Drop Functionality Reportview" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-DADFUNCREP-EX"></A><B><IMG title="Step 1: The Core Drag and Drop Functionality Reportview" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-19: Step 1: The Core Drag and Drop Functionality Reportview</B></P>
+<P class="nr1"><A NAME="TMPID18938"></A>The first step of integrating drag and drop functionality in WebReports and ActiveView is to create a WebReport using one of the core drag and drop example reportviews. There are two of these core drag and drop reportviews. They differ depending on whether the product is WebReports or ActiveView.</P><IMG title="Step 1: The Core Drag and Drop Functionality Reportview" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Step 2: Demonstration of Sample Code for WebReports to Call the Core Drag and Drop Reportview" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-DADCRFUNCREP-EX"></A><B><IMG title="Step 2: Demonstration of Sample Code for WebReports to Call the Core Drag and Drop Reportview" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-20: Step 2: Demonstration of Sample Code for WebReports to Call the Core Drag and Drop Reportview</B></P>
+<P class="nr1"><A NAME="TMPID18941"></A>The following three blocks of code are an example of how to add the drag and drop functionality to any WebReport. In this case, adding this code to a browse-style WebReport will provide a new tab at the top of the WebReport to click and go to the drag and drop view.</P>
+<P><A NAME="TMPID18942"></A>Check that Drag and Drop has been specified:</P><A NAME="AEN17680"></A>
+<PRE 
+CLASS="screen"
+>[// Test to see if we have a drag and drop view set
+[LL_WEBREPORT_IF "[LL_REPTAG_$D&amp;DVIEW /]" &lt;&gt; "[LL_REPTAG_$undefined /]" /]
+       [LL_REPTAG_$D&amp;DVIEW SETVAR:DRAGDROP /]
+[LL_WEBREPORT_ELSE /]
+       [// No constant, just use a blank string
+       [LL_REPTAG_'' SETVAR:DRAGDROP /]
+[LL_WEBREPORT_ENDIF /]</PRE
+>
+<P><A NAME="TMPID18944"></A>Add the javascript function to go to drag and drop when called:</P><A NAME="AEN17682"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_IF "" &lt;&gt; "[LL_REPTAG_%DRAGDROP CURRENTVAL /]" /]
+function goToDragAndDrop() {
+       document.location = '[LL_REPTAG_$D&amp;DVIEW LLURL:DEFAULTHREF /]';
+}
+[LL_WEBREPORT_ENDIF /]</PRE
+>
+<P><A NAME="TMPID18946"></A>Add user interface to select Drag and Drop (in this case a tab):</P><A NAME="AEN17684"></A>
+<PRE 
+CLASS="screen"
+>[// Check to see if a Drag and Drop reportview has been specified
+[LL_WEBREPORT_IF "" &lt;&gt; "[LL_REPTAG_%DRAGDROP CURRENTVAL /]" /]
+&lt;TD WIDTH="100%"&gt;
+&lt;TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0"&gt;
+&lt;TR&gt;
+&lt;TD class="selectedTab" NOWRAP ALIGN="RIGHT" VALIGN=TOP BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tab-active.gif"&gt;&lt;NOBR&gt;&lt;IMG SRC="[LL_REPTAG_SUPPORTDIR /]tableftup-active-0.gif" ALT="" WIDTH="5" HEIGHT="31" BORDER="0"&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD NOWRAP VALIGN="MIDDLE" NOWRAP class="selectedTab"  WIDTH="80" BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tab-active.gif"&gt;&lt;NOBR&gt;  Browse  &lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD class="selectedTab" NOWRAP ALIGN="RIGHT" VALIGN=TOP BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tab-active.gif" BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tab-inactive.gif"&gt;&lt;NOBR&gt;&lt;IMG SRC="[LL_REPTAG_SUPPORTDIR /]tabrightup-active.gif" WIDTH="10" HEIGHT="31" BORDER="0" ALT=""&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD class="unselectedTab" NOWRAP ALIGN="LEFT" VALIGN=TOP&gt;&lt;NOBR&gt;&lt;IMG SRC="[LL_REPTAG_SUPPORTDIR /]tableftup-inactive.gif" ALT="" WIDTH="5" HEIGHT="31" BORDER="0"&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD NOWRAP class="unselectedTab" WIDTH="80" BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tab-inactive.gif"&gt;&lt;NOBR&gt;&lt;A HREF="javascript:goToDragAndDrop();"&gt;Drag &amp; Drop&lt;/A&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD class="unselectedTab" NOWRAP ALIGN="RIGHT" VALIGN=TOP BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tab-inactive.gif"&gt;&lt;NOBR&gt;&lt;IMG SRC="[LL_REPTAG_SUPPORTDIR /]tabrightup-inactive.gif" WIDTH="10" HEIGHT="31" BORDER="0" ALT=""&gt;&lt;/NOBR&gt;&lt;/TD&gt;
+&lt;TD ALIGN="RIGHT" BACKGROUND="[LL_REPTAG_SUPPORTDIR /]tabrightline.gif" WIDTH="100%"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/TD&gt;
+[LL_WEBREPORT_ENDIF /]</PRE
+><IMG title="Step 2: Demonstration of Sample Code for WebReports to Call the Core Drag and Drop Reportview" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

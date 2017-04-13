@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Sous-balises personnalisées</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-customsubtags.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'Sous-balises personnalisées';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID14086"></A><B>Utilisation des sous-balises personnalisées avec WebReports : </B></P>
+<P><A NAME="TMPID14089"></A>Les développeurs peuvent créer leurs propres sous-balises en utilisant des documents texte classiques et les déposer dans un dossier sur le serveur, ce qui vous permet de générer des fonctions de sous-balises personnalisées en fonction de vos besoins et de les inclure dans votre affichage de rapport WebReport pour les utiliser comme n'importe quelle autre sous-balise listée dans le guide sur les balises. Il n'existe pas de restrictions relatives à ce qui peut être codé dans les sous-balises personnalisées, car elles se trouvent sur le serveur. Cela signifie que les lots de travail OScript, qui sont normalement bloqués pour l'affichage de rapport WebReport avec une écriture de script côté serveur, seront disponibles dans une sous-balise personnalisée. Le résultat sera une sous-balise WebReport qui se comporte comme toute autre sous-balise fournie avec WebReports. </P>
+<P><A NAME="TMPID14091"></A>Un exemple de sous-balise personnalisée, appelé « sample.txt » est disponible dans le dossier &lt;<I CLASS="varname">Content Server_accueil</I>>\module\webreports_n_n_n\sousbalises sur le serveur où votre instance Content Server est installée. Ce fichier est simplement un modèle. Les nouvelles sous-balises peuvent être basées sur ce fichier et enregistrées dans le même dossier. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF22"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID14097"></A><B CLASS="note">Note : </B><BR>Le service Content Server doit être redémarré pour que les nouvelles sous-balises personnalisées soient disponibles.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID14099"></A>La première ligne du modèle de sous-balise personnalisée, où vous devez spécifier le nombre de paramètres que vous voulez rendre disponibles en appellant la sous-balise, est <TT CLASS="literal">// @MINPARMS=0,@MAXPARMS=10</TT>. Ainsi, si vous spécifiez <TT CLASS="literal">// @MINPARMS=1,@MAXPARMS=1</TT>, lorsque vous appelez la sous-balise, vous devez également transmettre un paramètre. Dans votre code, vous pouvez accéder à ces paramètres en utilisant myTag&lt;<I CLASS="varname">n</I>>, où &lt;<I CLASS="varname">n</I>> est le nombre de paramètres auxquels vous voulez accéder (en commençant avec 2, car la première valeur dans myTag est un identificateur unique assigné à la sous-balise). </P>
+<P><A NAME="TMPID14104"></A>Vous pouvez vérifier que votre code de sous-balise compile correctement en utilisant la page Création de toutes les sous-balises dans la section Administration des WebReports des pages Administration. </P>
+<DIV title="Création d'une sous-balise personnalisée" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-CUSTST-EX"></A><B><IMG title="Création d'une sous-balise personnalisée" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 1-10 : Création d'une sous-balise personnalisée</B></P>
+<P class="nr1"><A NAME="TMPID14107"></A>Le texte suivant peut être enregistré dans un fichier appelé additionner_entiers.txt et créer une sous-balise appelée ADDINTEGERS. La sous-balise traite entre deux et trois paramètres et les additionne avant de renvoyer le total. Le code contient une gestion des erreurs, donc si l'un des paramètres n'est pas un nombre entier, un message d'erreur sera renvoyé à la place du total. La sous-balise pourrait s'appeler : [LL_REPTAG_'' ADDINTEGERS:2:3 /], qui renverrait 5, ou [LL_REPTAG_'' ADDINTEGERS:2:3:4 /], qui renverrait 9. [LL_REPTAG_'' ADDINTEGERS:'x':'y' /] renverrait '* ADDINTEGERS: les paramètres doivent être des entiers valides *'. </P><A NAME="AEN13379"></A>
+<PRE 
+CLASS="screen"
+>// @MINPARMS=2,@MAXPARMS=3
+function Dynamic _ADDINTEGERS( Assoc rep, integer subTagInd, List myTag, Integer rowNo=-1,Integer colNo=-1,RecArray sourceData = undefined)
+
+  // All parameters are passed as strings. 
+  Integer parm1 = Str.StringToInteger( myTag[2] )
+  Integer parm2 = Str.StringToInteger( myTag[3] )
+
+  Integer total
+
+  // Are both parameters valid integers?
+  if IsDefined( parm1 ) &amp;&amp; IsDefined( parm2 )
+    // Add the two numbers together. 
+    total = parm1 + parm2
+
+    // Check to see if the third parameter (optional) is specified. 
+    if isDefined( myTag[4] )
+      // Convert the string parameter to an integer. 
+      Integer parm3 = Str.StringToInteger( myTag[4] )
+      // Is the parameter a valid integer?
+      If IsDefined( parm3 )
+        // Add the parameter to the running total. 
+        total = total + parm3
+      end
+    end
+
+    // Is the total a valid integer?
+    if IsDefined( total )
+      // Set rep.data to the value we want to return to the WebReport. 
+      // Ensure returned data is a string type. 
+      rep.Data = Str.String( total )
+    else
+      // Return an error message
+      rep.Data = .manageError( .fSubtags, myTag, 'ADDINTEGERS', 1001, 'Numbers do not add up to a valid integer', 'LONG')
+    end
+  else
+    // Return an error message
+    rep.Data = .manageError( .fSubtags, myTag, 'ADDINTEGERS', 1002, 'Parameters must be valid integers', 'LONG')
+  end
+end</PRE
+><IMG title="Création d'une sous-balise personnalisée" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

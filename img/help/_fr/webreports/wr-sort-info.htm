@@ -1,0 +1,157 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Tri des résultats</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-sort-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'Tri des résultats';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID17396"></A>La balise de contrôle de contenu du WebReport <TT CLASS="literal">[LL_WEBREPORT_SORT &lt;<I CLASS="varname">Clés de tri</I>> &lt;<I CLASS="varname">Ordre général</I>> /]</TT> permet de trier les données en utilisant une ou plusieurs colonnes de la source de données spécifiée en tant que clés de tri. Il existe trois manières différentes de spécifier la référence de la colonne pour chaque clé de tri : </P><A NAME="AEN16653"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16654"></A><A NAME="TMPID17402"></A>Spécifiez un numéro de colonne à partir de la source de données. Vous pouvez utiliser une valeur numérique représentant le numéro de colonne de gauche à droite dans la source de données. Par exemple, <TT CLASS="literal">[LL_WEBREPORT_SORT "1" /]</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16657"></A><A NAME="TMPID17405"></A>Spécifiez un nom de colonne à partir de la source de données. Vous pouvez utiliser une valeur de texte représentant le nom de l'une des colonnes utilisées dans la source de données. Par exemple, <TT CLASS="literal">[LL_WEBREPORT_SORT "dataid" /]</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16660"></A><A NAME="TMPID17408"></A>Spécifiez une balise et des sous-balises WebReports à utiliser en tant que clés de tri. Cette fonction permet de trier selon différents critères renvoyés par les données normales via la colonne. Par exemple : <TT CLASS="literal">[LL_WEBREPORT_SORT "[LL_REPTAG=DATAID NODEINFO:NAME /]" /]</TT>. Dans cet exemple, le tri ne sera pas effectué en fonction de la colonne <TT CLASS="literal">DataId</TT>, mais en fonction du nom de l'objet DTree renvoyé par <TT CLASS="literal">NODEINFO:NAME</TT>.</P></LI></UL>
+<P><A NAME="TMPID17413"></A>Plusieurs colonnes de tri peuvent être spécifiées, permettant à l'utilisateur d'effectuer un tri dans un autre tri, etc. Nous pourrions, par exemple, trier en fonction de la première colonne, puis trier cette colonne en fonction de la deuxième colonne, et celle-ci en fonction de la troisième colonne. Voici des exemples de syntaxe et de sortie. </P>
+<P><A NAME="TMPID17414"></A><TT CLASS="literal">[LL_WEBREPORT_SORT "1" "2" "3" /]</TT></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN16669"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">colonne 1</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">colonne 2</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">colonne 3</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">a</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">27</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">zucchini</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">b</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">apple</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">b</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">8</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">carrot</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">b</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">8</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">zucchini</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">d</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">potato</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID17467"></A>Les méthodes ci-dessus peuvent être combinées pour permettre le tri de plusieurs valeurs clés, comme le montrent les exemples suivants :</P>
+<A NAME="AEN16721"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16722"></A><A NAME="TMPID17470"></A><TT CLASS="literal">[LL_WEBREPORT_SORT "1":ASC "name" "[LL_REPTAG_3 DECODE:1:Active:2:Inactive /]":ASC /]</TT></P>
+<P><A NAME="TMPID17472"></A>Le tri est effectué selon :</P>
+<A NAME="AEN16726"></A>
+<OL COMPACT="COMPACT" TYPE="a" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN16727"></A><A NAME="TMPID17475"></A>la première colonne de façon explicite dans l'ordre croissant,</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN16729"></A><A NAME="TMPID17477"></A>puis la colonne nom, également dans l'ordre croissant par défaut,</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN16731"></A><A NAME="TMPID17479"></A>ensuite, en fonction de la valeur dans la colonne 3, le tri est effectué sur la colonne Active ou Inactive, également dans l'ordre croissant.</P></LI></OL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16733"></A><A NAME="TMPID17481"></A><TT CLASS="literal">[LL_WEBREPORT_SORT "1" "name":DESC "[LL_REPTAG_3DECODE:1:Active:2:Inactive/]" /]</TT></P>
+<P><A NAME="TMPID17483"></A>Le tri est effectué selon :</P>
+<A NAME="AEN16737"></A>
+<OL COMPACT="COMPACT" TYPE="a" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN16738"></A><A NAME="TMPID17486"></A>la première colonne dans l'ordre croissant, par défaut,</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN16740"></A><A NAME="TMPID17488"></A>puis la colonne nom dans l'ordre décroissant,</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN16742"></A><A NAME="TMPID17490"></A>ensuite la troisième colonne, en ayant d'abord converti les valeurs 1 en Active et les valeurs 2 en Inactive.</P></LI></OL>
+<P><A NAME="TMPID17491"></A>En plus du paramètre d'ordre qui peut éventuellement être spécifié pour chaque clé de tri, la fonction <TT CLASS="literal">SORT</TT> prend également en charge un paramètre d'ordre général permettant de spécifier l'ordre de tri, croissant ou décroissant, qui doit être appliqué à toutes les clés de tri pour lesquelles aucun ordre n'a été spécifié. <TT CLASS="literal">DESC</TT> ou <TT CLASS="literal">ASC</TT> doivent être utilisés. Certaines syntaxes plus anciennes sont encore prises en charge. Si ce paramètre n'est pas spécifié, l'ordre de tri par défaut est <TT CLASS="literal">ASC (ascending)</TT>. Par exemple :</P>
+<P><A NAME="TMPID17496"></A><TT CLASS="literal">[LL_WEBREPORT_SORT "1" "2" DESC /]</TT></P>
+<P><A NAME="TMPID17498"></A>Dans cet exemple, l'ensemble de données serait trié dans l'ordre décroissant pour la colonne 1, puis dans l'ordre décroissant pour la colonne 2.</P></LI></OL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-sort-advnot.htm" revision="">Notes avancées</A></p></li>
+<li><p><A  HREF="wr-sort-presort.htm" revision="">Paramètres de tri prédéfinis</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

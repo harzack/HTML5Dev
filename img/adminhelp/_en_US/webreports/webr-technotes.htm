@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<title>Technical Notes on PDF Conversion</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'webr-technotes.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Manage WebReports Conversion';
+          header.title2 = 'Technical Notes on PDF Conversion';
+           header.draw();
+  </script>
+  <A NAME="AEN556"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN557"></A><A NAME="TMPID561"></A>WebReports uses the Content Server cache to determine which converted file goes to which destination. As with any cache, it has a finite life which means, although unlikely, it is possible for converted files to be in the output folder that relate to an expired cache. In this case WebReports won't know where to send the files as the destination information is lost. This situation could occur if users have been exporting and converting on a system with agents disabled on all servers. Enabling agents won't clear the backlog of files unless they have a current cache. As a rule, if anything is in the output folder more than an hour, it should be manually deleted.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN562"></A><A NAME="TMPID566"></A>Content Server agents are used to look at the output folder and check for a converted file every 5 minutes. This means agents must be enabled for conversion to function.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN565"></A><A NAME="TMPID569"></A>The exact time a file is written to the input folder, how often the conversion tool checks this folder, the time taken to do the actual conversion and the point this hits in the cycle of the 5 minute agent above will determine how long it takes for a file to appear in the export destination. This might vary from nearly instantaneous to 30 minutes depending on the system.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN567"></A><A NAME="TMPID571"></A>Folders at a network location might be specified as a UNC, for example: <TT CLASS="filename">\\192.168.255.20\disk1\PDF Conversion\input</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN570"></A><A NAME="TMPID574"></A>It is possible for an export to occur from any Content Server in a clustered environment. It is therefore essential that the input directory is defined on every machine in the cluster. The output folder is only monitored by the Content Server with the WebReports conversion agent running. It is therefore essential to specify the output folder on that server. It is, however, good practice to specify it on all instances of Content Server.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

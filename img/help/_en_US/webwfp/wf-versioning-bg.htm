@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWFP100500-H-UGD-EN-1">
+<META PiXprocLocator="webwfp">
+<title>Performing Versioning Operations</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webdoc/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-versioning-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Defining Item Handler Step Operations';
+          header.title2 = 'Performing Versioning Operations';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID5125"></A>You can configure your Workflow Map to automatically perform versioning operations on documents or compound documents in Content Server or the Workflow Map Attachments folder. When Workflow Map processing reaches an <B CLASS="GUILABEL">Item Handler</B> step, it performs the versioning operations you define on its <B CLASS="GUILABEL">Versioning</B> tab. For example, if you add a document to the Workflow Map Attachments folder and that document is modified during Workflow Map execution, you can configure the step to return the modified document as a version of the original document.</P>
+<P><A NAME="TMPID5139"></A>For documents and compound documents added to Workflow Maps as attachments from Content Server, the step can perform versioning operations on the original Content Server items in a global manner, using the Workflow Map attachments as the sources. Also, the step can perform versioning operations on specific documents or compound documents added as Workflow Map Attachments or stored in Content Server. In both cases, for any explicitly specified versioning option that involves a document, the step always implicitly creates a version of the document.</P>
+<P class="before-ul"><A NAME="TMPID5147"></A>In addition, you can configure the step to create any of the following:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4459"></A><A NAME="TMPID5150"></A>Generations of documents or compound documents</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4461"></A><A NAME="TMPID5152"></A>Revisions or releases of compound documents</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4463"></A><A NAME="TMPID5154"></A>Major versions of documents that use advanced versioning</P></LI></UL>
+<P><A NAME="TMPID5155"></A>Also, you can unreserve the original documents or compound documents.</P>
+<P><A NAME="TMPID5156"></A>For more information about versioning documents and compound documents, see <span><XPROC NAME="ExtXrefStart" HREF="lleswbd-h-ugd.wd-overview-so" FMT="" NO1ST><A  HREF="../../../help/_en_US/webdoc/wd-overview-so.htm">Working with Documents and Text Documents</A><XPROC NAME="ExtXrefEnd" HREF="lleswbd-h-ugd.wd-overview-so" FMT=""></span> and <span><XPROC NAME="ExtXrefStart" HREF="lleswbd-h-ugd.wd-releases-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/webdoc/wd-releases-bg.htm">Working with Releases and Revisions</A><XPROC NAME="ExtXrefEnd" HREF="lleswbd-h-ugd.wd-releases-bg" FMT=""></span>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF50"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P CLASS="NOTE" ALIGN="LEFT"><B>Notes: </B></P>
+<UL class="NOTE">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4471"></A><A NAME="TMPID5162"></A>You cannot create a generation of a compound document that does not have a release or revision.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4473"></A><A NAME="TMPID5164"></A>When you manually make a generation of a document or compound document in Content Server, you must explicitly specify the target location where the generation will be created. The <B CLASS="GUILABEL">Item Handler</B> step, however, creates the generation in the container in which the selected target item is stored.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF51">Working With Compound Documents</A></P>
+<P><A NAME="TMPID5168"></A>When you perform operations on compound documents, the <B CLASS="GUILABEL">Item Handler</B> step performs operations on elements that have identical names. For example, if a source compound document named “MyDocuments” contains “DocumentA.doc”, “DocumentB.doc”, and “DocumentC.doc”, and the target is a compound document with the same name that contains “DocumentA.doc”, “DocumentB.doc”, and “DocumentX.doc”, the step performs the versioning request on “DocumentA.doc” and “DocumentB.doc”, but ignores “DocumentC.doc” and “DocumentX.doc”.</P>
+<P><A NAME="TMPID5181"></A>If you want to create a version of “DocumentX.doc” using “DocumentC.doc”, you can specify that operation as a specific target.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF52">Creating Major Versions</A></P>
+<P><A NAME="TMPID5185"></A>When you use the <B CLASS="GUILABEL">Item Handler</B> step to create versions of a document, you can configure the step to create a major version if the document uses advanced versioning. The document you specify as the source in a major versioning request can use either standard or advanced versioning, but the document identified as the versioning target must use advanced versioning. If you configure the step to add a major version to a document that uses standard versioning, the <B CLASS="GUILABEL">Item Handler</B> step ignores the major versioning request and creates a standard version.</P>
+<P><A NAME="TMPID5188"></A>For example, if Document A uses advanced versioning and Document B uses standard versioning, you can add Document B as a major version of Document A. However, if you want to add Document A as a version of Document B, the <B CLASS="GUILABEL">Item Handler</B> step can add Document A as a standard version only, because Document B does not use advanced versioning. Also, you cannot use the <B CLASS="GUILABEL">Item Handler</B> step to change a document's versioning type.</P>
+<P><A NAME="TMPID5191"></A>For more information about advanced versioning, see <span><XPROC NAME="ExtXrefStart" HREF="lleswbd-h-ugd.wd-versions-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/webdoc/wd-versions-bg.htm">Working with Versions</A><XPROC NAME="ExtXrefEnd" HREF="lleswbd-h-ugd.wd-versions-bg" FMT=""></span>.</P>
+<P><A NAME="TMPID5193"></A>By default, the advanced versioning feature is enabled in Content Server, but the feature can be disabled by the administrator. Even if the advanced versioning feature is disabled, the <B CLASS="GUILABEL">Versioning</B> tab displays the <B CLASS="GUILABEL">Create major Version</B> check box, which allows you to specify major version requests. If Content Server processes an <B CLASS="GUILABEL">Item Handler</B> step that contains a major version request when advanced versioning is disabled, the system creates standard versions instead of major versions.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF53"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID5200"></A><B CLASS="NOTE">Note: </B><BR>Before the <B CLASS="GUILABEL">Item Handler</B> step can create a major version of a document, the Content Server user account assigned to process the step must have Edit permission for the document.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF54">Configuring Versioning Operations on Workflow Map Attachments</A></P>
+<P class="before-ul"><A NAME="TMPID5206"></A>You specify versioning operations for the documents and compound documents you have added from Content Server to the Workflow Map Attachments folder. For all document and compound document attachments, you can specify the following options:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4519"></A><A NAME="TMPID5212"></A><B CLASS="GUILABEL">None</B>, to indicate that no document or compound document is returned to Content Server as a new version of the original.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4523"></A><A NAME="TMPID5216"></A><B CLASS="GUILABEL">If Modified</B>, to indicate that only modified documents or compound documents are returned to Content Server as new versions of the originals.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4527"></A><A NAME="TMPID5220"></A><B CLASS="GUILABEL">All</B>, to indicate that all documents and compound documents are returned to Content Server as new versions of the originals.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID5223"></A>In addition, you can specify that the <B CLASS="GUILABEL">Item Handler</B> step creates a generation of all documents and performs one of the following operations for all compound documents:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4534"></A><A NAME="TMPID5227"></A><B CLASS="GUILABEL">None</B>, which performs no compound document operations.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4537"></A><A NAME="TMPID5230"></A><B CLASS="GUILABEL">Make Release</B>, which creates a release of compound documents.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4540"></A><A NAME="TMPID5233"></A><B CLASS="GUILABEL">Make Revision</B>, which creates a revision of compound documents.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4543"></A><A NAME="TMPID5236"></A><B CLASS="GUILABEL">Make Generation</B>, which creates a generation of compound documents.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4546"></A><A NAME="TMPID5239"></A><B CLASS="GUILABEL">Make Release and Generation</B>, which creates a release and generation of compound documents.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4549"></A><A NAME="TMPID5242"></A><B CLASS="GUILABEL">Make Revision and Generation</B>, which creates a revision and generation of compound documents.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="CONFVERSION">Configuring Versioning Operations on Specific Targets</A></P>
+<P><A NAME="TMPID5245"></A>You can configure the <B CLASS="GUILABEL">Item Handler</B> step to perform versioning operations on specific documents or compound documents added as Workflow Map attachments or stored in Content Server. You configure a versioning request for each document or compound document you want to process.</P>
+<P class="before-ul"><A NAME="TMPID5250"></A>A versioning request consists of the source item, which is the document or compound document that represents the version, and a target item, which is the document or compound document to which the source is applied as a version. The source and target can be any of the following:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4559"></A><A NAME="TMPID5253"></A>Workflow Map attachments</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4562"></A><A NAME="TMPID5257"></A>Content Server item</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4565"></A><A NAME="TMPID5260"></A>Item Reference attribute</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF55">Unreserving Targets</A></P>
+<P><A NAME="TMPID5262"></A>You can unreserve the target item if it is reserved when the operation is performed.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF56">Creating Generations</A></P>
+<P><A NAME="TMPID5264"></A>You can make a generation of the source item in addition to a version. Also, you can specify a name for the generation by overriding the default generation name.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF57">Creating Releases or Revisions</A></P>
+<P><A NAME="TMPID5266"></A>You can make a release or revision of a compound document source item in addition to a version or generation. If you want to override the default release or revision name, you can specify a name for the release or revision.</P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wf-versioning-attach-p.htm" revision="">To Configure Versioning Operations on Workflow Map Attachments</A></p></li>
+<li><p><A  HREF="wf-versioning-targets-p.htm" revision="">To Configure Versioning Operations on Specific Targets</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

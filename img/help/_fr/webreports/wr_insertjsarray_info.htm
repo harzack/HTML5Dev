@@ -1,0 +1,153 @@
+<!-- wr_insertjsarray_info.html -->
+<HTML>
+	<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+	<TITLE>JavaScript Arrays</TITLE>
+	<LINK REL="stylesheet" HREF="../../ix21.css">
+	<script language="JavaScript" src="../../llhelp.js">
+	</script>
+	</HEAD>
+	<BODY ONLOAD="checkFrame('wr_insertjsarray_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+		<SCRIPT LANGUAGE="JavaScript">
+			var header = new AdminHeader();
+			header.title1 = 'Advanced Information';
+			header.title2 = 'JavaScript Arrays';
+			header.draw();
+		</SCRIPT>
+		<p class="body">
+			The content control tag <SPAN class="gui">[LL_WEBREPORT_INSERTJSARRAY /]</span> provides the
+			ability to automatically insert a JavaScript array with all of the report data populated. This feature is useful
+			for applications where the report data is to be manipulated using JavaScript in the client.
+		</p>
+		<p class="body">
+			The data in the report is converted to the array according to the following criteria:
+			<ul class="body" type="disc">
+				<li>A JavaScript array is created by default with the name <b>repData</b>. If an alternative array name is provided
+				using the <b>ARRAYNAME:</b> parameter, then the array is created using the specified name.</li>
+				<li>The array is indexed numerically from 0 (zero) through to an index which is one less than the length of the array.</li>
+				<li>The columns are created as a second dimension of the row array (e.g. an array of arrays). Columns are indexed numerically
+				from 0 (zero) to an index which is one less than the total number of columns.</li>
+				<li>A series of constants are also created which can be used to reference the column indices. Each constant is named according to
+				the column which it references.</li>
+				<li>If the inserted JavaScript needs to be enclosed in opening and closing SCRIPT tags then the <b>SCRIPT</b> parameter
+				should be included.</li>
+				<li>For data where several columns are repeated and only one column is consistently unique, the <b>MULTIVALUE:</b> parameter
+				can be used. This parameter will create a third array dimension for the unique column. See below:</li>
+			</ul>
+		</p>
+		<p class="body"><u><SPAN class="gui">Examples</SPAN></u></p>
+		<p class="body">
+			<b>Example 1:</b>
+		</p>
+		<table class="body" border="1" summary="">
+			<tr bgcolor="lightgray">
+				<td><B>Id</B></td>
+				<td><B>FirstName</B></td>
+				<td><B>LastName</B></td>
+			</tr>
+			<tr>
+				<td>1111</td>
+				<td>James</td>
+				<td>Bond</td>
+			</tr>
+			<tr>
+				<td>2222</td>
+				<td>Johnny</td>
+				<td>English</td>
+			</tr>
+				<tr>
+				<td>3333</td>
+				<td>Frank</td>
+				<td>Smith</td>
+			</tr>
+		</table>
+		<br>
+		<p class="body">
+			Given a data source returning data according to the table above, the tag <b>[LL_WEBREPORT_INSERTJSARRAY /]</b> would generate the following:
+		</p>
+		<p class="gui">
+			<PRE>
+				&lt;SCRIPT&gt;
+					var repData = new Array();
+					var ID = 0;
+					var FIRSTNAME = 1;
+					var LASTNAME = 2;
+					repData[0] = new Array("1111","James","Bond");
+					repData[1] = new Array("2222","Johnny","English");
+					repData[2] = new Array("3333","Frank","Smith");
+				&lt;/SCRIPT&gt;
+			</PRE>
+		</p>
+		<p class="body">
+			<b>Example 2:</b>
+		</p>
+		<table class="body" border="1" summary="">
+			<tr bgcolor="lightgray">
+				<td><B>Id</B></td>
+				<td><B>FirstName</B></td>
+				<td><B>LastName</B></td>
+				<td><B>ChildName</B></td>
+			</tr>
+			<tr>
+				<td>1111</td>
+				<td>James</td>
+				<td>Bond</td>
+				<td>Matthew</td>
+			</tr>
+				<tr>
+				<td>1111</td>
+				<td>James</td>
+				<td>Bond</td>
+				<td>Jonathan</td>
+			</tr>
+				<tr>
+				<td>1111</td>
+				<td>James</td>
+				<td>Bond</td>
+				<td>Emily</td>
+			</tr>
+			<tr>
+				<td>2222</td>
+				<td>Johnny</td>
+				<td>English</td>
+				<td>George</td>
+			</tr>
+				<tr>
+				<td>2222</td>
+				<td>Johnny</td>
+				<td>English</td>
+				<td>Mavis</td>
+			</tr>
+				<tr>
+				<td>3333</td>
+				<td>Frank</td>
+				<td>Smith</td>
+				<td>N/A</td>
+			</tr>
+		</table>
+		<br>
+		<p class="body">
+			Given a data source returning data according to the table above, the tag <b>[LL_WEBREPORT_INSERTJSARRAY MULTIVALUE:CHILDNAME /]</b> would generate the following:
+		</p>
+		<p class="gui">
+			<PRE>
+			&lt;SCRIPT&gt;
+				var repData = new Array();
+				var ID = 0;
+				var FIRSTNAME = 1;
+				var LASTNAME = 2;
+				repData[0] = new Array("1111","James","Bond",new Array("Matthew", "Jonathan", "Emily"));
+				repData[1] = new Array("2222","Johnny","English",new Array("George", "Mavis"));
+				repData[2] = new Array("3333","Frank","Smith",new Array("N/A"));
+			&lt;/SCRIPT&gt;
+			</PRE>
+		</p>
+		<p class="body">
+			In this example, the MULTIVALUE option makes it possible to compensate for the redundancy of the first three columns. Six possible rows have
+			been reduced to three rows by creating another level of JavaScript array.
+		</P>
+		<SCRIPT LANGUAGE="JavaScript">
+			new AdminFooter().draw();
+		</SCRIPT>
+	</body>
+</HTML>

@@ -1,0 +1,327 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle des documents</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-doc-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Syntaxe du fichier de contrôle Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle des documents';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="DOCTAG01">document</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="DOCTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID1246"></A>Utilisez <TT CLASS="literal">type="document"</TT> sur la balise <TT CLASS="literal">&lt;node&gt;</TT> pour créer, mettre à jour ou supprimer un document.  </P>
+<P CLASS="bridgehead-subheading3"><A NAME="DOCTAG03">Syntaxe</A></P><A NAME="AEN1198"></A>
+<PRE 
+CLASS="screen"
+>&lt;node type="document" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="DOCTAG04">Utilisation</A></P>
+<A NAME="AEN1200"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1201"></A><A NAME="TMPID1259"></A>La création, mise à jour ou suppression d'un document peut inclure un certain nombre de balises subordonnées : <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-FILE-RF">Balise file</A></span>, <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-MIME-RF">Balise mime</A></span>, <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-VERCON-RF">Balise versioncontrol</A></span>, <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-VERMAJ-RF">Balise versionmajor</A></span>, <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-VERMIN-RF">Balise versionminor</A></span> et <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-VERTYP-RF">Balise versiontype</A></span>. Ces balises subordonnées sont détaillées ci-dessous.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1209"></A><A NAME="TMPID1267"></A>La création, mise à jour ou suppression d'un document peut également nécessiter un certain nombre de balises subordonnées, telles que la balise <TT CLASS="literal">location</TT>. Ces autres balises subordonnées sont détaillées dans <span><A HREF="llesoi-cfilesamp-bg.htm">Descriptions et syntaxe des balises Importateur d'objet</A></span>.</P></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="DOCTAG05">Notes</A></P>
+<A NAME="AEN1214"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1215"></A><A NAME="TMPID1274"></A>Livelink Enterprise Server 9.6 permet de définir des versions principales et secondaires pour un même document. Object Importer prend en charge cette fonctionnalité, avec versions, et l'ancienne fonctionnalité, sans version. Pour pouvoir utiliser la fonctionnalité sans version, aucune nouvelle opération n'est requise en ce qui concerne le fichier de contrôle d'importation.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1218"></A><A NAME="TMPID1277"></A>Pour pouvoir utiliser la fonctionnalité avec versions, vous devez ajouter la balise <TT CLASS="literal">&lt;versioncontrol&gt;</TT> au fichier de contrôle d'importation lors de la création du document.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1221"></A><A NAME="TMPID1280"></A>Lorsque vous ajoutez une version à document existant placé sous contrôle de version avancée, utilisez la balise <TT CLASS="literal">&lt;versiontype&gt;</TT>. Au lieu de la balise <TT CLASS="literal">&lt;versiontype&gt;</TT> , vous pouvez utiliser la balise <TT CLASS="literal">&lt;versionmajor&gt;</TT> ou <TT CLASS="literal">&lt;versionminor&gt;</TT>. Des informations détaillées sur les balises <TT CLASS="literal">&lt;versiontype&gt;</TT>, <TT CLASS="literal">&lt;versionmajor&gt;</TT>et <TT CLASS="literal">&lt;versionminor&gt;</TT> sont fournies ci-dessous.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1230"></A><A NAME="TMPID1289"></A>Si les balises <TT CLASS="literal">&lt;versiontype&gt;</TT>, <TT CLASS="literal">&lt;versionmajor&gt;</TT> et <TT CLASS="literal">&lt;versionminor&gt;</TT> ne sont pas spécifiées dans le fichier de contrôle d'importation, le document sera ajouté en utilisant l'incrément de version mineure suivant. Si les balises <TT CLASS="literal">&lt;versiontype&gt;</TT>, <TT CLASS="literal">&lt;versionmajor&gt;</TT> et <TT CLASS="literal">&lt;versionminor&gt;</TT> sont spécifiées dans le fichier de contrôle d'importation et que le document ne se trouve pas sous contrôle de version avancée, les balises sont ignorées.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1297"></A><B CLASS="important">Important : </B><BR>L'utilisation des balises <TT CLASS="literal">&lt;versiontype&gt;</TT>, <TT CLASS="literal">&lt;versionmajor&gt;</TT> et <TT CLASS="literal">&lt;versionminor&gt;</TT> dans le même fichier de contrôle d'importation génère une erreur.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="DOCTAG06">Exemple</A></P>
+<P><A NAME="TMPID1303"></A>Exemple Pour créer une version mineure d'un document nommé « guidelines.doc » dans le dossier « Documents » de l'espace de travail Entreprise, dossier « Projets » :</P><A NAME="AEN1248"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;file&gt;c:\temp\guidelines.doc&lt;/file&gt;
+    &lt;versioncontrol&gt;TRUE&lt;/versioncontrol&gt;
+    &lt;versiontype&gt;MINOR&lt;/versiontype&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P><A NAME="TMPID1308"></A>Pour consulter d'autres exemples de balises <TT CLASS="literal">document</TT>, consultez la section <span><A HREF="llesoi-cfile-docsamp-rf.htm">Exemples de fichier de contrôle d'importation de documents</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CFILE-FILE-RF">Balise file</A></P>
+<P><A NAME="TMPID1313"></A>La balise <TT CLASS="literal">file</TT> définit le nom du chemin d'accès absolu du fichier à importer dans Content Server. La syntaxe de cette balise est la suivante : <A NAME="AEN1256"></A>
+<PRE 
+CLASS="screen"
+>&lt;file&gt;c:/documents/readme.txt&lt;/file&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1257"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1330"></A>La balise <TT CLASS="literal">file</TT> ne peut exister seule et doit être contenue dans une balise <TT CLASS="literal">&lt;node type="document"</TT>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1334"></A>La balise <TT CLASS="literal">file</TT> est obligatoire si <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-MIME-RF">Balise mime</A></span> est utilisé.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1338"></A>La balise <TT CLASS="literal">file</TT> est obligatoire dans les cas suivants :</P><A NAME="AEN1280"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1281"></A><A NAME="TMPID1342"></A><TT CLASS="literal">&lt;node type="document" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1284"></A><A NAME="TMPID1345"></A><TT CLASS="literal">&lt;node type="document" action="addversion"&gt;</TT></P></LI></UL></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">4. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1348"></A>La balise <TT CLASS="literal">file</TT> est facultative dans le cas suivant :</P><A NAME="AEN1290"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1291"></A><A NAME="TMPID1352"></A><TT CLASS="literal">&lt;node type="document" action="update"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Le chemin d'accès au fichier doit être visible par le serveur traitant le fichier de contrôle d'importation (lecteur local ou mappé). Les fichiers à importer dans Content Server ne doivent pas être placés n'importe où dans l'arborescence de l'instance de Content Server. Par exemple, il est judicieux de placer ces fichiers à l'emplacement suivant : <TT CLASS="filename">C:/temp/</TT>.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CFILE-MIME-RF">Balise mime</A></P>
+<P><A NAME="TMPID1361"></A>La balise <TT CLASS="literal">mime</TT> permet d'affecter le type mime du document. La syntaxe de cette balise est la suivante : <A NAME="AEN1302"></A>
+<PRE 
+CLASS="screen"
+>&lt;mime&gt;image/jpeg&lt;/mime&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1303"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1377"></A>La balise <TT CLASS="literal">mime</TT> ne peut exister seule. Elle doit être contenue dans une balise <TT CLASS="literal">&lt;node type="document"</TT> et être utilisée en association avec <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-FILE-RF">Balise file</A></span>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1382"></A>La balise <TT CLASS="literal">mime</TT> est facultative dans les cas suivants :</P><A NAME="AEN1323"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1324"></A><A NAME="TMPID1386"></A><TT CLASS="literal">&lt;node type="document" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1327"></A><A NAME="TMPID1389"></A><TT CLASS="literal">&lt;node type="document" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1330"></A><A NAME="TMPID1392"></A><TT CLASS="literal">&lt;node type="document" action="addversion"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1333"></A><A NAME="TMPID1395"></A><TT CLASS="literal">&lt;node type="document" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Si cette balise n'est pas spécifiée, Content Server essaiera de déterminer le type mime à partir de l'extension du document, en s'appuyant sur le fichier de mappage <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\config\mime.types</TT>. </TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CFILE-VERCON-RF">Balise versioncontrol</A></P>
+<P><A NAME="TMPID1405"></A>La balise <TT CLASS="literal">versioncontrol</TT> permet de prendre en charge l'importation de versions de document majeures et mineures. La syntaxe de cette balise est la suivante : <A NAME="AEN1345"></A>
+<PRE 
+CLASS="screen"
+>&lt;versioncontrol&gt;TRUE&lt;/versioncontrol&gt;
+&lt;versiontype&gt;MINOR&lt;/versiontype&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1346"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1421"></A>La balise <TT CLASS="literal">versioncontrol</TT> ne peut exister seule et doit être contenue dans une balise <TT CLASS="literal">&lt;node type="document"</TT>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1425"></A>La balise <TT CLASS="literal">versioncontrol</TT> est obligatoire si <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-VERTYP-RF">Balise versiontype</A></span> est utilisé.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1429"></A>La balise <TT CLASS="literal">versioncontrol</TT> est obligatoire dans le cas suivant :</P><A NAME="AEN1369"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1370"></A><A NAME="TMPID1433"></A><TT CLASS="literal">&lt;node type="document" action="addversion"&gt;</TT>(quand ni la balise <TT CLASS="literal">versionmajor</TT> ni la balise <TT CLASS="literal">versionminor</TT> ne sont utilisées).</P></LI></UL></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">4. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1438"></A>La balise <TT CLASS="literal">versioncontrol</TT> est facultative dans les cas suivants :</P><A NAME="AEN1378"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1379"></A><A NAME="TMPID1442"></A><TT CLASS="literal">&lt;node type="document" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1382"></A><A NAME="TMPID1445"></A><TT CLASS="literal">&lt;node type="document" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1385"></A><A NAME="TMPID1448"></A><TT CLASS="literal">&lt;node type="document" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1453"></A>Lorsque la valeur est définie sur <TT CLASS="literal">TRUE</TT>, la version importée dans Content Server correspondra à l'incrément de version mineure suivant.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1457"></A>Si vous n'utilisez pas de versions majeures/mineures, n'incluez pas cette balise.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CFILE-VERMAJ-RF">Balise versionmajor</A></P>
+<P><A NAME="TMPID1460"></A>La balise <TT CLASS="literal">versionmajor</TT> peut être utilisée à la place de la balise <TT CLASS="literal">&lt;versiontype&gt;MAJOR&lt;/versiontype&gt;</TT> pour indiquer un numéro de version majeure spécifique. La syntaxe de cette balise est la suivante : <A NAME="AEN1400"></A>
+<PRE 
+CLASS="screen"
+>&lt;versionmajor&gt;2&lt;/versionmajor&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1401"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1477"></A>La balise <TT CLASS="literal">versionmajor</TT> ne peut exister seule et doit être contenue dans une balise <TT CLASS="literal">&lt;node type="document"</TT>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1481"></A>La balise <TT CLASS="literal">versionmajor</TT> est facultative dans les cas suivants :</P><A NAME="AEN1420"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1421"></A><A NAME="TMPID1485"></A><TT CLASS="literal">&lt;node type="document" action="addversion"&gt;</TT>(quand ni la balise <TT CLASS="literal">versionminor</TT> ni la balise <TT CLASS="literal">versiontype</TT> ne sont utilisées).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1426"></A><A NAME="TMPID1490"></A><TT CLASS="literal">&lt;node type="document" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1429"></A><A NAME="TMPID1493"></A><TT CLASS="literal">&lt;node type="document" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1432"></A><A NAME="TMPID1496"></A><TT CLASS="literal">&lt;node type="document" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">L'importateur d'objet vérifie que la version majeure que vous entrez est supérieure à la dernière version ; dans le cas contraire, l'importateur d'objet émet une erreur.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CFILE-VERMIN-RF">Balise versionminor</A></P>
+<P><A NAME="TMPID1502"></A>La balise <TT CLASS="literal">versionminor</TT> peut être utilisée à la place de la balise <TT CLASS="literal">&lt;versiontype&gt;MINOR&lt;/versiontype&gt;</TT> pour indiquer un numéro de version mineure spécifique. La syntaxe de cette balise est la suivante : <A NAME="AEN1441"></A>
+<PRE 
+CLASS="screen"
+>&lt;versionminor&gt;5&lt;/versionminor&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1442"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1519"></A>La balise <TT CLASS="literal">versionminor</TT> ne peut exister seule et doit être contenue dans une balise <TT CLASS="literal">&lt;node type="document"</TT>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1523"></A>La balise <TT CLASS="literal">versionminor</TT> est facultative dans les cas suivants :</P><A NAME="AEN1461"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1462"></A><A NAME="TMPID1527"></A><TT CLASS="literal">&lt;node type="document" action="addversion"&gt;</TT>(quand ni la balise <TT CLASS="literal">versionmajor</TT> ni la balise <TT CLASS="literal">versiontype</TT> ne sont utilisées).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1467"></A><A NAME="TMPID1532"></A><TT CLASS="literal">&lt;node type="document" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1470"></A><A NAME="TMPID1535"></A><TT CLASS="literal">&lt;node type="document" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1473"></A><A NAME="TMPID1538"></A><TT CLASS="literal">&lt;node type="document" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">L'importateur d'objet vérifie que la version mineure que vous entrez est supérieure à la dernière version ; dans le cas contraire,l'importateur d'objet génère une erreur.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CFILE-VERTYP-RF">Balise versiontype</A></P>
+<P><A NAME="TMPID1544"></A>La balise <TT CLASS="literal">versiontype</TT> permet de prendre en charge l'importation de versions de document majeures ou mineures. La syntaxe de cette balise est la suivante : <A NAME="AEN1481"></A>
+<PRE 
+CLASS="screen"
+>&lt;versioncontrol&gt;FALSE&lt;/versioncontrol&gt;
+&lt;versiontype&gt;MAJOR&lt;/versiontype&gt;</PRE
+> <A NAME="AEN1482"></A>
+<PRE 
+CLASS="screen"
+>&lt;versioncontrol&gt;TRUE&lt;/versioncontrol&gt;
+&lt;versiontype&gt;MINOR&lt;/versiontype&gt;</PRE
+> </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1483"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1561"></A>La balise <TT CLASS="literal">versiontype</TT> ne peut exister seule et doit être contenue dans une balise <TT CLASS="literal">&lt;node type="document"</TT>. Elle doit aussi être associée à <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-VERCON-RF">Balise versioncontrol</A></span>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1566"></A>La balise <TT CLASS="literal">versiontype</TT> est facultative dans les cas suivants :</P><A NAME="AEN1503"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1504"></A><A NAME="TMPID1570"></A><TT CLASS="literal">&lt;node type="document" action="addversion"&gt;</TT>(quand ni la balise <TT CLASS="literal">versionmajor</TT> ni la balise <TT CLASS="literal">versionminor</TT> ne sont utilisées).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1509"></A><A NAME="TMPID1575"></A><TT CLASS="literal">&lt;node type="document" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1512"></A><A NAME="TMPID1578"></A><TT CLASS="literal">&lt;node type="document" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1515"></A><A NAME="TMPID1581"></A><TT CLASS="literal">&lt;node type="document" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1586"></A>Lorsque la valeur est définie sur <TT CLASS="literal">MAJOR</TT>, la version importée dans Content Server correspondra à l'incrément de version majeure suivant.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1590"></A>Lorsque la valeur est définie sur <TT CLASS="literal">MINOR</TT>, la version importée dans Content Server correspondra à l'incrément de version mineure suivant.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

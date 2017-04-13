@@ -1,0 +1,349 @@
+<!-- wr_logicexpression_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Logical Expressions</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_logicexpression_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+
+<SCRIPT LANGUAGE="JavaScript">
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Logical Expressions';
+        header.draw();
+</SCRIPT>
+
+<p class="body">
+WebReports provides several conditional tags to allow selective filtering of the output using logical
+expressions. Examples of the tags which support logical expressions include:
+<SPAN class="gui">[LL_WEBREPORT_EXITIF (logical expression) /], [LL_WEBREPORT_INCLUDEIF (logical expression) /] and
+[LL_WEBREPORT_IF (logical expression) /]
+</span>
+</p>
+
+<p class="body">
+Logic expressions for these tags are made up of one or more logical clauses which are separated by a logical boolean
+operator (<SPAN class="gui">AND, OR, &&, ||</span>). For example:
+<SPAN class="gui">
+<i>clause1</i> AND <i>clause2</i> OR <i>clause3</i>
+</span>
+</p>
+<p class="body">
+Each one of these clauses is made up of two operands which are compared using one of the comparison operators
+(see table below for a list of supported operators). For example, each clause is in the form:
+<SPAN class="gui">
+<i>"parmA"</i> == <i>"parmB"</i>
+</span>
+</p>
+<p class="body">
+In these clauses each operand can be either a constant value or one of the WebReports report tags which is supported
+for use in a logic expression (currently variables are not supported in IF/ENDIF expressions and the ACTUALROWS tag cannot 
+be used within a row section). For example:
+<SPAN class="gui">
+"[LL_REPTAG_TOTALROWS /]" >= "10"
+</span>
+</p>
+<p class="body">
+Using these two concepts a logical expression with multiple clauses could look like this: <BR>
+<SPAN class="gui">
+[LL_WEBREPORT_IF "[LL_REPTAG_TOTALROWS /]" >= "10" AND "[LL_REPTAG_&reptype /]" == "parmB" /]<BR>
+...<BR>
+[LL_WEBREPORT_ENDIF /]<BR>
+</span>
+</p>
+
+<p class="gui">
+<u><a name="operators"></a>Operators</u>
+</p>
+<p class="body">
+WebReports support a variety of logical operators which are described in the following table.<br><br>
+
+<table border="1" cellpadding="5">
+	<tr class="body" bgcolor="lightgray" >
+		<td><B>Operator</B></td>
+		<td><B>Meaning</B></td>
+		<td><B>Notes</B></td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;==</td>
+		<td>Equal to</td>
+		<td>Performs a case-insensitive string compare.<BR>
+		If the RKTEngine is enabled, optionally append :USECASE to perform a case-sensitive comparison.</td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;!= or &lt&gt</td>
+		<td>Not equal to</td>
+		<td>Performs a case-insensitive string compare.<BR>
+		If the RKTEngine is enabled, optionally append :USECASE to perform a case-sensitive comparison.</td>
+	</tr>	
+	<tr class="body">
+		<td>&nbsp;&lt=</td>
+		<td>Less than or equal to</td> 
+		<td>
+		Compares the operands in the following manner:
+			<ul type="disc">
+			<li>If both operands can be treated as integers, an integer compare is performed;</li>
+			<li>Otherwise if both operands can be treated as dates a <a href="#datecomparison">date compare</a> is performed;</li> 
+			<li>Otherwise a string compare is performed.</li>
+			</ul>
+		</td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;&gt=</td>
+		<td>Greater than or equal to</td> 
+		<td>
+		Compares the operands in the following manner:
+			<ul type="disc">
+			<li>If both operands can be treated as integers, an integer compare is performed;</li>
+			<li>Otherwise if both operands can be treated as dates a <a href="#datecomparison">date compare</a> is performed;</li> 
+			<li>Otherwise a string compare is performed.</li>
+			</ul>
+		</td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;&lt</td>
+		<td>Less than</td> 
+		<td>
+		Compares the operands in the following manner:
+			<ul type="disc">
+			<li>If both operands can be treated as integers, an integer compare is performed;</li>
+			<li>Otherwise if both operands can be treated as dates a <a href="#datecomparison">date compare</a> is performed;</li> 
+			<li>Otherwise a string compare is performed.</li>
+			</ul>
+		</td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;&gt</td>
+		<td>Greater than</td> 
+		<td>
+		Compares the operands in the following manner:
+			<ul type="disc">
+			<li>If both operands can be treated as integers, an integer compare is performed;</li>
+			<li>Otherwise if both operands can be treated as dates a <a href="#datecomparison">date compare</a> is performed;</li> 
+			<li>Otherwise a string compare is performed.</li>
+			</ul>
+		</td>
+	</tr>
+	<tr class="body">
+		<td>IN</td>
+		<td>Second operand contains first operand</td> 
+		<td>
+		Compares the operands as strings returning TRUE if the first operand is contained at least once within the second operand.<BR>
+		The comparison is case-insensitive by default.<BR>
+		If the RKTEngine is enabled, optionally append :USECASE to perform a case-sensitive comparison.<BR>
+		If either operand is an empty string, IN returns TRUE.
+		</td>
+	</tr>
+	<tr class="body">
+		<td>NOTIN</td>
+		<td>Second operand does not contain first operand</td> 
+		<td>
+		Compares the operands as strings returning FALSE if the first operand is contained at least once within the second operand.<BR>
+		The comparison is case-insensitive by default.<BR>
+		If the RKTEngine is enabled, optionally append :USECASE to perform a case-sensitive comparison.<BR>
+		If either operand is an empty string, NOTIN returns FALSE.
+		</td>
+	</tr>
+	<tr class="body">
+		<td>STARTIN</td>
+		<td>Second operand starts with first operand</td> 
+		<td>
+		Compares the operands as strings returning TRUE if the first operand appears at the start of the second operand.<BR>
+		The comparison is case-insensitive by default.<BR>
+		If the RKTEngine is enabled, optionally append :USECASE to perform a case-sensitive comparison.<BR>
+		If either operand is an empty string, STARTIN returns TRUE.
+		</td>
+	</tr>
+	<tr class="body">
+		<td>CHILDOF</td>
+		<td>First operand is a child node of the second operand</td> 
+		<td>
+		Treats the operands as Content Server Nodes returning TRUE if the first node is contained directly or indirectly by the second node. 
+		If either operand is not a valid Content Server object ID, CHILDOF returns FALSE. 
+		If either operand is an empty string, CHILDOF returns TRUE.
+		</td>
+	</tr>
+	<tr class="body">
+		<td>NOTCHILDOF</td>
+		<td>First operand is a not child node of the second operand</td> 
+		<td>
+		Treats the operands as Content Server Nodes returning FALSE if the first node is contained directly or indirectly by the second node. 
+		If either operand is not a valid Content Server object ID, NOTCHILDOF returns TRUE. 
+		If either operand is an empty string, NOTCHILDOF returns FALSE. 
+		</td>
+	</tr>
+</table>
+</p>
+
+<p class="body">
+<a name="datecomparison"></a><B><u>Treatment of Dates in Logical Expressions</u></B>
+</p>
+
+<p class="body">
+For certain operators ( &lt;=, &gt;=, &lt, &gt ) WebReports first attempts to convert the string operands into integers.
+If conversion to integer is unsuccessful, WebReports attmepts to convert the operands into dates.  (In reality operands cannot have a type as they are all raw strings; 
+however, strings conforming to a particular format can be interpreted as a type such as integer or date). 
+Only if the strings match any of the date formats described in the table below will they be converted into dates and compared as dates.
+The supported formats match those used by common WebReports tags and data source dates.
+<br><br>
+All the following examples will be treated as dates by WebReports:
+</p>
+
+<p class="body">
+<table border="1" cellpadding="5">
+	<tr class="body" bgcolor="lightgray" >
+		<td><B>Tag</B></td>
+		<td><B>Date Format Produced</B></td>
+		<td><B>Notes</B></td>
+	</tr>
+	<tr class="body">
+		<td>[LL_REPTAG_DATE /]</td>
+		<td>May 17 2007</td>
+		<td>Current date from Livelink Server.</td>
+	</tr>
+	<tr class="body">
+		<td>[LL_REPTAG_DATETIME /]</td>
+		<td>Thu May 17 11:59:04 2007</td>
+		<td>Current date and time from Livelink Server.</td>
+	</tr>
+	<tr class="body">
+		<td>[LL_REPTAG=CreateDate /]</td>
+		<td>Thu May 17 11:59:04 2007</td>
+		<td>Date and time from DTree table (same format from SQL Server or Oracle database).</td>
+	</tr>
+	<tr class="body">
+		<td>[LL_REPTAG=DataId NODEINFO:CreateDate /]</td>
+		<td>Thu May 17 11:59:04 2007</td>
+		<td>Date and time from NODEINFO sub-tag.</td>
+	</tr>
+	<tr class="body">
+		<td>[LL_REPTAG_&dateParm /]</td>
+		<td>D/2007/5/17:8:13:0</td>
+		<td>This is a WebReports parameter defined as a date in the parameters tab with the time field enabled.
+		The time shown here is 8:13 AM.
+		The unusual format is an internal system format used by Livelink to represent dates stored as strings.
+		Please note that a WebReports parameter that is not defined as a date in the parameters tab will not be converted to a date unless it's
+		contents follows the format shown. For example a string parameter containing 5/17/2007 will not be converted to a date for comparison.</td>
+	</tr>
+	<tr class="body">
+		<td>[LL_REPTAG_&inputlabel1 /]</td>
+		<td>D/2007/5/17:0:0:0</td>
+		<td>Date input parameter defined in LiveReport (and not defined in WebReports Parameter tab). No time element can be specified.</td>
+	</tr>
+</table>
+</p>
+
+<p class="body">
+<B><u>Processing Order</u></B>
+</p>
+<p class="body">
+The WebReports logic clauses do not support any bracketing to force expressions to be evaluated in a particular order.
+The order of evaluation of any logical expression is that each clause is evaluated from left to right. The logical
+result of each clause (TRUE or FALSE) is compared with the result of the next clause to the right. The combined
+result of these two operations is then passed to the next clause to the right, and so on.  Logical operators are
+compared using traditional Boolean logic. For example:<BR><br>
+
+<table border="1" cellpadding="5">
+	<tr class="body" bgcolor="lightgray" >
+		<td><B>Left Clause Result</B></td>
+		<td><B>Clause Operator</B></td>
+		<td><B>Right Clause Result</B></td>
+		<td><B>Logical Result</B></td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;FALSE</td>
+		<td>&nbsp;<b>AND</b></td>
+		<td>&nbsp;FALSE</td>
+		<td>&nbsp;<b>FALSE</b></td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;FALSE</td>
+		<td>&nbsp;<b>AND</b></td>
+		<td>&nbsp;TRUE</td>
+		<td>&nbsp;<b>FALSE</b></td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;TRUE</td>
+		<td>&nbsp;<b>AND</b></td>
+		<td>&nbsp;TRUE</td>
+		<td>&nbsp;<b>TRUE</b></td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;FALSE</td>
+		<td>&nbsp;<b>OR</b></td>
+		<td>&nbsp;FALSE</td>
+		<td>&nbsp;<b>FALSE</b></td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;FALSE</td>
+		<td>&nbsp;<b>OR</b></td>
+		<td>&nbsp;TRUE</td>
+		<td>&nbsp;<b>TRUE</b></td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;TRUE</td>
+		<td>&nbsp;<b>OR</b></td>
+		<td>&nbsp;TRUE</td>
+		<td>&nbsp;<b>TRUE</b></td>
+	</tr>
+</table>
+</p>
+<p class="body">
+To illustrate how multiple clauses are evaluated, consider the following example:
+</p>
+<table summary="" border="0">
+	<tr CLASS="body">
+		<td align="center">&nbsp;Clause 1</td>
+		<td align="center">&nbsp;</td>
+		<td align="center">&nbsp;Clause 2</td>
+		<td align="center">&nbsp;</td>
+        <td align="center">&nbsp;Clause 3</td>
+        <td align="center">&nbsp;</td>
+        <td align="center">&nbsp;Clause 4</td>
+	</tr>
+	<tr CLASS="body">
+		<td>&nbsp;"5" == "5"</td>
+		<td>&nbsp;AND</td>
+		<td>&nbsp;"10" != "5"</td>
+		<td>&nbsp;OR</td>
+        <td>&nbsp;"10" == "2"</td>
+        <td>&nbsp;AND</td>
+        <td>&nbsp;"5" == "10"</td>
+	</tr>
+</table>
+<p class="body">
+This simplistic expression would be evaluated from left to right as follows:
+<ul type="disc">
+	<li>Clause 1 evaluates to TRUE</li>
+    <li>Clause 2 evaluates to TRUE </li>
+    <li>Clause 1(TRUE) <b>AND</b> clause 2(TRUE) results in TRUE</li>
+    <li>Clause 3 evaluates to FALSE</li>
+    <li>The previous result of TRUE <b>OR</b> clause 3 (FALSE) results in TRUE</li>
+    <li>Clause 4 evaluates to FALSE</li>
+    <li>The previous result of TRUE <b>AND</b> clause 4 (FALSE) results in FALSE</li>
+</ul>
+</p>
+<p class="body">
+Thus the end result of this logical expression is FALSE. From this example it should be evident that the rightmost
+parameter has the highest precedence. For example if the rightmost clause resolves to FALSE and the preceding logical
+ operator is AND, then the result will always be FALSE regardless of any other parameters.
+ Similarly, if the rightmost clause resolves to TRUE and the preceding logical operator is OR, then the result of
+ the expression will always be TRUE.
+</p>
+<p class="body">
+If this logical expression was written out using brackets it would look like this:
+<br>
+<SPAN class="gui">
+<font color="#008000">(</font> <font color="#FF0000">(</font> <font color="#0000FF">(</font>("5" == "5")  <font color="#0000FF">AND</font> ("10" != "5")<font color="#0000FF">)</font> <font color="#FF0000">OR</font> ("10" == "2")<font color="#FF0000">)</font> <font color="#008000">AND</font> ("5" == "10")<font color="#008000">)</font>
+</span>
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

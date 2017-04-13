@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Installing OpenText Document Filters</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'aidotdf-10.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Document Filters';
+          header.title2 = 'Installing OpenText Document Filters';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID5880"></A>OpenText Document Filters (OTDF) is a core module of Content Server 10.5 and is installed automatically.</P>
+<P><A NAME="TMPID5884"></A>By default, DCS operations are governed by the following rules files: <TT CLASS="filename">dcsviewrules.txt</TT> and <TT CLASS="filename">DCSrules.txt</TT>. The <TT CLASS="filename">DCSrules.txt</TT> file contains the rules for indexing Content Server items and generating thumbnails. Which DCS rules file(s) you copy depends on the conversion capabilities that the custom filter pack supports. The <TT CLASS="filename">dcsviewrules.txt</TT> controls the display of indexed and highlighted text.</P>
+<P><A NAME="TMPID5890"></A>The installation process installs a new <TT CLASS="filename">DCSrules.txt</TT> file and <TT CLASS="filename">dcsviewrules.txt</TT> file in the <TT CLASS="literal">Content Server_home\config-reference</TT> folder.</P>
+<P><A NAME="TMPID5895"></A>The new DCS files define the sequence of operations performed by the DCS to complete a TextExtraction or conversion operation. The DCS rules files indicate that the OpenText Document Filters pack exists, and define when a DCS should use it.</P>
+<P><A NAME="TMPID5898"></A>For more information about how the DCS uses DCS rules files, see the <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/llescf-cfp.cfp-dcsrule-so" FMT="" NO1ST>"Working with DCS Rules Files " in <i>OpenText Content Server Filter Pack - Creating Filter Packs (LLESCF-CFP)</i><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/llescf-cfp.cfp-dcsrule-so" FMT=""></span> guide, which is available on the OpenText Knowledge Center.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF122"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID5902"></A><B CLASS="note">Note: </B><BR>OpenText strongly recommends that you employ standard change management processes, including initial installation and testing on non-production implementations.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF123">Thumbnails support</A></P>
+<P class="before-ul"><A NAME="TMPID5905"></A>The <TT CLASS="literal">[DCSipool]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file controls options specific to the configuration of data interchange pools, <I CLASS="emphasis">IPools</I>, for the Document Conversion Service. This section also contains several definitions needed for generating thumbnails. More information is available in <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-dcsipool-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-dcsipool-rf.htm">[DCSipool]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-dcsipool-rf" FMT=""></span>. These settings are part of the Content Server installation, and generally should not be modified:</P><A NAME="AEN5275"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5276"></A><A NAME="TMPID5913"></A><TT CLASS="literal">lib=dcsipool</TT> – The name of the library the DCS should load.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5279"></A><A NAME="TMPID5916"></A><TT CLASS="literal">ThumbnailLocation=<I CLASS="emphasis">XXX</I></TT> – The temporary location where thumbnails are stored during processing. For example, <TT CLASS="literal">F:\OPENTEXT\CS105/tmp</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5284"></A><A NAME="TMPID5921"></A><TT CLASS="literal">Thumbnailpixelx=200</TT> – the width of the generated thumbnail in pixels. The default is <TT CLASS="literal">200</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5288"></A><A NAME="TMPID5925"></A><TT CLASS="literal">Thumbnailpixely=200</TT> – the width of the generated thumbnail in pixels. The default is <TT CLASS="literal">200</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5292"></A><A NAME="TMPID5929"></A><TT CLASS="literal">Thumbnailformat=JPG</TT> – the format the generated thumbnail will be saved in</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5295"></A><A NAME="TMPID5932"></A><TT CLASS="literal">Thumbnailpagerange=1</TT>— the page range of a document or object thumbnails will be generated for</P></LI></UL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/aidotdf-9.htm" revision="">Operating Systems</A></p></li>
+<li><p><A  href="../websystemobj/tempotdf09.htm" revision="">Document Filters on Solaris</A></p></li>
+<li><p><A  href="../websystemobj/aidotdf-46.htm" revision="">Document Filters on Linux</A></p></li>
+<li><p><A  href="../websystemobj/aidotdf-47.htm" revision="">Verifying the installation</A></p></li>
+<li><p><A  href="../websystemobj/aidotdf-11.htm" revision="">Opentext.ini file</A></p></li>
+<li><p><A  href="../websystemobj/aidotdf-12.htm" revision="">DCSrules.txt file for Windows, Linux, and Solaris</A></p></li>
+<li><p><A  href="../websystemobj/aidotdf-13.htm" revision="">DCSviewrules.txt file</A></p></li>
+<li><p><A  href="../websystemobj/aidotdf-36.htm" revision="">Solaris X Server Display Memory Issue</A></p></li>
+<li><p><A  href="../websystemobj/aidotdf-14.htm" revision="">Library files</A></p></li>
+<li><p><A  href="../websystemobj/aidotdf-15.htm" revision="">Image.ini file</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

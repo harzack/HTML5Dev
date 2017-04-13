@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>ODD, ODDEVEN, ONERROR</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stthirteenth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sous-balises';
+          header.title2 = 'ODD, ODDEVEN, ONERROR';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID7532"></A>Cette section apporte des informations sur les sous-balises suivantes : <span><A HREF="wr-tag-stthirteenth.htm#WR-TAG-STODD">ODD</A></span>, <span><A HREF="wr-tag-stthirteenth.htm#WR-TAG-STODDEVEN">ODDEVEN</A></span> et <span><A HREF="wr-tag-stthirteenth.htm#WR-TAG-STONERROR">ONERROR</A></span>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STODD">ODD</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STODD-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGODD"></A><B CLASS="highlight">ODD</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STODD-DESC">Description</A></P>
+<P><A NAME="TMPID7544"></A>Renvoie Vrai si les données renvoyées par la balise principale sont un nombre impair ; renvoie Faux dans le cas contraire. Cela peut également être utilisé comme dans l'exemple pour la balise <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STEVEN">EVEN</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STODDEVEN">ODDEVEN</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STODDEVEN-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGODDEVEN"></A><B CLASS="highlight">ODDEVEN</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STODDEVEN-DESC">Description</A></P>
+<P><A NAME="TMPID7554"></A>Renvoie soit <TT CLASS="literal">ODD</TT>, soit <TT CLASS="literal">EVEN</TT> en fonction des données renvoyées par la balise principale. Si les données de la balise principale ne sont pas un entier valide, alors cette sous-balise renvoie une chaîne vide. Cette sous-balise peut être utilisée avec une balise telle que <span><A HREF="wr-tag-cdtwelfth.htm#WR-TAG-CDROWNUM">ROWNUM</A></span> afin de définir un style approprié pour chaque ligne. La sous-balise <TT CLASS="literal">ODDEVEN</TT> permet à deux paramètres supplémentaires d'être spécifiés. S'ils sont fournis, ces deux paramètres seront renvoyés d'une manière différente de <TT CLASS="literal">ODD/EVEN</TT>. L'exemple ci-dessous indique comment utiliser les styles Content Server, <B CLASS="guilabel">ParcourirLigne1</B> et <B CLASS="guilabel">ParcourirLigne2</B> standard afin de permettre à chaque colonne d'avoir une couleur alternative. L'instruction de classe pour chaque ligne alterne entre <B CLASS="guilabel">ParcourirLigne1</B> et <B CLASS="guilabel">ParcourirLigne2</B>.</P>
+<P><A NAME="TMPID7565"></A>Chaque ligne inclut l'instruction TR suivante :</P>
+<P><A NAME="TMPID7566"></A><TT CLASS="literal">&lt;<I CLASS="varname">TR class=[LL_REPTAG_ROWNUM ODDEVEN:BrowseRow1:BrowseRow2 /]</I>> </TT></P>
+<P><A NAME="TMPID7569"></A>Chaque ligne devient l'un des résultats suivants :</P>
+<P><A NAME="TMPID7570"></A><TT CLASS="literal">&lt;<I CLASS="varname">TR class=BrowseRow1</I>></TT></P>
+<P><A NAME="TMPID7573"></A>ou :</P>
+<P><A NAME="TMPID7574"></A><TT CLASS="literal">&lt;<I CLASS="varname">TR class=BrowseRow2</I>></TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STONERROR">ONERROR</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STONERROR-NAME">Syntaxe</A></P>
+<P><A NAME="SUBTAGONERROR"></A><B CLASS="highlight">ONERROR:&lt;<I CLASS="varname">param</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STONERROR-DESC">Description</A></P>
+<P><A NAME="TMPID7586"></A>Utilisé afin de spécifier le texte alternatif à utiliser pour toute erreur de sous-balise. Certaines sous-balises renvoient un message d'erreur si les données et/ou l'un des paramètres attendus de la sous-balise n'a pas la valeur ou le type correct nécessaire afin d'exécuter la fonction de la sous-balise. Cette sous-balise permet au message d'erreur par défaut pour une balise particulière d'être affiché de différentes manières définies ou d'être défini par le développeur. Cette sous-balise apparaît généralement après la sous-balise pouvant générer une condition d'erreur. Il est possible d'avoir plus d'une sous-balise <TT CLASS="literal">ONERROR</TT> afin de traiter les erreurs de manière différente pour plusieurs sous-balises. Dans le cas où une sous-balise <TT CLASS="literal">ONERROR</TT> a été fournie, la position dans la liste de sous-balises n'est pas importante et la sous-balise <TT CLASS="literal">ONERROR</TT> s'applique à toute erreur, pour toute sous-balise dans la liste.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STONERROR-PARAM">Paramètres</A></P>
+<P><A NAME="TMPID7592"></A>Les options suivantes pour utiliser cette sous-balise incluent :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN7061"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Type d'erreurs</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ONERROR:BLANK</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette option remplace tout message d'erreur standard avec une chaîne vide et est utile pour empêcher l'affichage des messages d'erreur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ONERROR:SHORT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette option affiche une version courte du message d'erreur composé de la sous-balise en question et d'un numéro d'erreur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ONERROR:LONG</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette option affiche un message d'erreur complet pour la sous-balise en question.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ONERROR:CUSTOM :&lt;<I CLASS="varname">message d'erreur</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette option permet au développeur de spécifier son propre message d'erreur pour une sous-balise.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STONERROR-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID7633"></A>Par exemple : <TT CLASS="literal">[LL_REPTAG=VALUE LIST:1 ONERROR:CUSTOM:"Invalid list" INC:1 ONERROR:LONG /]</TT></P>
+<P><A NAME="TMPID7635"></A>Dans cet exemple, le message « Liste non valable » est renvoyé pour cette balise si la sous-balise <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> a renvoyé une erreur. Si la sous-balise <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> n'entraîne pas d'erreur, contrairement à la sous-balise <span><A HREF="wr-tag-stninth.htm#WR-TAG-STINC">INC</A></span>, un message d'erreur standard est renvoyé.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

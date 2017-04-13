@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Modifying Icon-to-MIME type Mappings</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-doctypes-02-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering MIME Types and Icons';
+          header.title2 = 'Modifying Icon-to-MIME type Mappings';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID12219"></A>The icons used to identify certain MIME types are controlled by the icon-to-MIME type mappings in the <TT CLASS="filename">Content Server_home/config/mime.gif</TT> file. When a Content Server user adds a Document to the system, Content Server notes its MIME type and checks the <TT CLASS="filename">mime.gif</TT> file to see if a specific icon has been defined for the new file's MIME type. For example, if a user adds a Microsoft Word document to Content Server, a Microsoft Word icon <IMG alt="Microsoft Word icon"  src="../../../webdoc/appword.gif">  appears next to it in Content Server, because the icon's GIF file has been mapped to the <TT CLASS="literal">application/msword</TT> MIME type in the <TT CLASS="filename">mime.gif</TT> file.</P>
+<P><A NAME="TMPID12230"></A>If a document's MIME type is not specified in the <TT CLASS="filename">mime.gif</TT> file, Content Server uses a default document icon, <IMG alt="Default Document Icon"  src="../../../webdoc/apptext.gif">.</P>
+<P class="before-ul"><A NAME="TMPID12234"></A>You can edit the <TT CLASS="filename">mime.gif</TT> file to do any of the following:</P><A NAME="AEN11315"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN11316"></A><A NAME="TMPID12238"></A>Associate a new or different icon file with an existing MIME type or types.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN11318"></A><A NAME="TMPID12240"></A>Associate a new MIME type with an existing icon file.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN11320"></A><A NAME="TMPID12242"></A>Associate a new MIME type with a new icon file.</P></LI></UL>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12244"></A><B CLASS="tip">Tip: </B><BR>You can use an image editor to create custom icons for use with the Documents you add to Content Server.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-CREATEICONS-BG">Creating a Custom Icon</A></P>
+<P class="before-ul"><A NAME="TMPID12248"></A>If you want to create a custom icon for use by MIME types in Content Server, you should consider creating three different sizes of each custom icon:</P><A NAME="AEN11328"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11329"></A><A NAME="TMPID12252"></A>The default requirement is for a 16 × 16 pixel icon, <IMG alt="Microsoft Word icon"  src="../../../webdoc/appword.gif"> , which you create in your <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/support/webdoc</TT> directory.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11335"></A><A NAME="TMPID12258"></A>If a user chooses to make an item a Featured Item, Content Server displays a 32 × 32 pixel icon, which you create in your <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/support/webdoc</TT> directory and your <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/support/mimetypeimages</TT> directory.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11344"></A><A NAME="TMPID12267"></A>Content Server uses a 145 × 145 pixel icon on an item's <B CLASS="guilabel">Overview</B> page. You create this icon in your <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/support/mimetypeimages</TT> directory.</P></LI></UL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-doctypes-03-p.htm" revision="">To Add a New Icon File</A></p></li>
+<li><p><A  href="../webadmin/wba-doctypes-04-p.htm" revision="">To Modify Icon-to-MIME Type Mappings</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>WR Services</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-services-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'WR Services';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID22623"></A>The WR services feature provides a way of retrieving information from the WebReports engine. One of the most useful examples of this is a service that allows tags and sub-tags to be specified in a request that returns the resulting data without the need to create a WebReport or ActiveView object. This capability provides a way to leverage the vast number of useful functions that are available through the WebReport engine's sub-tags and static tags. A single call to the WR service feature can be used to bring back the result of a tag, or literal data, processed through a virtually unlimited list of sub-tags. For example, a service call could be made to return category or attribute information using the CAT sub-tag. The result of a service call can simply be returned as text directly to the client that invoked the feature, or it is possible to specify formats just as XML or JSON. If XML or JSON are used to return data from a service call, the content is accompanied by an error field that allows any client application to programmatically check for errors. This feature is particularly suited to being invoked via AJAX calls, especially if the JSON response type is used. The ActiveView or WebReports software includes a pre-defined JavaScript function that provides an easy way to invoke these services using AJAX.</P>
+<P><A NAME="TMPID22625"></A>This is an example of invoking a tag/sub-tag lookup service using a simple <TT CLASS="literal">GET</TT> type URL:</P>
+<P><A NAME="TMPID22627"></A><TT CLASS="literal">&#13;&lt;prefix&gt;?func=webreports.runservice&amp;servicetype=gettagdata&amp;tagdata=&lt;TAGDATA&gt;&amp;statictag=&lt;STATIC TAG name&gt;&amp;subtags=&lt;SUBTAGLIST&gt;</TT></P>
+<P><A NAME="TMPID22629"></A>All service requests include the parameter: <B CLASS="highlight">?func=webreports.runservice</B> as a starting point, followed by the <B CLASS="highlight">&amp;servicetype=</B> parameter that is used to select one of the supported services. For information about valid values for <B CLASS="highlight">&amp;servicetype=</B>, see <span><A HREF="wr-services-availsvcs.htm">Available Service Types</A></span>. Depending on which service is selected, there may be additional parameters required as specified in the table below. These parameters can be used in <TT CLASS="literal">GET</TT> or <TT CLASS="literal">POST</TT> requests using AJAX or traditional form fields to submit the request.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF79"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID22637"></A><B CLASS="note">Note: </B><BR>Note that <B CLASS="highlight">?func=</B> is replaced with <B CLASS="highlight">&amp;func=</B> for <TT CLASS="literal">POST</TT> type requests when using AJAX.</P>
+<P><A NAME="TMPID22641"></A>In some cases it is necessary to include a percent sign, %, in the request being sent to WR Services. To avoid this percent sign being interpreted as URL escaping, it is necessary to use a URL code to specify a percent sign. Specifically, wherever % is required, <TT CLASS="literal">%25</TT> must be used as this code will be resolved to a percent sign.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-services-availsvcs.htm" revision="">Available Service Types</A></p></li>
+<li><p><A  HREF="wr-predef-functions.htm" revision="">Using the Predefined Functions</A></p></li>
+<li><p><A  HREF="wr-services-exampl.htm" revision="">Examples</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

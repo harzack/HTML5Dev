@@ -1,0 +1,307 @@
+<!-- wr_services_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>WR Services</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_services_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'WR Services';
+        header.draw();
+
+</SCRIPT>
+
+<p class="body">
+The WR services feature provides a way of retrieving information from the WebReports engine.  One of the most useful examples of this is
+a service that allows tags and sub-tags to be specified in a request that returns the resulting data without the need to create a
+WebReport or ActiveView object.
+This capability provides a way to leverage the vast number of useful functions that are available through the WebReport engine's
+sub-tags and static tags. A single call to the WR service feature can
+be used to bring back the result of a tag (or literal data) processed through a virtually unlimited list of sub-tags.
+For example, a service call could be made to return category or attribute information
+using the CAT: sub-tag.
+<br>
+The result of a service call can simply be returned as text directly to the client
+that invoked the feature, or it is possible to specify formats just as XML or JSON. If XML or JSON are used to return data from a
+service call, the content is accompanied by an error field that allows any client application to
+programmatically check for errors. This feature is particularly suited to being invoked via AJAX calls, especially if the JSON response
+type is used. The ActiveView or WebReports software includes a pre-defined JavaScript function that provides an easy way to invoke these
+services using AJAX.
+</p>
+<p class="body">
+This is an example of invoking a tag/sub-tag lookup service using a simple GET type URL:
+</p>
+<DIV class="gui">
+&lt;prefix&gt;?func=webreports.runservice&amp;servicetype=gettagdata&amp;tagdata=&lt;TAGDATA&gt;&amp;statictag=&lt;STATIC TAG name&gt;&amp;subtags=&lt;SUBTAGLIST&gt;
+</DIV>
+<br>
+<p class="body">
+All service requests include the parameter: <b>?func=webreports.runservice</b> as a starting point, followed by the <b>&servicetype=</b>
+parameter that is used to select one of the supported services. Depending on which service is selected, there may be additional parameters
+required as specified in the table below. These parameters can be used in GET or POST requests using AJAX or traditional form fields to
+submit the request. Note that ?func= is replaced with &func= for POST type requests when using AJAX.
+</p>
+
+		<table CLASS="NOTE">
+			<TR>
+				<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD>
+			</TR>
+			<TR FRAME="VOID">
+				<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+					<P CLASS="NOTE">
+						<IMG SRC="../../images/pi_note.gif"></IMG>
+					</P>
+				</TD>
+				<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+					<P>
+						<B CLASS="NOTE">Note: </B>
+						<BR>
+						In some cases it is necessary to include a percent sign (<b>%</b>) in the request being sent to WR Services. To avoid this percent sign being interpreted as URL escaping, it is necessary to use a URL code
+to specify  a percent sign. Specifically, wherever <b>% </b>is required, <b>%25</b> must be used as this code will be resolved to a percent sign.
+					</P>
+				</TD>
+			</TR>
+		</TABLE>
+
+ <table width=100% border=1 cellpadding=5>
+	<tr>
+		<td class=gui align=center bgcolor="lightgray" colspan=2>&nbsp;<b>&amp;func=webreports.runservice</b></td>
+	</tr>
+	<tr id="serviceTypeDesc">
+		<td align=left class=gui bgcolor="lightgray">
+		&servicetype=&nbsp;&nbsp;&nbsp;&nbsp;<br>
+		</td>
+		<td align=center class=gui bgcolor="lightgray">Description/Parameters</td>
+	</tr>
+	<tr>
+		<td align=left class=gui>
+		gettagdata
+		</td>
+		<td>&nbsp;
+		<p class=body>
+		This service allows the execution of static tags and or sub-tags from the WebReports engine to be invoked directly. This capability provides a way to leverage the vast number
+		of useful functions that are available through the engine, particularly with the ability to access the 60+ sub-tags and several static tags. Many of the sub-tags provide
+		the ability to access some useful Livelink functions such as looking up categories and attributes, testing group membership and even performing Livelink actions (subject to
+		normal permissions controls). <br><BR>
+		The table below illustrates the supplementary parameters that are used by this service.
+		</p>
+		<table border="1" cellpadding="3" cellspacing=0>
+			<tr class="body" bgcolor="lightgray" id="parmListDesc">
+				<td><B>Parameter Name</B></td>
+				<td width=5%><B>Mandatory</B></td>
+				<td><B>Description</B></td>
+			</tr>
+			<tr class="body">
+				<td class="gui">TAGDATA</td>
+				<td>Yes<br> (if no STATIC tag is specified or STATIC tag returns an empty string)</td>
+				<td>This parameter can be used to specify data to be operated on by any specified sub-tags. If a statictag has also been specified, the tagdata will be ignored unless the static tag
+				returns a blank string. This allows the tagdata to be used as a default value for situations where the static tag doesn't return a useful value	.
+				</td>
+			</tr>
+			<tr class="body">
+				<td class="gui">STATICTAG</td>
+				<td>Yes <BR>
+				(if TAGDATA is not specified)</td>
+				<td>This parameter can be used to specify one of a selection of WebReports static tags that can be invoked. If the specified tag returns a blank string, then the value of tagdata (if any) will be used instead,
+				otherwise, the output from the statictag is used by any sub-tags that have been specified. The static tag parameter does not require the full WebReports syntax; only the static tag name is used. For example,
+				the [LL_REPTAG_USERID /] tag would be invoked using <B>&statictag=USERID</B>.
+				<BR><BR>
+				Note that WebReport services only supports a small subset of the available static tags. In general, any
+				static tags that are used to return information about an executing WebReport, will not be valid as there is no WebReports object associated with a service call. To find out which static tags are available,
+				you can use the special liststatictags option as follows:
+				<DIV class="gui">
+				&lt;prefix&gt;?func=webreports.runservice&amp;servicetype=liststatictags
+				</DIV>
+			</td>
+			</tr>
+			<tr class="body">
+				<td class="gui">SUBTAGS</td>
+				<td>Yes</td>
+				<td>Specifies a list of sub-tags and their fields, just as they would be used in a WebReports tag syntax. For example: <DIV class="gui">&subtags=NODEINFO:NAME UPPER </div>
+				<BR>As with WebReports usage,
+				these sub-tags are processed from left to right with the output from the static tag (or the tag data) being passed to the leftmost sub-tag.
+				<BR><BR>
+				Note that with CS10 and above, any sub-tags that have been specified as secure in the system
+				preferences require &securerequesttoken=nnnnn to be added to the request (where nnnnn is a 
+				valid token requested using the <b>getsecuretoken</b> servicetype (see below).
+				</td>
+			</tr>
+			<tr class="body">
+				<td class="gui">RESPONSETYPE</td>
+				<td>No <br>(default is "string")</td>
+				<td>Allows different formats to be specified for the data to be returned by a service request. Valid values are <SPAN class="gui">string</SPAN>, <SPAN class="gui">json</SPAN> or <SPAN class="gui">xml</SPAN>.
+				Assuming that a service has executed successfully (no errors) and the service has returned the string: "This is a test", the table below shows what each  of the different formats would return.<br><BR>
+
+				<TABLE width="100%" border=1 cellpadding=3 cellspacing=0 bgcolor=#FFFFFF bordercolor=lightgray >
+				<TR bgcolor=lightgray id="responseTypeDesc"><TD ALIGN=CENTER CLASS="gui">Format</TD><TD ALIGN=CENTER CLASS="gui">Example</TD><TD ALIGN=CENTER CLASS="gui">MimeType</TD><TD ALIGN=CENTER CLASS="gui">Text Escaping</TD></TR>
+				<TR>
+				<TD ALIGN=CENTER CLASS="gui">string</TD>
+				<TD>
+				This is a test
+				</TD>
+		 		<TD>
+				text/html
+				</TD>
+				<TD>
+				No unescaping required
+				</TD>
+				</TR>
+				<TR>
+				<TD ALIGN=CENTER CLASS="gui">xml</TD>
+				<TD>
+				&lt;?xml version="1.0" encoding="ISO-8859-1" ?&gt;<br>
+				&lt;response&gt;<br>
+		  		&nbsp;&nbsp;&lt;error&gt;false&lt;/error&gt;<br>
+		  		&nbsp;&nbsp;&lt;content&gt;This is a test&lt;/content&gt;<br>
+		  		&lt;/response&gt;<br>
+				</TD>
+				<TD>
+				text/xml
+				</TD>
+				<TD>
+				Content is HTML escaped. E.g. & = &amp; etc.
+				</TD>
+				</TR>
+		 		<TR>
+				<TD ALIGN=CENTER CLASS="gui">json</TD>
+				<TD>
+				{"error":false,"content":"This is a test"}
+				</TD>
+				<TD>
+				text/json
+				</TD>
+				<TD>
+				If the content is text-based (i.e. non-numeric and enclosed in quotes) conventional string escaping is used, for example backslashes (\) are used before any special characters. See the JSON standard
+				(RFC 4627) for more details on string/text escaping.
+				</TD>
+				</TR>
+				</TABLE>
+				</td>
+			</tr>
+		</TABLE>
+
+		</td>
+	</tr>
+	<tr>
+		<td align=left class=gui>
+		getsecuretoken
+		</td>
+		<td class=body>This service is used to return a valid "securerequesttoken" that should be added
+		to any requests that contain secure sub-tags using the syntax: <b>&securerequesttoken=nnnnnnnnn</b> (where
+		nnnnnnnnn is the token returned by the getsecuretoken service).  The token returned in the response is URL 
+		escaped and in most cases will need to be unescaped using the decodeURIComponent() function in JavaScript.
+		This feature is used to prevent Cross Site Request Forgery and is used for any sub-tags defined as "secure" 
+		using a setting in the system preferences for [WebReports] called: SecureServicesSubtags. 
+		</td>
+	</tr>
+	<tr>
+		<td align=left class=gui>
+		getstatictags
+		</td>
+		<td class=body>This service returns all appropriate static values from the WebReports engine in a data structure according to the <b>responsetype</b> parameter; however, only the <b>json</b> responsetype is
+		currently supported. Static tags are all of the tags in the WebReports tag guide that come under the heading of "data tags" and which have fixed names such as <b>[LL_REPTAG_DATETIME /]</b>.
+		</td>
+	</tr>
+	<tr>
+		<td align=left class=gui>
+		liststatictags
+		</td>
+		<td class=body>This service provides a simple list of all the static tags that are available for usage in the <b>gettagdata</b> and <b>getstatictags</b> services. It is primarily used for the convenience of
+		developers.</td>
+	</tr>
+</table>
+
+
+<P class="gui">
+<U>Using The Predefined JavaScript Functions from ajax.js</U>
+</p>
+<P class="before-ul">
+The<b> ajax.js</b> file packaged with WebReports includes a function designed to aid in the use of WebReport services in conjunction with AJAX technology. The ajax.js file is accessed using a SCRIPT include like this:
+</p>
+<p class="GUI">
+&lt;SCRIPT SRC="/&lt;support dir&gt;/webreports/library/ajax.js"&gt;&lt;/SCRIPT&gt;	  <br>
+</p>
+<p class="body">
+If this file is being included into a WebReport or ActiveView the LIBPATH tag can be used like this:
+</p>
+<p class="GUI">
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+</p>
+<p class="body">
+This table describes the available function and its parameters.
+</p>
+
+<table width=100% border=1 cellpadding=5 >
+	<tr bgcolor="lightgray">
+		<td align=center colspan=3 class="gui" >
+		executeWRService( serviceType, responseTarget, parmList, responseType, getPost,secure)
+		</td>
+	</tr>
+
+	<tr>
+	<TD align=left class="gui">servicetype</TD>
+	<TD align=left class="body">Mandatory</TD>
+	<TD class="body">This parameter expects a string with one of the supported servicetypes for running a WR service (as specified in the table above).</TD>
+	</tr>
+
+	<tr>
+	<TD align=left class="gui">responseTarget</TD>
+	<TD align=left class="body">Mandatory</TD>
+	<TD class="body">This parameter expects either a JavaScript function that has been created by the developer, or a string representing the ID of an HTML object where the returned data should be inserted.
+	If a JavaScript function is created (and passed to this parameter) it should be written to accept the http_request as a parameter. For example:<br>
+	<br>
+	<b>
+	function myHandlerFunction(httpRequest) {			 <br>
+               alert('the response was: '+ httpRequest.responseText);	 <br>
+	}<br>
+	<b>executeWRService( 'gettagdata', myHandlerFunction, "&statictag=userid &subtags=USERINFO:GROUPID", 'json')  	</b>
+	</TD>
+	</tr>
+
+	<tr>
+	<TD align=left class="gui">parmList</TD>
+	<TD align=left class="body">Optional</TD>
+	<TD class="body">This parameter is used to specify a string containing additional parameters to be added to the URL as required by each servicetype. For example, the <b>gettagdata</b> service type uses a combination of
+	&tagdata, &statictag or &subtags as per the syntax in the table above. The parms should be specified in the &name=value type format. E.g. <b>"&tagdata=12345&subtags=CAT:myCategory:attr1:display"</b> </TD>
+	</tr>
+
+	<tr>
+	<TD align=left class="gui">responseType</TD>
+	<TD align=left class="body">Optional</TD>
+	<TD class="body">This parameter expects a string with one of the supported response types for WR services (<b>string,json,xml</b> - as specified in the table above). If not specified, it defaults to <b>json</b>.</TD>
+	</tr>
+	<tr>
+	<TD align=left class="gui">getPost</TD>
+	<TD align=left class="body">Optional</TD>
+	<TD class="body">This parameter string is used to specify whether the AJAX request should be 'GET' or 'POST'. If omitted, the POST method is used.</TD>
+	</tr>
+	<tr>
+	<TD align=left class="gui">secure</TD>
+	<TD align=left class="body">Optional</TD>
+	<TD class="body">This boolean (true/false) parameter can be used to specify whether a secure token should automatically be added to the request.
+	this is only required when sub-tags are included in the request that are defined as requiring security (admin setting). Usually 
+	these will be action type sub-tags, e.g. NODEACTION, USERACTION, etc.</TD>
+	</tr>
+
+</table>
+<P class="gui">
+<U>Examples</U>
+</p>
+<p class="body">
+For examples using WR Services please see <a href="wr_ajax_functions.htm#executeWR1">Example 4</a> and <a href="wr_ajax_functions.htm#executeWR2">Example 5</a> in the AJAX Function Reference help page.
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

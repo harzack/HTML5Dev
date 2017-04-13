@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>To Modify the Copy, Delete, and Move Operation Settings</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-copydel-cnfg-ops-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring the Operations for Copy, Delete and Move';
+          header.title2 = 'To Modify the Copy, Delete, and Move Operation Settings';
+           header.draw();
+  </script>
+  <A NAME="MOD-COPYDELETE"></A>
+<DIV title=" To modify the Copy, Delete, and Move Operation settings:" CLASS="procedure">
+<P><B><A NAME="MOD-COPYDELETE"></A> To modify the Copy, Delete, and Move Operation settings:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID16547"></A>Click the <B CLASS="guilabel">Configure the Operations for Copy, Delete and Move</B> link in the <B CLASS="guilabel">System Administration</B> section of the Content Server Administration page.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID16552"></A>On the Configure the Operations for Copy, Delete and Move page, click one of the following radio buttons in the <B CLASS="guilabel">Copy</B> and <B CLASS="guilabel">Delete</B> sections:</P><A NAME="AEN15467"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15468"></A><A NAME="TMPID16557"></A><B CLASS="guilabel">Commit the transactions after all items were processed successfully</B>, which commits the database transaction when all nodes have been processed.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF150"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID16560"></A><B CLASS="note">Note: </B><BR>If one item in the transaction fails, the entire transaction fails and nothing commits to the database.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15473"></A><A NAME="TMPID16562"></A><B CLASS="guilabel">Commit the transaction for each item processed successfully</B>, which commits the database transaction for each processed node.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF151"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID16565"></A><B CLASS="note">Note: </B><BR>For the Copy function, this operation copies one node at a time and commits the database transaction using a top-down scheme. However, for the Delete function, the operation deletes one node at a time and commits the database transaction using a bottom-up scheme.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID16567"></A><SPAN class="boxed-optional">Optional</SPAN> In the <B CLASS="guilabel">Delete</B> section, select the <B CLASS="guilabel">Delay deletion from storage provider</B> check box to enable deleted items to go into queue and be deleted by the <B CLASS="guilabel">Provider Blob Deletion Failure Retry</B> scheduled activity.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF152"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID16572"></A><B CLASS="note">Note: </B><BR>If you enable this option, you must also enable the <B CLASS="guilabel">Provider Blob Deletion Failure Retry</B> scheduled activity.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID16575"></A>In the <B CLASS="guilabel">Move</B> section, select the <B CLASS="guilabel">Enable the move throttle control</B> check box, and then type the maximum number of objects allowed in a move in the corresponding field.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID16579"></A>Click the <B CLASS="guilabel">Update</B> button.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

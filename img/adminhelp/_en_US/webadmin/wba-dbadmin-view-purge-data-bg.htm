@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Viewing and Purging Data</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-dbadmin-view-purge-data-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Maintaining an Existing Database';
+          header.title2 = 'Viewing and Purging Data';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-DBADMIN-VUTBLSP">Viewing Tablespace Usage (Oracle)</A></P>
+<P class="nr1"><A NAME="TMPID14342"></A>Oracle Server uses an entity called a <I CLASS="emphasis">tablespace</I> to store the tables of one or more relational databases. If you use Oracle Server as your RDBMS, you can view the amount of space that is being used by Content Server tables in the Oracle tablespace.</P>
+<P><A NAME="TMPID14345"></A>To view Content Server tablespace usage, on the <B CLASS="guilabel">Maintain Current Database</B> page, click the <B CLASS="guilabel">View Tablespace Usage</B> link.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-DBADMIN-PURGDELDT">Purging Deleted Data (Oracle)</A></P>
+<P><A NAME="TMPID14351"></A>The <B CLASS="guilabel">Maintain Current Database</B> page displays the <B CLASS="guilabel">Purge Delete Data</B> link if you are using Oracle Server as your RDBMS and the Content Server database uses internal document storage.</P>
+<P><A NAME="TMPID14355"></A>When users delete documents form the Content Server database, Oracle marks the data as <I CLASS="emphasis">deleted</I>, but it is still taking up disk space. OpenText recommends that you purge this deleted data periodically to recover disk space.</P>
+<P><A NAME="TMPID14359"></A>The <B CLASS="guilabel">Purge Deleted Data</B> link opens the <B CLASS="guilabel">Purge Deleted Data</B> page, on which you perform the purge operation.</P>
+<P><A NAME="TMPID14362"></A>If you are using Oracle Server as your RDBMS and your Content Server database stores documents internally, you can use the <B CLASS="guilabel">Purge Deleted Data</B> page to remove data marked as <I CLASS="emphasis">deleted</I> from the BLOB data table. You access the <B CLASS="guilabel">Purge Deleted Data</B> page by clicking the <B CLASS="guilabel">Purge Deleted Data</B> link on the <B CLASS="guilabel">Maintain Current Database</B> page.</P>
+<P><A NAME="TMPID14369"></A>When a Content Server user deletes a document stored internally in a Content Server database, Oracle does not delete the document from the storage media, but rather marks the document as <I CLASS="emphasis">deleted</I>. Thus, the document continues to use up disk space, even though Content Server users can no longer access it. For this reason, OpenText recommends that you purge your Content Server database of deleted data periodically to free disk space.</P>
+<P><A NAME="TMPID14376"></A>Purging deleted data requires that you have enough <I CLASS="emphasis">rollback segments</I> to purge the BLOB data table. For more information about rollback segments, consult your Oracle documentation.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-DBADMIN-VUCSTBLE">Viewing Content Server Tables</A></P>
+<P><A NAME="TMPID14381"></A>A Content Server database stores data in a set of RDBMS tables. You can view a list of these tables and the number of rows in each.</P>
+<P><A NAME="TMPID14383"></A>The <B CLASS="guilabel">Content Server Tablespace Usage</B> page displays information about the tablespace in which the tables of the current Content Server database reside, including the amount of space being used.</P>
+<P class="before-ul"><A NAME="TMPID14387"></A>For Oracle Server, the <B CLASS="guilabel">View Content Server Tables</B> page displays the following information about Content Server database tables:</P><A NAME="AEN13317"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13318"></A><A NAME="TMPID14393"></A>Table names</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13320"></A><A NAME="TMPID14395"></A>Oracle tablespace that contains the table</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13322"></A><A NAME="TMPID14397"></A>Number of rows in the table</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID14398"></A>For Microsoft SQL Server, the <B CLASS="guilabel">View Content Server Tables</B> page displays the following information about Content Server database tables:</P><A NAME="AEN13328"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13329"></A><A NAME="TMPID14404"></A>Table name</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13331"></A><A NAME="TMPID14406"></A>Number of rows in the table</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13333"></A><A NAME="TMPID14408"></A>SQL Server object type</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13335"></A><A NAME="TMPID14410"></A>Microsoft SQL Server user that owns the table</P></LI></UL>
+<P><A NAME="TMPID14411"></A>Oracle Server uses an entity called a <I CLASS="emphasis">tablespace</I> to store the tables of one or more relational databases. A tablespace can have multiple database users, each owning a set of tables. In general, the set of tables corresponding to a Content Server database resides within a single tablespace, which it may share with other sets of tables owned by different database users.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-dbadmin-view-ll-tables-p.htm" revision="">To View Content Server Tables</A></p></li>
+<li><p><A  href="../webadmin/wba-dbadmin-view-tablespace-p.htm" revision="">To View Tablespace Usage</A></p></li>
+<li><p><A  href="../webadmin/wba-dbadmin-purge-data-p.htm" revision="">To Purge the BLOB Data in Your Database</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

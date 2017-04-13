@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<title>INI Preferences</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webreports/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-prefs-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'INI Preferences';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID19931"></A>It is possible to reference settings from the <TT CLASS="filename">opentext.ini</TT> file with a WebReport, using the standard constant tag syntax. This feature is subject to the following limitations:</P><A NAME="AEN18667"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18668"></A><A NAME="TMPID19935"></A>Only items contained under the <TT CLASS="literal">[WebReports]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file can be referenced.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18672"></A><A NAME="TMPID19939"></A>Some standard options cannot be referenced. This is a development decision based on potential security issues. If in doubt, try to reference a particular setting as defined below. If the setting has been blocked and undefined constant error message will be displayed.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18674"></A><A NAME="TMPID19941"></A>If a constant has been defined for a WebReport with the same name as a preference, the constant takes precedence.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID19942"></A>The most common application of this feature is to define unique preferences that will only be used with this feature, for example, preferences that do not already exist in the <TT CLASS="literal">[WebReports]</TT> section. This allows a system (server) level setting that can be referenced by all WebReports. Because the <TT CLASS="filename">opentext.ini</TT> file can vary from server to server, this feature also allows that WebReports can use logic based on a particular server. Here are a few examples of how this feature may be used:</P><A NAME="AEN18679"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18680"></A><A NAME="TMPID19947"></A>Define system level messages, titles or labels.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18682"></A><A NAME="TMPID19949"></A>Define file paths or URLs. This is effectively creating a globally (system wide) available constant.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18684"></A><A NAME="TMPID19951"></A>Define parameters that identify a particular instance of Content Server. For example, “SERVERTYPE=SECURE”. In this way, logic can be added to WebReports to control their behavior according to the instance of Content Server from which they are being run.</P></LI></UL>
+<P><A NAME="TMPID19955"></A>For more information on using the constant tag syntax see <span><A HREF="wr-constant-procedures.htm">Procedures Defining How to Use Constants</A></span>.</P>
+<P><A NAME="TMPID19957"></A>More information can also be found in the administration help section <span><XPROC NAME="ExtXrefStart" HREF="lleswebr-h-agd.webrep-wrprefini" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webreports/webrep-wrprefini.htm">WebReports Preferences in the opentext.ini File</A><XPROC NAME="ExtXrefEnd" HREF="lleswebr-h-agd.webrep-wrprefini" FMT=""></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

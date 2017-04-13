@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>task Import Control File Examples</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-tasksamp-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Import Control File Examples';
+          header.title2 = 'task Import Control File Examples';
+           header.draw();
+  </script>
+
+<DIV title="To create a Task List with none of the optional parameters specified:   " CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="LLESOI-TASKSAMP01"></A><B><IMG title="To create a Task List with none of the optional parameters specified:   " SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-44: To create a Task List with none of the optional parameters specified: &#13;</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4542"></A>&#13;&lt;import&gt;
+  &lt;node type="tasklist" action="create"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="en"&gt;New Task List&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To create a Task List with none of the optional parameters specified:   " SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To create a Milestone inside the Task List created above:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="LLESOI-TASKSAMP02"></A><B><IMG title="To create a Milestone inside the Task List created above:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-45: To create a Milestone inside the Task List created above:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4545"></A>&#13;&lt;import&gt;
+  &lt;node type="taskmilestone" action="create"&gt;
+    &lt;location&gt;Enterprise:New Task List&lt;/location&gt;
+    &lt;title language="en"&gt;New Milestone&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To create a Milestone inside the Task List created above:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To create a Task with the Milestone created above, inside the Task List created above:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="LLESOI-TASKSAMP03"></A><B><IMG title="To create a Task with the Milestone created above, inside the Task List created above:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-46: To create a Task with the Milestone created above, inside the Task List created above:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4548"></A>&#13;&lt;import&gt;
+  &lt;node type="task" action="create"&gt;
+    &lt;location&gt;Enterprise:New Task List&lt;/location&gt;
+    &lt;title language="en"&gt;New Task&lt;/title&gt;
+    &lt;milestone&gt;Enterprise:New Task List:New Milestone&lt;/milestone&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To create a Task with the Milestone created above, inside the Task List created above:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="To remove the Milestone created above, from the Task created above:" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF56"></A><B><IMG title="To remove the Milestone created above, from the Task created above:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 6-47: To remove the Milestone created above, from the Task created above:</B></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4551"></A>&#13;&lt;import&gt;
+  &lt;node type="task" action="update"&gt;
+    &lt;location&gt;Enterprise:New Task List:New Task&lt;/location&gt;
+    &lt;milestone clear="true"&gt;&lt;/milestone&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="To remove the Milestone created above, from the Task created above:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

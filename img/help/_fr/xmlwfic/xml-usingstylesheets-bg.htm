@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Utilisation de feuilles de style pour le traitement des messages</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-usingstylesheets-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration d\'actions de messagerie';
+          header.title2 = 'Utilisation de feuilles de style pour le traitement des messages';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID875"></A>Les feuilles de style utilisées pour traiter les messages dans XML Workflow Interchange doivent être conformes à la version 1.0 de la spécification XSLT (<A HREF="http://www.w3.org/" TARGET="_blank">http://www.w3.org</A>).</P>
+<P class="before-ul"><A NAME="TMPID878"></A>Lorsqu'elle est utilisée pour traduire un message ou un accusé de réception entrant, la feuille de style reçoit le message du système externe en tant qu'entrée. A la sortie, la feuille de style produit l'un des éléments ci-dessous :</P><A NAME="AEN881"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN882"></A><A NAME="TMPID881"></A>Un message au format XML par défaut pour l'action, lequel est ensuite traité par XML Workflow Interchange.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN885"></A><A NAME="TMPID884"></A>Un élément <I CLASS="emphasis">error</I> qui décrit un problème lié au message entrant. Si l'action fait partie d'une étape <B CLASS="guilabel">Workflow Interchange</B>, l'erreur est consignée dans le journal et s'affiche pour l'utilisateur de l'étape en cours.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN889"></A><A NAME="TMPID888"></A>Un élément <I CLASS="emphasis">OK</I> qui indique une réussite. Le message entrant n'est pas traité, mais l'action est considérée comme réussie. Une feuille de style peut renvoyer un message <I CLASS="emphasis">OK</I> pour ignorer un message de lancement ou de modification de tâche entrant.</P></LI></UL>
+<P><A NAME="TMPID891"></A>Lorsqu'une feuille de style est utilisée pour traduire un message ou un accusé de réception sortant, le système Workflow Interchange génère le message sortant au format XML par défaut, l'encapsule dans un élément <I CLASS="emphasis">sendxml</I> et le transmet à la feuille de style en tant qu'entrée. Etant donné que les messages sortants se distinguent grâce à l'élément <I CLASS="emphasis">sendxml</I>, la même feuille de style peut souvent être utilisée pour les messages entrants et sortants.</P>
+<P class="before-ul"><A NAME="TMPID894"></A>A la sortie, la feuille de style produit l'un des éléments ci-dessous :</P><A NAME="AEN897"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN898"></A><A NAME="TMPID897"></A>Un élément <I CLASS="emphasis">sendxml</I> contenant le nouveau message sortant. Ce message est envoyé au système cible.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN901"></A><A NAME="TMPID900"></A>Une réponse au format XML par défaut pour l'action. Aucun message n'est envoyé au système cible, mais le résultat de la feuille de style est traité comme s'il était reçu en tant qu'accusé de réception d'un envoi réussi.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN903"></A><A NAME="TMPID902"></A>Un élément <I CLASS="emphasis">error</I> qui décrit un problème lié au message sortant. L'erreur est consignée dans le journal et s'affiche pour l'utilisateur de l'étape en cours ; aucun message n'est envoyé.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN906"></A><A NAME="TMPID905"></A>Un élément <I CLASS="emphasis">OK</I> qui indique une réussite. Aucun message sortant n'est envoyé.</P></LI></UL>
+<P><A NAME="TMPID907"></A>Pour plus d'informations sur les formats de messages par défaut et les éléments <I CLASS="emphasis">sendxml</I>, <I CLASS="emphasis">error</I> et <I CLASS="emphasis">OK</I>, reportez-vous à <A HREF="xml-configgenparams3-p.htm">Champs et formats de messages</A>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

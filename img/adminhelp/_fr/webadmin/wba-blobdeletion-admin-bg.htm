@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Gestion des échecs de suppression du blob</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-blobdeletion-admin-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administration de la base de données';
+          header.title2 = 'Gestion des échecs de suppression du blob';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID14598"></A>Le module Gestion de stockage flexible permet de suivre les erreurs de suppression du blob. Vous pouvez contrôler les erreurs de suppression des blobs et tenter de supprimer les blobs non supprimés lors des tentatives de suppression précédentes. Si une erreur de suppression est détectée, la page Gérer les échecs de suppression du blob affiche des informations sur la suppression des blobs, telles que le nom du fournisseur logique, la classe d'erreur et la chaîne de l'erreur associée à l'échec de suppression, le cas échéant. Cette page vous indique la date et l'heure de la prochaine tentative de suppression du blob et indique la date de mise en file d'attente de l'échec.</P>
+<P><A NAME="TMPID14599"></A>Si vous voulez réessayer de supprimer les blobs manuellement, vous pouvez le faire sur la page Gérer les échecs de suppression du blob. Toutefois, la tentative de suppression manuelle du blob peut échouer, tout comme la tentative de suppression automatique.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF145"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID14601"></A><B CLASS="note">Note : </B><BR>Les blobs qui ne sont pas supprimés parce que la période de conservation du stockage physique n'a pas encore expiré ne sont pas disponibles pour les tentatives de suppression manuelles.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID14602"></A>Les administrateurs peuvent afficher l'activité programmée des nouveaux essais après l'échec de suppression des blobs et définir l'exécution de l'agent Nouvel essai après l'échec de suppression du blob du fournisseur à un jour et une heure spécifiques. Lorsque l'agent de nouvel essai s'exécute, il traite les entrées du fichier journal en insérant ces entrées dans le tableau de base de données ProviderRetry. Les fichiers journaux contiennent les entrées d'échecs de suppression du blob que le système a tenté d'insérer dans le tableau de base de données ProviderRetry, mais qui ont échoué. L'agent de nouvel essai recherche ensuite les enregistrements de suppression du blob de plus de 24 heures. L'agent de nouvel essai tente alors de supprimer chaque entrée d'échec de suppression de blob répertoriée dans le tableau de base de données ProviderRetry.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF146"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID14604"></A><B CLASS="note">Note : </B><BR>Par défaut, le programme de l'agent Nouvel essai après l'échec de suppression du blob du fournisseur est défini pour s'exécuter chaque nuit à 0h00.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID14605"></A>Les échecs de suppression du blob sont des événements que Content Server peut inclure dans l'audit. Les événements suivants peuvent être inclus dans l'audit :</P><A NAME="AEN13586"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13587"></A><A NAME="TMPID14609"></A><B CLASS="guilabel">Nouvel essai fournisseur supprimé</B>, créé lorsqu'un blob qui ne pouvait pas initialement être supprimé est supprimé correctement.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13590"></A><A NAME="TMPID14612"></A><B CLASS="guilabel">Nouvel essai fournisseur placé dans la file d'attente</B>, créé lors de l'échec de suppression d'un blob et lorsqu'une ligne dans le tableau de la base de données ProviderRetry est insérée ou mise à jour.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13593"></A><A NAME="TMPID14615"></A><B CLASS="guilabel">Erreur lors du placement dans la file d'attente du fournisseur</B>, créé lors de l'échec de suppression d'un blob et lorsque le système est incapable d'insérer une ligne dans le tableau ProviderRetry ou d'ajouter une ligne au fichier journal indiquant que la suppression du blob a échoué.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13596"></A><A NAME="TMPID14618"></A><B CLASS="guilabel">Nouvel essai de Nouvel essai fournisseur</B>, créé lorsque le système tente de supprimer un blob qui ne pouvait pas initialement être supprimé.</P></LI></UL>
+<P><A NAME="TMPID14620"></A>Pour plus d'informations sur l'audit des événements, reportez-vous à la rubrique <span><A href="../webadmin/wba-audit-admin-so.htm">Gestion de l'audit des événements</A></span>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-blobdeletion-monitor-p.htm" revision="">Gestion des échecs de suppression du blob</A></p></li>
+<li><p><A  href="../webadmin/wba-blobdeletion-config-agent-p.htm" revision="">Configuration de l'agent Nouvel essai après l'échec de suppression du blob du fournisseur</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

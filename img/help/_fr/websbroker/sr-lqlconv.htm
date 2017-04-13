@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBB100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websbroker">
+<META mancondkey="llesrcm-h-ugd -- llespob-h-ugd -- llesprj-h-ugd -- ngdlles-h-ugd -- llesrcs-h-ugd -- llesrec-h-ugd -- llesapp-h-ugd -- llescl-h-ugd -- llesrt-h-ugd -- llesels-h-ugd -- lleselv-h-agd -- lleswat-h-ugd"><title>Conventions LQL</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'sr-lqlconv.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Recherche Content Server';
+          header.title2 = 'Conventions LQL';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1672"></A>Les conventions du langage de requête Content Server (LQL) permettent de définir la syntaxe d'une requête complexe. Pour plus d'informations sur l'utilisation des requêtes complexes, reportez-vous à la rubrique <span><A HREF="sr-lql.htm">Recherche à l'aide de requêtes complexes</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SR-USEPHRASES">Utilisation des expressions</A></P>
+<P><A NAME="TMPID1677"></A>Une expression est une séquence fixe d'un ou plusieurs mots délimitée par des guillemets droits, « &nbsp; ». Par exemple, « bon » et « pour le meilleur et pour le pire ». Vous pouvez toutefois ignorer les guillemets droits encadrant les expressions composées d'un seul mot (par exemple, riz).</P>
+<P class="before-ul"><A NAME="TMPID1681"></A>Lors de la création de locutions, les règles suivantes s'appliquent :</P><A NAME="AEN1663"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1664"></A><A NAME="TMPID1684"></A>Un caractère d'espacement (par exemple, une tabulation ou un espace) indique la fin d'un mot.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1666"></A><A NAME="TMPID1686"></A>Content Server interprète les chaînes comportant des signes de ponctuation mais aucun espace comme une seule expression (par exemple, « "www.opentext.com" »).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1670"></A><A NAME="TMPID1690"></A>Vous pouvez ignorer les guillemets droits encadrant les expressions d'un seul mot (par exemple, <TT CLASS="literal">riz</TT>).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1673"></A><A NAME="TMPID1693"></A>N'oubliez pas les guillemets droits encadrant les mots clés réservés (<TT CLASS="literal">qlnear</TT>, par exemple) lorsque vous souhaitez utiliser les mots clés comme critères de recherche. Par exemple, pour rechercher des informations sur le mot clé <TT CLASS="literal">qlnear</TT> dans l'aide en ligne Content Server, votre requête doit être <TT CLASS="command">"qlnear"</TT> et vous devez cliquer sur la vue de recherche appropriée.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SR-USEWILDCARDS">Utilisation des caractères génériques</A></P>
+<P><A NAME="TMPID1700"></A>Pour vos requêtes, vous pouvez utiliser un astérisque (<TT CLASS="literal">*</TT>) en tant qu'espace réservé pour certains caractères. Par exemple, pour indiquer que vous souhaitez rechercher un mot comportant plusieurs terminaisons possibles, saisissez <TT CLASS="command">account*</TT> pour rechercher les éléments Content Server contenant les mots <I CLASS="emphasis">compte</I>, <I CLASS="emphasis">comptes</I>, <I CLASS="emphasis">comptable</I>, <I CLASS="emphasis">comptabilité</I>, etc.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SR-USEESCCHARS">Utilisation des caractères d'échappement</A></P>
+<P><A NAME="TMPID1710"></A>Vous pouvez utiliser les caractères d'échappement pour rechercher certains caractères spéciaux dans votre syntaxe de requête. Dans certains cas particuliers, le simple antislash (<TT CLASS="literal">\</TT>) est considéré comme marquant le début d'une séquence d'échappement.</P>
+<P class="before-ul"><A NAME="TMPID1712"></A>Vous pouvez rechercher les caractères spéciaux courants et importants suivants :</P><A NAME="AEN1692"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1693"></A><A NAME="TMPID1715"></A>les guillemets <TT CLASS="literal">"</TT> utilisez <TT CLASS="literal">\"</TT> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1697"></A><A NAME="TMPID1719"></A>l'apostrophe <TT CLASS="literal">'</TT> utilisez <TT CLASS="literal">\'</TT> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1701"></A><A NAME="TMPID1723"></A>le simple antislash <TT CLASS="literal">\</TT> utilisez <TT CLASS="literal"> \\</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1705"></A><A NAME="TMPID1727"></A>le double antislash <TT CLASS="literal">\\</TT> utilisez <TT CLASS="literal"> \\\\</TT></P></LI></UL>
+<P><A NAME="TMPID1730"></A>D'autres caractères non spéciaux ne sont pas affectés par l'antislash. Par conséquent, une requête comme : « \blé » est toujours associée à « \blé ».</P>
+<P class="before-ul"><A NAME="TMPID1733"></A>La présence d'un simple antislash à la fin d'un terme de requête est une syntaxe incorrecte et le moteur de recherche renverra un message d'erreur pour syntaxe incorrecte. Par exemple :</P><A NAME="AEN1713"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1714"></A><A NAME="TMPID1736"></A>syntaxe incorrecte : <TT CLASS="literal">sélectionnez "OTName" où [région "OTName"]"C:\"</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1717"></A><A NAME="TMPID1739"></A>syntaxe correcte : <TT CLASS="literal">sélectionnez "OTName" où [région "OTName"]"C:\\"</TT></P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SR-UNDRSTNDORDERPROCESSING">Ordre de traitement</A></P>
+<P><A NAME="TMPID1743"></A>Par défaut, Content Server traite les termes de la requête de gauche à droite. Utilisez les parenthèses (<TT CLASS="literal">()</TT>) pour ne pas tenir compte de l'ordre par défaut et obliger Content Server à évaluer d'abord les expressions entre parenthèses. Par exemple, saisissez <TT CLASS="literal">(culture OR ferme) AND (blé OR grain)</TT> pour rechercher les éléments Content Server contenant au moins une occurrence des mots <I CLASS="emphasis">culture</I> ou <I CLASS="emphasis">ferme</I> et au moins une occurrence des mots <I CLASS="emphasis">blé</I> ou <I CLASS="emphasis">grain</I>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Using a Content Server Category as a Data Source</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-datasource-cscategory.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'Using a Content Server Category as a Data Source';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID18631"></A>A webreport can use a Content Server Category as a data source. A user may select one or many Content Server Categories, then select one or many Attributes within each Category. The webreport will process an SQL query against the Content Server database <TT CLASS="literal">DTREE</TT> and <TT CLASS="literal">LLATTRDATA</TT> tables and return one record for each Content Server item with the selected Categories applied.</P>
+<P><A NAME="TMPID18638"></A>Each record returned from the query will contain the following values:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN17388"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Field</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Descriptions</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DataID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The DataID for the object as stored in the Content Server <TT CLASS="literal">DTREE</TT> database table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ParentID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The ParentID for the object as stored in the Content Server <TT CLASS="literal">DTREE</TT> database table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SubType</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The SubType for the object as stored in the Content Server <TT CLASS="literal">DTREE</TT> database table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Name</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The Name for the object as stored in the Content Server <TT CLASS="literal">DTREE</TT> database table.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Attribute Values</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The current value for each selected Attribute as stored in the Content Server <TT CLASS="literal">LLAttrData</TT> table. The column header will be the attribute system name. For example, the original attribute name with spaces replaced by underscores.</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-DATASOURCE-FEATCAT">Features of a Category as a Data Source</A></P>
+<P class="before-ul"><A NAME="TMPID18675"></A>When the <B CLASS="highlight">Content Server Category</B> data source is selected, the following features are available:</P><A NAME="AEN17426"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17427"></A><A NAME="TMPID18680"></A>Use the <B CLASS="guilabel">Browse Content Server</B> button to select a Content Server Category. After a Category has been selected, the page will refresh with a display of all Attributes within the Category.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17432"></A><A NAME="TMPID18685"></A><B CLASS="highlight">Select Attributes</B> - Select the checkbox next to a specific Attribute to include the attribute within the query results. When an attribute has been selected, the Parameter Menu will be displayed for that attribute. When an attribute is de-selected, the Parameter Menu will be removed for that attribute.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17435"></A><A NAME="TMPID18688"></A>Use the <B CLASS="guilabel">Check All</B> and <B CLASS="guilabel">Uncheck All</B> buttons to check or uncheck all checkboxes for the specified category.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17439"></A><A NAME="TMPID18692"></A>Use the <B CLASS="guilabel">Delete Category</B>, <IMG SRC="image027.gif"> , icon to delete a specified category.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17443"></A><A NAME="TMPID18696"></A>Use the <B CLASS="guilabel">Add Category</B>, <IMG SRC="image028.gif"> , icon to add another category. The <B CLASS="guilabel">Add Category</B> icon will only be displayed at the end of the current listing of categories. The Content Server administrator may configure the number of categories that may be included in the Data Source list and the Add Category icon will not be displayed when the limit has been reached.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17449"></A><A NAME="TMPID18702"></A><B CLASS="guilabel">Category And/Or Join Operator</B> - For each new Category, select either And/Or radio button to specify whether the categories will be joined in the query with an <B CLASS="guilabel">inner join</B> (And) or a <B CLASS="guilabel">left outer join</B> (Or).</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-DATASOURCE-PARMCAT">Using Parameters with a Category as a Data Source</A></P>
+<P><A NAME="TMPID18708"></A>The webreport designer may define Category/Attributes as WebReport parameters and specify a query operator from the <B CLASS="guilabel">WebReports Data Source</B> page. When a Category/Attribute has been checked on the <B CLASS="guilabel">Data Source</B> page, a new <B CLASS="highlight">Add Parameter Menu</B>, <IMG SRC="image029.gif"> , icon will be displayed, from which a query operator may be selected. When a query operator has been selected from the Parameter Menu, the attribute is now available via the “Parameter Extraction” process on the <B CLASS="guilabel">Parameters</B> tab.</P>
+<P><A NAME="TMPID18716"></A>When an attribute has a selected parameter query operator, the <B CLASS="highlight">Edit Parameter Menu</B>, <IMG SRC="image030.gif"> , icon will be displayed and a checkmark, <IMG SRC="image031.gif"> , will be displayed next to the selected query operator.</P>
+<P class="before-ul"><A NAME="TMPID18720"></A>If an attribute is currently used as a parameter and the query operator is changed from the <B CLASS="guilabel">Data Source</B> page, the query will now be based on the newly selected query operator. The webreport designer will be prompted with the option to update the display text on the <B CLASS="guilabel">Parameter</B> page; regardless of the display text on the <B CLASS="guilabel">Parameter</B> page, the SQL Query processed will always use the query operator as selected on the Parameter Menu on the <B CLASS="guilabel">Data Source</B> page. To clear a selected query operator from the parameter menu, either:</P><A NAME="AEN17472"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17473"></A><A NAME="TMPID18727"></A>select another query operator from the same menu to set a new query operator, or</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17475"></A><A NAME="TMPID18729"></A>select the existing query operator to reset the query operator to undefined.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-DATASOURCE-CATDATACT">Category Data Source Actions</A></P>
+<P><A NAME="TMPID18732"></A>Three additional actions are available to the webreport designer when Content Server Category is the selected data source.</P>
+<A NAME="AEN17480"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17481"></A><A NAME="TMPID18736"></A>Select the <B CLASS="guilabel">View SQL</B> button to view the generated SQL for currently selected categories, attributes and defined parameters.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF39"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID18739"></A><B CLASS="note">Note: </B><BR>Only a WebReports designer with <I CLASS="emphasis">Modify</I> privileges may view the SQL.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17488"></A><A NAME="TMPID18743"></A>Select the <B CLASS="guilabel">Filter Results by User Permissions</B> checkbox to ensure that the query results will be limited based on the permissions of the user running the webreport. The user must have <I CLASS="emphasis">see</I> permission to view a specific item.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF40"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID18747"></A><B CLASS="note">Note: </B><BR>The default value for this feature is <I CLASS="emphasis">CHECKED</I>; only a user with Content Server administrator privileges may modify this feature.</P>
+<P><A NAME="TMPID18750"></A>The permissions filter is applied to query results as a separate process, after the database query has completed processing.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17497"></A><A NAME="TMPID18752"></A>Set the <B CLASS="guilabel">Maximum Number of Results</B> to an integer value indicating the maximum number of results to be returned by the database query. Note that the number of items displayed may be less than the defined <B CLASS="guilabel">Maximum Number of Results</B> when the permissions filter is applied after the query return. The WebReports designer may select a value no greater than the value defined by the Content Server administrator.</P></LI></OL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

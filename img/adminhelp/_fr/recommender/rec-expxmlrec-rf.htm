@@ -1,0 +1,382 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREC100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="recommender">
+<META mancondkey="lleswba-h-agd -- llesels-h-ugd"><title>Exportation de données de recommandation au format XML</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'rec-expxmlrec-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administration de l\'Assistant de recommandation';
+          header.title2 = 'Exportation de données de recommandation au format XML';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID509"></A>Pour exporter les données de recommandation d'un utilisateur au format XML, ajoutez <TT CLASS="literal">&amp;outputxml=true</TT> à la fin de l'URL Content Server de la page ou saisissez l'URL suivante : <TT CLASS="literal">&lt;<I CLASS="varname">protocole</I>>://&lt;<I CLASS="varname">hôte</I>>/&lt;<I CLASS="varname">préfixe_URL</I>> /Content Server.exe?func=Personal.Recommendations&amp;outputxml=true</TT> </P>
+<P class="before-ul"><A NAME="TMPID517"></A>où :</P><A NAME="AEN508"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN509"></A><A NAME="TMPID520"></A><TT CLASS="literal">&lt;<I CLASS="varname">protocole</I>></TT> est soit http, soit https ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN513"></A><A NAME="TMPID524"></A><TT CLASS="literal">&lt;<I CLASS="varname">hôte</I>></TT> est l'adresse complète de l'hôte (par exemple, Content Serverhost.mycorp.com) et </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN518"></A><A NAME="TMPID529"></A><TT CLASS="literal">&lt;<I CLASS="varname">préfixe_URL</I>></TT> est le raccourci du répertoire virtuel mappé au répertoire <TT CLASS="literal">&lt;<I CLASS="varname">Content Server_accueil</I>>/cgi</TT> dans le serveur HTTP.</P></LI></UL>
+<P><A NAME="TMPID535"></A>Cette commande gère la sortie des recommandations de l'utilisateur actuellement connecté au serveur Admin. </P>
+<P><A NAME="TMPID536"></A>Le DTD qui définit cette sortie XML est inclus dans les installations telles que <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/module/recommender_&lt;<I CLASS="varname">x</I>> _&lt;<I CLASS="varname">x</I>>_&lt;<I CLASS="varname">x</I>>/config/recommender_xml_output.dtd</TT>, où &lt;<I CLASS="varname">x</I>>_&lt;<I CLASS="varname">x</I>>_&lt;<I CLASS="varname">x</I>> est le numéro de version du module Recommender. Par exemple, pour Recommender 10.5.0, le fichier se trouve dans : <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>> /module/recommender_10_5_0/config/recommender_xml_output.dtd</TT>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="REC-EXPXMLUND">Sortie XML</A></P>
+<P><A NAME="TMPID553"></A>La première partie du résultat en XML est un en-tête qui définit le fichier XML et le type de données que le fichier contient (dans le cas présent, des données de recommandation). Cette section est constituée de la déclaration XML suivante, qui spécifie la version XML, le codage de caractères utilisés dans ce fichier et l'élément <TT CLASS="literal">PersonalRecommendations</TT>. </P>
+<P><A NAME="TMPID555"></A><TT CLASS="literal">&lt;?xml version="1.0" ?&gt;&lt;PersonalRecommendations&gt;</TT> </P>
+<P><A NAME="TMPID557"></A>Le fichier XML contient également, pour chaque composant de l'Assistant de recommandation, une section affichant des informations sur la page des recommandations. Chaque section est définie par une balise. </P>
+<DIV title="Balises XML définissant les composants de l'Assistant de recommandation" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="REC-TAB-3"></A><B>Tableau 1-3 : Balises XML définissant les composants de l'Assistant de recommandation</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="BOTTOM">Elément</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="BOTTOM">Composant</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;whatsnew&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Nouveautés</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;mostactive&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Eléments les plus actifs</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;toppicks&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Les mieux notés</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;history&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Eléments récemment consultés</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;userslikeme&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Personnes ayant des centres d'intérêt similaires</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;docsinterest&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Documents intéressants</B></TD></TR></TABLE></DIV>
+<P><A NAME="TMPID598"></A>Chaque balise contient un attribut <TT CLASS="literal">DisplayName</TT> qui correspond au nom qui apparaît dans l'interface utilisateur graphique pour l'élément (par exemple, <TT CLASS="literal">&lt;whatsnew DisplayName="What's New"&gt;</TT>). </P>
+<P><A NAME="TMPID601"></A>Les composants <B CLASS="guilabel">Nouveautés</B>, <B CLASS="guilabel">Eléments les plus actifs</B>, <B CLASS="guilabel">Les mieux notés</B>, <B CLASS="guilabel">Documents intéressants</B> et <B CLASS="guilabel">Eléments récemment consultés</B> sont composés de tableaux d'éléments et sont donc définis par les mêmes balises dans la sortie XML. Le tableau suivant décrit les balises par ordre d'apparition. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF8"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID608"></A><B CLASS="note">Note : </B><BR>Plusieurs balises XML du tableau possèdent le même nom (par exemple, <TT CLASS="literal">&lt;dc_link&gt;</TT>). Ces répétitions sont cependant nécessaires dans la mesure où le tableau répertorie toutes les balises par ordre d'apparition.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="Balises XML des composants relatifs à l'élément" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="REC-TAB-4"></A><B>Tableau 1-4 : Balises XML des composants relatifs à l'élément</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="BOTTOM">Balise</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="BOTTOM">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;browseview&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant le tableau des éléments.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;header&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant l'en-tête du tableau des éléments.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;column&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant les libellés des colonnes apparaissant dans l'en-tête du tableau. L'ordre d'apparition des libellés de colonne dans ces balises respecte l'ordre d'apparition dans l'interface utilisateur.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique les en-têtes des colonnes du tableau (par exemple, <TT CLASS="literal">Type</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;tagname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le nom de balise de la colonne. Le nom de balise permet d'associer l'en-tête de la colonne avec la colonne correspondante.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;contents&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant des informations apparaissant dans le corps du tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;object&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une rangée dans le corps du tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_subtype&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant des informations sur le type d'élément pour chaque élément du tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_subtype_img&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant des informations sur l'image représentant le type d'élément d'un élément.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_imgpath&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le chemin de l'image représentant le type d'élément d'un élément.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_imgalt&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le texte ALT de l'image du type d'un élément (par exemple, <TT CLASS="literal">Document</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le lien pour l'extraction d'un élément.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_name&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant des informations sur le nom d'un élément.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le nom de l'élément tel qu'affiché dans le tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le lien pour l'extraction d'un élément.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_name_new&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Inutilisé dans la version actuelle de l'Assistant de recommandation.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_functions&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Inutilisé dans la version actuelle de l'Assistant de recommandation.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_location&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant des informations sur l'emplacement d'un élément.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_location_img&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant des informations sur l'image associée à l'emplacement de chaque élément.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_imgpath&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le chemin de l'image associée à l'emplacement de chaque élément.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_imgalt&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le texte ALT de l'image de l'emplacement (par exemple, <TT CLASS="literal">Espace de travail Entreprise</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique l'emplacement d'un élément tel qu'affiché dans le tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le lien renvoyant à l'emplacement d'un élément.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_name_new&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Inutilisé dans la version actuelle de l'Assistant de recommandation.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_size&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant des informations sur la taille d'un élément.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_size_displaysize&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique la taille d'un élément tel qu'affiché dans le tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_modifydate&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant des informations sur la date de modification d'un élément.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;dc_date&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique la date de modification d'un élément tel qu'affiché dans le tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_rating&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant des informations sur l'évaluation globale d'un élément dans le tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_rating_img&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant des informations sur l'image représentant l'évaluation globale d'un élément dans le tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_imgpath&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le chemin de l'image représentant l'évaluation globale d'un élément dans le tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_imgalt&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le texte ALT pour l'icône d'évaluation (par exemple, <TT CLASS="literal">Cliquez pour donner votre avis sur l'élément</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le lien vers l'onglet <B CLASS="guilabel">Evaluations</B> de la page Propriétés de l'élément dans le tableau.</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID757"></A>Le composant <B CLASS="guilabel">Personnes ayant des centres d'intérêt similaires</B> est constitué d'une table d'utilisateurs. Le tableau suivant décrit les balises par ordre d'apparition. </P>
+<DIV title="Eléments XML pour le composant Personnes ayant des centres d'intérêt similaires" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="REC-TAB-5"></A><B>Tableau 1-5 : Eléments XML pour le composant Personnes ayant des centres d'intérêt similaires</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="BOTTOM">Elément</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="BOTTOM">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;browseview&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant le tableau des utilisateurs.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;header&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant l'en-tête du tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;column&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant les libellés des colonnes apparaissant dans l'en-tête du tableau. L'ordre d'apparition des libellés de colonne dans ces balises respecte l'ordre d'apparition dans l'interface utilisateur.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique les en-têtes des colonnes du tableau (par exemple, <TT CLASS="literal">Nom de l'utilisateur</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;tagname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le nom de la balise de la colonne. Le nom de balise permet d'associer l'en-tête de la colonne à la colonne correspondante.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;contents&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant des informations apparaissant dans le corps du tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;object&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une rangée dans le corps du tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_username&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique une série de balises contenant des informations sur un utilisateur présent dans le tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_displayname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le nom de connexion de l'utilisateur tel qu'affiché dans le tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_imgpath&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le chemin de l'image associée à chaque utilisateur présent dans le tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_link&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le lien permettant d'accéder aux informations concernant un utilisateur présent dans le tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_firstname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le prénom d'un utilisateur présent dans le tableau.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_lastname&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le nom d'un utilisateur présent dans le tableau</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;recommender_department&gt;</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indique le service d'un utilisateur présent dans le tableau</TD></TR></TABLE></DIV>
+<DIV title="Exemple de fichier" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF9"></A><B><FONT COLOR="WHITE">.</FONT><BR><IMG title="Exemple de fichier" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 1-1 : Exemple de fichier</B></P>
+<P class="nr1"><A NAME="TMPID828"></A>Vous trouverez ci-après un exemple de données de recommandation exportées. Dans ce cas, les seules recommandations sont les suivantes : dans <B CLASS="guilabel">Nouveautés</B>, le fichier kf.pdf et dans <B CLASS="guilabel">Personnes ayant des intérêts similaires</B>, l'utilisateur <TT CLASS="literal">bdouglas</TT>. </P><A NAME="AEN821"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;?xml version="1.0" ?&gt;
+
+&lt;PersonalRecommendations&gt;
+
+&lt;whatsnew DisplayName="What's New"&gt;
+&lt;!-- File: dc/sectionbrowseviewxml.html --&gt;
+  &lt;browseview&gt;
+    &lt;header&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Type&lt;/displayname&gt;
+        &lt;tagname&gt;dc_subtype&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Name&lt;/displayname&gt;
+        &lt;tagname&gt;dc_name&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Functions&lt;/displayname&gt;
+        &lt;tagname&gt;dc_functions&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Location&lt;/displayname&gt;
+        &lt;tagname&gt;dc_location&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Size&lt;/displayname&gt;
+        &lt;tagname&gt;dc_size&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Modified Date&lt;/displayname&gt;
+        &lt;tagname&gt;dc_modifydate&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Rating&lt;/displayname&gt;
+        &lt;tagname&gt;recommender_rating&lt;/tagname&gt;
+      &lt;/column&gt;
+    &lt;/header&gt;
+    &lt;contents&gt;
+      &lt;object&gt;
+        &lt;dc_subtype&gt;
+          &lt;dc_subtype_img&gt;
+            &lt;dc_imgpath&gt;/910support/webdoc/apppdf.gif&lt;/dc_imgpath&gt;
+            &lt;dc_imgalt&gt;Document&lt;/dc_imgalt&gt;
+            &lt;dc_link&gt;/910/.exe/kf.pdf?func=doc.Fetch&amp;nodeId=4618&amp;docTitle=kf%2Epdf&lt;/dc_link&gt;
+          &lt;/dc_subtype_img&gt;
+        &lt;/dc_subtype&gt;
+        &lt;dc_name&gt;
+          &lt;dc_displayname&gt;kf.pdf&lt;/dc_displayname&gt;
+          &lt;dc_link&gt;/910/.exe/kf.pdf?func=doc.Fetch&amp;nodeId=4618&amp;docTitle=kf%2Epdf&lt;/dc_link&gt;
+          &lt;dc_name_new/&gt;
+        &lt;/dc_name&gt;
+        &lt;dc_functions&gt;
+        &lt;/dc_functions&gt;
+        &lt;dc_location&gt;
+          &lt;dc_location_img&gt;
+            &lt;dc_imgpath&gt;/910support/webdoc/icon_library.gif&lt;/dc_imgpath&gt;
+            &lt;dc_imgalt&gt;Enterprise Workspace&lt;/dc_imgalt&gt;
+          &lt;/dc_location_img&gt;
+          &lt;dc_displayname&gt;Enterprise&lt;/dc_displayname&gt;
+          &lt;dc_link&gt;/910/.exe?func=ll&amp;objId=2000&amp;objAction=browse&amp;sort=name&lt;/dc_link&gt;
+          &lt;dc_name_new/&gt;
+        &lt;/dc_location&gt;
+        &lt;dc_size&gt;
+          &lt;dc_size_displaysize&gt;60731 KB&lt;/dc_size_displaysize&gt;
+        &lt;/dc_size&gt;
+        &lt;dc_modifydate&gt;
+          &lt;dc_date&gt;10/08/2002 04:07 PM&lt;/dc_date&gt;
+        &lt;/dc_modifydate&gt;
+        &lt;recommender_rating&gt;
+          &lt;recommender_rating_img&gt;
+            &lt;recommender_imgpath&gt;/910support/recommender/ratinggifs/star/star0.gif&lt;/recommender_imgpath&gt;
+            &lt;recommender_imgalt&gt;Click to rate this item.&lt;/recommender_imgalt&gt;
+            &lt;recommender_link&gt;?func=ll&amp;objid=4618&amp;objAction=Ratings&lt;/recommender_link&gt;
+          &lt;/recommender_rating_img&gt;
+        &lt;/recommender_rating&gt;
+      &lt;/object&gt;
+    &lt;/contents&gt;
+  &lt;/browseview&gt;
+&lt;!-- End File: dc/sectionbrowseviewxml.html --&gt;
+&lt;/whatsnew&gt;
+
+&lt;mostactive DisplayName="Most Active"&gt;
+&lt;/mostactive&gt;
+
+&lt;toppicks DisplayName="Top Picks"&gt;
+&lt;/toppicks&gt;
+
+&lt;history DisplayName="Recently Accessed Items"&gt;
+&lt;/history&gt;
+
+&lt;userslikeme DisplayName="People With Similar Interests"&gt;
+&lt;!-- File: dc/sectionbrowseviewxml.html --&gt;
+  &lt;browseview&gt;
+    &lt;header&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;User Name&lt;/displayname&gt;
+        &lt;tagname&gt;recommender_username&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;First Name&lt;/displayname&gt;
+        &lt;tagname&gt;recommender_firstname&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Last Name&lt;/displayname&gt;
+        &lt;tagname&gt;recommender_lastname&lt;/tagname&gt;
+      &lt;/column&gt;
+      &lt;column&gt;
+        &lt;displayname&gt;Department&lt;/displayname&gt;
+        &lt;tagname&gt;recommender_department&lt;/tagname&gt;
+      &lt;/column&gt;
+    &lt;/header&gt;
+    &lt;contents&gt;
+      &lt;object&gt;
+        &lt;recommender_username&gt;
+          &lt;recommender_username&gt;
+            &lt;recommender_displayname&gt;bdouglas&lt;/recommender_displayname&gt;
+            &lt;recommender_imgpath&gt;/910support/guy.gif&lt;/recommender_imgpath&gt;
+            &lt;recommender_link&gt;&lt;A HREF="#" onClick="javascript:window.open('?func=user.userdialog&amp;userID=4613','UserDialog','width=460,height=365,resizable=yes,scrollbars=yes,menubar=no')"&gt;bdouglas&lt;/A&gt;&lt;/recommender_link&gt;
+          &lt;/recommender_username&gt;
+        &lt;/recommender_username&gt;
+        &lt;recommender_firstname&gt;
+          &lt;recommender_firstname&gt;Beverly&lt;/recommender_firstname&gt;
+        &lt;/recommender_firstname&gt;
+        &lt;recommender_lastname&gt;
+          &lt;recommender_lastname&gt;Douglas&lt;/recommender_lastname&gt;
+        &lt;/recommender_lastname&gt;
+        &lt;recommender_department&gt;
+          &lt;recommender_department&gt;DefaultGroup&lt;/recommender_department&gt;
+        &lt;/recommender_department&gt;
+      &lt;/object&gt;
+    &lt;/contents&gt;
+  &lt;/browseview&gt;
+&lt;!-- End File: dc/sectionbrowseviewxml.html --&gt;
+&lt;/userslikeme&gt;
+
+&lt;docsinterest DisplayName="Documents Of Interest"&gt;
+&lt;/docsinterest&gt;
+
+&lt;/PersonalRecommendations&gt;</PRE
+><IMG title="Exemple de fichier" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

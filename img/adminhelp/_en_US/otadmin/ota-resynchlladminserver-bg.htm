@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Resynchronizing Admin Servers</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-resynchlladminserver-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Creating Indexes Using Templates';
+          header.title2 = 'Resynchronizing Admin Servers';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID717"></A>Each Content Server site has a Server and an Admin server. The Server controls all functionality and displays the pages you see in the user interface through the HTTP server. The Admin server manages the data flow processes in the system (for example, the Enterprise Extractor process, Directory Walker processes, Document Conversion processes, and Update Distributor processes). It also manages a file caching system used to improve the efficiency of certain Content Server operations, such as hit highlighting.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF20"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID721"></A><B CLASS="note">Note: </B><BR>The Server and Admin server at each Content Server site are represented as services in your Windows operating system.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID723"></A>After you install Content Server, you set up and configure the Admin servers at your site. You can also set up the Admin server file cache. Then, you can perform maintenance operations, such as browsing, pinging, suspending, or resetting an Admin server. When necessary, you can also resynchronize an Admin server to ensure that its data accurately reflects the information stored in the Content Server database.</P>
+<P><A NAME="TMPID726"></A>Resynchronizing an Admin server modifies the <TT CLASS="filename">otadmin.cfg</TT> file to reflect the information currently stored in the Content Server database, and instructs the Admin server to create or delete objects as necessary to reflect the updated information.</P>
+<P><A NAME="TMPID729"></A>You can resynchronize an Admin server at any time; however, Content Server automatically prompts you to resynchronize an Admin server after you change its host name or port number.</P>
+<P><A NAME="TMPID731"></A>Before you resynchronize an Admin server, ensure the directory paths and port numbers recorded for data source objects in the Content Server database are valid on the Admin server's host. To do this, go to the <B CLASS="guilabel">Specific</B> tab of each data source object's Properties page and verify the paths and port numbers are valid on the Admin server's host.</P>
+<P><A NAME="TMPID734"></A>The Server stores information about its Admin servers in the Content Server database, including the data flow processes and Search Engines that it controls using those servers. Because Admin servers are not directly connected to the Content Server database, each Admin server also maintains its own copy of this information in the <TT CLASS="filename">otadmin.cfg</TT> file.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF21"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID739"></A><B CLASS="note">Note: </B><BR>The <TT CLASS="filename">otadmin.cfg</TT> file is stored in the <TT CLASS="literal">config</TT> directory of a primary Content Server installation.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID743"></A>The information in an Admin server's <TT CLASS="filename">otadmin.cfg</TT> file must always match the corresponding information in the Content Server database. However, there are some circumstances under which this information may become mismatched. For example:</P><A NAME="AEN756"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN757"></A><A NAME="TMPID748"></A>You change the host name or port number of an Admin server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN759"></A><A NAME="TMPID750"></A>You perform a Content Server installation on a new host and are connecting it to a Content Server database that was created on a different host. The information stored in the Content Server database regarding data source object locations may not be valid for the new host due to directory mapping or mounting differences, port conflicts, and registered Admin servers that are no longer available.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN764"></A><A NAME="TMPID755"></A>The <TT CLASS="filename">otadmin.cfg</TT> file of a registered Admin server is corrupt or has been deleted.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN767"></A><A NAME="TMPID758"></A>You change the information in the Content Server database in a way that did not allow the corresponding changes to be made in an Admin server's <TT CLASS="filename">otadmin.cfg</TT> file. Although unlikely, this may happen if you modify this information by issuing SQL commands directly to the Content Server database.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN772"></A><A NAME="TMPID763"></A>The Admin server has entered <I CLASS="emphasis">safe mode</I>. For details, see <span><A href="../otadmin/ota-maintainlladminserver-rf.htm">Maintaining Admin servers</A></span>.</P></LI></UL>
+<P><A NAME="TMPID766"></A>If you suspect that the information about Admin servers and data sources that is stored in the Content Server database does not match the corresponding information stored in the <TT CLASS="filename">otadmin.cfg</TT> files of the registered Admin servers, you must resynchronize the Admin servers. Resynchronizing an Admin server checks the stability of the server's indexes to make sure that they are not corrupt, modifies the <TT CLASS="filename">otadmin.cfg</TT> file to reflect the information currently stored in the Content Server database, and then instructs the Admin server to create or delete objects (as necessary) to reflect the updated information. However, if one or more indexes are corrupt, the resynchronization stops and returns an error message, instructing you to contact OpenText Customer Support.</P>
+<P class="before-ul"><A NAME="TMPID772"></A>Resynchronizing an Admin server can sometimes have unexpected results. For example, if there is a discrepancy between the Content Server database and an Admin server's <TT CLASS="filename">otadmin.cfg</TT> file, concerning whether a particular index resides on the Admin server host, there are two possible outcomes, depending on the circumstances:</P><A NAME="AEN785"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN786"></A><A NAME="TMPID777"></A>If there is an entry for the index in an Admin server's <TT CLASS="filename">otadmin.cfg</TT> file, indicating that the index resides on this Admin server host, but there is no corresponding entry in the Content Server database, resynchronizing instructs the Admin server to remove the entry from <TT CLASS="filename">otadmin.cfg</TT> and to delete the index from the erroneous location.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN791"></A><A NAME="TMPID782"></A>If the information in the Content Server database indicates that the index exists on a particular Admin server host, but the <TT CLASS="filename">otadmin.cfg</TT> file on that host does not contain an entry for it, resynchronizing instructs the Admin server to add an entry for the index in <TT CLASS="filename">otadmin.cfg</TT> and to create an empty index in the location specified in the Content Server database.</P></LI></UL>
+<P title="Orphaned or Unknown processes" CLASS="bridgehead-boldpara"><A NAME="TMP4REF22">Orphaned or Unknown processes</A></P>
+<P><A NAME="TMPID788"></A>After resynchronization has completed, a summary of the results is displayed. If any processes in the <TT CLASS="filename">otadmin.cfg</TT> file do not match the corresponding information stored in the database, they are listed in the <B CLASS="guilabel">Orphaned or Unknown processes</B> section of the results.</P>
+<P><A NAME="TMPID791"></A>Occasionally, errors may appear in this section since there is a known limitation in the Admin server synchronization process that occasionally prevents some processes from properly resynchronizing. Synchronizing twice solves this potential problem.</P>
+<P><A NAME="TMPID792"></A>If any errors appear, run the resynchronization process a second time to resolve them. There should not be any errors after a second resynchronization, so if any errors are still not resolved, contact OpenText Customer Support.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../otadmin/ota-toresyncllas-p.htm" revision="">To Resynchronize an Admin Server</A></p></li>
+<li><p><A  href="../otadmin/ota-reconfigdsobjs-rf.htm" revision="">Reconfiguring Data Source Objects</A></p></li>
+<li><p><A  href="../otadmin/ota-serverresyncreport-rf.htm" revision="">Server Resynchronization Report</A></p></li>
+<li><p><A  href="../otadmin/ota-dbresyncreport-rf.htm" revision="">Database Resynchronization Report</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

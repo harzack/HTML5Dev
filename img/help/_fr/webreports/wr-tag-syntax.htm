@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Balises d'affichage de rapport</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-syntax.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'A propos de WebReports';
+          header.title2 = 'Balises d\'affichage de rapport';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID1500"></A>Deux méthodes permettent d'accéder aux informations sur les balises dans WebReports :</P><A NAME="AEN1483"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1484"></A><A NAME="TMPID1504"></A>Vous pouvez accéder au guide sur les balises statiques fourni avec la documentation. Pour en savoir plus, voir <span><A HREF="wr-tag-syntax.htm#WR-TAGSTATIC-SYNTAX">Guide sur les balises statiques</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1487"></A><A NAME="TMPID1507"></A>Un guide sur les balises dynamiques est fourni avec le module. Ce guide permet aux développeurs de glisser-déposer les balises du guide vers l'interface utilisateur. Pour plus d'informations sur l'accès au guide sur les balises dynamiques, voir <span><A HREF="wr-tag-dynamic-p.htm">Pour accéder au guide sur les balises dynamiques</A></span>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAGSTATIC-SYNTAX">Guide sur les balises statiques</A></P>
+<P><A NAME="TMPID1511"></A>Cette section décrit les différents types de balises utilisables dans WebReports :</P>
+<A NAME="AEN1493"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1494"></A><A NAME="TMPID1515"></A><B CLASS="highlight">Balises de contrôle de contenu</B> : ces balises sont toujours précédées de : <TT CLASS="literal">[LL_WEBREPORT_</TT>. Elles servent à contrôler le mode de création du contenu de sortie. Par exemple, il est possible d'activer ou de désactiver l'en-tête et le pied de page Content Server standard. Les principales balises de contrôle de contenu servent à définir la partie de l'affichage de rapport appliquée à chaque ligne de données de la source de données.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1499"></A><A NAME="TMPID1520"></A><B CLASS="highlight">Balises de données</B> : les balises de données sont toujours précédées de : <TT CLASS="literal">[LL_REPTAG</TT>. Elles peuvent être décomposées en <TT CLASS="literal">Balises de données de colonne</TT> et en <TT CLASS="literal">Balises de données statiques</TT> :</P>
+<A NAME="AEN1505"></A>
+<OL TYPE="a">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1506"></A><A NAME="TMPID1527"></A><B CLASS="highlight">Balises de données de colonne</B> : pour chaque colonne présente dans la source de données associée, des balises de données de colonne référencent les données de rapport à inclure dans le résultat. Ces balises permettent d'utiliser le numéro de colonne, par exemple <TT CLASS="literal">[LL_REPTAG_2 /]</TT>, ou le nom de colonne, par exemple <TT CLASS="literal">[LL_REPTAG=DATAID /]</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1511"></A><A NAME="TMPID1532"></A><B CLASS="highlight">Balises de données statiques</B> : les balises de données statiques servent à insérer des informations de Content Server qui ne sont pas associées à des lignes du rapport. Par exemple, la date et l'heure, le nom de l'utilisateur qui exécute le WebReport ou différentes URL qui peuvent servir à créer des liens hypertextes dans le résultat du rapport. Par exemple, <TT CLASS="literal">[LL_REPTAG_NEXTURL /]</TT>).</P></LI></OL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1516"></A><A NAME="TMPID1537"></A><B CLASS="highlight">Sous-balises</B> : les sous-balises servent à fournir des fonctions de mise en forme ou autre avec l'une des balises <TT CLASS="literal">[LL_REPTAG ... /]</TT>. Ces sous-balises, séparées par des espaces, permettent d'effectuer des actions sur les données réelles extraites de la source de données. Pour plus d'informations sur les sous-balises, voir la section 6.2.3.</P>
+<P><A NAME="TMPID1540"></A>Toutes les balises sont sensibles à la casse et utilisent toujours des lettres majuscules. Elles sont aussi sensibles aux espaces. Veillez à placer une espace devant « /] » à la fin de la balise. En revanche, les noms de colonne peuvent comporter indifféremment des majuscules et des minuscules. Les tableaux des sections <span><A HREF="wr-tag-concontg.htm">Balises de contrôle de contenu</A></span>, <span><A HREF="wr-tag-coldattg.htm">Balises de données de colonne</A></span> et <span><A HREF="wr-tag-subtag.htm">Sous-balises</A></span> répertorient toutes les balises actuellement disponibles dans WebReports et décrivent leur mode d'utilisation.</P></LI></OL>
+<P><A NAME="TMPID1545"></A>Les tableaux suivants décrivent les balises reconnues par WebReports. Les balises ne sont pas toutes prises en charge dans l'intégralité des sections de l'affichage de rapport. Les sections prises en charge (en-tête, modèle de ligne, pied de page) sont indiquées sous chaque nom de balise. </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-tag-concontg.htm" revision="">Balises de contrôle de contenu</A></p></li>
+<li><p><A  HREF="wr-tag-coldattg.htm" revision="">Balises de données de colonne</A></p></li>
+<li><p><A  HREF="wr-tag-subtag.htm" revision="">Sous-balises</A></p></li>
+<li><p><A  HREF="wr-tag-dynamic-p.htm" revision="">Pour accéder au guide sur les balises dynamiques</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

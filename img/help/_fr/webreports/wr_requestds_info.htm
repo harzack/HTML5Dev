@@ -1,0 +1,135 @@
+<!-- wr_requestds_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Requests as Data Sources</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_requestds_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Requests as Data Sources';
+        header.draw();
+
+</SCRIPT>
+
+<P class="body">
+This feature allows a WebReport to use information in the GET or POST request (used to invoke the WebReport) as a data source.  It allows data to be specified in
+either separated value or HTML form (or any other supported type of parsing) that would then be used by the WebReport. This allows the possibility of pushing data into a WebReport to then be
+formatted and delivered to destinations etc.  The data is passed using a pre-defined parameter name and will normally use the defaults for web documents in order to parse the data. Several
+other pre-defined parameters have been made available in order to control the parsing options that would normally be set in the data source interface.  Currently this feature has no visibility
+on the source tab as it is purely driven by the existence of these special parameters.
+</p>
+
+<P CLASS="GUI">
+<U>Supported Parameters</U>
+</p>
+<P class="body">
+<table width=100% border=1 cellpadding=5 >
+	<tr bgcolor="lightgray">
+	<td Align=center colspan=100><b>Mandatory</b></td>
+	</tr>
+	<tr>
+	<td class=gui width=10%>DSrequestData</td>
+	<td>This is the parameter that contains the data that will be used by the datasource. For any of the optional parameters that have not been specified, defaults are used. The data in this
+	parameter would normally be formatted in a way that can be interpreted by the WebReport, e.g. Comma Separated Values (CSV) or HTML table data.  If no optional parameters have been specified, the data is expected
+	to be formatted as CSV. The optional parameters can be used to specify any differences in the parsing format. A common variation would be to use a symbol such as <b>|</b> as the row separation character.
+	</td>
+	</tr>
+	<tr bgcolor="lightgray">
+	<td Align=center colspan=100><b>Optional</b> (more detailed explanations for these parameters can be found under the <a href="wr_changing_datasources.htm">Datasource help section</a>)</td>
+	</tr>
+	<tr>
+	<td class=gui width=10%>DSFILETYPE</td>
+	<td>
+	Acceptable values are: <b>separatedvalue</b> (default), <b>htmltable</b> and <b>oscript</b>. This parameter specifies how the data has been formatted and therefore how it should be parsed.
+	In the case of oscript the data source can be a LIST of ASSOC or a RecArray.  The tags <a href="wr_tag_syntax.htm#reporttagenterprise">ENTERPRISE</a>, <a href="wr_tag_syntax.htm#reporttagpersonal">PERSONAL</a>, <a href="wr_tag_syntax.htm#reporttagtools">TOOLS</a>, <a href="wr_tag_syntax.htm#tabs">TABS</a>, <a href="wr_tag_syntax.htm#subtagllurl">LLURL:FUNCTIONMENU:RAW</a>, <a href="wr_tag_syntax.htm#subtagllurl">LLURL:ADDITEM:ITEMMENU:RAW</a> and <a href="wr_tag_syntax.htm#subtagcat">CAT:RAW</a> provide data structures in oscript format which
+	can be used in this parameter.
+	</td>
+	</tr>
+	<tr>
+	<td class=gui width=10%>DSCONTENTTYPE</td>
+	<td>
+	Only appropriate for a filetype of <b>separatedvalue</b>. Acceptable values are: <b>somequotes</b> (default), <b>allquotes</b>, <b>noquotes</b>.
+	These settings refer to whether or not some of the data cells might be quoted to hide characters that might interfere with parsing. If none of the cells are quoted,
+	a setting of noquotes provides faster processing.
+	</td>
+	</tr>
+	<tr>
+	<td class=gui width=10%>DSSTRICTSYNTAX</td>
+	<td>
+	Set to either <b>true</b> (default) or false. True specifies that the data has been strictly formed with no unexpected spaces or other ambiguous white space.
+	</td>
+	</tr>
+	<tr>
+	<td class=gui width=10%>DSCOLUMNSEP</td>
+	<td>
+	Specifies a character or characters that are used to delimit (separate) columns of data. Defaults to <b>,</b> (comma).
+	</td>
+	</tr>
+	<tr>
+	<td class=gui width=10%>DSROWSEP</td>
+	<td>
+	Specifies a character or characters that are used to delimit (separate) rows of data. Defaults to a carriage return followed by a line feed.
+	</td>
+	</tr>
+	<tr>
+	<td class=gui width=10%>DSQUOTECHAR</td>
+	<td>
+	Specifies which character or characters have been used to quote cells (if any). Defaults to <b>"</b>
+	</td>
+	</tr>
+	<tr>
+	<td class=gui width=10%>DSESCQUOTECHARS </td>
+	<td>
+	Specifies which character or characters are used to escape any quotes in the cell data (if any). Defaults to <b>""</b>
+	</td>
+	</tr>
+	<tr>
+	<td class=gui width=10%>DSHEADINGSINC </td>
+	<td>
+	Specifies <b>true</b> or <b>false</b> depending on whether the first row of data includes heading names for each column. Defaults to true. If set to false
+	columns are automatically named as column1, column2, etc.
+	</td>
+	</tr>
+</table>
+</p>
+
+<u><SPAN class="gui">Example 1 - Calling as a Sub-WebReport</SPAN></u>
+<p />
+The following tags will call a Sub-WebReport and pass the DSrequestData as parameters to the Sub-WebReport:<p />
+<b>[LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$SWR /] PARM:DSREQUESTDATA:"444,555,666|777,888,999"  PARM:DSCOLUMNSEP:"," PARM:DSROWSEP:"|" /]</b>
+
+<P class="body">
+<u><SPAN class="gui">Example 2 - Calling from a URL</SPAN></u>
+</p>
+
+The DSrequestData parameters can also be set in a URL:<p />
+<b>?func=ll&objId=48243&objAction=RunReport&DSREQUESTDATA=444,555,666|777,888,999&DSCOLUMNSEP=,&DSROWSEP=|</b>
+
+<P class="body">
+<u><SPAN class="gui">Example 3 - Using DSFILETYPE of value OSCRIPT</SPAN></u>
+</p>
+The output of tags such as CAT:RAW can be used similar to example 2 but with a form post:<p />
+
+&lt;FORM NAME="getFuncs" METHOD="POST" ACTION="<b>[LL_REPTAG_URLPREFIX /]</b>"&gt;<br>
+&lt;input type=hidden name="<b>DSFILETYPE</b>" value="<b>oscript</b>"&gt;<br>
+&lt;input type=hidden name="<b>DSrequestData</b>" value="[LL_REPTAG_"23099" <a href="wr_tag_syntax.htm#subtagcat">CAT:RAW</a> /]"&gt;<br>
+[LL_REPTAG_$CLICK LLURL:REPORT <a href="wr_tag_syntax.htm#subtagurltopost">URLTOPOST</a> /]<br>
+&lt;input type=submit value=submit&gt;<br>
+&lt;/FORM&gt;<br>
+<br>
+A form post is a good idea where the results from the RAW tag can be large as Internet Explorer is
+unable to cope with very long parameter values.  Form posts on the other hand are no problem.
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

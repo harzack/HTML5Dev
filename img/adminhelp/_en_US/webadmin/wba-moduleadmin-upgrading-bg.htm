@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Upgrading a Module</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-moduleadmin-upgrading-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Modules';
+          header.title2 = 'Upgrading a Module';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID18523"></A>When Open Text releases new versions of Content Server modules, the modules can often be downloaded from the Open Text Knowledge Center, or sometimes they are available on CD-ROM. Open Text recommends that you consult the a module's Release Notes prior to beginning an upgrade installation.</P>
+<P><A NAME="TMPID18525"></A>A module is upgraded in two stages. The first stage of the upgrade extracts the necessary files from the .tar or installation program file and places them into the <TT CLASS="filename">_home/staging</TT> directory. Your Content Server system is not yet upgraded; you must access the Administration pages to complete the module upgrade.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF193"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID18529"></A><B CLASS="note">Note: </B><BR>When you upgrade a module, the files from the previous module are removed from Content Server and moved back to the <TT CLASS="filename">_home\staging</TT> directory.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID18532"></A>The way you upgrade a module depends on the type of operating system on which Content Server is currently installed. Once the new files are added to the appropriate locations in the <TT CLASS="filename">_home/staging</TT> directory, the upgrade process is the same for both the Windows and UNIX operating systems.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="UPGRADE-MOD">Upgrading Modules on Windows and UNIX</A></P>
+<P><A NAME="TMPID18537"></A>For Windows versions of Content Server modules, you perform the first stage of an upgrade using an InstallShield installation program. This installation program allows you to select the Content Server instance on which you want to upgrade the module and places the module's files in a subdirectory of the <TT CLASS="filename">_home/staging</TT> directory.</P>
+<P><A NAME="TMPID18541"></A>For UNIX versions of Content Server modules, you perform the first stage of an upgrade using a .tar compressed archive file. The extraction of this .tar file places the module's files in a subdirectory of the <TT CLASS="filename">_home/staging</TT> directory.</P>
+<P><A NAME="TMPID18544"></A>The <TT CLASS="filename">_home/staging</TT> directory does not exist if optional modules have not yet been installed or pre-installed modules have not been upgraded. In this case, the module installation program (for Windows) or the extraction of the .tar file (for UNIX) automatically creates the <TT CLASS="filename">_home/staging</TT> directory.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="COMPLETE-MOD-UPGRADE">Completing a Module Upgrade </A></P>
+<P><A NAME="TMPID18549"></A>You perform the second stage of a module upgrade using the Upgrade Modules page, which is accessed via the Administration page.</P>
+<P><A NAME="TMPID18551"></A>Once you have performed the upgrade, the Restart Content Server page is the first page that appears for most modules. However, some module upgrades require you to set certain configuration parameters before restarting the  server. For information about setting configuration parameters, see the module's specific documentation.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF194"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID18554"></A><B CLASS="note">Note: </B><BR>If you have installed multiple modules, you will see them on the Upgrade Modules page. You can upgrade multiple modules at one time, as long as they have no dependencies on other modules. When a module has a dependency on another module, that module must first be added or upgraded. After you upgrade a module that has online help files associated with it, you must update the help index in order to see the module's associated online help files. For more information, see <span><A href="../webadmin/wba-moduleadmin-updating-help-bg.htm">Updating the User and Admin Online Help</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-moduleadmin-upgrade-windows-p.htm" revision="">To Upgrade a Module on Windows</A></p></li>
+<li><p><A  href="../webadmin/wba-moduleadmin-upgrade-unix-p.htm" revision="">To Upgrade a Module on UNIX</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Adding Data Flow Processes</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-addanyprocs-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Creating Index Components Individually';
+          header.title2 = 'Adding Data Flow Processes';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID1421"></A>A data flow is a series of linked processes that exchange information. You can create a custom data flow for a particular data source by adding and configuring data flow processes. You add data flow processes to a Data Flow Manager. Data flow processes include:</P><A NAME="AEN1432"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1433"></A><A NAME="TMPID1424"></A><B CLASS="guilabel">Directory Walker</B>, which extracts data from a set of files on your file system and writes the data to a data flow. For more information on adding a Directory Walker process, see <span><A href="../webdirwalk/wbw-adddirwk-bg.htm">Adding a Directory Walker Process</A></span>. For information on configuring a Directory Walker process, see <span><A href="../webdirwalk/wbw-specifdw-bg.htm">Configuring a Directory Walker Process</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1438"></A><A NAME="TMPID1429"></A><B CLASS="guilabel">Document Conversion</B>, which converts documents from their native formats to HTML or raw text.	For information on adding a Document Conversion process, see <span><A href="../websystemobj/wbs-addhtml-p.htm">To Add a Document Conversion Process</A></span>. For information on configuring a Document Conversion process, see <span><A href="../otadmin/ota-settingupdcs-bg.htm">Setting Up the Document Conversion Service</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1443"></A><A NAME="TMPID1434"></A><B CLASS="guilabel">Enterprise Extractor</B>, which is a data flow process that extracts data from the Content Server database and writes it to an Enterprise data flow, where it is indexed. Because only one process is normally required to extract data from the Content Server database, OpenText recommends that each Content Server system have only one Enterprise Extractor process, unless OpenText Global Services or Customer Support has advised adding multiple Enterprise Extractors as part of a strategy of high-volume indexing. For more information about high-volume indexing, see <span><A href="../websystemobj/wbs-sthghvol-so.htm">Setting Up High-Volume Indexing</A></span>. For more information on adding a Enterprise Extractor process, see <span><A href="../websystemobj/wbs-addentex-p.htm">To Add an Enterprise Extractor Process</A></span>. For information on configuring an Enterprise Extractor process, see <span><A href="../websystemobj/wbs-specexpr-bg.htm">Configuring the Enterprise Extractor Process</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1454"></A><A NAME="TMPID1445"></A><B CLASS="guilabel">Spider</B>, which is a data flow process that extracts data from a Spider server which crawls corporate intranets, extranets, web sites, or even from public web sites on the World Wide Web, and writes it to the Data Flow Manager of any non-Enterprise data source, where it is indexed. The OpenText Spider server is an additional package that must be installed separately from your Content Server system. An administrator can set up large, sophisticated crawling projects to create searchable indexes of external content that are available to all users. For more information about indexing targeted Web sources, see <span><A href="../websystemobj/wbs-sp-addspiderdataflow-p.htm">To Add a New Spider Data Flow</A></span>. For information on adding and configuring a Spider process, see <span><A href="../websystemobj/wbs-sp-addspider-p.htm">To Add a Spider</A></span> and <span><A href="../websystemobj/wbs-sp-specspider-p.htm">To Configure the Spider Process</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1462"></A><A NAME="TMPID1453"></A><B CLASS="guilabel">Importer</B>, which reads the data that was output by the Update Distributor process, and then uses the data to perform a task. For example, if you have installed Content Server Classifications, the Importer determines which assisted and automatic classifications best match the items represented by the data. This functionality will be built upon in future versions of Content Server and its modules. For more information on adding an Importer process, see <span><A href="../websystemobj/wbs-addimp-p.htm">To Add an Importer Process</A></span>. For more information on configuring an Importer process, see <span><A href="../websystemobj/wbs-specimp-bg.htm">Configuring an Importer Process</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1470"></A><A NAME="TMPID1461"></A><B CLASS="guilabel">Merge</B>, which merges multiple Enterprise Extractor or Document Conversion processes to combine the IPool messages from multiple processes and write them to a single IPool for the next data flow process. For more information on adding a Merge process, see <span><A href="../websystemobj/wbs-toaddmerg-p.htm">To Add a Merge Process</A></span>. For more information on configuring a Merge process, see <span><A href="../websystemobj/wbs-cfgmrgp-bg.htm">Configuring a Merge Process</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1475"></A><A NAME="TMPID1466"></A><B CLASS="guilabel">Proxy</B>, which acts as a placeholder for a process in a data flow. You add a proxy to represent a process that is not managed by an Admin server. For example, if you create a custom, non-Content Server process (that creates, manipulates, or consumes data) to use in a Content Server data flow, you can represent that process in Content Server using a proxy. The process that the proxy represents reads data from the data interchange pool (IPool) that you specify, performs some process, and then writes data to another IPool, which you specify. For more information on adding a Proxy process, see <span><A href="../websystemobj/wbs-addproxy-p.htm">To Add Proxies</A></span>. For information on configuring a Proxy process, see <span><A href="../websystemobj/wbs-specprxy-bg.htm">Configuring Proxies</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1483"></A><A NAME="TMPID1474"></A><B CLASS="guilabel">Tee</B>, which sends IPool messages to up to five IPool outputs processes that have similar functionality, such as IPool Importer processes. Fore more information, see <span><A href="../websystemobj/wbs-twowaytee-bg.htm">Adding and Configuring a Tee Process</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1487"></A><A NAME="TMPID1478"></A><B CLASS="guilabel">XML Activator</B>, which reads data (as XML files) from the specified directory in the file system, where a third-party application has written its information. For more information on adding a XML Activator Producer Process, see <span><A href="../webxmlactivator/xma-compxmlproc-bg.htm">Completing an XML Activator Producer Process Setup</A></span>. For information on configuring a XML Activator Producer Process, see <span><A href="../webxmlactivator/xma-cfgxmla-bg.htm">Configuring an XML Activator Process</A></span>.</P></LI></UL>
+<P><A NAME="TMPID1482"></A>You can create an indexing data flow for when you want to index data and make it searchable. Creating an indexing data flow is part of the index creation process. After you create a data flow, you can administer it (for example, configure its processes or monitor its status). For more information about administering data flows, see <span><A href="../websystemobj/wbs-datafwfd-so.htm">Administering Data Flows</A></span>.</P>
+<P><A NAME="TMPID1484"></A>If you have installed an optional module (for example, the Content Server Spider module), you can add the corresponding data flow processes to a Data Flow Manager. For information about adding the data flow processes that an optional module provides, see the documentation that accompanies the optional module.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-addentex-p.htm" revision="">To Add an Enterprise Extractor Process</A></p></li>
+<li><p><A  href="../websystemobj/wbs-addhtml-p.htm" revision="">To Add a Document Conversion Process</A></p></li>
+<li><p><A  href="../websystemobj/wbs-toaddupdist-p.htm" revision="">To Add an Update Distributor Process</A></p></li>
+<li><p><A  href="../websystemobj/wbs-addimp-p.htm" revision="">To Add an Importer Process</A></p></li>
+<li><p><A  href="../websystemobj/wbs-addproxy-p.htm" revision="">To Add Proxies</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

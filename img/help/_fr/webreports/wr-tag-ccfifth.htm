@@ -1,0 +1,441 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>IF, INCLUDEDISTINCT, INCLUDEIF, INCLUDERANGE, INSERTJSARRAY, INSERTJSON</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-ccfifth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Balises de contrôle de contenu';
+          header.title2 = 'IF, INCLUDEDISTINCT, INCLUDEIF, INCLUDERANGE, INSERTJSARRAY, INSERTJSON';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1923"></A>Cette section apporte des informations sur les balises de contrôle de contenu : <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCIF">IF</A></span>, <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDEDISTINCT">INCLUDEDISTINCT</A></span>, <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDEIF">INCLUDEIF</A></span>, <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDERANGE">INCLUDERANGE</A></span>, <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINSERTJSARRAY">INSERTJSARRAY</A></span> et <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-SUBINSERTJSON">INSERTJSON</A></span>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCIF">IF</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="IF-NAME">Syntaxe</A></P>
+<P><A NAME="WEBREPORTIF"></A><B CLASS="highlight">[LL_WEBREPORT_IF &lt;<I CLASS="varname">expression</I>> /]</B></P>
+<P><A NAME="TMPID1937"></A><B CLASS="highlight">[LL_WEBREPORT_ENDIF /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="IF-DESC">Description</A></P>
+<P><A NAME="TMPID1941"></A>Lorsqu'une condition est satisfaite, inclut le contenu dans la sortie. Tous les éléments placés entre les balises <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCIF">IF</A></span> et <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDIF">ENDIF</A></span> seront inclus uniquement si la condition spécifiée est considérée comme vraie (c'est-à-dire satisfaite). Si une clause facultative <TT CLASS="literal">ELSE</TT> est incluse, tous les éléments situés entre la balise <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCELSE">ELSE</A></span> et la balise <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDIF">ENDIF</A></span> sont inclus si la condition spécifiée est considérée comme fausse.</P>
+<P><A NAME="TMPID1947"></A>Cette balise diffère de la balise <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDEIF">INCLUDEIF</A></span>, car sa structure permet d'inclure ou d'exclure sous condition certaines portions de la ligne. Cette balise peut être utilisée n'importe où dans l'affichage de rapport. Lorsque vous incluez ou excluez la section de ligne entière, utilisez toujours la balise <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDEIF">INCLUDEIF</A></span> au lieu de <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCIF">IF</A></span> ; les performances seront meilleures.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="IF-PARAM">Paramètres</A></P>
+<P><A NAME="TMPID1953"></A>Format pour &lt;<I CLASS="varname">expression</I>> :</P>
+<P><A NAME="TMPID1955"></A><TT CLASS="literal">"parmA" &lt;<I CLASS="varname">opérateur</I>> "parmB"</TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="IF-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID1960"></A><A NAME="AEN1858"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_IF (expression) /]
+[LL_WEBREPORT_ELSE /] (optional)
+[LL_WEBREPORT_ENDIF /]</PRE
+></P>
+<P CLASS="bridgehead-subheading3"><A NAME="IF-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID1964"></A>Voir la section relative à <span><A HREF="wr-logicexpression-info.htm">Expressions logiques</A></span> pour obtenir une liste des <span><A HREF="wr-logicexpression-info.htm#OPERATORS">Opérateurs</A></span>. Voir également les sections <B CLASS="highlight">Remarques</B> dans <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCEXITIF">EXITIF</A></span> et <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDEIF">INCLUDEIF</A></span> pour plus d'informations. Voir également <span><A HREF="wr-logicexpression-info.htm">Expressions logiques</A></span> pour plus de détails. Pour plus d'exemples d'expression, voir <span><A HREF="wr-tag-ccfifth.htm#INCLUDEIFEXS">Exemple</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCINCLUDEDISTINCT">INCLUDEDISTINCT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDEDISTINCT-NAME">Syntaxe</A></P>
+<P><A NAME="WEBREPORTINCLUDEDISTINCT"></A><B CLASS="highlight">[LL_WEBREPORT_INCLUDEDISTINCT « &lt;<I CLASS="varname">clé distincte</I>> » /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDEDISTINCT-DESC">Description</A></P>
+<P><A NAME="TMPID1982"></A>Utilisée pour limiter le nombre de lignes renvoyées par le WebReport, afin de renvoyer uniquement des valeurs de clés uniques.</P>
+<P><A NAME="TMPID1983"></A>La valeur « &lt;<I CLASS="varname">clé distincte</I>> » indique quelle colonne, ou balise de données WebReports, doit être unique. Dans la source de données, seules les lignes générant une valeur unique pour cette clé seront incluses. Toutes les lignes générant la même valeur pour la clé spécifiée seront rejetées.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF11"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<A NAME="AEN1881"></A>
+<OL TYPE="1" class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1882"></A><A NAME="TMPID1990"></A>Les valeurs de clé distinctes sont sensibles à la casse.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1884"></A><A NAME="TMPID1992"></A>Lorsque des lignes présentent des clés en double, la première ligne de l'ordre en cours est conservée, et toutes les lignes suivantes sont rejetées.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1886"></A><A NAME="TMPID1994"></A>L'ordre de lignes utilisé pour la comparaison des éléments en double est basé sur l'ordre de la source de données d'origine, ainsi que sur les balises WebReports <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSORT">SORT</A></span> incluses dans la section de ligne.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1890"></A><A NAME="TMPID1998"></A>Le filtrage des lignes effectué à l'aide de cette balise a lieu avant l'application de toute autre balise de filtrage de ligne, telle que <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDEIF">INCLUDEIF</A></span>, <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCEXITIF">EXITIF</A></span> ou <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDERANGE">INCLUDERANGE</A></span>.</P></LI></OL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDEDISTINCT-PARAM">Paramètres</A></P>
+<P><A NAME="TMPID2004"></A>La valeur « &lt;<I CLASS="varname">clé distincte</I>> » peut correspondre à un nom de colonne, un numéro de colonne ou une combinaison balise/sous-balise WebReports.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDEDISTINCT-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID2010"></A>Considérons par exemple l'ensemble de données suivant :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1902"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">DataID</TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">NomFruit</TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">12345</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Apple</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">12346</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Orange</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">12347</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Apple</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">12348</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Banana</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">12349</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Orange</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">12350</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">APPLE</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID2052"></A>Si la section de ligne dispose d'un filtre <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDEDISTINCT">INCLUDEDISTINCT</A></span>, tel que <TT CLASS="literal">[LL_WEBREPORT_INCLUDEDISTINCT "FruitName" /]</TT>, le résultat contiendra uniquement les lignes ayant une valeur unique dans la colonne « FruitName », comme suit :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1947"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">12345</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Apple</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">12346</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Orange</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">12348</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Banana</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID2076"></A>Le même résultat est obtenu lorsque le numéro de colonne 1 est utilisé, par exemple, <TT CLASS="literal">[LL_WEBREPORT_INCLUDEDISTINCT "1" /]</TT>. Cette balise prend également en charge l'utilisation des combinaisons balise/sous-balise WebReports. Par exemple, si l'on reprend l'exemple de données initial et la balise <TT CLASS="literal">[LL_WEBREPORT_INCLUDEDISTINCT "[LL_REPTAG=FruitName DECODE:Banana:apple /]" /]</TT>, il reste les lignes suivantes après l'exécution du filtre : </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1971"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">12345</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Apple</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">12346</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Orange</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID2095"></A>Dans cet exemple, la sous-balise WebReports <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDECODE">DECODE</A></span> convertit en « apple » toutes les données correspondant à la chaîne « Banana ». Etant donné que la valeur « Apple » existe déjà dans une ligne précédente, la ligne qui contient normalement la valeur « Banana » dans cette colonne perd son caractère unique. Cette fonction est particulièrement utile lorsque les sous-balises de type <span><A HREF="wr-tag-sttwelfth.htm#WR-TAG-STNODEINFO">NODEINFO</A></span> et/ou <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCAT">CAT</A></span> sont utilisées pour traduire des champs de dataID dans d'autres valeurs de données connexes, qui ne sont pas nécessairement uniques.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCINCLUDEIF">INCLUDEIF</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDEIF-NAME">Syntaxe</A></P>
+<P><A NAME="WEBREPORTINCLUDEIF"></A><B CLASS="highlight">[LL_WEBREPORT_INCLUDEIF &lt;<I CLASS="varname">expression</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDEIF-DESC">Description</A></P>
+<P><A NAME="TMPID2113"></A>Utilisée pour déterminer si une ligne de données doit ou non être incluse. Si la condition est Vrai, la ligne entière est incluse ; dans le cas contraire, elle est ignorée. Il est possible d'utiliser plusieurs balises <TT CLASS="literal">INCLUDEIF</TT> pour créer une série des barrières conditionnelles. Lorsque vous utilisez plusieurs balises <TT CLASS="literal">INCLUDEIF</TT>, celles-ci se comportent comme si les conditions étaient cumulatives (<TT CLASS="literal">AND</TT>) et non exclusives (<TT CLASS="literal">OR</TT>). Ainsi, plus vous utilisez de balises <TT CLASS="literal">INCLUDEIF</TT>, plus les restrictions appliquées au rapport seront importantes. Cette balise fonctionne uniquement dans la section de ligne. Par exemple, entre les balises <TT CLASS="literal">[LL_WEBREPORT_STARTROW /]</TT> et <TT CLASS="literal">[LL_WEBREPORT_ENDROW /]</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="INCLUDEIFNOTES"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<A NAME="AEN2010"></A>
+<OL TYPE="1" class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2011"></A><A NAME="TMPID2124"></A>Cette balise affecte le nombre de lignes réellement renvoyées et affichées. C'est la raison pour laquelle cette balise a un impact sur la balise <span><A HREF="wr-tag-cdtwelfth.htm#WR-TAG-CDROWNUM">ROWNUM</A></span>, qui ne doit pas être intégrée à la logique conditionnelle pour <TT CLASS="literal">INCLUDEIF</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2015"></A><A NAME="TMPID2128"></A>Cette balise ne modifie pas la balise <span><A HREF="wr-tag-cdfourteenth.htm#WR-TAG-CDTOTALROWS">TOTALROWS</A></span>, qui reflétera toujours le nombre de lignes réellement disponibles dans la table de base données. Pour obtenir le nombre de lignes réellement renvoyées, c'est-à-dire celles qui répondent aux critères du test conditionnel, utilisez la balise <span><A HREF="wr-tag-cdsecond.htm#WR-TAG-CDACTUALROWS">ACTUALROWS</A></span>. Voir les informations spécifiques relatives à la syntaxe de ces balises.</P></LI></OL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDEIF-PARAM">Paramètres</A></P>
+<P><A NAME="TMPID2133"></A>Format pour &lt;<I CLASS="varname">expression</I>> : <TT CLASS="literal">"parmA" &lt;<I CLASS="varname">opérateur</I>> "parmB" &lt;<I CLASS="varname">clauses facultatives</I>></TT> </P>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDEIFEXS">Exemple</A></P>
+<P><A NAME="TMPID2140"></A><A NAME="AEN2027"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_INCLUDEIF "[LL_REPTAG_&amp;var1 /]" != "[LL_REPTAG=DATAID /]" /]
+[LL_WEBREPORT_INCLUDEIF "Admin" == "[LL_REPTAG_USERNAME /]" /]
+[LL_WEBREPORT_INCLUDEIF "1234" NOTIN "[LL_REPTAG_1 /]" /]
+[LL_WEBREPORT_INCLUDEIF "*DELETED*" IN "[LL_REPTAG=keyfield /]" /]
+[LL_WEBREPORT_INCLUDEIF "[LL_REPTAG_1 LENGTH /]" &gt;= "10" AND "[LL_REPTAG=dataid /]" CHILDOF "[LL_REPTAG_&amp;rootid /]" /]</PRE
+> </P>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDEIF-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID2144"></A>Voir la section <B CLASS="highlight">Remarques</B> dans <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCEXITIF">EXITIF</A></span>. Voir également <span><A HREF="wr-logicexpression-info.htm">Expressions logiques</A></span> et <span><A HREF="wr-logicexpression-info.htm#OPERATORS">Opérateurs</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCINCLUDERANGE">INCLUDERANGE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDERANGE-NAME">Syntaxe</A></P>
+<P><A NAME="WEBREPORTINCLUDERANGE"></A><B CLASS="highlight">[LL_WEBREPORT_INCLUDERANGE STARTROW:&lt;<I CLASS="varname">n</I>> ENDROW:&lt;<I CLASS="varname">n</I>> MAXROWS:&lt;<I CLASS="varname">n</I>> /] </B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDERANGE-DESC">Description</A></P>
+<P><A NAME="TMPID2160"></A>Utilisée pour limiter le nombre de lignes renvoyées par le WebReport, de manière à respecter les paramètres spécifiés.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDERANGE-PARAM">Paramètres</A></P>
+<P class="before-ul"><A NAME="TMPID2163"></A>Utilisez au moins l'un des paramètres facultatifs suivants : <TT CLASS="literal">STARTROW:&lt;<I CLASS="varname">n</I>></TT> , <TT CLASS="literal">ENDROW:&lt;<I CLASS="varname">n</I>></TT> ou <TT CLASS="literal">MAXROWS:&lt;<I CLASS="varname">n</I>></TT>.</P><A NAME="AEN2051"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2052"></A><A NAME="TMPID2172"></A>Si vous spécifiez uniquement <TT CLASS="literal">STARTROW:&lt;<I CLASS="varname">n</I>></TT>, et qu'aucun paramètre <TT CLASS="literal">MAXROWS:&lt;<I CLASS="varname">n</I>></TT> ou <TT CLASS="literal">ENDROW:&lt;<I CLASS="varname">n</I>></TT> n'est inclus, <TT CLASS="literal">ENDROW:&lt;<I CLASS="varname">n</I>></TT> sera considéré comme étant la dernière ligne de l'ensemble de données.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2062"></A><A NAME="TMPID2182"></A>Si vous ne spécifiez aucun paramètre <TT CLASS="literal">STARTROW:&lt;<I CLASS="varname">n</I>></TT>, la première ligne de l'ensemble de données sera considérée comme le point de départ.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2066"></A><A NAME="TMPID2186"></A>Si vous spécifiez à la fois <TT CLASS="literal">MAXROWS:&lt;<I CLASS="varname">n</I>></TT> et <TT CLASS="literal">ENDROW:&lt;<I CLASS="varname">n</I>></TT>, le plus restrictif de ces deux paramètres sera appliqué. Par exemple, si <TT CLASS="literal">STARTROW=1</TT>, <TT CLASS="literal">ENDROW=10</TT> et <TT CLASS="literal">MAXROWS=5</TT>, seules les cinq premières lignes seront renvoyées, au lieu de dix.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2075"></A><A NAME="TMPID2195"></A>Si le paramètre <TT CLASS="literal">STARTROW:&lt;<I CLASS="varname">n</I>></TT> est inférieur à 1, la valeur 1 sera utilisée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2079"></A><A NAME="TMPID2199"></A>Si la valeur du paramètre <TT CLASS="literal">STARTROW:&lt;<I CLASS="varname">n</I>></TT> est supérieure au nombre total de lignes dans l'ensemble de données, aucune ligne ne sera renvoyée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2083"></A><A NAME="TMPID2203"></A>Si la valeur du paramètre <TT CLASS="literal">ENDROW:&lt;<I CLASS="varname">n</I>></TT> est inférieure à celle du paramètre <TT CLASS="literal">STARTROW:&lt;<I CLASS="varname">n</I>></TT>, aucune ligne ne sera renvoyée.</P></LI></UL>
+<P CLASS="bridgehead-subheading3"><A NAME="INCLUDERANGE-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID2210"></A>La plage de lignes renvoyée est calculée après évaluation des autres filtres de ligne, tels que <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDEIF">INCLUDEIF</A></span> ou <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCEXITIF">EXITIF</A></span>. Examinez les ensembles de données suivants :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2093"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">N° ligne source</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Données</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">1</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Apple</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">2</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Orange</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">3</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Pear</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">4</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Banana</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">5</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Strawberry</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">6</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Mango</B></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID2268"></A>Si la section de ligne dispose d'un filtre <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDEIF">INCLUDEIF</A></span>, tel que <TT CLASS="literal">[LL_WEBREPORT_INCLUDEIF "[LL_REPTAG_SOURCEROWNUM ODDEVEN /]" == "EVEN" /]</TT>, seuls les numéros de ligne impairs seront renvoyés. Par exemple :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2151"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">2</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Orange</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">4</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Banana</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">6</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Mango</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID2291"></A>Si un filtre <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDERANGE">INCLUDERANGE</A></span> est également utilisé, <TT CLASS="literal">[LL_WEBREPORT_INCLUDERANGE STARTROW:2 MAXROWS:2 /]</TT>, cet ensemble de lignes est encore réduit. Ainsi, deux lignes seulement seront renvoyées, en commençant par la ligne 2 de l'ensemble de données, renvoyée après traitement des éventuelles balises <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDEIF">INCLUDEIF</A></span> et <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCEXITIF">EXITIF</A></span>. En reprenant les exemples de table précédents, cet ensemble serait le suivant :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2176"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">4</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Banana</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">6</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Mango</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCINSERTJSARRAY">INSERTJSARRAY</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="INSERTJSARRAY-NAME">Syntaxe</A></P>
+<P><A NAME="WEBREPORTINSERTJSARRAY"></A><B CLASS="highlight">[LL_WEBREPORT_INSERTJSARRAY ARRAYNAME:&lt;<I CLASS="varname">Nom de tableau facultatif</I>> MULTIVALUE:&lt;<I CLASS="varname">Nom de colonne</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="INSERTJSARRAY-DESC">Description</A></P>
+<P><A NAME="TMPID2321"></A>Utilisée pour insérer automatiquement un tableau JavaScript contenant toutes les données du rapport, organisées sous forme de tableau multidimensionnel.</P>
+<P><A NAME="TMPID2322"></A>Cette balise crée normalement un tableau appelé « repData », indexé numériquement par colonne et par ligne. Elle crée également un ensemble de constantes, qui permettent de référencer les colonnes. Par exemple, pour référencer la colonne <TT CLASS="literal">dataid</TT> pour une ligne de données, vous pouvez utiliser l'élément suivant : <TT CLASS="literal">document.write(repData[row][DATAID]);</TT></P>
+<P><A NAME="TMPID2326"></A>Il est également possible d'utiliser un nom de tableau alternatif à l'aide du paramètre <TT CLASS="literal">ARRAYNAME:</TT>. Le paramètre <TT CLASS="literal">MULTIVALUE:</TT> peut être utilisé lorsqu'une seule colonne du tableau est unique et que les autres colonnes se répètent. Le paramètre <TT CLASS="literal">SCRIPT:</TT> peut être utilisé pour ajouter ou supprimer les balises d'encadrement <TT CLASS="literal">&lt;<I CLASS="varname">SCRIPT</I>></TT> situées autour du tableau JavaScript créé, en spécifiant la valeur Vrai ou Faux.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="INSERTJSARRAY-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID2334"></A>Pour plus d'informations sur cette balise, voir <span><A HREF="wr-insertjsarray-info.htm">Tableaux JavaScript</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBINSERTJSON">INSERTJSON</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="INSERTJSON-NAME">Syntaxe</A></P>
+<P><A NAME="WEBREPORTINSERTJSON"></A><B CLASS="highlight">[LL_WEBREPORT_INSERTJSON &lt;<I CLASS="varname">directives multiples</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="INSERTJSON-DESC">Description</A></P>
+<P><A NAME="TMPID2345"></A>Utilisée pour insérer automatiquement des données Content Server dans la sortie, dans le format d'une structure JSON.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="INSERTJSON-PARAM">Paramètres</A></P>
+<P><A NAME="TMPID2349"></A>Cette balise prend en charge diverses « directives », qui spécifient les options relatives aux données et aux formats à utiliser.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2223"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@ADDJSVAR</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@ALLDATASOURCE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@ALLSTATIC</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@BROWSECOLUMNS</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@ESCAPETEXT</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@EXCLUSIVE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@FIELDS</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@ROWCOLUMNS</TT></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="INSERTJSON-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID2386"></A><TT CLASS="literal">[LL_REPTAG_&amp;PARM1 MODULUS:7 /]</TT> renvoie 6 si <TT CLASS="literal">PARM1</TT> contient « 2001 ».</P>
+<P CLASS="bridgehead-subheading3"><A NAME="INSERTJSON-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID2392"></A>Pour plus d'informations sur ces directives, voir <span><A HREF="wr-insertjson-info.htm">Insertion de données JSON</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

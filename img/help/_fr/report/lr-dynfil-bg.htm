@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Filtrage dynamique à l'aide de la fonction Auto-Where</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-dynfil-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation des modèles';
+          header.title2 = 'Filtrage dynamique à l\'aide de la fonction Auto-Where';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID862"></A>Chaque modèle comprend une case à cocher appelée <B CLASS="guilabel">Auto-Where</B>. Cette fonction facilite l'utilisation des modèles pour ajouter de façon dynamique plusieurs clauses de filtrage à l'aide de <TT CLASS="literal">WHERE</TT>, <TT CLASS="literal">AND</TT> ou <TT CLASS="literal">OR</TT>. Bien que les modèles puissent servir à stocker n'importe quelle partie d'une requête SQL, ils servent surtout à ajouter un nombre varié de clauses de filtrage dans la requête d'origine. Voici quelques exemples d'instructions SQL utilisées pour le filtrage : </P>
+<A NAME="AEN869"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN870"></A><A NAME="TMPID869"></A>WHERE Name = 'test'</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN872"></A><A NAME="TMPID871"></A>AND DATAID &gt; 2000</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN874"></A><A NAME="TMPID873"></A>OR Name LIKE '%new%'</P></LI></OL>
+<P><A NAME="TMPID874"></A>Sauf si la source SQL principale comprend la première clause de filtrage (WHERE), le premier modèle à ajouter à la source doit être précédé de <TT CLASS="literal">WHERE</TT>, au lieu de <TT CLASS="literal">AND</TT> ou <TT CLASS="literal">OR</TT>. Le problème est que lors de la rédaction de la source du modèle, il n'est pas toujours possible de déterminer quel modèle sera le premier puisque les conditions d'inclusion/exclusion sont déterminées pendant l'exécution du rapport. En particulier, lorsqu'un modèle est utilisé plusieurs fois pour les clauses de filtrage, notamment avec la condition du paramètre URL, il doit être possible d'indiquer que la première copie du modèle doit être précédée de <TT CLASS="literal">WHERE</TT>. </P>
+<P><A NAME="TMPID879"></A>La fonction Auto-Where offre une solution à tous ces scénarios et est contrôlée en fonction des règles suivantes : </P>
+<A NAME="AEN882"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN883"></A><A NAME="TMPID882"></A>Les modèles dans lesquels la fonction <TT CLASS="literal">Auto-Where</TT> n'est pas sélectionnée seront ignorés par la fonction <TT CLASS="literal">Auto-Where</TT>, même si l'un des mots réservés <TT CLASS="literal">WHERE</TT>, <TT CLASS="literal">AND</TT> ou <TT CLASS="literal">OR</TT> a été inclus dans la source du modèle.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN890"></A><A NAME="TMPID889"></A>Pour chaque modèle avec cette fonction activée, le premier mot de la source est vérifié et traité comme suit :</P><A NAME="AEN892"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN893"></A><A NAME="TMPID892"></A>Si le premier mot est <TT CLASS="literal">WHERE</TT>, <TT CLASS="literal">AND</TT> ou <TT CLASS="literal">OR</TT> et qu'il s'agit du premier modèle à inclure, le mot est converti en <TT CLASS="literal">WHERE</TT> ou laissé tel quel dans la source du modèle pour l'insertion.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN899"></A><A NAME="TMPID898"></A>Si les mots <TT CLASS="literal">WHERE</TT>, <TT CLASS="literal">AND</TT> et <TT CLASS="literal">OR</TT> sont introuvables et qu'il s'agit du premier modèle à inclure, le mot <TT CLASS="literal">WHERE</TT> est ajouté devant la source du modèle avant l'insertion.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN905"></A><A NAME="TMPID904"></A>Si le premier mot est <TT CLASS="literal">AND</TT> ou <TT CLASS="literal">OR</TT> et qu'il ne s'agit PAS du premier modèle à inclure, le mot est laissé tel quel dans la source du modèle pour l'insertion.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN909"></A><A NAME="TMPID908"></A>Si le premier mot est <TT CLASS="literal">WHERE</TT> et qu'il ne s'agit PAS du premier modèle à inclure, le mot <TT CLASS="literal">WHERE</TT> est remplacé par <TT CLASS="literal">AND</TT> avant l'insertion de la source du modèle.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN914"></A><A NAME="TMPID913"></A>Si aucun de ces mots n'est présent et qu'il ne s'agit PAS du premier modèle à inclure, le mot <TT CLASS="literal">AND</TT> est ajouté devant la source du modèle avant l'insertion.</P></LI></UL></LI></OL>
+<P><A NAME="TMPID915"></A>Pour des exemples d'utilisation de l'option <B CLASS="guilabel">Auto-Where</B>, voir <span><A HREF="lr-example1-bg.htm#LR-EXREUSETEM-EX">Réutilisation d'un modèle avec une entrée de variable</A></span> et <span><A HREF="lr-example1-bg.htm#LR-EXMULTVAR-EX">Réutilisation d'un modèle avec plusieurs entrées de variables</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

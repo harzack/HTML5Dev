@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Configuring Indexing Processes</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-configindexeng-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Search';
+          header.title2 = 'Configuring Indexing Processes';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID8759"></A><I CLASS="emphasis">Index Engines</I> and <I CLASS="emphasis">Update Distributor processes</I> are the indexing processes in an Indexing and Searching system. An Index Engine is a process that indexes data for the <I CLASS="emphasis">partition</I> to which it belongs so that Search Engines can search the data, and users can retrieve information in Content Server. A partition is a portion of an entire index of data. The Update Distributor process is also a process in an indexing data flow that manages and passes data to Index Engines. An Update Distributor process reads data that was output by the Document Conversion process from an IPool, and then distributes the data among Index Engines in their respective partitions. This balances the load of data to be indexed among the partitions. The Update Distributor process also distributes index update requests to Index Engines so that all indexed data in each partition is kept up-to-date. To do this, the Update Distributor process communicates with Index Engines to determine if the object that it is trying to update exists in its partition's index. Once the object is located, the Update Distributor process sends the updated data to that Index Engine for indexing.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF160">Adding Indexing Processes</A></P>
+<P><A NAME="TMPID8765"></A>When you add a partition to your Indexing and Searching system, an Index Engine is also added to the partition, and the Index Engine is associated with the Update Distributor process automatically. To create an Update Distributor process, you add it to an indexing data flow. The process of creating an index involves adding partitions to Indexing and Searching systems and adding Update Distributors to indexing data flows. You can delete indexing processes; however, deleting an Update Distributor process stops indexing for an Indexing and Searching system. Deleting an Index Engine can stop indexing for a partition's index or an Indexing and Searching system as well. OpenText recommends that you do not delete indexing processes.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF161">Configuring Indexing Processes</A></P>
+<P><A NAME="TMPID8768"></A>After you add an Index Engine or an Update Distributor process, you can configure it to 	control how it operates. Default values are configured for some settings automatically when you add indexing processes; however, you may need to change these values. When you configure an Index Engine, you can generate a summary of the events that are recorded in an Index Engine's log file. The log file summary contains statistics about the partition's index to which the Index Engine belongs. For more information about the information that is included in index log file summaries, contact OpenText Customer Support. Before you configure processes, you must stop them. You can stop an individual process, or you can stop all indexing processes at once. Whether you stop an individual process or all indexing processes, indexing for the Indexing and Searching system to which the processes belong stops completely.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF162">Validating an Index</A></P>
+<P><A NAME="TMPID8771"></A>When you configure an Index Engine, you can also validate the index for the partition to which the Index Engine belongs. Validating a partition's index analyzes it to identify potential problems. During index validation, the Update Distributor process determines whether the data structures are synchronized. When Content Server has finished validating a partition's index, it displays a validation log file, which contains the percentage of deleted objects and words if the validation was successful. If the validation was not successful, the validation log file contains diagnostic information for use with OpenText Customer Support.</P>
+<P class="before-ul"><A NAME="TMPID8774"></A>When you validate a partition's index, internal checks of the structure of the index are performed, according to the level specified. Levels 1 to 5 are cumulative:</P><A NAME="AEN8055"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8056"></A><A NAME="TMPID8777"></A><I CLASS="emphasis">Level 1</I> – will identify inconsistencies if the data in the <TT CLASS="filename">otadmin.cfg</TT> and <TT CLASS="filename">search.ini</TT> files does not match the corresponding  information in the Content Server database. If this information is not consistent, for example, if the data recorded in either file is deleted or has become corrupted, you may need to resynchronize the indexing processes.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8062"></A><A NAME="TMPID8783"></A><I CLASS="emphasis">Level 2</I> – also verifies the checksum of the checkpoint file. A checkpoint file stores partition metadata in memory. A metadata integrity checksum is used to verify that data in the checkpoint file has not been corrupted.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8065"></A><A NAME="TMPID8786"></A><I CLASS="emphasis">Level 3</I> – also verifies the checkpoint is loadable into memory. Search Engines load their status from the latest current checkpoint and index files, and apply incremental changes from the <TT CLASS="filename">accumlog</TT> and <TT CLASS="filename">metalog</TT> files.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8070"></A><A NAME="TMPID8791"></A><I CLASS="emphasis">Level 4</I> – also verifies the checksum of all full text index files in the OTChecksum region to ensure that data has not been corrupted.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8073"></A><A NAME="TMPID8794"></A><I CLASS="emphasis">Level 5</I> – also verifies the word pointers in the content index are consistent. Offset files contain pointers to word location lists, used for Full Text searches, which indicate to the Search Engine the relative position of a word within an indexed object.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8076"></A><A NAME="TMPID8797"></A><I CLASS="emphasis">Level 10</I> – Verifies that the word pointers in the metadata index are present. This level of verification is independent of the lower levels. Metadata index files are the same as the corresponding full text index files, except that they contain index data for text metadata regions.</P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF163">Resynchronizing</A></P>
+<P><A NAME="TMPID8800"></A>An Admin server writes information to an <TT CLASS="filename">otadmin.cfg</TT> file and a <TT CLASS="filename">search.ini</TT> file to reflect changes in the Content Server database (for example, if a partition has been configured or deleted). The <TT CLASS="filename">otadmin.cfg</TT> and <TT CLASS="filename">search.ini</TT> files are configuration files that store information about the system objects that are associated with data sources. Specifically, the <TT CLASS="filename">search.ini</TT> file contains settings that are set by default when components of Indexing and Searching systems (for example, partitions, Index Engines, and Search Engines) are created. OpenText strongly recommends that you do not modify the settings in the <TT CLASS="filename">search.ini</TT> file. At all times, the information in <TT CLASS="filename">otadmin.cfg</TT> and <TT CLASS="filename">search.ini</TT> files must match the corresponding information in the Content Server database. However, this information can become mismatched (for example, if the information recorded in the file is deleted or has become corrupted). If this occurs, you may need to <I CLASS="emphasis">resynchronize</I> indexing processes. Resynchronizing indexing processes modifies the <TT CLASS="filename">otadmin.cfg</TT> and <TT CLASS="filename">search.ini</TT> files to reflect information about the processes that is currently stored in the Content Server database.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-toconfigupdist-bg.htm" revision="">Configuring an Update Distributor Process</A></p></li>
+<li><p><A  href="../websystemobj/wbs-toconfigadvupdist-bg.htm" revision="">Setting Advanced Update Distributor Settings</A></p></li>
+<li><p><A  href="../websystemobj/wbs-specindx-bg.htm" revision="">Configuring an Index Engine</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>createby / createdby Tags Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-create-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Tag Descriptions and Syntax';
+          header.title2 = 'createby / createdby Tags Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CREATETAG01">Description</A></P>
+<P class="nr1"><A NAME="TMPID3774"></A>Use these tags, <TT CLASS="LITERAL">createby</TT> and <TT CLASS="LITERAL">createdby</TT>, to specify a different creator for the object.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CREATETAG02">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3605"></A>&lt;createby&gt;Admin&lt;/createby&gt;</PRE
+>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3606"></A>&lt;createdby&gt;Admin&lt;/createdby&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CREATETAG03">Usage</A></P>
+<A NAME="AEN3608"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3609"></A><A NAME="TMPID3789"></A>The <TT CLASS="LITERAL">createby</TT> or <TT CLASS="LITERAL">createdby</TT> tags are not required tags.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3613"></A><A NAME="TMPID3793"></A>The <TT CLASS="LITERAL">createby</TT> or <TT CLASS="LITERAL">createdby</TT> tags are optional when:</P><A NAME="AEN3617"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3618"></A><A NAME="TMPID3798"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3623"></A><A NAME="TMPID3803"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3628"></A><A NAME="TMPID3808"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="addversion"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3633"></A><A NAME="TMPID3813"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="sync"&gt;</TT></P></LI></UL></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CREATETAG04">Notes</A></P>
+<A NAME="AEN3639"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3640"></A><A NAME="TMPID3821"></A>To change the identity of the creator of an object, specify the user name of the person who is to be assigned the new creator. The user name is case sensitive.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3642"></A><A NAME="TMPID3823"></A>There are two variations in syntax for backwards compatibility,<TT CLASS="LITERAL">createby</TT> and <TT CLASS="LITERAL">createdby</TT>, which are interchangeable.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3646"></A><A NAME="TMPID3827"></A>For document objects, there are two “created by” fields, one on the object and one on each version.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3649"></A><A NAME="TMPID3830"></A>If this tag is specified during an <TT CLASS="LITERAL">action="create"</TT>, the creator will be modified on the object <I CLASS="EMPHASIS">and</I> on the version.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3653"></A><A NAME="TMPID3834"></A>When updating a document with the <TT CLASS="LITERAL">&lt;file&gt;</TT> tag present, or when adding a new version, the creator will apply to the new version. When updating a document with the <TT CLASS="LITERAL">&lt;file&gt;</TT> tag missing, the creator will apply to the document.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CREATETAG05">Example</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3658"></A>&#13;&lt;import&gt;
+  &lt;node type="document" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;My Guidelines&lt;/title&gt;
+    &lt;file&gt;c:\temp\guidelines.doc&lt;\file&gt;
+    &lt;createdby&gt;Admin&lt;/createdby&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

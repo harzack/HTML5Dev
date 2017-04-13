@@ -1,0 +1,263 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBB100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websbroker">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llesrcs-h-ugd -- ngdlles-h-ugd -- llespob-h-ugd -- llesrec-h-ugd -- lleswat-h-ugd -- llesapp-h-ugd -- llesprj-h-ugd -- llesrt-h-ugd -- llescl-h-ugd -- llesrcm-h-ugd"><title>Search Bar Query Tutorial</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'sr-lql-tutorial.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Searching Content Server';
+          header.title2 = 'Search Bar Query Tutorial';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID2856"></A>OpenText Content Server provides a query language that allows users to construct search requests that can be processed by the OpenText Search Engine. This “Live Query Language”, is commonly referred to as “LQL”. This tutorial provides information on how to use LQL to construct advanced search queries in Content Server.</P>
+<P><A NAME="TMPID2863"></A>In OpenText Content Server 10, the search query language described in this tutorial is used by entering text in the Search Bar. Content Server will blend your search query with default settings and other search features such as search slices, which will affect your search results. The use of LQL in the Search Bar is similar to the “Complex Query” search mode on the Advanced Search page, but it is not identical.</P>
+<P class="before-ul"><A NAME="TMPID2868"></A>Searching can be performed against the full text content of an object, against metadata, or a combination of both. In Content Server, the administrator sets the default behavior. If you are experiencing unexpected results with LQL, The most common reasons for unexpected results when using LQL are:</P><A NAME="AEN2731"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2732"></A><A NAME="TMPID2872"></A>Configuration of default searchable regions</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2734"></A><A NAME="TMPID2874"></A>System or personal language settings</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2736"></A><A NAME="TMPID2876"></A>Definition of metadata fields (for example, integers and, strings)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2738"></A><A NAME="TMPID2878"></A>Configuration of search properties (for example, if “<I CLASS="emphasis">stemming</I>” is on or off)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2742"></A><A NAME="TMPID2882"></A>Errors in the order of operations and use of brackets</P></LI></UL>
+<P><A NAME="TMPID2883"></A>LQL essentially defines the terms of interest, the logic connecting the search terms, special modifiers or interpretations of the search terms, and the portions of the text or metadata that should be considered in the search.</P>
+<P class="before-ul"><A NAME="TMPID2884"></A>Some examples of LQL search requests:</P><A NAME="AEN2746"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2747"></A><A NAME="TMPID2887"></A><TT CLASS="literal"><B CLASS="highlight">Moon rover Apollo</B></TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2751"></A><A NAME="TMPID2891"></A><TT CLASS="literal"><B CLASS="highlight">"time machine" and-not dinosaurs</B></TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2755"></A><A NAME="TMPID2895"></A><TT CLASS="literal"><B CLASS="highlight">Mars moon QLPHONETIC damos</B></TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2759"></A><A NAME="TMPID2899"></A><TT CLASS="literal"><B CLASS="highlight">[qlregion "OTDescription"] "beatles"</B></TT></P></LI></UL>
+<P><A NAME="TMPID2902"></A>A search query is composed of search terms (such as "<TT CLASS="literal"><B CLASS="highlight">Apollo</B></TT>") connected by optional operators (such as "<TT CLASS="literal"><B CLASS="highlight">and-not</B>"</TT>") with optional modifiers (such as "<TT CLASS="literal"><B CLASS="highlight">QLPHONETIC</B></TT>") and optional constraints (such as searching only in a field named "<TT CLASS="literal"><B CLASS="highlight">OTDescription</B></TT>").</P>
+<P><A NAME="TMPID2911"></A>You should keep in mind when constructing a search query that the Search Engines do not retain all of the information from the original documents in their exact form. This may affect what is searchable.</P>
+<P class="before-ul"><A NAME="TMPID2912"></A>Some of the key information that may affect searching:</P><A NAME="AEN2774"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2775"></A><A NAME="TMPID2915"></A>Text that is in the body or content of a document is converted to lower case, most accents are removed, and most punctuation and special characters are removed.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2777"></A><A NAME="TMPID2917"></A>Text contained in metadata fields is kept in its entirety for the purposes of exact string matches.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2779"></A><A NAME="TMPID2919"></A>Metadata fields may be defined as text, numbers, or other special data types. The interpretation of search queries may vary in these cases.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-SRCHTERMS">Search Terms</A></P>
+<P><A NAME="TMPID2922"></A>The search terms are the core values that the Search Engine uses in constructing the search query.</P>
+<P><A NAME="TMPID2923"></A>The search terms are the core values which the Search Engine will use in constructing the search query. Note that the terms provided are not always used exactly as entered when the Search Engine performs the query. Depending upon various configuration settings, the Search Engine may perform transformations such as removing punctuation, considering singular or plural forms of words, or cross referencing a thesaurus when determining what objects should match a given query.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-BASICTERMS">Basic Terms</A></P>
+<P><A NAME="TMPID2926"></A>In the first example above, <TT CLASS="literal"><B CLASS="highlight">moon</B></TT>, <TT CLASS="literal"><B CLASS="highlight">rover</B></TT> and <TT CLASS="literal"><B CLASS="highlight">Apollo</B></TT> are all search terms.</P>
+<P><A NAME="TMPID2933"></A>To be technically accurate, each search term must be enclosed in quotes (e.g. <TT CLASS="literal"><B CLASS="highlight">"moon"</B></TT> <TT CLASS="literal"><B CLASS="highlight">"rover"</B></TT> <TT CLASS="literal"><B CLASS="highlight">"apollo"</B></TT>). The quotes must be the basic double-quote character on your keyboard (ASCII decimal 34 or hexadecimal 0x22). If you copy and paste text from word processing applications, ensure that quotation marks are correct.</P>
+<P><A NAME="TMPID2940"></A>As a convenience, the quotes are not required for simple cases. Where there is  ambiguity, or punctuation or special characters are used, adding quotes to search terms may be necessary. For example, if the objective in the example above was to search for the term <TT CLASS="literal"><B CLASS="highlight">and-not</B></TT> in the index, enclosing it in quotes will ensure it is treated as a search term. Without quotes, it is recognized as an LQL keyword.</P>
+<P><A NAME="TMPID2943"></A>In most cases, search terms are not case sensitive.  There is no difference between using moon, <TT CLASS="literal"><B CLASS="highlight">Moon</B></TT>, <TT CLASS="literal"><B CLASS="highlight">MOON</B></TT> or <TT CLASS="literal"><B CLASS="highlight">MoOn</B></TT>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-PHRASES">Phrases</A></P>
+<P><A NAME="TMPID2952"></A>An exact string (commonly referred to as a "phrase") can be treated as a single search term by enclosing it in quotes. <TT CLASS="literal"><B CLASS="highlight">"time machine"</B></TT> in the example above is   a single term.  A search for <TT CLASS="literal"><B CLASS="highlight">"time machine"</B></TT> would not match "time to fix the machine" or "machine time", it would only match a string containing the exact phrase. Most of the modifiers (such as <TT CLASS="literal"><B CLASS="highlight">QLPHONETIC</B></TT>) do not apply to phrases.</P>
+<P><A NAME="TMPID2959"></A>There are some special cases for phrases. If stemming is enabled by default, then singular and plural forms of the last word in a phrase will match. This can be disabled using the equals operator (<TT CLASS="literal"><B CLASS="highlight">="big wheel"</B></TT>). You can also use wildcard operators at the start or end of a phrase: <TT CLASS="literal"><B CLASS="highlight">"apples and banan*"</B></TT>.</P>
+<P><A NAME="TMPID2964"></A>Search terms are transformed by the query system in the same way that the original content was modified when it was indexed. If your system is optimized to convert accented characters such as é or õ into e and o, then the same processing is applied to the search query, ensuring a match. Queries are constructed using UTF-8 encoding, which means that characters from almost any language can be used in a search request.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-BACKSLASHESCCHAR">Backslash Escape Characters</A></P>
+<P><A NAME="TMPID2967"></A>The backslash character ('\', ASCII decimal 92 or hexadecimal 0x5C) requires special consideration. Within LQL, a single backslash character is used to identify that the following character should be part of the search term. For example, if you are trying to match the exact string <TT CLASS="literal"><B CLASS="highlight">"strange&lt;magic&gt;"</B></TT> in a metadata field, you use the backslash to denote that the angle brackets are part of the string, and not separators, like this:</P>
+<P><A NAME="TMPID2970"></A><TT CLASS="literal"><B CLASS="highlight">"strange\&lt;magic\&gt;"</B></TT></P>
+<P><A NAME="TMPID2973"></A>Without the escaping backslash characters, the brackets are discarded. This is usually only useful in metadata fields, since the full text index for the body of documents discards the special characters.</P>
+<P><A NAME="TMPID2974"></A>To accommodate this capability, the use of a backslash character must also be escaped. To find a backslash in a string, use two backslashes. To find the text <TT CLASS="literal">c:\docs\myfile</TT>, the search term should be:</P>
+<P><A NAME="TMPID2976"></A><TT CLASS="literal"><B CLASS="highlight">c\:\\docs\\myfile</B></TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-COMPARATORS">Comparators</A></P>
+<P><A NAME="TMPID2981"></A>In addition to searching for matches, LQL supports inequality operations. The  default operator is equality, although stemming is usually enabled and supersedes equality.</P>
+<P><A NAME="TMPID2982"></A>Greater than, less than, and not equals operations are also possible <TT CLASS="literal"><B CLASS="highlight">( &gt;a, &lt;b, &gt;=c, &lt;=d, !=e )</B></TT>. If you are only interested in specific space flights, you might search for:</P>
+<P><A NAME="TMPID2985"></A><TT CLASS="literal"><B CLASS="highlight">Moon &gt;1969 and &lt;1972</B></TT></P>
+<P><A NAME="TMPID2988"></A>This search, of course, would not be useful. The text <TT CLASS="literal"><B CLASS="highlight">'2000000 people want to visit the  moon, and 0 have done so'</B></TT> would match, since there is a value greater than 1969 and a value of less than 1972 in the text. Use of comparators is generally only useful when restricted to metadata fields or when a range is applied to a single term. For many applications, the modifier <TT CLASS="literal"><B CLASS="highlight">QLRANGE</B></TT> is more applicable, which is described later in this tutorial.</P>
+<P><A NAME="TMPID2993"></A>When using comparators, it is important to understand how values are represented. Consider the values 512 and 3650. If they are integers, it is relatively clear that 512 &lt; 3650. If you are searching in well-defined metadata fields, such as a time or a date, this will behave as expected.</P>
+<P><A NAME="TMPID2994"></A>However, numbers are often located within text, and are indexed as text values. In this case, a comparison is performed using alphanumeric methods. So 3650 is LESS THAN 512, since 3 &lt; 5. Some further examples that illustrate how text strings are compared:</P>
+<P><A NAME="TMPID2995"></A><TT CLASS="literal"><B CLASS="highlight">abcdd</B></TT> is less than &lt; <TT CLASS="literal"><B CLASS="highlight">abcde</B></TT></P>
+<P><A NAME="TMPID3000"></A><TT CLASS="literal"><B CLASS="highlight">98665</B></TT> is less than &lt; <TT CLASS="literal"><B CLASS="highlight">a</B></TT></P>
+<P><A NAME="TMPID3005"></A><TT CLASS="literal"><B CLASS="highlight">abcde</B></TT> is less than &lt; <TT CLASS="literal"><B CLASS="highlight">abcde1</B></TT></P>
+<P><A NAME="TMPID3010"></A><TT CLASS="literal"><B CLASS="highlight">Harry</B></TT> is less than &lt; <TT CLASS="literal"><B CLASS="highlight">sally</B></TT></P>
+<P><A NAME="TMPID3015"></A><TT CLASS="literal"><B CLASS="highlight">1129467</B></TT> is less than &lt; <TT CLASS="literal"><B CLASS="highlight">25</B></TT></P>
+<P><A NAME="TMPID3020"></A>In the <TT CLASS="literal"><B CLASS="highlight">moon &gt;1969</B></TT> example, most of the words in the text would meet the criteria for <TT CLASS="literal"><B CLASS="highlight">&gt;1969</B></TT>.</P>
+<P><A NAME="TMPID3025"></A>Where extended UTF-8 encoded characters are used (generally  languages other than English), the Unicode values are used to determine the order for string comparison. For some languages, this may produce results that appear to be incorrectly ordered based upon the local language expectations. In many cases, the indexing rules also transform text-for example, by removing accents from characters–so equality comparisons may be slightly different than expected.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-OPERATORS">Operators</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-AND">AND</A></P>
+<P><A NAME="TMPID3030"></A>Search operators are used to control the logic that connects the search terms. Operators are not case sensitive. The default connector between search terms is the AND operator. The following are equivalent:</P>
+<P><A NAME="TMPID3031"></A><TT CLASS="literal"><B CLASS="highlight">Moon rover Apollo</B></TT></P>
+<P><A NAME="TMPID3034"></A><TT CLASS="literal"><B CLASS="highlight">Moon AND rover AND Apollo</B></TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-OR">OR</A></P>
+<P><A NAME="TMPID3039"></A>The OR operator is used to match any one of a number of items. In our example, perhaps we want to check other names for the Apollo spacecraft:</P>
+<P><A NAME="TMPID3040"></A><TT CLASS="literal"><B CLASS="highlight">Moon AND rover AND Apollo OR Columbia OR eagle</B></TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-BRACKETS">Brackets and Precedence</A></P>
+<P><A NAME="TMPID3045"></A>The order of operations for LQL is always right to left, with all operators having the same precedence.  In order to help construct searches that are easier to understand, LQL supports the use of brackets. The example above is processed like this:</P>
+<P><A NAME="TMPID3046"></A><TT CLASS="literal"><B CLASS="highlight">Moon (and rover and (Apollo (or Columbia or eagle)))</B></TT></P>
+<P><A NAME="TMPID3049"></A>By using brackets, we can both control how searches are performed and improve readability. So this same query could be correctly constructed to return the expected results in several ways, including:</P>
+<P><A NAME="TMPID3050"></A><TT CLASS="literal"><B CLASS="highlight">Moon and rover and (Apollo or Columbia or eagle)</B></TT></P>
+<P><A NAME="TMPID3053"></A><TT CLASS="literal"><B CLASS="highlight">(apollo or Columbia or eagle) and moon and rover</B></TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-ANDNOT">AND-NOT (NOT)</A></P>
+<P><A NAME="TMPID3058"></A>The AND-NOT operator can be used to exclude certain terms. If you do not want  information about the Saturn 5 rocket, you can use the and-not operator:</P>
+<P><A NAME="TMPID3059"></A><TT CLASS="literal"><B CLASS="highlight">Moon AND (rover AND (Apollo OR (Columbia OR eagle)))</B></TT><BR><TT CLASS="literal"><B CLASS="highlight">AND-NOT ("Saturn 5" or "Saturn V")</B></TT></P>
+<P><A NAME="TMPID3064"></A>The Search Bar interpreter will also treat the operator not the same as and-not.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-EXCLUSIVE">Exclusive Or (XOR)</A></P>
+<P><A NAME="TMPID3067"></A>The exclusive-or (XOR) operator allows you to specify a match for A or B, but not both A and B.  For example:</P>
+<P><A NAME="TMPID3068"></A><TT CLASS="literal"><B CLASS="highlight">(Search XOR query) and language</B></TT></P>
+<P><A NAME="TMPID3071"></A>Will match the text search for a language, or language query, but not search query language.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-SYNONYM">Synonym Or (SOR)</A></P>
+<P><A NAME="TMPID3074"></A>For search experts, there is also a "synonym or" (SOR) operator available. Functionally, it works like the OR operator but, it instructs the engine to compute relevance in a different way. Essentially, the engine will treat SOR terms as synonyms, which changes how the relevance of an operation is determined. Consider the text "the moon rover descended to the surface with the Lunar Excursion Module (LEM)".</P>
+<P><A NAME="TMPID3075"></A><TT CLASS="literal"><B CLASS="highlight">Moon and rover and (LEM SOR "lunar excursion module")</B></TT></P>
+<P><A NAME="TMPID3078"></A>Using the SOR operator, <TT CLASS="literal"><B CLASS="highlight">LEM</B></TT> and "<TT CLASS="literal"><B CLASS="highlight">lunar excursion module</B></TT>" are synonyms-they are only scored once. If an OR operator was used, the engine might rank the result differently, since it would determine that two different terms were found in the result.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-PROXIMITY">Proximity (NEAR, PROX, QLNEAR)</A></P>
+<P><A NAME="TMPID3085"></A>In general, if you wanted to find documents related to red carpets, the search engine will give higher relevance scores to objects where the terms are located close to one another. For example, "roll out the red carpets" would score higher than "carpets come in many colors, including red" if your search query is <TT CLASS="literal"><B CLASS="highlight">red carpets</B></TT>.</P>
+<P><A NAME="TMPID3088"></A>You can also request that search terms must be close to one another to be considered a match using the proximity operator.</P>
+<P><A NAME="TMPID3089"></A><TT CLASS="literal"><B CLASS="highlight">Red PROX[3] carpets</B></TT></P>
+<P><A NAME="TMPID3092"></A>This would require that the words red and carpets be within a distance of three words from each other. This matches the text fragments "red and green carpets" or "carpets with red", but not "carpets come in many colors, including red".</P>
+<P><A NAME="TMPID3093"></A>If the order is important, this too can be specified. An optional second parameter to the PROX operator is a true / false flag (T or F) that requires order be enforced. The following example would no longer match "carpets with red".</P>
+<P><A NAME="TMPID3094"></A><TT CLASS="literal"><B CLASS="highlight">Red PROX[2,T] carpets</B></TT></P>
+<P><A NAME="TMPID3097"></A>As a convenience, the relatively common <TT CLASS="literal"><B CLASS="highlight">PROX[10,F]</B></TT> configuration is available using <TT CLASS="literal"><B CLASS="highlight">NEAR</B></TT> or <TT CLASS="literal"><B CLASS="highlight">QLNEAR</B></TT>.</P>
+<P><A NAME="TMPID3104"></A><TT CLASS="literal"><B CLASS="highlight">Jumping NEAR "jack flash"</B></TT>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-OPERATORS-SRCHOPERATORS">Searching for Operators</A></P>
+<P><A NAME="TMPID3109"></A>To search for operators, enclose the operators in quotes to have them treated as words. The search query:</P>
+<P><A NAME="TMPID3110"></A><TT CLASS="literal"><B CLASS="highlight">"King" "or" "Queen"</B></TT></P>
+<P><A NAME="TMPID3113"></A>Will be interpreted as:</P>
+<P><A NAME="TMPID3114"></A><TT CLASS="literal"><B CLASS="highlight">"king" AND "or" AND "queen"</B></TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-MODIFIERS-INTRO">Modifiers</A></P>
+<P><A NAME="TMPID3119"></A>The query language exposes a number of useful modifiers that give you greater control over searches. Modifiers apply to the simple search term that follows the modifier (not exact phrases).</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-MODIFIERS-STEMMING">Stemming</A></P>
+<P><A NAME="TMPID3122"></A>Stemming is the process of finding matches based upon the "stem" of a word. By default, the stemming configuration in Content Server is to make a best effort to match singular and plural forms of words. The stemming algorithm is based on your language preference, and supports English, French, German, Spanish and Italian.</P>
+<P><A NAME="TMPID3124"></A>The keyword <TT CLASS="literal"><B CLASS="highlight">QLSTEM</B></TT> is used to request that stemming be applied to a term. The example below will match either "red carpet" or "red carpets".</P>
+<P><A NAME="TMPID3127"></A><TT CLASS="literal"><B CLASS="highlight">Red AND QLSTEM carpet</B></TT></P>
+<P><A NAME="TMPID3130"></A>Stemming is often enabled by default, so use of the QLSTEM modifier may not be necessary.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-MODIFIERS-SOUNDSLIKE">Sounds Like</A></P>
+<P><A NAME="TMPID3133"></A>One of the mechanisms for matching terms is based upon a similarity of the pronunciation of words. This algorithm is specifically designed to help match surnames. Names do not necessarily follow spelling conventions and corrections. Consider the case where a name is taken verbally and recorded as "Smith". In practice the actual spelling may have been a number of variants, including Smithe, Schmidt, Schmitt, Smythe or Smed.</P>
+<P><A NAME="TMPID3134"></A>Use the <TT CLASS="literal"><B CLASS="highlight">QLPHONETIC</B></TT> operator to find these variants of a name.</P>
+<P><A NAME="TMPID3137"></A><TT CLASS="literal"><B CLASS="highlight">(Jim OR james) AND QLPHONETIC smith</B></TT></P>
+<P><A NAME="TMPID3140"></A>The number of potential phonetic matches can be very large.  Using a "sounds like"  search on a large data set can be slow, and while you are likely to catch most   of the probable matches, the accuracy (or precision) of such a search is relatively low.</P>
+<P><A NAME="TMPID3141"></A>The current algorithm implemented for QLPHONETIC is a modified version of the American  "Soundex" algorithm. This algorithm functions for most Western European languages,   although the accuracy diminishes the less similar the language is to English.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-MODIFIERS-THESAURUS">Thesaurus</A></P>
+<P><A NAME="TMPID3144"></A>The Search Engine has the ability to use a thesaurus to expand a search query to also look for synonyms to a word. A thesaurus is language-specific. Content Server ships with thesauri for several languages - English, French, Spanish, and German. In addition, there is a "multi-lingual" thesaurus which combines all of the above - which is a great convenience but slightly less accurate, depending upon the words. The choice of thesaurus to be used is determined by the administrator during system configuration and your language preferences.</P>
+<P><A NAME="TMPID3146"></A>To request the use of the thesaurus during a search, use the <TT CLASS="literal"><B CLASS="highlight">QLTHESAURUS</B></TT> modifier on a term:</P>
+<P><A NAME="TMPID3149"></A><TT CLASS="literal"><B CLASS="highlight">Red QLTHESAURUS carpet</B></TT></P>
+<P><A NAME="TMPID3152"></A>Which might find both "red rug" and "red carpet".</P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-MODIFIERS-RANGES">Ranges</A></P>
+<P><A NAME="TMPID3155"></A>One of the more powerful features in the query language is the ability to specify ranges for a value. In the earlier example, <TT CLASS="literal"><B CLASS="highlight">(Moon rover &gt;1969 AND &lt;1972)</B></TT>, we saw that the use of a range was not effective. The range capability would meet our needs here:</P>
+<P><A NAME="TMPID3158"></A><TT CLASS="literal"><B CLASS="highlight">Moon AND rover AND QLRANGE "1969~1972"</B></TT></P>
+<P><A NAME="TMPID3161"></A>The QLRANGE operator will match a given term within the range 1969 to 1972, inclusive (meaning that 1969 and 1972 would be matched).  The range values must be within quotation marks. As discussed in the operators section, the results will differ depending upon whether the values are text (most common) or numeric values (which may be the case within metadata).</P>
+<P><A NAME="TMPID3162"></A>The order of objects in the range matters, <TT CLASS="literal"><B CLASS="highlight">QLRANGE "1972~1969"</B></TT> would produce no results.</P>
+<P><A NAME="TMPID3165"></A>There is another form of <TT CLASS="literal"><B CLASS="highlight">QLRANGE</B></TT> that is designed to make searching sets of objects easier:</P>
+<P><A NAME="TMPID3168"></A><TT CLASS="literal"><B CLASS="highlight">Car and QLRANGE "black|brown|grey|charcoal"</B></TT></P>
+<P><A NAME="TMPID3171"></A>This search might be constructed to find documents with references to cars with dark colors. This form is functionally equivalent to:</P>
+<P><A NAME="TMPID3172"></A><TT CLASS="literal"><B CLASS="highlight">Car and (black or brown or grey or charcoal)</B></TT></P>
+<P><A NAME="TMPID3175"></A>The Search Engine can process the query more efficiently in the <TT CLASS="literal"><B CLASS="highlight">QLRANGE</B></TT> form, so it is recommended when constructing very complex queries on large data sets. However, this form cannot tolerate special characters, so the example below would not give you the expected results:</P>
+<P><A NAME="TMPID3178"></A><TT CLASS="literal"><B CLASS="highlight">QLRANGE "bob.smith|henry-chow"</B></TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-MODIFIERS-WILDCARDS">Wildcards, Patterns and Regular Expressions</A></P>
+<P><A NAME="TMPID3183"></A>LQL supports a number of pattern matching features for advanced search.  Characters are not case sensitive.</P>
+<P><A NAME="TMPID3184"></A>Right truncation is the use of wildcards to match any word that starts with the provided term. As a convenience, an asterisk can be used. For example, the following would match words such as phone, phones, phonetic, or phonics.</P>
+<P><A NAME="TMPID3185"></A><TT CLASS="literal"><B CLASS="highlight">Phon*</B></TT></P>
+<P><A NAME="TMPID3188"></A><TT CLASS="literal"><B CLASS="highlight">QLRIGHT-TRUNCATION phon</B></TT></P>
+<P><A NAME="TMPID3191"></A>Left truncation is used to match any word that ends with the provided term. As a convenience, an asterisk at the start of the term can be used instead. The following example would match imagination, termination or machination:</P>
+<P><A NAME="TMPID3192"></A><TT CLASS="literal"><B CLASS="highlight">*ination</B></TT></P>
+<P><A NAME="TMPID3195"></A><TT CLASS="literal"><B CLASS="highlight">QLLEFT-TRUNCATION ination</B></TT></P>
+<P><A NAME="TMPID3198"></A>The most flexible pattern matching mechanism is known as "regular expressions":</P>
+<P><A NAME="TMPID3199"></A><TT CLASS="literal"><B CLASS="highlight">QLREGEX "^ch([0-9])+(.)*r$"</B></TT></P>
+<P><A NAME="TMPID3202"></A>The pattern of interest must be contained within quotes. This complex-looking statement would find words that start with ch (the ^ character matches the start of the word), followed by any of the set of characters 0 through 9 (sets are in square braces) one or more times (the + symbol) followed by any characters (.) ending in r (the $ matches the end of the word). In other words, it would match:</P>
+<P><A NAME="TMPID3203"></A><TT CLASS="literal"><B CLASS="highlight">Ch0094r</B></TT></P>
+<P><A NAME="TMPID3206"></A><TT CLASS="literal"><B CLASS="highlight">Ch1bdh7cgr</B></TT></P>
+<P><A NAME="TMPID3209"></A>But not</P>
+<P><A NAME="TMPID3210"></A><TT CLASS="literal"><B CLASS="highlight">Aach0034r</B></TT></P>
+<P><A NAME="TMPID3213"></A><TT CLASS="literal"><B CLASS="highlight">Ch1rzzz</B></TT></P>
+<P><A NAME="TMPID3216"></A><TT CLASS="literal"><B CLASS="highlight">chr</B></TT></P>
+<P><A NAME="TMPID3219"></A>Regular expressions can be very slow. Wherever possible, match the start of the string using the caret for performance optimization.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3061"></A>
+<TH SCOPE="COL" WIDTH="115" ALIGN="LEFT" VALIGN="TOP">Regex Character</TH>
+<TH SCOPE="COL" WIDTH="384" ALIGN="LEFT" VALIGN="TOP">Meaning</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="115" ALIGN="LEFT" VALIGN="TOP">.</TD>
+<TD SCOPE="COL" WIDTH="384" ALIGN="LEFT" VALIGN="TOP">A period (dot) matches any single character.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="115" ALIGN="LEFT" VALIGN="TOP">[   ]</TD>
+<TD SCOPE="COL" WIDTH="384" ALIGN="LEFT" VALIGN="TOP">Used to define a set or range of characters. [aeiou] would be the set of English language vowels. [0-9] would be digits. The negative set can be defined by using the caret (^) in the first position. So [^0-9.$€£¥] would match anything EXCEPT the characters commonly used to construct prices.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="115" ALIGN="LEFT" VALIGN="TOP">(  )</TD>
+<TD SCOPE="COL" WIDTH="384" ALIGN="LEFT" VALIGN="TOP">Used to create a group or set.  Mostly used when creating repeating values or alternatives. For example (abc)+ would match abc, abcabc, abcabcabc etc.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="115" ALIGN="LEFT" VALIGN="TOP">^</TD>
+<TD SCOPE="COL" WIDTH="384" ALIGN="LEFT" VALIGN="TOP">Matches the beginning of a word. Must therefore be the first character in the regular expression if used.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="115" ALIGN="LEFT" VALIGN="TOP">$</TD>
+<TD SCOPE="COL" WIDTH="384" ALIGN="LEFT" VALIGN="TOP">Matches the end of a word.  Must therefore be the last character in the expression if used.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="115" ALIGN="LEFT" VALIGN="TOP">?</TD>
+<TD SCOPE="COL" WIDTH="384" ALIGN="LEFT" VALIGN="TOP">Matches the preceding expression 0 or 1 times.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="115" ALIGN="LEFT" VALIGN="TOP">*</TD>
+<TD SCOPE="COL" WIDTH="384" ALIGN="LEFT" VALIGN="TOP">Matches the preceding expression zero or more times.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="115" ALIGN="LEFT" VALIGN="TOP">+</TD>
+<TD SCOPE="COL" WIDTH="384" ALIGN="LEFT" VALIGN="TOP">Matches the preceding expression one or more times.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="115" ALIGN="LEFT" VALIGN="TOP">|</TD>
+<TD SCOPE="COL" WIDTH="384" ALIGN="LEFT" VALIGN="TOP">"Or" operation.  A|b matches either a or b.  (jim)|(james)</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID3256"></A>Regular expressions can be used for matching strings that have specific formats, such as part numbers or email addresses. For example, if searching for "henry smith" within an email address at superzoom, of unknown form, you might use something like:</P>
+<P><A NAME="TMPID3257"></A><TT CLASS="literal"><B CLASS="highlight">qlregex "^h(enry)?.?s(mith)?@super(-)?zoom.(com|net|org)"</B></TT></P>
+<P><A NAME="TMPID3260"></A>Which would match possibilities such as:</P>
+<P><A NAME="TMPID3261"></A><TT CLASS="literal"><B CLASS="highlight">hsmith@superzoom.com</B></TT></P>
+<P><A NAME="TMPID3264"></A><TT CLASS="literal"><B CLASS="highlight">henrys@super-zoom.net</B></TT></P>
+<P><A NAME="TMPID3267"></A><TT CLASS="literal"><B CLASS="highlight">henry.smith@superzoom.org</B></TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="LQL-MODIFIERS-CAUTION">Caution!</A></P>
+<P><A NAME="TMPID3272"></A>Truncation and regular expressions are expensive operations, which may take considerable time to process and use the system heavily. In some cases, depending on system configuration settings and size of the search index, the search operations may time out.</P>
+<P><A NAME="TMPID3273"></A>Left truncation (<TT CLASS="literal"><B CLASS="highlight">*word</B></TT>) is always expensive. The cost of regular expressions can be limited by using terms that are anchored with as many leading characters as possible (start with <TT CLASS="literal"><B CLASS="highlight">^wor</B></TT>). Right truncation (<TT CLASS="literal"><B CLASS="highlight">word*</B></TT>) is best if you have as many leading characters as possible (<TT CLASS="literal"><B CLASS="highlight">a*</B></TT> is much more expensive than <TT CLASS="literal"><B CLASS="highlight">appl*</B></TT>).</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-SRCHMETADATAFLDS">Searching within Metadata Fields</A></P>
+<P><A NAME="TMPID3286"></A>By default, LQL will search within a configured set of metadata fields (or regions) and the full text content. To refine searches against metadata, you can constrain searches of terms to specific fields.</P>
+<P><A NAME="TMPID3287"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION "OTDComment"] = "red carpet"</B></TT></P>
+<P><A NAME="TMPID3290"></A>In this case the Search Engine is asked to find instances of "<TT CLASS="literal"><B CLASS="highlight">"red carpet"</B></TT> within the metadata field labeled OTDComment. Metadata field names are case sensitive.</P>
+<P><A NAME="TMPID3293"></A>If there are multiple search terms following the region constraint, you should use brackets to make it clear that the terms all apply to the region. For example, depending on your objectives, use either:</P>
+<P><A NAME="TMPID3294"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION "OTName"] ("red" AND QLSTEM "carpet")</B></TT></P>
+<P><A NAME="TMPID3297"></A><TT CLASS="literal"><B CLASS="highlight">qlstem carpet and [QLREGION "OTName"] "red"</B></TT></P>
+<P><A NAME="TMPID3300"></A>If you use the form below, the meaning is uncertain and LQL may not interpret it as you expect:</P>
+<P><A NAME="TMPID3301"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION "OTName"] "red" AND QLSTEM "carpet"</B></TT></P>
+<P><A NAME="TMPID3304"></A>You can create complex queries using multiple regions. Consider the following query to find documents that have a file size of about 1 MByte authored by bob smith containing information about smart phones:</P>
+<P><A NAME="TMPID3305"></A><TT CLASS="literal"><B CLASS="highlight">([QLREGION "OTSize"] QLRANGE "750000~1250000")</B></TT></P>
+<P><A NAME="TMPID3308"></A><TT CLASS="literal"><B CLASS="highlight">    		and ([QLREGION "OTCreatedByName"] "smith")</B></TT></P>
+<P><A NAME="TMPID3311"></A><TT CLASS="literal"><B CLASS="highlight">    	 	and ([QLREGION "OTData"] QLRANGE "blackberry|iphone")</B></TT></P>
+<P><A NAME="TMPID3314"></A><TT CLASS="literal"><B CLASS="highlight">     		and ("phone")</B></TT></P>
+<P><A NAME="TMPID3317"></A>Values indexed in metadata fields can have attributes. The most common use of attributes is for languages, allowing a name or description of an object in several alternative languages. You can further constrain search against attributes:</P>
+<P><A NAME="TMPID3318"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION "OTName"][QLATTRIBUTE "lang"="en"] "red"</B></TT></P>
+<P><A NAME="TMPID3321"></A>This would match objects in which the OTName field contains "red", but only if  the word "red" is contained in a field that is tagged with the attribute / value pair of language / English. A special case exists for testing against an attribute that is not defined:</P>
+<P><A NAME="TMPID3322"></A><TT CLASS="literal"><B CLASS="highlight">[qlregion "OTName"][QLATTRIBUTE "lang" IS NULL] *</B></TT></P>
+<P><A NAME="TMPID3325"></A>This allows matching only if no language attribute exists. You do NOT need to specify the QLATTRIBUTE modifier if you are willing to search against all value / attribute combinations.</P>
+<P><A NAME="TMPID3326"></A>Internally, the indexed fields are contained within the larger slice of either metadata or full text. Implicitly, all metadata regions in Content Server are contained within the slice "<TT CLASS="literal"><B CLASS="highlight">OTMeta</B></TT>". You can explicitly provide the slice within the field definition, but it is usually not required.</P>
+<P><A NAME="TMPID3330"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION "OTMeta":"OTName"] "red carpet"</B></TT></P>
+<P><A NAME="TMPID3333"></A>The full text content has a reserved slice: "<TT CLASS="literal"><B CLASS="highlight">OTData</B></TT>". You can use the <TT CLASS="literal"><B CLASS="highlight">QLREGION</B></TT> feature to restrict a search to full text data only:</P>
+<P><A NAME="TMPID3338"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION "OTData"] ("red" AND qlstem "carpet")</B></TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-SRCHINXMLFLDS">Searching within XML Fields</A></P>
+<P><A NAME="TMPID3343"></A>A special case exists for XML documents indexed within Content Server. Assume you are looking for any XML documents that contain "purple crayon" within an XML tag of "harold". You can search for this using the syntax:</P>
+<P><A NAME="TMPID3344"></A><TT CLASS="literal"><B CLASS="highlight">[QLREGION "OTData":"harold"] "purple crayon"</B></TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-SRCHINBOOLFLDS"> Searching within Boolean Fields</A></P>
+<P><A NAME="TMPID3349"></A>A metadata field may be defined as type Boolean. When searching in Boolean fields, you should constrain your searches to matching either “true” or “false”.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LQL-EXISTEMPTYFLDS">Existence and Empty Fields</A></P>
+<P><A NAME="TMPID3354"></A>A relatively common set of special cases occurs when you simply want to include a search term which tests whether a metadata field exists, without caring about its value. For example, if you want to find objects where a version creation date exists, the following search term could be used:</P>
+<P><A NAME="TMPID3355"></A><TT CLASS="literal"><B CLASS="highlight">Something and [QLREGION "OTVerCDate"] *</B></TT></P>
+<P><A NAME="TMPID3358"></A>Conversely, if you only want objects without this date defined, use either:</P>
+<P><A NAME="TMPID3359"></A><TT CLASS="literal"><B CLASS="highlight">Something not [QLREGION "OTVerCDate"] *</B></TT></P>
+<P><A NAME="TMPID3362"></A><TT CLASS="literal"><B CLASS="highlight">Something and [QLREGION "OTVerCDate"] != *</B></TT></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

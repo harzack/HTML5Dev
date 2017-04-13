@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Déclencheur WR</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-trigger-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'Déclencheur WR';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID18231"></A>La fonction <B CLASS="guilabel">Déclencheur WR</B> permet de déclencher les WebReports avec des événements Content Server spécifiques. Pour les types de nœud disposant de la fonction <B CLASS="guilabel">Déclencheur WR</B>, le développeur WebReports peut choisir de lancer un Webreport sur la base de différents événements Content Server. La fonction <B CLASS="guilabel">Déclencheur WR</B> est désactivée par défaut et peut être activée pour chaque type de nœud, dans les pages Administration de la section <B CLASS="guilabel">Gérer les déclencheurs WR</B>. Les événements Content Server avec lesquels vous pouvez déclencher un Webreport sont les suivants : </P><A NAME="AEN17483"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17484"></A><A NAME="TMPID18243"></A>Ajouter une version</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17486"></A><A NAME="TMPID18245"></A>Mettre à jour la catégorie</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17488"></A><A NAME="TMPID18247"></A>Créer</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17490"></A><A NAME="TMPID18249"></A>Supprimer</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17492"></A><A NAME="TMPID18251"></A>Déplacer</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17494"></A><A NAME="TMPID18253"></A>Mettre à jour</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TRIGGER-GENUSE">Utilisation générale</A></P>
+<P><A NAME="TMPID18256"></A>La fonction <B CLASS="guilabel">Déclencheur WR</B> est accessible via la nouvelle option Déclencheur WR, dans la section Propriétés du menu Fonctions. Cette option affiche un nouvel onglet. Le menu et l'onglet associé sont disponibles uniquement avec les sous-types pour lesquels la fonction Déclencheur WR a été activée. Un déclencheur peut être défini pour des objets individuels ou des recueils, puis appliqués à l'ensemble de l'arborescence, ce qui présente l'avantage de définir des déclencheurs pour un grand volume d'éléments. </P>
+<P><IMG SRC="image032.png"></P>
+<P><A NAME="TMPID18259"></A>Lorsqu'un élément est « Supprimé » à l'aide du menu Fonctions, l'un des deux événements suivants se produit. L'élément est réellement et totalement supprimé de la base de données ou bien l'élément est placé dans la corbeille ou dans le volume de récupération. Le comportement choisi dépend de la configuration de certains sous-types, par exemple Documents ou Dossiers, pour ces modules. Le déclencheur Supprimer s'active uniquement lorsque l'élément est réellement supprimé de la base de données. Si un WebReport doit être déclenché sur la base d'une « suppression dans le menu Fonctions » avec pour résultat que l'élément est placé dans la corbeille ou le volume de récupération, utilisez plutôt l'événement de déclenchement <TT CLASS="literal">Déplacer</TT>. La logique peut alors être utilisée dans le Webreport. Servez-vous de <TT CLASS="literal">NODEINFO:PARENTID /OWNERID</TT> pour déterminer si l'élément a été déplacé vers l'un de ces emplacements, ou ailleurs dans Content Server. </P>
+<P><A NAME="TMPID18265"></A>Lorsqu'un nœud racine (un recueil contenant d'autres éléments) est copié, déplacé ou supprimé, le déclencheur concerne ce nœud racine uniquement. Aucun WebReport n'est lancé pour ses sous-éléments. Si vous souhaitez lancer un WebReport pour chaque élément spécifique, vous avez la possibilité d'utiliser une requête qui sélectionne le nœud à l'origine du déclencheur pour trouver tous ses enfants ; utilisez ensuite un sous-rapport WebReport pour mettre en œuvre le comportement souhaité, par exemple déclencher un workflow. </P>
+<P><A NAME="TMPID18266"></A>Tous les déclencheurs sont activés après que l'événement indiqué s'est produit, à l'exception du déclencheur Supprimer. Par exemple, si vous utilisez <TT CLASS="literal">[LL_REPTAG_TRIGGERID NODEINFO:PARENTID /]</TT> dans un WebReport qui a été déclenché par un événement Déplacer, l'objectID du nouveau parent sera renvoyé. Voir <TT CLASS="literal">[LL_REPTAG_TRIGGERORIGPARENTID /]</TT> pour accéder à l'original. Avec le déclencheur Supprimer, l'événement est lancé juste avant la suppression, afin que le maximum de métadonnées soient disponibles. Une fois supprimé définitivement, le nœud n'existe plus et ne contient aucune métadonnée valide. </P>
+<P><A NAME="TMPID18269"></A>Lorsqu'un document est ajouté à Content Server, le déclencheur <TT CLASS="literal">Créer</TT> et le déclencheur <TT CLASS="literal">Ajouter une version</TT> sont activés. Content Server les considère en effet comme deux actions distinctes. La création du nœud a lieu en premier, puis une nouvelle version, dans le cas présent la version 1, est ajoutée au nœud. Si un dossier a été ajouté, seul le déclencheur <TT CLASS="literal">Créer</TT> sera activé. </P>
+<P class="before-ul"><A NAME="TMPID18275"></A>La fonction <TT CLASS="literal">Déclencheur WR</TT> prend désormais en charge des événements de groupe ou d'utilisateur. Pour les configurer, rendez-vous dans les pages Administration de la section <B CLASS="guilabel">Gérer les déclenchements WR utilisateur/de groupe</B>. Le développeur WebReports peut choisir de lancer un WebReport sur la base des événements de groupe/d'utilisateur suivants :</P><A NAME="AEN17520"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17521"></A><A NAME="TMPID18281"></A>Ajouter l'utilisateur au groupe</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17523"></A><A NAME="TMPID18283"></A>Créer un utilisateur/groupe</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17525"></A><A NAME="TMPID18285"></A>Supprimer l'utilisateur/le groupe</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17527"></A><A NAME="TMPID18287"></A>Mettre à jour l'utilisateur/le groupe</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17529"></A><A NAME="TMPID18289"></A>Identification de l'utilisateur</P></LI></UL>
+<P><A NAME="TMPID18290"></A>Lorsque la case à cocher <B CLASS="guilabel">Global</B> est sélectionnée, le WebReport est exécuté dès que l'un des événements de déclenchement sélectionnés se produit au sein de Content Server, quel que soit l'utilisateur qui en est à l'origine. Si un utilisateur ou un groupe spécifique est sélectionné, la case à cocher <B CLASS="guilabel">Global</B> n'est pas sélectionnée et le WebReport est exécuté lorsque l'événement de déclenchement se produit pour le groupe ou l'utilisateur spécifié. Par exemple, si une création, une suppression ou un ajout, entre autres, a lieu au sein du groupe, et pas explicitement au niveau du groupe lui-même, le WebReport sera lancé. Dans le cas d'un utilisateur, l'événement de déclenchement doit concerner l'utilisateur lui-même. Cela signifie que tous les événements de déclenchement ne sont pas pertinents pour les utilisateurs, et sont donc ignorés. Dans la capture d'écran ci-dessous, l'utilisateur administrateur doit être supprimé pour que l'événement de déclenchement « Supprimer l'utilisateur/le groupe » soit activé. </P>
+<P><IMG SRC="image034.png"></P>
+<P><A NAME="TMPID18296"></A>Dans l'exemple ci-dessus, un WebReport est lancé si un utilisateur est ajouté au <B CLASS="highlight">TestGroup1</B>, si un nouvel utilisateur est créé avec « Test_Groupe1 » comme service ou si « Test_Groupe1 » est supprimé.  </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TRIGGER-WRTRIGTAG">Balises du Déclencheur WR</A></P>
+<P class="before-ul"><A NAME="TMPID18302"></A>Le Déclencheur WR prend en charge les balises suivantes, spécifiques à cette fonction et détaillées dans le guide sur les balises :</P><A NAME="AEN17543"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17544"></A><A NAME="TMPID18305"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGER">[LL_REPTAG_TRIGGER /]</A></span> [LL_REPTAG_TRIGGER /]</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17547"></A><A NAME="TMPID18308"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGERID">[LL_REPTAG_TRIGGERID /]</A></span> [LL_REPTAG_TRIGGERID /]</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17550"></A><A NAME="TMPID18311"></A><span><A HREF="wr-tag-cdfourteenth.htm#LLREPTAGTRIGGERNEWID">[LL_REPTAG_TRIGGERNEWID /]</A></span> [LL_REPTAG_TRIGGERNEWID /]</P></LI></UL>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="WR-TRIGGER-EXAM"></A><B>Exemple</B></P>
+<A NAME="AEN17554"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17555"></A><A NAME="TMPID18316"></A>Lance un workflow et lui joint un document lorsqu'un nouvel élément est créé.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17557"></A><A NAME="TMPID18318"></A>Définit comme destination pour le WebReport le workflow que vous souhaitez lancer :</P>
+<A NAME="AEN17559"></A>
+<OL TYPE="a">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17560"></A><A NAME="TMPID18321"></A>Dans le menu Fonctions du WebReport, sélectionnez <B CLASS="guilabel">Propriétés</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17563"></A><A NAME="TMPID18324"></A>Dans le menu <B CLASS="guilabel">Propriétés</B>, sélectionnez <B CLASS="guilabel">Destination</B>.</P></LI></OL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17567"></A><A NAME="TMPID18328"></A>Sélectionnez le menu Fonctions dans un dossier, au-dessus de l'emplacement où l'élément sera créé. Dans le menu Fonctions de ce dossier, sélectionnez <B CLASS="guilabel">Propriétés</B>, puis <B CLASS="guilabel">Déclencheur WR</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17571"></A><A NAME="TMPID18332"></A>Dans l'onglet <B CLASS="guilabel">Déclencheur WR</B> du dossier, sélectionnez le WebReport à exécuter, puis sélectionnez l'événement <TT CLASS="literal">Créer</TT> comme déclencheur.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17575"></A><A NAME="TMPID18336"></A>Dans le WebReport, spécifiez l'élément qui déclenche l'événement à associer au workflow. Pour ce faire, modifiez l'affichage de rapport et utilisez :</P>
+<P><A NAME="TMPID18337"></A><TT CLASS="literal">[LL_REPTAG_TRIGGERID SETWFATTACH:COPY:INHERITATTRS:MERGED /]</TT></P>
+<P><A NAME="TMPID18339"></A><TT CLASS="literal">TRIGGERID</TT> est l'ID de l'objet ayant déclenché l'événement et <TT CLASS="literal">SETWFATTACH:COPY:INHERITATTRS:MERGED</TT> copie ce nœud dans le dossier Pièces jointes, fusionnant les catégories de ce nœud avec celles du dossier Pièces jointes. Pour en savoir plus, voir <span><A HREF="wr-tag-stsixteenth.htm#SETWFATTACH">SETWFATTACH:params</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF59"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID18344"></A><B CLASS="note">Note : </B><BR>Au lieu de lancer un workflow, l'onglet de destination WebReports peut être configuré afin d'envoyer un e-mail. Pour joindre à l'e-mail l'élément qui a déclenché l'événement, utilisez <TT CLASS="literal">[LL_REPTAG_TRIGGERID /]</TT>. Il est intéressant de noter que <TT CLASS="literal">SETWFATTACH</TT> et <TT CLASS="literal">SETEMAILATTACH</TT> peuvent être utilisés à plusieurs reprises pour joindre divers éléments à la destination. Pour en savoir plus, voir <span><A HREF="wr-tag-stsixteenth.htm#SETEMAILATTACH">SETEMAILATTACH</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></OL>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

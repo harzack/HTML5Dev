@@ -1,0 +1,282 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>TABS, TIMESINCE, TODATE, TOJSON, TOLIST, TRIM, TRUNC, TZOFFSET</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stseventeenth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sub-Tags';
+          header.title2 = 'TABS, TIMESINCE, TODATE, TOJSON, TOLIST, TRIM, TRUNC, TZOFFSET';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID14622"></A>This section details the sub-tags: <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTABS">TABS</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTIMESINCE">TIMESINCE</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTODATE">TODATE</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOLIST">TOLIST</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTRIM">TRIM</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTRUNC">TRUNC</A></span> and <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-TZOFFSET">TZOFFSET</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTABS">TABS</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TABS-NAME">Syntax</A></P>
+<P><A NAME="TABS"></A><B CLASS="highlight">TABS</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TABS-DESC">Description</A></P>
+<P><A NAME="TMPID14639"></A>Returns an oscript representation of the Content Server tabs associated to an object. These are the same tabs you see when you go to any object's Functions menu and then select <B CLASS="guilabel">Properties</B>. This sub-tag expects a valid dataID in the main tag. The tabs will be returned in their proper order as seen in the Content Server interface.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="TABS-EXAMP">Example</A></P>
+<P><A NAME="TMPID14645"></A>The following example displays the Oscript representation of the <B CLASS="guilabel">General</B> and <B CLASS="guilabel">Specific</B> tabs of a document. Example output of the <TT CLASS="literal">TABS</TT> sub-tag:</P>
+<P><A NAME="TMPID14649"></A><TT CLASS="literal">&#13;{A&lt;<I CLASS="varname">1,?,'Name'=X,'URL'='/Livelink971/livelink.exe?func=ll&amp;objId=1389412&amp;objAction=properties&amp;nexturl=%2FLivelink971%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D1388531%26objAction%3Dbrowse%26sort%3Dname'</I>>,A&lt;<I CLASS="varname">1,?,'Name'=X,'URL'='/Livelink971/livelink.exe?func=ll&amp;objId=1389412&amp;objAction=info&amp;nexturl=%2FLivelink971%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D1388531%26objAction%3Dbrowse%26sort%3Dname'</I>>...</TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TABS-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID14655"></A>See the <span><A HREF="wr-requestds-info.htm">Requests as Data Sources</A></span> advanced help for how to use the output of this and related tags as the data source to another WebReport.</P>
+<P><A NAME="TMPID14657"></A>See the <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span> sub-tag for how to convert this into a data structure that can be interpreted by JavaScript in the client. The <TT CLASS="literal">JSON</TT> structure can then be parsed and the appropriate HTML can be implemented to display the tabs.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTIMESINCE">TIMESINCE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TIMESINCE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGTIMESINCE"></A><B CLASS="highlight">TIMESINCE:&lt;<I CLASS="varname">ref date</I>>:&lt;<I CLASS="varname">precision</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TIMESINCE-DESC">Description</A></P>
+<P><A NAME="TMPID14670"></A>This sub-tag expects a date in the main tag and returns the time delta, &lt;<I CLASS="varname">ref date</I>> minus the &lt;<I CLASS="varname">main tag date</I>>, in an easy-to read-format. If no &lt;<I CLASS="varname">ref date</I>> is specified, then the current date is used. Negative values will be returned if the &lt;<I CLASS="varname">ref date</I>> is before the &lt;<I CLASS="varname">main tag date</I>>.</P>
+<P class="before-ul"><A NAME="TMPID14676"></A>Dates must be specified in one of the following formats:</P><A NAME="AEN13524"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN13525"></A><A NAME="TMPID14679"></A><TT CLASS="literal">'MMM DD YYYY'</TT>. For example, 'Jan 12 2010'.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN13528"></A><A NAME="TMPID14682"></A><TT CLASS="literal">'D/YYYY/MM/DD'</TT>. For example, 'D/2009/12/16'.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN13531"></A><A NAME="TMPID14685"></A><TT CLASS="literal">'DayOfWeek MMM DD HH:MM:SS YYYY'</TT>. For example, 'Fri Jan 01 01:04:24 2010''.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN13534"></A><A NAME="TMPID14688"></A><TT CLASS="literal">'YYYY-MM-DD HH:MM:SS'</TT>. For example, '2038-01-19 03:14:07'.</P></LI></UL>
+<P><A NAME="TMPID14690"></A>The main tag can also contain an integer representing a time interval in seconds. In this case, the &lt;<I CLASS="varname">ref date</I>> parameter is ignored and the value is returned in an easy-to-read format.</P>
+<P><A NAME="TMPID14692"></A>A second, and optional, &lt;<I CLASS="varname">precision</I>> parameter specifies how many units of precision to return. A default value of 2 is used when the optional &lt;<I CLASS="varname">precision</I>> parameter is omitted.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="TIMESINCE-EXAMP">Example</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN13543"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Tag</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Output</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_'May 1 2010' TIMESINCE /]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">11 months, 1 week</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_'May 1 2010' TIMESINCE:"May 2 2010" /]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1 day</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_'2011-05-01 00:00:00' TIMESINCE:'2011-05-01 01:01:23':3 /]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1 hour, 1 minute, 23 seconds</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_'3661' TIMESINCE /]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1 hour, 1 minute</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_'3661' TIMESINCE:3 /]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">1 hour, 1 minute, 1 second</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TIMESINCE-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID14731"></A>For more information, see <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span> and <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTODATE">TODATE</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTODATE">TODATE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TODATE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGTODATE"></A><B CLASS="highlight">TODATE:“&lt;<I CLASS="varname">format list</I>>”</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TODATE-DESC">Description</A></P>
+<P><A NAME="TMPID14744"></A>This sub-tag converts string formatted date information into a Content Server format date. This means the output can be used in logical expressions such as to compare a custom date with a date parameter or possibly the current date. The output of <TT CLASS="literal">TODATE</TT> can also be piped into the <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span> sub-tag for further manipulation prior to display.</P>
+<P><A NAME="TMPID14748"></A>If the main tag is an integer, and no parameters are passed to <TT CLASS="literal">TODATE</TT>, then the sub-tag returns a date which is the epoch, “1970-01-01 00:00:00”, plus the value of the main tag.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="TODATE-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN13598"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Modifier</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%%</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">A percentage sign</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%b</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The three-character abbreviated month name. For example: “Jan” and “Feb”.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%d</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The two-digit day of the month, from 01 to 31. For example, “05” to represent the fifth day of the month.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%m</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The two-digit month, from 01 to 12. For example, “05” to represent the month of May.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%p</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">AM or PM</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%y</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The two-digit year. For example, “93” to represent 1993 or “05” to represent 2005.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%B</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The full month name, for example “January”.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%H</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The two-digit hour on a 24-hour clock, from 00 to 23.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%I</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The two-digit hour, from 01 through 12.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%M</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The minutes past the hour, from 00 to 59.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%S</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The seconds past the minute, from 00 to 59.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">%Y</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The year, including the century, for example 1993.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TODATE-EXAMP">Example</A></P>
+<P><A NAME="TMPID14829"></A>The following is an example of using <TT CLASS="literal">TODATE</TT> with <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span> to get from a custom date format to the Content Server short date format, as defined in the Content Server admin pages:</P>
+<P><A NAME="TMPID14834"></A>Imagine you are starting with a custom date stored in the format: “2006-02-15T00:00:00”. Use <TT CLASS="literal">[LL_REPTAG=MY_DATE_COLUMN TODATE:"%Y-%m-%dT%H:%M:%S" /]</TT> to put the date into a string represntation of a Content Server date. At this point, the date will look like “Wed Feb 15 00:00:00 2006” which may or may not be useful.</P>
+<P><A NAME="TMPID14839"></A>Now use the <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span> sub-tag <TT CLASS="literal">[LL_REPTAG=MY_DATE_COLUMN TODATE:"%Y-%m-%dT%H:%M:%S" DATE:SHORT /]</TT> to change the output so that the date is in the same format as, for example, the modified date in a Content Server folder browse. At this point the date might look like “February 15, 2006”, though this will depend on your system settings in the Content Server admin pages.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="TODATE-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID14847"></A>For output formatting see the <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATE">DATE</A></span>  and <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDATEINTEGER">DATEINTEGER</A></span> sub-tags. For the current date, see <span><A HREF="wr-tag-cdfourth.htm#WR-TAG-CDDATE">DATE</A></span> and <span><A HREF="wr-tag-cdfourth.htm#WR-TAG-CDDATETIME">DATETIME</A></span> tags.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTOJSON">TOJSON</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOJSON-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGTOJSON"></A><B CLASS="highlight">TOJSON</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOJSON-DESC">Description</A></P>
+<P><A NAME="TMPID14860"></A>For a tag that returns an OSCRIPT type data structure, this tag converts the structure into a <TT CLASS="literal">JSON</TT> (JavaScript Object Notation) structure that can be processed by a JavaScript interpreter. This sub-tag converts OSCRIPT structures as follows:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN13706"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">OSCRIPT Structure</B></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">OSCRIPT Example</B></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">JSON Structure</B></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">JSON Example</B></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">LIST</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">{'one','two'}</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Array</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">[“one”,“two”]</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ASSOC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">A&lt;<I CLASS="varname">1,?,'one'=1,'two'=2</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Object</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">{“one”:1, “two”:2}</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RECORD</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">R&lt;<I CLASS="varname">'one'=1,'two'=2</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Object</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">{“one”:1, “two”:2}</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RECARRAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">V{&lt;<I CLASS="varname">'fruit','color'</I>>&lt;<I CLASS="varname">'apple','green'</I>>&lt;<I CLASS="varname">'banana','yellow'</I>>}</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Array of Objects</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">[{“fruit”:“apple”, “color”:“green”}, {“fruit”:“banana”, “color”:“yellow”}]</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTOLIST">TOLIST</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOLIST-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGTOLIST"></A><B CLASS="highlight">TOLIST:&lt;<I CLASS="varname">delimiter</I>></B></P>
+<P><A NAME="TMPID14925"></A>or</P>
+<P><A NAME="TMPID14926"></A><B CLASS="highlight"> TOLIST:&lt;<I CLASS="varname">delimiter</I>>:&lt;<I CLASS="varname">index</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOLIST-DESC">Description</A></P>
+<P><A NAME="TMPID14932"></A>For a string which has a known delimiter, such as a comma, the string can be converted into a list. This list is similar to a programming array and is in the form: <TT CLASS="literal">{1,2,3}</TT> or <TT CLASS="literal">{'one','two','three'}</TT>. A list in this format can be used by the <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRANGE">RANGE</A></span> sub-tags; however, the <TT CLASS="literal">TOLIST</TT> sub-tag also supports an optional &lt;<I CLASS="varname">index</I>> value that specifies which element in the newly created list to return.</P>
+<P><A NAME="TMPID14939"></A>The <TT CLASS="literal">TOLIST</TT> sub-tag can also operate on an Assoc or Record and returns a List containing the values stored in the specified structure. The &lt;<I CLASS="varname">delimiter</I>> parameter is ignored when the <TT CLASS="literal">TOLIST</TT> sub-tag is used on such data types.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOLIST-EXAMP">Example</A></P>
+<P><A NAME="TMPID14945"></A>If the first column of a data table returns the following string: <TT CLASS="literal">'apple','orange','pear';</TT>, then use the tag: <TT CLASS="literal">[LL_REPTAG_1 TOLIST:, /]</TT> to return the list: <TT CLASS="literal">{'apple','orange','pear'}</TT></P>
+<P><A NAME="TMPID14949"></A>If the optional &lt;<I CLASS="varname">index</I>> parameter is also used, the syntax: <TT CLASS="literal">[LL_REPTAG_1 TOLIST:",":2 /]</TT> would return the single element: <TT CLASS="literal">orange</TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TOLIST-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID14955"></A>See also <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRANGE">RANGE</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTRIM">TRIM</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TRIM-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGTRIM"></A><B CLASS="highlight">TRIM</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TRIM-DESC">Description</A></P>
+<P><A NAME="TMPID14966"></A>Removes all leading and trailing white space from the specified string. White space is defined as any combination of spaces, form feeds, new lines, carriage returns, and horizontal or vertical tabs.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-SUBTRUNC">TRUNC</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TRUNC-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGTRUNC"></A><B CLASS="highlight">TRUNC:&lt;<I CLASS="varname">format</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TRUNC-DESC">Description</A></P>
+<P><A NAME="TMPID14976"></A>Returns a truncated string.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="TRUNC-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN13811"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Format</B></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Description</B></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">TRUNC:&lt;<I CLASS="varname">width</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Truncates the field to the number of characters specified in the &lt;<I CLASS="varname">width</I>>, starting from the first character.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">TRUNC:&lt;<I CLASS="varname">width</I>>:&lt;<I CLASS="varname">continuation characters</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Set &lt;<I CLASS="varname">continuation characters</I>> which will be appended to the return string to show that the data has been truncated. The length of the return string, including the &lt;<I CLASS="varname">continuation characters</I>>, will not exceed the value of the &lt;<I CLASS="varname">width</I>> argument, unless the &lt;<I CLASS="varname">width</I>> value is less than the length of the &lt;<I CLASS="varname">continuation characters</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">TRUNC:&lt;<I CLASS="varname">width</I>>:&lt;<I CLASS="varname">continuation characters</I>>:APPEND</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Append &lt;<I CLASS="varname">continuation characters</I>> to the return string if the data has been truncated.</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TRUNC-EXAMPL">Examples</A></P>
+<P><A NAME="TMPID15013"></A><TT CLASS="literal">[LL_REPTAG_'123456789' TRUNC:5 /]</TT> returns <TT CLASS="literal">12345</TT></P>
+<P><A NAME="TMPID15016"></A><TT CLASS="literal">[LL_REPTAG_'123456789' TRUNC:5:"..." /]</TT> returns <TT CLASS="literal">12...</TT></P>
+<P><A NAME="TMPID15019"></A><TT CLASS="literal">[LL_REPTAG_'123456789' TRUNC:5:"...":APPEND /]</TT> returns <TT CLASS="literal">12345...</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-TZOFFSET">TZOFFSET</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TZOFFSET-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGTZOFFSET"></A><B CLASS="highlight">TZOFFSET</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TZOFFSET-DESC">Description</A></P>
+<P><A NAME="TMPID15030"></A>Applies a time zone offset to dates. Date tags such as <TT CLASS="literal">[LL_REPTAG_DATETIME /]</TT> and date columns <TT CLASS="literal">[LL_REPTAG=CREATEDATE /]</TT> return the time at the server. The <TT CLASS="literal">TZOFFSET</TT> sub-tag can be used to apply the appropriate time zone offset for the specific user viewing the output.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,221 @@
+<!-- wr_pagination_info.htm -->
+
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+	<TITLE>Pagination</TITLE>
+	<LINK REL="stylesheet" HREF="../../ix21.css">
+	<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+
+<BODY ONLOAD="checkFrame('wr_pagination_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+
+<SCRIPT LANGUAGE="JavaScript">
+        var header = new AdminHeader();
+        header.title1 = 'Detailed Examples';
+        header.title2 = 'Pagination';
+        header.draw();
+</SCRIPT>
+
+<p class="body">
+Pagination can be delivered in several ways with WebReports.  The particular method used by your organization will depend on several factors:
+<ul>
+	<li>Database performance vs. Livelink performance vs. Client performance</li>
+	<li>Database in use (SQL Server or Oracle)</li>
+	<li>Size of result set (maximum, minimum and likely)</li>
+	<li>Developer skills (typically SQL, WebReports and HTML/JavaScript) and available development time</li>
+	<li>Where, if at all, the result set is being filtered</li>
+</ul>
+</p>
+
+<p class="body">
+It is not possible to make definitive statements regarding the best approach without a detailed understanding of the destination system.  This document will describe some
+general approaches but the best method will vary from system to system.<br><br>
+
+<b><u>SQL Approach</u></b><br><br>
+Generally speaking (there are exceptions) it is best to do as much work as possible at the database.  By doing this you're getting the results list down as small as possible before
+it goes across the network to Livelink (the more results, the longer this will take to transit the network).  Assuming an Oracle database and no filtering in the WebReport or client we can
+use WebReports to pass a start and end row number which are used by Oracle to return a "slice" of data.  Imagine the following simplified LiveReport.
+
+<PRE>
+select * from (
+    select dt1.*, rownum rnum from (
+        <font color=green>select * from DTree</font>
+    ) dt1
+where rownum <= %2)
+where rnum >= %1
+</PRE>
+</p>
+
+
+<p class="body">
+Here we have an inline view which returns the DTree table plus the pseudo-column RowNum as an alias rnum.  An outer statement then performs
+a select from the inline view using a combination of the rnum alias and the new RowNum pseudo-column to extract a slice of data.  %1 and %2
+represent LiveReport parameters of type Number and equate to the start and end row numbers respectively.  When running the LiveReport these can be seen in the
+URL as inputLabel1 and inputLabel2.  The same technique can be applied to
+different queries by replacing the inner-most select statement (in green above) with your own.<br><br>
+
+The report can be executed by clicking the link and filling in the start and end prompts or manually issuing a URL.  An example url is below with the start and
+end row parameters shown in red.
+<pre>
+	?func=ll&objId=xyz&objAction=runReport&inputLabel1=<font color=red>20</font>&inputLabel2=<font color=red>30</font>
+</pre>
+</p>
+
+<p class="body">
+At this point it should be apparent that all we need is an interface to control these two parameter values.  Here we can use WebReports
+to provide First, Previous, Next and Last buttons.  Below is one possible implementation which shows a bare bones reportview with
+minimal formatting.
+
+
+<PRE>
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]page.js"&gt;&lt;/SCRIPT&gt;
+&lt;SCRIPT&gt;
+var wrurl = "[LL_REPTAG_MYID LLURL:REPORT /]";
+var myCnt = [LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$GETCOUNT /] /];
+var pageSize = [LL_REPTAG_$PAGESIZE /];
+var p1 = [LL_REPTAG_&inputLabel1 /];
+var p2 = [LL_REPTAG_&inputLabel2 /];
+&lt;/SCRIPT&gt;
+
+&lt;TABLE&gt
+&lt;TR&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME1 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_STARTROW /]
+&lt;TR&gt;
+&lt;TD&gt;[LL_REPTAG_1 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_2 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_3 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_4 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_5 /]&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_ENDROW /]
+&lt;/TABLE&gt
+
+&lt;INPUT TYPE=BUTTON ID=FIRST VALUE=&amp;lt;&amp;lt; ONCLICK="getPage(wrurl, 'first', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=PREVIOUS VALUE=&amp;lt; ONCLICK="getPage(wrurl, 'prev', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=NEXT VALUE=&amp;gt; ONCLICK="getPage(wrurl, 'next', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=LAST VALUE=&amp;gt;&amp;gt; ONCLICK="getPage(wrurl, 'last', myCnt, pageSize, p1, p2 );"&gt;
+</PRE>
+</p>
+
+<p class="body">
+The header section contains several JavaScript declarations plus the HTML column headings which can be broken down as follows.  A JavaScript library
+file, page.js, which provides the function, getPage(), to assist with the mechanics of pagination.  We make use of this function when the user clicks
+any of the First, Previous, Next, Last buttons.  This function can be used in any WebReport or, equally, the user can develop their own function and include it inline.
+<PRE>&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]page.js"&gt;&lt;/SCRIPT&gt;</PRE>
+</p>
+<p class="body">
+The base url of the report we want to run.  The code below should result in <i>?func=ll&objId=xyz&objAction=RunReport</i> being stored in the variable wrurl.  It
+would be possible to hard code this though a more flexible solution is being used where MYID is the data id of the current WebReport which is passed to the LLURL
+sub-tag to create a report URL based on this id.  The benefit of this is we can copy and paste the code between reportviews and Livelink instances without making
+changes.
+<PRE>var wrurl = "[LL_REPTAG_MYID LLURL:REPORT /]";</PRE>
+</p>
+
+<p class="body">
+The JavaScript variable, myCnt is set using a sub-WebReport.  The sub-WebReport is used to find the total number of rows that we can paginate through.  In our
+case we have a separate (and very simple) LiveReport which counts the number of rows in DTree (select count(*) from DTree).  The sub-WebReport uses this as it's
+data source.  The sub-WebReport itself simply contains one tag - [LL_REPTAG_1 /] in the row section.  All other characters, including spaces and carriage
+returns, must be removed from the reportview (this is to ensure we only have a number in the JavaScript variable).  If you run the sub-WebReport on it's own you should simply
+see a number and nothing else other than the Livelink headers.  Remember that if you have a where clause or permission filtering in the main report, you
+must also have this in the count report otherwise the count will not be accurate.  We use a constant,
+[LL_REPTAG_$GETCOUNT /] to point to the sub-WebReport - remember to go to the constants tab and define it.  Read why it's a good idea to use a constant
+<a href="wr_constant_info.htm">here</a>.
+<PRE>var myCnt = [LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$GETCOUNT /] /];</PRE>
+</p>
+
+<p class="body">
+Next we set another JavaScript variable with an integer representing the number of rows we want to show on each page.  Remember to define this constant
+on the constants page.
+<PRE>var pageSize = [LL_REPTAG_$PAGESIZE /];</PRE>
+</p>
+
+
+<p class="body">
+In the final piece of JavaScript we set two variables representing the current start and end row numbers.  In order to have the report run straight
+away (rather than prompting you for these values) you must use the WebReports parameters page to define a default value for each of them. Default values of
+1 and 20 would result in the first 20 rows being displayed when the user runs the report.
+<PRE>
+var p1 = [LL_REPTAG_&inputLabel1 /];
+var p2 = [LL_REPTAG_&inputLabel2 /];
+</PRE>
+</p>
+
+<p class="body">
+The rest of the header and the entire row section are just standard HTML and WebReports tags which display the column headings and the row data.  The only remaining
+complexity in the First, Previous, Next and Last buttons in the footer section.  As mentioned previously, these buttons use the function getPage() to
+build the URL for the next slice of data.  This function is invoked when the user clicks any of the buttons.  It accepts 7 parameters, 5 of which are
+mandatory.  Hopefully the first five of these are clear from the prior description.  The remaining two default to "inputLabel1" and "inputLabel2" respectively.
+As we are using the first two LiveReport parameters to perform the pagination we don't need to provide these.  If, instead, we wanted to use the third and
+fourth parameters for filtering, we would need to pass the values "inputLabel3" and "inputLabel4".
+<PRE>
+&lt;INPUT TYPE=BUTTON ID=FIRST VALUE=&amp;lt;&amp;lt; ONCLICK="getPage(wrurl, 'first', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=PREVIOUS VALUE=&amp;lt; ONCLICK="getPage(wrurl, 'prev', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=NEXT VALUE=&amp;gt; ONCLICK="getPage(wrurl, 'next', myCnt, pageSize, p1, p2 );"&gt;
+&lt;INPUT TYPE=BUTTON ID=LAST VALUE=&amp;gt;&amp;gt; ONCLICK="getPage(wrurl, 'last', myCnt, pageSize, p1, p2 );"&gt;
+</PRE>
+</p>
+
+<p class="gui">
+<u><a name="DSstartrow"></a>WebReports DSstartrow & DSendrow</u>
+</P>
+<p class="body">
+When dealing with moderately sized result sets or non-LiveReport data sources, the data source parameters DSstartrow, DSendrow and DSmaxrows
+provide a relatively simple way to implement a paging mechanism (meaning network performance could be a factor in overall response time).
+When using this method the entire result set will be passed from the database
+to the Livelink server.  WebReports then uses the DSstartrow and DSendrow parameter to take a slice of the result set before delivering it to the
+client.<br><br>
+
+When using this method we do not need to worry about the mechanics of pagination in the actual SQL query.  This means that if we were working
+with the same result set as the first example, we only need the inner-most query <font color=green>select * from DTree</font>.  This makes the
+method well suited to SQL Server databases which don't support rownum.<br><br>
+
+If using the same reportview as above all we need to change are the parameters (remember default values need to be set on the WebReports parameters tab for when the report first runs):
+<PRE>
+var p1 = [LL_REPTAG_&DSstartrow /];
+var p2 = [LL_REPTAG_&DSendrow /];
+</PRE>
+</p>
+<p class="body">
+and the buttons so that the getPage() function is passed two new parameters representing the names of the pagination control parameters
+<PRE>
+&lt;INPUT TYPE=BUTTON ID=FIRST VALUE=&amp;lt;&amp;lt; ONCLICK="getPage(wrurl, 'first', myCnt, pageSize, p1, p2, 'DSstartrow', 'DSendrow');"&gt;
+&lt;INPUT TYPE=BUTTON ID=PREVIOUS VALUE=&amp;lt; ONCLICK="getPage(wrurl, 'prev', myCnt, pageSize, p1, p2, 'DSstartrow', 'DSendrow' );"&gt;
+&lt;INPUT TYPE=BUTTON ID=NEXT VALUE=&amp;gt; ONCLICK="getPage(wrurl, 'next', myCnt, pageSize, p1, p2, 'DSstartrow', 'DSendrow' );"&gt;
+&lt;INPUT TYPE=BUTTON ID=LAST VALUE=&amp;gt;&amp;gt; ONCLICK="getPage(wrurl, 'last', myCnt, pageSize, p1, p2, 'DSstartrow', 'DSendrow' );"&gt;
+</PRE>
+</p>
+
+<p class="body">
+If we were using a <a href="wr_search_datasource_info.htm">search data source</a> with DSstartrow and DSendrow we need to use a slightly different method to 
+find the total number of results.  Using
+the search data source specific tag, INDEXTOTALHITS we can achieve the same thing as the sub-WebReport that performs the count operation.
+<PRE>
+var myCnt = [LL_REPTAG_INDEXTOTALHITS /];
+</PRE>
+</p>
+
+
+
+
+<p class="body">
+<b><u>Further Considerations</u></b><br><br>
+If, in the examples above, we look at any given page with 20 rows of content it will be about 60KB including all the Livelink header and footer information.  
+If we then split out the content (the only piece that's changing from page-to-page) we see that this is less than 3KB - i.e. only 5% of the overall page size.  
+Obviously further significant performance benefits can be gained by using Ajax to only update the portion of the page that we're interested in.
+
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</BODY>
+</HTML>

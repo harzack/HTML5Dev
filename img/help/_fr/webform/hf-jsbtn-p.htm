@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWFM100500-H-UGD-FR">
+<META name="PiXprocLocator" content="webform">
+<META mancondkey="llesfrm-h-ugd"><title>Pour inclure un bouton d'envoi JavaScript</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'hf-jsbtn-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Ajout d\'un fichier HTML sous forme de vue';
+          header.title2 = 'Pour inclure un bouton d\'envoi JavaScript';
+           header.draw();
+  </script>
+  <A NAME="INCLUDEJS"></A>
+<DIV title="Pour inclure un bouton d'envoi JavaScript :" CLASS="procedure">
+<P><B>Pour inclure un bouton d'envoi JavaScript :</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID114"></A>Exportez le formulaire au format HTML.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID116"></A>Ouvrez le formulaire dans un éditeur HTML.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID118"></A>Ajoutez du code HTML pour créer un bouton sur lequel pourront cliquer les utilisateurs afin d'exécuter le mécanisme d'envoi JavaScript. Par exemple :  <A NAME="AEN121"></A>
+<PRE 
+CLASS="screen"
+>&lt;INPUT TYPE= "BUTTON" VALUE="Submit" ONCLICK= "SubmitNow();"&gt;</PRE
+> </P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID121"></A>Saisissez un script du type suivant :</P>
+<P><A NAME="TMPID122"></A><A NAME="AEN125"></A>
+<PRE 
+CLASS="screen"
+>function SubmitNow()</PRE
+><A NAME="AEN126"></A>
+<PRE 
+CLASS="screen"
+>{var llfv = document.myForm.LL_FUNC_VALUES.value;</PRE
+> <A NAME="AEN127"></A>
+<PRE 
+CLASS="screen"
+>if ( llfv.substring( 0, 14 ) != "A&lt;1,?,'func'='" )</PRE
+> <A NAME="AEN128"></A>
+<PRE 
+CLASS="screen"
+>{alert( "llfuncvalues is not an assoc???" );}</PRE
+> <A NAME="AEN129"></A>
+<PRE 
+CLASS="screen"
+>else{if ( llfv.substring( 14, 27 ) != "Form.SaveForm" )</PRE
+> <A NAME="AEN130"></A>
+<PRE 
+CLASS="screen"
+>{alert( "llfuncvalues is not saving???" );}</PRE
+><A NAME="AEN131"></A>
+<PRE 
+CLASS="screen"
+>else{var old = llfv;</PRE
+> <A NAME="AEN132"></A>
+<PRE 
+CLASS="screen"
+>// change the function from Form.SaveForm to Form.SubmitForm</PRE
+> <A NAME="AEN133"></A>
+<PRE 
+CLASS="screen"
+>llfv = "A&lt;1,?,'func'='Form.SubmitForm'" + old.substring( 28, old.length );</PRE
+> <A NAME="AEN134"></A>
+<PRE 
+CLASS="screen"
+>// save this back to llfuncvalues</PRE
+><A NAME="AEN135"></A>
+<PRE 
+CLASS="screen"
+>document.myForm.LL_FUNC_VALUES.value = llfv;//alert(llfv);}}</PRE
+> <A NAME="AEN136"></A>
+<PRE 
+CLASS="screen"
+>// submit the form</PRE
+><A NAME="AEN137"></A>
+<PRE 
+CLASS="screen"
+>document.myForm.submit( "contentserver.exe#FDF", false, true );}</PRE
+> </P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID137"></A>Enregistrez le formulaire.</P></LI></OL></DIV>
+<P class="nr1"><A NAME="TMPID138"></A>Pour plus d'informations sur cette procédure, consultez la section <span><A HREF="hf-add-view-bg.htm">Ajout d'un fichier HTML sous forme de vue</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

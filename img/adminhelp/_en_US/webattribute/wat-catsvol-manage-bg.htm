@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWAT100500-H-AGD-EN-1">
+<META PiXprocLocator="webattribute">
+<title>Managing Categories</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wat-catsvol-manage-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working with the Categories Volume';
+          header.title2 = 'Managing Categories';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="ADMINCATS">Administering Categories</A></P>
+<P class="nr1"><A NAME="TMPID300"></A>Only the administrator or a user with system administration privileges can create categories. OpenText recommends that you restrict users' privileges to create categories.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="CATPERMS">Category Permissions and Privileges</A></P>
+<P class="before-ul"><A NAME="TMPID304"></A>A category is a permissions-based item:</P><A NAME="AEN303"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN304"></A><A NAME="TMPID307"></A>To create a category, a user must have the <I CLASS="EMPHASIS">Object Creation</I> privilege for the Category item, and the <I CLASS="EMPHASIS">Add Items</I> permission to the area in which the category template will be stored. The Categories Volume is the default storage location in Content Server for category templates. Only the system administrator, by default, can create and administer categories. However, you could create a special Category Creator group and add specific users to that group. These users can then define new categories and add them to the workspaces to which they have permission. Such users must have system administration rights to add a category to the Enterprise Workspace or the Categories Volume. Any user can edit a category if this user has <I CLASS="EMPHASIS">Write</I> permissions to it.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN310"></A><A NAME="TMPID313"></A>To associate a category with an item, a user must have at least <I CLASS="EMPHASIS">See and See Contents</I>, or <I CLASS="EMPHASIS">Read</I>, permission to access the category.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN314"></A><A NAME="TMPID317"></A>To change attribute values in a category associated with an item, a user must have the <I CLASS="EMPHASIS">Edit Attribute</I> permission for the item.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="USECATS">Using Categories</A></P>
+<P><A NAME="TMPID321"></A>Like any other Content Server item type, such as a Folder or Document, the Category item type can be indexed and searched, versioned, and audited.</P>
+<P><A NAME="TMPID323"></A>Category version control allows you to create a category and modify it at a later date. Changes to a category definition, however, can result in loss of data since each attribute in the category represents a specific piece of information about the Content Server item with which it is associated. If an attribute is deleted or changed within the category, for example, a different sequence in the layout, that information would no longer exist for any item associated with that category. This can adversely affect database searches and accurate information retrieval.</P>
+<P><A NAME="TMPID325"></A>With version control, previous versions of the category can remain in use and valid for the items to which they are associated, while other items can use the newer, modified category version. For example, suppose a document has <I CLASS="EMPHASIS">Category X</I> assigned to it, and later the administrator, or other authorized user, removes or resequences one or more of the attributes. Items currently associated with the category are not affected until, or unless, the administrator upgrades the items with the new category version. Versioning of attribute data, however, applies only to Content Server items that are normally versioned, such as documents, compound documents, and other categories.</P>
+<P><A NAME="TMPID328"></A>Content Server categories can also be audited to track changes to the definition.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID331"></A><B CLASS="NOTE">Note: </B><BR>The <B CLASS="GUILABEL">Category Audit</B> page tracks modifications made to Category fields. In order for auditing to occur on the Category fields, the <I CLASS="EMPHASIS">Category Added</I> interest must be enabled. For more information about setting auditing interests, see <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-audit-manage-int-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-audit-manage-int-bg.htm">Managing Audit Interests</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-audit-manage-int-bg" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID335"></A>Any Content Server item can be associated with one or more categories, even the Categories Volume and the Category, in addition to the additional node attributes, which is automatically associated with all items when added to the Content Server database.</P>
+<P><A NAME="TMPID338"></A>When a category applies to a container item, such as a Folder, Compound Document, Task List, Project, Workflow, channel, or Discussion, all the newer sub-items will inherit the category and its attributes.</P>
+<P><A NAME="TMPID339"></A>When users assign a category to an item, the selection dialog box defaults to the Categories Volume. Normally, only the administrator or other authorized user can access this volume, as its link appears only on the administration page. General users cannot edit the category, unless they have appropriate permission for it. You can also copy categories from the Categories Volume to another location in Content Server, such as a folder, and set unique access permissions for it.</P>
+<P><A NAME="TMPID341"></A>As the administrator, you can create and edit categories, since categories are versioned items in Content Server, you can create and modify categories without having to restart the server.</P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wat-catsvol-add-cat-p.htm" revision="">To Add a Category</A></p></li>
+<li><p><A  HREF="wat-catsvol-add-cat-fold-p.htm" revision="">To Add a Category Folder</A></p></li>
+<li><p><A  HREF="wat-catsvol-edit-cat-p.htm" revision="">To Edit a Category</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

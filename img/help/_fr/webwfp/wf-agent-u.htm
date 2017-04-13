@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWFP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webwfp">
+<META mancondkey="lleschn-h-ugd -- llesfrm-h-ugd -- lleswfw-h-ugd -- lleswfw-uqs -- lleswat-h-ugd -- llesesn-h-ugd -- llesrt-h-ugd -- lleswfp-cwm -- llesxwe-h-ugd -- llesafm-h-ugd -- llesrcm-h-ugd -- llespob-h-ugd -- lleslfm-h-ugd -- llesfwf-h-ugd -- lleswfm-h-ugd -- lleswbd-h-ugd"><title>Description de l'agent de workflow</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-agent-u.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Etapes et liens';
+          header.title2 = 'Description de l\'agent de workflow';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID596"></A>Les tâches que vous configurez à l'étape <B CLASS="guilabel">Utilisateur</B>, <B CLASS="guilabel">Initiateur</B>, <B CLASS="guilabel">Tâche de formulaire</B> ou <B CLASS="guilabel">Gestionnaire d'élément</B> peuvent être effectuées par l'agent de workflow de manière transparente (en arrière-plan) et sans intervention de l'utilisateur. Si vous n'utilisez pas l'agent de workflow, l'utilisateur à qui une tâche a été assignée doit faire suivre l'étape pour terminer le traitement de l'étape. Par défaut, l'agent de workflow est configuré pour regrouper les tâches et les exécuter à l'arrière-plan toutes les 10 minutes mais l'administrateur peut indiquer un programme personnalisé pour déterminer les moments où l'agent de workflow s'exécute. Suivant l'ordre de traitement configuré (ordre FIFO), l'agent de workflow traite les tâches ou les transfère à l'agent distribué.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WF-STEPSINBACKGROUND">Traitement des étapes en arrière-plan</A></P>
+<P><A NAME="TMPID603"></A>Si vous concevez un schéma de workflow complexe ou une étape qui nécessite de nombreux traitements non interactifs par Content Server, les utilisateurs avec une tâche assignée pour l'étape peuvent subir des retards à l'affichage des pages suivantes une fois qu'ils ont fait suivre l'étape. Pour éviter aux utilisateurs d'attendre la fin du traitement lorsqu'ils ont fait suivre l'étape, vous pouvez décider que l'étape sera traitée à l'arrière-plan. Lorsqu'une étape est traitée en arrière-plan, le système fait suivre l'étape et redonne immédiatement le contrôle à l'utilisateur avec une tâche assignée, et définit le statut de l'étape sur <B CLASS="guilabel">Etape prête</B> pour l'agent de workflow. L'agent de workflow est une fonction des workflows qui traite les tâches de workflow de manière transparente (en arrière-plan) et fait suivre le workflow à l'étape suivante.</P>
+<P><A NAME="TMPID606"></A>Par défaut, l'agent de workflow est configuré pour recueillir et effectuer les tâches d'arrière-plan toutes les 10 minutes, mais l'administrateur a la possibilité de planifier son exécution.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WF-VIEWERRORS">Affichage des rapports d’erreurs</A></P>
+<P class="before-ul"><A NAME="TMPID609"></A>Si l'agent de workflow rencontre une erreur lors du traitement, il envoie l'étape vers la page <B CLASS="guilabel">Mes tâches assignées</B> de l'utilisateur avec une tâche assignée pour cette étape. Content Server tente également d'envoyer un e-mail pour prévenir les responsables du workflow et l'utilisateur avec une tâche assignée pour cette étape qui indique l'erreur et demande qu'une mesure soit prise afin de résoudre le problème. Pour envoyer les messages d'erreur, l'agent de workflow a besoin des informations suivantes :</P><A NAME="AEN604"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN605"></A><A NAME="TMPID614"></A>L'administrateur indique les paramètres SMTP du serveur de messagerie et l'adresse e-mail de l'expéditeur.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN607"></A><A NAME="TMPID616"></A>Les responsables des workflows et les utilisateurs assignés à l'étape doivent spécifier leur adresse e-mail dans leur profil Content Server.</P></LI></UL>
+<P><A NAME="TMPID618"></A>Lors du traitement des étapes, des verrouillages sont configurés sur l'instance de workflow. Pour les chemins d'accès parallèles ou les sous-workflow, cela peut entraîner des conflits. Si l'agent de workflow ou l'agent distribué rencontre un conflit de verrouillage, le traitement est relancé lors de l'exécution suivante. Cette étape n'est alors pas envoyée à la page <B CLASS="guilabel">Tâches assignées</B> et aucun e-mail n'est envoyé.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WF-STEPASSIGNEE">Définition de l'utilisateur avec une tâche assignée pour l'étape</A></P>
+<P><A NAME="TMPID622"></A>Lorsque l'agent de workflow traite une étape, il usurpe l'identité de l'utilisateur attribué à cette étape. L'audit pour tous les éléments affectés par l'étape affichera le nom de l'utilisateur même si ce dernier ne lance pas lui-même les opérations Content Server. Vous devez également vous assurer que l'utilisateur avec une tâche assignée dispose des privilèges requis pour effectuer toutes les demandes définies dans l'étape sans quoi des erreurs surviendront. Par exemple, si vous créez une étape <B CLASS="guilabel">Gestionnaire d'élément</B> qui déplace un document vers un dossier pour lequel l'utilisateur ne dispose pas des privilèges de mise à jour, la demande de déplacement de document échoue.</P>
+<P><A NAME="TMPID625"></A>L'administrateur doit accorder l'autorisation Exécutants de l'agent aux utilisateurs du schéma de workflow pour qu'ils puissent recevoir des étapes devant être traitées en arrière-plan. Si un compte utilisateur attribué à une étape devant être exécutée en arrière-plan ne dispose pas de l'autorisation Exécutants de l'agent, l'étape ne sera pas exécutée automatiquement. L'utilisateur doit envoyer l'étape manuellement pour qu'elle soit traitée.</P>
+<P><A NAME="TMPID626"></A>Pour plus d'informations sur la configuration de l'étape <B CLASS="guilabel">Gestionnaire d'élément</B> et de l'agent de workflow, contactez votre administrateur. Voir également « Gestion de l'accès à l'agent de workflow et à l'étape Gestionnaire d'élément » de l'<I CLASS="emphasis">aide en ligne administrateur de Content Server</I>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

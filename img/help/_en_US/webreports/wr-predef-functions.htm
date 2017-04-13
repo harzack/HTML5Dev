@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Using the Predefined Functions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-predef-functions.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WR Services';
+          header.title2 = 'Using the Predefined Functions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID22844"></A>The <TT CLASS="filename">ajax.js</TT> file packaged with WebReports includes a function designed to aid in the use of WebReports services in conjunction with AJAX technology. AJAX technology is Asynchronous JavaScript and XML. The <TT CLASS="filename">ajax.js</TT> file is accessed using a <TT CLASS="literal">SCRIPT</TT> include like this: <TT CLASS="literal">&lt;SCRIPT SRC="/&lt;support dir&gt;/webreports/library/ajax.js"&gt;&lt;/SCRIPT&gt;</TT></P>
+<P><A NAME="TMPID22851"></A>If this file is being included into a WebReport or ActiveView, the <TT CLASS="literal">LIBPATH</TT> tag can be used like this: <TT CLASS="literal">&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;</TT></P>
+<P><A NAME="TMPID22854"></A>The following table describes the available function and its parameters.</P>
+<DIV title="  'executeWRService( serviceType, responseTarget, parmList, responseType, getPost)'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="WR-SERVICES-PREDF-T"></A><B>Table 1-61: <B CLASS="highlight">executeWRService( serviceType, responseTarget, parmList, responseType, getPost)</B></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Parameter</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Mandatory / Optional</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">servicetype</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Mandatory</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This parameter expects a string with one of the supported servicetypes for running a WR service, as specified in <span><A HREF="wr-services-availsvcs.htm#WR-SERVICES-SVCTYP-T"><NOBR>Table 1-58</NOBR></A> in <A HREF="wr-services-availsvcs.htm">Available Service Types</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">responseTarget</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Mandatory</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This parameter expects either a JavaScript function that has been created by the developer, or a string representing the ID of an HTML object where the returned data should be inserted. If a JavaScript function is created, and passed to this parameter, it should be written to accept the <TT CLASS="literal">http_request</TT> as a parameter. For example:</TD></TR></TABLE> <A NAME="AEN21576"></A>
+<PRE 
+CLASS="screen"
+>&#13;function myHandlerFunction(httpRequest) {
+alert('the response was: '+ httpRequest.responseText);
+}
+executeWRService( 'gettagdata', myHandlerFunction, "&amp;statictag=userid &amp;subtags=USERINFO:GROUPID", 'json')</PRE
+></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">parmList</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Optional</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This parameter is used to specify a string containing additional parameters to be added to the URL as required by each servicetype. For example, the <TT CLASS="literal">gettagdata</TT> service type uses a combination of <TT CLASS="literal">&amp;tagdata</TT>, <TT CLASS="literal">&amp;statictag</TT> or <TT CLASS="literal">&amp;subtags</TT> as per the syntax in <span><A HREF="wr-services-availsvcs.htm#WR-SERVICES-SUPPPARAMS"><NOBR>Table 1-59</NOBR></A> in <A HREF="wr-services-availsvcs.htm">Available Service Types</A></span>. The parms should be specified in the <TT CLASS="literal">&amp;name=value</TT> type format. For example, <TT CLASS="literal">"&amp;tagdata=12345&amp;subtags=CAT:myCategory:attr1:display"</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">responseType</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Optional</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This parameter expects a string with one of the supported response types for WR services, <TT CLASS="literal">string</TT>, <TT CLASS="literal">json</TT>, <TT CLASS="literal">xml</TT>, as specified in <span><A HREF="wr-services-availsvcs.htm#WR-SERVICES-VALVALUES"><NOBR>Table 1-60</NOBR></A> in <A HREF="wr-services-availsvcs.htm">Available Service Types</A></span>. If it is not specified, it defaults to <B CLASS="highlight">json</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">getPost</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Optional</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This parameter can be used to specify whether the AJAX request should be <TT CLASS="literal">GET</TT> or <TT CLASS="literal">POST</TT>. If omitted, the <TT CLASS="literal">POST</TT> method is used.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

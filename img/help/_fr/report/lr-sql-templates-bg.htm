@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Modèles SQL</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-sql-templates-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation des rapports LiveReport: <NOBR>OpenText Content Server Aide en ligne utilisateur</NOBR>';
+          header.title2 = 'Modèles SQL';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID699"></A>Le rapport LiveReport présente le concept de modèles pour l'objet LiveReports traditionnel. Les modèles permettent de configurer des blocs prédéfinis de code SQL qui peuvent être inclus ou exclus au moment de l'exécution en fonction de conditions prédéfinies. Ce concept se révèle particulièrement utile lors de l'installation d'applications de génération de rapports ad-hoc. Il est très important de pouvoir, de façon dynamique, ajouter ou supprimer des filtres de données ou de modifier les ensembles de données renvoyés dans une application de génération de rapports ad-hoc. Auparavant, seules les valeurs de données pouvaient être transmises au rapport LiveReport via l'URL. Il est impossible d'ajouter des clauses de filtrage, telles que <TT CLASS="literal">AND NAME = 'test'</TT>, une fois le rapport LiveReport créé. Si toutes les clauses de filtrage possibles sont ajoutées lors de la création initiale du rapport LiveReport, la requête SQL peut échouer jusqu'à ce que des valeurs correctes soient transmises pour chacune de ces clauses. Normalement, des caractères génériques devraient être transmis pour ces clauses afin que la requête SQL renvoie le bon nombre de résultats. </P>
+<P><A NAME="TMPID701"></A>Première étape dans la résolution de ce problème, le paramètre de type <TT CLASS="literal">InsertStr</TT> a contribué à satisfaire à cette exigence en permettant l'insertion de quantités variables de code SQL dans la source SQL. Le principal problème avec cette approche est que parfois, de grandes quantités de code SQL sont transmises via l'URL. En règle générale, dans cette approche, une clause SQL complète, par exemple <TT CLASS="literal">AND Name = 'test'</TT>, est transmise au rapport LiveReport. </P>
+<P><A NAME="TMPID704"></A>La fonction de modèle permet de prédéfinir les clauses SQL facultatives dans le rapport LiveReport réel. Chaque modèle est configuré de telle sorte que seules les portions de données qui doivent être variables, par exemple <TT CLASS="literal">= 'test'</TT>, sont transmises dans l'URL. Chaque modèle peut être configuré de façon à ce qu'une condition prédéterminée soit remplie pour permettre son inclusion. Ces conditions sont décrites en détail dans ce document, mais en règle générale, l'inclusion de modèles dépend de si certaines variables sont réglées sur des « indicateurs » prédéterminés ou si un paramètre prédéfini est défini dans l'URL. </P>
+<P><A NAME="TMPID707"></A>Par exemple, si l'on reprend l'exemple simple ci-dessus, un modèle prendrait la forme suivante : <TT CLASS="literal">AND Name = %1</TT>. Si l'on suppose que <TT CLASS="literal">%1</TT> est un paramètre de type d'entrée de tupe utilisateur de type <TT CLASS="literal">String</TT>, le modèle pourrait être configuré de façon à être inclus uniquement si <TT CLASS="literal">%1</TT> n'est pas défini sur une chaîne vide. Ainsi, le texte « AND Name = %1 » serait inclus uniquement dans la requête SQL si <TT CLASS="literal">%1</TT> était transmis avec une valeur non vide dans l'URL. </P>
+<P><A NAME="TMPID714"></A>La fonction de modèle permet de créer des segments SQL qui peuvent être ajoutés, en option, à la requête SQL principale. Cette fonction offre beaucoup de nouvelles possibilités et facilite notamment la prise en charge d'applications dans lesquelles un nombre variable de clauses WHERE/AND peut être requis dans une requête. </P>
+<P><A NAME="TMPID715"></A>Pour chaque modèle, il est possible de définir les conditions qui détermineront si la source SQL facultative est utilisée ou non. Cette opération s'effectue à l'aide de l'option <TT CLASS="literal">Inclure IF</TT> ; pour plus d'informations, voir la ligne « Inclure IF » dans <span><A HREF="lr-sqlfield-bg.htm">Champs du modèle SQL</A></span> et <span><A HREF="lr-sqlfield-bg.htm#LR-SQLINCLIF">Inclure IF</A></span>. Chaque champ du modèle est expliqué ci-dessous. Notez que chaque modèle comprend une icône <B CLASS="guilabel">Afficher le comportement du modèle</B> à l'extrême droite qui fournit une illustration du mode d'interprétation du modèle en fonction des paramètres actuels. </P>
+<DIV title="Ecran du modèle SQL" CLASS="figure">
+<P><A NAME="FIG-SQLTEMP"></A><IMG alt="Ecran du modèle SQL" SRC="lr_sqltem.png"></P>
+<P CLASS="figure" ALIGN="LEFT"><B>Figure 2-1 : Ecran du modèle SQL</B></P></DIV>
+<P><A NAME="TMPID724"></A>D'autres modèles peuvent être créés à l'aide de l'icône du symbole plus. Vous pouvez supprimer des modèles en effaçant le texte d'une <B CLASS="guilabel">zone Source SQL</B> et en enregistrant le rapport LiveReport. </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="lr-sqlfield-bg.htm" revision="">Champs du modèle SQL</A></p></li>
+<li><p><A  HREF="lr-using-templ-bg.htm" revision="">Utilisation des modèles</A></p></li>
+<li><p><A  HREF="lr-enhanc-sql-bg.htm" revision="">Edition SQL améliorée</A></p></li>
+<li><p><A  HREF="lr-view-sql-bg.htm" revision="">Afficher la source SQL</A></p></li>
+<li><p><A  HREF="lr-view-query-bg.htm" revision="">Afficher la requête</A></p></li>
+<li><p><A  HREF="lr-urlpartem-bg.htm" revision="">Exemples de modèles</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

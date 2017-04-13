@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWBS100011-H-AGD-EN-1">
+<META PiXprocLocator="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llesels-h-agd -- llessrc-ggd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>To Remove a Region with a Null Character</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbo-topurgenullcharreg-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Index Regions';
+          header.title2 = 'To Remove a Region with a Null Character';
+           header.draw();
+  </script>
+  <A NAME="PROC-TOPURGENULLCHARREG"></A>
+<DIV title="To remove a region with a null character from the search index:" CLASS="PROCEDURE">
+<P><B>To remove a region with a null character from the search index:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID12515"></A>Ensure a log level of Info is set for each Index Engine in the Content Server cluster by visiting each Index Engine's <B CLASS="GUILABEL">Specific</B> tab of their <B CLASS="GUILABEL">Properties</B> pages.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12520"></A>Stop the Content Server and Admin server services for all Admin servers in the Content Server cluster.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12524"></A>Apply the supplied patch to all Admin servers in the cluster.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12526"></A>To permanently remove regions that have nulls in their name from the index, add the following setting to each <TT CLASS="LITERAL">[DataFlow_&lt;signature&gt;]</TT> section of the search.ini file on each Admin server, for example:
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN11778"></A>[DataFlow_&lt;signature&gt;]
+RemoveRegionsWithNull=true</PRE
+></P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12530"></A>Restart the Admin server services for all Admin servers in the Content Server cluster.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12533"></A>After the Index Engines hydrate metadata information into memory, a file will be created in the <TT CLASS="LITERAL">install_dir/logs</TT> directory of the form:
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN11785"></A>indexengine_{EngineName}_objectIds_regions_null.txt</PRE
+></P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF274"></A><IMG SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID12537"></A><B CLASS="NOTE">Note: </B><BR>The content of each file is a list of object IDs that were associated with the regions containing null characters in their names.</P>
+<P><A NAME="TMPID12538"></A>Once a particular Index Engine has completed processing, the text <TT CLASS="LITERAL">Changing ctl file to &lt;#&gt; for Removed Regions with nulls</TT> will appear in the Index Engine's log file.</P>
+<P><A NAME="TMPID12540"></A>Regions removed by this process can also be identified in the Index Engine log by entries in the form of "Removing region <I CLASS="EMPHASIS">region name</I> as it contains a null".</P>
+<P><A NAME="TMPID12542"></A>If the grid is started twice with the <TT CLASS="LITERAL">RemoveRegionsWithNull</TT> setting, the files containing the list of ObjectIDs will be overwritten.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12545"></A>Once all Index Engines have completed processing, stop the Admin server services in the cluster and remove the setting <TT CLASS="LITERAL">RemoveRegionsWithNull</TT> from the search.ini files.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12548"></A>Restart the Content Server and Admin server services.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12551"></A>Revert the Index Engine log levels to their original values.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

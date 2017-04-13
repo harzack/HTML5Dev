@@ -1,0 +1,202 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<title>Configuring Security Parameters</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webnotify/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-confsecurity-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Server Parameters and Settings';
+          header.title2 = 'Configuring Security Parameters';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3393"></A>You can set options designed to help make Content Server more secure. To access the <B CLASS="guilabel">Configure Security Parameters</B> page, from the Content Server Administration page select <B CLASS="guilabel">Server Configuration</B>. Click <B CLASS="guilabel">Configure Security Parameters</B>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF43"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3400"></A><B CLASS="note">Note: </B><BR>For additional Content Server security features, see <span><A href="../webadmin/wba-limit-ip-bg.htm">Limiting Admin Account Log-ins by IP Address</A></span> and <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbn-h-agd.wbn-config-report-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webnotify/wbn-config-report-bg.htm">Clearing Outstanding Events</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbn-h-agd.wbn-config-report-bg" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-HTTP">HTTP-only Cookies</A></P>
+<P><A NAME="TMPID3410"></A>The <B CLASS="guilabel">HTTP-only Cookies</B> section allows you to specify whether the <B CLASS="guilabel">httpOnly</B> attribute is added to all Content Server cookies. If enabled, all cookies will be marked with the <B CLASS="guilabel">httpOnly</B> attribute. To browsers that support it, this attribute indicates that a cookie should not be made available to scripting. By default, this option is disabled.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF45"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3416"></A><B CLASS="note">Note: </B><BR>Enabling HTTP-only Cookies disables Cluster Management.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-COOKIEKEY">Cookie Encryption Key</A></P>
+<P><A NAME="TMPID3420"></A>Content Server creates an authentication cookie using the user's numeric ID and other values that you can specify. The values that you select are necessary to authenticate requests after logging in. The <B CLASS="guilabel">Cookie Encryption Key</B> lets you provide a text string for use as the key that encrypts a Content Server authentication cookie. If a key is not specified in this field, Content Server uses a default key. However, OpenText strongly recommends that you change this value to a unique key.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-DATAKEY">Data Encryption Key</A></P>
+<P><A NAME="TMPID3428"></A>Content Server also uses a <B CLASS="guilabel">Data Encryption Key</B>, which lets you provide a text string for use as the key that encrypts the database administrator's password when it is included in a Content Server request. If a key is not specified in this field, Content Server uses a default key. However, OpenText strongly recommends that you change this value to a unique key.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-COOKIEAUTHEN">Cookie Authentication Information</A></P>
+<P><A NAME="TMPID3436"></A>When configuring the authentication cookie, you can include the client's IP address as a value. The <B CLASS="guilabel">Client IP address</B> list lets you apply a bit mask when comparing the IP addresses of different requests. The bit mask indicates which portion of the IP address is to be compared; the nonzero elements of the IP address are compared to the IP address placed in the cookie at log-in. For instance, if <TT CLASS="literal">255.255.0.0</TT> is selected, only the first two elements will be compared. This makes it possible to verify that requests are coming from the same network, without requiring identical IP addresses. By default, this field is set to <TT CLASS="literal">255.255.255.255 (Compare Entire IP Address)</TT>.</P>
+<P><A NAME="TMPID3440"></A>If selected, <B CLASS="guilabel">Enable X-Forwarded-For for Client IP mapping</B> tells Content Server to read the client IP address from the X-Forwarded-For HTTP header. Otherwise, Content Server reads the IP address from the request. <B CLASS="guilabel">Trusted Proxy Server List</B> tells Content Server which X-Forwarded-For proxy IPs to trust.</P>
+<P><A NAME="TMPID3446"></A>You can choose user attributes for inclusion in the authentication cookie. The options include the <B CLASS="guilabel">Owner ID</B>, which is the ID of the user who created the user, <B CLASS="guilabel">Password Expiration Date</B>, and <B CLASS="guilabel">One-way Encrypted Password</B>.</P>
+<P><A NAME="TMPID3450"></A>You can also set authentication cookies to expire. After the specified interval, Content Server requires a user to log in again. Since Cookie Expiration involves additional interaction with the database, it may have an impact on performance. By default, cookies are set to expire 30 minutes after the last action is performed.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-COOKIEEXPIR">Log-in Cookie Expiration Date</A></P>
+<P><A NAME="TMPID3454"></A>You can set the cookie expiration date to manage cookies for the Content Server log-in page. This parameter controls the language display when users have multiple language packs installed. A cookie on the Content Server log-in page remembers a user’s language selection until they are authenticated, after which it uses their preferred language.</P>
+<P><A NAME="TMPID3457"></A>The cookie expiration date is calculated based on the date and time value of a user's computer, not the date and time of Content Server. The number of days must be a positive integer between 1 and 999. By default, the log-in cookies are set to expire after 8 days.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-LOGINPOL">Log-in Connection Policies</A></P>
+<P class="before-ul"><A NAME="TMPID3461"></A>This section helps secure Content Server against repeated failed user logon attempts, multiple concurrent sessions being opened by the same user, and cross-site forgery requests..</P><A NAME="AEN3088"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3089"></A><A NAME="TMPID3465"></A>Enabling <B CLASS="guilabel">Disable simultaneous sessions from multiple machines</B> prevents users from simultaneously accessing Content Server from more than one computer. If you enable this feature, users can sign in to Content Server from one computer, but if they sign in a second time from another computer, the first Content Server session is terminated.</P>
+<P><A NAME="TMPID3470"></A>In the <B CLASS="guilabel">except for hosts</B> field, you can provide a comma-delimited list of IP addresses for any computers to which this feature does not apply. Also, you can specify a single * wildcard character to indicate multiple computers. For example, a valid entry is: <TT CLASS="literal">123.45.*,192.*,123.99.2.51</TT>. By default, this option is disabled.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3098"></A><A NAME="TMPID3474"></A>The <B CLASS="guilabel">Allow log-in via HTTP GET request</B> setting specifies the default logon behavior. When this option is enabled, users are allowed to sign in to Content Server using an <I CLASS="emphasis">HTTP Get request</I>, which stores their sign in credentials in a bookmark. When this option is disabled, users are required to sign in again when that session’s cookies expire. This option is disabled by default.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3103"></A><A NAME="TMPID3479"></A>The <B CLASS="guilabel">Require secure request token</B> setting, if enabled, helps to prevent cross-site request forgery: an attack whereby a user unknowingly initiates an action that takes place in software to which the user has already logged on. The secure request token is a value that is shared from the server to the browser when the user performs certain actions. This value must accompany requests for other actions. If the value is not present, the requested action is invalid. This option is disabled by default.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-PWDRETRIES">Password Retries</A></P>
+<P><A NAME="TMPID3483"></A>This section defines the numbers of times an incorrect password can entered by a Content Server <B CLASS="guilabel">User</B>, <B CLASS="guilabel">Web Administrator</B>, and <B CLASS="guilabel">Admin</B> before the log-in is disabled, and whether to send an e-mail to the Administrator. By default, these options are enabled.</P>
+<P class="before-ul"><A NAME="TMPID3488"></A>The login policies include options to alert administrators of policy exceptions by e-mail, as specified on the <B CLASS="guilabel">Configure Server Parameters</B> page. If the Administrator e-mail address is not specified, the notification message is not sent. For more information about specifying the Administrator e-mail address, see <span><A href="../webadmin/wba-confserver-params-bg.htm">Configuring Basic Server Parameters</A></span>.</P><A NAME="AEN3115"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN3116"></A><B>User</B></P>
+<P class="before-ul nr1"><A NAME="TMPID3494"></A>For User accounts, the account can be disabled when too many incorrect login attempts are made. The disabled account feature does not apply to Directory Services access to the system because lockout services are available through most Directory Services implementations. In this case, the Content Server account will not be disabled, but rather the Directory Service or system account will be locked.</P><A NAME="AEN3120"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3121"></A><A NAME="TMPID3498"></A><B CLASS="guilabel">Disable log-in when password incorrect</B>, which enables you to specify actions when a user’s log-in fails.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3124"></A><A NAME="TMPID3501"></A><B CLASS="guilabel">Number of allowable log-in attempts</B> before the account is disabled. By default, this setting is enabled, and the number of allowed failed log-in attempts is set to <B CLASS="guilabel">5</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3128"></A><A NAME="TMPID3505"></A><B CLASS="guilabel">Send e-mail to the Administrator when log-in is disabled</B>, which allows you to specify if the Content Server Administrator will receive an email whenever the specified number of log-in attempts is exceeded.</P></LI></UL></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN3132"></A><B>Web Administrator</B></P>
+<P class="before-ul nr1"><A NAME="TMPID3510"></A>If too many incorrect password attempts are made to enter the Web Administrator password, the Web Administrator password entry can be disabled for a period of time to reduce exposure to possible brute-force password guessing.</P><A NAME="AEN3135"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3136"></A><A NAME="TMPID3513"></A><B CLASS="guilabel">Disable log-in when password incorrect</B>, which enables you to specify actions when a Web Administrator’s log-in fails.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3139"></A><A NAME="TMPID3516"></A><B CLASS="guilabel">Number of allowable log-in attempts</B> before the account is disabled. By default, this setting is enabled, and the number of allowed failed log-in attempts is set to <B CLASS="guilabel">5</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3143"></A><A NAME="TMPID3520"></A><B CLASS="guilabel">Number of minutes log-in is disabled</B>, which allows you to specify how long the Web Administrator must wait before attempting to log-in again. By default, this setting is enabled, and the number of minutes is set to <B CLASS="guilabel">5</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3147"></A><A NAME="TMPID3524"></A><B CLASS="guilabel">Send e-mail to the Administrator when log-in is disabled</B>, which allows you to specify the Content Server Administrator should receive an email whenever the specified number of log-in attempts is exceeded.</P></LI></UL></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN3151"></A><B>Admin</B></P>
+<P class="before-ul nr1"><A NAME="TMPID3529"></A>The Admin account is essential, and cannot be disabled without impacting the system. This policy allows you to alert Admins to the possibility that someone is trying to guess the password.</P><A NAME="AEN3154"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3155"></A><A NAME="TMPID3532"></A><B CLASS="guilabel">Send e-mail to Administrator on too many password failures</B>, which allows you to specify whether the Content Server Administrator should receive an email whenever the specified number of log-in attempts is exceeded.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3159"></A><A NAME="TMPID3536"></A><B CLASS="guilabel">Password failure threshold</B>, which allows you to specify the number of times an Admin can attempt to log in to Content Server before an email is sent. By default, this setting is enabled, and the number of allowed failed log-in attempts is set to <TT CLASS="literal">5</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF46"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3541"></A><B CLASS="note">Note: </B><BR>The disable log-in feature does not apply to the Content Server Admin account. You can protect the Content Server Admin account by allowing only certain client IP addresses access. For more information about limiting Content Server Admin account log-in attempts by IP address, see <span><A href="../webadmin/wba-limit-ip-bg.htm">Limiting Admin Account Log-ins by IP Address</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-LOGINCONFIG">Login Page Configuration</A></P>
+<P class="before-ul"><A NAME="TMPID3548"></A>This section helps to ensure the security of user log-ins. By default, this section is disabled. The <B CLASS="guilabel">Login Page Configuration</B> section includes the following settings:</P><A NAME="AEN3173"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3174"></A><A NAME="TMPID3552"></A><B CLASS="guilabel">Disable Browser Autocompletions</B> check box, which allows you to include an attribute on the User Log-in page to instruct client Web browsers to not store or autocomplete user log-in information for Content Server. By default, this option is enabled, which means users must enter their full log-in credentials each time they sign in to Content Server.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF47"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3557"></A><B CLASS="note">Note: </B><BR>Some browsers may not correctly interpret this attribute.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3181"></A><A NAME="TMPID3559"></A><B CLASS="guilabel">Number of Days Password Persists</B> field, which allows you enable permanent authentication cookies and specify an expiration period for them. This setting adds a <B CLASS="guilabel">Remember Password</B> check box to the User Log-in page. Users who select this check box when logging in will have a permanent authentication cookie saved on their computers for the specified number of days.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF48"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3563"></A><B CLASS="note">Note: </B><BR>Disabling this setting <I CLASS="emphasis">does not</I> remove the permanent authentication cookie from client browsers that already have one. Existing cookies persist until they expire, and will provide access to Content Server until that time. Keep this fact in mind when you consider how long you want to allow authentication cookies to persist.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-ARGFILTER">Request Argument Filtering</A></P>
+<P><A NAME="TMPID3568"></A>When <B CLASS="guilabel">Request Argument Filtering</B> is enabled, all client requests to Content Server are compared with the values in the <B CLASS="guilabel">Filter String</B> field. By default, these fields are blank. If any matches are found, the request is rejected.</P>
+<P><A NAME="TMPID3572"></A>The filter list is delimited by a separator that you specify. For example, if you use a comma (<TT CLASS="literal">,</TT>) as the separator, type three filters as:</P>
+<P><A NAME="TMPID3574"></A><TT CLASS="literal">&lt;<I CLASS="varname">Filter_A</I>>,&lt;<I CLASS="varname">Filter_B</I>>,&lt;<I CLASS="varname">Filter_C</I>></TT></P>
+<P><A NAME="TMPID3579"></A>The separator is configurable to prevent conflicts with desired filters. For example, if you want to use a backslash as the separator, type:</P>
+<P><A NAME="TMPID3580"></A><TT CLASS="literal">&lt;<I CLASS="varname">Filter_A</I>>\&lt;<I CLASS="varname">Filter_B</I>>\&lt;<I CLASS="varname">Filter_C</I>></TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-CONSIZE">Container Size Display</A></P>
+<P><A NAME="TMPID3587"></A>The <B CLASS="guilabel">Hide Number of Items</B> check box in the <B CLASS="guilabel">Container Size Display</B> field prevents users from displaying how many items are in a container.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF49"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3591"></A><B CLASS="note">Note: </B><BR>This setting applies to Prospectors as well. Prospector nodes display an empty size value when this parameter is set.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-SECREQ">Secure Request Token Expiration</A></P>
+<P><A NAME="TMPID3594"></A>The <B CLASS="guilabel">Secure Request Token Expiration</B> field is part of an enhanced security framework that allows requests to access authentication token (cookie) generation and verification functionality. A token can be passed between sequential requests and ensure that appropriate security checks occur. The default setting is set to timeout after 300 seconds. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-CLIENTHOST">Content Server Client Hosts</A></P>
+<P><A NAME="TMPID3599"></A>The <B CLASS="guilabel">Content Server Client Hosts</B> field contains the IP addresses of servers from which requests are to be accepted. By default, the field is blank, and all client connections are accepted.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-TRUSTREF">Trusted Referring Websites</A></P>
+<P><A NAME="TMPID3604"></A>The <B CLASS="guilabel">Trusted Referring Websites</B> parameter is a security measure used to prevent other users from exploiting your Web site. The sites contained in this list appear in an HTTP Referrer header, which validates HTTP requests coming from another Web site. If a request comes from an unauthorized Web site, the action will not be permitted, and an error message is displayed.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF50"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3607"></A><B CLASS="note">Note: </B><BR>For Enterprise Process Services Integration, you must enter the <B CLASS="guilabel">Trusted Referring Websites</B> parameter in the following format: <TT CLASS="parameter"><I>http://&lt;<I CLASS="varname">PW Server</I>></I></TT>, where &lt;<I CLASS="varname">PW Server</I>> is the computer where Process Workplace (the Web server part of Enterprise Process Services) is running.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-DOCFUNC">Document Functions</A></P>
+<P><A NAME="TMPID3615"></A>The <B CLASS="guilabel">Document Functions</B> area contains radio buttons to enable and disable the Open and View as Web Page functions in Content Server. When these functions are enabled, users can open a document in its native application, or view them as Web pages, by clicking the document’s link. When disabled, the <B CLASS="guilabel">Open</B> option does not appear on a document’s <B CLASS="guilabel">Functions</B> menu or on the Overview page. The Open Document function is disabled by default.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-TRUSTCROSS">Trusted Cross Domains</A></P>
+<P><A NAME="TMPID3622"></A>The <B CLASS="guilabel">Trusted Cross Domains</B> field allows you to manage Content Server and third party Web application integrations. You register the <TT CLASS="literal">&lt;<I CLASS="varname">key</I>> ; &lt;<I CLASS="varname">target</I>></TT> pair where <TT CLASS="literal">&lt;<I CLASS="varname">key</I>></TT> is a value to be passed in as a URL parameter and will perform the registration lookup and <TT CLASS="literal">&lt;<I CLASS="varname">target</I>></TT> is a registered URL path to the target resource (third party web application). </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF51"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3633"></A><B CLASS="note">Note: </B><BR>For Enterprise Process Services Integration, you must enter the <B CLASS="guilabel">Trusted Cross Domains</B> parameter in the following format: <TT CLASS="parameter"><I>pw;http://&lt;<I CLASS="varname">PW server</I>>/pw/client/csbrowse.htm</I></TT>, where &lt;<I CLASS="varname">PW Server</I>>  is the computer where Process Workplace (the Web server part of Enterprise Process Services) is running.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-confsecurity-p.htm" revision="">To Configure Security Parameters</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>setColumn( title, parm2, parm3, parm4, parm5,parm6 )</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="4">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-brws-setcolm.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Browse Functions Reference Guide';
+          header.title2 = 'setColumn( title, parm2, parm3, parm4, parm5,parm6 )';
+           header.draw();
+  </script>
+  <A NAME="AEN17117"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17118"></A><A NAME="TMPID18363"></A>Creates a column in an ActiveView/WebReport that is sortable when the title is clicked. A set of formatting attributes can also be specified and applied to the column.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN17120"></A><A NAME="TMPID18365"></A>Takes the arguments:</P><A NAME="AEN17122"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17123"></A><A NAME="TMPID18368"></A><B CLASS="highlight">title</B>: a required parameter. The title to be displayed for the column. If no title is specified, for example '', a divider will just be added.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17126"></A><A NAME="TMPID18371"></A><B CLASS="highlight">HTML Attributes</B>: an optional parameter. An optional parameter that represents a comma separated list of HTML formatting attributes for the column. For example “align=right,width=10%,etc...”</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17130"></A><A NAME="TMPID18375"></A><B CLASS="highlight">Sort Reference</B>: an optional parameter. An optional string that represents the column name to be sorted on from the datasource. Simple column names can be specified here. For example, “subtype” or “name”. If you want to sort by the value of a WebReport sub-tag, a simple “reference key” can be specified here and the sub-tag can be defined in the @PREDEFKEY directive in the SORT tag. For example, if <TT CLASS="literal">parm3='catValue'</TT> then the SORT tag will contain the following: <TT CLASS="literal">@PREDEFKEY REF:catValue PARM:"[LL_REPTAG=DATAID CAT:'somecat':'someattr':DISPLAY /]")</TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17138"></A><A NAME="TMPID18383"></A><B CLASS="highlight">CS Sorting</B>: an optional parameter. Optional boolean parameter, true/false, to indicate if you want to use the Content Server sort, for example <TT CLASS="literal">&amp;sort=name, &amp;sort=-name</TT>, or the WebReport sort, for example <TT CLASS="literal">&amp;sort=name&amp;direction=asc, &amp;sort=name&amp;direction=desc</TT> syntax. Default value is false. Simple column names should use the Content Server sort (true). Sorting based on complex tag/sub-tags combinations should use the WebReport sort (false).</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17145"></A><A NAME="TMPID18390"></A><B CLASS="highlight">Alternate Sort Parm</B>: an optional parameter. Optional string parameter that allows you to define your own custom sort parameter in the URL. This is used in conjunction with the @PARMNAMES directive which needs to be defined in the SORT tag. Example: parm5='AVsort' then the SORT tag will look for the '&amp;AVsort' parameter to sort by instead of the default '&amp;sort' parameter.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN17148"></A><A NAME="TMPID18393"></A><B CLASS="highlight">Current Value for Alt Parm</B>: an optional parameter. Optional String parameter to specify the sort value specified by the alternate sort parameter. Usually this will be a parameter tag using the name in alternate sort parm. For example, [LL_REPTAG_&amp;AVSORT /]</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17151"></A><A NAME="TMPID18396"></A>This function requires that 'setupContext' function be run beforehand because certain variables are referenced within the function. For example: supportDir, urlPrefix, myURL, and sortCol.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17153"></A><A NAME="TMPID18398"></A>Additional documentation on the @PREDEFKEY and @PARMNAMES directives can be found in <span><A HREF="wr-sort-info.htm">Sorting Results</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17156"></A><A NAME="TMPID18401"></A>Example:</P><A NAME="AEN17158"></A>
+<PRE 
+CLASS="screen"
+>setColumn( '' );								// No title is specified, just add a divider
+setColumn( 'Type', 'width=2%', 'subtype', true );				// Simple usage. Sort by the column 'subtype' returned from the datasource using the Content Server sort.
+setColumn( 'Name', 'align=left', 'name', true );				// Simple usage. Sort by the column 'name' returned from the datasource using the Content Server sort.
+
+// Sort the column by the value of '=DATAID NODEINFO:VERSIONNUM' tag/sub-tag. Here 'verNum' is a reference key for the @PREDEFKEY directive defined in the SORT tag below. Here we are using the WebReport sort.
+setColumn( 'Version', 'align=right,width=15%', 'verNum' );
+
+// Sort the column by a category-attribute value. 'catValue' is a reference key and 'AVsort' is a custom sort parameter defined in @PARMNAMES directive in the SORT tag below.
+setColumn( 'Attribute', '', 'catValue', false, 'AVsort' );
+
+...
+
+[LL_WEBREPORT_STARTROW /]
+
+	[// Sort tag with the directives @PARMNAMES and @PREDEFKEY defined. Add additional @PREDEFKEY's here if you need to sort by complex tag/sub-tag combinations.
+	[LL_WEBREPORT_SORT @PARMNAMES SORTCOL:AVsort SORTDIR:direction @PREDEFKEY REF:verNum PARM:"[LL_REPTAG=DATAID NODEINFO:VERSIONNUM /]" @PREDEFKEY REF:catValue PARM:"[LL_REPTAG=DATAID CAT:'somecat':'someattr':DISPLAY /]" /]
+
+[LL_WEBREPORT_ENDROW /]
+
+...</PRE
+></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

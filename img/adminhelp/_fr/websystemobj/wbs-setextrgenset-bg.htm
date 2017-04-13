@@ -1,0 +1,296 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Définition des paramètres généraux de l'Extracteur</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-setextrgenset-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des processus de flux de données';
+          header.title2 = 'Définition des paramètres généraux de l\'Extracteur';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3902"></A>Un processus Extracteur Entreprise est un processus de flux de données qui extrait des objets et des métadonnées de Content Server et les écrit dans un flux de données, pour mettre à jour l'index Content Server.</P>
+<P><A NAME="TMPID3905"></A>Vous configurez la plupart des paramètres de l'Extracteur Entreprise sur la page <B CLASS="guilabel">Définir les paramètres généraux de l'Extracteur</B> qui contrôle la manière dont les objets sont ajoutés à l'index de recherche.  D'autres paramètres peuvent affecter le comportement de l'Extracteur, comme les exclusions de type MIME qui sont définies dans le fichier <TT CLASS="literal">opentext.ini</TT>.</P>
+<P><A NAME="TMPID3908"></A>La page <B CLASS="guilabel">Définir les paramètres généraux de l'Extracteur</B> contient les contrôles suivants :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3279"></A>
+<TH SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Elément</TH>
+<TH SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP"><B CLASS="highlight">Paramètres généraux</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Niveau de consignation</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Spécifie le niveau de consignation pour l'extraction et l'indexation des données Extracteur Entreprise. Les données de consignation figurent dans les journaux des threads Content Server :</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3929"></A><B CLASS="guilabel">Normal</B> : spécifie le niveau de consignation par défaut, ce qui signifie que l'avancement minimum de l'Extracteur est consigné.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3932"></A><B CLASS="guilabel">Information</B> : spécifie le niveau du journal détaillé.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3935"></A><B CLASS="guilabel">Détaillé</B> : spécifie le niveau du journal de débogage, ce qui génère un journal détaillé pour permettre le débogage.</P></TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF87"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3938"></A><B CLASS="note">Note : </B><BR>Content Server Le niveau de débogage doit être à 2 ou supérieur à cette valeur pour que la consignation de l'Extracteur fonctionne.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Nombre maximum d'éléments par extraction</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Spécifie le nombre maximum de requêtes de mise à jour de l'index de recherche que l'Extracteur traitera lors de l'exécution de chaque type individuel d'itérateur :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3946"></A><B CLASS="guilabel">Extraire à nouveau</B></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3949"></A><B CLASS="guilabel">Mises à jour de pertinence</B></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3952"></A><B CLASS="guilabel">Ajouter/Modifier</B></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3955"></A><B CLASS="guilabel">Workflows lancés</B></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3958"></A><B CLASS="guilabel">Tous les autres</B></P></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour chaque type d'itérateur, utilisez la liste déroulante pour sélectionner une option de traitement :</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3963"></A><B CLASS="guilabel">Extraction normale</B> : l'extraction est normale.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3966"></A><B CLASS="guilabel">Suspendre l'extraction</B> : l'extraction n'aura pas lieu pour cet itérateur. Les éléments resteront dans la file d'attente de l'itérateur, et la file d'attente pourra augmenter.</P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Astuce" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3969"></A><B CLASS="tip">Astuce : </B><BR>Cette option ne doit être utilisée que temporairement, par exemple pour permettre à d'autres itérateurs de traiter davantage de données.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3971"></A><B CLASS="guilabel">Rejeter les demandes d'indexation</B> : l'extraction n'aura pas lieu pour cet itérateur. 	Les éléments présents dans la file d'attente de l'itérateur seront régulièrement supprimés pour l'empêcher d'augmenter. (Non disponible pour <B CLASS="guilabel">Extraire à nouveau</B>.)</P>
+<table CLASS="tip">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="tip"><IMG ALT="Astuce" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3975"></A><B CLASS="tip">Astuce : </B><BR>Cette option peut être utilisée de façon continue.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">La valeur par défaut pour chaque type est <TT CLASS="literal">5000</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Nombre maximum de versions à extraire</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Spécifie le nombre maximum de versions par document devant être traitées dans une requête d'extraction.  Davantage de versions peuvent figurer dans l'index de recherche.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF88"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3983"></A><B CLASS="note">Note : </B><BR>Si ce paramètre est trop faible, il peut mener au stockage d'informations incorrectes pour d'anciennes versions, en particulier deux versions différentes marquées comme la version actuelle. L'extraction des anciennes versions est requise pour mettre à jour les informations communes à toutes les versions des éléments, comme les dates modifiées, les informations utilisateur et la version actuelle. Les valeurs en dessous de <TT CLASS="literal">10</TT> ne sont pas recommandées.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Inclure les listes de contrôle d'accès</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Lorsqu'elles sont sélectionnées, les informations d'autorisation ACL (liste de contrôle d'accès) sont ajoutées au flux de données et à l'index de recherche.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF89"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3990"></A><B CLASS="note">Note : </B><BR>Il n'est généralement pas recommandé d'inclure des informations ACL. L'extraction ACL diminue les performances d'indexation, et ne fournit pas de valeur pour les installations classiques.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Contenu d'objet EFS</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Il y a deux manières de présenter les objets stockés dans le système de fichiers d'entreprise au serveur Document Conversion Server (DCS) pour être indexés :</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3997"></A>Autoriser le DCS à lire directement à partir d'EFS est généralement plus rapide. Les fichiers ne sont pas supprimés.  Il est recommandé de s'assurer que le serveur d'administration dispose de l'autorisation <I CLASS="emphasis">En lecture seule</I> dans EFS.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4000"></A>L'intégration d'une copie du fichier est privilégiée lorsque la sécurité doit être maximisée, ou lorsque le DCS ne dispose pas d'accès en lecture dans EFS.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Contenu d'objet non EFS</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les systèmes de stockage non EFS les plus courants sont Enterprise Library ou Archive Server. Les objets extraits de ces sources pour être indexés par le DCS peuvent être intégrés dans des messages IPool ou placés dans une zone de travail temporaire.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">En sélectionnant une zone de travail temporaire, le <TT CLASS="literal">Chemin d'accès au fichier</TT> spécifié doit être accessible à chaque serveur d'administration, et à Content Server, ainsi qu'au serveur Document Conversion Server. Pour en savoir plus, consultez le document <span><A href="../websystemobj/wbs-setextrgenset-rf.htm">Transmission du contenu d'objet via les flux de données</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP"><B CLASS="highlight">Limites IPool</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Taille totale</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Spécifie une limite, en Mo, de taille totale maximale pour les documents inclus dans un IPool. Ce paramètre ne spécifie pas de limite de taille IPool pour le message IPool lui-même.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Tout entier positif est valide et il n'y a pas de valeur maximale pour ce paramètre. La valeur par défaut est <TT CLASS="literal">1999</TT> Mo.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF90"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID4019"></A><B CLASS="note">Note : </B><BR>Si un objet qui dépasse la limite figure dans l'IPool, celui-ci se ferme et passe au message suivant.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Taille du contenu d'élément unique</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Spécifie une limite, en Mo, de taille maximale pour un document qui figurera dans un IPool. Ce paramètre ne spécifie pas de limite de taille IPool pour le message IPool lui-même. Le DCS ne peut pas traiter les fichiers d'une taille supérieure à 2 Go.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Tout entier positif est valide et il n'y a pas de valeur maximale pour ce paramètre. La valeur par défaut est <TT CLASS="literal">1024</TT> Mo.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF91"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID4027"></A><B CLASS="note">Note : </B><BR>Si un objet qui dépasse la limite figure dans l'IPool, celui-ci se ferme et passe au message suivant.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Nombre d'éléments</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Définit le nombre maximum d'éléments extraits et regroupés dans un seul message IPool par le processus Extracteur Entreprise. Les messages IPool contiennent les informations dont un index a besoin pour rester à jour. Par exemple, les requêtes pour mettre à jour ou supprimer des éléments indexés. En général, les valeurs comprises entre <TT CLASS="literal">100</TT> et <TT CLASS="literal">500</TT> sont recommandées.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Si vous définissez un nombre d'éléments trop faible, le temps nécessaire à la gestion IPool et l'indexation des transactions peut ralentir le processus d'indexation. Si cette valeur est trop élevée, les limites de taille des messages IPool risquent d'être dépassées.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="CENTER" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight"> Paramètres d'exclusion</B></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Un certain nombre de paramètres sont disponibles pour contrôler les objets qui doivent être extraits et représentés dans l'index de recherche. Ni le contenu, ni les métadonnées des objets exclus ne seront indexés.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Le nombre d'objets actuellement exclus est affiché pour chaque type.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Types d'élément</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cliquez sur le lien <B CLASS="guilabel">liste de modification/révision</B> pour accéder à <span><A href="../websystemobj/wbs-confextrexclitm-p.htm">Configuration des types d'élément exclus</A></span> afin de voir ou d'ajouter des éléments, et pour obtenir davantage d'informations sur les types d'élément.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Types de volume</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cliquez sur le lien <B CLASS="guilabel">liste de modification/révision</B> pour accéder à <span><A href="../websystemobj/wbs-confextrexclvol-p.htm">Configuration des types de volume exclus</A></span> afin de voir ou d'ajouter des éléments, et pour obtenir davantage d'informations sur les types de volume.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Emplacements</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cliquez sur le lien <B CLASS="guilabel">liste de modification/révision</B> pour accéder à <span><A href="../websystemobj/wbs-confextrexclloc-p.htm">Configuration des emplacements exclus</A></span> afin de voir ou d'ajouter des emplacements, et pour obtenir davantage d'informations sur les emplacements.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">Types de présentations</TD>
+<TD SCOPE="COL" WIDTH="266" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cliquez sur le lien <B CLASS="guilabel">liste de modification/révision</B> pour accéder à <span><A href="../websystemobj/wbs-confextrexclrend-p.htm">Configuration des types de présentation</A></span> afin de voir et d'ajouter des types de présentations, et pour obtenir davantage d'informations sur les types de présentations.</TD></TR></TABLE> <table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF92"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID4066"></A><B CLASS="note">Note : </B><BR>Ce paramètre ne s'affiche que lorsqu'un module Renditions est installé sur votre système Content Server.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR></TABLE>
+</DIV></P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-setextrgenset-rf.htm" revision="">Transmission du contenu d'objet via les flux de données</A></p></li>
+<li><p><A  href="../websystemobj/wbs-setextrgenset-p.htm" revision="">Pour définir les paramètres généraux de l'Extracteur</A></p></li>
+<li><p><A  href="../websystemobj/wbs-confextrexclitm-p.htm" revision="">Configuration des types d'élément exclus</A></p></li>
+<li><p><A  href="../websystemobj/wbs-confextrexclvol-p.htm" revision="">Configuration des types de volume exclus</A></p></li>
+<li><p><A  href="../websystemobj/wbs-confextrexclloc-p.htm" revision="">Configuration des emplacements exclus</A></p></li>
+<li><p><A  href="../websystemobj/wbs-confextrexclrend-p.htm" revision="">Configuration des types de présentation</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBN100500-H-AGD-EN-1">
+<META name="PiXprocLocator" content="webnotify">
+<title>Configuring Scheduled Activities</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/recman/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/recmansecurity/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbn-confsched.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working with Notifications';
+          header.title2 = 'Configuring Scheduled Activities';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID657"></A>You can enable, configure, and schedule the following events:</P><A NAME="AEN388"></A>
+<UL>
+<LI class="vlli">
+<P><A NAME="AEN389"></A><B>Midnight Event Producer</B></P>
+<P class="nr1"><A NAME="TMPID662"></A>Runs routine system events that do not have their own Activity Schedule, and that are scheduled to run once a day.</P>
+<P class="before-ul"><A NAME="TMPID663"></A>There is an API for developers to register handlers with this event in order to run those handlers each time this event runs. In a default system setup, the handlers include:</P><A NAME="AEN394"></A>
+<UL>
+<LI class="vlli">
+<P><A NAME="AEN395"></A><B>TaskLate</B></P>
+<P class="nr1"><A NAME="TMPID667"></A>which generates notifications for tasks that are overdue.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN398"></A><B>WorkflowLate</B></P>
+<P class="nr1"><A NAME="TMPID670"></A>which generates notifications for workflows that are overdue.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN401"></A><B>WorkflowStepLate</B></P>
+<P class="nr1"><A NAME="TMPID673"></A>which generates notifications for workflow steps that are overdue.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN404"></A><B>DTreeNotifyPurge</B></P>
+<P class="nr1"><A NAME="TMPID676"></A>which purges the notification tables if they aren't being used. For example, if the system is a search-only system, then the notification tables are not being used.</P></LI></UL>
+<P><A NAME="TMPID677"></A>By default, this event runs at midnight on each weekday. This setting can be changed in the <B CLASS="GUILABEL">Activity Schedule</B> section.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN409"></A><B>Provider Blob Deletion Failure Retry</B></P>
+<P class="nr1"><A NAME="TMPID682"></A>If blob storage is used for a storage provider, the blob data may be retained after a deletion; this event will try to delete any data which should no longer be retained.</P>
+<P><A NAME="TMPID683"></A>It is also possible that blob data doesn't get moved, in which case, this event will attempt to complete any outstanding move requests.</P>
+<P><A NAME="TMPID684"></A>By default, this event runs at midnight each day. This setting can be changed in the <B CLASS="GUILABEL">Activity Schedule</B> section.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN416"></A><B>Drag and Drop Incomplete Items Notification</B></P>
+<P class="nr1"><A NAME="TMPID689"></A>Notifies users via email when they drag and drop an item into a container that has a Category with required attributes assigned to it, but have not yet completed the required attribute information for that item. In other words, this event sends a notification when an item, which was dragged and dropped to Content Server, was not fully added to Content Server because of incomplete data.</P>
+<P><A NAME="TMPID692"></A>Email notifications are sent to users with incomplete items at the times you specify in the <B CLASS="GUILABEL">Activity Schedule</B>, unless the item was added within the <B CLASS="GUILABEL">Completion Delay</B> time limit. The <B CLASS="GUILABEL">Completion Delay</B> setting allows users a specified amount of time to complete items once they are dragged and dropped into a container, before a Notification is sent out. For example, if the Activity Schedule is set to check for incomplete items at 1:00 P.M., and the <B CLASS="GUILABEL">Completion Delay</B> is set to 30 minutes, items that are added between 12:30 P.M. and 1:00 P.M. will be included in the next notification time specified in the <B CLASS="GUILABEL">Activity Schedule</B>.</P>
+<P><A NAME="TMPID698"></A>By default, this event runs every five minutes each day. This setting can be changed in the <B CLASS="GUILABEL">Activity Schedule</B> section.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN430"></A><B>Clear Old Messages</B></P>
+<P class="nr1"><A NAME="TMPID703"></A>Deletes notification messages older than thirty days.</P>
+<P><A NAME="TMPID704"></A>This event runs every five minutes, each day. The schedule is not configurable for this event.</P>
+<P><A NAME="TMPID705"></A>The old messages will be cleared on the days and times specified on the Midnight Event Producer's <B CLASS="GUILABEL">Activity Schedule</B>.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN437"></A><B>Expire Passwords</B></P>
+<P class="nr1"><A NAME="TMPID710"></A>Disables the accounts of users whose passwords have expired. This ensures that a new password cannot be specified at the user's next attempt to sign-in to Content Server.</P>
+<P><A NAME="TMPID712"></A>By default, this event runs at midnight each day. This setting can be changed in the <B CLASS="GUILABEL">Activity Schedule</B> section.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN444"></A><B>Monitor Password Expiration</B></P>
+<P class="nr1"><A NAME="TMPID717"></A>Tracks the password expiration status for all users and notifies users by email when their passwords are about to expire. You enter the number of days before the password expires that you want the first email notification sent. You also enter the number of days that you want the email notifications to run. </P>
+<P><A NAME="TMPID718"></A>By default, this event runs at midnight each day. The schedule is not configurable for this event.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN449"></A><B>Failed Log-in Notification</B></P>
+<P class="nr1"><A NAME="TMPID722"></A>Notifies the administrator if the number of failed log-in attempts within a configurable time span exceeds a configurable threshold.</P>
+<P><A NAME="TMPID723"></A>By default, this event runs at midnight each day. This setting can be changed in the <B CLASS="GUILABEL">Activity Schedule</B> section.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN455"></A><B>Consumer Five Minute Agent</B></P>
+<P class="nr1"><A NAME="TMPID728"></A>This event is the same as the Midnight Event Producer except that it runs on a different schedule. This event is used when you need to run tasks more often than once daily.</P>
+<P class="before-ul"><A NAME="TMPID729"></A>There is an API for developers to register handlers with this event in order to run those handlers each time this event runs. In a default system setup, the handlers include:</P><A NAME="AEN460"></A>
+<UL>
+<LI class="vlli">
+<P><A NAME="AEN461"></A><B>ClearCache</B></P>
+<P class="nr1"><A NAME="TMPID733"></A>which clears old entries from the LLCache table.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN464"></A><B>DistributedAgent Controller</B></P>
+<P class="nr1"><A NAME="TMPID736"></A>which monitors the worker queues for stale tasks and marks them for retry or cancel as appropriate. </P></LI>
+<LI class="vlli">
+<P><A NAME="AEN467"></A><B>PollClosed</B></P>
+<P class="nr1"><A NAME="TMPID739"></A>which reports on polls that have been closed since the last run.</P></LI></UL>
+<P><A NAME="TMPID740"></A>By default, this event runs every five minutes each day. This setting can be changed in the <B CLASS="GUILABEL">Activity Schedule</B> section.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN472"></A><B>Transfer Notification Events</B></P>
+<P class="nr1"><A NAME="TMPID745"></A>If Notifications is enabled and properly configured, this event moves information from the <TT CLASS="LITERAL">NotifyEvents</TT> database table to the <TT CLASS="LITERAL">LLEventQueue</TT> table for processing. This is a step in the processing of Content Server Notifications.</P>
+<P><A NAME="TMPID749"></A>By default, this event runs every five minutes each day. You can change the default behavior by configuring the <B CLASS="GUILABEL">Activity Schedule</B> section.</P>
+<P><A NAME="TMPID751"></A>In the <B CLASS="GUILABEL">Excluded Nodes</B>, you can exclude specific items and their children from Notifications. This is useful when performing bulk imports to avoid a large number of Notifications. : A.  B.  C. </P>
+<DIV title="To exclude Node ID from Notifications:" CLASS="PROCEDURE">
+<P><B>To exclude Node ID from Notifications:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID756"></A>On the Content Server Administration page, click <B CLASS="GUILABEL">Configure Scheduled Activities</B> in the <B CLASS="GUILABEL">Notification Administration</B> section.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID760"></A>On the <B CLASS="GUILABEL">Configure Scheduled Activities</B> page, select the <B CLASS="GUILABEL">Enable Node Exclusion</B> check box in the <B CLASS="GUILABEL">Excluded Nodes</B> subsection of the <B CLASS="GUILABEL">Transfer Notification Events</B> section.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID766"></A>In the Excluded Nodes box, type the data IDs of the items that you want to exclude from Notification Events. Separate multiple data IDs with commas. </P>
+<table CLASS="TIP">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="TIP"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID768"></A><B CLASS="TIP">Tip: </B><BR>You can use the data IDs of Folders and the items inside of the folder will also be excluded from Notification Events.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI></OL></DIV></LI>
+<LI class="vlli">
+<P><A NAME="AEN499"></A><B>Consumer Event Processor</B></P>
+<P class="nr1"><A NAME="TMPID772"></A>Developers should no longer subclass this process as it is a deprecated agent.</P></LI>
+<LI class="vlli">
+<P><A NAME="AEN503"></A><B>Node Event Processor</B></P>
+<P class="nr1"><A NAME="TMPID776"></A>Converts individual node events to message events for each user interested in that node/event combination. You can define the number of instances of the Node Event Processor that run concurrently.</P>
+<P><A NAME="TMPID777"></A>By default, this event runs every five minutes each day. This setting can be changed in the <B CLASS="GUILABEL">Activity Schedule</B> section.</P>
+<P><A NAME="TMPID779"></A>An additional option to enable or disable permission checks for notifications to groups and roles is available. The parameter is enabled by default, which means permissions are checked every time a scheduled activity occurs. If the parameter is disabled, the additional permission check only occurs when the interested user is an individual user; the check is skipped when the interested user is a Role (for example, for Projects or Communities). </P></LI>
+<LI class="otModuleHide if-llesrcm-h-agd-showblock vlli" >
+<P class="nr1"><A NAME="AEN510"></A><A NAME="TMPID781"></A><B CLASS="GUILABEL">Disposition Search Events</B></P>
+<P><A NAME="TMPID783"></A>This event is used to enable Disposition Searches in Records Management. This event is disabled by default.</P></LI>
+<LI class="otModuleHide if-llesrcm-h-agd-showblock vlli" >
+<P class="nr1"><A NAME="AEN514"></A><A NAME="TMPID785"></A><B CLASS="GUILABEL">Search Enabled Holds</B></P>
+<P><A NAME="TMPID787"></A>When this event is enabled, Hold Queries in Records Management will automatically run according to the days and times you specify in the <B CLASS="GUILABEL">Activity Schedule</B> section.</P></LI>
+<LI class="otModuleHide if-llesrcs-h-agd-showblock vlli" >
+<P class="nr1"><A NAME="AEN519"></A><A NAME="TMPID790"></A><B CLASS="GUILABEL">Security Clearance Defined Rules</B></P>
+<P><A NAME="TMPID792"></A>When this event is enabled, Security Clearance Defined Rules will be executed on the days and times you specify for the agent, as long as the item’s Date to Perform value has been reached. The Date to Perform value is specified when the Defined Rule is created. When Defined Rules are executed, the item’s Supplemental Markings and Security Clearance levels are updated according to Defined Rule. </P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF10"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID794"></A><B CLASS="NOTE">Note: </B><BR>Users can customize the three default schedules when they configure their own personal Notification schedule.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wbn-config-sched-activ-p.htm" revision="">To Configure Scheduled Activities</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

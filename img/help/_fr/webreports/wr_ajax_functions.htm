@@ -1,0 +1,568 @@
+<!-- wr_ajax_functions.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>AJAX Function Reference</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_ajax_functions.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+	var header = new AdminHeader();
+	header.title1 = 'Advanced Information';
+	header.title2 = 'AJAX Function Reference';
+	header.draw();
+</SCRIPT>
+
+<p class="body">
+
+Ajax.js contains a list of useful functions that utilize AJAX (Asynchronous JavaScript and XML) technology which can be used within WebReports. One of
+the benefits of AJAX is its ability to bring information to the browser in small pieces, as the user requests it, and the ability to do this without redrawing
+the entire page. The functions described below provide this ability as well as aid in the design of powerful web-based applications using WebReports and AJAX
+technology. Please read on for additional information of the functions, required and optional parameters, and some detailed examples using the functions in ajax.js.</p>
+
+<p class="body">
+<u><SPAN class="gui">Quick Links:</SPAN></u><br><br>
+<b>AJAX Library Functions</b>
+<ul><li><a href="#getURLParmFunc">getURLParm( parm )</a></li>
+	<li><a href="#updatePageFunc">updatePage( URLreference, HTMLelementID, optionalParms, JSfunction )</a></li>
+	<li><a href="#getJSDataFunc">getJSData( URLreference, optionalParms, JSfunction )</a></li>
+	<li><a href="#sendReqFunc">sendRequest( URLreference, responseFunction, reqType, optionalParms )</a></li>
+	<li><a href="#executeWRSvcFunc">executeWRService( serviceType, responseTarget, parmList, responseType, getPost, secure )</a></li>
+</ul>
+</p>
+<p class="body">
+<b>Examples using the AJAX Functions</b>
+<ul><li><a href="#example1">Example 1 - getURLParm( parm )</a></li>
+	<li><a href="#example2">Example 2 - Dynamically counting filter hits as the user types (getJSData Example)</a></li>
+	<li><a href="#example3">Example 3 - sendRequest( URLreference, responseFunction, reqType, optionalParms )</a></li>
+	<li><a href="#executeWR1">Example 4 - executeWRService( serviceType, responseTarget, parmList, responseType, getPost )</a></li>
+	<li><a href="#executeWR2">Example 5 - executeWRService( serviceType, responseTarget, parmList, responseType, getPost )</a></li>
+	<li><a href="#executeWR3">Example 6 - executeWRService() with additional request for a Secure Token</a></li>
+</ul>
+</p><br>
+
+<p class="body"><u><SPAN class="gui">AJAX Function Reference Guide:</SPAN></u>
+
+<p class="body">
+The <b>ajax.js</b> file packaged with WebReports includes a list of functions designed to aid in the use of WebReport services. The ajax.js file is accessed using a SCRIPT include like this:
+</p>
+<PRE>
+&lt;SCRIPT SRC="/&lt;support dir&gt;/webreports/library/ajax.js"&gt;&lt;/SCRIPT&gt;
+</PRE>
+<p class="body">
+If this file is being included into a WebReport or ActiveView the LIBPATH tag can be used like this:
+</p>
+<PRE>
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+</PRE>
+
+<p class="body">
+<b>Note:</b>&nbsp;&nbsp;When using <a href="wr_tag_syntax.htm#webreportexcludehtml">[LL_WEBREPORT_EXCLUDEHTML /]</a> in a WebReport that is also using the AJAX Library Functions the following variable will
+need to be defined in a script block. The reason is the 'baseURL' variable is defined within the Content Server page code that is inserted into the
+WebReport output but this is excluded by the tag.  The following code will ensure this variable is defined and prevent the AJAX library from breaking.
+</p>
+<pre>
+&lt;script&gt;
+	baseURL = "[LL_REPTAG_URLPREFIX /]";
+&lt;/script&gt;
+</pre>
+
+<p class="body">
+A description of the available functions in ajax.js and its parameters is provided below:
+</p>
+
+<p class="body" id="getURLParmFunc">
+<b>getURLParm( parm )</b>
+<ul><li>Returns the value that is associated with the parameter name in the current URL.</li>
+	<li>Takes arguments: parm (<b>required</b>)</li>
+		<ul>
+			<li>parm - is a String and a valid parameter name in the current URL.</li>
+		</ul>
+	<li>If the parameter is not found an alert message is displayed and 'undefined' is returned.</li>
+	<li>Any parameter from the current URL can be retrieved using the 'getURLParm' function.</li>
+	<li>See the getURLParm <a href="#example1">example</a> below.</li>
+</ul>
+</p>
+
+<p class="body" id="updatePageFunc">
+<b>updatePage( URLreference, HTMLelementID, optionalParms, JSfunction )</b>
+<ul><li>This function either invokes a specified URL or invokes a WebReport that will update an HTML component on the current page. The target WebReport will usually return a set of HTML to be inserted into an HTML component in the current page.</li>
+	<li>Takes arguments: URLreference (<b>required</b>), HTMLelementID (<b>required</b>), optionalParms (<b>optional</b>), JSfunction (<b>optional</b>)</li>
+		<ul>
+			<li>URLreference (number/String) - either a URL or the numeric objectId (dataId) or the nickname (String) of a WebReport. If the nickname is numeric then it should be enclosed in quotes.</li>
+			<li>HTMLelementID - a String that matches the ID of an HTML element in the current page that is to be updated by the target WebReport.</li>
+			<li>optionalParms (String) - any parameters to be passed to the target WebReport being executed. optionalParms has the format: '&parm1=value1,&parm2=value2,etc...'</li>
+			<li>JSfunction - an optional function that will be executed after the specified HTML component has been updated. This function will be passed the HTML object (as referenced by HTMLelementID) as a parameter.</li>
+		</ul>
+	<li>HTMLelementID represents any HTML element where the attribute <b>innerHTML</b> is writable and can be used.</li>
+	<li>Additonal information can be passed to JSfunction as parameters. Please see example below.</li>
+	<li>If you run the target WebReport on its own, everything you see in the browser will be returned to the invoking WebReport. For this reason, remember to use <b>[LL_WEBREPORT_EXCLUDEHTML /]</b> to turn off the standard Content Server headers, footers and include files.</li>
+	<li>If an error is encountered a descriptive alert message will appear in the browser.</li>
+	<li>See the updatePage <a href="wr_ajax_functions.htm#case1">example</a> in the Detailed Examples > Ajax section.</li>
+</ul>
+</p>
+
+<p class="body" id="getJSDataFunc">
+<b>getJSData( URLreference, optionalParms, JSfunction )</b>
+<ul><li>This function either invokes a specified URL or invokes a WebReport. The function expects that in either case JavaScript code will be returned to be executed in the calling web page.</li>
+	<li>Takes arguments: URLreference (<b>required</b>), optionalParms (<b>optional</b>), JSfunction (<b>optional</b>)</li>
+		<ul>
+			<li>URLreference (number/String) - either a URL or the numeric objectId (dataId) or the nickname (String) of the WebReport. If the nickname is numeric then it should be enclosed in quotes.</li>
+			<li>optionalParms (String) - any parameters to be passed to the target WebReport being executed. optionalParms has the format: '&parm1=value1,&parm2=value2,etc...'</li>
+			<li>JSfunction - an optional function that will be invoked after any JavaScript has been returned by the target WebReport and executed. Any JavaScript that needs to execute only after a response has been returned should be called from here.</li>
+		</ul>
+	<li>Additonal information can be passed to JSfunction as parameters.</li>
+	<li>If an error is encountered a descriptive alert message will appear in the browser.</li>
+	<li>See the getJSData <a href="#example2">example</a> below.</li>
+</ul>
+</p>
+
+<p class="body" id="sendReqFunc">
+<b>sendRequest( URLreference, responseFunction, reqType, optionalParms )</b>
+<ul><li>This is a generic function that can send an AJAX request to invoke a WebReport. This function is also used by both the updatePage and getJSData functions.</li>
+	<li>Takes arguments: URLreference (<b>required</b>), responseFunction (<b>required</b>), reqType (<b>optional</b>), optionalParms (<b>optional</b>)</li>
+		<ul>
+			<li>URLreference (number/String) - either a URL or the numeric objectId (dataId) or the nickname (String) of the WebReport. If the nickname is numeric then it should be enclosed in quotes.</li>
+			<li>responseFunction (function) - function to be executed when the AJAX request returns.</li>
+			<li>reqType ('string','json','xml') - The type of request to send to the web server (Content Server). Valid types are either 'GET' or 'POST'. The default value is 'GET'.</li>
+			<li>optionalParms (String) - any parameters to be passed to the target WebReport being executed. optionalParms has the format: '&parm1=value1,&parm2=value2,etc...'</li>
+		</ul>
+	<li>If an error is encountered a descriptive alert message will appear in the browser.</li>
+	<li>See the sendRequest <a href="#example3">example</a> below.</li>
+</ul>
+</p>
+
+<p class="body" id="executeWRSvcFunc">
+<b>executeWRService( serviceType, responseTarget, parmList, responseType, getPost, secure )</b>
+<ul><li>Function used to execute a WR service and provides a way of retrieving information from the WebReports engine. (E.g. Provide tag or sub-tags in a request and returns the resulting data) </li>
+	<li>Takes arguments: serviceType (<b>required</b>), responseTarget (<b>required</b>), parmList (<b>optional</b>), responseType (<b>optional</b>), getPost (<b>optional</b>), secure (<b>optional</b>)</li>
+		<ul>
+			<li>serviceType - This parameter expects a String with one of the supported servicetypes for running a WR service. (E.g. 'gettagdata', 'getstatictags', 'liststatictags' - see more details <a href="wr_services_info.htm#serviceTypeDesc">here</a>) </li>
+			<li>responseTarget - This parameter expects either a JavaScript function that has been created by the developer, or a String representing the ID of an HTML object where the returned data should be inserted. If a JavaScript function is created (and passed to this parameter) it should be written to accept the http_request as a parameter. For example:<br><br>
+
+<PRE>
+function myHandlerFunction(httpRequest) {
+	alert('the response was: '+ httpRequest.responseText);
+}
+executeWRService( 'gettagdata', myHandlerFunction, "&statictag=userid &subtags=USERINFO:GROUPID", 'json')
+</PRE>
+			</li>
+			<li>parmList (String) - This parameter is used to specify a String containing additional parameters to be added to the URL as required by each servicetype. For example, the <b>gettagdata</b> service type uses a combination of &tagdata, &statictag or &subtags as per the syntax described in the table <a href="wr_services_info.htm#parmListDesc">here</a>. The parms should be specified in the &name=value type format. E.g. <b>"&tagdata=12345&subtags=CAT:myCategory:attr1:display"</b></li>
+			<li>responseType ('string','json','xml') - This parameter expects a string with one of the supported response types for WR services (E.g. '<b>string</b>', '<b>json</b>', '<b>xml</b>' - as described in the table <a href="wr_services_info.htm#responseTypeDesc">here</a>). If not specified, it defaults to <b>json</b></li>
+			<li>getPost ('GET','POST') - This parameter can be used to specify whether the AJAX request should be GET or POST. If omitted, the POST method is used.</li>
+			<li>secure - (true/false) - This parameter can be used to specify whether a secure token should be requested first and then added to the actual request. If omitted, this feature is not used.</li>
+		
+		</ul>
+	<li>If an error is encountered a descriptive alert message will appear in the browser.</li>
+	<li>See the executeWRService <a href="#executeWR1">examples</a> below. (Example 4 & 5)</li>
+</ul>
+</p>
+<br>
+<p class="body"><u><SPAN class="gui">Examples using the AJAX Functions:</SPAN></u>
+
+<p class="gui" id="example1">
+Example 1 - getURLParm( parm )
+</p>
+<p class=body>
+Simple example demonstrating how to use the <b>getURLParm</b> function. In this example, you can simply copy and paste the code below in a WebReport. No Data Source Type needs to be specified (E.g. no LiveReport needs to be created) for the
+WebReport. For this example the current URL will have the form: '<b>/Livelink971/livelink.exe?func=ll&objId=139061&objAction=RunReport&nexturl=%2FLivelink971%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D138743%26objAction%3Dbrowse%26sort%3Dname</b>'.
+</p>
+<PRE>
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+
+&lt;TABLE&gt;
+&lt;!-- Display values returned from getURLParm into the HTML page --&gt;
+&lt;TR&gt;
+	&lt;TD&gt;objId parameter: &lt;/TD&gt;
+	&lt;TD id="objectId"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+	&lt;TD&gt;objAction parameter: &lt;/TD&gt;
+	&lt;TD id="objectAction"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+	&lt;TD&gt;nexturl parameter: &lt;/TD&gt;
+	&lt;TD id="nextUrlParm"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+	&lt;TD&gt;Invalid parameter: &lt;/TD&gt;
+	&lt;TD id="invalidParm"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;SCRIPT&gt;
+	// Example calls to getURLParm on the current URL
+	// Populate the above HTML
+	document.getElementById('objectId').innerHTML = getURLParm('objId');
+	document.getElementById('objectAction').innerHTML = getURLParm('objAction');
+	document.getElementById('nextUrlParm').innerHTML = unescape( getURLParm('nexturl') );
+	document.getElementById('invalidParm').innerHTML = getURLParm('badParm');		// alert message is displayed and undefined is returned.
+
+&lt;/SCRIPT&gt;
+</PRE>
+
+<p class="body"><b>WebReport Output:</b><br></p>
+<img src="./geturlparmoutput.png" border=0><br><br><br>
+
+
+<p class="gui" id="example2">
+Example 2 - Dynamically counting filter hits as the user types (getJSData Example)
+</p>
+<p class=body>
+This example is an alternative approach to implementing <a href="wr_ajax_functions.htm#case2">Case 2 - Dynamically counting filter hits as the user types</a> example found in Detailed Examples > Ajax.
+In this approach we use <b>getJSData</b> function to retrieve the number of matches whereas the Case 2 example explicitly sends the AJAX request from the WebReport. Both approaches are acceptable and a matter of preference
+to the developer.<br><br>
+
+To recap: This example demonstrates a filter field that, as the user types, will be used to automatically update a HTML element showing how many results to expect when the query runs. This type of
+functionality is particularly useful when dealing with large result sets as the user knows how many results to expect before issuing the query. It can also be a great time saver where network latency is
+impacting performance.<br><br>
+
+Create the two LiveReports exactly as specified in <a href="wr_ajax_functions.htm#case2">Case 2 - Dynamically counting filter hits as the user types</a>. Next add a new WebReport and link it to the first
+LiveReport you created. Copy and paste the code below into the WebReport.
+</p>
+<PRE>
+[LL_WEBREPORT_EXCLUDEHTML /]
+
+[LL_WEBREPORT_STARTROW /]
+	hits = '[LL_REPTAG=hits /]';
+[LL_WEBREPORT_ENDROW /]
+</PRE>
+
+<p class=body>
+The [LL_WEBREPORT_EXCLUDEHTML /] tag excludes all the HTML, JavaScript and Style definitions that Content Server uses to wrap any given page. This tag is necessary when using the <b>getJSData</b> function.
+This WebReport will return the count information as specified by the column 'hits' and set a JavaScript variable. Please note: It is not necessary to set the destination mime type to text/xml as stated in Case 2.<br><br>
+
+Now we need to call this WebReport from where the user will run their query. Create a second WebReport and use the second LiveReport created as its data source. Edit the reportview so that you have something like this:
+</p>
+<PRE>
+&lt;!-- Include the AJAX library functions --&gt;
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+
+&lt;SCRIPT&gt;
+	// This variable 'hits' is updated when the target WebReport is called and executed by getJSData
+	var hits = "";
+
+	function updateHits(myFilter) {
+		// $TargetWR is constant and WebReportID of the first WebReport
+		// displayHits is the JSfunction called after any JavaScript has been returned and executed from the getJSData function
+		getJSData([LL_REPTAG_$TargetWR /], '&inputLabel1=' + myFilter, displayHits);
+	}
+
+	function displayHits() {
+		// Update the count info in the HTML
+		document.getElementById("hitsText").innerHTML = "Matches: " + hits;
+	}
+&lt;/SCRIPT&gt;
+
+[LL_REPTAG_MYID NODEINFO:NAME /]
+[LL_REPTAG_MYID LLURL:FUNCTIONMENU /]
+[LL_REPTAG_MYID LLURL:UPALEVEL /]
+&lt;BR&gt;
+
+&lt;INPUT TYPE=TEXT ID="MYFILTER" ONKEYUP="updateHits(this.value);"&gt;
+&lt;INPUT TYPE=BUTTON VALUE="Run" ONCLICK="document.location='[LL_REPTAG_MYID LLURL:REPORT /]&inputLabel1=' + document.getElementById('MYFILTER').value"&gt;
+
+&lt;DIV ID="hitsText"&gt;Updates when you type&lt;/DIV&gt;
+&lt;TABLE&gt;
+&lt;TR&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME1 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;/TR&gt;
+
+[LL_WEBREPORT_STARTROW /]
+
+&lt;TR&gt;
+&lt;TD&gt; [LL_REPTAG_1 /]&lt;/TD&gt;
+&lt;TD&gt; [LL_REPTAG_2 /]&lt;/TD&gt;
+&lt;TD&gt; [LL_REPTAG_3 /]&lt;/TD&gt;
+&lt;TD&gt; [LL_REPTAG_4 /]&lt;/TD&gt;
+&lt;TD&gt; [LL_REPTAG_5 /]&lt;/TD&gt;
+&lt;/TR&gt;
+
+[LL_WEBREPORT_ENDROW /]
+
+&lt;/TABLE&gt;
+</PRE>
+
+<p class="body">
+<b>Notes:</b>
+<ul>
+	<li>This report uses a constant, <b>TargetWR</b>, which needs to be defined on the constants tab by setting the object type to Content Server and browsing for the first WebReport created above. </li>
+	<li>This second WebReport also expects a parameter which, unless the report developer states otherwise, will cause a prompt when the report runs. The developer could enter the parameter name, <b>inputLabel1</b> in this case, along with an empty default value and the prompt field set to no. This will have the effect of causing all the results to be returned initially. Obviously other values could be used.</li>
+	<li>The code above has been cut down to a minimum to demonstrate principles and techniques. It takes no account of error paths, browsers other than Microsoft Internet Explorer, or Content Server permissions. These things can all be easily added by the developer.</li>
+</ul>
+</p><br>
+
+
+<p class="gui" id="example3">
+Example 3 - sendRequest( WebReportId, responseFunction, reqType, optionalParms )
+</p>
+<p class=body>
+This is a simple example demonstrating the <b>sendRequest</b> function. In this example, we use sendRequest to call a WebReport to retrieve a list of objects in the Content Server DTree table that start with 'Livelink'. The results are
+tabulated and returned to the calling (Main) WebReport where they are displayed to the user. Please note: sendRequest can be used to call any WebReport and retrieve any report data that is relevant to your business application. For
+simplicity sake we are retrieving report data from the DTree table.<br><br>
+
+First, create a very simple LiveReport (LiveReport Extensions must be installed) which retrieves a list of objects from DTree based on its name. Something like:
+</p>
+<PRE>
+	select * from dtree where Name like '%1%'
+</PRE>
+<p class=body>
+Define the parameter, <b>%1</b>, as type <b>insertString</b>. The LiveReport should prompt for user input.<br><br>
+
+Next add a new WebReport that uses the above LiveReport as it's data source. This will be the target WebReport which tabulates the report data and returns it to the calling WebReport. Copy and paste the code below into the WebReport:
+</p>
+<PRE>
+&lt;!-- To prevent the standard Content Server headers, footers, and include files to be shown in the page --&gt;
+[LL_WEBREPORT_EXCLUDEHTML /]
+
+&lt;TABLE&gt;
+&lt;!-- Display column names --&gt;
+&lt;TR&gt;
+	&lt;TD&gt;DataID&lt;/TD&gt;
+	&lt;TD&gt;Name&lt;/TD&gt;
+	&lt;TD&gt;Modify Date&lt;/TD&gt;
+	&lt;TD&gt;SubType&lt;/TD&gt;
+&lt;/TR&gt;
+
+[LL_WEBREPORT_STARTROW /]
+&lt;TR CLASS="[LL_REPTAG_ROWNUM ODDEVEN:Browserow1:Browserow2 /]" VALIGN="CENTER" NOWRAP ALIGN="LEFT"&gt;
+	&lt;TD&gt;&nbsp;[LL_REPTAG=DataID /]&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;[LL_REPTAG=Name /]&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;[LL_REPTAG=ModifyDate DATE:"SHORT" /]&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;[LL_REPTAG=SubType /]&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_ENDROW /]
+&lt;/TABLE&gt;
+</PRE>
+<p class=body>
+As you can see, the report data is tabulated using WebReports. The <b>[LL_WEBREPORT_EXCLUDEHTML /]</b> is necessary and excludes all the HTML, JavaScript and Style definitions that Content Server uses to wrap any given page.
+<br><br>
+Finally, we can go ahead and create the calling (Main) WebReport which calls sendRequest. For this example, we don't need to specify a data source for this WebReport since we are only demonstrating the sendRequest
+functionality. Copy and paste the code below into the Main WebReport:
+</p>
+<PRE>
+&lt;B&gt;[LL_REPTAG_MYID NODEINFO:NAME /]&lt;/B&gt;
+[LL_REPTAG_MYID LLURL:FUNCTIONMENU /]&nbsp;
+[LL_REPTAG_MYID LLURL:UPALEVEL /]&lt;BR&gt;&lt;BR&gt;
+
+&lt;!-- Include the AJAX library functions --&gt;
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+
+&lt;SCRIPT&gt;
+	var optHandlerFunc = function () { JSfunction() };
+	var handlerFunc = function () { executeJS( http_request, optHandlerFunc ) };
+
+	// $TargetWR is a constant and objectID of the target WR. Here we pass the name 'Livelink' as a parameter to the target WR.
+	sendRequest([LL_REPTAG_$TargetWR /], handlerFunc, '&inputLabel1=Livelink');
+
+	// Handle the response to sendRequest
+	function executeJS(http_request, JSfunction) {
+		if (http_request.readyState == 4) {
+			if (http_request.status == 200) {
+				// Display the results from the target WR in the current page
+				document.getElementById('showDocs').innerHTML = http_request.responseText;
+
+				if ( JSfunction ) {
+					// execute any user passed function
+					JSfunction();
+				}
+			} else {
+				alert('There was a problem with the request.');
+			}
+		}
+	}
+
+	function JSfunction() {
+		// Add anything else here after the results are displayed
+	}
+&lt;/SCRIPT&gt;
+
+&lt;BR&gt;
+[LL_WEBREPORT_STARTROW /][LL_WEBREPORT_ENDROW /]
+&lt;TABLE&gt;
+&lt;TR&gt;
+	&lt;TD&gt;&lt;b&gt;List of objects in DTree that start with 'Livelink' - using the AJAX sendRequest function&lt;/b&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+	&lt;TD id="showDocs"&gt;&amp;nbsp;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+</PRE>
+<p class=body>
+Please note, <b>$TargetWR</b> needs to be defined on the constants tab of the Main WR by setting the object type to Content Server and browsing for the target WR. Also,
+any additional JavaScript can be added by the developer to <b>JSfunction</b> after the results have been returned and displayed. The report table data is
+inserted in the innerHTML of the TD tag 'showDocs' shown above.  The output of Main WR is displayed below:
+</p>
+<p class="body"><b>Main WR Output:</b><br></p>
+<img src="./sendrequestoutput.png" border=0><br><br><br>
+
+
+<p class=gui id="executeWR1">
+Example 4 - executeWRService( serviceType, responseTarget, parmList, responseType, getPost )
+</p>
+<p class=body>
+This example shows two different ways to call the <b>gettagdata</b> service using the predefined function: <b>executeWRService</b>. In one instance we have written a special function called: <b>handleServiceJSON</b> which is designed to "eval"
+the JSON data (convert the JSON data to Javascript objects) and use the resulting JavaScript structures to display the result of the request. In this request we are using <b>&tagdata=</b> with a data ID and then using the
+<b>NODEINFO:NAME</b> sub-tag variation to lookup the name of an item. Note that as we requested a responseType of '<b>json</b>', the resulting data structure includes a field called "error" which indicates whether we have valid
+data or not.
+In the <b>handleServiceJSON</b> function, we use this field to determine whether to alert an error or to display the content. In the second instance (the get URL button) we simply pass the name of an HTML object on the page.
+When the request returns from Content Server, it automatically inserts the resulting text into the specified HTML component. Because we simply want text dumped into the page (and we don't plan on analyzing the response for
+errors or handling it programmatically) the reponseType of '<b>string</b>' was selected in this example.
+</p>
+<PRE>
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+&lt;script&gt;
+
+function handleServiceJSON(request) {
+     var rt = request.responseText;
+     var jsvar = eval('(' + rt + ')')
+     var error = jsvar.error;
+     var content = jsvar.content;
+     if (error == 'true') {
+          alert('error text is: ' + content);
+     } else {
+          alert('Object name is:' + content);
+     }
+}
+
+function getName(did){
+     did = document.getElementById('dataid').value;
+     getNameParms = '&tagdata=' + did + '&subtags=nodeinfo:name';
+     executeWRService( 'gettagdata', handleServiceJSON,getNameParms,'json');
+}
+
+function showURL(did){
+     did = document.getElementById('dataid').value;
+     getURLparms = '&tagdata=' + did + '&subtags=LLURL:OPEN';
+     executeWRService('gettagdata', 'displayname', getURLparms,'string');
+}
+&lt;/script&gt;
+
+&lt;input type=text value="[LL_REPTAG_MYID /]" ID=dataid&gt;&amp;nbsp;&amp;nbsp;URL:&amp;nbsp;&lt;SPAN ID=displayname&gt;&lt;/SPAN&gt;&lt;br&gt;
+&lt;input type=button value="Get Item Name" onclick=getName()&gt;&amp;nbsp;&lt;input type=button value="Get URL" onclick=showURL()&gt;
+</PRE>
+
+<p class=gui id="executeWR2">
+Example 5 - executeWRService( serviceType, responseTarget, parmList, responseType, getPost )
+</p>
+<p class=body>
+This example shows the use of the <b>getstatictags</b> service. The service is invoked using the <b>executeWRService</b> function (in ajax.js). besides using the identifier '<b>getstatictags</b>' to select the correct service,
+a function called <b>handleStaticTags</b> (specifically written for this sample application) is passed to the <b>executeWRService</b> function which in turn, sets up a request to Content Server. The request is setup so that when the
+request returns from Content Server, the <b>handleStaticTags</b>
+function is called. In this example, we've written code in <b>handleStaticTags</b> to take the JSON structure from the request.responseText, convert it to a JavaScript structure and then traverse this structure in order to show
+all the static tag values that were returned from Content Server.
+</p>
+
+<PRE>
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+&lt;script&gt;
+
+function handleStaticTags(request) {
+
+     var rt = request.responseText;
+     var jsvar = eval('(' + rt + ')')
+     var error = jsvar.error;
+     var content = jsvar.content;     // This should be an array of tags
+
+     if (error) {
+          alert('error text is: ' + content);
+     } else {
+          tempStr = '';
+          for (tag in content) {
+               tempStr += tag + ' = ' + content[tag] + '&lt;br&gt;';
+          }
+          document.getElementById('display').innerHTML = tempStr;
+
+     }
+}
+
+function getStaticTags(){
+
+     executeWRService( 'getstatictags', handleStaticTags,'json');
+}
+
+&lt;/script&gt;
+&lt;input type=button value="Get Static Tags" onclick=getStaticTags()&gt;
+&lt;hr&gt;
+&lt;DIV ID="display"&gt;
+
+&lt;/DIV&gt;
+</PRE>
+
+
+<p class=gui id="executeWR3">
+Example 6 - executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) with Secure Request Token in CS10<br>
+</p>
+
+<i>Supported in Content Server 10.0 and up.</i>
+
+<p class=body>
+This example is the same as Example 4 above, however it has been secured with the use of a Secure Request Token for the NODEINFO subtag. In WebReports 10.0.1 Update 01, NODEINFO is by default considered a 'secured' 
+subtag and will not run in a WR Service call unless a Secure Request Token has been provided.  To obtain a Secure Request Token (SRT), an additional call must first be made using the <b>getsecureToken</b> function in WR Services (see the '<b>getToken()</b>' function below).  
+This function returns a token, and an additional handler - '<b>handleToken()</b>' in this example - passes the token to the <b>getName()</b> function.  
+<b>getName()</b> has been altered to append the token to the NODEINFO request URL before the executeWRService() call is executed for that subtag.
+</p>
+
+<PRE>
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+&lt;script&gt;
+
+function handleToken(request) {
+     var token = request.responseText;
+     getName(token);
+}
+
+
+function handleServiceJSON(request) {
+     var rt = request.responseText;
+     var jsvar = eval('(' + rt + ')')
+     var error = jsvar.error;
+     var content = jsvar.content;
+     if (error == 'true') {
+          alert('error text is: ' + content);
+     } else {
+          alert('Object name is:' + content);
+     }
+}
+
+
+function getToken(){
+     executeWRService( 'getsecureToken', handleToken,'','string');
+}
+
+function getName(token){
+     did = document.getElementById('dataid').value;
+     getNameParms = '&tagdata=' + did + '&subtags=nodeinfo:name&securerequesttoken=' + token;
+     executeWRService( 'gettagdata', handleServiceJSON,getNameParms,'json');
+}
+
+function showURL(did){
+     did = document.getElementById('dataid').value;
+     getURLparms = '&tagdata=' + did + '&subtags=LLURL:OPEN';
+     executeWRService('gettagdata', 'displayname', getURLparms,'string');
+}
+
+&lt;/script&gt;
+
+&lt;input type=text value="[LL_REPTAG_MYID /]" ID=dataid&gt;&nbsp;&nbsp;URL:&nbsp;&lt;SPAN ID=displayname&gt;&lt;/SPAN&gt;&lt;br&gt;
+&lt;input type=button value="Get Item Name" onclick="getToken()"&gt;&nbsp;&lt;input type=button value="Get URL" onclick=showURL()&gt;
+</PRE>
+
+
+
+<br><br>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Meilleures pratiques de l'importateur d'objet</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-bestpractices-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Object Importer: <NOBR>OpenText Content Server Aide en ligne administrateur</NOBR>';
+          header.title2 = 'Meilleures pratiques de l\'importateur d\'objet';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID623"></A>Cette section fournit une liste des meilleures pratiques, techniques et conseils pour votre configuration de l'importateur d'objet. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-AGNTTHREAD">Utilisation du thread d'agent</A></P>
+<P><A NAME="TMPID628"></A>Lorsque des tâches d'importation fréquentes sont programmées, il peut s'avérer nécessaire de surveiller le thread d'agent pour s'assurer que toutes les activités programmées Content Server sur le site se font rapidement. Dans de rares cas, il peut être conseillé d'affecter un thread d'agent dédié pour programmer les tâches de l'importateur d'objet. Si cela s'avère nécessaire sur votre site, et pour obtenir de l'aide en vue de le configurer, contactez le service d'assistance clientèle OpenText. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-ANCHOR">Ancre</A></P>
+<P><A NAME="TMPID636"></A>Si Object Importer est exécuté à partir de l'ancre, ou du serveur d'indexation/de notifications, vous devrez installer Object Importer sur tous les serveurs du cluster car il a un schéma associé. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CNTRLFILE">Fichier de contrôle</A></P>
+<P><A NAME="TMPID644"></A>Essayez de maintenir le volume à environ 1 000 documents par fichier de contrôle. Il est possible d'accroître le nombre de documents et de dépasser 1 000, mais cela peut avoir un effet négatif sur les performances puisque cela consomme davantage de ressources à la fois sur Content Server et sur le serveur de base de données. Il est possible d'accéder aux fichiers de contrôle et aux fichiers de téléchargement sur des ordinateurs autres que celui sur lequel est installé Content Server, à condition que Content Server puisse y accéder. Toutefois, cela peut ne pas être possible en cas d'incohérence entre les systèmes d'exploitation des ordinateurs, par exemple, si votre système comporte un mélange d'ordinateurs sous Windows et sous Solaris. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-LOADTIME">Durée de chargement</A></P>
+<P><A NAME="TMPID653"></A>La durée de chargement peut être influencée par la quantité de métadonnées ajoutées aux documents, la taille moyenne des documents chargés et l'architecture de votre système. </P>
+<P><A NAME="TMPID657"></A>En fonction de la quantité de métadonnées ajoutées aux documents et de la taille moyenne des documents chargés, la durée moyenne de chargement par document est, dans la plupart des cas, légèrement inférieure à une seconde par document.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-MANOBJIMP">Importations manuelles et importations programmées</A></P>
+<P><A NAME="TMPID660"></A>Il existe une option permettant d'effectuer une importation manuelle, mais elle n'est prévue que pour de petites opérations de test par lot. Pour plus d'information sur l'exécution d'une importation manuelle, consultez la section <span><A HREF="llesoi-manimport-p.htm">Importer manuellement un document</A></span>. </P>
+<P><A NAME="TMPID665"></A>La méthode de prédilection pour les importations de plus grande taille consiste à activer leur programmation et mettre les fichiers de contrôle dans le répertoire de chargement désigné. Lorsqu'une valeur a été saisie dans le champ <B CLASS="guilabel">Répertoire de chargement</B>, les importations <I CLASS="emphasis">doivent</I> avoir lieu à partir de ce répertoire. Pour accéder au champ <B CLASS="guilabel">Répertoire de chargement</B>, cliquez sur <B CLASS="guilabel">Configurer les paramètres du serveur</B> dans la section <B CLASS="guilabel">Configuration du serveur</B> des pages d'administration de Content Server.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-OBJIMPSER">Serveurs de l'importateur d'objet</A></P>
+<P><A NAME="TMPID674"></A>L'ajout de serveurs parallèles réduira la durée générale d'importation nécessaire pour la tâche. En général, Object Importer n'impose pas une trop grande contrainte sur l'instance de Content Server. Object Importer peut s'exécuter sur dix serveurs en parallèle. Il convient donc de le contrôler de façon à s'assurer que les ressources matérielles adéquates sont disponibles, en particulier dans des domaines tels que l'espace disque pour les journaux de la base de données. Dans la plupart des cas, il ne devrait être nécessaire d'exécuter Object Importer que sur un seul serveur. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-OTOIVOTE">OpenText Object Importer et OpenText Explorer</A></P>
+<P class="before-ul"><A NAME="TMPID688"></A>et Utilisez Object Importer lorsque : </P><A NAME="AEN678"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN679"></A><A NAME="TMPID699"></A>Vous avez un plus gros volume de documents.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN681"></A><A NAME="TMPID701"></A>Vous voulez appliquer d'autres métadonnées. Ces dernières peuvent par exemple inclure les catégories et les attributs, les privilèges et le propriétaire. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN683"></A><A NAME="TMPID703"></A>Vous voulez télécharger d'autres types d'objets. Cela peut inclure par exemple des documents composites et des structures de dossier.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-PREPRUN">Préparation à l'exécution de Object Importer</A></P>
+<A NAME="AEN686"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN687"></A><A NAME="TMPID709"></A>Veillez à ce que les utilisateurs et catégories référencés dans le fichier de contrôle de l'importation existent dans Content Server avant le début de l'importation. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN694"></A><A NAME="TMPID716"></A>Assurez-vous de ne pas surcharger les répertoires de destination. Cela affectera en effet la navigation. Vous avez donc tout intérêt à maintenir un nombre d'objets de destination inférieur à 200. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN696"></A><A NAME="TMPID718"></A>Veillez à configurer Object Importer comme indiqué dans <span><A HREF="llesoi-cfg-so.htm">Configuration de l'importateur d'objet</A></span>. Configurer l'importateur d'objet inclut, notamment, de définir les répertoires de l'importateur d'objet et de suivre toute la création de la base de données en vue de créer la table de statut de l'importateur d'objet.</P></LI></OL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-SCHEDAGENT">Agent de programmation</A></P>
+<P><A NAME="TMPID723"></A>Activez un seul agent de programmation par serveur sur lequel l'importateur d'objet est exécuté. Veillez à choisir un agent de programmation différent à exécuter sur chaque serveur. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-SCHEDULE">Programmation</A></P>
+<P><A NAME="TMPID729"></A>Dans la mesure du possible, exécutez Object Importer pendant les heures creuses. Si vous traitez une tâche imposante, il peut être souhaitable de désactiver l'index pendant le chargement. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-UPLOADDIR">Répertoire de chargement</A></P>
+<P><A NAME="TMPID736"></A>Pour accéder au champ <B CLASS="guilabel">Répertoire de chargement</B>, cliquez sur <B CLASS="guilabel">Configurer les paramètres du serveur</B> dans la section <B CLASS="guilabel">Configuration du serveur</B> des pages d'administration de Content Server. </P>
+<P><A NAME="TMPID744"></A>Le répertoire de chargement peut être défini ou désactivé. Lorsque le répertoire de chargement est désactivé, ce qui signifie que le champ <B CLASS="guilabel">Répertoire de chargement</B> est vide, l'importateur d'objet recherche les documents comme indiqué entre les balises <TT CLASS="literal">&lt;file&gt;&lt;/file&gt;</TT> du fichier de contrôle.</P>
+<DIV title="L'importateur d'objet recherche un document 'readme.txt' dans le répertoire 'c:\files\':" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF4"></A><B><IMG title="L'importateur d'objet recherche un document 'readme.txt' dans le répertoire 'c:\files\':" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 2-1 : L'importateur d'objet recherche un document <TT CLASS="filename">readme.txt</TT> dans le répertoire <TT CLASS="filename">c:\files\</TT>:</B></P><A NAME="AEN727"></A>
+<PRE 
+CLASS="screen"
+>&lt;file&gt;c:\files\readme.txt&lt;/file&gt;</PRE
+><IMG title="L'importateur d'objet recherche un document 'readme.txt' dans le répertoire 'c:\files\':" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P><A NAME="TMPID752"></A>Lorsqu'une valeur est spécifiée dans le champ du répertoire de chargement, l'importateur d'objet recherche le document dans le répertoire indiqué. Par conséquent, le fichier de contrôle doit uniquement contenir le nom du fichier et pas le chemin entier.</P>
+<DIV title="L'importateur d'objet recherche un document 'readme.txt' dans le répertoire indiqué dans la page de configuration :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF5"></A><B><IMG title="L'importateur d'objet recherche un document 'readme.txt' dans le répertoire indiqué dans la page de configuration :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 2-2 : L'importateur d'objet recherche un document <TT CLASS="filename">readme.txt</TT> dans le répertoire indiqué dans la page de configuration :</B></P><A NAME="AEN732"></A>
+<PRE 
+CLASS="screen"
+>&lt;file&gt;readme.txt&lt;/file&gt;</PRE
+><IMG title="L'importateur d'objet recherche un document 'readme.txt' dans le répertoire indiqué dans la page de configuration :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

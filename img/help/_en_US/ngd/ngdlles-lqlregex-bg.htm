@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="NGDLLES100502-H-UGD-EN-1">
+<META name="pvScheme" content="010203">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="ngd">
+<META mancondkey="ngdcore-h-ugd -- lleswbb-h-ugd -- ngdcore-ugd -- lleswfp-h-ugd -- llescls-h-ugd -- llesrcm-igd -- lleswat-h-ugd -- llescl-h-ugd -- llesrt-h-ugd -- lleswbd-h-ugd"><title>Working with Regular Expressions Using  Live Query Language  </title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ngdlles-lqlregex-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Searching Using Complex Queries';
+          header.title2 = 'Working with Regular Expressions Using ';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4820"></A>You can use regular expressions in Complex Queries if you enclose them in quotation marks (<TT CLASS="literal">"&nbsp;"</TT>) and precede them with the <TT CLASS="literal">QLREGEX</TT> keyword.</P>
+<P><A NAME="TMPID4823"></A>A regular expression is a set of strings that match certain patterns. To specify these patterns, the special characters $, ^, ., *, +, ?, [, ], (, ), \, function as operators on all remaining ordinary characters. An ordinary character is a simple regular expression that matches a character and nothing else (for example, <TT CLASS="literal">h</TT> matches <I CLASS="emphasis">h</I> and nothing else). To represent a special character as an ordinary character, precede it by a backslash (\). For example, <TT CLASS="literal">\$</TT> matches <I CLASS="emphasis">$</I>.</P>
+<P class="before-ul"><A NAME="TMPID4828"></A>The following guidelines describe how to use regular expressions most effectively:</P><A NAME="AEN4486"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4487"></A><A NAME="TMPID4831"></A>When used together with the <TT CLASS="literal">QLREGEX</TT> keyword in a search, the specified regular expression is found anywhere within a word in an item. For example, <TT CLASS="literal">QLREGEX "cat"</TT> finds items that contain at least one word with <I CLASS="emphasis">cat</I> in it, such as <I CLASS="emphasis">cat</I>, <I CLASS="emphasis">category</I>, <I CLASS="emphasis">concatenate</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4495"></A><A NAME="TMPID4839"></A>You can link any two regular expressions (<TT CLASS="literal">&lt;<I CLASS="varname">x</I>></TT> and <TT CLASS="literal">&lt;<I CLASS="varname">y</I>></TT>) to form a regular expression that matches a string (if <TT CLASS="literal">&lt;<I CLASS="varname">x</I>></TT> matches the beginning of that string and <TT CLASS="literal">&lt;<I CLASS="varname">y</I>></TT> matches the rest of the string. For example, <TT CLASS="literal">h\$</TT> matches <I CLASS="emphasis">h$</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4507"></A><A NAME="TMPID4851"></A>Using the <TT CLASS="literal">QLREGEX</TT> keyword with regular expressions in phrase queries is almost always less efficient than using the <TT CLASS="literal">OR</TT> keyword to construct the same Query, due to the processing operations required for regular expressions.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4511"></A><A NAME="TMPID4855"></A>Constraining and narrowing searches saves time, especially in prefix searches. For example, to find 1995 part numbers that begin with <I CLASS="emphasis">d</I>, a search using <TT CLASS="literal">QLREGEX "^d"</TT> takes longer than a search using <TT CLASS="literal">QLREGEX "^d1995"</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4516"></A><A NAME="TMPID4860"></A>Avoid regular expression searches on short suffixes, such as <I CLASS="emphasis">ed</I>, because the search engine must parse all words in the index from the left to the right to find suffixes. Instead, narrow your search by combining suffixes with prefixes in regular expressions, or use the <B CLASS="guilabel">Word Ends With</B> modifier.</P></LI></UL>
+<P><A NAME="TMPID4863"></A>You can use the following list of operators within regular expressions to describe sets of strings.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4521"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Operator</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Matches any single character.<BR>For example, <TT CLASS="literal">\a.2</TT> matches any word containing a three-character string that begins with <I CLASS="emphasis">a</I> and ends in <I CLASS="emphasis">2</I> (such as, <I CLASS="emphasis">ab2z</I>, <I CLASS="emphasis">aa2</I>, or <I CLASS="emphasis">aaa2zzz</I>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Encloses a character set or range. The following rules apply: <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4888"></A>You can intermix ranges and single characters.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4890"></A>In a character set, <TT CLASS="literal">]</TT>, <TT CLASS="literal">-</TT>, and <TT CLASS="literal">^</TT> have special meaning; all other characters represent themselves only.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4895"></A>The minus sign (<TT CLASS="literal">-</TT>) is a range operator between two characters.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4898"></A><A NAME="AEN4476">The caret (<TT CLASS="literal">^</TT>) can be used only in the first position in a character set.</P></TD></TR></TABLE>  For example, <TT CLASS="literal">[abc]</TT> matches <I CLASS="emphasis">a</I>, <I CLASS="emphasis">b</I>, or <I CLASS="emphasis">c</I>. <TT CLASS="literal">[a-z]</TT> matches any lower case character. <TT CLASS="literal">[-$a0-9]</TT> matches <I CLASS="emphasis">-</I>, <I CLASS="emphasis">$</I>, <I CLASS="emphasis">a</I>, or any single digit.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[^]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Begins a character set that complements the specified character set (it matches any character except those that are specified). If <TT CLASS="literal">-</TT> or <TT CLASS="literal">]</TT> follows <TT CLASS="literal">[^</TT>, <TT CLASS="literal">-</TT> or <TT CLASS="literal">]</TT> is treated as the first character. <BR>For example, <TT CLASS="literal">[^a-z]</TT> matches any character, except the letters of the alphabet. <TT CLASS="literal">[^]^a-z0-9]</TT> matches any character, except <I CLASS="emphasis">]</I>, <I CLASS="emphasis">^</I>, or alphanumeric characters.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">^</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Matches the empty string at the beginning of a word.<BR>For example, <TT CLASS="literal">^sp</TT> matches any instance of <I CLASS="emphasis">sp</I> at the beginning of a word only (such as <I CLASS="emphasis">special</I>, but not <I CLASS="emphasis">especially</I>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">*</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Matches the smallest preceding regular expression zero or more times. However, the <TT CLASS="literal">*</TT> operator following a regular expression that has <TT CLASS="literal">^</TT> as the beginning of a word is interpreted as the expression with any ending (like a wildcard (*) in queries).<BR>For example, <TT CLASS="literal">ad*</TT> matches <I CLASS="emphasis">a</I>, <I CLASS="emphasis">ad</I>, <I CLASS="emphasis">add</I>, and so on.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">+</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Matches the smallest preceding regular expression when the preceding regular expression occurs at least once.<BR>For example, <TT CLASS="literal">tr[ei]+</TT> matches <I CLASS="emphasis">tre</I>, <I CLASS="emphasis">tri</I>, <I CLASS="emphasis">tree</I>, <I CLASS="emphasis">trie</I>, <I CLASS="emphasis">triie</I>, and so on. It does not match <I CLASS="emphasis">tr</I> .</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">?</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Matches the smallest preceding regular expression when the preceding regular expression occurs zero or one time. For example, <TT CLASS="literal">se[ea]?</TT> matches only <I CLASS="emphasis">se</I>, <I CLASS="emphasis">sea</I>, and <I CLASS="emphasis">see</I>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">$</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Matches the empty string at the end of a word.<BR>For example, <TT CLASS="literal">the$</TT> matches the characters <I CLASS="emphasis">the</I> when they appear at the end of a word or line.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">|</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Separates two alternatives. If <TT CLASS="literal">x</TT> and <TT CLASS="literal">y</TT> are regular expressions, then <TT CLASS="literal">x|y</TT> matches anything that either <TT CLASS="literal">x</TT> or <TT CLASS="literal">y</TT> matches.<BR>For example, <TT CLASS="literal">sea|lake</TT> matches <I CLASS="emphasis">sea</I> and <I CLASS="emphasis">lake</I> only. <TT CLASS="literal">[abc]</TT> can also be written as <TT CLASS="literal">a|b|c</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">()</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Groups items (such as alternatives or complex regular expressions) so that you can combine them with other regular expressions and operators.<BR>For example, <TT CLASS="literal">(ro)?(co)+</TT> matches any non-zero number of <I CLASS="emphasis">co</I> strings that is preceded by nothing or <I CLASS="emphasis">ro</I> (such as, <I CLASS="emphasis">co</I>, <I CLASS="emphasis">coco</I>, <I CLASS="emphasis">rococo</I>, and so on).</TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

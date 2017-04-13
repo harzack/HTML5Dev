@@ -1,0 +1,260 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Example Reportview</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-reportviews-exrep.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Reportview File';
+          header.title2 = 'Example Reportview';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID21191"></A>An example of a simple reportview file follows, in which tags appear in bold. In this example the report generates a summary of customer issues that have been captured using workflows and forms. The data source in this case is a LiveReport. Note how the tags in the row template section specify which LiveReport column to obtain the data from. They do this by specifying the column number <TT CLASS="literal">[LL_REPTAG_1 /]</TT> or by specifying the LiveReport column name <TT CLASS="literal">[LL_REPTAG=Customer /]</TT>:</P>
+<DIV title="Reportview Example" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF67"></A><B><IMG title="Reportview Example" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-29: Reportview Example</B></P><A NAME="AEN19918"></A>
+<PRE 
+CLASS="screen"
+>&lt;<I
+CLASS="varname"
+>HTML</I
+>>
+&lt;<I
+CLASS="varname"
+>HEAD</I
+>>
+  &lt;<I
+CLASS="varname"
+>TITLE</I
+>>Sample Report&lt;<I
+CLASS="varname"
+>/TITLE</I
+>>
+&lt;<I
+CLASS="varname"
+>/HEAD</I
+>>
+&lt;<I
+CLASS="varname"
+>BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000"</I
+>>
+&lt;<I
+CLASS="varname"
+>CENTER</I
+>>&lt;<I
+CLASS="varname"
+>H1</I
+>>Sample Report&lt;<I
+CLASS="varname"
+>/H1</I
+>>&lt;<I
+CLASS="varname"
+>/CENTER</I
+>>
+&lt;<I
+CLASS="varname"
+>P</I
+>>&lt;<I
+CLASS="varname"
+>SMALL</I
+>>Created by [LL_REPTAG_USERFULLNAME /], Username: [LL_REPTAG_USERNAME /]&lt;<I
+CLASS="varname"
+>/SMALL</I
+>>&lt;<I
+CLASS="varname"
+>/P</I
+>>
+&lt;<I
+CLASS="varname"
+>HR</I
+>>
+&lt;<I
+CLASS="varname"
+>TABLE BGCOLOR="#FFFFFF" BORDER="3" CELLPADDING="1" CELLSPACING="1" WIDTH="100%"</I
+>>
+&lt;<I
+CLASS="varname"
+>TR BGCOLOR="#CCCCCC"</I
+>>
+    &lt;<I
+CLASS="varname"
+>TD ALIGN="CENTER" NOWRAP VALIGN="MIDDLE"</I
+>>ID&lt;<I
+CLASS="varname"
+>/TD</I
+>>
+    &lt;<I
+CLASS="varname"
+>TD ALIGN="CENTER" NOWRAP VALIGN="MIDDLE"</I
+>>Issue Title&lt;<I
+CLASS="varname"
+>/TD</I
+>>
+    &lt;<I
+CLASS="varname"
+>TD ALIGN="CENTER" NOWRAP VALIGN="MIDDLE"</I
+>>Issue Type&lt;<I
+CLASS="varname"
+>/TD</I
+>>
+    &lt;<I
+CLASS="varname"
+>TD ALIGN="CENTER" NOWRAP VALIGN="MIDDLE"</I
+>>Customer Name&lt;<I
+CLASS="varname"
+>/TD</I
+>>
+    &lt;<I
+CLASS="varname"
+>TD ALIGN="CENTER" NOWRAP VALIGN="MIDDLE" WIDTH="30%"</I
+>>Activity Record&lt;<I
+CLASS="varname"
+>/TD</I
+>>
+    &lt;<I
+CLASS="varname"
+>TD ALIGN="CENTER" NOWRAP VALIGN="MIDDLE"</I
+>>Form Link&lt;<I
+CLASS="varname"
+>/TD</I
+>>
+&lt;<I
+CLASS="varname"
+>/TR</I
+>>
+[LL_WEBREPORT_STARTROW /]
+&lt;<I
+CLASS="varname"
+>TR</I
+>>
+    &lt;<I
+CLASS="varname"
+>TD ALIGN="LEFT" NOWRAP VALIGN="MIDDLE"</I
+>>
+     [LL_REPTAG_1 /]
+    &lt;<I
+CLASS="varname"
+>/TD</I
+>>
+
+    &lt;<I
+CLASS="varname"
+>TD ALIGN="LEFT" NOWRAP VALIGN="MIDDLE"</I
+>>
+     [LL_REPTAG_2 CAPITALIZE /]
+    &lt;<I
+CLASS="varname"
+>/TD</I
+>>
+
+    &lt;<I
+CLASS="varname"
+>TD ALIGN="LEFT" VALIGN="MIDDLE"</I
+>>
+     [LL_REPTAG_3 UPPER /]
+    &lt;<I
+CLASS="varname"
+>/TD</I
+>>
+
+    &lt;<I
+CLASS="varname"
+>TD ALIGN="LEFT" VALIGN="MIDDLE"</I
+>>
+     [LL_REPTAG=Customer /]
+    &lt;<I
+CLASS="varname"
+>/TD</I
+>>
+
+    &lt;<I
+CLASS="varname"
+>TD ALIGN="LEFT" VALIGN="MIDDLE"</I
+>>
+      [LL_REPTAG=ActivityRecord HTMLCR /]
+     &lt;<I
+CLASS="varname"
+>/TD</I
+>>
+
+    &lt;<I
+CLASS="varname"
+>TD ALIGN="LEFT" </I
+>>
+    &lt;<I
+CLASS="varname"
+>A HREF="[LL_REPTAG_URLPREFIX /][LL_REPTAG=VolumeID LLURL:FORMEDIT:1 /]&amp;nexturl=[LL_REPTAG_MYURL ESCAPEURL /]"</I
+>>Edit form&lt;<I
+CLASS="varname"
+>/A</I
+>>
+    &lt;<I
+CLASS="varname"
+>/TD</I
+>>
+&lt;<I
+CLASS="varname"
+>/TR</I
+>>
+
+[LL_WEBREPORT_ENDROW /]
+
+&lt;<I
+CLASS="varname"
+>/TABLE</I
+>>
+&lt;<I
+CLASS="varname"
+>HR</I
+>>
+&lt;<I
+CLASS="varname"
+>/BODY</I
+>>
+&lt;<I
+CLASS="varname"
+>/HTML</I
+>>
+
+&lt;<I
+CLASS="varname"
+>P</I
+>>&lt;<I
+CLASS="varname"
+>SMALL</I
+>>Created on ... [LL_REPTAG_DATE /]&lt;<I
+CLASS="varname"
+>/SMALL</I
+>>&lt;<I
+CLASS="varname"
+>/P</I
+>>
+&lt;<I
+CLASS="varname"
+>/BODY</I
+>>
+&lt;<I
+CLASS="varname"
+>/HTML</I
+>></PRE
+><IMG title="Reportview Example" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

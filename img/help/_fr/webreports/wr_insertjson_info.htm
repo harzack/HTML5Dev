@@ -1,0 +1,232 @@
+﻿<!-- wr_insertjson_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Inserting JSON Data</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_insertjson_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'Inserting JSON Data';
+        header.draw();
+
+</SCRIPT>
+<p class="body">
+JavaScript Object Notation (JSON) represents an efficient way of specifying data to be sent from servers to browser-based client applications.  The actual syntax used to create a JSON data set is not important as long as the server software builds it correctly.  
+In most, if not all, cases, the JSON structure is immediately evaluated in the browser client, usually using the JavaScript eval() function which converts it into a 
+normal JavaScript object/array type structure. The main benefit of this feature is that it minimizes bandwidth and overhead between the server and client.  
+JSON allows an object to be encapsulated in a way that can be understood by humans and swiftly parsed by software applications. It is particularly well suited to the 
+exchange of data between clients and servers using AJAX type technology (asynchronous messaging requests). As of Livelink 9.7.1, JSON is used to aid in sending container 
+browse-related data through AJAX calls.
+</p>
+<p class="body">
+To support this technology, WebReports provides a mechanism that allows much of the data normally retrieved using individual WebReports tags, to be delivered as a JSON structure.
+</p>
+<p class="body">
+For further information on JSON, there are many different references available including RFC 4627 which defines the JSON standard.	For example:  <A href="http://www.json.org">www.json.org</A>
+</p>
+<P CLASS="GUI">
+<U>Basic JSON Structure</U>
+</p>
+<p class="body">
+For Livelink purposes, the JSON structure will normally look something like this:
+</p>
+<p class="gui">
+{"field1":123, "field2":"some text", "myRows":[{row1 fields}, {row2 fields},etc.]}
+</p>
+<p class="body">
+In other words, there will be various fields at the top level of the object, followed by an optional array called myRows that will contain all of the rows of 
+data for a WebReport data source or the contents of a container for ActiveViews. As described below, there are directives that allow fields to be added to the top level 
+of the JSON structure (outside of the myRows array) using WebReports tag syntax, as well as options to add fields/columns to each and every row in the myRows array 
+based on WebReports tag syntax.  
+In this way, data that is normally returned in individual WebReports tags to the client can be returned in a JSON structure to be used in any way the client 
+requires (usually in a web browser, converted to a JavaScript array).
+ </p>
+
+<P CLASS="GUI">
+<U>Tag Syntax and Options</U>
+</p>
+<p class="body">
+The main syntax for this tag is as follows:
+</p>
+<p class="gui">
+[LL_WEBREPORT_INSERTJSON <directives> /]
+</p>
+<p class="body">
+This tag can only be used in the Header or Footer parts of the reportview.  Unlike the INSERTJSARRAY content control tag, when this tag is used the row section is 
+processed as normal. It is not valid to use an INSERTJSON tag in the row section as it can be used to return all data rows outside of the row section. 
+</p>
+<p class="body">
+The INSERTJSON tag supports multiple "directives" which control what type of data the tag will return. Each directive is proceeded by a "@" sign. This differs from other content control tags but allows for a very flexible feature set. The currently supported directives are listed in this table:
+</p>
+
+ <table width=100% border=1 cellpadding=5>
+	<tr>
+		<td class=gui>@BROWSECOLUMNS</td>
+		<td class=body>This directive is only supported in Livelink version 9.7.1 and later. It does not require any additional information. It enables the INSERTJSON tag to return a data set identical to that normally used in 
+		Livelink container browsing.
+		This is useful when emulating Livelink folder views, particularly in Livelink 9.7.1. <br>
+		Notes:
+		<ul>
+		<li> The actual rows of data returned, will be filtered based on any WebReports conditional row tags
+		(e.g. INCLUDEIF, EXITIF, INCLUDERANGE). </li>
+		<li>This directive and the <b>@ALLDATASOURCE</b> directive are mutually exclusive</li>
+		<li>When this directive is used with a WebReport, the items returned by the data source must be valid Livelink items that would normally exist in a Livelink container. For example, if the data source is not returning
+		Dtree data, an error message will be generated. Similarly if the data source returns an item like a Volume, this would also cause an error message as this item would not normally appear in a folder. </li>
+		</td>
+	</tr>
+	<tr>
+		<td class=gui>@ALLDATASOURCE</td>
+		<td class=body>
+		This directive does not require any additional information. It enables the INSERTJSON tag to return all information from the data source in one declaration.
+		Besides creating an array with all rows and columns, this directive also provides some standard fields to support the data source.
+		These fields are: <b>sourceID, actualRows, filteredRows, totalRows and totalSourceRows</b>. Please note that currently the filteredRows field will only be populated with a valid number if the <b>[LL_REPTAG_FILTEREDROWS /]</b> tag
+		is included in the WebReport.  If this tag is not required, i.e. only the INSERTJSON output is being used, then the <b>[LL_REPTAG_FILTEREDROWS /]</b> should be commented out.
+		<br>
+		For more information about these fields refer to the corresponding report tag syntax,
+		e.g. [LL_REPTAG_SOURCEID /]. Note that this directive and the <b>@BROWSECOLUMNS</b> directive are mutually exclusive.
+		</td>
+	</tr>
+	<tr>
+		<td class=gui>@ALLSTATIC</td>
+		<td class=body>
+		This directive returns a single structure that contains all static tag values that would normally be returned in individual WebReport tags. The name of each field is identical to the name used in the corresponding static tag.
+		</td>
+	</tr>
+	<tr>
+		<td class=gui>@ROWCOLUMNS &lt;columns&gt; </td>
+		<td class=body>
+		<P class=body>
+		This directive is followed by multiple fields that specify additional columns to be added to each row being returned from the data source or browse columns.
+		Each field can be either the name of a column or a WebReports tag and sub-tags. These columns are normally added to existing columns built by the <b>@ALLDATASOURCE</b> or <b>@BROWSECOLUMNS</b> directives; however,
+		if neither of these directives has been used, an array called <b>myRows</b> will be added to the resulting JSON structure containing only the columns that have been specified in this <b>@ROWCOLUMNS </b>directive for
+		each and every row in the data source.
+		<br>
+		Each column uses the following format:
+		</p>
+		<p class=gui>
+		&lt;JSON field name&gt;:"&lt;data reference&gt;"
+		 </p>
+		 <P class=body>
+		The data reference is either a simple column name from the data source or a WebReports tag and sub-tag combination. E.g.
+		</p>
+		<p class=gui>
+		@ROWCOLUMNS newColumn:"[LL_REPTAG=DATAID CAT:price:amount1:display /]"
+		 </p>
+		 <P class=body>
+		This example would force that a column called "newColumn" is added to the <b>myRows</b> array for every row of data returned.  The tag syntax would be resolved
+		for each and every row, in this case looking up a Category/attribute value.
+		</p>
+		 <P class=gui>
+		 @ROWCOLUMNS Column2:"modifyDate"
+		 </p>
+		 <P class=body>
+		In this second example, a new column field called Column2 is added to the <b>myRows</b> array using whatever data is returned by the modifyDate column in the data source.
+		 </p>
+		</td>
+	</tr>
+	<tr>
+		<td class=gui>
+		@EXCLUSIVE PARM:&lt;parm name&gt;
+		</td>
+		<td class=body>
+		This directive provides a mode where only the data produced by the INSERTJSON tag will be returned. In this mode, all other WebReports output is omitted; however, 
+		the reportview is still processed as normal to ensure that any variable processing etc. still takes place.  This mode is controlled by the presence or absence of a parameter in the URL. This 
+		parameter is specified using the <b>PARM:</b> option. For example, <b>PARM:jsononly</b> specifies that if <b>&jsononly</b> is found in the URL, then only JSON data will be returned.  This parameter defaults to true so 
+		if it is included in the URL, or set to true (<b>&jsononly=true</b>) then exclusive mode is used. Conversely if the parameter is omitted, or set to false (<b>&jsononly=false</b>) then normal mode is used. Note 
+		that in normal mode, the JSON data is still included in the output of the WebReport.
+		</td>
+	</tr>
+	<tr>
+		<td class=gui>@FIELDS &lt;fields&gt;</td>
+		<td \>	
+		<P class=body>
+		This directive is followed by multiple quoted fields that specify a name and value for fields to be returned by the INSERTJSON tag. The fields are made up using this syntax: <BR>
+		&lt;fieldname&gt;:<b>"</b>&lt;fieldvalue&gt;<b>"</b>
+		</p>
+		 <P class=body>
+		The field value could be a literal value but is normally a WebReports tag. E.g.	
+		</p>
+		 <P class=gui>
+		<b>USERID:"[LL_REPTAG_USERID /]"</b>
+		</p>
+		 <P class=body>
+		Any fields specified by this directive are added to the end of the existing JSON structure in addition to any existing fields for other directives.
+		These fields are not added to the <b>myRows</b> array, only to the top level object. 
+		</p>
+		</td>
+	</tr>
+	<tr>
+		<td class=gui>
+		@ADDJSVAR VAR:&lt;var name&gt;
+		</td>
+		<td class=body>
+		This directive adds the JavaScript variable and associated syntax to assign the returned JSON to a variable specified in &lt;var name&gt;.
+		For example, <b>@ADDJSVAR VAR:temp</b> would add the following to the beginning of the JSON data:	   <BR>
+		<b>var temp =</b> "json data object"
+		</td>
+	</tr>
+	<tr>
+		<td class=gui>
+		@ESCAPETEXT TYPE:&lt;escape type&gt;
+		</td>
+		<td class=body>
+		This directive allows the default text escaping to be modified for any text/string fields being used in the INSERTJSON tag. <BR>
+		Valid escape types are: <b>standard</b> and <b>escapeurl</b>
+		The <b>standard</b> type uses the standard JSON specification for text escaping. The <b>escapeurl</b> type uses URL encoding that would need to be decoded using the JavaScript decodeURI() function.
+		</td>
+	</tr>
+</table>
+
+<P CLASS="GUI">
+Example:
+</p>
+<P class="before-ul">
+In this example, a WebReport is using a simplified data source that returns only 3 columns (parentId, dataId, subType) and 2 rows from the DTREE. Given the following INSERTJSON syntax:
+</p>
+<br>
+<p class=gui>
+[LL_WEBREPORT_INSERTJSON   <br>
+@ADDJSVAR VAR:sampleData   <br>
+@ALLDATASOURCE 		   <br>
+@FIELDS SYSTEMDATE:"[LL_REPTAG_DATE /]" <br>
+@ROWCOLUMNS  objName:"[LL_REPTAG=DATAID NODEINFO:NAME /]" supplier:"[LL_REPTAG=DATAID CAT:VendorData:supplier:DISPLAY /]" /]
+<DIV class=body><BR>Note that carriage returns have been inserted here for clarity but should not be used in the reportview.</DIV>
+</p>
+<p class="body">
+This is the data that would be returned in the WebReport output (to the client):
+</p>
+<p class=gui>
+var sampleData={"SYSTEMDATE":"Oct 08 2008", "sourceID":129293, "actualRows":2, "filteredRows":2, "totalRows":2, "totalSourceRows":2, "myRows":[{"objName":"AAA test document", "Supplier":"Widgets Inc.", "parentid":126758, "dataid":127200, "subtype":144}, {"objName":"BBB  test document", "Supplier":"Teletech Assets", "parentid":126758, "dataid":129514, "subtype":144}]}
+</p>
+<p class="body">
+The following screen shot shows an excerpt of the JavaScript data structure that the client would build from this JSON data (as viewed from a script debugger).
+</p>
+
+<img src="./insertjson_debug_view.png" border=1>
+
+<p class=gui>
+Note the following:
+</p>
+<p class="body">
+<ul>
+<li>The object is called "sampleData" as per the ADDJSVAR directive.
+<li>A new field called SYSTEMDATE has been added to the object as per the FIELDS directive.
+<li>The fields sourceID, actualRows, filteredRows, totalRows and totalSourceRows have been automatically created as part of the ALLDATASOURCE directive.
+<li>Two rows (as many as there are rows in the data source) are stored in the array called myRows. This example shows all three fields that existed in the simple data source (parentid, dataid and subtype).  If the data source had returned all the fields in DTREE then all of these columns would have been included in the myRows array of data as per the ALLDATASOURCE directive.
+<li>In addition to the columns returned by the data source, two new columns: objName and Supplier have been added for each and every row of data. In this simplistic example, Supplier uses the result of:  [LL_REPTAG=DATAID CAT:'Test Category':'Supplier Company':DISPLAY /] for each row to set the data value called "Supplier" in each row of the array.  The objName value is simply looked up in a similar way using the NODEINFO:NAME sub-tag.
+</ul>
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

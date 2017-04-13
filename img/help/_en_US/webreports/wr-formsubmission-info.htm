@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Form Submission Mechanism</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-formsubmission-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'Form Submission Mechanism';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID19911"></A>WebReports provides a form submission mechanism, “Initiate WebReport”, that is similar to “SQL Table”, the main differences being that when the data is stored in the SQL table, the primary key, or SEQ, is identified and passed to a WebReport which is initiated straight after the form submission. The data stored in each method is interchangeable. For example, it is possible to change the form submission mechanism between “Initiate WebReport” and “SQL Table” without affecting the existing data.</P>
+<P class="before-ul"><A NAME="TMPID19916"></A>Initiate WebReport requires only two configuration options which are set on the specific tab of the form:</P><A NAME="AEN18651"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18652"></A><A NAME="TMPID19919"></A>The WebReport that is to be executed immediately following form submission.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18654"></A><A NAME="TMPID19921"></A>A checkbox to determine whether the WebReport is executed transparently or is presented to the user following form submission.</P></LI></UL>
+<P><A NAME="TMPID19922"></A>In each case the SEQ from the form just submitted is available as a parameter [LL_REPTAG_&amp;SEQ /]. This can be used in the WebReport as a key to lookup additional data associated with the form just submitted or it can be passed as a parameter to a separate (sub) WebReport which has it's destination set to “Populate Form”. This allows basic relational tables to be maintained through a series of WebReports as the act of using a WebReport to export data to a form will cause a further WebReport to initiate if the submission mechanism is set appropriately.</P>
+<P><A NAME="TMPID19924"></A>The Initiate WebReport form submission mechanism is not visible until the “Manage Relational Table” option has been used to configure an associated SQL table.</P>
+<P><A NAME="TMPID19926"></A>Form tags of the type [LL_FormTag_1_1_3_1 /] are supported only when “Show WebReport” is not selected. If needing to display data just submitted with “Show WebReport” checked then the tag [LL_REPTAG_&amp;SEQ /] must be used as a parameter to a sub-WebReport/LiveReport to retrieve the submitted data.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

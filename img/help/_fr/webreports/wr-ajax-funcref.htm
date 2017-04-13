@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Guide de référence des fonctions AJAX</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-ajax-funcref.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Référence des fonctions AJAX';
+          header.title2 = 'Guide de référence des fonctions AJAX';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID13268"></A>Le fichier <TT CLASS="filename">ajax.js</TT> fourni avec WebReports comprend une liste de fonctions conçues pour faciliter l'utilisation des services WebReport. Le fichier <TT CLASS="filename">ajax.js</TT> est accédé par l'inclusion d'un SCRIPT comme suit : </P><A NAME="AEN12549"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="/&lt;support_dir&gt;/webreports/library/ajax.js"&gt;&lt;/SCRIPT&gt;</PRE
+>
+<P><A NAME="TMPID13273"></A>Si le fichier est inclus dans un WebReport ou ActiveView, la balise <TT CLASS="literal">LIBPATH</TT> peut être utilisée comme suit : </P><A NAME="AEN12552"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;</PRE
+>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF19"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID13277"></A><B CLASS="note">Note : </B><BR>Lorsque vous utilisez <TT CLASS="literal">[LL_WEBREPORT_EXCLUDEHTML /]</TT> dans un WebReport qui utilise également les fonctions de la bibliothèque AJAX, la variable suivante doit être définie dans un bloc de script, car la variable <TT CLASS="literal">baseURL</TT> est définie dans le code de page Content Server qui est inséré dans la sortie WebReport, mais elle est exclue à l'aide de la balise. Le code suivant garantit la définition de la variable et empêche la rupture de la bibliothèque AJAX. </P><A NAME="AEN12558"></A>
+<PRE 
+CLASS="screen"
+>&lt;script&gt;
+	baseURL = "[LL_REPTAG_URLPREFIX /]";
+&lt;/script&gt;</PRE
+></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID13282"></A>Les fonctions disponibles dans le fichier ajax.js et leurs paramètres sont décrits ci-dessous :</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-ajax-geturl.htm" revision="">getURLParm( parm )</A></p></li>
+<li><p><A  HREF="wr-ajax-updtpg.htm" revision="">updatePage( URLreference, HTMLelementID, optionalParms, JSfunction )</A></p></li>
+<li><p><A  HREF="wr-ajax-getjsdat.htm" revision="">getJSData( URLreference, optionalParms, JSfunction )</A></p></li>
+<li><p><A  HREF="wr-ajax-sendreq.htm" revision="">sendRequest( URLreference, responseFunction, reqType, optionalParms )</A></p></li>
+<li><p><A  HREF="wr-ajax-exwrsvc.htm" revision="">executeWRService( serviceType, responseTarget, parmList, responseType, getPost, secure )</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

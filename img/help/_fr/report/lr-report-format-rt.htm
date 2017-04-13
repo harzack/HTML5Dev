@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Formats des rapports LiveReport</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-report-format-rt.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation des rapports LiveReport';
+          header.title2 = 'Formats des rapports LiveReport';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID479"></A>Il est important de réfléchir à la présentation des résultats lors de la création d'un rapport LiveReport. Si vous souhaitez que les résultats s'affichent sous forme de liste, vous pouvez utiliser un format LiveReport ou LiveReport automatique. Si vous souhaitez que les résultats s'affichent sous la forme d'un graphique, utilisez un graphique circulaire, un graphique à barres ou une courbe. Pour plus d'informations sur les formats LiveReport ou LiveReport automatique, voir <span><A HREF="lr-report-format-rt.htm#LIVEREPORT">Rapports LiveReport et rapports LiveReport automatiques</A></span>. Pour plus d'informations sur les graphiques, voir <span><A HREF="lr-report-format-rt.htm#PIECHART">Graphiques circulaires</A></span>, <span><A HREF="lr-report-format-rt.htm#BARCHART">Graphiques à barres</A></span> et <span><A HREF="lr-report-format-rt.htm#LINECHART">Courbes</A></span>.  </P>
+<P><A NAME="TMPID487"></A>Lors de la création d'un rapport LiveReport, vous sélectionnez un format, puis vous le modifiez pour personnaliser l'affichage des résultats. Les personnalisations effectuées dépendent du format choisi. Vous pouvez généralement personnaliser les couleurs des rapports LiveReport et LiveReport automatique, le style du premier plan, de l'arrière-plan et du titre, ainsi que la couleur de graphique circulaire, de graphique à barres et de courbe. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LIVEREPORT">Rapports LiveReport et rapports LiveReport automatiques</A></P>
+<P><A NAME="TMPID490"></A>Les rapports LiveReport (par défaut) et LiveReport automatique affichent les résultats sous forme de tableau. Le format de rapport LiveReport est utilisé pour les listes d'éléments et nécessite certaines colonnes dans l'instruction SQL <TT CLASS="literal">SELECT</TT>. Vous devez sélectionner le paramètre <B CLASS="guilabel">Champs du rapport</B> pour répondre aux conditions de ce format, sauf si votre instruction SQL contient une clause <TT CLASS="literal">SELECT * FROM DTree</TT>. Les champs Type, Nom, Infos et Actions sont affichés par défaut dans la table de résultats du rapport LiveReport.  </P>
+<P><A NAME="TMPID497"></A>Un champ vide ou le message d'erreur « La fonction spécifiée est inconnue » s'affiche si l'une des colonnes requises n'est pas sélectionnée par un rapport LiveReport. </P>
+<P><A NAME="TMPID499"></A>Vous pouvez ajouter différentes colonnes de données extraites dans un résultat de rapport LiveReport en renseignant les champs et titres de colonne correspondants dans la section <B CLASS="guilabel">Afficher les colonnes</B> de la page Modifier du rapport. Il n'est pas nécessaire d'afficher toutes les colonnes comprises dans votre instruction <TT CLASS="literal">SELECT</TT>. Ces colonnes permettent de transmettre des informations à un sous-rapport associé. </P>
+<P><A NAME="TMPID502"></A>Le format de rapport LiveReport automatique est utilisable avec une instruction SQL quelconque. Chaque colonne sélectionnée est affichée sous son nom d'origine sur la page de résultats du rapport LiveReport automatique. Pour renommer une colonne, vous devez lui assigner un nouveau nom dans l'instruction SQL. Lors de la création d'un rapport LiveReport, il est judicieux de commencer par vérifier les résultats du format de rapport LiveReport automatique, puis de modifier votre instruction SQL afin d'obtenir un format plus personnalisé. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PIECHART">Graphiques circulaires</A></P>
+<P><A NAME="TMPID505"></A>Un graphique circulaire représente les informations d'une base de données sous forme de secteurs de disque. Choisissez ce format de rapport lorsque vous souhaitez mettre en valeur des résultats spécifiques et que l'ordre des données n'a pas d'importance.  </P>
+<P><IMG SRC="pie_chart.gif"></P>
+<P><A NAME="TMPID510"></A>Vous pouvez facilement modifier l'apparence d'un graphique circulaire à l'aide de la souris Si le rapport comporte un sous-rapport, utilisez le clavier pour éviter d'ouvrir un sous-rapport. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SQL-PIE-CHART-LIVEREP">Instructions SQL et graphiques circulaires</A></P>
+<P><A NAME="TMPID513"></A>Si vous souhaitez présenter les résultats d'un rapport LiveReport dans un graphique circulaire, vous devez vous assurer que l'instruction définie dans le champ <B CLASS="guilabel">SQL</B> utilise des données se prêtant à ce type de format. Si vous utilisez des fonctions agrégatives telles que <TT CLASS="literal">COUNT</TT> ou <TT CLASS="literal">SUM</TT> pour les secteurs, vous devez inclure une instruction <TT CLASS="literal">SELECT</TT>, ainsi qu'une clause <TT CLASS="literal">GROUP BY</TT>. </P>
+<P><A NAME="TMPID519"></A>Pour tous les graphiques circulaires, une vue de recherche est créée pour chaque valeur de la première colonne que vous sélectionnez. Si vous avez spécifié une clause <TT CLASS="literal">GROUP BY</TT>, son argument doit être dans la même colonne. La dimension d'un secteur correspond à la valeur de la deuxième colonne sélectionnée. Lorsque vous déplacez le curseur sur un secteur de graphique circulaire, le couple de valeurs correspondant à ce secteur s'affiche. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="BARCHART">Graphiques à barres</A></P>
+<P><A NAME="TMPID523"></A>Un graphique à barres représente les informations d'une base de données sous forme de barres verticales ou horizontales dans un système de coordonnées rectangulaire. Choisissez ce format de rapport lorsque vous souhaitez comparer la valeur absolue des données représentées par les barres, en particulier si les données peuvent être regroupées en un petit nombre de barres.  </P>
+<P><IMG SRC="bar_chart.gif"></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SQL-BAR-CHART-LIVEREP">Instructions SQL et graphiques à barres</A></P>
+<P><A NAME="TMPID530"></A>Si vous souhaitez présenter les résultats d'un rapport LiveReport dans un graphique à barres, vous devez vous assurer que l'instruction définie dans le champ <B CLASS="guilabel">SQL</B> utilise des données se prêtant à ce type de format. Si vous utilisez des fonctions agrégatives telles que <TT CLASS="literal">COUNT</TT> ou <TT CLASS="literal">SUM</TT> pour les barres, vous devez inclure une instruction <TT CLASS="literal">SELECT</TT>, ainsi qu'une clause <TT CLASS="literal">GROUP BY</TT>. </P>
+<P><A NAME="TMPID536"></A>Une barre s'affiche pour chaque valeur de la première colonne que vous sélectionnez Si vous avez spécifié une clause <TT CLASS="literal">GROUP BY</TT>, son argument doit être dans la même colonne. La taille d'une barre correspond à la valeur de la deuxième colonne sélectionnée. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LINECHART">Courbes</A></P>
+<P><A NAME="TMPID540"></A>Les courbes affichent les informations d'une base de données sous forme de points reliés entre eux dans un système de coordonnées rectangulaire. Choisissez ce format de rapport pour illustrer un changement entre les points de données, comme l'activité du serveur au cours du mois de juin.  </P>
+<P><IMG SRC="line_chart.gif"></P>
+<P><A NAME="TMPID545"></A>Chaque point d'une courbe est caractérisé par une coordonnée horizontale et une coordonnée verticale. La coordonnée verticale est prise à partir de la première colonne que vous sélectionnez et la coordonnée horizontale à partir de la deuxième. Le deuxième argument doit être le même que celui des clauses <TT CLASS="literal">GROUP BY</TT> et <TT CLASS="literal">ORDER BY</TT>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SQL-LIVEREP">Instructions SQL et courbes</A></P>
+<P><A NAME="TMPID550"></A>Si vous souhaitez présenter les résultats d'un rapport LiveReport sous forme de courbes, vous devez vous assurer que l'instruction SQL utilise des données se prêtant à ce type de format. Si vous utilisez des fonctions agrégatives telles que <TT CLASS="literal">COUNT</TT> ou <TT CLASS="literal">SUM</TT>, vous devez inclure une instruction <TT CLASS="literal">SELECT</TT>, ainsi qu'une clause <TT CLASS="literal">GROUP BY</TT>. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF5"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID556"></A><B CLASS="note">Note : </B><BR>Si vous choisissez d'afficher les résultats d'un rapport LiveReport sous forme de courbes, vous ne pouvez pas ouvrir de sous-rapport n'importe où dans la courbe.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="lr-format-pie-chart-p.htm" revision="">Pour modifier un graphique circulaire</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

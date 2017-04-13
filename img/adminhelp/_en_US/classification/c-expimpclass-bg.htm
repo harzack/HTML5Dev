@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESCLS100500-H-AGD-EN">
+<META PiXprocLocator="classification">
+<title>Exporting and Importing Classification Taxonomies</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webattribute/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'c-expimpclass-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Classifications';
+          header.title2 = 'Exporting and Importing Classification Taxonomies';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1462"></A>You export and import <I CLASS="EMPHASIS">classification taxonomies</I> when you want to copy a hierarchy of Classifications (Classification Trees or Classifications and all the Classifications that they contain) from one Content Server installation to another, or within an Content Server installation. For example, if you have a Classification Tree named <I CLASS="EMPHASIS">Marketing Documents</I>, which contains many Classifications, and you want to set up an identical hierarchy of Classifications on another Content Server installation, you would export and import the Classification Tree.</P>
+<P><A NAME="TMPID1468"></A>You can export and import the entire Classification Workspace, a Classification Tree, or a Classification. When you export the Classification Workspace, all Classification Trees and Classifications in the Workspace are exported. When you export a Classification, it becomes a Classification Tree when imported. For example, if you have a Classification named <I CLASS="EMPHASIS">Project Schedules</I> that is currently stored in the <I CLASS="EMPHASIS">Product Development</I> Classification Tree, you can export the <I CLASS="EMPHASIS">Project Schedules</I> Classification and import it into another Content Server installation. In this case, the <I CLASS="EMPHASIS">Product Schedules</I> Classification is imported as a Classification Tree.</P>
+<P><A NAME="TMPID1474"></A>If you want to construct a hierarchy of Classifications without having to add each Classification to the Classification Workspace individually, you can write an XML file that defines a hierarchy of Classifications (an <I CLASS="EMPHASIS">XML classification taxonomy</I>), and then import it. For more information on creating an XML Taxonomy, see <span><A HREF="c-constxml-bg.htm">Constructing and Importing an XML Taxonomy</A></span>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF43"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1478"></A><B CLASS="NOTE">Note: </B><BR>If you have not enabled the Intelligent Classification functionality, when you import any Classification Trees, the management type is set to manual and any associated profiles are disabled. For more information about enabling Intelligent Classifications, see <span><A HREF="c-enableic-bg.htm">Enabling Intelligent Classification Functionality</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF44">Exporting Classification Taxonomies</A></P>
+<P><A NAME="TMPID1481"></A>When you export the Classification Workspace or any of its contents, Content Server writes information to an XML file. The XML file contains all the information that defines the Classification Trees and Classifications, and the hierarchy of Classifications that they may contain (for example, the names and management types of each Classification). The system then stores this XML file in the temp directory of your Content Server installation (for example, &lt;<I CLASS="VARNAME">content_server_home</I>>/temp) and uploads it to the My Workspace of the user who performs the export.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF45"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1486"></A><B CLASS="NOTE">Note: </B><BR>Depending on system activity, the XML file containing each exported Classification Tree and the Classifications might not appear in the My Workspace immediately.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF46">Importing Classification Taxonomies</A></P>
+<P><A NAME="TMPID1488"></A>When you import a Classification taxonomy to the Classification Workspace, Content Server reads from an XML file all the information that defines the Classification Tree (or Trees) and the hierarchy of Classifications that it contains. When you begin the import process, the system builds that hierarchy of Classifications in the Classification Workspace.</P>
+<P><A NAME="TMPID1490"></A>When you import a Classification taxonomy, you can also apply Categories. The Categories are applied to all new Classification Trees and the Classifications created by the import process. By default, when specify the import settings, any Categories that have been applied to the Classifications Volume will appear in the <B CLASS="GUILABEL">Categories</B> field.</P>
+<P><A NAME="TMPID1492"></A>You may remove these Categories, add additional Categories, or change the Categories to be applied to the imported Classifications. For more information on Categories, see <span><XPROC NAME="ExtXrefStart" HREF="lleswat-h-ugd.catatt-overview-so" FMT="" NO1ST><A  HREF="../../../help/_en_US/webattribute/catatt-overview-so.htm">Working With Categories and Attributes</A><XPROC NAME="ExtXrefEnd" HREF="lleswat-h-ugd.catatt-overview-so" FMT=""></span>.</P>
+<P><A NAME="TMPID1494"></A>After a Classification Tree has been imported, you can enable its assisted and automatic Classifications by regenerating the Classification Query File. For more information, see <span><A HREF="c-maint-bg.htm">Maintaining Classifications</A></span>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF47"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1497"></A><B CLASS="NOTE">Note: </B><BR>Depending on system activity, each Classification Tree and the Classifications that you import might not appear in the Classification Workspace immediately. If you import a Classification Tree with a large number of Classifications (greater than 1000), and the import fails before it is complete, you can purge the Classification Tree. Purging, like deleting, deletes all the Classifications that were imported, but is less time consuming. For more information, see <span><A HREF="c-purgelgclass-p.htm">To Purge Classifications</A></span>. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="c-expclass-p.htm" revision="">To Export a Classification Taxonomy</A></p></li>
+<li><p><A  HREF="c-impclass-p.htm" revision="">To Import a Classification Taxonomy</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,202 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Base REPTAG</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-cdfirst.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Balises de données de colonne';
+          header.title2 = 'Base REPTAG';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID2749"></A>Cette section apporte des informations sur les balises de données de colonne <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG01">LL_REPTAG=nom colonne</A></span>, <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG02">LL_REPTAG_numéro colonne</A></span>, <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG03">LL_REPTAG_texte littéral</A></span>, <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG04">LL_REPTAG_&amp;nom_param</A></span>, <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG05">LL_REPTAG_$nom_const</A></span>, <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG06">LL_REPTAG_%nom_variable</A></span> et <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG07">LL_REPTAG_@fonction</A></span>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG01">LL_REPTAG=nom colonne</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG01-NAME">Syntaxe</A></P>
+<P><A NAME="REPTAGEQUALS"></A><B CLASS="highlight">[LL_REPTAG=&lt;<I CLASS="varname">nom colonne</I>> &lt;<I CLASS="varname">sous-balise</I>> &lt;<I CLASS="varname">sous-balise</I>> ... /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG01-DESC">Description</A></P>
+<P><A NAME="TMPID2769"></A>Cette balise indique à WebReports d'insérer les données source spécifiée par &lt;<I CLASS="varname">nom colonne</I>> dans le rapport de sortie. Elle doit être placée entre les balises <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTROW">STARTROW</A></span> et <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDROW">ENDROW</A></span>. La liste facultative des sous-balises est utilisée pour configurer les options de mise en forme. Ces sous-balises doivent être séparées par des espaces. Pour plus d'informations sur ces balises, voir le tableau de définition des sous-balises. L'utilisation de guillemets doubles ou simples est prise en charge pour délimiter les noms de colonne. L'utilisation de guillemets est obligatoire uniquement pour le référencement des noms de colonne de source de données contenant un caractère d'espacement. Cette règle s'applique également lorsque le rapport LiveReport renomme une colonne avec un nom contenant un caractère d'espacement. N'utilisez pas de guillemets doubles lorsque la balise <TT CLASS="literal">LL_REPTAG</TT> est située à l'intérieur d'une balise conditionnelle.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG01-EXAMP">Exemple</A></P><A NAME="AEN2616"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG=name /]
+[LL_REPTAG="name" /]
+[LL_REPTAG="first name" /]
+[LL_WEBREPORT_INCLUDEIF "John" != "[LL_REPTAG='first name' /]" /]</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG02">LL_REPTAG_numéro colonne</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG02-NAME">Syntaxe</A></P>
+<P><A NAME="REPORTTAGUNDERSCORE"></A><B CLASS="highlight">[LL_REPTAG_&lt;<I CLASS="varname">numéro colonne</I>> &lt;<I CLASS="varname">sous-balise</I>> &lt;<I CLASS="varname">sous-balise</I>> ... /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG02-DESC">Description</A></P>
+<P><A NAME="TMPID2790"></A>Cette balise référence les données de colonne à l'aide du numéro de colonne. Les colonnes Content Server sont numérotées de la gauche vers la droite, en commençant par le n°1.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF14"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID2793"></A><B CLASS="note">Note : </B><BR>Attention : veillez à utiliser un trait de soulignement (« _ ») au lieu du symbole égal (« = ») dans cette forme de <TT CLASS="literal">LL_REPTAG</TT>. Cela correspond approximativement au modèle de balise WebForm Content Server. Cette forme de balise peut être utile si vous prévoyez d'utiliser un même affichage de rapport dans plusieurs WebReports, avec des titres de colonne parfois différents.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG03">LL_REPTAG_« texte littéral »</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG03-NAME">Syntaxe</A></P>
+<P><A NAME="LITERALNAME"></A><B CLASS="highlight">[LL_REPTAG_« &lt;<I CLASS="varname">texte littéral</I>> » /]</B> </P>
+<P><A NAME="TMPID2809"></A>ou</P>
+<P><A NAME="TMPID2810"></A><B CLASS="highlight">[LL_REPTAG_'&lt;<I CLASS="varname">texte littéral</I>>' /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG03-DESC">Description</A></P>
+<P><A NAME="TMPID2815"></A>Cette balise permet de spécifier une chaîne de texte à insérer dans l'affichage de rapport. Toute sous-balise incluse dans la définition de balise agira sur le texte spécifié entre les deux guillemets. Vous pouvez utiliser des guillemets simples ou doubles, dans la mesure où les guillemets entrants et sortants correspondent. </P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG03-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID2818"></A><TT CLASS="literal">[LL_REPTAG_"this text will be displayed in capitals" UPPER /]</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG04">LL_REPTAG_&amp;nom_param</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG04-NAME">Syntaxe</A></P>
+<P><A NAME="PARMNAME"></A><B CLASS="highlight">[LL_REPTAG_&amp;&lt;<I CLASS="varname">nom_param</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG04-DESC">Description</A></P>
+<P><A NAME="TMPID2830"></A>Cette balise permet d'accéder aux paramètres de l'URL utilisée pour appeler le WebReport. Vous pouvez référencer de cette manière toutes les valeurs de l'URL comprenant une esperluette (« &amp; ») en préfixe. Cela signifie que vous pouvez référencer des paramètres existants, tels que <TT CLASS="literal">&amp;ObjAction</TT>, ou tout paramètre personnalisé.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG04-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID2835"></A>Par exemple, si l'URL suivante a été exécutée :</P><A NAME="AEN2661"></A>
+<PRE 
+CLASS="screen"
+>...?func=ll&amp;objId=47478&amp;objAction=RunReport<B
+CLASS="highlight"
+>&amp;myparm=testdata</B
+>&amp;nexturl=....</PRE
+>
+<P><A NAME="TMPID2838"></A>Vous pouvez accéder au paramètre <TT CLASS="literal">myparm</TT> à l'aide de <TT CLASS="literal">[LL_REPTAG_&amp;myparm /]</TT>. Cette balise effectue la résolution de la valeur dans l'URL ; dans l'exemple ci-dessus, cette valeur est <TT CLASS="literal">testdata</TT> et peut être utilisée en sortie ou dans une condition.</P>
+<P><A NAME="TMPID2842"></A>Par exemple, <TT CLASS="literal">[LL_WEBREPORT_INCLUDEIF "<B CLASS="highlight">[LL_REPTAG_&amp;myparm /]</B>" == "testdata" /]</TT></P>
+<P><A NAME="TMPID2845"></A>Si un paramètre est référencé dans l'affichage de rapport mais ne figure pas dans l'URL, une chaîne vide est insérée dans la sortie, excepté si la valeur par défaut du paramètre est configurée dans l'onglet <B CLASS="guilabel">Paramètres</B> de la page <B CLASS="guilabel">Propriétés</B> d'un WebReports. Pour en savoir plus, voir <span><A HREF="wr-parameter-info.htm">Utilisation des paramètres</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG05">LL_REPTAG_$nom_const</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG05-NAME">Syntaxe</A></P>
+<P><A NAME="CONSTNAME"></A><B CLASS="highlight">[LL_REPTAG_$&lt;<I CLASS="varname">nom_const</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG05-DESC">Description</A></P>
+<P><A NAME="TMPID2860"></A>Cette balise permet d'accéder aux constantes définies par le biais de l'onglet <B CLASS="guilabel">Constantes</B> de la page <B CLASS="guilabel">Propriétés</B> d'un WebReports. Pour en savoir plus, voir <span><A HREF="wr-constant-info.htm">Constantes WebReports</A></span>. Le nom de constante figurant dans l'affichage de rapport doit correspondre exactement à celui spécifié sur la page Constantes. La balise est remplacée par la valeur définie pour la constante correspondante.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG05-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID2867"></A>Par exemple, si une constante appelée <TT CLASS="literal">MyConst</TT> a été définie avec une valeur de « 12345 », la balise suivante renvoie « 12345 » : <TT CLASS="literal">[LL_REPTAG_$MyConst /]</TT>.</P>
+<P><A NAME="TMPID2872"></A>Les constantes sont particulièrement utiles pour référencer les sous-rapports WebReports et autres objets Content Server, car elles permettent d'éviter de coder en dur les objectID dans l'affichage de rapport. Pour en savoir plus, voir <span><A HREF="wr-server-calsuweb.htm">Appel de sous-rapports WebReport</A></span>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG05-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID2877"></A>Lorsque vous utilisez XML pour exporter des applications WebReports, les constantes permettent de « rétablir le lien » des objets avec l'import XML, dans le nouveau système. Pour plus d'informations sur les constantes, voir <span><A HREF="wr-constant-info.htm">Constantes WebReports</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG06">LL_REPTAG_%nom_variable</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG06-NAME">Syntaxe</A></P>
+<P><A NAME="VARNAME"></A><B CLASS="highlight">[LL_REPTAG_%&lt;<I CLASS="varname">nom_variable</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG06-DESC">Description</A></P>
+<P><A NAME="TMPID2890"></A>Cette balise permet de référencer les variables définies en utilisant <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETVAR">SETVAR</A></span>, <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span> ou <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCONCATVAR">CONCATVAR</A></span>. Par exemple, si vous avez utilisé <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span> dans la section de ligne pour cumuler un total mathématique dans une variable appelée <TT CLASS="literal">MyVar</TT>, le total final est accessible via : <TT CLASS="literal">[LL_REPTAG_%MyVar /]</TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG06-RELINFO">Informations associées</A></P>
+<P><A NAME="TMPID2899"></A>Pour plus d'informations sur l'utilisation des balises de variable et des sous-balises associées, voir <span><A HREF="wr-variable-info.htm#WR-VARIABLE-ADVNOT">L'ordre des variables définies par les balises WebReports</A></span>. Voir également <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCONCATVAR">CONCATVAR</A></span> et <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCURRENTVAL">CURRENTVAL</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG07">LL_REPTAG_@fonction</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG07-NAME">Syntaxe</A></P>
+<P><A NAME="FUNCNAME"></A><B CLASS="highlight">[LL_REPTAG_@&lt;<I CLASS="varname">fonction</I>>&lt;<I CLASS="varname">options référence </I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG07-DESC">Description</A></P>
+<P class="before-ul"><A NAME="TMPID2915"></A>Ce type de balise offre des fonctions de données. Le résultat de chaque fonction est inséré dans la sortie ; toutefois, ces balises sont actuellement prises en charge uniquement dans l'en-tête et dans le pied de page d'un affichage de rapport. En d'autres termes, devant la balise <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTROW">STARTROW</A></span> ou derrière la balise <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDROW">ENDROW</A></span>. Il existe pour chaque fonction des caractères facultatifs, qui suivent le nom de la fonction et font référence à une ligne ou à une colonne de données spécifique, ou les deux. Ces caractères de référence sont :</P><A NAME="AEN2728"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN2729"></A><A NAME="TMPID2920"></A><TT CLASS="literal">[r]</TT> : ce paramètre facultatif, utilisé uniquement par <TT CLASS="literal">@DATA</TT>, spécifie l'index de ligne. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF15"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID2924"></A><B CLASS="note">Note : </B><BR>Le mot réservé <TT CLASS="literal">LAST</TT> peut être utilisé à la place de <TT CLASS="literal">r</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="compact"><A NAME="TMPID2927"></A><TT CLASS="literal">[r]</TT> peut être suivi des éléments suivants :</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN2739"></A><A NAME="TMPID2930"></A><TT CLASS="literal">_c</TT> : spécifie un numéro de colonne ; ou</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN2742"></A><A NAME="TMPID2933"></A><TT CLASS="literal">_&lt;<I CLASS="varname">nom_col</I>></TT> : spécifie un nom de colonne.</P></LI></UL>
+<P><A NAME="TMPID2936"></A>Lorsque vous configurez l'une des fonctions ci-dessous, celle-ci est exécutée sur les données référencées, quelles qu'elles soient. Dans le cas des balises mathématiques, si la colonne contient des valeurs non numériques, une erreur est renvoyée. Des sous-balises permettent de mettre en forme les valeurs renvoyées par ces fonctions.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG07-PARAM">Paramètres</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2748"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Paramètre</TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Description</TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@AVERAGE_&lt;<I CLASS="varname">colonne</I>></TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie la valeur moyenne de tous les chiffres valides contenus dans la colonne spécifiée.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@DATA[r]_&lt;<I CLASS="varname">colonne</I>></TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie une cellule de données unique, définie par sa ligne et sa colonne.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@MIN_&lt;<I CLASS="varname">colonne</I>></TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie la valeur la plus basse, sur toutes les valeurs contenues dans la colonne spécifiée.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">@MAX_&lt;<I CLASS="varname">colonne</I>></TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie la valeur la plus haute, sur toutes les valeurs contenues dans la colonne spécifiée.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@RESPONSEDATA.&lt;<I CLASS="varname">nom champ données</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Indique les champs renvoyés par Content Server en réponse à une requête. Ces champs sont normalement utilisés dans les pages Content Server pour afficher des données. Par exemple, certaines pages de navigation Content Server utilisent, dans la réponse à une requête de navigation, un champ appelé : <TT CLASS="literal">hasStagedContent</TT>. Cette valeur peut être référencée dans un WebReport via : <TT CLASS="literal">[LL_REPTAG_@RESPONSEDATA.hasStagedContent /]</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@SUM_&lt;<I CLASS="varname">colonne</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Renvoie la somme de toutes les valeurs valides contenues dans la colonne spécifiée.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG07-EXAMP">Exemple</A></P>
+<P><A NAME="TMPID2999"></A>Pour demander la moyenne de la colonne 2, utilisez la syntaxe suivante : <TT CLASS="literal">[LL_REPTAG_@AVERAGE_2 /]</TT></P>
+<P><A NAME="TMPID3001"></A>Pour demander la somme des valeurs d'une colonne appelée « heures », utilisez la syntaxe suivante : <TT CLASS="literal">[LL_REPTAG_@SUM_hours /]</TT></P>
+<P><A NAME="TMPID3004"></A>Pour demander le contenu d'une colonne appelée <TT CLASS="literal">dataid</TT>, à partir de la dernière ligne, utilisez la syntaxe suivante : <TT CLASS="literal">[LL_REPTAG_@DATA[last]_dataid /]</TT></P>
+<P><A NAME="TMPID3007"></A>Pour demander le contenu de la colonne 2, à partir de la ligne 1, utilisez la syntaxe suivante : <TT CLASS="literal">[LL_REPTAG_@DATA[1]_2 /]</TT></P>
+<P><A NAME="TMPID3009"></A>Pour demander le contenu d'un champ de la réponse à une requête Content Server, utilisez la syntaxe suivante : <TT CLASS="literal">[LL_REPTAG_@RESPONSEDATA.HASSTAGEDCONTENT /]</TT></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

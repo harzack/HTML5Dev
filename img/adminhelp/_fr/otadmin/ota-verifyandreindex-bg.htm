@@ -1,0 +1,153 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Vérification du contenu et réindexation</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-verifyandreindex-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Maintenance des index';
+          header.title2 = 'Vérification du contenu et réindexation';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID9226"></A>La vérification du contenu de l'index Entreprise permet de contrôler si le contenu de l'index correspond au contenu de la base de données Content Server, puis d'extraire à nouveau les objets manquants. La réextraction des données de la source met à jour les objets obsolètes et ajoute les objets manquants à l'index. Le processus d'élimination des données du flux de données et de reconstruction de l'index supprime tous les objets en attente dans le flux de données, vide toutes les partitions de l'index, puis recharge les données dans les partitions en envoyant une commande de réextraction.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF172"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9229"></A><B CLASS="note">Note : </B><BR>Avant de réextraire une source de données Entreprise ou non-Entreprise, assurez-vous que tous les processus du flux de données correspondants sont programmés ou en cours d'exécution. Si un processus est inactif, il n'est pas automatiquement redémarré après la réextraction.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<table CLASS="warning">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="warning" ALIGN="CENTER"><IMG ALT="Avertissement" SRC="../../images/pi_warning.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9232"></A><B CLASS="warning">Avertissement</B><BR>Pour les index très volumineux, la réindexation peut durer très longtemps.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF173">Sources de données Entreprise</A></P>
+<P class="before-ul"><A NAME="TMPID9234"></A>Si vous effectuez des recherches et que les résultats prouvent qu'un index Entreprise est incomplet ou obsolète, vous pouvez vérifier si le contenu de l'index correspond au contenu de la base de données Content Server. Pour vérifier le contenu d'un index, Content Server compte les entrées dans la base de données Content Server et compare ce nombre au nombre d'objets dans l'index. Content Server génère alors un rapport de vérification d'index comportant les informations suivantes :</P><A NAME="AEN8524"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8525"></A><A NAME="TMPID9241"></A>la date et l'heure de début de la vérification d'index ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8527"></A><A NAME="TMPID9243"></A>la date et l'heure de fin de la vérification d'index ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8529"></A><A NAME="TMPID9245"></A>le nombre total d'objets traités ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8531"></A><A NAME="TMPID9247"></A>le nombre total d'objets dans l'index ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8533"></A><A NAME="TMPID9249"></A>le nombre d'objets manquants (objets qui se trouvent dans la base de données mais pas dans l'index) ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8535"></A><A NAME="TMPID9251"></A>le nombre d'objets obsolètes (objets qui se trouvent dans la base de données et dans l'index, mais qui ne sont pas à jour dans l'index) ; </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8537"></A><A NAME="TMPID9253"></A>le nombre d'objets dont la mise à jour est en attente (objets qui se trouvent dans la base de données et dans l'index, qui ne sont pas à jour dans l'index mais pour lesquels une mise à jour de l'index est programmée par un processus régulier) ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8539"></A><A NAME="TMPID9255"></A>un message vous indiquant le statut de la vérification d'index.</P></LI></UL>
+<P><A NAME="TMPID9256"></A>Si l'opération de vérification d'index confirme que les objets présents dans la base de données manquent dans l'index, vous pouvez réextraire immédiatement les objets manquants.</P>
+<P><A NAME="TMPID9257"></A>Si la version active de l'index Entreprise vous semble corrompue, vous pouvez restaurer une version précédente à condition de l'avoir sauvegardée. Pour plus d'informations sur la sauvegarde et la restauration des index, reportez-vous à la rubrique <span><A href="../otadmin/ota-ibrbackupoverview-so.htm">Sauvegarde et restauration des index</A></span>. Vous pouvez également extraire à nouveau toutes les données de leur source, c'est-à-dire de la base de données Content Server. Vous pouvez extraire à nouveau toutes les données de la base Content Server afin de corriger des inexactitudes ou encore éliminer les données de l'index Entreprise, puis extraire à nouveau toutes les données de la base Content Server afin de recréer intégralement l'index.</P>
+<P><A NAME="TMPID9262"></A>Si vous éliminez le flux de données et que vous extrayez ensuite les données de sa source, les paramètres des régions d'index sont réinitialisés. Cela signifie que les paramètres que vous avez configurés pour les noms d'affichage ou les options de recherche (Pour recherche, Pour affichage ou Recherche par défaut) des régions d'index seront perdus. Pour plus d'informations sur la configuration des régions d'index, reportez-vous à la rubrique <span><A href="../webotcindex/wbo-toconfighypmap01-rf.htm">Exemple de configuration d'un mappage de liens hypertextes</A></span>. OpenText vous recommande de prendre bonne note des paramètres des régions d'index pour que vous puissiez réinitialiser leur valeur après l'élimination et la réindexation de la source de données.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF174"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9266"></A><B CLASS="note">Note : </B><BR>Si votre index Entreprise s'étend sur plusieurs sources de données Entreprise, vous devez effectuer l'opération de vérification ou de réindexation sur toutes les sources de données Entreprise.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="TMP4REF175">Notification et audit</A></P>
+<P><A NAME="TMPID9268"></A>Vous pouvez configurer Content Server de manière à pouvoir suivre les commandes d'élimination et de réextraction pour les sources de données Entreprise par le biais d'e-mails d'alerte système ou d'audits.</P>
+<P><A NAME="TMPID9270"></A>Si vous avez activé la notification et la recherche d'erreurs et l'envoi d'e-mails, Content Server envoie un e-mail d'alerte système chaque fois qu'une commande d'élimination ou de réextraction est lancée pour une source de données Entreprise. Pour plus d'informations sur l'activation de la recherche d'erreurs et l'envoi d'e-mails, reportez-vous à la rubrique <span><A href="../websovmgmt/sov-cnfsoaed-bg.htm">Activation de la recherche d'erreurs et des e-mails d'alerte</A></span>.</P>
+<P><A NAME="TMPID9273"></A>Vous pouvez également définir les commandes d'élimination de la source de données Entreprise et de réextraction comme centres d'intérêt à inclure dans l'audit.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF176">Sources de données Non-Entreprise</A></P>
+<P><A NAME="TMPID9275"></A>Lorsque vous créez un index non-Entreprise (par exemple, un index Directory Walker), vous constituez un flux de données qui extrait et indexe les données de leur source d'origine (par exemple, un répertoire local ou un site Web). Pour réindexer les données à tout moment, vous pouvez éliminer le flux de données, extraire à nouveau les données de la source de données d'origine ou effectuer ces deux opérations. Vous pouvez réindexer les données lorsque vous pensez que le contenu d'un index est corrompu. Si vous éliminez le flux de données et que vous extrayez ensuite les données de sa source, les paramètres des régions d'index sont réinitialisés. Cela signifie que les paramètres que vous configurez pour les noms d'affichage ou les options de recherche (Pour recherche, Pour affichage ou Recherche par défaut) des régions d'index seront perdus. Pour plus d'informations sur la configuration des régions d'index, reportez-vous à la rubrique <span><A href="../webotcindex/wbo-toconfighypmap01-rf.htm">Exemple de configuration d'un mappage de liens hypertextes</A></span>. OpenText vous recommande de prendre bonne note des paramètres des régions d'index pour que vous puissiez réinitialiser leur valeur après l'élimination et la réindexation de la source de données.</P>
+<P><A NAME="TMPID9278"></A>Pour réindexer les données dans une source de données de producteur XML Activator, vous devez copier les données d'origine indexées par la source de données de producteur XML Activator depuis l'application tierce vers le répertoire entrant du processus Producteur XML Activator. Cela permet au processus producteur XML Activator de reconstruire son index à partir des données tierces d'origine. Pour plus d'informations sur les flux de données XML Activator, reportez-vous à la rubrique <span><A href="../webxmlactivator/xma-pdataflow-bg.htm">Création d'un flux de données producteur XML Activator</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF177">Règles de contrôle et réindexation</A></P>
+<P><A NAME="TMPID9281"></A>Lors de l'exécution de règles de contrôle pour la création de partitions selon la capacité ou la date, Content Server crée des partitions et descend les modes des anciennes partitions si vous avez configuré les règles en conséquence. Content Server ne pouvant pas mettre à jour les partitions en mode lecture seule, la réextraction des données de la source ne fonctionnera pas correctement dans ces cas-là, sauf si toutes les partitions en lecture seule ont été d'abord configurées en Mettre à jour uniquement. Vous devez également avoir au moins une partition en Lecture/Ecriture dans laquelle Content Server peut ajouter des objets manquants.</P>
+<table CLASS="warning">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="warning" ALIGN="CENTER"><IMG ALT="Avertissement" SRC="../../images/pi_warning.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9286"></A><B CLASS="warning">Avertissement</B><BR>Lorsque vous modifiez une partition sur En lecture seule, le moteur d'indexation pour cette partition s'arrête et cesse d'indexer tout élément mis à jour ou supprimé.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID9287"></A>De la même façon, Content Server ne pouvant pas supprimer les partitions en lecture seule et en mise à jour uniquement, le processus d'élimination de l'index Entreprise et de réextraction des données de la base Content Server pour reconstituer l'index ne fonctionnera pas correctement dans ces cas-là sans actions préliminaires, qui dépendent des règles de contrôle de votre système. Après les actions préliminaires, le processus de reconstitution de l'index crée les partitions conformément aux règles de contrôle de la création des partitions. Par exemple, si une règle de création de partitions selon la date spécifie qu'une partition sera créée après chaque mois calendaire de données, Content Server crée une partition pour chaque mois calendaire en reconstituant l'index de l'objet depuis le plus ancien jusqu'à l'objet le plus récent. Pour plus d'informations sur les règles de contrôle, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-admincntrlrls-so.htm">Gestion des règles de contrôle</A></span>.</P>
+<P><A NAME="TMPID9292"></A>Sur de nouvelles installations mises à niveau de Content Server Mise à jour 10.5, ou ultérieure, le moteur de recherche prend en charge une partition en mode <I CLASS="emphasis">Hors service</I>. Ce mode est une alternative aux modes Mettre à jour, Lecture/Ecriture ou Lecture seule. En mode Hors service, un index accepte les mises à jour et les suppressions, mais pas les nouveaux objets. De plus, un remplacement complet d'un objet en mode Hors service déplace l'objet vers une autre partition et le supprime de la partition d'origine à des fins d'équilibrage.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF178">Mise à jour des fichiers de configuration de la recherche</A></P>
+<P><A NAME="TMPID9296"></A>Avec une nouvelle installation de Content Server, les dernières versions de plusieurs fichiers de configuration de la recherche sont disponibles. Ces fichiers changent de temps à autre dans le but d'améliorer les performances et l'efficacité du moteur de recherche ou de régler le comportement du DCS. Si vous avez effectué une mise à niveau vers une version plus ancienne de Content Server ou appliqué une mise à jour à Content Server, ces nouveaux fichiers ne sont pas utilisés. Ce sont vos fichiers de configuration existants qui sont conservés à des fins de compatibilité.</P>
+<P class="before-ul"><A NAME="TMPID9299"></A>Si vous effectuez une opération d'élimination et de réindexation, c'est le bon moment pour vérifier vos anciens fichiers de configuration et pour envisager de les remplacer par des fichiers de configuration plus récents. Une fois que vous disposez d'un index existant, il n'est pas toujours possible de modifier ces fichiers. Le répertoire <TT CLASS="literal">Content Server_home\config\reference</TT> pour votre version de Content Server constitue une source pour les nouveaux fichiers de configuration. Vous devez notamment prendre en compte les fichiers de configuration suivants situés dans le répertoire &lt;OTHOME&gt;\config :</P><A NAME="AEN8588"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8589"></A><A NAME="TMPID9305"></A><TT CLASS="literal">dcs.ini</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8592"></A><A NAME="TMPID9308"></A><TT CLASS="literal">LLFieldDefinitions.txt</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN8595"></A><A NAME="TMPID9311"></A><TT CLASS="literal">LLFieldDefinitions_EL.txt</TT></P></LI></UL>
+<P><A NAME="TMPID9313"></A>Vous pouvez également vouloir modifier ces fichiers afin de répondre à certaines exigences. En cas de modification des fichiers, vous devez commencer par désactiver l'Extracteur et vous assurer qu'aucun message IPool n'est en attente de traitement. Modifiez ensuite ces fichiers, effectuez l'opération d'élimination et de réindexation, puis activez l'Extracteur pour construire un nouvel index avec les paramètres mis à jour.</P>
+<P><A NAME="TMPID9314"></A>Le tableau suivant décrit les actions préliminaires à effectuer avant d'éliminer le flux de données et d'extraire à nouveau les données de leur source, en fonction des règles de contrôle que vous avez configurées pour la source de données.</P>
+<DIV title="Tableau de référence des actions préliminaires" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="PREPACTIONS"></A><B>Tableau 1-11 : Tableau de référence des actions préliminaires</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Règle de contrôle</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Actions préliminaires</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Création de partitions selon la capacité</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Changez toutes les partitions en mode Lecture/Ecriture.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Création de partitions selon la date</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Supprimez toutes les partitions à l'exception de la plus ancienne, faites passer cette partition en mode Lecture/Ecriture, puis définissez comme date de déclenchement de la règle de contrôle la date de déclenchement d'origine.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Création de partitions selon la capacité et selon la date</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Supprimez toutes les partitions à l'exception de la plus ancienne, faites passer cette partition en mode Lecture/Ecriture, puis définissez comme date de déclenchement de la règle de contrôle selon la date la date de déclenchement d'origine.</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID9334"></A>Pour plus d'informations sur le changement du mode d'une partition, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-understandingpartmaps-bg.htm">Utilisation des schémas de partition</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF179">Modes de partition changés manuellement</A></P>
+<P><A NAME="TMPID9337"></A>Si vous avez changé manuellement des modes de partition en mode lecture seule, vous devez les changer en mode Mettre à jour uniquement avant d'extraire à nouveau les données de la source. De la même façon, si vous avez changé manuellement des modes de partition en mode lecture seule ou mise à jour uniquement, vous devez les changer en mode Lecture/Ecriture avant d'éliminer le flux de données et d'extraire à nouveau les données de leur source.</P>
+<table CLASS="warning">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="warning" ALIGN="CENTER"><IMG ALT="Avertissement" SRC="../../images/pi_warning.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID9339"></A><B CLASS="warning">Avertissement</B><BR>Lorsque vous modifiez une partition sur En lecture seule, le moteur d'indexation pour cette partition s'arrête et cesse d'indexer tout élément mis à jour ou supprimé.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID9340"></A>Sur de nouvelles installations mises à niveau de Content Server Mise à jour 10.5, ou ultérieure, le moteur de recherche prend en charge une partition en mode <I CLASS="emphasis">Hors service</I>. Ce mode est une alternative aux modes Mettre à jour, Lecture/Ecriture ou Lecture seule. En mode Hors service, un index accepte les mises à jour et les suppressions, mais pas les nouveaux objets. De plus, un remplacement complet d'un objet en mode Hors service déplace l'objet vers une autre partition et le supprime de la partition d'origine à des fins d'équilibrage.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../otadmin/ota-indexverify-p.htm" revision="">Pour vérifier le contenu de l'index Entreprise</A></p></li>
+<li><p><A  href="../otadmin/ota-reindxll-p.htm" revision="">Pour réindexer le contenu Entreprise</A></p></li>
+<li><p><A  href="../otadmin/ota-reindxds-p.htm" revision="">Pour réindexer le contenu des index non Entreprise</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

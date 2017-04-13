@@ -1,0 +1,136 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<title>[report]</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/report/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/report/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-ini-report-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Understanding the opentext.ini file';
+          header.title2 = '[report]';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID10510"></A>The <TT CLASS="literal">[report]</TT> section contains LiveReport options. In versions of Livelink prior to 8.1, this section was called <TT CLASS="literal">[reports]</TT>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="OBJECTSUBTYPES">objectSubTypes</A></P><A NAME="AEN9656"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9657"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10518"></A>The <TT CLASS="literal">objectSubTypes</TT> parameter controls the Content Server object types that appear in <B CLASS="guilabel">Object</B> input type lists in LiveReports. To modify the Content Server object types displayed in these lists, modify the list of node type numbers, also known as object type numbers. For more information about how object types are used in LiveReports, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/llesrep-h-agd.rep-understanding-priv-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/report/rep-understanding-priv-rf.htm">Understanding Privileges and Permissions for LiveReports</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/llesrep-h-agd.rep-understanding-priv-rf" FMT=""></span>.</P>
+<P><A NAME="TMPID10524"></A>See <span><A href="../webadmin/wba-ini-nodetypemap-rf.htm">Node Type Number to Name Mappings</A></span> if you need a reference for each object type.</P>
+<P><A NAME="TMPID10526"></A>For more information about object subtypes, see the <I CLASS="emphasis">Content Server Module Development Guide</I>, or inspect the <TT CLASS="literal">LLNode</TT> and <TT CLASS="literal">WebNode</TT> objects in the Content Server Builder.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9673"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10534"></A><TT CLASS="literal">objectSubTypes={ 299, 215, 202, 206, 204, 144, 0, 140, 207, 130, 1, 131, 136, 400, 223, 230, 208, 128, 335 }</TT></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9677"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10538"></A>The default value for this parameter is:<BR><TT CLASS="literal">objectSubTypes={ 299, 215, 202, 206, 204, 144, 0, 140, 207, 130, 1, 131, 136, 400, 223, 230, 208, 128, 335 }</TT></P>
+<P><A NAME="TMPID10540"></A>As shown in the example, the list of valid Content Server node type, or object type, numbers must be separated by commas and the entire list must be delimited by braces.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-INI-LRREINSENBL">InsertStrEnabled</A></P><A NAME="AEN9684"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9685"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10547"></A>Enables and disables the InsertStr input type.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9688"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10550"></A><TT CLASS="literal">InsertStrEnabled=false</TT></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9692"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10554"></A>true or false. The default value is <TT CLASS="literal">false</TT>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9696"></A><B>Example:</B></P><A NAME="AEN9698"></A>
+<PRE 
+CLASS="screen"
+>[report]
+InsertStrEnabled=true</PRE
+></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-INI-LRREBLKTRM">blockedSQLterms</A></P><A NAME="AEN9700"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9701"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10564"></A>Specifies all terms that should be blocked from usage in SQL. These terms are checked whenever InsertStr has been used and the Secure mode enabled. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/llesrep-h-ugd.lr-insert-string-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/report/lr-insert-string-bg.htm">Insert String</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/llesrep-h-ugd.lr-insert-string-bg" FMT=""></span>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9705"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10568"></A><TT CLASS="literal">blockedSQLterms=;,UPDATE,UPDATETEXT,WRITETEXT,REMOVE,DROP,CREATE, ALTER,INSERT,COMMIT,EXECUTE,FETCH,REVOKE,ROLLBACK,SAVE,TRUNCATE,UNION</TT></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9709"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10572"></A>A comma separated list of terms. The default value is <TT CLASS="literal">;,UPDATE,UPDATETEXT,WRITETEXT,REMOVE,DROP,CREATE, ALTER,INSERT,COMMIT,EXECUTE,FETCH,REVOKE,ROLLBACK,SAVE,TRUNCATE,UNION</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-INI-LRREMODTRM">ModificationSQLTerms</A></P><A NAME="AEN9714"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9715"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10579"></A>Specifies a list of terms that, if used in the SQL or in an SQL template, would require the user to set the <B CLASS="guilabel">Allow Database Modification</B> option. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/llesrep-h-ugd.lr-db-modfeat-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/report/lr-db-modfeat-bg.htm">Allow Database Modification Features</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/llesrep-h-ugd.lr-db-modfeat-bg" FMT=""></span>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9720"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10584"></A><TT CLASS="literal">ModificationSQLTerms=UPDATE,UPDATETEXT,WRITETEXT,REMOVE,DROP,CREATE,ALTER, INSERT,COMMIT,EXECUTE,FETCH,REVOKE,ROLLBACK,SAVE,TRUNCATE</TT></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9724"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10588"></A>A comma separated list of terms. The default value is <TT CLASS="literal">UPDATE,UPDATETEXT,WRITETEXT,REMOVE,DROP,CREATE,ALTER, INSERT,COMMIT,EXECUTE,FETCH,REVOKE,ROLLBACK,SAVE,TRUNCATE</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-INI-LRALLDBMOD">AllowDBModification</A></P><A NAME="AEN9729"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9730"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10595"></A>Enables or disables the <B CLASS="guilabel">Allow Database Modification</B> feature in LiveReports. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/llesrep-h-ugd.lr-db-modfeat-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/report/lr-db-modfeat-bg.htm">Allow Database Modification Features</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/llesrep-h-ugd.lr-db-modfeat-bg" FMT=""></span>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9735"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10600"></A><TT CLASS="literal">AllowDBModification=false</TT></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9739"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10604"></A>true or false. The default value is <TT CLASS="literal">false</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF90"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10607"></A><B CLASS="note">Note: </B><BR>This setting replaces a previous setting called <TT CLASS="literal">lockDBModification</TT>. If you had previously set <TT CLASS="literal">lockDBModification=true</TT>, that is now equivalent to the current <TT CLASS="literal">AllowDBModification=false</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9748"></A><B>Example:</B></P><A NAME="AEN9750"></A>
+<PRE 
+CLASS="screen"
+>[report]
+AllowDBModification=true</PRE
+></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-INI-LRQURVIS">QueryVisibleWithSeeContents</A></P><A NAME="AEN9752"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9753"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID10619"></A>Determines whether the <B CLASS="guilabel">View Query</B> option is available to users with only <I CLASS="emphasis">See Contents</I> permission for the LiveReport. If the administrator sets this option to true, users with <I CLASS="emphasis">See</I> and <I CLASS="emphasis">See Contents</I> permissions on a LiveReport will be able to use the <B CLASS="guilabel">View Query</B> option. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/llesrep-h-ugd.lr-db-modfeat-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/report/lr-db-modfeat-bg.htm">Allow Database Modification Features</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/llesrep-h-ugd.lr-db-modfeat-bg" FMT=""></span>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9762"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID10628"></A><TT CLASS="literal">QueryVisibleWithSeeContents=true</TT></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9766"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID10632"></A>true or false. The default value is <TT CLASS="literal">true</TT>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN9770"></A><B>Example:</B></P><A NAME="AEN9772"></A>
+<PRE 
+CLASS="screen"
+>[report]
+QueryVisibleWithSeeContents=false</PRE
+></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

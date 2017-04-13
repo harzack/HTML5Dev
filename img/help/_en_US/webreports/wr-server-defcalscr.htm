@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Defining and Calling a Script</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-server-defcalscr.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Server Side Scripting';
+          header.title2 = 'Defining and Calling a Script';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID21902"></A>Scripts are both defined and called within a single reportview. The definition of a script may appear anywhere in the reportview and calls to a script can occur before its definition. This is because script definitions are parsed, compiled and cached before a WebReport runs, in most cases at the time the new reportview version is added. However, to make reportviews easier to understand, it makes sense to locate the script definitions in the header section.</P>
+<P><A NAME="TMPID21903"></A>To define a script, use the following:</P><A NAME="AEN20624"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_STARTSCRIPT NAME:myFunc /]
+function String anyName(Dynamic c)
+  String s = 'Testing'
+  return s
+end
+[LL_WEBREPORT_ENDSCRIPT /]</PRE
+>
+<P><A NAME="TMPID21905"></A>When called, this simple script returns the string “Testing” to the reportview. The string will be inserted into the resulting report output where the call to the script was made. To call the script use: <TT CLASS="literal">[LL_WEBREPORT_CALL NAME:myFunc /]</TT></P>
+<P><A NAME="TMPID21908"></A>This tag will cause the script named <TT CLASS="literal">myFunc</TT> to be executed and any result returned by it to be inserted into the report output in place of the tag. Scripts can be called from anywhere in the reportview.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

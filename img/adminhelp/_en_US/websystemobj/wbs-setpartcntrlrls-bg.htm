@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Adding Partition Management Control Rules</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-setpartcntrlrls-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Control Rules';
+          header.title2 = 'Adding Partition Management Control Rules';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID10169"></A>Partition management control rules allow you to define the states or conditions that partitions encounter and to associate certain actions with those conditions. For example, you can add a control rule based on partition capacity that issues a report when every partition has reached 75% capacity. For more information about partitions, see <span><A href="../websystemobj/wbs-understandingpartmaps-bg.htm">Working with Partition Maps</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF189"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10172"></A><B CLASS="note">Note: </B><BR>Content Server delivers system object alert email messages to the recipients that you specify on the Configure System Object Alert E-Mail Delivery page. For more information, see <span><A href="../websovmgmt/sov-cnfsoaed-p.htm">To Enable Error-Checking and E-Mail Delivery</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID10175"></A>In addition to adding control rules that monitor partition capacity, you can add partition management control rules that automatically create new partitions when the rules' conditions are met (<I CLASS="emphasis">partition creation</I> control rules). These control rules can be based on partition capacity or a set time interval (<I CLASS="emphasis">date-based</I> partition creation).</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF190"> 		Partition Creation Control Rules 	</A></P>
+<P><A NAME="TMPID10179"></A>When adding a partition creation control rule, there are several parameters that you can specify. You can have Content Server change the modes (<I CLASS="emphasis">step down</I>) of previous partitions as new partitions are created, you can select how many new partitions to create, and you can specify a partition name template and partition directory template (variables that determine how Content Server automatically names partitions and the directories in which they are stored). The disk locations for the directories that store partitions are taken from the site's partition configuration, which must be already set up for these rules to work properly. For more information, see <span><A href="../websystemobj/wbs-configpartitions-bg.htm">Configuring Partitions</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF191"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10185"></A><B CLASS="note">Note: </B><BR>The settings for automatically created partitions are taken from the last partition created, not from default settings.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID10186"></A>When adding control rules to automate partition creation, you can schedule automated backup processes for the partitions. Before you can schedule a backup process, you must manually create a backup manager and at least one backup process. Once the backup processes are created for the first partition, subsequent auto-created partitions will copy the number of processes defined for the previous partition and apply a similar set for new partitions. When stepping down a partition to Read-Only mode, all existing scheduled backups are canceled and a final full backup is performed. For information about automating backup processes, see <span><A href="../otadmin/ota-ibrbackupoverview-so.htm">Backing Up and Restoring Indexes</A></span>.</P>
+<table CLASS="warning">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="warning" ALIGN="CENTER"><IMG ALT="Warning" SRC="../../images/pi_warning.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10189"></A><B CLASS="warning">Warning</B><BR>When you change a partition to Read-Only, the Index Engine for that partition shuts itself down and will not index any items that are either updated or deleted.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID10190"></A>Date-based partition creation control rules are triggered when the latest object creation date in the data flow matches or exceeds the trigger date that you have specified. The rule then waits for the number of IPool messages in the data flow to reach zero, creates new partitions, and then sets the next trigger date, based on an interval that you have specified. The interval determines the amount of time between the triggering of the rule and the next trigger date.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF192"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10192"></A><B CLASS="note">Note: </B><BR>Date-based partition creation control rules are only available if you have set the <TT CLASS="literal">opentext.ini</TT> file parameter <TT CLASS="literal">wantDescendingExtractor</TT> to <TT CLASS="literal">false</TT>. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-livelinkextractor-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-livelinkextractor-rf.htm">[LivelinkExtractor]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-livelinkextractor-rf" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-tosetcap-p.htm" revision="">To Add a Control Rule Based on Partition Capacity</A></p></li>
+<li><p><A  href="../websystemobj/wbs-tosetcapbased-p.htm" revision="">To Add a Control Rule for Capacity-Based Partition Creation</A></p></li>
+<li><p><A  href="../websystemobj/wbs-tosetdatebased-p.htm" revision="">To Add a Control Rule for Date-Based Partition Creation</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

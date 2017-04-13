@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<title>Remarques techniques sur la conversion PDF</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'webr-technotes.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gérer la conversion WebReports';
+          header.title2 = 'Remarques techniques sur la conversion PDF';
+           header.draw();
+  </script>
+  <A NAME="AEN490"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN491"></A><A NAME="TMPID500"></A>WebReports utilise la mémoire cache Content Server pour déterminer quelle destination correspond à quel fichier converti. Comme pour n'importe quelle mémoire cache, la durée de vie est limitée, ce qui signifie, bien que cela soit peu probable, qu'il est possible que des fichiers convertis présents dans le dossier de sortie soient liés à une mémoire cache expirée. Dans un tel cas, WebReports ne sait pas où envoyer les fichiers, car les informations de destination sont perdues. Cette situation peut se produire si les utilisateurs ont exporté et converti des fichiers dans un système où les agents étaient désactivés sur tous les serveurs. Activer les agents ne traite pas les fichiers en attente, à moins qu'ils ne disposent d'une mémoire cache. De manière générale, si un élément reste plus d'une heure dans le dossier de sortie, il doit être supprimé manuellement.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN496"></A><A NAME="TMPID505"></A>Les agents Content Server sont utilisés pour surveiller le dossier de sortie toutes les 5 minutes, afin de détecter la présence d'un fichier converti. Pour fonctionner, ces agents doivent donc être activés pour la conversion.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN499"></A><A NAME="TMPID508"></A>L'heure exacte d'écriture d'un fichier dans le dossier de sortie, la fréquence à laquelle l'outil de conversion vérifie le contenu de ce dossier, la durée réelle de l'opération de conversion et le moment où celle-ci se produit dans le cycle de vérification de 5 minutes de l'agent sont autant de paramètres qui déterminent le temps nécessaire pour qu'un fichier arrive à la destination d'exportation. Ce délai peut varier de quelques secondes à 30 minutes, en fonction du système.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN501"></A><A NAME="TMPID510"></A>Les dossiers d'un emplacement réseau peuvent être configurés en tant qu'UNC, par exemple : <TT CLASS="filename">\\192.168.255.20\disk1\PDF Conversion\input</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN504"></A><A NAME="TMPID513"></A>Une exportation peut être effectuée depuis n'importe quel Content Server d'un environnement de clusters. Il est donc essentiel de définir le répertoire d'entrée sur chaque machine du cluster. Le dossier de sortie est surveillé uniquement par le Content Server, lorsque l'agent de conversion WebReports est en cours d'exécution. C'est pourquoi il est essentiel de spécifier le dossier de sortie sur ce serveur. Il est toutefois recommandé de spécifier le dossier de sortie sur toutes les instances de Content Server.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

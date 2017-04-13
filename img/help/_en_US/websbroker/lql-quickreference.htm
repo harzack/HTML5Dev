@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBB100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websbroker">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llesrcs-h-ugd -- ngdlles-h-ugd -- llespob-h-ugd -- llesrec-h-ugd -- lleswat-h-ugd -- llesapp-h-ugd -- llesprj-h-ugd -- llesrt-h-ugd -- llescl-h-ugd -- llesrcm-h-ugd"><title>LQL Quick Reference</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lql-quickreference.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Searching Content Server';
+          header.title2 = 'LQL Quick Reference';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3367"></A>Search term samples:</P>
+<P><A NAME="TMPID3368"></A><TT CLASS="literal"><B CLASS="highlight">Moon</B></TT><BR><TT CLASS="literal"><B CLASS="highlight">"hors*"</B></TT><BR><TT CLASS="literal"><B CLASS="highlight">="jumping jacks"</B></TT><BR><TT CLASS="literal"><B CLASS="highlight">[qlregion "OTData"] "home"</B></TT><BR><TT CLASS="literal"><B CLASS="highlight">[qlregion "OTFileType"] qlrange "pdf|word|excel"</B></TT><BR><TT CLASS="literal"><B CLASS="highlight">[qlregion "OTFileSize"] qlrange "80000~120000"</B></TT><BR><TT CLASS="literal"><B CLASS="highlight">[qlregion "OTIndexErrors"] !="2"</B></TT><BR><TT CLASS="literal"><B CLASS="highlight">[qlregion "OTFileName"] *</B></TT></P>
+<P><A NAME="TMPID3385"></A>Operators are used to join Search Terms. If not specified, AND is assumed.</P>
+<P><A NAME="TMPID3386"></A><TT CLASS="literal"><B CLASS="highlight">AND, OR, NOT, XOR, SOR</B></TT><BR><TT CLASS="literal"><B CLASS="highlight">PROX[5]</B></TT>  - second term within 5 words of first term<BR><TT CLASS="literal"><B CLASS="highlight">NEAR</B> or <B CLASS="highlight">QLNEAR</B></TT>  - same as <B CLASS="highlight">PROX[10,F]</B><BR></P>
+<P><A NAME="TMPID3395"></A>To search for operators, enclose in quotes:</P>
+<P><A NAME="TMPID3396"></A><TT CLASS="literal"><B CLASS="highlight">"twist" "not" "shout"</B></TT></P>
+<P><A NAME="TMPID3399"></A>Order of evaluation is left to right. Brackets can be used to clarify or change this.</P>
+<P><A NAME="TMPID3400"></A><TT CLASS="literal"><B CLASS="highlight">Moon and (phobos or deimos)</B></TT></P>
+<P><A NAME="TMPID3403"></A>Comparators are applied to a single term. You can use a comparator or a modifier, not both.</P>
+<P><A NAME="TMPID3404"></A><TT CLASS="literal"><B CLASS="highlight">=, !=, &gt;, &lt;, &gt;=, &lt;=</B></TT></P>
+<P><A NAME="TMPID3407"></A>Modifiers request special handling for a single term.</P>
+<P><A NAME="TMPID3408"></A><TT CLASS="literal"><B CLASS="highlight">qlthesaurus</B></TT>  - also match synonyms<BR><TT CLASS="literal"><B CLASS="highlight">qlrange</B></TT>  - match within a range or from a list<BR><TT CLASS="literal"><B CLASS="highlight">qlstem</B></TT>  - match singular or plural forms<BR><TT CLASS="literal"><B CLASS="highlight">qlregex</B></TT>  - match based on a pattern (regular expression)<BR><TT CLASS="literal"><B CLASS="highlight">qllefttruncation term</B></TT>  (easier usage:  <B CLASS="highlight">*term</B>)<BR><TT CLASS="literal"><B CLASS="highlight">qlrighttruncation term</B></TT>  (easier usage: <B CLASS="highlight">term*</B>)<BR></P>
+<P><A NAME="TMPID3423"></A>Metadata fields. If not specified, search terms match the full text body and the 'default' search regions.  Specify a metadata field for a search term:</P>
+<P><A NAME="TMPID3424"></A><TT CLASS="literal"><B CLASS="highlight">[qlregion "fieldname"] "search phrase"</B></TT></P>
+<P><A NAME="TMPID3427"></A>To restrict matches to fields with metadata attributes. Only available with a few metadata fields in Content Server, usually for languages:</P>
+<P><A NAME="TMPID3429"></A><TT CLASS="literal"><B CLASS="highlight">[qlregion "OTName"][qlattribute "lang"="en"] "English phrase"</B></TT></P>
+<P><A NAME="TMPID3432"></A>To search for a term in full text only (not metadata):</P>
+<P><A NAME="TMPID3433"></A><TT CLASS="literal"><B CLASS="highlight">[qlregion "OTData"] "term"</B></TT></P>
+<P><A NAME="TMPID3436"></A>To search for special characters in metadata, precede with a backslash character:</P>
+<P><A NAME="TMPID3437"></A><TT CLASS="literal"><B CLASS="highlight">[qlregion "url"] "c\:\\root\\folder"</B></TT></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

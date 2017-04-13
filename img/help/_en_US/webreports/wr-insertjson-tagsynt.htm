@@ -1,0 +1,218 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>INSERTJSON Tag Syntax and Options</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-insertjson-tagsynt.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Inserting JSON Data';
+          header.title2 = 'INSERTJSON Tag Syntax and Options';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID19978"></A>The main syntax for this tag is as follows:</P>
+<P><A NAME="TMPID19979"></A><TT CLASS="literal"><B CLASS="highlight">[LL_WEBREPORT_INSERTJSON /]</B></TT></P>
+<P><A NAME="TMPID19982"></A>The <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-SUBINSERTJSON">INSERTJSON</A></span> tag can only be used in the Header or Footer parts of the reportview. Unlike the <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINSERTJSARRAY">INSERTJSARRAY</A></span> content control tag, when this tag is used the row section is processed as normal. It is not valid to use an <TT CLASS="literal">INSERTJSON</TT> tag in the row section as it can be used to return all data rows outside of the row section.</P>
+<P><A NAME="TMPID19986"></A>The <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-SUBINSERTJSON">INSERTJSON</A></span> tag supports multiple “directives” which control what type of data the tag will return. Each directive is preceeded by an “at” sign, “@”. This differs from other content control tags but allows for a very flexible feature set. The currently supported directives are listed in this table:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN18725"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tag Options</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@BROWSECOLUMNS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This directive is only supported in Livelink version 9.7.1 and later. It does not require any additional information. It enables the <TT CLASS="literal">INSERTJSON</TT> tag to return a data set identical to that normally used in Content Server container browsing. This is useful when emulating Content Server folder views, particularly in Livelink 9.7.1.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF63"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes: </B></P><A NAME="AEN18744"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18745"></A><A NAME="TMPID20012"></A>The actual rows of data returned, will be filtered based on any WebReports conditional row tags. For example, <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDEIF">INCLUDEIF</A></span>, <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCEXITIF">EXITIF</A></span>, <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDERANGE">INCLUDERANGE</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18751"></A><A NAME="TMPID20018"></A>This directive and the <TT CLASS="literal">@ALLDATASOURCE</TT> directive are mutually exclusive.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18754"></A><A NAME="TMPID20021"></A>When this directive is used with a WebReport, the items returned by the data source must be valid Content Server items that would normally exist in a Content Server container. For example, if the data source is not returning Dtree data, an error message will be generated. Similarly if the data source returns an item like a Volume, this would also cause an error message as this item would not normally appear in a folder.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@ALLDATASOURCE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This directive does not require any additional information. It enables the <TT CLASS="literal">INSERTJSON</TT> tag to return all information from the data source in one declaration. Besides creating an array with all rows and columns, this directive also provides some standard fields to support the data source. These fields are: <B CLASS="highlight">sourceID, actualRows, filteredRows, totalRows and totalSourceRows</B>.</TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF64"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID20032"></A><B CLASS="note">Note: </B><BR>Currently the <TT CLASS="literal">filteredRows</TT> field will only be populated with a valid number if the <span><A HREF="wr-tag-cdfifth.htm#WR-TAG-CDFILTEREDROWS">FILTEREDROWS</A></span> tag is included in the WebReport. If this tag is not required, in other words, if only the <TT CLASS="literal">INSERTJSON</TT> output is being used, then the <B CLASS="highlight">[LL_REPTAG_FILTEREDROWS /]</B> should be commented out.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">For more information about these fields refer to the corresponding report tag syntax, for example, <B CLASS="highlight">[LL_REPTAG_SOURCEID /]</B>, <span><A HREF="wr-tag-cdthirteenth.htm#WR-TAG-CDSOURCEID">SOURCEID</A></span>. Note that this directive and the <B CLASS="highlight">@BROWSECOLUMNS</B> directive are mutually exclusive.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@ALLSTATIC</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This directive returns a single structure that contains all static tag values that would normally be returned in individual WebReport tags. The name of each field is identical to the name used in the corresponding static tag.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@ROWCOLUMNS &lt;columns&gt; </B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This directive is followed by multiple fields that specify additional columns to be added to each row being returned from the data source or browse columns. Each field can be either the name of a column or a WebReports tag and sub-tags. These columns are normally added to existing columns built by the <B CLASS="highlight">@ALLDATASOURCE</B> or <B CLASS="highlight">@BROWSECOLUMNS</B> directives; however, if neither of these directives has been used, an array called <B CLASS="highlight">myRows</B> will be added to the resulting JSON structure containing only the columns that have been specified in this <B CLASS="highlight">@ROWCOLUMNS</B> directive for each and every row in the data source. Each column uses the following format: <TT CLASS="literal">&lt;<I CLASS="varname">JSON field name</I>>:"&lt;<I CLASS="varname">data reference</I>>"</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The data reference is either a simple column name from the data source or a WebReports tag and sub-tag combination. For example, <TT CLASS="literal">@ROWCOLUMNS newColumn:"[LL_REPTAG=DATAID CAT:price:amount1:display /]"</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This example would force that a column called “newColumn” is added to the <B CLASS="highlight">myRows</B> array for every row of data returned. The tag syntax would be resolved for each and every row, in this case looking up a Category/attribute value.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Consider this example: <TT CLASS="literal">@ROWCOLUMNS Column2:"modifyDate"</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">In this second example, a new column field called Column2 is added to the <B CLASS="highlight">myRows</B> array using whatever data is returned by the modifyDate column in the data source.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@EXCLUSIVE PARM:&lt;parm name&gt; </B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This directive provides a mode where only the data produced by the <TT CLASS="literal">INSERTJSON</TT> tag will be returned. In this mode, all other WebReports output is omitted; however, the reportview is still processed as normal to ensure that any variable processing still takes place. This mode is controlled by the presence or absence of a parameter in the URL. This parameter is specified using the <TT CLASS="literal">PARM:</TT> option. For example, <TT CLASS="literal">PARM:jsononly</TT> specifies that if <TT CLASS="literal">&amp;jsononly</TT> is found in the URL, then only JSON data will be returned. This parameter defaults to <TT CLASS="literal">true</TT> so if it is included in the URL, or set to <TT CLASS="literal">true</TT>, <TT CLASS="literal">&amp;jsononly=true</TT>, then exclusive mode is used. Conversely if the parameter is omitted, or set to <TT CLASS="literal">false</TT>, <TT CLASS="literal">&amp;jsononly=false</TT>, then normal mode is used. Note that in normal mode, the <TT CLASS="literal">JSON</TT> data is still included in the output of the WebReport.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@FIELDS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This directive is followed by multiple quoted fields that specify a name and value for fields to be returned by the <TT CLASS="literal">INSERTJSON</TT> tag. The fields are made up using this syntax: <TT CLASS="literal">&lt;<I CLASS="varname">fieldname</I>></TT>:<TT CLASS="literal">"&lt;<I CLASS="varname">fieldvalue</I>>"</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The field value could be a literal value but is normally a WebReports tag. For example, <TT CLASS="literal">USERID:"[LL_REPTAG_USERID /]"</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Any fields specified by this directive are added to the front of the existing <TT CLASS="literal">JSON</TT> structure in addition to any existing fields for other directives. These fields are not added to the <TT CLASS="literal">myRows</TT> array, only to the top level object.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@ADDJSVAR VAR:&lt;var name&gt;</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This directive adds the JavaScript variable and associated syntax to assign the returned <TT CLASS="literal">JSON</TT> to a variable specified in &lt;<I CLASS="varname">var name</I>>. For example, <TT CLASS="literal">@ADDJSVAR VAR:temp</TT> would add the following to the beginning of the <TT CLASS="literal">JSON</TT> data: <TT CLASS="literal">var temp = "json data object"</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@ESCAPETEXT TYPE:&lt;escape type&gt;</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This directive allows the default text escaping to be modified for any text/string fields being used in the <TT CLASS="literal">INSERTJSON</TT> tag. Valid escape types are: <B CLASS="highlight">standard</B> and <B CLASS="highlight">escapeurl</B>. The <B CLASS="highlight">standard</B> type uses the standard <TT CLASS="literal">JSON</TT> specification for text escaping. The <B CLASS="highlight">escapeurl</B> type uses URL encoding that would need to be decoded using the JavaScript decodeURI() function.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN18861"></A>&nbsp;</P>
+<P><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID20128"></A>In this example, a WebReport is using a simplified data source that returns only three columns, <TT CLASS="literal">parentId</TT>, <TT CLASS="literal">dataId</TT> and <TT CLASS="literal">subType</TT>, and two rows from the <TT CLASS="literal">DTREE</TT>. Given the following <TT CLASS="literal">INSERTJSON</TT> syntax:</P><A NAME="AEN18868"></A>
+<PRE 
+CLASS="screen"
+>&#13;[LL_WEBREPORT_INSERTJSON
+@ADDJSVAR VAR:sampleData
+@ALLDATASOURCE
+@FIELDS SYSTEMDATE:"[LL_REPTAG_DATE /]"
+@ROWCOLUMNS objName:"[LL_REPTAG=DATAID NODEINFO:NAME /]" supplier:"[LL_REPTAG=DATAID CAT:VendorData:supplier:DISPLAY /]"
+/]</PRE
+>
+<P><A NAME="TMPID20135"></A>Note that carriage returns have been inserted in the above example for clarity but should <I CLASS="emphasis">not</I> be used in the reportview.</P>
+<P class="before-ul"><A NAME="TMPID20137"></A>This is the data that would be returned to the client in the WebReport output:</P><A NAME="AEN18872"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18873"></A><A NAME="TMPID20140"></A>var sampleData={</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18875"></A><A NAME="TMPID20142"></A>“SYSTEMDATE”:“Oct 08 2008”,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18879"></A><A NAME="TMPID20146"></A>“sourceID”:129293,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18882"></A><A NAME="TMPID20149"></A>“actualRows”:2,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18885"></A><A NAME="TMPID20152"></A>“filteredRows”:2,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18888"></A><A NAME="TMPID20155"></A>“totalRows”:2,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18891"></A><A NAME="TMPID20158"></A>“totalSourceRows”:2,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18894"></A><A NAME="TMPID20161"></A>“myRows”:[{“objName”:“AAA test document”, “Supplier”:“Widgets Inc.”, “parentid”:126758, “dataid”:127200, “subtype”:144}, {“objName”:“BBB test document”, “Supplier”:“Teletech Assets”, “parentid”:126758, “dataid”:129514, “subtype”:144}]</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18911"></A><A NAME="TMPID20178"></A>}</P></LI></UL>
+<P><A NAME="TMPID20179"></A>The following screen shot shows an excerpt of the JavaScript data structure that the client would build from this <TT CLASS="literal">JSON</TT> data, as viewed from a script debugger.</P>
+<P><IMG SRC="image033.png"></P><A NAME="AEN18916"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18917"></A><A NAME="TMPID20184"></A>The object is called “sampleData” as per the <TT CLASS="literal">ADDJSVAR</TT> directive.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18921"></A><A NAME="TMPID20188"></A>A new field called <TT CLASS="literal">SYSTEMDATE</TT> has been added to the object as per the FIELDS directive.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18924"></A><A NAME="TMPID20191"></A>The fields <TT CLASS="literal">sourceID</TT>, <TT CLASS="literal">actualRows</TT>, <TT CLASS="literal">filteredRows</TT>, <TT CLASS="literal">totalRows</TT> and <TT CLASS="literal">totalSourceRows</TT> have been automatically created as part of the <TT CLASS="literal">ALLDATASOURCE</TT> directive.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18932"></A><A NAME="TMPID20199"></A>Two rows, as many as there are rows in the data source, are stored in the array called myRows. This example shows all three fields that existed in the simple data source: <TT CLASS="literal">parentid</TT>, <TT CLASS="literal">dataid</TT> and <TT CLASS="literal">subtype</TT>. If the data source had returned all the fields in <TT CLASS="literal">DTREE</TT> then all of these columns would have been included in the <TT CLASS="literal">myRows</TT> array of data as per the <TT CLASS="literal">ALLDATASOURCE</TT> directive.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18940"></A><A NAME="TMPID20207"></A>In addition to the columns returned by the data source, two new columns: <TT CLASS="literal">objName</TT> and <TT CLASS="literal">Supplier</TT> have been added for each and every row of data. In this simplistic example, <TT CLASS="literal">Supplier</TT> uses the result of: <TT CLASS="literal">[LL_REPTAG=DATAID CAT:'Test Category':'Supplier Company':DISPLAY /]</TT> for each row to set the data value called <TT CLASS="literal">Supplier</TT> in each row of the array. The <TT CLASS="literal">objName</TT> value is simply looked up in a similar way using the <TT CLASS="literal">NODEINFO:NAME</TT> sub-tag.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18949"></A><A NAME="TMPID20216"></A>LiveReports allow direct access to the Content Server database, so access to creating LiveReports is nearly always restricted to Administrators. A WebReport does not allow direct database access, instead it uses existing LiveReports, search queries or other data sources. Therefore WebReports may be safely used by business users and developers who are not administrators.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18953"></A><A NAME="TMPID20220"></A>The <TT CLASS="literal">STARTROW</TT> and <TT CLASS="literal">ENDROW</TT> tags are not visible. They do <I CLASS="emphasis">NOT</I> need to be added as the editor will insert them when editing is complete.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18958"></A><A NAME="TMPID20225"></A>Each address is separated using whatever symbol has been defined as a system preference. The instruction for this field will indicate this symbol. Two examples are: comma and semi-colon.</P></LI></UL>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,723 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Définition des régions d'index</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbo-define-region-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion de la recherche';
+          header.title2 = 'Définition des régions d\'index';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID13721"></A>Le contenu des documents indexés est stocké dans des régions. Il existe d'autres régions destinées au stockage des données concernant l'emplacement, le type MIME, la date de création, la taille, ainsi que d'autres informations portant sur les documents indexés. Ces régions non associées au contenu des documents sont parfois désignées sous le terme <I CLASS="emphasis">métadonnées</I>. Dans le cas de l'index Entreprise, les régions de métadonnées correspondent aux attributs des éléments de la base de données Content Server, y compris tous les attributs personnalisés que vous avez éventuellement définis.</P>
+<P><A NAME="TMPID13724"></A>Pour un type d'élément particulier (document, dossier, tâche, etc.), le contenu et les métadonnées sont indexés. Les régions décomposent le groupe de données global (contenu et/ou métadonnées) indexé en sous-composants distincts que vous pourrez par la suite rechercher et afficher individuellement. Par exemple, <TT CLASS="literal">OTAssignedTo</TT> et <TT CLASS="literal">OTDateCompleted</TT> sont deux régions de métadonnées d'un index Entreprise standard. Les recherches dans les régions permettent aux utilisateurs de restreindre leur recherche aux parties de l'index qui les intéressent plus particulièrement. La page Configurer les régions de n'importe quel index répertorie toutes les régions de métadonnées qui ont des valeurs dans cet index.</P>
+<P><A NAME="TMPID13727"></A>Après la création d'un index (qu'il s'agisse de l'index Entreprise, des index de l'aide, d'un index Directory Walker ou de tout autre type d'index), vous devez sélectionner les régions de métadonnées de l'index que vous souhaitez configurer pour la recherche dans la section <B CLASS="guilabel">Attributs système</B> de la page Recherche Content Server et pour l'affichage sur la page Résultats de recherche. Vous pouvez également sélectionner les régions de métadonnées de l'index dans lesquelles vous souhaitez effectuer des recherches par défaut ou que vous souhaitez trier. Pour plus d'informations sur la configuration des régions d'index pour la recherche, l'affichage, la recherche par défaut ou le tri, voir <span><A href="../webotcindex/wbo-confrgix-bg.htm">Configuration des régions d'index</A></span>.</P>
+<P><A NAME="TMPID13731"></A>Le tableau suivant décrit les ensembles de régions de métadonnées standard de l'index Entreprise. Les régions marquées d'un astérisque (*) sont les régions configurées pour la recherche par défaut, celles marquées de deux astérisques (**) sont les régions configurées pour l'affichage par défaut, celles marquées de trois astérisques (***) sont les régions configurées pour la recherche par défaut et celles marquées de quatre astérisques (****) sont les régions configurées pour le tri par défaut. Les noms des régions dans la première colonne du tableau ci-dessous sont utilisés dans les balises qui délimitent les régions dans l'index. Par exemple, les balises <TT CLASS="literal"> &lt;OTAssignedTo&gt;</TT> et <TT CLASS="literal">&lt;/OTAssignedTo&gt;</TT> délimitent la région <TT CLASS="literal">OTAssignedTo</TT>.</P>
+<DIV title="Régions d'un index Entreprise standard" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="TAB-AID9"></A><B>Tableau 1-20 : Régions d'un index Entreprise standard</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom de région dans l'index</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom affiché par défaut</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description de la région</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Auteur</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Auteur</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom de l'utilisateur en cours</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Titre</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Titre</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom d'affichage de l'élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTAssignedTo</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTAssignedTo</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom de connexion de l'utilisateur auquel une tâche a été assignée</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTAssignedToFullName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTAssignedToFullName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom complet de l'utilisateur auquel une tâche a été assignée</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTAssignedToName *</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Assigné à</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom de connexion de l'utilisateur auquel une tâche a été assignée</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCatalog</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCatalog</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Objet Content Server constituant un catalogue</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCDMajor</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCDMajor</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Numéro de révision d'ordre majeur d'un document mixte</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCDMinor</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCDMinor</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Numéro de révision d'ordre mineur d'un document mixte</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCreateDate *</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date de création</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date de création d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCreatedBy **</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Créé par</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Identification du créateur</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCreatedByFullName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCreatedByFullName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom complet du créateur</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCreatedByName *</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Créé par</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom du créateur</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCreateTime</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCreateTime</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heure de création d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTCurrentVersion</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Version</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Version courante d'un document</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDataID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDataID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ID des données d'un fichier</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDataSize</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDataSize</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Taille des données d'un fichier</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDateAssigned *</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Assigned Date</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'attribution d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDateCompleted *</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Completed Date</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'achèvement d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDateDue *</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'échéance</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'échéance d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDateEffective</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDateEffective</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'effet d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDateExpiration</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDateExpiration</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'expiration d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDateStarted *</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Started Date</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date de commencement d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDCategory</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDCategory</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DataIDs des catégories assignées à un objet</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDComment***</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDComment</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Texte fourni dans le champ Description pour un objet, contenant le code de langue des métadonnées.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDocumentRating</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDocumentRating</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Evaluation globale du document</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDocumentSynopsis***</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDocumentSynopsis</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Synthèse du document</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDocumentUserComment***</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDocumentUserComment</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Commentaires de l'utilisateur sur le document</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDocumentUserExplanation***</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTDocumentUserExplanation</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Explications des commentaires de l'utilisateur sur le document</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTFileName***</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTFileName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom de fichier Content Server, emplacement y compris. Les noms de fichier peuvent contenir tout caractère alphanumérique mais les espaces ne sont pas admis.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTFilterMIMEType</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTFilterMIMEType</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type MIME d'un fichier déterminé par le filtre de conversion</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTHP</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTHP</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Expressions importantes dans un document</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTHotWords</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTHotWords</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Mots importants dans un document</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLLMIMEType</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLLMIMEType</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type MIME d'un fichier déterminé par Content Server lors de l'ajout du fichier</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLocation **</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLocation</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Emplacement de l'élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLocked</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLocked</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Eléments actuellement verrouillés dans Content Server</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLockedBy</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLockedBy</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ID de l'utilisateur ayant verrouillé certains éléments</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLockedByFullName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLockedByFullName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Noms complets d'utilisateurs spécifiques</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLockedByName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLockedByName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Noms de connexion spécifiques des utilisateurs</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLockedDate</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLockedDate</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Dates de verrouillage des éléments</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLockedTime</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTLockedTime</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heures de verrouillage des éléments</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTMIMEType * **</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type MIME d'un fichier</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTModifyDate *</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ModificationDate</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Dates de modification des éléments</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTModifyTime</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTModifyTime</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heures de modification des éléments</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTName * ** ***</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le libellé d'affichage de l'élément, contenant le code de langue des métadonnées</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTObject</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTObject</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Identification unique d'un objet Content Server contenant l'ID du nœud et son numéro de version</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTObjectDate * **	 ****</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date de la dernière modification de l'objet</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTObjectSize * **	****</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Taille</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Taille de l'objet sous forme de nombre entier</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTObjectTime</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTObjectTime</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heure de la dernière modification du fichier. L'heure est exprimée sous forme de nombres entiers au format hh:mm:ss</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTOwnerID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTOwnerID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ID du volume propriétaire d'un élément particulier (par exemple, l'espace de travail Personnel d'un utilisateur)</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTPDFPage</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTPDFPage</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Contenu d'une page d'un document PDF</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTPDFPageNum</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTPDFPageNum</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Numéro d'une page PDF défini par la région OTPDFPage</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTPriority</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTPriority</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indicateur de priorité</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTProjectStatus</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTProjectStatus</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Statut du projet</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTReservedByFullName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTReservedByFullName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Noms complets d'utilisateurs spécifiques</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTReservedByName *</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Réservé</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Par	Noms de connexion spécifiques des utilisateurs</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTReservedDate *</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Réservé(e) le</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date de réservation d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTRightIDs</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTRightIDs</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ID des autorisations des utilisateurs</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTRootSubType</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTRootSubType</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type d'élément spécifique au début de la liste de parents</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTStatus</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTStatus</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Indicateur de statut</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTSubType *</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type d'objet</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type spécifique d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTSubTypeName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTSubTypeName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom spécifique d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTSummary***</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTSummary</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Résumé d'un document</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTTimeAssigned</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTTimeAssigned</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heure à laquelle un élément a été attribué à un utilisateur</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTTimeCompleted</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTTimeCompleted</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heure d'achèvement d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTTimeDue</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTTimeDue</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heure d'échéance d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTTimeEffective</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTTimeEffective</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heure d'effet d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTTimeExpiration</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTTimeExpiration</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heure d'expiration d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTTimeStarted</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTTimeStarted</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heure de commencement d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTUserFullName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTUserFullName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom complet de l'utilisateur en cours</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTUserID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTUserID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ID de propriétaire en cours</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTUserName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTUserName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom de propriétaire en cours</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTVerCDate</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTVerCDate</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date de création d'une version</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTVerCTime</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTVerCTime</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heure de création d'une version</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTVerMDate</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTVerMDate</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date de dernière modification d'une version</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTVerMTime</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTVerMTime</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Heure de dernière modification d'une version</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTVersion</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTVersion</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Numéro de version d'un élément</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFInitiatorFullName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFInitiatorFullName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom complet de l'initiateur du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFInitiatorID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFInitiatorID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Identification de l'initiateur du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFInitiatorName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFInitiatorName</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom de l'initiateur du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFManagerID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFManagerID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Identification du responsable du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapData</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapData	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Données du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapDescription***</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapDescription</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapDueDate</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapDueDate</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'échéance du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapDueDuration</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapDueDuration</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Délai nécessaire à l'achèvement du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapInstructions</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapInstructions</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Instructions du schéma de workflow pour l'utilisateur</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapManagerID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapManagerID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Identification du responsable du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapProject</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapProject</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Projet du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapStartDate</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapStartDate</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date de commencement du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapSubType</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapSubType</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Sous-type du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskData	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskData	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Données de tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskDescription***	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskDescription	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description d'une tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskDueDate	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskDueDate	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'échéance d'une tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskDueDuration	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskDueDuration	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Délai nécessaire à l'achèvement d'une tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskInstructions***	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskInstructions	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Instructions de tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskPerformerID	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskPerformerID	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Identification de l'exécuteur d'une tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskPriority	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskPriority	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Priorité de tâche du schéma de workflow (inutilisée actuellement)</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskStartDate	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskStartDate	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date de commencement de tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskSubMapID	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskSubMapID	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Identification de schéma de sous-workflow de tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskSubType	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskSubType	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Sous-type de tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskTitle***	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskTitle	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Titre de tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskType	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskType	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type de tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskUserFlags	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskUserFlags	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Statut d'utilisateur de tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTitle***	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapTitle	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Titre du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapType	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapType	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Type du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapWorkPackage	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFMapWorkPackage	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lot du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkData	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkData	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Données du schéma de sous-worKflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkDateCompleted	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkDateCompleted	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'achèvement du schéma de sous-workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkDateDue	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkDateDue	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'échéance du schéma de sous-workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkDateIntiated	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkDateIntiated	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'initiation du schéma de sous-workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkMapID	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkMapID	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Identification du schéma de sous-workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkTasks	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkTasks	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tâches du schéma de sous-workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkTitle***	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkTitle	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Titre du schéma de sous-workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkWorkPackage	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkWorkPackage	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lot du schéma de sous-workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFTaskData	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFTaskData	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Données de tâche du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFTaskDateDone	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFTaskDateDone	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'achèvement de tâche du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFTaskDateDue	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFTaskDateDue	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'échéance de tâche du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFTaskPerformerID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFTaskPerformerID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Identification d'exécuteur de tâche du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFTaskTitle***	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFTaskTitle	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Titre de tâche du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFTaskWorkPackage	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFTaskWorkPackage	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Lot de tâches du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFWorkDateCompleted	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFWorkDateCompleted	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'achèvement du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFWorkDateDue	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFWorkDateDue	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'échéance du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFWorkDateIntiated	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">OTWFWorkDateIntiated	</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Date d'initiation du workflow</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID14240"></A>* = Régions configurées par défaut pour la recherche dans le cas d'un index Entreprise standard** = Régions configurées par défaut pour l'affichage dans le cas d'un index Entreprise standard*** = Régions de recherche par défaut dans le cas d'un index Entreprise standard</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF302">Régions de workflow</A></P>
+<P><A NAME="TMPID14242"></A>Vous pouvez modifier manuellement votre fichier <TT CLASS="literal">LLFieldDefinitions.txt</TT> pour qu'une région de workflow spécifique soit indexée et puisse être recherchée ou exclue. Pour en savoir plus, consultez le document <span><A href="../webotcindex/wbo-confwrkflwregions-p.htm">Pour configurer les régions de workflow pouvant être extraites</A></span>.</P>
+<P><A NAME="TMPID14245"></A>Dans une nouvelle installation Content Server, certaines régions de métadonnées de workflow sont marquées comme <TT CLASS="literal">DROP</TT> ou <TT CLASS="literal">REMOVE</TT> dans le fichier <TT CLASS="literal">LLFieldDefinitions.txt</TT> et ne sont donc pas indexées pour améliorer les performances et l'efficacité du moteur de recherche. Il se peut que votre installation n'utilise pas de nouveau fichier <TT CLASS="literal">LLFieldDefinitions.txt</TT> pour maintenir la compatibilité. Pour plus d'informations, voir la section « Mettre à jour les fichiers de configuration de la recherche » de <span><A href="../otadmin/ota-verifyandreindex-bg.htm">Vérification du contenu et réindexation</A></span>.</P>
+<P><A NAME="TMPID14253"></A>Le tableau suivant décrit les régions de workflow pouvant être extraites dans l'index Entreprise que vous pouvez configurer.</P>
+<DIV title="Régions de workflow pouvant être extraites" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="TAB-AID12"></A><B>Tableau 1-21 : Régions de workflow pouvant être extraites</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">Nom de région dans l'index</TH>
+<TH SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">Nom affiché par défaut</TH>
+<TH SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Description de la région</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFInitiatorPerms</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFInitiatorPerms</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Autorisations de gestion de l'initiateur du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapArchiveCb</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapArchiveCb</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées à l'archivage du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapCompleteCb</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapCompleteCb</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées à l'achèvement du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapCustomData</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapCustomData</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données personnalisées du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapDueTime</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapDueTime</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Heure d'échéance du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapExAtts</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapExAtts</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données utilisées durant le tracé du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapFlags</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapFlags</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Statut du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapInitiateCb</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapInitiateCb</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées à l'initiation du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapPainter</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapPainter</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données pour l'affichage du schéma de workflow en format graphique</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapPriority</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapPriority</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Priorité du schéma de workflow (inutilisée pour le moment)</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapResumeCb</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapResumeCb</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées à la reprise du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapSuspendCb</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapSuspendCb</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées à la suspension du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskCompleteCb</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskCompleteCb</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées à l'achèvement d'une tâche</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskConditionCb</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskConditionCb</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées sur une condition de tâche</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskCustomData</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskCustomData	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données personnalisées d'une tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskDoneCb	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskDoneCb	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées à l'achèvement de la tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskDueTime	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskDueTime	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Heure d'échéance d'une tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskExAtts	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskExAtts	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données utilisées durant le tracé du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskFlags	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskFlags	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Statut d'une tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskForm	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskForm	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données sur ce qui est affiché à chaque étape</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskInitiateCb	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskInitiateCb	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées à l'initiation d'une tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskKillCb	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskKillCb	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées à l'élimination d'une tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskPainter	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskPainter	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données pour l'affichage du schéma de workflow en format graphique</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskPerformerCb	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskPerformerCb	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées à l'exécution d'une tâche du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskReadyCb	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskReadyCb	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées lorsque la tâche du schéma de workflow est prête</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskResurrectCb	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskResurrectCb	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données invoquées lorsque la tâche est ressuscitée</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTasks	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTasks	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Liste des tâches du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskSubMapIDCb	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskSubMapIDCb	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données de rappel invoquées sur identification de tâche du schéma de sous-workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskUserData	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapTaskUserData	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données utilisateur du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapUserData	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapUserData	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données utilisateur du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapUserFlags	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFMapUserFlags	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Statut d'utilisateur du schéma de workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkCustomData	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkCustomData	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données personnalisées du schéma de sous-workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkFlags	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkFlags	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Statut du schéma de sous-workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkProject	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkProject	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Projet du schéma de sous-workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkUserData	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFSubWorkUserData	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données utilisateur du schéma de sous-workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFTaskCustomData	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFTaskCustomData	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données personnalisées de tâche du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFTaskDateMilestone	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFTaskDateMilestone	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Echéance de tâche du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFTaskDateReady	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFTaskDateReady	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Date à laquelle la tâche du workflow est prête</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFTaskFlags	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFTaskFlags	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Statut de tâche du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFTaskUserData	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFTaskUserData	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données utilisateur de tâche du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFWorkCustomData	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFWorkCustomData	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données personnalisées du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFWorkFlags	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFWorkFlags	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Statut du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFWorkProject	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFWorkProject	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Projet du workflow</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFWorkUserData	</TD>
+<TD SCOPE="COL" WIDTH="178" ALIGN="LEFT" VALIGN="TOP">OTWFWorkUserData	</TD>
+<TD SCOPE="COL" WIDTH="177" ALIGN="LEFT" VALIGN="TOP">Données utilisateur du workflow</TD></TR></TABLE></DIV>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webotcindex/wbo-confwrkflwregions-p.htm" revision="">Pour configurer les régions de workflow pouvant être extraites</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

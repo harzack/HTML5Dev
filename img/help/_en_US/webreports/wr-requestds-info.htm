@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Requests as Data Sources</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-requestds-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'Requests as Data Sources';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID21480"></A>This feature allows a webreport to use information in the <TT CLASS="literal">GET</TT> or <TT CLASS="literal">POST</TT> request used to invoke the webreport as a data source. It allows data to be specified in either separated value or HTML form, or any other supported type of parsing, that would then be used by the webreport. This allows the possibility of pushing data into a webreport to then be formatted and delivered to destinations. The data is passed using a pre-defined parameter name and will normally use the defaults for web documents in order to parse the data. Several other pre-defined parameters have been made available in order to control the parsing options that would normally be set in the data source interface. Currently this feature has no visibility on the source tab as it is purely driven by the existence of these special parameters.</P>
+<DIV title="Supported Parameters" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="WR-REQUESTDS-SUPPARM"></A><B>Table 1-54: Supported Parameters</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Parameter</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Optional / Mandatory</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSrequestData</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">This is the parameter that contains the data that will be used by the datasource. For any of the optional parameters that have not been specified, defaults are used. The data in this parameter would normally be formatted in a way that can be interpreted by the webreport, for example Comma Separated Values, CSV, or HTML table data. If no optional parameters have been specified, the data is expected to be formatted as CSV. The optional parameters below can be used to specify any differences in the parsing format. A common variation would be to use a symbol such as a pipe, |, as the row separation character.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Mandatory</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSFILETYPE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Acceptable values are: <TT CLASS="literal">separatedvalue</TT>, the default, <TT CLASS="literal">htmltable</TT> and <TT CLASS="literal">oscript</TT>. This parameter specifies how the data has been formatted and therefore how it should be parsed. In the case of Oscript, the data source can be a <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> of <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span>s or a <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECARRAY">RECARRAY</A></span>. The tags <TT CLASS="literal">ENTERPRISE</TT>, <TT CLASS="literal">PERSONAL</TT>, <TT CLASS="literal">TOOLS</TT>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTABS">TABS</A></span>, <span><A HREF="wr-tag-sttenth.htm#LLURLFUNCRAW">LLURL:FUNCTIONMENU:RAW</A></span>, <span><A HREF="wr-tag-sttenth.htm#LLURLADDITRAW">LLURL:ADDITEM:ITEMMENU:RAW</A></span>, and <span><A HREF="wr-tag-stthird.htm#CATRAWST">CAT:RAW</A></span> provide data structures in Oscript format that can be used in this parameter.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Optional</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSCONTENTTYPE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Only appropriate for a filetype of <TT CLASS="literal">separatedvalue</TT>. Acceptable values are: <TT CLASS="literal">somequotes</TT>, <TT CLASS="literal">allquotes</TT>, and <TT CLASS="literal">noquotes</TT>. The default is <TT CLASS="literal">somequotes</TT>. These settings refer to whether or not some of the data cells might be quoted to hide characters that might interfere with parsing. If none of the cells are quoted, a setting of <TT CLASS="literal">noquotes</TT> provides faster processing.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Optional</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSSTRICTSYNTAX</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Set to either <TT CLASS="literal">true</TT>, the default, or <TT CLASS="literal">false</TT>.<TT CLASS="literal">True</TT> specifies that the data has been strictly formed with no unexpected spaces or other ambiguous white space.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Optional</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSCOLUMNSEP</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a character or characters that are used to delimit, or separate, columns of data. The default “,” is a comma.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Optional</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSROWSEP</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies a character or characters that are used to delimit, or separate, rows of data. The default is a carriage return followed by a line feed.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Optional</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSQUOTECHAR</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies which character or characters have been used to quote cells, if any. The default is a single quote character, <TT CLASS="literal">"</TT>.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Optional</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSESCQUOTECHARS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies which character or characters are used to escape any quotes in the cell data, if any. The default is a double quote, “ ”.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Optional</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSHEADINGSINC</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Specifies <TT CLASS="literal">true</TT> or <TT CLASS="literal">false</TT> depending on whether the first row of data includes heading names for each column. The default is <TT CLASS="literal">true</TT>. If set to <TT CLASS="literal">false</TT>, columns are automatically named as column1, column2, and so on.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Optional</TD></TR></TABLE></DIV>
+<DIV title="Calling as a Sub-WebReport" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-REQUESTDS-EX1"></A><B><FONT COLOR="WHITE">.</FONT><BR><IMG title="Calling as a Sub-WebReport" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-30: Calling as a Sub-WebReport</B></P>
+<P class="nr1"><A NAME="TMPID21571"></A>The following tags will call a Sub-WebReport and pass the <TT CLASS="literal">DSrequestData</TT> as parameters to the Sub-WebReport:</P>
+<P><A NAME="TMPID21573"></A><TT CLASS="literal">&#13;[LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$SWR /] PARM:DSREQUESTDATA:"444,555,666|777,888,999" PARM:DSCOLUMNSEP:"," PARM:DSROWSEP:"|" /]</TT></P><IMG title="Calling as a Sub-WebReport" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Calling from a URL: " CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-REQUESTDS-EX2"></A><B><IMG title="Calling from a URL: " SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-31: Calling from a URL: </B></P>
+<P class="nr1"><A NAME="TMPID21577"></A>The <TT CLASS="literal">DSrequestData</TT> parameters can also be set in a URL:</P>
+<P><A NAME="TMPID21579"></A><TT CLASS="literal">&#13;?func=ll&amp;objId=48243&amp;objAction=RunReport&amp;DSREQUESTDATA=444,555,666|777,888,999&amp;DSCOLUMNSEP=,&amp;DSROWSEP=|</TT></P><IMG title="Calling from a URL: " SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Using DSFILETYPE of value OSCRIPT" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-REQUESTDS-EX3"></A><B><IMG title="Using DSFILETYPE of value OSCRIPT" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-32: Using DSFILETYPE of value OSCRIPT</B></P>
+<P class="nr1"><A NAME="TMPID21583"></A>The output of tags such as <TT CLASS="literal">CAT:RAW</TT> can be used similar to <span><A HREF="wr-requestds-info.htm#WR-REQUESTDS-EX2">Calling from a URL:</A></span> but with a form post:</P><A NAME="AEN20307"></A>
+<PRE 
+CLASS="screen"
+>&lt;FORM NAME="getFuncs" METHOD="POST" ACTION="[LL_REPTAG_URLPREFIX /]"&gt;
+   &lt;input type=hidden name="DSFILETYPE" value="oscript"&gt;
+   &lt;input type=hidden name="DSrequestData" value="[LL_REPTAG_"23099" CAT:RAW /]"&gt;
+      [LL_REPTAG_$CLICK LLURL:REPORT URLTOPOST /]
+   &lt;input type=submit value=submit&gt;
+&lt;/FORM&gt;</PRE
+>
+<P><A NAME="TMPID21587"></A>A form post is a good idea where the results from the <TT CLASS="literal">RAW</TT> tag can be large as Internet Explorer is unable to cope with very long parameter values. Form posts on the other hand are no problem.</P><IMG title="Using DSFILETYPE of value OSCRIPT" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

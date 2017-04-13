@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESCLS100500-H-AGD-FR">
+<META name="PiXprocLocator" content="classification">
+<META mancondkey="llescor-pgd -- llescls-h-ugd -- llesrcm-igd -- lleswat-h-ugd -- llesrcm-h-ugd -- llescls-h-ggd -- lleswbs-h-agd -- llesrt-h-ugd -- llescl-h-ugd -- lleswba-h-agd -- llesrcm-h-agd -- llesapp-h-ugd"><title>Pour activer des types d'objet géré supplémentaires</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'c-addmanobj-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des options Classements';
+          header.title2 = 'Pour activer des types d\'objet géré supplémentaires';
+           header.draw();
+  </script>
+  <A NAME="PROC-AID3"></A>
+<DIV title="Pour activer des types d'objets gérés :" CLASS="procedure">
+<P><B>Pour activer des types d'objets gérés :</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID541"></A>Dans un éditeur de texte, ouvrez le fichier &lt;<I CLASS="varname">content_server_home</I>>/config/<TT CLASS="filename">opentext.ini</TT>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID545"></A>Ajoutez la ligne suivante à la section [<TT CLASS="literal">Classification</TT>] : </P>
+<P><A NAME="TMPID547"></A><TT CLASS="literal">SubTypes={136,144,145,0,</TT><TT CLASS="literal">&lt;<I CLASS="varname">n</I>></TT><TT CLASS="literal">}</TT>, où <TT CLASS="literal">&lt;<I CLASS="varname">n</I>></TT> représente la valeur du type d'objet que vous souhaitez activer (par exemple, <TT CLASS="literal">140</TT> correspond à la valeur d'une URL).</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID556"></A>Vous pouvez également ajouter les valeurs suivantes au paramètre <TT CLASS="literal">SubTypes</TT> afin d'activer les types d'objet OpenText Enterprise Library dossier, élément et variante :</P>
+<P><A NAME="TMPID560"></A><TT CLASS="literal">823</TT>, <TT CLASS="literal">824</TT>, <TT CLASS="literal">825</TT> </P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID565"></A>Enregistrez et fermez le fichier <TT CLASS="filename">opentext.ini</TT>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID568"></A>Redémarrez le serveur de contenu et le serveur d'application Web.</P></LI></OL></DIV>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF12"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID570"></A><B CLASS="note">Note : </B><BR>Les valeurs <TT CLASS="literal">136</TT>, <TT CLASS="literal">144</TT>, <TT CLASS="literal">145</TT> et <TT CLASS="literal">0</TT> représentent les types d'objet géré par défaut (à savoir : les documents composites, les documents, les documents texte et les dossiers). </P>
+<P CLASS="otModuleHide if-elservice-show" id="TMPID575"><A NAME="TMPID575"></A>Les valeurs <TT CLASS="literal">823</TT>, <TT CLASS="literal">824</TT> et <TT CLASS="literal">825</TT> représentent les types d'objet OpenText Enterprise Library (à savoir : dossier, élément et variante).</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,682 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>CACHE, CAMELCASE, CAPITALIZE, CAT, CATACTION, CATINFO, CHILDREN, COLLAPSE, COMPRESS, CONCATVAR, CSAPPLICATIONINSTALLED, CURRENTVAL</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stthird.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sub-Tags';
+          header.title2 = 'CACHE, CAMELCASE, CAPITALIZE, CAT, CATACTION, CATINFO, CHILDREN, COLLAPSE, COMPRESS, CONCATVAR, CSAPPLICATIONINSTALLED, CURRENTVAL';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID5386"></A>This section details the sub-tags: <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCACHE">CACHE</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCAMELCASE">CAMELCASE</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCAPITALIZE">CAPITALIZE</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCAT">CAT</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCATACTION">CATACTION</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCATINFO">CATINFO</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCHILDREN">CHILDREN</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCOLLAPSE">COLLAPSE</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCOMPRESS">COMPRESS</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCONCATVAR">CONCATVAR</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCSAPPINST">CSAPPLICATIONINSTALLED</A></span>, and <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCURRENTVAL">CURRENTVAL</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCACHE">CACHE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCACHE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCACHE"></A><B CLASS="highlight">CACHE</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCACHE-DESC">Description</A></P>
+<P><A NAME="TMPID5407"></A>If the main tag represents a Content Server CacheID, this tag will return the contents of the cache.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCAMELCASE">CAMELCASE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAMELCASE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCAMELCASE"></A><B CLASS="highlight">CAMELCASE</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAMELCASE-DESC">Description</A></P>
+<P><A NAME="TMPID5417"></A>Strips all non-alphanumeric characters and returns the result in CamelCase.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAMELCASE-EXAMP">Example</A></P>
+<P><A NAME="TMPID5420"></A><TT CLASS="literal">[LL_REPTAG_"convert me to camel case" CAMELCASE /]</TT></P>
+<P><A NAME="TMPID5422"></A>will return: ConvertMeToCamelCase</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCAPITALIZE">CAPITALIZE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAPITALIZE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCAPITALIZE"></A><B CLASS="highlight">CAPITALIZE</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAPITALIZE-DESC">Description</A></P>
+<P><A NAME="TMPID5431"></A>The first letter of each word will be converted to uppercase, while following letters of each word will be converted to lowercase.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCAT">CAT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAT-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCAT"></A><B CLASS="highlight">CAT:&lt;<I CLASS="varname">parm</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAT-DESC">Description</A></P>
+<P><A NAME="TMPID5441"></A>Returns information about the Categories and Attributes associated with the current object ID. This sub-tag supports both attribute sets and multi-value attributes through use of the <TT CLASS="literal">MV</TT> and <TT CLASS="literal">SET</TT> operators.</P>
+<P><A NAME="TMPID5444"></A>For example, <TT CLASS="literal">[LL_REPTAG=DATAID <B CLASS="highlight">CAT:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>>:DISPLAY</B> /]</TT> will return the attribute value stored in the category whose display name or ID matches the <TT CLASS="literal">&lt;<I CLASS="varname">catname</I>></TT> value and the attribute whose display name or ID matches the <TT CLASS="literal">&lt;<I CLASS="varname">attname</I>></TT> value for any attribute type. If <TT CLASS="literal">&lt;<I CLASS="varname">attname</I>></TT> is a multi-value attribute, or an attribute set, then a comma-separated list of values will be returned.</P>
+<P><A NAME="TMPID5455"></A>If using a WebReport to update category values using the <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCATACTION">CATACTION</A></span> sub-tag with the <TT CLASS="literal">NOCOMMIT</TT> argument, you can retrieve the uncommitted category values from the cache by appending the argument <TT CLASS="literal">:FROMCACHE</TT> to your <TT CLASS="literal">CAT</TT> syntax.</P>
+<P><A NAME="TMPID5460"></A>To return Category data for a specific version of a node see the <span><A HREF="wr-tag-stnineteenth.htm#WR-TAG-SUBVERSIONCAT">VERSIONCAT</A></span> sub-tag.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAT-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4848"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Syntax</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false based on the presence of one or more categories assigned to the node.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:JSARRAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">This is a unique option for the <TT CLASS="literal">CAT</TT> sub-tag which results in a JavaScript object representation of all the category and attribute data, including full support for sets and multi-values, for a specific node. For detailed information on this feature see <span><A HREF="wr-catjsarray-info.htm">CAT:JSARRAY Examples</A></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:RAW </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This option results in a flat oscript representation of all the category and attribute data associated with a specific node.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">See <span><A HREF="wr-requestds-info.htm">Requests as Data Sources</A></span> for how to use the output of this, and related tags, as the data source to another WebReport.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">See the <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span> sub-tag for how to convert this into a data structure that can be interpreted by JavaScript in the client.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">See related tags <span><A HREF="wr-tag-sttenth.htm#LLURLFUNCRAW">LLURL:FUNCTIONMENU:RAW</A></span> and <span><A HREF="wr-tag-sttenth.htm#LLURLADDITRAW">LLURL:ADDITEM:ITEMMENU:RAW</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return a string containing a list of semi-colon-separated category names assigned to the node. Any category containing mandatory attributes will be suffixed with an exclamation mark enclosed in square brackets, <TT CLASS="literal">[!]</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:MAND</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false based on whether a category containing a mandatory attribute is assigned to the node.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false based on the presence of the &lt;<I CLASS="varname">catname</I>> category.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Will return a string containing a list of semi-colon-separated attribute values for the category specified in &lt;<I CLASS="varname">catname</I>>.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">A category containing an attribute set or a multi-value attribute, will be displayed in the following syntax:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">'attval1;attval2;[SET3:attval4,attval5,[MV6:attval7,attval8]];attval9'</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">In this example:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID5519"></A><TT CLASS="literal">attval1</TT>, <TT CLASS="literal">attval2</TT>, and <TT CLASS="literal">attval9</TT> are regular attribute values.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID5524"></A><TT CLASS="literal">[SET3:</TT> represents the start of an attribute set, where 3 is the attribute ID of the set.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID5527"></A>Contained in the attribute set are two regular attributes, <TT CLASS="literal">attval4</TT> and <TT CLASS="literal">attval5</TT>, and a multi-value attribute, which starts with: <TT CLASS="literal">[MV6:</TT>, where 6 is the attribute ID of the multi-value attribute.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID5532"></A>The multi-value attribute contains two values for attribute 6, these are: <TT CLASS="literal">attval7</TT> and <TT CLASS="literal">attval8</TT>.</P></TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF21"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID5536"></A><B CLASS="note">Note: </B><BR>Attribute IDs can be identified by looking at the browser status bar whilst hovering over the attribute name in the category definition page.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:ID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return the ID of &lt;<I CLASS="varname">catname</I>> if the category is present.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:LIST</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return a list containing all the attribute values for the category specified in &lt;<I CLASS="varname">catname</I>>. A category containing an attribute set or a multi-value attribute will be displayed as recorded in <span><A HREF="wr-tag-stthird.htm#CATDISPLATR">CAT:catname:DISPLAY</A></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:UPGRADEABLE</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return TRUE or FALSE depending on whether the category, &lt;<I CLASS="varname">catname</I>>, is upgradeable or not.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:VERSION</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return the version number of &lt;<I CLASS="varname">catname</I>>, if the category, &lt;<I CLASS="varname">catname</I>>, is present.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false based on whether an attribute, &lt;<I CLASS="varname">attname</I>>, exists with a non-blank value in the category, &lt;<I CLASS="varname">catname</I>>. If an attribute set is specified in &lt;<I CLASS="varname">attname</I>>, a single entry in any one of the set's attribute values will cause this to return TRUE. If &lt;<I CLASS="varname">attname</I>> is a multi-value attribute, a single entry in any one will also cause this to return TRUE. &lt;<I CLASS="varname">attname</I>> can also be nested within an attribute set, either as a regular attribute or as a multi-value attribute.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return the value in the attribute, &lt;<I CLASS="varname">attname</I>>, for the category, &lt;<I CLASS="varname">catname</I>>. If &lt;<I CLASS="varname">attname</I>> is an attribute set or a multi-value attribute a comma-separated list of values will be returned.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>>:ID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return the ID of the attribute, &lt;<I CLASS="varname">attname</I>>, for the category, &lt;<I CLASS="varname">catname</I>>, if it is present. If &lt;<I CLASS="varname">attname</I>> exists inside an attribute set, it will be returned if no attribute matching &lt;<I CLASS="varname">attname</I>> exists at the top level in the category. If &lt;<I CLASS="varname">attname</I>> exists at the top level of the category and within an attribute set of the same category, the attribute ID at the top level, not within the set, will take precedence.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>>:&lt;<I CLASS="varname">attval</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false based on whether an attribute, &lt;<I CLASS="varname">attname</I>>, exists with a value equal to &lt;<I CLASS="varname">attval</I>> in the category, &lt;<I CLASS="varname">catname</I>>. &lt;<I CLASS="varname">attname</I>> may be an attribute within an attribute set, including a multi-value, or any element within a multi-value attribute.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MV:&lt;<I CLASS="varname">attname</I>>:COUNT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return number of multi-value attributes in use.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MV:&lt;<I CLASS="varname">attname</I>>:&lt;<I CLASS="varname">n</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false for the presence of a specific non-blank element in a multi-value attribute, &lt;<I CLASS="varname">attname</I>>, for the category, &lt;<I CLASS="varname">catname</I>> at the index location &lt;<I CLASS="varname">n</I>>. The value of &lt;<I CLASS="varname">n</I>> must be a positive integer between 1 and &lt;<I CLASS="varname">n</I>>, where &lt;<I CLASS="varname">n</I>> does not exceed the length of the multi-value attribute. If &lt;<I CLASS="varname">n</I>> exceeds the length of the multi-value attribute, an empty string will be returned.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MV:&lt;<I CLASS="varname">attname</I>>:&lt;<I CLASS="varname">n</I>>:&lt;<I CLASS="varname">attval</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false based on the presence of &lt;<I CLASS="varname">attval</I>> in a multi-value attribute, &lt;<I CLASS="varname">attname</I>>, for the category, &lt;<I CLASS="varname">catname</I>> at the index location &lt;<I CLASS="varname">n</I>>. The value of &lt;<I CLASS="varname">n</I>> must be a positive integer between 1 and &lt;<I CLASS="varname">n</I>>, where &lt;<I CLASS="varname">n</I>> does not exceed the length of the multi-value attribute.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MV:&lt;<I CLASS="varname">attname</I>>:&lt;<I CLASS="varname">n</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return the value in the multi-value attribute, &lt;<I CLASS="varname">attname</I>>, for the category, &lt;<I CLASS="varname">catname</I>> at the index location &lt;<I CLASS="varname">n</I>>, where &lt;<I CLASS="varname">n</I>> is a positive integer between 1 and &lt;<I CLASS="varname">n</I>>. The value of &lt;<I CLASS="varname">n</I>> must be a positive integer between 1 and &lt;<I CLASS="varname">n</I>>, where &lt;<I CLASS="varname">n</I>> does not exceed the length of the multi-value attribute.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MV:&lt;<I CLASS="varname">attname</I>>:INDEX:&lt;<I CLASS="varname">attval</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return the first index of the multi-value attribute, &lt;<I CLASS="varname">attname</I>>, for the category, &lt;<I CLASS="varname">catname</I>>, where &lt;<I CLASS="varname">attval</I>> is equal to the value contained in the multi-value attribute at index. For example, if &lt;<I CLASS="varname">attval</I>> exists in the third element of &lt;<I CLASS="varname">attname</I>>, the number 3 will be returned.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:SET:&lt;<I CLASS="varname">setname</I>>:&lt;<I CLASS="varname">attname</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Uses the &lt;<I CLASS="varname">SET</I>> operator allowing attribute sets to be explicitly referenced. This example will return true if the attribute &lt;<I CLASS="varname">attname</I>>, within the set &lt;<I CLASS="varname">setname</I>>, is non-blank. Only attributes within &lt;<I CLASS="varname">setname</I>> can be referenced, so if &lt;<I CLASS="varname">attname</I>> exists outside the set, it will not be found. If &lt;<I CLASS="varname">attname</I>> is a multi-value attribute, TRUE will be returned if any field within it is non-blank.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:SET:&lt;<I CLASS="varname">setname</I>>:&lt;<I CLASS="varname">attname</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return the value in the attribute, &lt;<I CLASS="varname">attname</I>>, for the category, &lt;<I CLASS="varname">catname</I>>, if &lt;<I CLASS="varname">attname</I>> is an attribute within &lt;<I CLASS="varname">setname</I>>. If &lt;<I CLASS="varname">attname</I>> is a multi-value attribute, a comma-separated list of the defined values will be returned. If no defined value exists, either in a multi-value attribute, or a standard attribute, an empty list will be returned. </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:SET:&lt;<I CLASS="varname">setname</I>>:&lt;<I CLASS="varname">attname</I>>:ID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return the ID of the attribute &lt;<I CLASS="varname">attname</I>> within the set &lt;<I CLASS="varname">setname</I>>. If &lt;<I CLASS="varname">attname</I>> exists outside &lt;<I CLASS="varname">setname</I>> it will not be returned. &lt;<I CLASS="varname">attname</I>> can be either a regular or multi-value attribute.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:SET:&lt;<I CLASS="varname">setname</I>>:&lt;<I CLASS="varname">attname</I>>:&lt;<I CLASS="varname">attval</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false based on whether an attribute,&lt;<I CLASS="varname">attname</I>>, exists with a value equal to &lt;<I CLASS="varname">attval</I>> in the set, &lt;<I CLASS="varname">setname</I>>. If &lt;<I CLASS="varname">attname</I>> is a multi-value attribute, all elements will be checked for equality against &lt;<I CLASS="varname">attval</I>>, if any match, TRUE will be returned.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:SET:&lt;<I CLASS="varname">setname</I>>:MV:&lt;<I CLASS="varname">attname</I>>:COUNT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return number of multi-value attributes that have been populated.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:SET:&lt;<I CLASS="varname">setname</I>>:MV:&lt;<I CLASS="varname">attname</I>>:&lt;<I CLASS="varname">n</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false for the presence of a specific non-blank element in a multi-value attribute, &lt;<I CLASS="varname">attname</I>>, within a set, &lt;<I CLASS="varname">setname</I>>, for the category, &lt;<I CLASS="varname">catname</I>> at the index location &lt;<I CLASS="varname">n</I>>. The value of &lt;<I CLASS="varname">n</I>> must be a positive integer between 1 and &lt;<I CLASS="varname">n</I>>, where &lt;<I CLASS="varname">n</I>> does not exceed the length of the multi-value attribute.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:SET:&lt;<I CLASS="varname">setname</I>>:MV:&lt;<I CLASS="varname">attname</I>>:&lt;<I CLASS="varname">n</I>>:&lt;<I CLASS="varname">attval</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false for the presence of &lt;<I CLASS="varname">attval</I>> in a multi-value attribute, &lt;<I CLASS="varname">attname</I>>, within a set, &lt;<I CLASS="varname">setname</I>>, for the category, &lt;<I CLASS="varname">catname</I>> at the index location &lt;<I CLASS="varname">n</I>>. The value of &lt;<I CLASS="varname">n</I>> must be a positive integer between 1 and &lt;<I CLASS="varname">n</I>> where &lt;<I CLASS="varname">n</I>> does not exceed the length of the multi-value attribute.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:SET:&lt;<I CLASS="varname">setname</I>>:MV:&lt;<I CLASS="varname">attname</I>>:&lt;<I CLASS="varname">n</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return the value in the multi-value attribute, &lt;<I CLASS="varname">attname</I>>, within a set, &lt;<I CLASS="varname">setname</I>>, for the category, &lt;<I CLASS="varname">catname</I>>, at the index location, &lt;<I CLASS="varname">n</I>>. The value of &lt;<I CLASS="varname">n</I>> must be a positive integer between 1 and &lt;<I CLASS="varname">n</I>> where &lt;<I CLASS="varname">n</I>> does not exceed the length of the multi-value attribute.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:SET:&lt;<I CLASS="varname">setname</I>>:MV:&lt;<I CLASS="varname">attname</I>>:INDEX:&lt;<I CLASS="varname">attval</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return the first index of the multi-value attribute, &lt;<I CLASS="varname">attname</I>>, within a set, &lt;<I CLASS="varname">setname</I>>, for the category, &lt;<I CLASS="varname">catname</I>> where &lt;<I CLASS="varname">attval</I>> is equal to the value contained in the multi-value attribute at index.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MVSET:&lt;<I CLASS="varname">mvsetname</I>>:ATTRIBUTE:&lt;<I CLASS="varname">attname</I>>:INDEX:&lt;<I CLASS="varname">attval</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return the first index of the multi-value set, &lt;<I CLASS="varname">mvsetname</I>>, for the category, &lt;<I CLASS="varname">catname</I>> and attribute, &lt;<I CLASS="varname">attname</I>>, containing a value equal to the value specified in &lt;<I CLASS="varname">attval</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MVSET:&lt;<I CLASS="varname">mvsetname</I>>:COUNT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">	Returns the number of rows in the multi-value set, &lt;<I CLASS="varname">mvsetname</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MVSET:&lt;<I CLASS="varname">mvsetname</I>>:&lt;<I CLASS="varname">n</I>>:&lt;<I CLASS="varname">attname</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false based on whether the multi-value set, &lt;<I CLASS="varname">mvsetname</I>>, has a non-blank attribute, &lt;<I CLASS="varname">attname</I>>, at the index location &lt;<I CLASS="varname">n</I>>, within the category, &lt;<I CLASS="varname">catname</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MVSET:&lt;<I CLASS="varname">mvsetname</I>>:&lt;<I CLASS="varname">n</I>>:&lt;<I CLASS="varname">attname</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will display the value of an attribute &lt;<I CLASS="varname">attname</I>> within a multi-value set, &lt;<I CLASS="varname">mvsetname</I>> at the index location &lt;<I CLASS="varname">n</I>>, within the the category, &lt;<I CLASS="varname">catname</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MVSET:&lt;<I CLASS="varname">mvsetname</I>>:&lt;<I CLASS="varname">n</I>>:&lt;<I CLASS="varname">attname</I>>:ID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will display the ID of an attribute &lt;<I CLASS="varname">attname</I>> within a multi-value set, &lt;<I CLASS="varname">mvsetname</I>>, at the index location &lt;<I CLASS="varname">n</I>>, within the the category, &lt;<I CLASS="varname">catname</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MVSET:&lt;<I CLASS="varname">mvsetname</I>>:&lt;<I CLASS="varname">n</I>>:&lt;<I CLASS="varname">attname</I>>:&lt;<I CLASS="varname">attval</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false based on whether the multi-value set, &lt;<I CLASS="varname">mvsetname</I>>, has a attribute, &lt;<I CLASS="varname">attname</I>>, at the index location &lt;<I CLASS="varname">n</I>>, within the the category, &lt;<I CLASS="varname">catname</I>> that is equal to the value specified in &lt;<I CLASS="varname">attval</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MVSET:&lt;<I CLASS="varname">mvsetname</I>>:&lt;<I CLASS="varname">n</I>>:MV:&lt;<I CLASS="varname">attname</I>>:COUNT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns the number of multi-value attributes in use in the multi-value set, &lt;<I CLASS="varname">mvsetname</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MVSET:&lt;<I CLASS="varname">mvsetname</I>>:&lt;<I CLASS="varname">n</I>>:MV:&lt;<I CLASS="varname">mvattname</I>>:&lt;<I CLASS="varname">m</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false based on whether the multi-value set, &lt;<I CLASS="varname">mvsetname</I>>, at index location &lt;<I CLASS="varname">n</I>> has a multi-value attribute, &lt;<I CLASS="varname">mvattname</I>>, at the index location &lt;<I CLASS="varname">m</I>>, that is non-blank.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MVSET:&lt;<I CLASS="varname">mvsetname</I>>:&lt;<I CLASS="varname">n</I>>:MV:&lt;<I CLASS="varname">mvattname</I>>:&lt;<I CLASS="varname">m</I>>:DISPLAY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will display the value of an multi-value attribute &lt;<I CLASS="varname">mvattname</I>>, at the index location &lt;<I CLASS="varname">m</I>>, within a multi-value set, &lt;<I CLASS="varname">mvsetname</I>> at the index location &lt;<I CLASS="varname">n</I>>, within the the category, &lt;<I CLASS="varname">catname</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MVSET:&lt;<I CLASS="varname">mvsetname</I>>:&lt;<I CLASS="varname">n</I>>:MV:&lt;<I CLASS="varname">mvattname</I>>:&lt;<I CLASS="varname">m</I>>:&lt;<I CLASS="varname">attval</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Returns true or false based on whether the multi-value set, &lt;<I CLASS="varname">mvsetname</I>>, at the index location &lt;<I CLASS="varname">n</I>>, has a multi-value-attribute, &lt;<I CLASS="varname">mvattname</I>>, at the index location &lt;<I CLASS="varname">m</I>> whose value is equal to the value specified in &lt;<I CLASS="varname">attval</I>>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAT:&lt;<I CLASS="varname">catname</I>>:MVSET:&lt;<I CLASS="varname">mvsetname</I>>:&lt;<I CLASS="varname">n</I>>:MV:&lt;<I CLASS="varname">mvattname</I>>:INDEX:&lt;<I CLASS="varname">attval</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Will return the first index of the multi-value attribute, &lt;<I CLASS="varname">mvattname</I>>, within a multi-value set, &lt;<I CLASS="varname">mvsetname</I>>, for the category, &lt;<I CLASS="varname">catname</I>>, where &lt;<I CLASS="varname">attval</I>> is equal to the value contained in the multi-value attribute at index.</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAT-EXAMP">Examples</A></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN5265"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID5886"></A><TT CLASS="literal">[LL_REPTAG=DATAID CATACTION:SETVALUE:<B CLASS="highlight">&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>>:&lt;<I CLASS="varname">new_value</I>></B>:NOCOMMIT /]</TT></P>
+<P><A NAME="TMPID5892"></A><TT CLASS="literal">[LL_REPTAG=DATAID CAT:<B CLASS="highlight">&gt;&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>></B>:DISPLAY /]</TT> will display the original value of the attribute, as the <TT CLASS="literal">CATACTION</TT> change hasn't been committed yet.</P>
+<P><A NAME="TMPID5898"></A><TT CLASS="literal">[LL_REPTAG=DATAID CAT:<B CLASS="highlight">&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>></B>:DISPLAY:FROMCACHE /]</TT> will display the new value of the attribute from the cache.</P>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCAT-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID5905"></A>A detailed example of the <TT CLASS="literal">CAT</TT> sub-tag, and several other methods of Categories and Attributes reporting, can be found at <span><A HREF="wr-cats-n-atts.htm">Categories and Attributes</A></span>.</P>
+<P><A NAME="TMPID5908"></A>For more information, see <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLLURL">LLURL</A></span>, <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span>, and <span><A HREF="wr-tag-stnineteenth.htm#WR-TAG-SUBVERSIONCAT">VERSIONCAT</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCATACTION">CATACTION</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATACTION-NAME">Syntax</A></P>
+<P><A NAME="CATACTION"></A><B CLASS="highlight">CATACTION:&lt;<I CLASS="varname">options</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATACTION-DESC">Description</A></P>
+<P class="before-ul"><A NAME="TMPID5921"></A>This sub-tag provides capabilities to modify category and attribute metadata. With this tag you can:</P><A NAME="AEN5298"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN5299"></A><A NAME="TMPID5924"></A>add or remove a category from a node; and</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN5301"></A><A NAME="TMPID5926"></A>add, set, or remove the value of a specific category attribute.</P></LI></UL>
+<P><A NAME="TMPID5927"></A>The &lt;<I CLASS="varname">catname</I>> parameter accepts the <TT CLASS="literal">DataID</TT> or name of the category. The &lt;<I CLASS="varname">attname</I>> and &lt;<I CLASS="varname">mvattname</I>> parameters accept the attribute ID or name of the attribute. The &lt;<I CLASS="varname">setname</I>> and &lt;<I CLASS="varname">mvsetname</I>> parameters accept the ID or name of the set.</P>
+<P><A NAME="TMPID5934"></A><TT CLASS="literal">[:Index]</TT> and <TT CLASS="literal">[:Set Index]</TT> are optional parameters to target a specific attribute in a multi-valued attribute and multi-valued set. These values default to 1 if not set. You must give a value of <TT CLASS="literal">[:Index]</TT> when using the <TT CLASS="literal">[:Set Index]</TT> parameter. The following table describes the syntax for the various usages of <TT CLASS="literal">CATACTION</TT>. Each use case expects the <TT CLASS="literal">DataID</TT> of the target node on which <TT CLASS="literal">CATACTION</TT> will work.</P>
+<P><A NAME="TMPID5942"></A>The parts in angle brackets, &lt;<I CLASS="varname"></I>>, are required; the parts in square brackets, [], are optional.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATACTION-PARAM">Parameters</A></P>
+<DIV title="Setting Attribute Values" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STCATAC-TBL001"></A><B>Table 1-3: Setting Attribute Values</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Syntax</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:SETVALUE:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>>[:Index][:Set Index]:&lt;<I CLASS="varname">attval</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Sets the attribute value, &lt;<I CLASS="varname">attval</I>>, at a given attribute and set index. To add a new row to a multi-value set, specify the <TT CLASS="literal">ADDSETROW</TT> keyword for the <TT CLASS="literal">[:Set Index]</TT> parameter. Once added, the new row can be targeted using the <TT CLASS="literal">NEWROW</TT> keyword for <TT CLASS="literal">[:Set Index]</TT>.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">See <span><A HREF="wr-tag-stthird.htm#CATACTEX01">CATACTION:SETVALUE:</A></span>, <span><A HREF="wr-tag-stthird.htm#CATACTEX02">CATACTION:SETVALUE:</A></span>, and <span><A HREF="wr-tag-stthird.htm#CATACTEX04">CATACTION:SETVALUE/ADDVALUE</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:ADDVALUE:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>>[:Index][:Set Index]:&lt;<I CLASS="varname">attval</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Appends a value, &lt;<I CLASS="varname">attval</I>>, to the end of multi-valued attribute, &lt;<I CLASS="varname">attname</I>>. This tag ignores the <TT CLASS="literal">[:Index]</TT> parameter.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">See <span><A HREF="wr-tag-stthird.htm#CATACTEX04">CATACTION:SETVALUE/ADDVALUE</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:INSERTVALUE:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>>[:Index][:Set Index]:&lt;<I CLASS="varname">attval</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Inserts a value, &lt;<I CLASS="varname">attval</I>>, at the given attribute index. This causes the existing attribute at that index and all subsequent attributes to shift down.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">:NOCOMMIT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Optionally, append <TT CLASS="literal">:NOCOMMIT</TT> to <TT CLASS="literal">SETVALUE</TT>, <TT CLASS="literal">ADDVALUE</TT>, or <TT CLASS="literal">INSERTVALUE</TT> statements to delay the category update from being committed. This option is particularly useful if there are multiple <TT CLASS="literal">CATACTION</TT> statements updating several attributes within a category. Omit <TT CLASS="literal">:NOCOMMIT</TT> from the final <TT CLASS="literal">CATACTION</TT> statement for the category in order to commit the update.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN5391"></A><B>Example</B></P><A NAME="AEN5392"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_MYID CATACTION:SETVALUE:"Cat 2 Mandatory Attributes":"Attr01":"a":NOCOMMIT /]
+[LL_REPTAG_MYID CATACTION:SETVALUE:"Cat 2 Mandatory Attributes":"Attr02":"b" /]</PRE
+>
+<P class="nr1"><B>Example: </B><A NAME="TMPID6018"></A>This example will update a category containing two mandatory attributes. The first line will set the value of the <TT CLASS="literal">Attr01</TT> attribute but not commit it. The second line will set the value of the <TT CLASS="literal">Attr02</TT> attribute, and then commit both changes at once.</P>
+</DIV></P></TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Removing Attribute Values" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STCATAC-TBL002"></A><B><FONT COLOR="WHITE">.</FONT><BR>Table 1-4: Removing Attribute Values</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Syntax</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:REMOVEVALUE:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>>[:Index][:Set Index]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Removes the attribute at a given index. This causes the number of values in a multi-valued attribute, &lt;<I CLASS="varname">attname</I>>, to be reduced by one. If the attribute only has one value, the tag will have no effect.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Use <TT CLASS="literal">ALL</TT> as the index value to remove all of the attribute values. The first value will be cleared, rather than removed.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:REMOVEVALUE:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">setname</I>>[:Set Index]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Removes the row at the given set index from the given attribute set, &lt;<I CLASS="varname">setname</I>>. This causes the number of rows in &lt;<I CLASS="varname">setname</I>> to be reduced by one. If the attribute set contains only one row then the tag will have no effect.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:CLEARVALUE:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>>[:Index][:Set Index]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Sets the attribute value at a given index to null. This does not change the number of values in a multi-valued attribute.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">:NOCOMMIT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Optionally, append <TT CLASS="literal">:NOCOMMIT</TT> to <TT CLASS="literal">REMOVEVALUE</TT> or <TT CLASS="literal">CLEARVALUE</TT> statements to delay the category update from being committed. This option is particularly useful if there are multiple <TT CLASS="literal">CATACTION</TT> statements updating several attributes within a category. Omit <TT CLASS="literal">:NOCOMMIT</TT> from the final <TT CLASS="literal">CATACTION</TT> statement for the category in order to commit the update.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN5452"></A><B>Example</B></P><A NAME="AEN5453"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_MYID CATACTION:CLEARVALUE:"MyCategory":"Attr01":NOCOMMIT /]
+[LL_REPTAG_MYID CATACTION:CLEARVALUE:"MyCategory":"Attr02" /]</PRE
+>
+<P class="nr1"><B>Example: </B><A NAME="TMPID6079"></A>This example will clear the values in two attributes, “Attr01” and “Attr02”, in a category, “MyCategory”. The second line of the example will clear the value of the <TT CLASS="literal">Attr02</TT> attribute, and then commit both changes at once.</P>
+</DIV></P></TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Adding and Removing Categories" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STCATAC-TBL003"></A><B><FONT COLOR="WHITE">.</FONT><BR>Table 1-5: Adding and Removing Categories</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Syntax</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:ADD:&lt;<I CLASS="varname">catname</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Adds the category, &lt;<I CLASS="varname">catname</I>>, to the node.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:REMOVE:&lt;<I CLASS="varname">catname</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Removes the category, &lt;<I CLASS="varname">catname</I>>, from the node.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">See <span><A HREF="wr-tag-stthird.htm#CATACTEX03">CATACTION:REMOVE:</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:UPGRADE:&lt;<I CLASS="varname">catname</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Upgrade the category, &lt;<I CLASS="varname">catname</I>>, to the latest version.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Copying Category Data" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STCATAC-TBL005"></A><B><FONT COLOR="WHITE">.</FONT><BR>Table 1-6: Copying Category Data</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Syntax</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:COPY:&lt;<I CLASS="varname">target node ID</I>>[:&lt;<I CLASS="varname">catname</I>>]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Copies category data from the node in the main tag to the target node, &lt;<I CLASS="varname">target node ID</I>>. If the optional <TT CLASS="literal">[:&lt;<I CLASS="varname">catname</I>>]</TT> argument is not supplied, then all of the category data from the source node will be copied to the target node. If the <TT CLASS="literal">[:&lt;<I CLASS="varname">catname</I>>]</TT> argument is supplied then only the category data for that category will be copied. If the category already exists in the target node, then the data will be overwritten.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN5527"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID6153"></A>The following will copy the category data from the node in the main tag to node ID 12345.</P><A NAME="AEN5529"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_MYID CATACTION:COPY:12345 /]</PRE
+>
+<P><A NAME="TMPID6155"></A>This next example will copy the category data for “Category 1” from the node in the main tag to node ID 12345. If “Category 1” already exists in the target node, node ID 12345, then it will be replaced with the data from the node in the main tag.</P><A NAME="AEN5533"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_MYID CATACTION:COPY:12345:"Category 1" /]</PRE
+>
+</DIV></P></TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Setting Category Inheritance" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STCATAC-TBL006"></A><B><FONT COLOR="WHITE">.</FONT><BR>Table 1-7: Setting Category Inheritance</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Syntax</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:INHERITANCE:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">value</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Sets category inheritance for a node, &lt;<I CLASS="varname">catname</I>>. Valid &lt;<I CLASS="varname">value</I>>s are “Enabled” or “Disabled”.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="Getting Attribute Data" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STCATAC-TBL004"></A><B><FONT COLOR="WHITE">.</FONT><BR>Table 1-8: Getting Attribute Data</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Syntax</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:GETVALUE:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>>[:Index][:SetIndex]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Displays the value of the attribute.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">CATACTION:SERIALIZE:&lt;<I CLASS="varname">catname</I>>:&lt;<I CLASS="varname">attname</I>>[:Index][:SetIndex]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a JSON representation of the attribute definition.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATACTION-EXAMP">Examples</A></P>
+<P><A NAME="TMPID6217"></A>For example, consider the “Test Category” schema described in <span><A HREF="wr-cats-n-atts.htm">Categories and Attributes</A></span>.</P>
+<DIV title="CATACTION:SETVALUE:" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="CATACTEX01"></A><B><IMG title="CATACTION:SETVALUE:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-1: CATACTION:SETVALUE:</B></P>
+<P class="nr1"><A NAME="TMPID6222"></A>Use the following syntax to set the “Trial Name” attribute on the Enterprise Workspace to “first”: <TT CLASS="literal">[LL_REPTAG_"2000" CATACTION:SETVALUE:"Test Category":"TrialName":"first" /]</TT></P><IMG title="CATACTION:SETVALUE:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="CATACTION:SETVALUE:" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="CATACTEX02"></A><B><IMG title="CATACTION:SETVALUE:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-2: CATACTION:SETVALUE:</B></P>
+<P class="nr1"><A NAME="TMPID6228"></A>You can use the <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTODATE">TODATE</A></span> sub-tag to format a date string to set the value of a date attribute. For example, the following syntax will set the value of the “Start Date” attribute to “14th April 1988”: <TT CLASS="literal">[LL_REPTAG_"2000" CATACTION:SETVALUE:"Test Category":"Start Date":[LL_REPTAG_'24/04/1988' TODATE:'%d/%m/%Y' /] /]</TT></P><IMG title="CATACTION:SETVALUE:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="CATACTION:REMOVE:" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="CATACTEX03"></A><B><IMG title="CATACTION:REMOVE:" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-3: CATACTION:REMOVE:</B></P>
+<P class="nr1"><A NAME="TMPID6235"></A>To remove the “Test Category” from the Enterprise Workspace: <TT CLASS="literal">[LL_REPTAG_"2000" CATACTION:REMOVE:"Test Category" /]</TT></P><IMG title="CATACTION:REMOVE:" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="CATACTION:SETVALUE/ADDVALUE" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="CATACTEX04"></A><B><IMG title="CATACTION:SETVALUE/ADDVALUE" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-4: CATACTION:SETVALUE/ADDVALUE</B></P>
+<P class="nr1"><A NAME="TMPID6240"></A>Consider the “Type Testing Category” schema described in <span><A HREF="wr-catjsarray-info.htm">CAT:JSARRAY Examples</A></span>. Use the following syntax to add another row to the “Tester Details” set and to populate its fields. The <TT CLASS="literal">ADDSETROW</TT> keyword is only applicable to <TT CLASS="literal">SETVALUE</TT>, however the <TT CLASS="literal">NEWROW</TT> keyword can be used with <TT CLASS="literal">SETVALUE</TT>, <TT CLASS="literal">ADDVALUE</TT>, <TT CLASS="literal">INSERTVALUE</TT>, <TT CLASS="literal">REMOVEVALUE</TT>, and <TT CLASS="literal">CLEARVALUE</TT>.</P>
+<P><A NAME="TMPID6252"></A>In this example we are adding a new row of contact details to the “Tester Details” set.</P><A NAME="AEN5628"></A>
+<PRE 
+CLASS="screen"
+>[// Add a new row to the set using 'ADDSETROW'
+[LL_REPTAG_"2000" CATACTION:SETVALUE:"Type Testing Category":"First Name":1:ADDSETROW:"John" /]
+
+[// Target the new row added using the 'NEWROW' keyword
+[LL_REPTAG_"2000" CATACTION:SETVALUE:"Type Testing Category":"Last Name":1:NEWROW:"Smith" /]
+[LL_REPTAG_"2000" CATACTION:SETVALUE:"Type Testing Category":"Phone Number":1:NEWROW:"1234567890" /]
+[LL_REPTAG_"2000" CATACTION:SETVALUE:"Type Testing Category":"Associates":1:NEWROW:"Jane Smith" /]
+
+[// Append values to the multi-valued 'Associates' attribute
+[LL_REPTAG_"2000" CATACTION:ADDVALUE:"Type Testing Category":"Associates":2:NEWROW:"Fred Smith" /]
+[LL_REPTAG_"2000" CATACTION:ADDVALUE:"Type Testing Category":"Associates":3:NEWROW:"Fiona Smith" /]</PRE
+><IMG title="CATACTION:SETVALUE/ADDVALUE" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATACTION-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID6257"></A>For more information, see <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTODATE">TODATE</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCATINFO">CATINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATINFO-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCATINFO"></A><B CLASS="highlight">CATINFO:&lt;<I CLASS="varname">format</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATINFO-DESC">Description</A></P>
+<P><A NAME="TMPID6268"></A>For a valid Content Server category ID, this sub-tag will return category information according to the format parameters that have been provided.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATINFO-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN5641"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Format</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">CATINFO:DEFINITION:</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns an assoc containing the category definition. Use the <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> and <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> sub-tags to extract specific information.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">CATINFO:VALIDVALUES:&lt;<I CLASS="varname">attribute ID</I>></B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a list. If the attribute is a popup the list will contain the valid values defined in the attribute definition, otherwise the list will be empty.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATINFO-EXAMP">Example</A></P>
+<P><A NAME="TMPID6294"></A>For example, the following syntax will loop through the definition data for a category and display the ID, Display Name and Type Name of each attribute:</P><A NAME="AEN5667"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_FOR VAR:catdata DATA:[LL_REPTAG_'&lt;category ID&gt;' CATINFO:DEFINITION /] /]
+[LL_REPTAG_%catdata CURRENTVAL LIST:2 ASSOC:ID /]
+[LL_REPTAG_%catdata CURRENTVAL LIST:2 ASSOC:DISPLAYNAME /]
+[LL_REPTAG_%catdata CURRENTVAL LIST:2 ASSOC:TYPENAME /]
+
+[LL_WEBREPORT_ENDFOR /]</PRE
+>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF22"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6297"></A><B CLASS="note">Note: </B><BR>The category itself is treated as an attribute of type “Set”, and appears in the definition with <TT CLASS="literal">ID=1</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="STCATINFO-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID6302"></A>For more information, see <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>, <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span>, <span><A HREF="wr-tag-ccfourth.htm#WR-TAG-CCFOR">FOR</A></span>, and <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCURRENTVAL">CURRENTVAL</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCHILDREN">CHILDREN</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCHILDREN-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCHILDREN"></A><B CLASS="highlight">CHILDREN</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCHILDREN-DESC">Description</A></P>
+<P><A NAME="TMPID6324"></A>Returns a RecArray containing the children items of the node ID specified in the main tag.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCHILDREN-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID6327"></A>For more information, see PLUCK and <span><A HREF="wr-tag-ccfourth.htm#WR-TAG-CCFOR">FOR</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCOLLAPSE">COLLAPSE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCOLLAPSE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCOLLAPSE"></A><B CLASS="highlight">COLLAPSE</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCOLLAPSE-DESC">Description</A></P>
+<P><A NAME="TMPID6337"></A>Creates a collapsed string by removing all spaces and tabs from the original string.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCOMPRESS">COMPRESS</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCOMPRESS-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCOMPRESS"></A><B CLASS="highlight">COMPRESS</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCOMPRESS-DESC">Description</A></P>
+<P><A NAME="TMPID6346"></A>Converts all sequences of one or more spaces or horizontal tabs to a single space character.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCONCATVAR">CONCATVAR</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCONCATVAR-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCONCATVAR"></A><B CLASS="highlight">CONCATVAR:&lt;<I CLASS="varname">variable name</I>></B></P>
+<P><A NAME="TMPID6354"></A>or</P>
+<P><A NAME="TMPID6355"></A><B CLASS="highlight">CONCATVAR:&lt;<I CLASS="varname">varname</I>>:&lt;<I CLASS="varname">joinstr</I>></B></P>
+<P><A NAME="TMPID6359"></A>or</P>
+<P><A NAME="TMPID6360"></A><B CLASS="highlight">CONCATVAR:&lt;<I CLASS="varname">varname</I>>:&lt;<I CLASS="varname">joinstr</I>>:NOBLANKS</B></P>
+<P><A NAME="TMPID6364"></A>or</P>
+<P><A NAME="TMPID6365"></A><B CLASS="highlight">CONCATVAR:&lt;<I CLASS="varname">varname</I>>:&lt;<I CLASS="varname">joinstr</I>>:UNIQUE</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCONCATVAR-DESC">Description</A></P>
+<P><A NAME="TMPID6371"></A>Concatenates the value of the tag, after formatting by any previous sub-tags, with the current contents of a variable which can be referenced using the specified variable name.</P>
+<P><A NAME="TMPID6372"></A>The second, optional, parameter can be used to specify a character or string of characters that are used before each new value added to the variable.</P>
+<P><A NAME="TMPID6373"></A>If the special string <TT CLASS="literal">@EMAIL</TT> is used as the “join string” the standard email separator as defined for the Content Server system will be automatically inserted.</P>
+<P><A NAME="TMPID6377"></A>The third optional parameter can only be used if the join string has been supplied. When used, the syntax is always: <TT CLASS="literal">NOBLANKS</TT>. When <TT CLASS="literal">NOBLANKS</TT> is used, no join strings will be added for empty data cells.</P>
+<P><A NAME="TMPID6380"></A>Alternatively, instead of <TT CLASS="literal">NOBLANKS</TT>, the parameter <TT CLASS="literal">UNIQUE</TT> can be used to ensure that only unique values are added to the concatenated variable. The first time this sub-tag is used, it behaves as if the variable already existed with an empty string. For example: <TT CLASS="literal">[LL_REPTAG=NAME CONCATVAR:names:";" /]</TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCONCATVAR-EXAMP">Example</A></P>
+<P><A NAME="TMPID6386"></A>For example, if the values  “Joe”, “Bob” and “Smith” were returned consecutively by: <TT CLASS="literal">[LL_REPTAG=NAME CONCATVAR:names:";" /]</TT>, the variable: <A HREF="wr-tag-cdreptag06">[LL_REPTAG_%names /]</A> would return: “Joe;Bob;Smith;”.</P>
+<P><A NAME="TMPID6393"></A>When this sub-tag is used, the associated tag output will not be displayed unless the <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSHOW">SHOW</A></span> sub-tag is also used.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCONCATVAR-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID6397"></A>More information on using <TT CLASS="literal">CONCATVAR</TT>, variable tags and other sub-tags associated with managing variables can be found in <span><A HREF="wr-variable-info.htm">Using Variables</A></span>. See also <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span>,<span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETVAR">SETVAR</A></span>, and <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCURRENTVAL">CURRENTVAL</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCSAPPINST">CSAPPLICATIONINSTALLED</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCSAPPINST-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCSAPPINST"></A><B CLASS="highlight">CSAPPLICATIONINSTALLED:&lt;<I CLASS="varname">fully installed</I>></B></P>
+<P><A NAME="TMPID6410"></A>or</P>
+<P><A NAME="TMPID6411"></A><B CLASS="highlight">CSAPPLICATIONINSTALLED:&lt;<I CLASS="varname">fully installed</I>>:&lt;<I CLASS="varname">version</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCSAPPINST-DESC">Description</A></P>
+<P><A NAME="TMPID6417"></A>Returns true or false depending on whether an application matching the application name, and optionally the version as well, has been installed. This sub-tag expects an application name in the main tag.</P>
+<P><A NAME="TMPID6418"></A>The &lt;<I CLASS="varname">fully_installed</I>> parameter must be either true or false. If it is passed in as false, then an additional check will be performed to see if the application has been partially installed. For example, in a multi-server environment the application has been installed on at least one server, resulting in the application's Content Server nodes being created.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCSAPPINST-EXAMP">Examples</A></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN5766"></A><B>Example</B></P><A NAME="AEN5767"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'myapplication' CSAPPLICATIONINSTALLED:'TRUE' /]</PRE
+>
+<P class="nr1"><B>Example: </B><A NAME="TMPID6425"></A>Will return true if the application is installed, else it will return false.</P><A NAME="AEN5769"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'myapplication' CSAPPLICATIONINSTALLED:'FALSE' /]</PRE
+>
+<P><B>Example: </B><A NAME="TMPID6427"></A>Will return true if the application is installed or partially installed, else it will return false.</P><A NAME="AEN5771"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'myapplication' CSAPPLICATIONINSTALLED:'TRUE':'1.0' /]</PRE
+>
+<P><B>Example: </B><A NAME="TMPID6429"></A>Will perform the same checks as above with an additional check for the version number.</P>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STCURRENTVAL">CURRENTVAL</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCURRENTVAL-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCURRENTVAL"></A><B CLASS="highlight">CURRENTVAL</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCURRENTVAL-DESC">Description</A></P>
+<P><A NAME="TMPID6438"></A>Displays the current value of a variable according to its position within the reportview. Variable sub-tags are processed starting at the top of the file and working towards the bottom, rows are also processed in order from 1 to &lt;<I CLASS="varname">n</I>>. Normally a variable tag, <TT CLASS="literal">[LL_REPTAG_%test /]</TT>, returns the final value of a variable regardless of where it was positioned in the reportview; however, if the <TT CLASS="literal">CURRENTVAL</TT> sub-tag is included in a variable tag, the tag will display its value according to its position in the Reportview. For example, <TT CLASS="literal">[LL_REPTAG_%test CURRENTVAL /]</TT> shows the current value of the variable called “test”.</P>
+<P><A NAME="TMPID6444"></A>The output of the <TT CLASS="literal">CURRENTVAL</TT> sub-tag can be formatted with other sub-tags. For example, <TT CLASS="literal">[LL_REPTAG_%test CURRENTVAL CAPITALIZE /]</TT> shows the capitalized value of the variable called “test”.</P>
+<P><A NAME="TMPID6448"></A><TT CLASS="literal">CURRENTVAL</TT> can also be used with other variable sub-tags, for example <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETVAR">SETVAR</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCONCATVAR">CONCATVAR</A></span> or <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span>, to return the value of whatever variable they are modifying after the changes have been made. When used in this fashion, the <TT CLASS="literal">CURRENTVAL</TT> variable must be immediately to the right of the variable sub-tag. For example, <TT CLASS="literal">[LL_REPTAG=number ADDVAR:total CURRENTVAL /]</TT> shows the value of a variable called “total” after <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span> has added the number value to it.</P>
+<P><A NAME="TMPID6457"></A><TT CLASS="literal">CURRENTVAL</TT> also makes it possible to use the value of a variable to feed another action type sub-tag, for example <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETFORM">SETFORM</A></span>.<TT CLASS="literal">[LL_REPTAG_%test CURRENTVAL CAPITALIZE SETFORM:field1 /]</TT> takes the current value of the variable called “test”, capitalizes it, and uses it to set a form field called “field1”.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STCURRENTVAL-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID6465"></A>More information on using <TT CLASS="literal">CURRENTVAL</TT>, variable tags and other sub-tags associated with managing variables can be found in <span><A HREF="wr-variable-info.htm">Using Variables</A></span>. See also, <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETVAR">SETVAR</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCONCATVAR">CONCATVAR</A></span>, <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span> and <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETFORM">SETFORM</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

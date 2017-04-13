@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-EN-1">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Task Edit Messages</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-task-msg-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Messages and Wrappers';
+          header.title2 = 'Task Edit Messages';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1143"></A>A task edit message can be sent by a "send an XML response to a remote initiator" action and accepted by an "accept an XML task edit message" action or an "accept an HTML task edit message" action.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-011">XML Representation</A></P>
+<P><A NAME="TMPID1146"></A><TT CLASS="LITERAL">&lt;exec&gt;&lt;edittask status="…" query= "…"&gt;...&lt;/edittask&gt;&lt;/exec&gt;</TT></P>
+<P><A NAME="TMPID1148"></A>In the default XML format, an initiation message consists of an <TT CLASS="LITERAL">edittask</TT> element inside an <TT CLASS="LITERAL">exec</TT> element. The <TT CLASS="LITERAL">edittask</TT> element holds the contents of the message.</P>
+<P><A NAME="TMPID1152"></A>If an accept action receives a task edit message with the <TT CLASS="LITERAL">query="yes"</TT> attribute, it returns updated values for all valid fields.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-012">XML Namespaces (if used)</A></P>
+<P><A NAME="TMPID1156"></A><TT CLASS="LITERAL">&lt;exec xmlns="http://www.opentext.com/llx/"&gt;</TT></P>
+<P><A NAME="TMPID1158"></A><TT CLASS="LITERAL">&lt;edittask xmlns="http://www.opentext.com/llx/Workflow/"&gt;</TT></P>
+<P><A NAME="TMPID1160"></A>When an action is configured to use and require XML namespaces, different namespaces are used for the exec element and the edittask elements.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-013">HTML Representation</A></P>
+<P><A NAME="TMPID1163"></A>In HTML form data, a task edit message is represented by its contents.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-014">Contents of Message</A></P>
+<P class="before-ul"><A NAME="TMPID1166"></A>The following items are included in a task edit message:</P><A NAME="AEN1145"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1146"></A><A NAME="TMPID1169"></A>Task status</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1148"></A><A NAME="TMPID1171"></A>Work packages</P></LI></UL>
+<P><A NAME="TMPID1172"></A>A task edit message contains a subset of the information that an initiation message can contain. It carries only work package data and status information about the task being edited. For more information about these items, see <span><A HREF="xml-taskinfo-bg.htm">Task Information</A></span> and <span><A HREF="xml-workpackages-bg.htm">Work Packages</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

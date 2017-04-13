@@ -1,0 +1,190 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESCLS100500-H-AGD-EN">
+<META PiXprocLocator="classification">
+<title>Using the XML Export API with Classifications</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'c-expimpapi-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Classifications';
+          header.title2 = 'Using the XML Export API with Classifications';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1589"></A>The Content Server XML Export API feature enables the information associated with an Content Server volume or object to be translated into XML code and exported as a file that can be used by another application, such as a data archive. When Classifications is installed, you can use the XML Export API to export, in XML format, the information associated with Classifications; for example, the Classification hierarchies in the Classification Workspace and Content Server items that have Classifications assigned to them. The XML Export API gives you control over the structure of the XML files that Content Server generates, and allows you to create custom skins for the Classifications interface. For more information about Content Server's XML Export API, see the <span><XPROC NAME="ExtXrefStart" HREF="llescor-pgd.-" FMT="" NO1ST><i>Open Text Content Server - XML Import and Export Guide (LLESCOR-PGD)</i><XPROC NAME="ExtXrefEnd" HREF="llescor-pgd.-" FMT=""></span>, which is available on the OpenText Knowledge Center. </P>
+<P class="before-ul"><A NAME="TMPID1600"></A>You perform an XML export by adding parameters to the end of the basic Content Server URL in a Web browser. An example of an XML export URL is:<TT CLASS="PARAMETER"><I><TT CLASS="LITERAL">http://</TT>&lt;<I CLASS="VARNAME">content_server_URL</I>>?func=ll&amp;objId=&lt;<I CLASS="VARNAME">[DataID]</I>>&amp;objAction=xmlexport&amp;&lt;<I CLASS="VARNAME">optionalparameters</I>></I></TT>, where:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1516"></A><A NAME="TMPID1609"></A><TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">content_server_URL</I>></TT> represents the URL prefix of the Content Server server,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1521"></A><A NAME="TMPID1614"></A><TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">[DataID]</I>></TT> represents the Content Server ID of the object to be exported (Classification Workspace, Classification Tree, Classification, Document, Folder, and so on),</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1526"></A><A NAME="TMPID1619"></A>and <TT CLASS="LITERAL">&amp;&lt;<I CLASS="VARNAME">optional parameters</I>></TT> represents parameters that control the content of the resulting XML file. </P></LI></UL>
+<P><A NAME="TMPID1622"></A>The XML export query always starts with <TT CLASS="LITERAL">&amp;xmlexport</TT>. Multiple parameters can be added and are connected with an ampersand (<TT CLASS="LITERAL">&amp;</TT>).</P>
+<P><A NAME="TMPID1625"></A>You can use any of the standard XML Export API optional parameters when you use the XML Export API with Classifications. You can also use other parameters that are specific to Classifications. The tables below provide information about some standard XML Export API optional parameters (<TT CLASS="LITERAL">scope</TT> and <TT CLASS="LITERAL">callbackhandlername</TT>) and the parameters that are specific to Classifications (<TT CLASS="LITERAL">xmlclassifieditems</TT> and <TT CLASS="LITERAL">xmlclassificationstatus</TT>). For more information about other standard XML Export API optional parameters, see the <span><XPROC NAME="ExtXrefStart" HREF="llescor-pgd.-" FMT="" NO1ST><i>Open Text Content Server - XML Import and Export Guide (LLESCOR-PGD)</i><XPROC NAME="ExtXrefEnd" HREF="llescor-pgd.-" FMT=""></span>.</P>
+<P><A NAME="TMPID1634"></A><span><A HREF="c-expimpapi-bg.htm#TAB-AID20"><NOBR>Table&nbsp;1-7</NOBR></A></span> lists some optional parameters that you can use in an XML export.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF50"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1637"></A><B CLASS="NOTE">Note: </B><BR>When you use the XML Export API, you must have the See and See Contents permissions for a classification object (Classification Workspace, Classification Tree, or Classification) to be exported and all subitems within the object. In addition, you must have the <I CLASS="EMPHASIS">system administration rights</I> privilege to set certain optional parameters. <span><A HREF="c-expimpapi-bg.htm#TAB-AID20"><NOBR>Table&nbsp;1-7</NOBR></A></span> below also outlines which optional parameters require this privilege.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="Optional Parameters" CLASS="TABLE">
+<P CLASS="TABLE" ALIGN="LEFT"><A NAME="TAB-AID20"></A><B>Table 1-7: Optional Parameters</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="TABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Parameter</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Values</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">scope=</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exports the child Classifications of a given classification object (Classification Workspace, Classification Tree, or Classification) according to the specified child level.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1659"></A><TT CLASS="LITERAL">base</TT>: exports the object only.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1662"></A><TT CLASS="LITERAL">sub</TT>: exports the object and all its children.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1665"></A><TT CLASS="LITERAL">one</TT>: exports the object and its immediate children.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1668"></A><TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">n</I>></TT>, where <TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">n</I>></TT> represents an integer greater than <TT CLASS="LITERAL">0</TT>: exports the object and its immediate children up to <TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">n</I>></TT> levels below the object.<TT CLASS="LITERAL">1</TT> for one level below, <TT CLASS="LITERAL">2</TT> for two levels below, and so on.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">xmlclassifieditems=</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exports the classified items of a specific status that belong to a Classification Tree or Classification.<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF51"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1683"></A><B CLASS="NOTE">Note: </B><BR>You must have the <I CLASS="EMPHASIS">system administration rights</I> privilege to specify the following statuses: pending, rejected, all.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1688"></A><TT CLASS="LITERAL">true</TT>: exports all classified items that are visible in the interface; in other words, with “accepted” status.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1692"></A><TT CLASS="LITERAL">accepted</TT>: exports the classified items that are visible in the interface.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1695"></A><TT CLASS="LITERAL">pending</TT>: exports the items that have been assigned Classifications, but the items are not yet visible in the interface.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1698"></A><TT CLASS="LITERAL">rejected</TT>: exports the classified items that have had their Classifications removed.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1701"></A><TT CLASS="LITERAL">all</TT>: exports all classified items regardless of their status.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">callbackhandlername=</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Name of the callback handler used. When you use the <TT CLASS="LITERAL">classifications</TT> value with the <TT CLASS="LITERAL">callbackhandlername</TT> parameter, any Classifications that have been assigned to classifiable objects are appended to the export of the objects</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">classifications</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">xmlclassificationstatus=</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Appends Classifications with a specific status that have been assigned to classifiable objects to the export of the objects.<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF52"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1716"></A><B CLASS="NOTE">Note: </B><BR>You must have the <I CLASS="EMPHASIS">system administration rights</I> privilege to specify the following statuses: pending, rejected, all.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1721"></A><TT CLASS="LITERAL">accepted</TT>: exports the Classifications that are visible in the interface.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1724"></A><TT CLASS="LITERAL">pending</TT>: exports the Classifications that have been assigned to objects, but the items are not yet visible in the interface.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1727"></A><TT CLASS="LITERAL">rejected</TT>: exports the Classifications that have been removed from objects.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1730"></A><TT CLASS="LITERAL">all</TT>: exports Classifications regardless of their status.</P></TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P><A NAME="TMPID1732"></A>You can combine optional parameters to make an XML export more specific. <span><A HREF="c-expimpapi-bg.htm#TAB-AID21"><NOBR>Table&nbsp;1-8</NOBR></A></span> below provides examples of URLs containing optional parameters that you can combine.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF53"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1735"></A><B CLASS="NOTE">Note: </B><BR>If you combine optional parameters and Content Server returns unexpected results, contact OpenText Customer Support.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="XML Export Examples" CLASS="TABLE">
+<P CLASS="TABLE" ALIGN="LEFT"><A NAME="TAB-AID21"></A><B>Table 1-8: XML Export Examples</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="TABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">URL</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">content_server_URL</I>>?func=ll&amp;objId=4962&amp;objAction=xmlexport&amp;scope=sub&amp;xmlclassifieditems=true</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exports the contents of the Classification Workspace object with object ID 4962 and all associated classified items with “accepted” status</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">content_server_URL</I>>?func=ll&amp;objId=2040&amp;objAction=xmlexport&amp;scope=base&amp;xmlclassifieditems=all</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exports a Classification with object ID 2040 and all associated classified items, regardless of their status</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">content_server_URL</I>>?func=ll&amp;objId=2001&amp;objAction=xmlexport&amp;scope=3&amp;xmlclassifieditems=pending</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exports a Classification Tree with object ID 2001, three levels of child Classifications in the Classification Tree, and classified items with “pending” status</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">content_server_URL</I>>?func=ll&amp;objId=2245&amp;objAction=xmlexport&amp;scope=one&amp;callbackhandlername=classifications&amp;xmlclassificationstatus=accepted</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Appends to the export of the object with object ID 2245 and its immediate children all Classifications with “accepted” status that are assigned to the object and its children</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">content_server_URL</I>>?func=ll&amp;objId=2401&amp;objAction=xmlexport&amp;callbackhandlername=classifications&amp;xmlclassifieditems=true</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Appends to the export of the object with object ID 2401 all Classifications that are assigned to the object. Also appended to the export are the classified items with “accepted” status that have been assigned the Classifications that are assigned to the object.<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF54"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1779"></A><B CLASS="NOTE">Note: </B><BR>In this type of example (when the <TT CLASS="LITERAL">&amp;callbackhandlername=classifications&amp;xmlclassifieditems=</TT> parameters are used together), only one level of classified items of a Classification is exported to prevent successive export repetitions.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">content_server_URL</I>>?func=ll&amp;objId=1365&amp;objAction=xmlexport&amp;xmlclassifieditems=pending&amp;callbackhandlername=classifications&amp;xmlclassificationstatus=rejected</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exports the Classification with object ID 1365 and all its child Classifications, and associated classified items with “pending” status. For each classified item, its Classifications with “rejected” status are exported.</TD></TR></TABLE></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

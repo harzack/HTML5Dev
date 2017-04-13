@@ -1,0 +1,213 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<title>[hithighlight]</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/websbroker/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/websystemobj/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-ini-hithighlight-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Understanding the opentext.ini file';
+          header.title2 = '[hithighlight]';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID8388"></A>The <TT CLASS="literal">[HitHighlight]</TT> section contains the configuration settings for hit highlighting in Content Server. Hit highlighting allows users to highlight the instances of their search terms within a particular search result item. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbb-h-ugd.sr-workingwsr" FMT="" NO1ST><A  HREF="../../../help/_en_US/websbroker/sr-workingwsr.htm">Working with Search Results</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbb-h-ugd.sr-workingwsr" FMT=""></span>.</P>
+<P><A NAME="TMPID8392"></A>Before Content Server can hit highlight a search result item, it converts the item to HTML using a process named <TT CLASS="literal">wfwcnv</TT>. You can configure the environment in which the <TT CLASS="literal">wfwcnv</TT> process runs in this section of the <TT CLASS="filename">opentext.ini</TT> file.</P>
+<P><A NAME="TMPID8397"></A>The <TT CLASS="literal">[HitHighlight]</TT> section contains the following parameters: </P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID8400"></A><B CLASS="important">Important: </B><BR>OpenText strongly recommends that you do not modify the values of these parameters:</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN7622"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8412"></A><span><A href="../webadmin/wba-ini-hithighlight-rf.htm#P179-14923">cachePath</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8415"></A><span><A href="../webadmin/wba-ini-hithighlight-rf.htm#P181-15124">hhAdminServer</A></span></P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8420"></A><span><A href="../webadmin/wba-ini-hithighlight-rf.htm#HHSTYLE">HHStyle</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8423"></A><span><A href="../webadmin/wba-ini-hithighlight-rf.htm#HHWFWCNVDIR">hhwfwcnvdir</A></span></P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8428"></A><span><A href="../webadmin/wba-ini-hithighlight-rf.htm#MAXNUMBEROFCACHEITEMS">MaxNumberOfCacheItems</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8431"></A><span><A href="../webadmin/wba-ini-hithighlight-rf.htm#SECTIONNAME">sectionName</A></span></P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="P179-14923">cachePath</A></P><A NAME="AEN7654"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7655"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID8438"></A>Specifies the directory in which the converted files that the <TT CLASS="literal">wfwcnv</TT> process generates are cached.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7659"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID8442"></A>An absolute path. The default is <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\cache\hh\</TT>, where &lt;<I CLASS="varname">Content Server_home</I>> is the root of your Content Server installation.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="P181-15124">hhAdminServer</A></P><A NAME="AEN7669"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7670"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID8454"></A>Specifies the shortcut of the Admin server that manages the <TT CLASS="literal">wfwcnv</TT> process. An Admin server's shortcut is the same as the name that appears in the <B CLASS="guilabel">Name</B> column of the <B CLASS="guilabel">Admin Servers</B> table on the <B CLASS="guilabel">System Object Volume</B> page. For more information, see<span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbs-h-agd.wbs-browsysv-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/websystemobj/wbs-browsysv-rf.htm">Using the System Object Volume</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbs-h-agd.wbs-browsysv-rf" FMT=""></span>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7678"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID8462"></A>The shortcut of an Admin server that is registered with the primary Content Server host. By default, the <TT CLASS="literal">hhAdminServer</TT> parameter does not appear in the <TT CLASS="filename">opentext.ini</TT> file, which is equivalent to <TT CLASS="literal">hhAdminServer=default</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="HHSTYLE">HHStyle</A></P><A NAME="AEN7686"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7687"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID8472"></A>Specifies the background color, font color, font size, font style, and font weight used when hit highlighting a key word or phrase. An example of font style is italic. An example of font weight is bold.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7690"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID8475"></A><TT CLASS="literal">HHStyle={background:red; color:blue}</TT></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7694"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID8479"></A>The values that you specify for this parameter must be contained in braces, <TT CLASS="literal">{}</TT>. Each entry takes the form <TT CLASS="literal">&lt;<I CLASS="varname">option</I>>:&lt;<I CLASS="varname">value</I>></TT>. Entries are separated by semicolons.</P>
+<P><A NAME="TMPID8484"></A>The <TT CLASS="literal">HHStyle</TT> parameter can contain five display options: <TT CLASS="literal">background</TT>, <TT CLASS="literal">color</TT>, <TT CLASS="literal">font-size</TT>, <TT CLASS="literal">font-style</TT> or <TT CLASS="literal">font-weight</TT>. The values of each element are described in the following table:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN7708"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Option</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Value</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">background</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Any valid HTML color. A color is a either a color name or a numerical RGB specification. For more information, consult an HTML color reference chart or Web site.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">color</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Any valid HTML color. A color is a either a color name or a numerical RGB specification. For more information, consult an HTML color reference chart or Web site.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">font-size</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">An integer representing the absolute font size</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">font-style</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">One of three possible values: <TT CLASS="literal">normal</TT>, <TT CLASS="literal">italic</TT>, or <TT CLASS="literal">oblique</TT>, depending on the font family used.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">font-weight</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">One of the following values:<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8520"></A>normal</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8522"></A>bold</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8524"></A>bolder</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8526"></A>lighter</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8528"></A>100</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8530"></A>200</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8532"></A>300</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8534"></A>400</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8536"></A>500</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8538"></A>600</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8540"></A>700</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8542"></A>800</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8544"></A>900</P></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The values <TT CLASS="literal">100-900</TT> represent an ordered sequence, where each number indicates a weight that is at least as dark as the previous value. The value <TT CLASS="literal">normal</TT> is equal to <TT CLASS="literal">400</TT>, and <TT CLASS="literal">bold</TT> is equal to <TT CLASS="literal">700</TT>.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="HHWFWCNVDIR">hhwfwcnvdir</A></P><A NAME="AEN7769"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7770"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID8556"></A>Specifies the directory in which the <TT CLASS="literal">wfwcnv</TT> process starts.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7774"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID8560"></A>An absolute path. By default, the <TT CLASS="literal">hhwfwcnvdir</TT> parameter does not appear in the <TT CLASS="filename">opentext.ini</TT> file, which is equivalent to <TT CLASS="literal">hhwfwdnvdir=<TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/bin/</TT></TT>, where &lt;<I CLASS="varname">Content Server_home</I>> is the root of your Content Server installation.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MAXNUMBEROFCACHEITEMS">MaxNumberOfCacheItems</A></P><A NAME="AEN7787"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7788"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID8575"></A>Specifies the maximum number of conversion files that can be stored in the cache. When the number of cache items exceeds the maximum, the items that have not been accessed for the greatest amount of time are deleted.</P>
+<P><A NAME="TMPID8576"></A>A <I CLASS="emphasis">cache item</I> is a set of converted files that are associated with a given source document. For example, if a non-HTML source document contains both text and images, its conversion to HTML results in an HTML file and one or more image files. This set of files is the cache item for that source document.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7793"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID8580"></A>An integer greater than, or equal to, zero. By default, the <TT CLASS="literal">MaxNumberOfCacheItems</TT> parameter does not appear in the <TT CLASS="filename">opentext.ini</TT> file, which is equivalent to <TT CLASS="literal">MaxNumberOfCacheItems=30</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SECTIONNAME">sectionName</A></P><A NAME="AEN7800"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7801"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID8589"></A>Specifies the <TT CLASS="filename">opentext.ini</TT> section from which the <TT CLASS="literal">wfwcnv</TT> process reads its filter settings.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7806"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID8594"></A>A valid <TT CLASS="filename">opentext.ini</TT> section name. Do not include the square brackets, <TT CLASS="literal">&nbsp;[&nbsp;]&nbsp;</TT>, in the section name. By default, the <TT CLASS="literal">sectionName</TT> parameter does not appear in the <TT CLASS="filename">opentext.ini</TT> file, which is equivalent to <TT CLASS="literal">sectionName=HHFilterSettings</TT>.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

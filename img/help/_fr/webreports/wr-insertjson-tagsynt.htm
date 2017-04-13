@@ -1,0 +1,209 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Syntaxe de la balise et options</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-insertjson-tagsynt.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Insertion de données JSON';
+          header.title2 = 'Syntaxe de la balise et options';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID15231"></A>La syntaxe principale de cette balise est la suivante :</P>
+<P><A NAME="TMPID15232"></A><TT CLASS="literal"><B CLASS="highlight">[LL_WEBREPORT_INSERTJSON /]</B></TT></P>
+<P><A NAME="TMPID15235"></A>Cette balise peut être utilisée uniquement dans les parties En-tête et Pied de page de l'affichage de rapport. Contrairement à la balise de contrôle de contenu <TT CLASS="literal">INSERTJSARRAY</TT>, lorsque cette balise est utilisée, la section des lignes est traitée normalement. Il n'est pas valide d'utiliser une balise <TT CLASS="literal">INSERTJSON</TT> dans la section des lignes, car elle peut être utilisée pour renvoyer toutes les lignes de données à l'extérieur de la section des lignes. </P>
+<P><A NAME="TMPID15238"></A>La balise <TT CLASS="literal">INSERTJSON</TT> prend en charge de nombreuses « directives » qui contrôlent le type de données renvoyées par la balise. Chaque directive est précédée du signe « @ ». Ce format est différent de celui des autres balises de contrôle de contenu, mais il permet un ensemble de fonctionnalités très flexible. Les directives actuellement prises en charge sont répertoriées au tableau ci-dessous.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN14510"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Options de balise</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@BROWSECOLUMNS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette directive est prise en charge à partir de Livelink version 9.7.1 uniquement. Elle ne nécessite pas d'informations supplémentaires. Elle permet à la balise <TT CLASS="literal">INSERTJSON</TT> de renvoyer un ensemble de données identique à celui normalement utilisé lors de la navigation des recueils Content Server. Elle est utile pour l'émulation des vues de dossier Content Server, en particulier dans Livelink 9.7.1.</TD></TR></TABLE> <table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF42"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes : </B></P><A NAME="AEN14529"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14530"></A><A NAME="TMPID15263"></A>Les lignes de données réelles renvoyées peuvent être filtrées par toute balise de ligne conditionnelle WebReports. Par exemple, les balises <TT CLASS="literal">INCLUDEIF</TT>, <TT CLASS="literal">EXITIF</TT> ou <TT CLASS="literal">INCLUDERANGE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14536"></A><A NAME="TMPID15269"></A>Cette directive et la directive <TT CLASS="literal">@ALLDATASOURCE</TT> sont mutuellement exclusives.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14539"></A><A NAME="TMPID15272"></A>Lorsque cette directive est utilisée dans un WebReport, les éléments renvoyés par la source de données doivent être des éléments Content Server valides, qui existeraient normalement dans un recueil Content Server. Par exemple, si la source de données ne renvoie pas de données Dtree, un message d'erreur est produit. De même, si la source de données renvoie un élément tel qu'un Volume, un message d'erreur est également produit, car cet élément n'apparaît pas normalement dans un dossier.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@ALLDATASOURCE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette directive ne nécessite pas d'informations supplémentaires. Elle permet à la balise <TT CLASS="literal">INSERTJSON</TT> de renvoyer toutes les informations provenant de la source de données en une seule déclaration. Cette directive crée un tableau avec toutes les lignes et toutes les colonnes. Elle fournit également certains champs standard pour prendre en charge la source de données. Ces champs sont les suivants : <B CLASS="highlight">sourceID, actualRows, filteredRows, totalRows et totalSourceRows</B>. </TD></TR></TABLE> <table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF43"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID15283"></A><B CLASS="note">Note : </B><BR>Pour le moment, le champ <TT CLASS="literal">filteredRows</TT> est renseigné avec un nombre valide uniquement si la balise <B CLASS="highlight">[LL_REPTAG_FILTEREDROWS /]</B> est incluse dans le WebReport. Si cette balise n'est pas requise, c'est-à-dire si seule la sortie <TT CLASS="literal">INSERTJSON</TT> est utilisée, la balise <B CLASS="highlight">[LL_REPTAG_FILTEREDROWS /]</B> doit être placée dans un commentaire.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour plus d'informations sur ces champs, reportez-vous à la syntaxe de la balise de rapport correspondante, par exemple <B CLASS="highlight">[LL_REPTAG_SOURCEID /]</B>. Notez que cette directive et la directive <B CLASS="highlight">@BROWSECOLUMNS</B> sont mutuellement exclusives.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@ALLSTATIC</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette directive renvoie une structure unique contenant toutes les valeurs de balises statiques normalement renvoyées dans des balises WebReports distinctes. Le nom de chaque champ est identique au nom utilisé dans la balise statique correspondante.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@ROWCOLUMNS &lt;columns&gt; </B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette directive est suivie de champs multiples spécifiant les colonnes supplémentaires à ajouter à chaque ligne renvoyée par les colonnes de la source de données ou de la navigation. Chaque champ peut être le nom d'une colonne ou une balise et des sous-balises WebReports. Ces colonnes sont normalement ajoutées à des colonnes existantes établies par la directive <B CLASS="highlight">@ALLDATASOURCE</B> ou <B CLASS="highlight">@BROWSECOLUMNS</B> ; cependant, si aucune de ces directives n'a été utilisée, un tableau appelé <B CLASS="highlight">myRows</B> est ajouté à la structure JSON résultante, contenant uniquement les colonnes spécifiées dans cette directive <B CLASS="highlight">@ROWCOLUMNS</B> pour chaque ligne de la source de données. Chaque colonne utilise le format suivant : <TT CLASS="literal">&lt;<I CLASS="varname">nom champ JSON</I>> :"&lt;<I CLASS="varname">réf données</I>>"</TT> </TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">La référence de données est un simple nom de colonne provenant de la source de données ou une combinaison de balises et sous-balises WebReports. Par exemple, <TT CLASS="literal">@ROWCOLUMNS newColumn:"[LL_REPTAG=DATAID CAT:price:amount1:display /]"</TT> </TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cet exemple ajoute une colonne appelée « newColumn » au tableau <B CLASS="highlight">myRows</B> pour chaque ligne de données renvoyée. La syntaxe de la balise est résolue pour chaque ligne ; dans ce cas, en recherchant une valeur de catégorie/d'attribut.</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Autre exemple : <TT CLASS="literal">@ROWCOLUMNS Column2:"modifyDate"</TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Dans ce second exemple, un nouveau champ de colonne appelé Column2 est ajouté au tableau <B CLASS="highlight">myRows</B> en utilisant les données renvoyées par la colonne modifyDate de la source de données.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@EXCLUSIVE PARM:&lt;parm name&gt; </B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette directive définit un mode où seules les données produites par la balise <TT CLASS="literal">INSERTJSON</TT> sont renvoyées. Dans ce mode, toute autre sortie de WebReports est omise ; toutefois, l'affichage de rapport est traité normalement pour assurer que tout traitement de variable nécessaire s'effectue. Ce mode est contrôlé par la présence ou l'absence d'un paramètre dans l'URL. Ce paramètre est spécifié au moyen de l'option <TT CLASS="literal">PARM:</TT> . Par exemple, l'option <TT CLASS="literal">PARM:jsononly</TT> spécifie que si la valeur <TT CLASS="literal">&amp;jsononly</TT> est présente dans l'URL, seules les données JSON sont renvoyées. Par défaut, ce paramètre prend la valeur <TT CLASS="literal">true</TT>. S'il est inclus dans l'URL ou s'il est défini explicitement sur <TT CLASS="literal">true</TT> au moyen de l'expression <TT CLASS="literal">&amp;jsononly=true</TT>, le mode exclusif est utilisé. Inversement, si ce paramètre est omis ou défini explicitement sur <TT CLASS="literal">false</TT> au moyen de l'expression <TT CLASS="literal">&amp;jsononly=false</TT>, le mode normal est utilisé. Notez qu'en mode normal, les données <TT CLASS="literal">JSON</TT> restent incluses dans la sortie du WebReport.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@FIELDS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette directive est suivie par des champs multiples, entre guillemets, spécifiant un nom et une valeur pour les champs renvoyés par la balise <TT CLASS="literal">INSERTJSON</TT>. Les champs doivent respecter la syntaxe suivante : <TT CLASS="literal">&lt;<I CLASS="varname">nom_champ</I>></TT>:<TT CLASS="literal">"&lt;<I CLASS="varname">valeur_champ</I>>"</TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">La valeur du champ peut être une valeur littérale, mais il s'agit normalement d'une balise WebReports. Par exemple, <TT CLASS="literal">USERID:"[LL_REPTAG_USERID /]"</TT></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Tout champ spécifié par cette directive est ajouté à l'avant de la structure <TT CLASS="literal">JSON</TT> existante, en plus de tout champ existant pour d'autres directives. Ces champs ne sont pas ajoutés au niveau du tableau <TT CLASS="literal">myRows</TT>, mais uniquement à l'objet de niveau supérieur.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@ADDJSVAR VAR:&lt;nom var&gt;</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette directive ajoute la variable JavaScript et la syntaxe associée pour assigner la structure <TT CLASS="literal">JSON</TT> renvoyée à la variable spécifiée dans &lt;<I CLASS="varname">nom var</I>>. Par exemple, <TT CLASS="literal">@ADDJSVAR VAR:temp</TT> ajoute l'expression suivante au début des données <TT CLASS="literal">JSON</TT> : <TT CLASS="literal">var temp = "json data object"</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@ESCAPETEXT TYPE:&lt;escape type&gt;</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette directive permet de modifier l'échappement de texte par défaut pour tout champ de texte/chaîne utilisé dans la balise <TT CLASS="literal">INSERTJSON</TT>. Les types d'échappement valides sont : <B CLASS="highlight">standard</B> et <B CLASS="highlight">escapeurl</B>. Le type <B CLASS="highlight">standard</B> utilise la spécification <TT CLASS="literal">JSON</TT> standard pour l'échappement de texte. Le type <B CLASS="highlight">escapeurl</B> utilise le codage URL à décoder au moyen de la fonction JavaScript decodeURI().</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN14645"></A>&nbsp;</P>
+<P><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID15378"></A>Dans cet exemple, un WebReport utilise une source de données simplifiée renvoyant seulement trois colonnes, <TT CLASS="literal">parentId</TT>, <TT CLASS="literal">dataId</TT> et <TT CLASS="literal">subType</TT>, et deux lignes du <TT CLASS="literal">DTREE</TT>. Etant donné la syntaxe <TT CLASS="literal">INSERTJSON</TT> suivante :</P><A NAME="AEN14652"></A>
+<PRE 
+CLASS="screen"
+>&#13;[LL_WEBREPORT_INSERTJSON
+@ADDJSVAR VAR:sampleData
+@ALLDATASOURCE
+@FIELDS SYSTEMDATE:"[LL_REPTAG_DATE /]"
+@ROWCOLUMNS objName:"[LL_REPTAG=DATAID NODEINFO:NAME /]" supplier:"[LL_REPTAG=DATAID CAT:VendorData:supplier:DISPLAY /]"
+/]</PRE
+>
+<P><A NAME="TMPID15385"></A>Remarquez que des retours chariot ont été insérés dans l'exemple ci-dessus pour plus de clarté, mais ils ne doivent <I CLASS="emphasis">pas</I> être utilisés dans l'affichage de rapport.</P>
+<P class="before-ul"><A NAME="TMPID15387"></A>Voici les données renvoyées au client dans la sortie du WebReport :</P><A NAME="AEN14656"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14657"></A><A NAME="TMPID15390"></A>var sampleData={</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14659"></A><A NAME="TMPID15392"></A>« SYSTEMDATE »:« Oct 08 2008 »,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14663"></A><A NAME="TMPID15396"></A>« sourceID »:129293,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14666"></A><A NAME="TMPID15399"></A>« actualRows »:2,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14669"></A><A NAME="TMPID15402"></A>« filteredRows »:2,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14672"></A><A NAME="TMPID15405"></A>« totalRows »:2,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14675"></A><A NAME="TMPID15408"></A>« totalSourceRows »:2,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14678"></A><A NAME="TMPID15411"></A>« myRows »:[{« objName »:« AAA test document » , « Supplier »:« Widgets Inc. », « parentid »:126758, « dataid » :127200, « subtype »:144}, {« objName »:« BBB test document » , « Supplier »:« Teletech Assets », « parentid » :126758, « dataid »:129514, « subtype »:144}]</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14695"></A><A NAME="TMPID15428"></A>}</P></LI></UL>
+<P><A NAME="TMPID15429"></A>La capture d'écran ci-dessous illustre un extrait de la structure de données JavaScript établie par le client à partir de ces données <TT CLASS="literal">JSON</TT>, comme affichée par un débogueur de script. </P>
+<P><IMG SRC="image033.png"></P><A NAME="AEN14700"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14701"></A><A NAME="TMPID15434"></A>L'objet est appelé « sampleData », conformément à la directive <TT CLASS="literal">ADDJSVAR</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14705"></A><A NAME="TMPID15438"></A>Un nouveau champ, appelé <TT CLASS="literal">SYSTEMDATE</TT>, a été ajouté à l'objet, conformément à la directive FIELDS.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14708"></A><A NAME="TMPID15441"></A>Les champs <TT CLASS="literal">sourceID</TT>, <TT CLASS="literal">actualRows</TT>, <TT CLASS="literal">filteredRows</TT>, <TT CLASS="literal">totalRows</TT> et <TT CLASS="literal"> totalSourceRows</TT> ont été créés automatiquement par la directive <TT CLASS="literal">ALLDATASOURCE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14716"></A><A NAME="TMPID15449"></A>Deux lignes, soit autant de lignes que présentes dans la source de données, sont stockées dans le tableau myRows. Cet exemple montre les trois champs existants dans la source de données simple : <TT CLASS="literal">parentid</TT>, <TT CLASS="literal">dataid</TT> et <TT CLASS="literal">subtype</TT>. Si la source de données avait renvoyé tous les champs de <TT CLASS="literal">DTREE</TT>, toutes ces colonnes seraient incluses dans le tableau de données <TT CLASS="literal">myRows</TT>, conformément à la directive <TT CLASS="literal">ALLDATASOURCE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14724"></A><A NAME="TMPID15457"></A>Outre les colonnes renvoyées par la source de données, deux nouvelles colonnes : <TT CLASS="literal">objName</TT> et <TT CLASS="literal">Supplier</TT> ont été ajoutées pour chaque ligne de données. Dans cet exemple simpliste, <TT CLASS="literal">Supplier</TT> utilise le résultat de : <TT CLASS="literal">[LL_REPTAG=DATAID CAT:'Test Category':'Supplier Company':DISPLAY /]</TT> de chaque ligne pour définir la valeur de la donnée appelée <TT CLASS="literal">Supplier</TT> dans chaque ligne du tableau. La valeur <TT CLASS="literal">objName</TT> est obtenue simplement de façon similaire au moyen de la sous-balise <TT CLASS="literal">NODEINFO:NAME</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14733"></A><A NAME="TMPID15466"></A>LiveReports permet d'accéder directement à la base de données de Content Server ; l'autorisation de créer des rapports LiveReport est donc presque toujours réservée aux administrateurs. Un WebReport ne permet pas un accès direct à la base de données ; il utilise plutôt des LiveReports existants, des requêtes de recherche ou d'autres sources de données. WebReports peut donc être utilisé en toute sécurité par des utilisateurs commerciaux et des développeurs qui ne sont pas des administrateurs.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14737"></A><A NAME="TMPID15470"></A>Les balises <TT CLASS="literal">STARTROW</TT> et <TT CLASS="literal">ENDROW</TT> ne sont pas visibles. Elles ne doivent <I CLASS="emphasis">PAS</I> être ajoutées car l'éditeur les insère une fois l'édition terminée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14742"></A><A NAME="TMPID15475"></A>Chaque adresse est séparée au moyen du symbole défini comme préférence système. L'instruction pour ce champ indique ce symbole, par exemple une virgule ou un point-virgule.</P></LI></UL>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

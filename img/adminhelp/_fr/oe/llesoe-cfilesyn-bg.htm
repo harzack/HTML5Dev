@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOE100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="objectexporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle exportateur d'objet</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoe-cfilesyn-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Object Exporter: <NOBR>OpenText Content Server Aide en ligne administrateur</NOBR>';
+          header.title2 = 'Syntaxe du fichier de contrôle exportateur d\'objet';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID326"></A>Tous les fichiers de contrôle de l'exportation doivent commencer par une balise <TT CLASS="literal">&lt;export&gt;</TT> et se terminer par une balise <TT CLASS="literal">&lt;/export&gt;</TT> .  </P>
+<P><A NAME="TMPID332"></A>Entre les balises <TT CLASS="literal">&lt;export&gt;&lt;/export&gt;</TT> on trouve plusieurs paragraphes appelés paragraphes de nœud. Chaque paragraphe de nœud décrit une action relative à un objet donné. Les paragraphes de nœud commencent par une balise <TT CLASS="literal">&lt;node&gt;</TT> et se terminent par une balise <TT CLASS="literal">&lt;/node&gt;</TT> .</P>
+<P><A NAME="TMPID336"></A>Chaque fois que vous exécutez une exportation, les types d'objet suivants sont exportés : raccourci, document composite, vue personnalisée, discussion, document, dossier, projet, réponse, sujet et url. Pour éviter qu'un type d'objet spécifique soit exporté, utilisez la balise <TT CLASS="literal">exclude</TT> . </P>
+<P><A NAME="TMPID338"></A>Les pages suivantes contiennent la syntaxe et les descriptions des fichiers de contrôle de l'exportation pour les balises exportateur d'objet.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF2"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID340"></A><B CLASS="note">Note : </B><BR>Object Exporter prend en charge plusieurs emplacements d'exportation.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOE-UTF8OE">Object Exporter et UTF-8</A></P>
+<P><A NAME="TMPID345"></A>Si le fichier de contrôle comporte des caractères non-ASCII, ajoutez la ligne suivante, <TT CLASS="literal">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</TT>, en haut du fichier de contrôle et enregistrez ce dernier avec le codage UTF-8.  </P>
+<DIV title="Voici un exemple de fichier de contrôle de l'exportation pouvant contenir des caractères non-ASCII :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF3"></A><B><IMG title="Voici un exemple de fichier de contrôle de l'exportation pouvant contenir des caractères non-ASCII :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 2-1 : Voici un exemple de fichier de contrôle de l'exportation pouvant contenir des caractères non-ASCII :</B></P><A NAME="AEN345"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;export&gt;
+  &lt;node&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;docstorage&gt;c:\docs&lt;/docstorage&gt;
+  &lt;/node&gt;
+&lt;/export&gt;</PRE
+><IMG title="Voici un exemple de fichier de contrôle de l'exportation pouvant contenir des caractères non-ASCII :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF4"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID354"></A><B CLASS="note">Note : </B><BR>La valeur située entre les balises <TT CLASS="literal">&lt;docstorage&gt;&lt;/docstorage&gt;</TT> doit être composée de caractères contenus dans le jeu de caractères ASCII.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="llesoe-cfile-delu-rf.htm" revision="">Syntaxe du fichier de contrôle de la balise deletedusers</A></p></li>
+<li><p><A  HREF="llesoe-cfile-docst-rf.htm" revision="">Syntaxe du fichier de contrôle de la balise docstorage</A></p></li>
+<li><p><A  HREF="llesoe-cfile-excl-rf.htm" revision="">Syntaxe du fichier de contrôle de la balise exclude</A></p></li>
+<li><p><A  HREF="llesoe-cfile-loc-rf.htm" revision="">Syntaxe du fichier de contrôle de la balise location</A></p></li>
+<li><p><A  HREF="llesoe-cfile-rec-rf.htm" revision="">Syntaxe du fichier de contrôle de la balise recurse</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Maintaining Admin servers</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-maintainlladminserver-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Setting Up High-Volume Indexing';
+          header.title2 = 'Maintaining Admin servers';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3003"></A>After you set up your Admin servers, you can perform maintenance operations on them. For example, you can browse an Admin server to determine which data flow processes it manages, you can ping an Admin server to determine whether it is online, and you can suspend an Admin server if you want it to run in safe mode while you perform other administration operations. If you suspend an Admin server, you must reset it to bring it out of safe mode. You can also view the port numbers associated with the indexing and searching processes managed by an Admin server.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF65">Browsing Admin servers</A></P>
+<P><A NAME="TMPID3005"></A>Content Server sites can have many different Admin servers, and each Admin server can manage different index components (for example, data flow processes and Search Engines) in the Content Server database. You can browse an Admin server to view the list of index components it manages.</P>
+<P><A NAME="TMPID3008"></A>If you have more than one Admin server at a Content Server site, browsing allows you to determine how data flow processes and Search Engines are distributed among the servers. You can also monitor the status and administer the processes or Search Engines. The administration tasks that you can perform are the same tasks that you can perform on the processes or Search Engines when you navigate to their locations in the Content Server system.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF66">Pinging Admin servers</A></P>
+<P><A NAME="TMPID3012"></A>When an Admin server becomes unavailable (that is, the Content Server administrator takes it offline for some reason), the Server pings it three times to determine whether it has become available again. After three failed ping attempts, the Server considers the Admin server to be permanently offline and does not ping it again. If this occurs, when the Admin server becomes available again, you must manually ping it to reconnect it to the Server.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF67">Suspending Admin servers</A></P>
+<P><A NAME="TMPID3015"></A>You suspend an Admin server when you want it to run in safe mode so that you can perform system maintenance tasks without interfering with its primary duties.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF68">Safe mode</A></P>
+<P class="before-ul"><A NAME="TMPID3017"></A>The Admin server goes into a <I CLASS="emphasis">troubleshooting</I> safe mode because:</P><A NAME="AEN2389"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2390"></A><A NAME="TMPID3021"></A>The administrator issues the <TT CLASS="command">go safe</TT> command.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2393"></A><A NAME="TMPID3024"></A>Content Server was unable to save a config or active process file.</P></LI></UL>
+<P><A NAME="TMPID3026"></A>An Admin server will enter safe mode when it cannot write to its <TT CLASS="filename">otadmin.cfg</TT> file, or to its <TT CLASS="filename">otadmin.pid</TT> file. When an Admin server enters safe mode, its status is displayed on the System Volume Object page. The <B CLASS="guilabel">General</B> tab of the Admin server's Properties page displays a more detailed message that describes the condition that originally caused the Admin server to enter safe mode.</P>
+<P class="before-ul"><A NAME="TMPID3030"></A>These commands are legal in safe mode:</P><A NAME="AEN2401"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2402"></A><A NAME="TMPID3033"></A><TT CLASS="command">exit process</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2405"></A><A NAME="TMPID3036"></A><TT CLASS="command">quit</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2408"></A><A NAME="TMPID3039"></A><TT CLASS="command">reset server</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2411"></A><A NAME="TMPID3042"></A><TT CLASS="command">shutdown</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2414"></A><A NAME="TMPID3045"></A><TT CLASS="command">status process</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2417"></A><A NAME="TMPID3048"></A><TT CLASS="command">status ipool</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2420"></A><A NAME="TMPID3051"></A><TT CLASS="command">status server</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2423"></A><A NAME="TMPID3054"></A><TT CLASS="command">statuscode process</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2426"></A><A NAME="TMPID3057"></A><TT CLASS="command">statustext process</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2429"></A><A NAME="TMPID3060"></A><TT CLASS="command">sync</TT></P></LI></UL>
+<P><A NAME="TMPID3062"></A>An Admin server does not check for the amount of available free disk space, so it will not go into safe mode when disk space is low.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF69">Resetting Admin servers</A></P>
+<P><A NAME="TMPID3064"></A>You reset an Admin server to bring it out of safe mode and return it to an active state.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF70">Viewing Port Numbers</A></P>
+<P class="before-ul"><A NAME="TMPID3066"></A>You view port numbers to determine which ports are currently in use or to ensure that all the indexing and searching processes managed by an Admin server are running on unique ports. The list of port numbers includes those used by the following processes (if they exist):</P><A NAME="AEN2437"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2438"></A><A NAME="TMPID3069"></A>Content Server Extractor</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2441"></A><A NAME="TMPID3072"></A>Director Walker</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2443"></A><A NAME="TMPID3074"></A>XML Activator</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2445"></A><A NAME="TMPID3076"></A>Document Conversion</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2447"></A><A NAME="TMPID3078"></A>Index Engine</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2449"></A><A NAME="TMPID3080"></A>Search Engine</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2451"></A><A NAME="TMPID3082"></A>Search Federator</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2453"></A><A NAME="TMPID3084"></A>Update Distributor</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2455"></A><A NAME="TMPID3086"></A>Admin Server</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2457"></A><A NAME="TMPID3088"></A>DCS Server</P></LI></UL>
+<P><A NAME="TMPID3089"></A>For convenience, you can sort this list by ascending or descending port number, object type, name, or location. Port numbers that are displayed in red indicate a port conflict (that is, more than one process is configured to run on the same port). In this case, you can sort by port number to identify where the conflict exists and then adjust the conflicting port values accordingly.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF71"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3091"></A><B CLASS="note">Note: </B><BR>This list includes the ports used by the indexing and searching processes only, not <I CLASS="emphasis">all</I> Content Server ports. To find out what other ports are being used by Content Server, you can look at the opentext.ini file for the site. If you are running Content Server in a clustered environment, you must look at each opentext.ini file in the cluster.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF72">Updating Search Process paths</A></P>
+<P><A NAME="TMPID3097"></A>The Admin Server Path Management page allows you to update mappings and path names for search configuration to reflect any changes that have been made during the upgrade process. These paths must be updated once for each Admin server in the system.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../otadmin/ota-updatsrchprocpaths-p.htm" revision="">To Update Search Process paths</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

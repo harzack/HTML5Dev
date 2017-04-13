@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>ownergroup Tag Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-owngrp-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Tag Descriptions and Syntax';
+          header.title2 = 'ownergroup Tag Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="OWNGRPTAG01">Description</A></P>
+<P class="nr1"><A NAME="TMPID4245"></A>Use the <TT CLASS="LITERAL">ownergroup</TT> tag to specify a different owner group for the object without changing permissions.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="OWNGRPTAG02">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4040"></A>&lt;ownergroup&gt;DefaultGroup&lt;/ownergroup&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="OWNGRPTAG03">Usage</A></P>
+<A NAME="AEN4042"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4043"></A><A NAME="TMPID4258"></A>The <TT CLASS="LITERAL">ownergroup</TT> tag is not a required tag.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN4046"></A><A NAME="TMPID4261"></A>The <TT CLASS="LITERAL">ownergroup</TT> tag is optional when:</P><A NAME="AEN4049"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4050"></A><A NAME="TMPID4265"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4055"></A><A NAME="TMPID4270"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4060"></A><A NAME="TMPID4275"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="sync"&gt;</TT></P></LI></UL>
+<P><A NAME="TMPID4279"></A>The exception to this rule relates to <TT CLASS="LITERAL">type="project"</TT>. See the <I CLASS="EMPHASIS">Notes</I> section below for further information.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="OWNGRPTAG04">Notes</A></P>
+<A NAME="AEN4069"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4070"></A><A NAME="TMPID4286"></A>By default, the <TT CLASS="LITERAL">ownergroup</TT> tag is not applicable for Project objects, <TT CLASS="LITERAL">type="project"</TT>. The ownergroup will not be updated on the Project.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4074"></A><A NAME="TMPID4290"></A>Any owner group must exist in the system before you can reference it. Group names are case-sensitive.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="OWNGRPTAG05">Example</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4077"></A>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="en"&gt;Documents&lt;/title&gt;
+    &lt;ownergroup&gt;DefaultGroup&lt;/ownergroup&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

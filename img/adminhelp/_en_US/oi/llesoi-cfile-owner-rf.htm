@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>owner Tag Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-owner-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Tag Descriptions and Syntax';
+          header.title2 = 'owner Tag Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-OWNER01">Description</A></P>
+<P class="nr1"><A NAME="TMPID4192"></A>Use the <TT CLASS="LITERAL">owner</TT> tag to specify a different owner for the object without changing permissions.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="OWNERTAG02">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3992"></A>&lt;owner&gt;Admin&lt;/owner&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="OWNERTAG03">Usage</A></P>
+<A NAME="AEN3994"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3995"></A><A NAME="TMPID4205"></A>The <TT CLASS="LITERAL">owner</TT> tag is not a required tag.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3998"></A><A NAME="TMPID4208"></A>The <TT CLASS="LITERAL">owner</TT> tag is optional when:</P><A NAME="AEN4001"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4002"></A><A NAME="TMPID4212"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4007"></A><A NAME="TMPID4217"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4012"></A><A NAME="TMPID4222"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="sync"&gt;</TT></P></LI></UL>
+<P><A NAME="TMPID4226"></A>The exception to this rule relates to <TT CLASS="LITERAL">type="project"</TT>. See the <I CLASS="EMPHASIS">Notes</I> section below for further information.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="OWNERTAG04">Notes</A></P>
+<A NAME="AEN4021"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4022"></A><A NAME="TMPID4233"></A>By default, the <TT CLASS="LITERAL">owner</TT> tag is not applicable for Project objects, <TT CLASS="LITERAL">type="project"</TT>. The owner will not be updated on the Project.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4026"></A><A NAME="TMPID4237"></A>Any user specified must exist in the system before you can reference it. User names are case-sensitive.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="OWNERTAG05">Example</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN4029"></A>&#13;&lt;import&gt;
+  &lt;node type="topic" action="create"&gt;
+    &lt;location&gt;Enterprise:Discussion 001&lt;/location&gt;
+    &lt;title language="en"&gt;Topic 001&lt;/title&gt;
+    &lt;body&gt;This is a topic&lt;/body&gt;
+    &lt;createdby&gt;Admin&lt;/createdby&gt;
+    &lt;owner&gt;Admin&lt;owner&gt;
+    &lt;created&gt;20040214&lt;/created&gt;
+    &lt;modified&gt;20041225&lt;/modified&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

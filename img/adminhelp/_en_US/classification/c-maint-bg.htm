@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESCLS100500-H-AGD-EN">
+<META PiXprocLocator="classification">
+<META mancondkey="llesrcm-h-agd -- llesrcm-igd -- lleswbs-h-agd -- llescls-h-ugd -- lleswat-h-ugd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-ugd -- llesrcm-h-ugd -- llescls-h-ggd -- llescor-pgd -- lleswba-h-agd"><title>Maintaining Classifications</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'c-maint-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Classifications';
+          header.title2 = 'Maintaining Classifications';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID969"></A>Maintaining Classifications includes tasks that you can perform and the settings that you can change to perform maintenance on Classifications. These tasks and settings allow you to adjust the way the module operates, so that your system runs as smoothly as possible.</P>
+<P><A NAME="TMPID971"></A>Maintenance tasks include regenerating the Classification Query File, removing or reclassifying items associated with a Classification, managing objects pending classification, purging Classifications, purging the database of rejected Classifications, and configuring the <TT CLASS="FILENAME">opentext.ini</TT> file settings for Classifications.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF28">Regenerating the Classification Query File</A></P>
+<P><A NAME="TMPID974"></A>The Classification Query File (<TT CLASS="FILENAME">queries.in</TT>) is a system file that stores all the Profile Query information for assisted and automatic Classifications, and is located in the &lt;<I CLASS="VARNAME">content_server_home</I>>/config directory. If you have not enabled the Intelligent Classification functionality, your system does not contain this file. For more information, see <span><A HREF="c-enableic-bg.htm">Enabling Intelligent Classification Functionality</A></span>. The <TT CLASS="FILENAME">queries.in</TT> file is modified when either a Classification is updated within Content Server using the<B CLASS="GUILABEL"> Save as Profile</B> button, or an assisted or automatic Classification node is deleted.</P>
+<P class="before-ul"><A NAME="TMPID981"></A>In the following cases, you must regenerate the Classification Query File so that it contains the latest Profile Query information:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN902"></A><A NAME="TMPID984"></A>After you import a Classification Tree.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN904"></A><A NAME="TMPID986"></A>After you change the management type of a Classification from manual to assisted or automatic, provided that the Classification had previously been set to assisted or automatic</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN906"></A><A NAME="TMPID988"></A>When instructed to do so by OpenText Customer Support.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF29">Managing Pending Objects</A></P>
+<P><A NAME="TMPID992"></A>When you add an item to Content Server, and the item's type is a managed object, Content Server examines the item and determines whether it meets the criteria in the profile of each assisted Classification. If the item fits the profile for an assisted Classification, Content Server suggests the Classification for the item. You can either accept or reject the Classification, or you can defer the decision by leaving the item's status as pending.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF30"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID997"></A><B CLASS="NOTE">Note: </B><BR>For information about Enabling Managed Object Types, see <span><A HREF="c-addmanobj-p.htm">To Enable Additional Managed Object Types</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF31">Purging Classifications</A></P>
+<P><A NAME="TMPID1000"></A>You remove Classifications in two ways: by deleting or purging. When you delete Classifications, Content Server verifies that you have permission to delete the Classification and all of the Classifications that it contains before actually removing the items. Content Server also updates the database and, if necessary, the Classification Query File for each Classification that was deleted.</P>
+<table CLASS="CAUTION">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="ICONCELL">
+<P CLASS="CAUTION" ALIGN="CENTER"><IMG ALT="Caution" SRC="../../images/pi_caution.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1004"></A><B CLASS="CAUTION">Caution</B><BR>Depending on the size of the classification hierarchy, deleting can be a very time-consuming process.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID1005"></A>You purge Classifications when you want to remove a large hierarchy of Classifications (a  Classification Tree or a Classification and all Classifications that it contains) quickly. Purging, like deleting, removes all the Classifications, but is less time consuming because it does not verify the permissions associated with each Classification and, when necessary, updates the Classification Query File once only. For example, you would purge a hierarchy of Classifications if you import a Classification Tree with a large number of Classifications (greater than 1000) and the import fails before it is complete.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF32">Purging the Database of Rejected Classifications</A></P>
+<P><A NAME="TMPID1007"></A>Each time you reject a system-suggested Classification for an item, the system records this information in the Content Server database so that it will not suggest the Classification for the item later. However, if this data gets sufficiently large, it might slow down your system. </P>
+<P><A NAME="TMPID1009"></A>By purging the database of rejected Classifications, you remove entries based on the specified number of days that they have been in the database. The default value is 45 days. Entries that are 45 days and older are purged.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF33"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1011"></A><B CLASS="NOTE">Note: </B><BR>If you purge entries from the Content Server database, Classifications that have been rejected for objects might be automatically suggested again.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="c-regenquerfile-p.htm" revision="">To Regenerate the Classification Query File</A></p></li>
+<li><p><A  HREF="c-manclass-p.htm" revision="">To Manage a Classification</A></p></li>
+<li><p><A  HREF="c-manpenddoc-p.htm" revision="">To Manage Pending Objects</A></p></li>
+<li><p><A  HREF="c-purgelgclass-p.htm" revision="">To Purge Classifications</A></p></li>
+<li><p><A  HREF="c-purgeclass-p.htm" revision="">To Purge the Database of Rejected Classifications</A></p></li>
+<li><p><A  HREF="c-otini-bg.htm" revision="">opentext.ini File Settings for Classifications</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

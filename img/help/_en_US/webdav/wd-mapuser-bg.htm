@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWDV100500-H-UGD-EN">
+<META PiXprocLocator="webdav">
+<META mancondkey="lleswbd-h-ugd"><title>Accessing WebDAV Resources</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wd-mapuser-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Accessing Objects with WebDAV';
+          header.title2 = 'Accessing WebDAV Resources';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID196"></A>When you attempt to access a WebDAV resource, you may be required to authenticate your identity with a user name and password. WebDAV supports authentication mechanisms that include<A HREF="wd-mapuser-bg.htm#A">Basic/Content Server Authentication</A> and <A HREF="wd-mapuser-bg.htm#B">Other Authentication mechanisms</A>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID203"></A><B CLASS="NOTE">Note: </B><BR>For further information about what authentication mechanism the WebDAV Resource you are accessing employs, please consult your administrator.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="A">Basic / Content Server Authentication</A></P>
+<P><A NAME="TMPID207"></A>When accessing a WebDAV Resource a dialog prompts you to enter a user name and password. For Basic /Content Server Authentication, you enter the same user name and password as your Content Server user name and password.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="B">Other Authentication Mechanisms</A></P>
+<P><A NAME="TMPID212"></A>When accessing a WebDAV Resource a dialog prompts you to enter a user name and password. You enter a Principal Name as the user name e.g. me@THEDOMAIN.NET. For this particular example, you would enter the password for the logon 'me' in the 'THEDOMAIN.NET' domain as the Password.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF2"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID215"></A><B CLASS="NOTE">Note: </B><BR>Before you can log in to the WebDAV resource, your Internet Explorer browser must be configured accordingly. For information about configuring Internet Explorer, see the <I CLASS="EMPHASIS">WebDAV Installation and Administration Guide</I>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF3">How Principal Names are mapped to Content Server users</A></P>
+<P><A NAME="TMPID221"></A>When you logon to WebDAV with a Principal Name that successfully authenticates, WebDAV will match the Principal Name to a Content Server user. WebDAV is configurable by your administrator to use one of two methods to do the matching. These methods include the <A HREF="wd-mapuser-bg.htm#C">Same Name</A> and the <A HREF="wd-mapuser-bg.htm#D">User Managed</A> mapping methods, respectively.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="C">Same Name</A></P>
+<P><A NAME="TMPID229"></A>In the Same Name mapping method, the Content Server user name is the same name as the domain logon name of the Principal Name. For example, the Principal Name “me@THEDOMAIN.NET” would map to a Content Server user called “me”.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="D">User Managed</A></P>
+<P><A NAME="TMPID235"></A>In the User Managed mapping method, each Content Server user manages a list of Principal Names mapped to themselves.</P>
+<DIV title="To determine if 'WebDAV' is configured for User Managed mapping:" CLASS="PROCEDURE">
+<P><B>To determine if WebDAV is configured for User Managed mapping:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID241"></A>In Content Server, click <B CLASS="GUILABEL">Tools</B> from the Global Menu bar, then select <B CLASS="GUILABEL">Settings</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID246"></A>WebDAV is configured for User Managed mapping if the <B CLASS="GUILABEL">WebDAV User Mappings</B> tab is visible.</P></LI></OL></DIV>
+<DIV title="To view and edit the Principal Names mapped to you:" CLASS="PROCEDURE">
+<P><B>To view and edit the Principal Names mapped to you:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID253"></A>In Content Server, click <B CLASS="GUILABEL">Tools</B> from the Global Menu bar, then select <B CLASS="GUILABEL">Settings</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID258"></A>Select the <B CLASS="GUILABEL">WebDAV User Mappings</B> tab. The page will display all the Principal Names mapped to you.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID262"></A>Click <B CLASS="GUILABEL">Edit Mappings</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID265"></A>The Delete Mapping page opens for editing the mappings.</P></LI></OL></DIV>
+<DIV title="To view and edit the Principal Names that are mapped to a user:" CLASS="PROCEDURE">
+<P><B>To view and edit the Principal Names that are mapped to a user:</B></P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF4"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID269"></A><B CLASS="NOTE">Note: </B><BR>This functionality is only available to users with administrative privileges.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID271"></A>In Content Server, click <B CLASS="GUILABEL">Enterprise</B> from the Global Menu bar, then select <B CLASS="GUILABEL">Users and Groups</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID276"></A>Select a user.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID278"></A>Click <B CLASS="GUILABEL">Edit</B> for the user, and then select the <B CLASS="GUILABEL">General</B> tab.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID282"></A>The page will display all the Principal Names mapped to the user.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID284"></A>Click <B CLASS="GUILABEL">Edit Mappings</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID287"></A>The Delete Mapping page opens for editing the mappings.</P></LI></OL></DIV>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wd-mapuser1-p.htm" revision="">Edit WebDAV User Mappings</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

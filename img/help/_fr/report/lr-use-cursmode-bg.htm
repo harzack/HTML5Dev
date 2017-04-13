@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Utilisation du mode Récupération du curseur</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-use-cursmode-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Ajout de rapports LiveReport';
+          header.title2 = 'Utilisation du mode Récupération du curseur';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID317"></A>Dans la version LiveReports standard et par défaut avec LiveReport Extensions, les requêtes sont également exécutées à l'aide du mode « Récupération du curseur » qui permet d'extraire une ligne de données à la fois, afin que Content Server puisse limiter le nombre total de résultats renvoyés. Cette limite peut être définie via le champ Limite d'enregistrement à la fois dans la version LiveReports standard et dans LiveReport Extensions. Cette approche permet de protéger la base de données contre les requêtes inappropriées qui renvoient des ensembles de résultats trop volumineux ; toutefois, ce mode est plus lent qu'une requête SQL standard (c'est-à-dire sans le mode de récupération du curseur). Lors de l'élaboration et du test des requêtes, il est recommandé de laisser le mode de récupération du curseur sélectionné et de limiter les jeux de résultats à l'aide de l'option Limite d'enregistrement. Lorsqu'une requête a été corrigée et jugée sûre, ce mode peut être désactivé afin d'améliorer les performances des requêtes. Lorsque cette option est désélectionnée, une alerte est générée pour indiquer que la requête SQL va désormais renvoyer un nombre illimité de résultats, sauf si des contraintes particulières sont ajoutées à la requête SQL. Par exemple : <TT CLASS="literal">RowNum &lt; 1000</TT> dans Oracle ou <TT CLASS="literal">TOP 1000</TT> dans MS SQL. </P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

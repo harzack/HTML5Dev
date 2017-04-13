@@ -1,0 +1,587 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>project Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-project-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Control File Syntax';
+          header.title2 = 'project Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG01">project</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="PROJTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID1751"></A>Use <TT CLASS="LITERAL">type="project"</TT> on the <TT CLASS="LITERAL">&lt;node&gt;</TT> tag, to create, update, or delete a Project.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="PROJTAG03">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1673"></A>&lt;node type="project" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="PROJTAG04">Usage</A></P>
+<A NAME="AEN1675"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1676"></A><A NAME="TMPID1765"></A>Creating or updating a Project can include a number of subordinate tags: <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG05">goals Tag</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG10">include_channel Tag</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG15">include_discussion Tag</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG20">include_participants Tag</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG25">include_tasklist Tag</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG30">initiatives Tag</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG35">mission Tag</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG40">objectives Tag</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG45">public_access Tag</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG50">roles Tag</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG55">startdate Tag</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG60">status Tag</A></span>, and <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG65">targetdate Tag</A></span>. These subordinate tags are detailed below.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1691"></A><A NAME="TMPID1780"></A>Creating, updating, or deleting a Project can also require a number of other subordinate tags, such as the <TT CLASS="LITERAL">location</TT> tag. These other subordinate tags are detailed in <span><A HREF="llesoi-cfilesamp-bg.htm">Object Importer Tag Descriptions and Syntax</A></span>.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="PROJTAG70">Example</A></P>
+<P><A NAME="TMPID1785"></A>To create a Project called “Standard Project” in the “Documentation” Folder of the Enterprise Workspace:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1699"></A>&#13;&lt;import&gt;
+  &lt;node type="project" action="create"&gt;
+    &lt;location&gt;Enterprise:Documentation&lt;/location&gt;
+    &lt;title language="en"&gt;Standard Project&lt;/title&gt;
+    &lt;goals&gt;This project will be completed in three weeks.&lt;/goals&gt;
+    &lt;include_channel&gt;TRUE&lt;/include_channel&gt;
+    &lt;include_discussion&gt;TRUE&lt;/include_discussion&gt;
+    &lt;include_participants&gt;TRUE&lt;/include_participants&gt;
+    &lt;include_tasklist&gt;TRUE&lt;/include_tasklist&gt;
+    &lt;initiatives clear="true"&gt;&lt;/initiatives&gt;
+    &lt;mission&gt;The mission is to deliver a quality product.&lt;/mission&gt;
+    &lt;objectives&gt;Resolve all outstanding customer issues.&lt;/objectives&gt;
+    &lt;public_access&gt;TRUE&lt;/public_access&gt;
+    &lt;roles&gt;
+      &lt;coordinator&gt;jdoe&lt;/coordinator&gt;
+    &lt;/roles&gt;
+    &lt;startdate&gt;20110314&lt;/startdate&gt;
+    &lt;status&gt;Pending&lt;/status&gt;
+    &lt;targetdate&gt;20110401&lt;/targetdate&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P><A NAME="TMPID1789"></A>To view more <TT CLASS="LITERAL">project</TT> examples, see <span><A HREF="llesoi-cfile-prosamp-rf.htm">project Import Control File Examples</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG05">goals Tag</A></P>
+<P><A NAME="TMPID1794"></A>The <TT CLASS="LITERAL">goals</TT> tag is used to create or update the goals for the project. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1706"></A>&lt;goals&gt;Here are some project goals.&lt;/goals&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1707"></A>&lt;goals clear="true"&gt;&lt;/goals&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1708"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1811"></A>The <TT CLASS="LITERAL">goals</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1815"></A>The <TT CLASS="LITERAL">goals</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1818"></A>The <TT CLASS="LITERAL">goals</TT> tag is optional when:</P><A NAME="AEN1730"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1731"></A><A NAME="TMPID1822"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1734"></A><A NAME="TMPID1825"></A><TT CLASS="LITERAL">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1737"></A><A NAME="TMPID1828"></A><TT CLASS="LITERAL">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">To clear the value, use the <TT CLASS="LITERAL">clear="true"</TT> attribute.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG10">include_channel Tag</A></P>
+<P><A NAME="TMPID1835"></A>The <TT CLASS="LITERAL">include_channel</TT> tag is used to add a Channel to the Project. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1746"></A>&lt;include_channel&gt;TRUE&lt;/include_channel&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1747"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1851"></A>The <TT CLASS="LITERAL">include_channel</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1855"></A>The <TT CLASS="LITERAL">include_channel</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1858"></A>The <TT CLASS="LITERAL">include_channel</TT> tag is optional when:</P><A NAME="AEN1769"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1770"></A><A NAME="TMPID1862"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Valid values are <TT CLASS="LITERAL">TRUE</TT>, which adds a Channel to the Project, and <TT CLASS="LITERAL">FALSE</TT>, which does not add a Channel to the Project. If this tag is not specified, no Channel will be added to the Project.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG15">include_discussion Tag</A></P>
+<P><A NAME="TMPID1870"></A>The <TT CLASS="LITERAL">include_discussion</TT> tag is used to add a Discussion to the Project. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1780"></A>&lt;include_discussion&gt;TRUE&lt;/include_discussion&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1781"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1886"></A>The <TT CLASS="LITERAL">include_discussion</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1890"></A>The <TT CLASS="LITERAL">include_discussion</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1893"></A>The <TT CLASS="LITERAL">include_discussion</TT> tag is optional when:</P><A NAME="AEN1803"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1804"></A><A NAME="TMPID1897"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Valid values are <TT CLASS="LITERAL">TRUE</TT>, which adds a Discussion to the Project, and <TT CLASS="LITERAL">FALSE</TT>, which does not add a Discussion to the Project. If this tag is not specified, no Discussion will be added to the Project.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG20">include_participants Tag</A></P>
+<P><A NAME="TMPID1905"></A>The <TT CLASS="LITERAL">include_participants</TT> tag is used to copy ACLs from the parent into the Project. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1814"></A>&lt;include_participants&gt;TRUE&lt;/include_participants&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1815"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1921"></A>The <TT CLASS="LITERAL">include_participants</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1925"></A>The <TT CLASS="LITERAL">include_participants</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1928"></A>The <TT CLASS="LITERAL">include_participants</TT> tag is optional when:</P><A NAME="AEN1837"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1838"></A><A NAME="TMPID1932"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Valid values are <TT CLASS="LITERAL">TRUE</TT>, which copies ACLs from the parent into the Project, and <TT CLASS="LITERAL">FALSE</TT>, which does not. If this tag is not specified, no ACLs will be inherited.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG25">include_tasklist Tag</A></P>
+<P><A NAME="TMPID1940"></A>The <TT CLASS="LITERAL">include_tasklist</TT> tag is used to add a Task List to the Project. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1848"></A>&lt;include_tasklist&gt;TRUE&lt;/include_tasklist&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1849"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1956"></A>The <TT CLASS="LITERAL">include_tasklist</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1960"></A>The <TT CLASS="LITERAL">include_tasklist</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1963"></A>The <TT CLASS="LITERAL">include_tasklist</TT> tag is optional when:</P><A NAME="AEN1871"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1872"></A><A NAME="TMPID1967"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Valid values are <TT CLASS="LITERAL">TRUE</TT>, which adds a Task List to the Project, and <TT CLASS="LITERAL">FALSE</TT>, which does not add a Task List to the Project. If this tag is not specified, no Task List will be added to the Project.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG30">initiatives Tag</A></P>
+<P><A NAME="TMPID1975"></A>The <TT CLASS="LITERAL">initiatives</TT> tag is used to add or update initiatives to the Project. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1882"></A>&lt;initiatives&gt;Here are some project initiatives.&lt;/initiatives&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1883"></A>&lt;initiatives clear="true"&gt;&lt;/initiatives&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1884"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1992"></A>The <TT CLASS="LITERAL">initiatives</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1996"></A>The <TT CLASS="LITERAL">initiatives</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1999"></A>The <TT CLASS="LITERAL">initiatives</TT> tag is optional when:</P><A NAME="AEN1906"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1907"></A><A NAME="TMPID2003"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1910"></A><A NAME="TMPID2006"></A><TT CLASS="LITERAL">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1913"></A><A NAME="TMPID2009"></A><TT CLASS="LITERAL">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">To clear the value, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG35">mission Tag</A></P>
+<P><A NAME="TMPID2016"></A>The <TT CLASS="LITERAL">mission</TT> tag is used to add or update a mission statement for the Project. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1922"></A>&lt;mission&gt;Here is the project mission.&lt;/mission&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1923"></A>&lt;mission clear="true"&gt;&lt;/mission&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1924"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2033"></A>The <TT CLASS="LITERAL">mission</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2037"></A>The <TT CLASS="LITERAL">mission</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2040"></A>The <TT CLASS="LITERAL">mission</TT> tag is optional when:</P><A NAME="AEN1946"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1947"></A><A NAME="TMPID2044"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1950"></A><A NAME="TMPID2047"></A><TT CLASS="LITERAL">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1953"></A><A NAME="TMPID2050"></A><TT CLASS="LITERAL">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">To clear the value, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG40">objectives Tag</A></P>
+<P><A NAME="TMPID2057"></A>The <TT CLASS="LITERAL">objectives</TT> tag is used to create or update objectives for the Project. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1962"></A>&lt;objectives&gt;Here are the objectives for the project.&lt;/objectives&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1963"></A>&lt;objectives clear="true"&gt;&lt;/objectives&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1964"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2074"></A>The <TT CLASS="LITERAL">objectives</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2078"></A>The <TT CLASS="LITERAL">objectives</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2081"></A>The <TT CLASS="LITERAL">objectives</TT> tag is optional when:</P><A NAME="AEN1986"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1987"></A><A NAME="TMPID2085"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1990"></A><A NAME="TMPID2088"></A><TT CLASS="LITERAL">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1993"></A><A NAME="TMPID2091"></A><TT CLASS="LITERAL">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">To clear the value, use the attribute <TT CLASS="LITERAL">clear="true"</TT>.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG45">public_access Tag</A></P>
+<P><A NAME="TMPID2098"></A>The <TT CLASS="LITERAL">public_access</TT> tag is used to provide public access to the Project. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2002"></A>&lt;public_access&gt;TRUE&lt;/public_access&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2003"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2114"></A>The <TT CLASS="LITERAL">public_access</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2118"></A>The <TT CLASS="LITERAL">public_access</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2121"></A>The <TT CLASS="LITERAL">public_access</TT> tag is optional when:</P><A NAME="AEN2025"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2026"></A><A NAME="TMPID2125"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2130"></A>Valid values are <TT CLASS="LITERAL">TRUE</TT>, which permits public access to the Project, and <TT CLASS="LITERAL">FALSE</TT>, which removes public access to the Project.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2134"></A>If this tag is not specified when the Project is created, public access is disabled on the Project.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG50">roles Tag</A></P>
+<P><A NAME="TMPID2137"></A>The <TT CLASS="LITERAL">roles</TT> tag allows you to add additional users or groups to various project roles. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2040"></A>&#13;&lt;roles&gt;
+  &lt;coordinator&gt;neil&lt;/coordinator&gt;
+  &lt;member&gt;geddy&lt;/member&gt;
+  &lt;guest&gt;alex&lt;/guest&gt;
+&lt;/roles&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2041"></A>&#13;&lt;roles&gt;
+  &lt;guest type="user"&gt;jdoe&lt;/guest&gt;
+&lt;/roles&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2042"></A>&#13;&lt;roles&gt;
+  &lt;guest type="group"&gt;DefaultGroup&lt;/guest&gt;
+&lt;/roles&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2043"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2155"></A>The <TT CLASS="LITERAL">roles</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2159"></A>The <TT CLASS="LITERAL">roles</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2162"></A>The <TT CLASS="LITERAL">roles</TT> tag is optional when:</P><A NAME="AEN2065"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2066"></A><A NAME="TMPID2166"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2069"></A><A NAME="TMPID2169"></A><TT CLASS="LITERAL">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2072"></A><A NAME="TMPID2172"></A><TT CLASS="LITERAL">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2177"></A>You cannot remove users or groups from roles using Object Importer.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2180"></A>Any user or group must exist in Content Server before you can reference it using the <TT CLASS="LITERAL">roles</TT> tag. Keep in mind that user and group names are case-sensitive.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2184"></A>The <TT CLASS="LITERAL">guest</TT> subordinate tag of the <TT CLASS="LITERAL">role</TT> tag has an optional attribute: <TT CLASS="LITERAL">type</TT>. The only valid values for <TT CLASS="LITERAL">type</TT> are: <TT CLASS="LITERAL">user</TT> and <TT CLASS="LITERAL">group</TT>. If the <TT CLASS="LITERAL">type</TT> attribute is not specified on the <TT CLASS="LITERAL">guest</TT> tag, Object Importer assumes a value of <TT CLASS="LITERAL">user</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG55">startdate Tag</A></P>
+<P><A NAME="TMPID2197"></A>The <TT CLASS="LITERAL">startdate</TT> tag allows you to add or update the start date for the Project. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2099"></A>&lt;startdate&gt;20100926&lt;/startdate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2100"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2213"></A>The <TT CLASS="LITERAL">startdate</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2217"></A>The <TT CLASS="LITERAL">startdate</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2220"></A>The <TT CLASS="LITERAL">startdate</TT> tag is optional when:</P><A NAME="AEN2122"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2123"></A><A NAME="TMPID2224"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2126"></A><A NAME="TMPID2227"></A><TT CLASS="LITERAL">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2129"></A><A NAME="TMPID2230"></A><TT CLASS="LITERAL">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Dates must be in the format YYYYMMDD or YYYYMMDDHHMMSS, where HH refers to the 24-hour clock and is a value between 01 and 24. If YYYYMMDD is used, the time defaults to 000000.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG60">status Tag</A></P>
+<P><A NAME="TMPID2236"></A>The <TT CLASS="LITERAL">status</TT> tag allows you to add or update the status of the Project. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2137"></A>&lt;status&gt;Caution&lt;/status&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2138"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2252"></A>The <TT CLASS="LITERAL">status</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2256"></A>The <TT CLASS="LITERAL">status</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2259"></A>The <TT CLASS="LITERAL">status</TT> tag is optional when:</P><A NAME="AEN2160"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2161"></A><A NAME="TMPID2263"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2164"></A><A NAME="TMPID2266"></A><TT CLASS="LITERAL">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2167"></A><A NAME="TMPID2269"></A><TT CLASS="LITERAL">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2274"></A>Allowable values for the <TT CLASS="LITERAL">status</TT> tag are: <TT CLASS="LITERAL">Pending</TT>, <TT CLASS="LITERAL">OnTarget</TT>, <TT CLASS="LITERAL">Caution</TT>, or <TT CLASS="LITERAL">Critical</TT>.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2281"></A>If the <TT CLASS="LITERAL">status</TT> tag is not specified during the creation of the project, the status will default to <TT CLASS="LITERAL">Pending</TT>.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="PROJTAG65">targetdate Tag</A></P>
+<P><A NAME="TMPID2286"></A>The <TT CLASS="LITERAL">targetdate</TT> tag allows you to add or update the target date for the Project. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN2186"></A>&lt;targetdate&gt;20110325&lt;/targetdate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2187"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2302"></A>The <TT CLASS="LITERAL">targetdate</TT> tag cannot exist on its own, and must be used with the <TT CLASS="LITERAL">&lt;node type="project"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2306"></A>The <TT CLASS="LITERAL">targetdate</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2309"></A>The <TT CLASS="LITERAL">targetdate</TT> tag is optional when:</P><A NAME="AEN2209"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2210"></A><A NAME="TMPID2313"></A><TT CLASS="LITERAL">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2213"></A><A NAME="TMPID2316"></A><TT CLASS="LITERAL">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2216"></A><A NAME="TMPID2319"></A><TT CLASS="LITERAL">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Dates must be in the format YYYYMMDD or YYYYMMDDHHMMSS, where HH refers to the 24-hour clock and is a value between 01 and 24. If YYYYMMDD is used, the time defaults to 000000.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

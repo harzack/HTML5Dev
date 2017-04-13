@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-EN-1">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Attachments</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-attachments-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Work Packages';
+          header.title2 = 'Attachments';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1529"></A>Workflow attachments information is provided when available.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-059">XML Representation</A></P>
+<P><A NAME="TMPID1532"></A><TT CLASS="LITERAL">&lt;attachments folderid="…"/&gt;</TT></P>
+<P><A NAME="TMPID1534"></A>The XML format for the attachments work package includes only the node ID of the folder in which the attachments are stored. To actually transfer attachments requires a separate request into Content Server using other APIs.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF16"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1537"></A><B CLASS="NOTE">Note: </B><BR>To include attachment information that includes actual attached documents in the task’s work package, use an HTML form data message. For more information, see the <span><A HREF="xml-attachments-bg.htm#AID-061">HTML Representation</A></span>, below. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-060">XML Namespaces (if used)</A></P>
+<P><A NAME="TMPID1541"></A><TT CLASS="LITERAL">&lt;attachments xmlns="http://www.opentext.com/llx/workflow/"&gt;</TT></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-061">HTML Representation</A></P>
+<P><A NAME="TMPID1545"></A><TT CLASS="LITERAL">attachments_folderid=…</TT></P>
+<P><A NAME="TMPID1547"></A><TT CLASS="LITERAL">attachments_documents_name_1=…</TT></P>
+<P><A NAME="TMPID1549"></A><TT CLASS="LITERAL">attachments_documents_content_1=…</TT></P>
+<P><A NAME="TMPID1551"></A><TT CLASS="LITERAL">…</TT></P>
+<P><A NAME="TMPID1553"></A>In HTML form data, the attachments information can include the actual attached documents. To have a send action include the documents or an accept action accept attached documents, you must customize the attachments field using the action's format customization tab. Attached documents are never included in OK messages returned in response to a request.</P>
+<P class="before-ul"><A NAME="TMPID1554"></A>Transferred attachments include only the document nodes in the attachments folder. Each node produces a numbered group of two fields:</P><A NAME="AEN1496"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1497"></A><A NAME="TMPID1557"></A>A name field, which gives the name of the document as it appears in Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1500"></A><A NAME="TMPID1560"></A>A content field, which gives the document content. The content field conforms to the format used by Web browsers to upload files.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

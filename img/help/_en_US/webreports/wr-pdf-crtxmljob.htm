@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Creating an XML Job Ticket</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="4">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-pdf-crtxmljob.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'XML Job Tickets';
+          header.title2 = 'Creating an XML Job Ticket';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID21039"></A>In order to create an XML job ticket, you must ensure the following:</P>
+<A NAME="AEN19762"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19763"></A><A NAME="TMPID21042"></A>XML job tickets must be valid in order to be used. The following rules must apply to each job ticket in order to be valid:</P>
+<A NAME="AEN19765"></A>
+<OL TYPE="a">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19766"></A><A NAME="TMPID21045"></A>Must contain an XML header at the very top. For example, <TT CLASS="literal">&lt;<I CLASS="varname">?xml version="1.0" encoding="ISO-8859-1"?</I>></TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19770"></A><A NAME="TMPID21049"></A>The XML header must be followed by the Adlib header tag containing the version to which the Adlib ticket conforms. For example,<TT CLASS="literal">&#13;&lt;<I CLASS="varname">?AdLibeXpress applanguage="USA" appversion="2.7.0" dtdversion="1.8"?</I>></TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19774"></A><A NAME="TMPID21053"></A>Must contain a <TT CLASS="literal">&lt;<I CLASS="varname">JOBS</I>></TT> tag with optional attributes.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19778"></A><A NAME="TMPID21057"></A>Must contain only one <TT CLASS="literal">&lt;<I CLASS="varname">JOB</I>></TT> tag. Note that the <TT CLASS="literal">&lt;<I CLASS="varname">JOB</I>></TT> tag does not have attributes. Although Adlib supports multiple jobs in one ticket, this is not practical with WebReports conversion. Each converted document will have its own job ticket.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19784"></A><A NAME="TMPID21063"></A>Must contain a <TT CLASS="literal">&lt;<I CLASS="varname">JOB:DOCINPUTS</I>></TT> tag with a <TT CLASS="literal">&lt;<I CLASS="varname">JOB:DOCINPUT ... /</I>></TT> tag nested inside it. This contains information about where Adlib can find the file to be converted.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19790"></A><A NAME="TMPID21069"></A>Must contain a <TT CLASS="literal">&lt;<I CLASS="varname">JOB:DOCOUTPUTS</I>></TT> tag with a <TT CLASS="literal">&lt;<I CLASS="varname">JOB:DOCOUTPUT ... /</I>></TT> tag nested inside it. This contains information for Adlib regarding where to place the converted file.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19796"></A><A NAME="TMPID21075"></A>Although many attributes can be added to the <TT CLASS="literal">&lt;<I CLASS="varname">JOB:DOCINPUT ... /</I>></TT> and <TT CLASS="literal">&lt;<I CLASS="varname">JOB:DOCOUTPUT ... /</I>></TT> tags, they must each contain the <TT CLASS="literal">FOLDER</TT> attribute to be valid.</P></LI></OL>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN19803"></A><B>Example</B></P><A NAME="AEN19804"></A>
+<PRE 
+CLASS="screen"
+>&lt;<I
+CLASS="varname"
+>?xml version="1.0" encoding="ISO-8859-1" ?</I
+>>
+&lt;<I
+CLASS="varname"
+>?AdLibeXpress applanguage="USA" appversion="2.7.0" dtdversion="1.8" ?</I
+>>
+&lt;<I
+CLASS="varname"
+>!DOCTYPE JOBS SYSTEM "C:\AdLib eXpress\DTD\AdLibeXpress.dtd"</I
+>>
+   &lt;<I
+CLASS="varname"
+>JOBS xmlns:JOBS="http://www.adlibsys.com" xmlns:JOB="http://www.adlibsys.com"</I
+>>
+      &lt;<I
+CLASS="varname"
+>JOB</I
+>>
+         &lt;<I
+CLASS="varname"
+>JOB:DOCINPUTS</I
+>>
+            &lt;<I
+CLASS="varname"
+>JOB:DOCINPUT FILENAME="" FOLDER="$DEFAULT_PATH" /</I
+>>
+         &lt;<I
+CLASS="varname"
+>/JOB:DOCINPUTS</I
+>>
+         &lt;<I
+CLASS="varname"
+>JOB:DOCOUTPUTS</I
+>>
+            &lt;<I
+CLASS="varname"
+>JOB:DOCOUTPUT FILENAME="" FOLDER="$DEFAULT_PATH" DOCTYPE="PDF" /</I
+>>
+         &lt;<I
+CLASS="varname"
+>/JOB:DOCOUTPUTS</I
+>>
+      &lt;<I
+CLASS="varname"
+>/JOB</I
+>>
+   &lt;<I
+CLASS="varname"
+>/JOBS</I
+>></PRE
+>
+</DIV></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19818"></A><A NAME="TMPID21097"></A>Any <TT CLASS="literal">FILENAME</TT> attribute found in the <TT CLASS="literal">&lt;<I CLASS="varname">JOB:DOCINPUT ... /</I>></TT> and <TT CLASS="literal">&lt;<I CLASS="varname">JOB:DOCOUTPUT ... /</I>></TT> tags will be replaced with a dynamically generated filename, so the <TT CLASS="literal">FILENAME</TT> attribute, although optional, is not necessary and has no effect on the processing of the file to be converted.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19826"></A><A NAME="TMPID21105"></A>The <TT CLASS="literal">FOLDER</TT> attribute needs to contain a valid file path in order for the files to be processed and delivered properly. The only exception to using a valid file path is using the new <TT CLASS="literal">$DEFAULT_PATH</TT> value. For more information about the <TT CLASS="literal">$DEFAULT_PATH</TT> value, see <span><A HREF="wr-pdf-defpath.htm">The $DEFAULT_PATH</A></span></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19832"></A><A NAME="TMPID21111"></A>Creating an XML job ticket also supports the use of WebReports tags within the job ticket file. More information regarding Job Ticket features can be found with Adlib Express documentation, as feature availability depends on version of Adlib Express being used.</P></LI></OL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

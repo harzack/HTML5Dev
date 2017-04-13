@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Requêtes en tant que sources de données</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-requestds-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'Requêtes en tant que sources de données';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID16757"></A>Cette fonction permet à un WebReport d'utiliser les informations provenant des requêtes <TT CLASS="literal">GET</TT> ou <TT CLASS="literal">POST</TT> utilisées pour appeler le WebReport en tant que source de données. Elle permet de spécifier les données dans un formulaire HTML ou un fichier de valeurs séparées, ou tout autre type d'analyse pris en charge. Ces données seraient ensuite utilisées par le WebReport. Ceci permet l'intégration des données dans un WebReport pour être ensuite formatées et envoyées vers les destinations. Les données sont transmises à l'aide d'un nom de paramètre prédéfini et utilisent en général les paramètres par défaut des documents Web pour analyser les données. Plusieurs autres paramètres prédéfinis sont disponibles pour contrôler les options d'analyse généralement définies dans l'interface de la source de données. Actuellement, cette fonction n'a aucune visibilité sur l'onglet source, puisqu'elle repose simplement sur l'existence de ces paramètres spécifiques. </P>
+<DIV title="Paramètres pris en charge" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="WR-REQUESTDS-SUPPARM"></A><B>Tableau 1-48 : Paramètres pris en charge</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Paramètre</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Facultatif/obligatoire</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSrequestData</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Ce paramètre contient les données qui vont être utilisées par la source de données. Pour tous les paramètres facultatifs non spécifiés, les paramètres par défaut sont utilisés. Les données dans ce paramètre sont en général formatées de façon à être interprétées par le WebReport, par exemple les données CSV (valeurs séparées par une virgule) ou des tables HTML. Si aucun paramètre facultatif n'a été spécifié, les données sont formatées en CSV. Les paramètres facultatifs ci-dessous peuvent être utilisés pour indiquer des variations dans le format d'analyse. Une variation commune serait l'utilisation d'un symbole tel qu'une barre verticale, |, comme caractère de séparation de ligne.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Obligatoire</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSFILETYPE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Les valeurs acceptables sont les suivantes : <TT CLASS="literal">separatedvalue</TT>, paramètre par défaut, <TT CLASS="literal">htmltable</TT> et <TT CLASS="literal">oscript</TT>. Ce paramètre spécifie la manière dont les données ont été formatées et, par conséquent, la manière dont elles doivent être analysées. Avec Oscript, la source de données peut être une <TT CLASS="literal">LIST</TT> d'<TT CLASS="literal">ASSOC</TT> ou une RecArray. Les balises <TT CLASS="literal">ENTEPRISE</TT>, <TT CLASS="literal">PERSONAL</TT>, <TT CLASS="literal">TOOLS</TT> , <TT CLASS="literal">TABS</TT>, <TT CLASS="literal">LLURL:FUNCTIONMENU:RAW</TT> , <TT CLASS="literal">LLURL:ADDITEM:ITEMMENU:RAW</TT> et <TT CLASS="literal">CAT:RAW</TT> donnent des structures de données au format Oscript pouvant être utilisées dans ce paramètre.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Facultatif</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSCONTENTTYPE</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Convient uniquement pour un type de fichier <TT CLASS="literal">separatedvalue</TT>. Les valeurs acceptables sont les suivantes : <TT CLASS="literal">somequotes</TT>, paramètre par défaut, <TT CLASS="literal">allquotes</TT>, <TT CLASS="literal">noquotes</TT>. Ces paramètres font référence à la possibilité ou non de mettre les cellules de données entre guillemets pour masquer les caractères pouvant interférer avec l'analyse. Si aucune cellule n'est mise entre guillemets, un paramètre <TT CLASS="literal">noquotes</TT> permet un traitement plus rapide.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Facultatif</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSSTRICTSYNTAX</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Définit sur <TT CLASS="literal">true</TT>, paramètre par défaut, ou <TT CLASS="literal">false</TT>. <TT CLASS="literal">True</TT> indique que les données ont été strictement formées sans espace inattendue ou autre espace ambiguë.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Facultatif</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSCOLUMNSEP</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie un ou plusieurs caractères utilisés pour délimiter, ou séparer, les colonnes de données. Le caractère par défaut est une virgule « , ».</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Facultatif</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSROWSEP</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie un ou plusieurs caractères utilisés pour délimiter, ou séparer, les lignes de données. Le caractère par défaut est un retour chariot suivi d'un saut de ligne.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Facultatif</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSQUOTECHAR</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie les caractères utilisés pour mettre les cellules entre guillemets, le cas échéant. Le caractère par défaut est le guillemet simple <TT CLASS="literal">"</TT>.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Facultatif</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSESCQUOTECHARS</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie les caractères utilisés pour insérer les guillemets dans les données de cellules, le cas échéant. Le caractère par défaut est le guillemet double «   ».</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Facultatif</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DSHEADINGSINC</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Spécifie <TT CLASS="literal">true</TT> ou <TT CLASS="literal">false</TT> en fonction de la présence de titres dans chaque colonne de la première ligne de données. La valeur par défaut est <TT CLASS="literal">true</TT>. Si elle est définie sur <TT CLASS="literal">false</TT>, les colonnes sont automatiquement nommées colonne1, colonne2, etc.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Facultatif</TD></TR></TABLE></DIV>
+<DIV title="Appel d'un sous-rapport WebReport" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-REQUESTDS-EX1"></A><B><FONT COLOR="WHITE">.</FONT><BR><IMG title="Appel d'un sous-rapport WebReport" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 1-26 : Appel d'un sous-rapport WebReport</B></P>
+<P class="nr1"><A NAME="TMPID16846"></A>Les balises suivantes vont appeler un sous-rapport WebReport et transmettre les <TT CLASS="literal">DSrequestData</TT> comme paramètres vers le sous-rapport WebReport :</P>
+<P><A NAME="TMPID16848"></A><TT CLASS="literal"> [LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$SWR /] PARM:DSREQUESTDATA:"444,555,666|777,888,999" PARM:DSCOLUMNSEP:"," PARM:DSROWSEP:"|" /] </TT></P><IMG title="Appel d'un sous-rapport WebReport" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Appel à partir d'une URL : " CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-REQUESTDS-EX2"></A><B><IMG title="Appel à partir d'une URL : " SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 1-27 : Appel à partir d'une URL : </B></P>
+<P class="nr1"><A NAME="TMPID16852"></A>Les paramètres <TT CLASS="literal">DSrequestData</TT> peuvent également être définis dans une URL :</P>
+<P><A NAME="TMPID16854"></A><TT CLASS="literal"> ?func=ll&amp;objId=48243&amp;objAction=RunReport&amp;DSREQUESTDATA=444,555,666|777,888,999&amp;DSCOLUMNSEP=,&amp;DSROWSEP=| </TT></P><IMG title="Appel à partir d'une URL : " SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Utilisation de DSFILETYPE de valeur OSCRIPT" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-REQUESTDS-EX3"></A><B><IMG title="Utilisation de DSFILETYPE de valeur OSCRIPT" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 1-28 : Utilisation de DSFILETYPE de valeur OSCRIPT</B></P>
+<P class="nr1"><A NAME="TMPID16858"></A>La sortie des balises comme <TT CLASS="literal">CAT:RAW</TT> peut être utilisée de la même manière que <span><A HREF="wr-requestds-info.htm#WR-REQUESTDS-EX2">Appel à partir d'une URL :</A></span>, mais avec une requête Post :</P><A NAME="AEN16115"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;FORM NAME="getFuncs" METHOD="POST" ACTION="[LL_REPTAG_URLPREFIX /]"&gt;
+   &lt;input type=hidden name="DSFILETYPE" value="oscript"&gt;
+   &lt;input type=hidden name="DSrequestData" value="[LL_REPTAG_"23099" CAT:RAW /]"&gt;
+      [LL_REPTAG_$CLICK LLURL:REPORT URLTOPOST /]
+   &lt;input type=submit value=submit&gt;
+&lt;/FORM&gt;</PRE
+>
+<P><A NAME="TMPID16862"></A>Une requête Post est utile lorsque les résultats de la balise <TT CLASS="literal">RAW</TT> peuvent être étendus, car Internet Explorer ne peut gérer des valeurs de paramètres très longs. Les requêtes Post ne posent aucun problème.</P><IMG title="Utilisation de DSFILETYPE de valeur OSCRIPT" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

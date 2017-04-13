@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>FOR, FORCEUTF8, FORMPARSEOFF</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-ccfourth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Content Control Tags';
+          header.title2 = 'FOR, FORCEUTF8, FORMPARSEOFF';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID2237"></A>This section details the content control tags: <span><A HREF="wr-tag-ccfourth.htm#WR-TAG-CCFOR">FOR</A></span>, <span><A HREF="wr-tag-ccfourth.htm#WR-TAG-CCFORCEUTF8">FORCEUTF8</A></span>, and <span><A HREF="wr-tag-ccfourth.htm#WR-TAG-CCFORMPARSEOFF">FORMPARSEOFF</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCFOR">FOR</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="FOR-NAME">Syntax</A></P>
+<P><A NAME="WEBREPORTFOR"></A><B CLASS="highlight">[LL_WEBREPORT_FOR VAR:&lt;<I CLASS="varname">varName</I>> DATA:&lt;<I CLASS="varname">collection</I>> /]</B></P>
+<P><A NAME="TMPID2249"></A>     [LL_REPTAG_%&lt;<I CLASS="varname">varName</I>> CURRENTVAL /]</P>
+<P><A NAME="TMPID2251"></A><B CLASS="highlight">[LL_WEBREPORT_ENDFOR /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="FOR-DESC">Description</A></P>
+<P><A NAME="TMPID2255"></A>This tag is used to loop over a collection of data. Valid collections include Lists, RecArrays, Assocs, Records, and Strings.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="FOR-PARAM">Parameters</A></P>
+<P class="before-ul"><A NAME="TMPID2258"></A>The tag has two required parameters:</P><A NAME="AEN2060"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2061"></A><A NAME="TMPID2261"></A><B CLASS="highlight">DATA:&lt;<I CLASS="varname">collection</I>></B>: The collection to iterate, which can be a List, RecArray, Assoc, Record, or String.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2065"></A><A NAME="TMPID2265"></A><B CLASS="highlight">VAR:&lt;<I CLASS="varname">varName</I>></B>: The looping variable name. This variable becomes visible in the looping block. A second variable named <TT CLASS="literal">&lt;<I CLASS="varname">varName</I>>_index</TT> is also defined. The <TT CLASS="literal">&lt;<I CLASS="varname">varName</I>>_index</TT> is the index of the element.</P></LI></UL>
+<P CLASS="bridgehead-subheading3"><A NAME="FOR-EXAMP">Example</A></P>
+<P><A NAME="TMPID2274"></A>To output the elements of a list:</P><A NAME="AEN2075"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_FOR DATA:{'apple','pear','orange'} VAR:value /]
+     [LL_REPTAG_%value_index CURRENTVAL /] - [LL_REPTAG_%value CURRENTVAL /]
+[LL_WEBREPORT_ENDFOR /]</PRE
+>
+<P><A NAME="TMPID2276"></A>returns:</P><A NAME="AEN2077"></A>
+<PRE 
+CLASS="screen"
+>1 - apple
+2 - pear
+3 - orange</PRE
+>
+<P><A NAME="TMPID2278"></A><TT CLASS="literal">FOR</TT> loops can also contain other <TT CLASS="literal">FOR</TT> loops. For example, the following will output each field in each row of the data source:</P><A NAME="AEN2081"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_FOR DATA:[LL_REPTAG_DATASOURCE /] VAR:i /]
+   [LL_WEBREPORT_FOR DATA:[LL_REPTAG_%i CURRENTVAL TOLIST /] VAR:j /]
+      [LL_REPTAG_%j CURRENTVAL /]
+   [LL_WEBREPORT_ENDFOR /]
+[LL_WEBREPORT_ENDFOR /]</PRE
+>
+<P><A NAME="TMPID2282"></A>Optionally include the [LL_WEBREPORT_BREAK /] subtag to break out of a <TT CLASS="literal">FOR</TT> loop. For example:</P><A NAME="AEN2084"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_FOR DATA:[LL_REPTAG=DataID CAT:RAW /] VAR:Category /]
+   [// Loop through the category data until we find the Fruit category
+   [LL_WEBREPORT_IF "(LL_REPTAG_%Category CURRENTVAL ASSOC:DisplayName /)" == "Fruit" /]
+      [// Display something
+      This document contains the Fruit category.
+      [// Break out of the FOR loop
+      <B
+CLASS="highlight"
+>[LL_WEBREPORT_BREAK /]</B
+>
+   [LL_WEBREPORT_ENDIF /]
+[LL_WEBREPORT_ENDFOR /]</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="FOR-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID2288"></A>For more information see <span><A HREF="wr-tag-cdfourth.htm#WR-TAG-CDDATASOURCE">DATASOURCE</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCURRENTVAL">CURRENTVAL</A></span>, and <span><A HREF="wr-tag-stseventeenth.htm#SUBTAGTOLIST">TOLIST:delimiter</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCFORCEUTF8">FORCEUTF8</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="FORCEUTF8-NAME">Syntax</A></P>
+<P><A NAME="WEBREPORTFORCEUTF8"></A><B CLASS="highlight">[LL_WEBREPORT_FORCEUTF8 /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="FORCEUTF8-DESC">Description</A></P>
+<P><A NAME="TMPID2300"></A>This tag forces a UTF-8 Byte Order Marker (BOM) to be added to the beginning of the output from the WebReport. The BOM is made of the hex characters: <TT CLASS="literal">#FE #BB #BF</TT>. Some client applications may require this marker to correctly handle UTF-8 content.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCFORMPARSEOFF">FORMPARSEOFF</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="FORMPARSEOFF-NAME">Syntax</A></P>
+<P><A NAME="WEBREPORTFORMPARSEOFF"></A><B CLASS="highlight">[LL_WEBREPORT_FORMPARSEOFF /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="FORMPARSEOFF-DESC">Description</A></P>
+<P><A NAME="TMPID2310"></A>This tag is only used when working with WebReports in forms, through the WR Power View option in form templates. When this tag is included in a WR Power View, the normal WebForms tag parsing code will not be invoked and instead a simplified parser, built into the WebReports engine, is used. This simple parser will handle substitution of WebForms tag syntax, such as <TT CLASS="literal">[LL_FormTag_... /]</TT> type tags, but will not handle any <TT CLASS="literal">LOOP</TT> tags or any form tags associated with WebForms loops.</P>
+<P><A NAME="TMPID2313"></A>This tag also disables the WebForms feature that automatically sets <TT CLASS="literal">HTML SELECT</TT> and <TT CLASS="literal">CHECKBOX</TT> form fields with default values. In some cases this feature of WebForms can be problematic and may actually fail when non-standard HTML is used for fields like <TT CLASS="literal">SELECT</TT> statements. In these situations the <span><A HREF="wr-tag-ccfourth.htm#WR-TAG-CCFORMPARSEOFF">FORMPARSEOFF</A></span> tag should be used to prevent any conflict with the WebForms code.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="FORMPARSEOFF-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID2320"></A>For more information see <span><A HREF="wr-powerview-info.htm">WR Power View</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

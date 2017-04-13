@@ -1,0 +1,474 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Examples using the AJAX Functions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-ajax-exampl.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'AJAX Function Reference';
+          header.title2 = 'Examples using the AJAX Functions';
+           header.draw();
+  </script>
+
+<DIV title="getURLParm( parm ) Example" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-GETURL-EX"></A><B><IMG title="getURLParm( parm ) Example" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-5: getURLParm( parm ) Example</B></P>
+<P class="nr1"><A NAME="TMPID18104"></A>Simple example demonstrating how to use the getURLParm function. In this example, you can simply copy and paste the code below in a WebReport. No Data Source Type needs to be specified (E.g. no LiveReport needs to be created) for the WebReport. For this example the current URL will have the form: <TT CLASS="literal">/Livelink971/livelink.exe?func=ll&amp;objId=139061&amp;objAction=RunReport&amp;nexturl=%2FLivelink971%2Flivelink%2Eexe%3Ffunc%3Dll%26objid%3D138743%26objAction%3Dbrowse%26sort%3Dname</TT></P><A NAME="AEN16863"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+
+&lt;TABLE&gt;
+&lt;!-- Display values returned from getURLParm into the HTML page --&gt;
+&lt;TR&gt;
+	&lt;TD&gt;objId parameter: &lt;/TD&gt;
+	&lt;TD id="objectId"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+	&lt;TD&gt;objAction parameter: &lt;/TD&gt;
+	&lt;TD id="objectAction"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+	&lt;TD&gt;nexturl parameter: &lt;/TD&gt;
+	&lt;TD id="nextUrlParm"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+	&lt;TD&gt;Invalid parameter: &lt;/TD&gt;
+	&lt;TD id="invalidParm"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+
+&lt;SCRIPT&gt;
+	// Example calls to getURLParm on the current URL
+	// Populate the above HTML
+	document.getElementById('objectId').innerHTML = getURLParm('objId');
+	document.getElementById('objectAction').innerHTML = getURLParm('objAction');
+	document.getElementById('nextUrlParm').innerHTML = unescape( getURLParm('nexturl') );
+	document.getElementById('invalidParm').innerHTML = getURLParm('badParm');		// alert message is displayed and undefined is returned.
+
+&lt;/SCRIPT&gt;</PRE
+>
+<P><A NAME="TMPID18107"></A><B CLASS="highlight">WebReport Output</B>:</P><A NAME="AEN16866"></A>
+<PRE 
+CLASS="screen"
+>objId parameter:    139061
+objAction parameter: RunReport
+nexturl parameter:  /Livelink971/livelink.exe?func=ll&amp;objid=138743&amp;objAction=browse&amp;sort=name
+Invalid parameter:     undefined</PRE
+><IMG title="getURLParm( parm ) Example" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="getJSData Example" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-GETDSD-EX"></A><B><IMG title="getJSData Example" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-6: getJSData Example</B></P>
+<P class="nr1"><A NAME="TMPID18112"></A>This example demonstrates dynamically counting filter hits as the user types. It is an alternative approach to implementing <span><A HREF="wr-araxproc2-ex.htm">Case 2 - Dynamically counting filter hits as the user types</A></span> found in the <B CLASS="guilabel">Detailed Examples</B> section. In this approach we use getJSData function to retrieve the number of matches whereas the Case 2 example explicitly sends the AJAX request from the WebReport. Both approaches are acceptable and a matter of preference to the developer.</P>
+<P><A NAME="TMPID18115"></A>Create the two LiveReports exactly as specified in Case 2 - Dynamically counting filter hits as the user types. Next add a new WebReport and link it to the first LiveReport you created. Copy and paste the code below into the WebReport.</P><A NAME="AEN16873"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_EXCLUDEHTML /]
+
+[LL_WEBREPORT_STARTROW /]
+	hits = '[LL_REPTAG=hits /]';
+[LL_WEBREPORT_ENDROW /]</PRE
+>
+<P><A NAME="TMPID18117"></A>The [LL_WEBREPORT_EXCLUDEHTML /] tag excludes all the HTML, JavaScript and Style definitions that Content Server uses to wrap any given page. This tag is necessary when using the getJSData function. This WebReport will return the count information as specified by the column 'hits' and set a JavaScript variable. Please note: It is not necessary to set the destination mime type to text/xml as stated in Case 2.</P>
+<P><A NAME="TMPID18118"></A>Now we need to call this WebReport from where the user will run their query. Create a second WebReport and use the second LiveReport created as its data source. Edit the reportview so that you have something like this:</P><A NAME="AEN16876"></A>
+<PRE 
+CLASS="screen"
+>&lt;!-- Include the AJAX library functions --&gt;
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+
+&lt;SCRIPT&gt;
+	// This variable 'hits' is updated when the target WebReport is called and executed by getJSData
+	var hits = "";
+
+	function updateHits(myFilter) {
+		// $TargetWR is constant and WebReportID of the first WebReport
+		// displayHits is the JSfunction called after any JavaScript has been returned and executed from the getJSData function
+		getJSData([LL_REPTAG_$TargetWR /], '&amp;inputLabel1=' + myFilter, displayHits);
+	}
+
+	function displayHits() {
+		// Update the count info in the HTML
+		document.getElementById("hitsText").innerHTML = "Matches: " + hits;
+	}
+&lt;/SCRIPT&gt;
+
+[LL_REPTAG_MYID NODEINFO:NAME /]
+[LL_REPTAG_MYID LLURL:FUNCTIONMENU /]
+[LL_REPTAG_MYID LLURL:UPALEVEL /]
+&lt;BR&gt;
+
+&lt;INPUT TYPE=TEXT ID="MYFILTER" ONKEYUP="updateHits(this.value);"&gt;
+&lt;INPUT TYPE=BUTTON VALUE="Run" ONCLICK="document.location='[LL_REPTAG_MYID LLURL:REPORT /]&amp;inputLabel1=' + document.getElementById('MYFILTER').value"&gt;
+
+&lt;DIV ID="hitsText"&gt;Updates when you type&lt;/DIV&gt;
+&lt;TABLE&gt;
+&lt;TR&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME1 /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;TD&gt;[LL_REPTAG_COLNAME++ /]&lt;/TD&gt;
+&lt;/TR&gt;
+
+[LL_WEBREPORT_STARTROW /]
+
+&lt;TR&gt;
+&lt;TD&gt; [LL_REPTAG_1 /]&lt;/TD&gt;
+&lt;TD&gt; [LL_REPTAG_2 /]&lt;/TD&gt;
+&lt;TD&gt; [LL_REPTAG_3 /]&lt;/TD&gt;
+&lt;TD&gt; [LL_REPTAG_4 /]&lt;/TD&gt;
+&lt;TD&gt; [LL_REPTAG_5 /]&lt;/TD&gt;
+&lt;/TR&gt;
+
+[LL_WEBREPORT_ENDROW /]
+
+&lt;/TABLE&gt;</PRE
+>
+<P><A NAME="TMPID18120"></A>This report uses a constant, TargetWR, which needs to be defined on the constants tab by setting the object type to Content Server and browsing for the first WebReport created above.</P>
+<P><A NAME="TMPID18121"></A>This second WebReport also expects a parameter which, unless the report developer states otherwise, will cause a prompt when the report runs. The developer could enter the parameter name, inputLabel1 in this case, along with an empty default value and the prompt field set to no. This will have the effect of causing all the results to be returned initially. Obviously other values could be used.</P>
+<P><A NAME="TMPID18122"></A>The code above has been cut down to a minimum to demonstrate principles and techniques. It takes no account of error paths, browsers other than Microsoft Internet Explorer, or Content Server permissions. These things can all be easily added by the developer.</P><IMG title="getJSData Example" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="sendRequest( WebReportId, responseFunction, reqType, optionalParms ) Example" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-SNDREQ-EX"></A><B><IMG title="sendRequest( WebReportId, responseFunction, reqType, optionalParms ) Example" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-7: sendRequest( WebReportId, responseFunction, reqType, optionalParms ) Example</B></P>
+<P class="nr1"><A NAME="TMPID18125"></A>This is a simple example demonstrating the sendRequest function. In this example, we use sendRequest to call a WebReport to retrieve a list of objects in the Content Server DTree table that start with 'Livelink'. The results are tabulated and returned to the calling (Main) WebReport where they are displayed to the user. Please note: sendRequest can be used to call any WebReport and retrieve any report data that is relevant to your business application. For simplicity sake we are retrieving report data from the DTree table.</P>
+<P><A NAME="TMPID18126"></A>First, create a very simple LiveReport (LiveReport Extensions must be installed) which retrieves a list of objects from DTree based on its name. Something like: <TT CLASS="literal">select * from dtree where Name like '%1%'</TT></P>
+<P><A NAME="TMPID18128"></A>Define the parameter, <B CLASS="highlight">%1</B>, as type <B CLASS="highlight">insertString</B>. The LiveReport should prompt for user input.</P>
+<P><A NAME="TMPID18131"></A>Next add a new WebReport that uses the above LiveReport as it's data source. This will be the target WebReport which tabulates the report data and returns it to the calling WebReport. Copy and paste the code below into the WebReport:</P><A NAME="AEN16889"></A>
+<PRE 
+CLASS="screen"
+>&lt;!-- To prevent the standard Content Server headers, footers, and include files to be shown in the page --&gt;
+[LL_WEBREPORT_EXCLUDEHTML /]
+
+&lt;TABLE&gt;
+&lt;!-- Display column names --&gt;
+&lt;TR&gt;
+	&lt;TD&gt;DataID&lt;/TD&gt;
+	&lt;TD&gt;Name&lt;/TD&gt;
+	&lt;TD&gt;Modify Date&lt;/TD&gt;
+	&lt;TD&gt;SubType&lt;/TD&gt;
+&lt;/TR&gt;
+
+[LL_WEBREPORT_STARTROW /]
+&lt;TR CLASS="[LL_REPTAG_ROWNUM ODDEVEN:Browserow1:Browserow2 /]" VALIGN="CENTER" NOWRAP ALIGN="LEFT"&gt;
+	&lt;TD&gt; [LL_REPTAG=DataID /]&lt;/TD&gt;
+	&lt;TD&gt; [LL_REPTAG=Name /]&lt;/TD&gt;
+	&lt;TD&gt; [LL_REPTAG=ModifyDate DATE:"SHORT" /]&lt;/TD&gt;
+	&lt;TD&gt; [LL_REPTAG=SubType /]&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_ENDROW /]
+&lt;/TABLE&gt;</PRE
+>
+<P><A NAME="TMPID18133"></A>As you can see, the report data is tabulated using WebReports. The [LL_WEBREPORT_EXCLUDEHTML /] is necessary and excludes all the HTML, JavaScript and Style definitions that Content Server uses to wrap any given page.</P>
+<P><A NAME="TMPID18134"></A>Finally, we can go ahead and create the calling (Main) WebReport which calls sendRequest. For this example, we don't need to specify a data source for this WebReport since we are only demonstrating the sendRequest functionality. Copy and paste the code below into the Main WebReport:</P><A NAME="AEN16892"></A>
+<PRE 
+CLASS="screen"
+>&lt;B&gt;[LL_REPTAG_MYID NODEINFO:NAME /]&lt;/B&gt;
+[LL_REPTAG_MYID LLURL:FUNCTIONMENU /]
+[LL_REPTAG_MYID LLURL:UPALEVEL /]&lt;BR&gt;&lt;BR&gt;
+
+&lt;!-- Include the AJAX library functions --&gt;
+&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+
+&lt;SCRIPT&gt;
+	var optHandlerFunc = function () { JSfunction() };
+	var handlerFunc = function () { executeJS( http_request, optHandlerFunc ) };
+
+	// $TargetWR is a constant and objectID of the target WR. Here we pass the name 'Livelink' as a parameter to the target WR.
+	sendRequest([LL_REPTAG_$TargetWR /], handlerFunc, '&amp;inputLabel1=Livelink');
+
+	// Handle the response to sendRequest
+	function executeJS(http_request, JSfunction) {
+		if (http_request.readyState == 4) {
+			if (http_request.status == 200) {
+				// Display the results from the target WR in the current page
+				document.getElementById('showDocs').innerHTML = http_request.responseText;
+
+				if ( JSfunction ) {
+					// execute any user passed function
+					JSfunction();
+				}
+			} else {
+				alert('There was a problem with the request.');
+			}
+		}
+	}
+
+	function JSfunction() {
+		// Add anything else here after the results are displayed
+	}
+&lt;/SCRIPT&gt;
+
+&lt;BR&gt;
+[LL_WEBREPORT_STARTROW /][LL_WEBREPORT_ENDROW /]
+&lt;TABLE&gt;
+&lt;TR&gt;
+	&lt;TD&gt;&lt;b&gt;List of objects in DTree that start with 'Livelink' - using the AJAX sendRequest function&lt;/b&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+	&lt;TD id="showDocs"&gt; &lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;</PRE
+>
+<P><A NAME="TMPID18136"></A>Please note, $TargetWR needs to be defined on the constants tab of the Main WR by setting the object type to Content Server and browsing for the target WR. Also, any additional JavaScript can be added by the developer to JSfunction after the results have been returned and displayed. The report table data is inserted in the innerHTML of the TD tag 'showDocs' shown above. The output of Main WR is displayed below:</P>
+<P><A NAME="TMPID18137"></A><B CLASS="highlight">Main WebReport Output</B>:</P>
+<DIV title="List of objects in DTree that start with 'Livelink' - using the AJAX sendRequest function" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="WR-SNDREQEX-T"></A><B>Table 1-45: List of objects in DTree that start with 'Livelink' - using the AJAX sendRequest function</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">DataID</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Name</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Modify Date</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Sub Type</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">2067</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Livelink Undelete Workspace</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">02/05/2009</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">402</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">2018</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Livelink Templates</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">09/17/2008</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">541</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">2013</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Livelink Appearances</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">09/17/2008</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">481</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">2004</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Livelink Categories</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">09/17/2008</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">133</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">2002</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Livelink Reports</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">09/17/2008</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">211</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">2001</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Livelink System</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">09/17/2008</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">148</TD></TR></TABLE></TD></TR></TABLE></DIV><IMG title="sendRequest( WebReportId, responseFunction, reqType, optionalParms ) Example" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) Example" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-EXECWRSVC-EX"></A><B><IMG title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) Example" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-8: executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) Example</B></P>
+<P class="nr1"><A NAME="TMPID18217"></A>This example shows two different ways to call the gettagdata service using the predefined function: executeWRService. In one instance we have written a special function called <TT CLASS="literal">handleServiceJSON</TT> which is designed to “eval” the JSON data (convert the JSON data to Javascript objects) and use the resulting JavaScript structures to display the result of the request. In this request we are using <TT CLASS="literal">&amp;tagdata=</TT> with a data ID and then using the <TT CLASS="literal">NODEINFO:NAME</TT> sub-tag variation to lookup the name of an item. Note that as we requested a <TT CLASS="literal">responseType</TT> of <TT CLASS="literal">json</TT>, the resulting data structure includes a field called “error” which indicates whether we have valid data or not. In the <TT CLASS="literal">handleServiceJSON</TT> function, we use this field to determine whether to alert an error or to display the content. In the second instance (the get URL button) we simply pass the name of an HTML object on the page. When the request returns from Content Server, it automatically inserts the resulting text into the specified HTML component. Because we simply want text dumped into the page (and we don't plan on analyzing the response for errors or handling it programmatically) the reponseType of <TT CLASS="literal">string</TT> was selected in this example.</P><A NAME="AEN16985"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+&lt;script&gt;
+
+function handleServiceJSON(request) {
+     var rt = request.responseText;
+     var jsvar = eval('(' + rt + ')')
+     var error = jsvar.error;
+     var content = jsvar.content;
+     if (error == 'true') {
+          alert('error text is: ' + content);
+     } else {
+          alert('Object name is:' + content);
+     }
+}
+
+function getName(did){
+     did = document.getElementById('dataid').value;
+     getNameParms = '&amp;tagdata=' + did + '&amp;subtags=nodeinfo:name';
+     executeWRService( 'gettagdata', handleServiceJSON,getNameParms,'json');
+}
+
+function showURL(did){
+     did = document.getElementById('dataid').value;
+     getURLparms = '&amp;tagdata=' + did + '&amp;subtags=LLURL:OPEN';
+     executeWRService('gettagdata', 'displayname', getURLparms,'string');
+}
+&lt;/script&gt;
+
+&lt;input type=text value="[LL_REPTAG_MYID /]" ID=dataid&gt;  URL: &lt;SPAN ID=displayname&gt;&lt;/SPAN&gt;&lt;br&gt;
+&lt;input type=button value="Get Item Name" onclick=getName()&gt; &lt;input type=button value="Get URL" onclick=showURL()&gt;</PRE
+><IMG title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) Example" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) Example" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-EXEC2WRSVC-EX"></A><B><IMG title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) Example" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-9: executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) Example</B></P>
+<P class="nr1"><A NAME="TMPID18231"></A>This example shows the use of the getstatictags service. The service is invoked using the <TT CLASS="literal">executeWRService</TT> function in <TT CLASS="filename">ajax.js</TT> besides using the identifier <TT CLASS="literal">getstatictags</TT> to select the correct service, a function called <TT CLASS="literal">handleStaticTags</TT> (specifically written for this sample application) is passed to the <TT CLASS="literal">executeWRService</TT> function which in turn, sets up a request to Content Server. The request is setup so that when the request returns from Content Server, the <TT CLASS="literal">handleStaticTags</TT> function is called. In this example, we've written code in <TT CLASS="literal">handleStaticTags</TT> to take the JSON structure from the <TT CLASS="literal">request.responseText</TT>, convert it to a JavaScript structure and then traverse this structure in order to show all the static tag values that were returned from Content Server.</P><A NAME="AEN17000"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+&lt;script&gt;
+
+function handleStaticTags(request) {
+
+     var rt = request.responseText;
+     var jsvar = eval('(' + rt + ')')
+     var error = jsvar.error;
+     var content = jsvar.content;     // This should be an array of tags
+
+     if (error) {
+          alert('error text is: ' + content);
+     } else {
+          tempStr = '';
+          for (tag in content) {
+               tempStr += tag + ' = ' + content[tag] + '&lt;br&gt;';
+          }
+          document.getElementById('display').innerHTML = tempStr;
+
+     }
+}
+
+function getStaticTags(){
+
+     executeWRService( 'getstatictags', handleStaticTags,'json');
+}
+
+&lt;/script&gt;
+&lt;input type=button value="Get Static Tags" onclick=getStaticTags()&gt;
+&lt;hr&gt;
+&lt;DIV ID="display"&gt;
+
+&lt;/DIV&gt;</PRE
+><IMG title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) Example" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) with Secure Request Token in CS10 Example" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-EXEC3WRSVC-EX"></A><B><IMG title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) with Secure Request Token in CS10 Example" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-10: executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) with Secure Request Token in CS10 Example</B></P>
+<P class="nr1"><A NAME="TMPID18246"></A>Supported in Content Server 10.0 and up.</P>
+<P><A NAME="TMPID18248"></A>This example is the same as <span><A HREF="wr-ajax-exampl.htm#WR-EXECWRSVC-EX">executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) Example</A></span> above, however it has been secured with the use of a Secure Request Token for the NODEINFO subtag. In WebReports 10.0.1 Update 01, NODEINFO is by default considered a 'secured' subtag and will not run in a WR Service call unless a Secure Request Token has been provided. To obtain a Secure Request Token (SRT), an additional call must first be made using the getsecureToken function in WR Services (see the 'getToken()' function below). This function returns a token, and an additional handler - 'handleToken()' in this example - passes the token to the getName() function. getName() has been altered to append the token to the NODEINFO request URL before the executeWRService() call is executed for that subtag.</P><A NAME="AEN17007"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+&lt;script&gt;
+
+function handleToken(request) {
+     var token = request.responseText;
+     getName(token);
+}
+
+function handleServiceJSON(request) {
+     var rt = request.responseText;
+     var jsvar = eval('(' + rt + ')')
+     var error = jsvar.error;
+     var content = jsvar.content;
+     if (error == 'true') {
+          alert('error text is: ' + content);
+     } else {
+          alert('Object name is:' + content);
+     }
+}
+
+function getToken(){
+     executeWRService( 'getsecureToken', handleToken,'','string');
+}
+
+function getName(token){
+     did = document.getElementById('dataid').value;
+     getNameParms = '&amp;tagdata=' + did + '&amp;subtags=nodeinfo:name&amp;securerequesttoken=' + token;
+     executeWRService( 'gettagdata', handleServiceJSON,getNameParms,'json');
+}
+
+function showURL(did){
+     did = document.getElementById('dataid').value;
+     getURLparms = '&amp;tagdata=' + did + '&amp;subtags=LLURL:OPEN';
+     executeWRService('gettagdata', 'displayname', getURLparms,'string');
+}
+
+&lt;/script&gt;
+
+&lt;input type=text value="[LL_REPTAG_MYID /]" ID=dataid&gt;  URL: &lt;SPAN ID=displayname&gt;&lt;/SPAN&gt;&lt;br&gt;
+&lt;input type=button value="Get Item Name" onclick="getToken()"&gt; &lt;input type=button value="Get URL" onclick=showURL()&gt;</PRE
+><IMG title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost ) with Secure Request Token in CS10 Example" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

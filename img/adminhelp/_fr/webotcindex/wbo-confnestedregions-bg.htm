@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWBS100011-H-AGD-EN-1">
+<META PiXprocLocator="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llesels-h-agd -- llessrc-ggd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Configuring Nested Index Regions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbo-confnestedregions-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Searching';
+          header.title2 = 'Configuring Nested Index Regions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID12554"></A>If an outer region is not listed in the LLFieldDefinitions.txt file, its nested metadata regions will not be indexed. For information about adding regions to the LLFieldDefinitions.txt file, see <span><A href="../webotcindex/wbo-confnestedregions-p.htm">To Configure Nested Index Regions</A></span>. Outer regions are listed in the <B CLASS="GUILABEL">nested</B> section in the LLFieldDefinitions.txt file. This file is located in the Config directory of your Content Server installation. Regions are listed in the following format in the <TT CLASS="LITERAL">LLFieldDefinitions.txt</TT> file:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN11809"></A>NESTED    OTTestA</PRE
+>
+<P><A NAME="TMPID12560"></A><TT CLASS="LITERAL">NESTED</TT> is a prefix for each outer region, the space between NESTED and OTTestA is a tab space, and <TT CLASS="LITERAL">OTTestA</TT> is the name of the outer region. The outer region's name is case sensitive. </P>
+<P><A NAME="TMPID12563"></A>Regions are organized in a hierarchy in Content Server, and the <TT CLASS="LITERAL">LLFieldDefinitions.txt</TT> file reflects this organization. This hierarchy is necessary because each outer region in the list may be nested within another outer region. To ensure that all metadata regions are indexed, the list must contain all outer regions within which a metadata region can appear. For example, if the outer region <TT CLASS="LITERAL">OTTestB</TT> is nested within <TT CLASS="LITERAL">OTTestA</TT>, you must add both <TT CLASS="LITERAL">OTTestB</TT> and <TT CLASS="LITERAL">OTTestA</TT> to the nested section of the LLFieldDefinitions.txt file. If you only add <TT CLASS="LITERAL">OTTestB</TT> and not <TT CLASS="LITERAL">OTTestA</TT>, Content Server will not search within <TT CLASS="LITERAL">OTTestA</TT> and will be unable to find <TT CLASS="LITERAL">OTTestB</TT>.</P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webotcindex/wbo-confnestedregions-p.htm" revision="">To Configure Nested Index Regions</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

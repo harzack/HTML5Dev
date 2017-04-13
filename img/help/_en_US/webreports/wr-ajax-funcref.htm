@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>AJAX Functions Reference Guide</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-ajax-funcref.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'AJAX Function Reference';
+          header.title2 = 'AJAX Functions Reference Guide';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID17923"></A>The <TT CLASS="filename">ajax.js</TT> file packaged with WebReports includes a list of functions designed to aid in the use of WebReport services. The <TT CLASS="filename">ajax.js</TT> file is accessed using a SCRIPT include like this:</P><A NAME="AEN16684"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="/&lt;support_dir&gt;/webreports/library/ajax.js"&gt;&lt;/SCRIPT&gt;</PRE
+>
+<P><A NAME="TMPID17928"></A>If this file is being included into a WebReport or ActiveView, the <TT CLASS="literal">LIBPATH</TT> tag can be used like this:</P><A NAME="AEN16687"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;</PRE
+>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF38"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID17932"></A><B CLASS="note">Note: </B><BR>When using <TT CLASS="literal">[LL_WEBREPORT_EXCLUDEHTML /]</TT> in a WebReport that is also using the AJAX Library Functions the following variable will need to be defined in a script block. The reason is the <TT CLASS="literal">baseURL</TT> variable is defined within the Content Server page code that is inserted into the WebReport output but this is excluded by the tag. The following code will ensure this variable is defined and prevent the AJAX library from breaking.</P><A NAME="AEN16693"></A>
+<PRE 
+CLASS="screen"
+>&lt;script&gt;
+	baseURL = "[LL_REPTAG_URLPREFIX /]";
+&lt;/script&gt;</PRE
+></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID17937"></A>A description of the available functions in ajax.js and its parameters is provided below:</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-ajax-geturl.htm" revision="">getURLParm( parm )</A></p></li>
+<li><p><A  HREF="wr-ajax-updtpg.htm" revision="">updatePage( URLreference, HTMLelementID, optionalParms, JSfunction )</A></p></li>
+<li><p><A  HREF="wr-ajax-getjsdat.htm" revision="">getJSData( URLreference, optionalParms, JSfunction )</A></p></li>
+<li><p><A  HREF="wr-ajax-sendreq.htm" revision="">sendRequest( URLreference, responseFunction, reqType, optionalParms )</A></p></li>
+<li><p><A  HREF="wr-ajax-exwrsvc.htm" revision="">executeWRService( serviceType, responseTarget, parmList, responseType, getPost, secure )</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

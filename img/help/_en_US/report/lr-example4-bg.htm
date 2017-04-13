@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Additional Template Features</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-example4-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Template Examples';
+          header.title2 = 'Additional Template Features';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1545"></A><B CLASS="highlight">Using Templates within Templates</B>: Besides specifying templates for inclusion in the main SQL field, it is also possible to use templates within other templates. The syntax is the same, for example “~2”; however, a template can only use a template with a lower number. For example, template ~2 can include a reference to template ~1 but not to itself or template ~3, or any number above 2.</P>
+<P><A NAME="TMPID1548"></A><B CLASS="highlight">Using the Template View Icon</B>: Each template includes a special icon that can be used to <B CLASS="guilabel">View Template Behavior</B>. Clicking this icon opens a window that contains a series of statements about the template in question. These statements attempt to clarify, for each template, how it will behave based on the selected condition and the source that has been specified. The <B CLASS="guilabel">View Template Behavior</B> icon is found at the end of each template row.</P>
+<DIV title="Viewing behavior for the condition: Not all inputs set to flag" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXCONDBE-EX"></A><B><IMG title="Viewing behavior for the condition: Not all inputs set to flag" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-8: Viewing behavior for the condition: Not all inputs set to flag</B></P>
+<P class="nr1"><A NAME="TMPID1554"></A>The conditions <B CLASS="guilabel">Not all inputs set to flag</B> and <B CLASS="guilabel">No Inputs set to flag</B> both include a table of conditions which is designed to help understand how User Input parameters in the template will affect the inclusion or exclusion of the template. In the example below, the table shows that if all User Input parameters are set to an empty string, the template is excluded but if any User Input parameter is not set to an empty string then the template will be included.</P>
+<P class="before-ul"><A NAME="TMPID1557"></A>In the <B CLASS="guilabel">Template Setup</B>, in the <B CLASS="guilabel">Templates</B> area, define <B CLASS="guilabel">~1</B>:</P><A NAME="AEN1562"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1563"></A><A NAME="TMPID1563"></A>Do not select the <B CLASS="guilabel">Auto-Where</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1566"></A><A NAME="TMPID1566"></A>In the <B CLASS="guilabel">SQL Source</B> field, type: “%1,%2,%3”</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1570"></A><A NAME="TMPID1570"></A>Select the <B CLASS="guilabel">Auto-Comma</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1573"></A><A NAME="TMPID1573"></A>From the <B CLASS="guilabel">Include IF</B> list, select “No inputs set to flag”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1577"></A><A NAME="TMPID1577"></A>In the <B CLASS="guilabel">Options</B> field, ensure the <B CLASS="guilabel">Flag Value</B> field is empty.</P></LI></UL>
+<P><A NAME="TMPID1580"></A>If you click the <B CLASS="guilabel">View Template Behavior</B> icon found at the end of the <B CLASS="guilabel">~1</B> template row, a page containing the following information will appear:</P>
+<P class="before-ul"><A NAME="TMPID1583"></A><B>Explanation Window –  </B>The combination of fields in this row are interpreted as follows:</P><A NAME="AEN1586"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1587"></A><A NAME="TMPID1587"></A>The parameters: <B CLASS="highlight">%1,%2,%3</B> were found in the SQL source field for this template.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1590"></A><A NAME="TMPID1590"></A>The Condition Type is set to <B CLASS="highlight">“No inputs set to flag”</B>. This means that: These parameters will be tested to see if the flag: <B CLASS="highlight">(An empty string)</B> has been passed as a value.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1595"></A><A NAME="TMPID1595"></A>If none of the parameters in the SQL source field are set to <B CLASS="highlight">An empty string</B> then this template will be inserted anywhere in the SQL where the <B CLASS="highlight">~1</B> symbol is found.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1599"></A><A NAME="TMPID1599"></A>Conversely, if <B CLASS="highlight">ANY</B> of the parameters in the source field (<B CLASS="highlight">%1,%2,%3</B>) are set to the flag value (<B CLASS="highlight">An empty string</B>) then template <B CLASS="highlight">~1</B> will not be included in the SQL source.</P></LI></UL>
+<P><A NAME="TMPID1604"></A>This table indicates the expected results for different settings of parameters:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1606"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Parm 1</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Parm 2 etc.</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Result</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">An empty string</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">An empty string</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EXCLUDE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">(any other value)</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">An empty string</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EXCLUDE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">(any other value)</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">(any other value)</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">INCLUDE</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID1628"></A>Click <B CLASS="guilabel">Close</B> to close this explanation window.</P><IMG title="Viewing behavior for the condition: Not all inputs set to flag" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

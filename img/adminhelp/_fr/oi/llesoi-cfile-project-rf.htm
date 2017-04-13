@@ -1,0 +1,589 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle des projets</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-project-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Syntaxe du fichier de contrôle Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle des projets';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG01">project</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="PROJTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID1625"></A>Utilisez <TT CLASS="literal">type="project"</TT> sur la balise <TT CLASS="literal">&lt;node&gt;</TT> pour créer, mettre à jour ou supprimer un projet.  </P>
+<P CLASS="bridgehead-subheading3"><A NAME="PROJTAG03">Syntaxe</A></P><A NAME="AEN1561"></A>
+<PRE 
+CLASS="screen"
+>&lt;node type="project" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="PROJTAG04">Utilisation</A></P>
+<A NAME="AEN1563"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1564"></A><A NAME="TMPID1638"></A>La création ou la mise à jour d'un projet peut inclure un certain nombre de balises subordonnées : <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG05">Balise goals</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG10">Balise include_channel</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG15">Balise include_discussion</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG20">Balise include_participants</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG25">Balise include_tasklist</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG30">Balise initiatives</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG35">Balise mission</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG40">Balise objectives</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG45">Balise public_access</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG50">Balise roles</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG55">Balise startdate</A></span>, <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG60">Balise status</A></span> et <span><A HREF="llesoi-cfile-project-rf.htm#PROJTAG65">Balise targetdate</A></span>. Ces balises subordonnées sont détaillées ci-dessous.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1579"></A><A NAME="TMPID1653"></A>La création, mise à jour ou suppression d'un projet peut également nécessiter un certain nombre de balises subordonnées, telles que la balise <TT CLASS="literal">location</TT> . Ces autres balises subordonnées sont détaillées dans <span><A HREF="llesoi-cfilesamp-bg.htm">Descriptions et syntaxe des balises Importateur d'objet</A></span>.</P></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="PROJTAG70">Exemple</A></P>
+<P><A NAME="TMPID1658"></A>Pour créer un projet nommé « Standard Project » dans le dossier « Documentation » de l'espace de travail Entreprise :</P><A NAME="AEN1587"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="project" action="create"&gt;
+    &lt;location&gt;Enterprise:Documentation&lt;/location&gt;
+    &lt;title language="en"&gt;Standard Project&lt;/title&gt;
+    &lt;goals&gt;This project will be completed in three weeks.&lt;/goals&gt;
+    &lt;include_channel&gt;TRUE&lt;/include_channel&gt;
+    &lt;include_discussion&gt;TRUE&lt;/include_discussion&gt;
+    &lt;include_participants&gt;TRUE&lt;/include_participants&gt;
+    &lt;include_tasklist&gt;TRUE&lt;/include_tasklist&gt;
+    &lt;initiatives clear="true"&gt;&lt;/initiatives&gt;
+    &lt;mission&gt;The mission is to deliver a quality product.&lt;/mission&gt;
+    &lt;objectives&gt;Resolve all outstanding customer issues.&lt;/objectives&gt;
+    &lt;public_access&gt;TRUE&lt;/public_access&gt;
+    &lt;roles&gt;
+      &lt;coordinator&gt;jdoe&lt;/coordinator&gt;
+    &lt;/roles&gt;
+    &lt;startdate&gt;20110314&lt;/startdate&gt;
+    &lt;status&gt;Pending&lt;/status&gt;
+    &lt;targetdate&gt;20110401&lt;/targetdate&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P><A NAME="TMPID1662"></A>Pour consulter d'autres exemples de balises <TT CLASS="literal">project</TT> , consultez la section <span><A HREF="llesoi-cfile-prosamp-rf.htm">Exemples de fichier de contrôle d'importation de projets</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG05">Balise goals</A></P>
+<P><A NAME="TMPID1667"></A>La balise <TT CLASS="literal">goals</TT> permet de créer ou de mettre à jour les buts d'un projet. La syntaxe de cette balise est la suivante : <A NAME="AEN1594"></A>
+<PRE 
+CLASS="screen"
+>&lt;goals&gt;Here are some project goals.&lt;/goals&gt;</PRE
+> <A NAME="AEN1595"></A>
+<PRE 
+CLASS="screen"
+>&lt;goals clear="true"&gt;&lt;/goals&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1596"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1684"></A>La balise <TT CLASS="literal">goals</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1688"></A>La balise <TT CLASS="literal">goals</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1691"></A>La balise <TT CLASS="literal">goals</TT> est facultative dans les cas suivants :</P><A NAME="AEN1618"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1619"></A><A NAME="TMPID1695"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1622"></A><A NAME="TMPID1698"></A><TT CLASS="literal">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1625"></A><A NAME="TMPID1701"></A><TT CLASS="literal">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour effacer la valeur de la balise, utilisez l'attribut <TT CLASS="literal">clear="true"</TT> .</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG10">Balise include_channel</A></P>
+<P><A NAME="TMPID1708"></A>La balise <TT CLASS="literal">include_channel</TT> permet d'ajouter une chaîne au projet. La syntaxe de cette balise est la suivante : <A NAME="AEN1634"></A>
+<PRE 
+CLASS="screen"
+>&lt;include_channel&gt;TRUE&lt;/include_channel&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1635"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1724"></A>La balise <TT CLASS="literal">include_channel</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1728"></A>La balise <TT CLASS="literal">include_channel</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1731"></A>La balise <TT CLASS="literal">include_channel</TT> est facultative dans le cas suivant :</P><A NAME="AEN1657"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1658"></A><A NAME="TMPID1735"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les valeurs admises sont <TT CLASS="literal">TRUE</TT>, qui ajoute une chaîne au projet, et <TT CLASS="literal">FALSE</TT>, qui n'ajoute pas de chaîne au projet. Si cette balise n'est pas spécifiée, aucune chaîne n'est ajoutée au projet.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG15">Balise include_discussion</A></P>
+<P><A NAME="TMPID1743"></A>La balise <TT CLASS="literal">include_discussion</TT> permet d'ajouter une discussion au projet. La syntaxe de cette balise est la suivante : <A NAME="AEN1668"></A>
+<PRE 
+CLASS="screen"
+>&lt;include_discussion&gt;TRUE&lt;/include_discussion&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1669"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1759"></A>La balise <TT CLASS="literal">include_discussion</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1763"></A>La balise <TT CLASS="literal">include_discussion</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1766"></A>La balise <TT CLASS="literal">include_discussion</TT> est facultative dans le cas suivant :</P><A NAME="AEN1691"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1692"></A><A NAME="TMPID1770"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les valeurs admises sont <TT CLASS="literal">TRUE</TT>, qui ajoute une discussion au projet, et <TT CLASS="literal">FALSE</TT>, qui n'ajoute pas de discussion au projet. Si cette balise n'est pas spécifiée, aucune discussion n'est ajoutée au projet.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG20">Balise include_participants</A></P>
+<P><A NAME="TMPID1778"></A>La balise <TT CLASS="literal">include_participants</TT> permet de copier des listes de contrôle d'accès provenant de l'élément parent dans le projet. La syntaxe de cette balise est la suivante : <A NAME="AEN1702"></A>
+<PRE 
+CLASS="screen"
+>&lt;include_participants&gt;TRUE&lt;/include_participants&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1703"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1794"></A>La balise <TT CLASS="literal">include_participants</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1798"></A>La balise <TT CLASS="literal">include_participants</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1801"></A>La balise <TT CLASS="literal">include_participants</TT> est facultative dans le cas suivant :</P><A NAME="AEN1725"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1726"></A><A NAME="TMPID1805"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les valeurs admises sont <TT CLASS="literal">TRUE</TT>, qui copie des listes de contrôle d'accès provenant de l'élément parent dans le projet, et <TT CLASS="literal">FALSE</TT>, qui ne le fait pas. Si cette balise n'est pas spécifiée, aucune liste de contrôle d'accès n'est héritée.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG25">Balise include_tasklist</A></P>
+<P><A NAME="TMPID1813"></A>La balise <TT CLASS="literal">include_tasklist</TT> permet d'ajouter une liste de tâches au projet. La syntaxe de cette balise est la suivante : <A NAME="AEN1736"></A>
+<PRE 
+CLASS="screen"
+>&lt;include_tasklist&gt;TRUE&lt;/include_tasklist&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1737"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1829"></A>La balise <TT CLASS="literal">include_tasklist</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1833"></A>La balise <TT CLASS="literal">include_tasklist</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1836"></A>La balise <TT CLASS="literal">include_tasklist</TT> est facultative dans le cas suivant :</P><A NAME="AEN1759"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1760"></A><A NAME="TMPID1840"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les valeurs admises sont <TT CLASS="literal">TRUE</TT>, qui ajoute une liste de tâches au projet, et <TT CLASS="literal">FALSE</TT>, qui n'ajoute pas de liste de tâches au projet. Si cette balise n'est pas spécifiée, aucune liste de tâche n'est ajoutée au projet.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG30">Balise initiatives</A></P>
+<P><A NAME="TMPID1848"></A>La balise <TT CLASS="literal">initiatives</TT> permet de mettre à jour les initiatives du projet ou d'en ajouter. La syntaxe de cette balise est la suivante : <A NAME="AEN1770"></A>
+<PRE 
+CLASS="screen"
+>&lt;initiatives&gt;Here are some project initiatives.&lt;/initiatives&gt;</PRE
+> <A NAME="AEN1771"></A>
+<PRE 
+CLASS="screen"
+>&lt;initiatives clear="true"&gt;&lt;/initiatives&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1772"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1865"></A>La balise <TT CLASS="literal">initiatives</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1869"></A>La balise <TT CLASS="literal">initiatives</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1872"></A>La balise <TT CLASS="literal">initiatives</TT> est facultative dans les cas suivants :</P><A NAME="AEN1794"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1795"></A><A NAME="TMPID1876"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1798"></A><A NAME="TMPID1879"></A><TT CLASS="literal">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1801"></A><A NAME="TMPID1882"></A><TT CLASS="literal">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour effacer la valeur de la balise, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG35">Balise mission</A></P>
+<P><A NAME="TMPID1889"></A>La balise <TT CLASS="literal">mission</TT> permet de mettre à jour les instructions relatives à la mission du projet ou d'en ajouter. La syntaxe de cette balise est la suivante : <A NAME="AEN1810"></A>
+<PRE 
+CLASS="screen"
+>&lt;mission&gt;Here is the project mission.&lt;/mission&gt;</PRE
+> <A NAME="AEN1811"></A>
+<PRE 
+CLASS="screen"
+>&lt;mission clear="true"&gt;&lt;/mission&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1812"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1906"></A>La balise <TT CLASS="literal">mission</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1910"></A>La balise <TT CLASS="literal">mission</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1913"></A>La balise <TT CLASS="literal">mission</TT> est facultative dans les cas suivants :</P><A NAME="AEN1834"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1835"></A><A NAME="TMPID1917"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1838"></A><A NAME="TMPID1920"></A><TT CLASS="literal">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1841"></A><A NAME="TMPID1923"></A><TT CLASS="literal">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour effacer la valeur de la balise, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG40">Balise objectives</A></P>
+<P><A NAME="TMPID1930"></A>La balise <TT CLASS="literal">objectives</TT> permet de créer ou de mettre à jour les objectifs du projet. La syntaxe de cette balise est la suivante : <A NAME="AEN1850"></A>
+<PRE 
+CLASS="screen"
+>&lt;objectives&gt;Here are the objectives for the project.&lt;/objectives&gt;</PRE
+> <A NAME="AEN1851"></A>
+<PRE 
+CLASS="screen"
+>&lt;objectives clear="true"&gt;&lt;/objectives&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1852"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1947"></A>La balise <TT CLASS="literal">objectives</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1951"></A>La balise <TT CLASS="literal">objectives</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1954"></A>La balise <TT CLASS="literal">objectives</TT> est facultative dans les cas suivants :</P><A NAME="AEN1874"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1875"></A><A NAME="TMPID1958"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1878"></A><A NAME="TMPID1961"></A><TT CLASS="literal">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1881"></A><A NAME="TMPID1964"></A><TT CLASS="literal">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour effacer la valeur de la balise, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG45">Balise public_access</A></P>
+<P><A NAME="TMPID1971"></A>La balise <TT CLASS="literal">public_access</TT> permet de fournir un accès public au projet. La syntaxe de cette balise est la suivante : <A NAME="AEN1890"></A>
+<PRE 
+CLASS="screen"
+>&lt;public_access&gt;TRUE&lt;/public_access&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1891"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1987"></A>La balise <TT CLASS="literal">public_access</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1991"></A>La balise <TT CLASS="literal">public_access</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1994"></A>La balise <TT CLASS="literal">public_access</TT> est facultative dans le cas suivant :</P><A NAME="AEN1913"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1914"></A><A NAME="TMPID1998"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2003"></A>Les valeurs admises sont <TT CLASS="literal">TRUE</TT>, qui autorise l'accès public au projet, et <TT CLASS="literal">FALSE</TT>, qui interdit l'accès public au projet.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2007"></A>Si cette balise n'est pas spécifiée lors de la création du projet, l'accès public est désactivé pour le projet.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG50">Balise roles</A></P>
+<P><A NAME="TMPID2010"></A>La balise <TT CLASS="literal">roles</TT> permet d'ajouter des utilisateurs ou des groupes aux différents rôles du projet. La syntaxe de cette balise est la suivante : <A NAME="AEN1928"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;roles&gt;
+  &lt;coordinator&gt;neil&lt;/coordinator&gt;
+  &lt;member&gt;geddy&lt;/member&gt;
+  &lt;guest&gt;alex&lt;/guest&gt;
+&lt;/roles&gt;</PRE
+> <A NAME="AEN1929"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;roles&gt;
+  &lt;guest type="user"&gt;jdoe&lt;/guest&gt;
+&lt;/roles&gt;</PRE
+> <A NAME="AEN1930"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;roles&gt;
+  &lt;guest type="group"&gt;DefaultGroup&lt;/guest&gt;
+&lt;/roles&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1931"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2028"></A>La balise <TT CLASS="literal">roles</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2032"></A>La balise <TT CLASS="literal">roles</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2035"></A>La balise <TT CLASS="literal">roles</TT> est facultative dans les cas suivants :</P><A NAME="AEN1953"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1954"></A><A NAME="TMPID2039"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1957"></A><A NAME="TMPID2042"></A><TT CLASS="literal">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1960"></A><A NAME="TMPID2045"></A><TT CLASS="literal">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2050"></A>Vous ne pouvez pas supprimer d'utilisateurs ni de groupes d'un rôle à l'aide d'Object Importer.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2053"></A>Tout utilisateur ou groupe doit exister dans Content Server pour que vous puissiez y faire référence. <TT CLASS="literal">roles</TT> . N'oubliez pas que les noms d'utilisateur et de groupe sont sensibles à la casse.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2057"></A>La balise <TT CLASS="literal">guest</TT> subordonnée de la balise <TT CLASS="literal">role</TT> a un attribut facultatif : <TT CLASS="literal">type</TT>. Les seules valeurs admises pour <TT CLASS="literal">type</TT> sont les suivantes : <TT CLASS="literal">user</TT> et <TT CLASS="literal">group</TT>. Si l'attribut <TT CLASS="literal">type</TT> n'est pas spécifié dans la balise <TT CLASS="literal">guest</TT>, Object Importer applique la valeur <TT CLASS="literal">user</TT>.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG55">Balise startdate</A></P>
+<P><A NAME="TMPID2070"></A>La balise <TT CLASS="literal">startdate</TT> permet d'ajouter ou de mettre à jour la date de début du projet. La syntaxe de cette balise est la suivante : <A NAME="AEN1987"></A>
+<PRE 
+CLASS="screen"
+>&lt;startdate&gt;20100926&lt;/startdate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1988"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2086"></A>La balise <TT CLASS="literal">startdate</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2090"></A>La balise <TT CLASS="literal">startdate</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2093"></A>La balise <TT CLASS="literal">startdate</TT> est facultative dans les cas suivants :</P><A NAME="AEN2010"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2011"></A><A NAME="TMPID2097"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2014"></A><A NAME="TMPID2100"></A><TT CLASS="literal">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2017"></A><A NAME="TMPID2103"></A><TT CLASS="literal">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les dates doivent être au format AAAAMMJJ ou AAAAMMJJHHMMSS, où la valeur HH se rapporte au format 24 heures et doit être comprise entre 01 et 24. Si le format AAAMMJJ est utilisé, l'heure prend par défaut la valeur 000000.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG60">Balise status</A></P>
+<P><A NAME="TMPID2109"></A>La balise <TT CLASS="literal">status</TT> permet d'ajouter ou de mettre à jour le statut du projet. La syntaxe de cette balise est la suivante : <A NAME="AEN2025"></A>
+<PRE 
+CLASS="screen"
+>&lt;status&gt;Caution&lt;/status&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2026"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2125"></A>La balise <TT CLASS="literal">status</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2129"></A>La balise <TT CLASS="literal">status</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2132"></A>La balise <TT CLASS="literal">status</TT> est facultative dans les cas suivants :</P><A NAME="AEN2048"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2049"></A><A NAME="TMPID2136"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2052"></A><A NAME="TMPID2139"></A><TT CLASS="literal">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2055"></A><A NAME="TMPID2142"></A><TT CLASS="literal">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2147"></A>Les valeurs autorisées pour la balise <TT CLASS="literal">status</TT> sont les suivantes : <TT CLASS="literal">Pending</TT>, <TT CLASS="literal">OnTarget</TT>, <TT CLASS="literal">Caution</TT> ou <TT CLASS="literal">Critical</TT>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2154"></A>Si la balise <TT CLASS="literal">status</TT> n'est pas spécifiée lors de la création du projet, le statut prendra par défaut la valeur <TT CLASS="literal">Pending</TT>.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROJTAG65">Balise targetdate</A></P>
+<P><A NAME="TMPID2159"></A>La balise <TT CLASS="literal">targetdate</TT> permet d'ajouter ou de mettre à jour la date prévue du projet. La syntaxe de cette balise est la suivante : <A NAME="AEN2074"></A>
+<PRE 
+CLASS="screen"
+>&lt;targetdate&gt;20110325&lt;/targetdate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2075"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2175"></A>La balise <TT CLASS="literal">targetdate</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="project"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2179"></A>La balise <TT CLASS="literal">targetdate</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2182"></A>La balise <TT CLASS="literal">targetdate</TT> est facultative dans les cas suivants :</P><A NAME="AEN2097"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2098"></A><A NAME="TMPID2186"></A><TT CLASS="literal">&lt;node type="project" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2101"></A><A NAME="TMPID2189"></A><TT CLASS="literal">&lt;node type="project" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2104"></A><A NAME="TMPID2192"></A><TT CLASS="literal">&lt;node type="project" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Les dates doivent être au format AAAAMMJJ ou AAAAMMJJHHMMSS, où la valeur HH se rapporte au format 24 heures et doit être comprise entre 01 et 24. Si le format AAAMMJJ est utilisé, l'heure prend par défaut la valeur 000000.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

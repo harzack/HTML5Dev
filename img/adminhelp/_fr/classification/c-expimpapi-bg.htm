@@ -1,0 +1,190 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESCLS100500-H-AGD-FR">
+<META name="PiXprocLocator" content="classification">
+<title>Utilisation de l'API d'exportation XML avec classements</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'c-expimpapi-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administration de Classements';
+          header.title2 = 'Utilisation de l\'API d\'exportation XML avec classements';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1573"></A>La fonction de l'API d'exportation XML Content Server permet aux informations associées à un volume ou à un objet Content Server d'être traduites en code XML et exportées sous la forme d'un fichier utilisable par une autre application (application d'archivage de données, par exemple). Lorsque Classements est installé, vous pouvez utiliser l'API d'exportation XML pour exporter au format XML les informations associées aux classements, telles que les hiérarchies de classement de l'espace de travail Classement et les éléments Content Server auxquels des classements sont assignés. L'API d'exportation XML vous donne la possibilité de contrôler la structure des fichiers XML générés par Content Server et vous permet de créer des habillages personnalisés pour l'interface Classements. Pour plus d'informations sur l'API d'exportation XML de Content Server, reportez-vous au manuel <span><XPROC NAME="ExtXrefStart" HREF="llescor-pgd.-" FMT="" NO1ST><i>Open Text Content Server - XML Import and Export Guide (LLESCOR-PGD)</i><XPROC NAME="ExtXrefEnd" HREF="llescor-pgd.-" FMT=""></span>, disponible dans la OpenText Knowledge Center. </P>
+<P class="before-ul"><A NAME="TMPID1582"></A>Pour effectuer une exportation XML, vous devez ajouter des paramètres à la fin de l'URL Content Server de base dans un navigateur Web. Voici un exemple d'URL d'exportation XML : <TT CLASS="parameter"><I><TT CLASS="literal">http://</TT>&lt;<I CLASS="varname">content_server_URL</I>>?func=ll&amp;objId=&lt;<I CLASS="varname">[DataID]</I>>&amp;objAction=xmlexport&amp;&lt;<I CLASS="varname">optionalparameters</I>></I></TT>, où :</P><A NAME="AEN1501"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1502"></A><A NAME="TMPID1591"></A><TT CLASS="literal">&lt;<I CLASS="varname">content_server_URL</I>></TT> représente le préfixe de l'URL du serveur Content Server,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1507"></A><A NAME="TMPID1596"></A><TT CLASS="literal">&lt;<I CLASS="varname">[DataID]</I>></TT> représente l'ID Content Server de l'objet à exporter (Espace de travail de classement, Arbre de classement, Classement, Document, Dossier, etc.),</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1512"></A><A NAME="TMPID1601"></A>et <TT CLASS="literal">&amp;&lt;<I CLASS="varname">optionalparameters</I>></TT> représente les paramètres qui contrôlent le contenu du fichier XML généré. </P></LI></UL>
+<P><A NAME="TMPID1604"></A>La requête d'exportation XML commence toujours par <TT CLASS="literal">&amp;xmlexport</TT>. Plusieurs paramètres peuvent être ajoutés et sont reliés à l'aide du caractère perluète (<TT CLASS="literal">&amp;</TT>).</P>
+<P><A NAME="TMPID1607"></A>Tous les paramètres facultatifs de l'API d'exportation XML standard peuvent être utilisés avec Classements. Vous pouvez également utiliser des paramètres spécifiques à Classements. Le tableau ci-dessous fournit des informations sur les paramètres facultatifs de l'API d'exportation XML standard (<TT CLASS="literal">scope</TT> et <TT CLASS="literal">callbackhandlername</TT>) et sur les paramètres propres à Classements (<TT CLASS="literal">xmlclassifieditems</TT> et <TT CLASS="literal">xmlclassificationstatus</TT>). Pour plus d'informations sur les paramètres facultatifs de l'API d'exportation XML standard, reportez-vous au manuel <span><XPROC NAME="ExtXrefStart" HREF="llescor-pgd.-" FMT="" NO1ST><i>Open Text Content Server - XML Import and Export Guide (LLESCOR-PGD)</i><XPROC NAME="ExtXrefEnd" HREF="llescor-pgd.-" FMT=""></span>.</P>
+<P><A NAME="TMPID1613"></A>Le <span><A HREF="c-expimpapi-bg.htm#TAB-AID20"><NOBR>Tableau&nbsp;1-7</NOBR></A></span> répertorie certains paramètres facultatifs que vous pouvez utiliser lors d'une exportation XML.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF50"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1616"></A><B CLASS="note">Note : </B><BR>Lorsque vous utilisez l'API d'exportation XML, vous devez disposer des autorisations Voir et Voir le contenu pour exporter un objet de classement (espace de travail Classement, Arbre de classement ou classement), ainsi que tous les sous-éléments de cet objet. Par ailleurs, vous devez disposer des <I CLASS="emphasis">droits d'administration système</I> pour définir certains paramètres facultatifs. Le tableau <span><A HREF="c-expimpapi-bg.htm#TAB-AID20"><NOBR>Tableau&nbsp;1-7</NOBR></A></span> ci-dessous énumère les paramètres facultatifs pour lesquels ce privilège est requis.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="Paramètres facultatifs" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="TAB-AID20"></A><B>Tableau 1-7 : Paramètres facultatifs</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Paramètre</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Valeurs</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">scope=</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exporte les classements enfant d'un objet de classement donné (espace de travail Classement, Arbre de classement ou classement) selon le niveau d'enfant spécifié.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1638"></A><TT CLASS="literal">base</TT> : exporte uniquement l'objet.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1641"></A><TT CLASS="literal">sub</TT> : exporte l'objet et tous ses enfants.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1644"></A><TT CLASS="literal">one</TT> : exporte l'objet et ses enfants immédiats.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1647"></A><TT CLASS="literal">&lt;<I CLASS="varname">n</I>></TT>, où <TT CLASS="literal">&lt;<I CLASS="varname">n</I>></TT> représente un entier supérieur à <TT CLASS="literal">0</TT> : exporte l'objet et ses enfants immédiats jusqu'à <TT CLASS="literal">&lt;<I CLASS="varname">n</I>></TT> niveaux en dessous de l'objet. <TT CLASS="literal">1</TT> correspond à un niveau au-dessous de l'objet, <TT CLASS="literal">2</TT> à deux niveaux au-dessous de l'objet, etc.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">xmlclassifieditems=</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exporte les éléments classés d'un statut spécifique qui appartiennent à un Arbre de classement ou à un classement.<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF51"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1662"></A><B CLASS="note">Note : </B><BR>Vous devez disposer des <I CLASS="emphasis">droits d'administration système</I> pour indiquer les statuts suivants : pending (en attente), rejected (rejeté), all (tous).</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1667"></A><TT CLASS="literal">vrai</TT> : exporte tous les éléments classés visibles dans l'interface, en d'autres termes, tous ceux dont le statut est « accepté ».</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1671"></A><TT CLASS="literal">accepted</TT> : exporte les éléments classés visibles dans l'interface.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1674"></A><TT CLASS="literal">pending</TT> : exporte les éléments auxquels des classements ont été assignés ; toutefois, ces éléments ne sont pas encore visibles dans l'interface.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1677"></A><TT CLASS="literal">rejected</TT> : exporte les éléments classés dont les classements ont été dissociés.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1680"></A><TT CLASS="literal">all</TT> : exporte tous les éléments classés quel que soit leur statut.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">callbackhandlername=</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom du gestionnaire de rappel utilisé. Lorsque vous utilisez la valeur <TT CLASS="literal">classifications</TT> avec le paramètre <TT CLASS="literal">callbackhandlername</TT>, tous les classements qui ont été assignés à des objets classables sont ajoutés à l'exportation des objets</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">classifications</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">xmlclassificationstatus=</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Ajoute des classements ayant un statut spécifique et qui ont été assignés aux objets classables pour l'exportation des objets. <table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF52"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1695"></A><B CLASS="note">Note : </B><BR>Vous devez disposer des <I CLASS="emphasis">droits d'administration système</I> pour indiquer les statuts suivants : pending (en attente), rejected (rejeté), all (tous).</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1700"></A><TT CLASS="literal">accepted</TT> : exporte les classements visibles dans l'interface.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1703"></A><TT CLASS="literal">pending</TT> : exporte les classements qui ont été assignés aux objets ; toutefois, ces éléments ne sont pas encore visibles dans l'interface.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1706"></A><TT CLASS="literal">rejected</TT> : exporte les classements qui ont été dissociés des objets.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1709"></A><TT CLASS="literal">all</TT> : exporte les classements quel que soit leur statut.</P></TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P><A NAME="TMPID1711"></A>Vous pouvez combiner différents paramètres facultatifs pour qu'une exportation XML soit plus précise. Le tableau <span><A HREF="c-expimpapi-bg.htm#TAB-AID21"><NOBR>Tableau&nbsp;1-8</NOBR></A></span> suivant répertorie des URL contenant des paramètres facultatifs pouvant être combinés.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF53"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1714"></A><B CLASS="note">Note : </B><BR>Si vous combinez des paramètres facultatifs et que Content Server renvoie des résultats inattendus, contactez le OpenText Customer Support.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="Exemples d'exportation XML" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="TAB-AID21"></A><B>Tableau 1-8 : Exemples d'exportation XML</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">URL</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;<I CLASS="varname">content_server_URL</I>>?func=ll&amp;objId=4962&amp;objAction=xmlexport&amp;scope=sub&amp;xmlclassifieditems=true</TT> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exporte les contenus de l'objet de l'espace de travail Classement avec l'ID d'objet 4962 ainsi que tous les éléments classés dotés du statut « accepted » (accepté).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;<I CLASS="varname">content_server_URL</I>>?func=ll&amp;objId=2040&amp;objAction=xmlexport&amp;scope=base&amp;xmlclassifieditems=all</TT> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exporte un classement avec l'ID d'objet 2040 et tous ses éléments classés associés, quel que soit leur statut.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;<I CLASS="varname">content_server_URL</I>>?func=ll&amp;objId=2001&amp;objAction=xmlexport&amp;scope=3&amp;xmlclassifieditems=pending</TT> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exporte un Arbre de classement avec l'ID d'objet 2001, trois niveaux de classement enfant dans l'Arbre de classement ainsi que des éléments classés dont le statut est « pending » (en attente).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;<I CLASS="varname">content_server_URL</I>>?func=ll&amp;objId=2245&amp;objAction=xmlexport&amp;scope=one&amp;callbackhandlername=classifications&amp;xmlclassificationstatus=accepted</TT> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Ajoute à l'exportation de l'objet dont l'ID d'objet est 2245, ainsi qu'à ses enfants immédiats, tous les classements pour lesquels le statut « accepted » (accepté) a été assigné à l'objet et à leurs enfants.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;<I CLASS="varname">content_server_URL</I>>?func=ll&amp;objId=2401&amp;objAction=xmlexport&amp;callbackhandlername=classifications&amp;xmlclassifieditems=true</TT> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Ajoute à l'exportation de l'objet dont l'ID d'objet est 2401 tous les classements qui sont assignés à l'objet. Les éléments classés dont le statut est « accepted » (accepté) et auxquels les classements assignés à l'objet ont été attribués sont également ajoutés à l'exportation.<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF54"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1758"></A><B CLASS="note">Note : </B><BR>Dans ce type d'exemple (lorsque les paramètres <TT CLASS="literal">&amp;callbackhandlername=classifications&amp;xmlclassifieditems=</TT> sont utilisés conjointement), un seul niveau d'éléments classés d'un classement est exporté pour éviter les répétitions d'exportations successives.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">&lt;<I CLASS="varname">content_server_URL</I>>?func=ll&amp;objId=1365&amp;objAction=xmlexport&amp;xmlclassifieditems=pending&amp;callbackhandlername=classifications&amp;xmlclassificationstatus=rejected</TT> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Exporte le classement dont l'ID d'objet est 1365 et tous ses classements enfant et éléments classés associés dotés du statut « pending » (en attente). Pour chacun des éléments classés, les classements dotés du statut « rejected » (rejeté) sont exportés.</TD></TR></TABLE></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

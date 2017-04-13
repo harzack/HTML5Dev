@@ -1,0 +1,241 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>REPTAG base</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-cdfirst.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Column Data Tags';
+          header.title2 = 'REPTAG base';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3270"></A>This section details the column data tag <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG01">LL_REPTAG=column name</A></span>, <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG08">[LL_REPTAG_!variablename /]</A></span>, <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG05">LL_REPTAG_$constname</A></span>, <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG06">LL_REPTAG_%variablename</A></span>, <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG04">LL_REPTAG_&amp;parmname</A></span>, <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG02">LL_REPTAG_column number</A></span>, <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG03">LL_REPTAG_literal text</A></span>, and <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG07">LL_REPTAG_@function</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG01">LL_REPTAG=column name</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG01-NAME">Syntax</A></P>
+<P><A NAME="REPTAGEQUALS"></A><B CLASS="highlight">[LL_REPTAG=&lt;<I CLASS="varname">column name</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG01-DESC">Description</A></P>
+<P><A NAME="TMPID3289"></A>Causes WebReports to insert the source data specified by the &lt;<I CLASS="varname">column name</I>> into the output report. The tag should only be used in the row section of a WebReport unless it is being used as an argument for the <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-SUBINSERTJSON">INSERTJSON</A></span> tag. The optional list of sub-tags is used to specify formatting options. These sub-tags should be separated by spaces. See the sub-tag definition table for information on these tags.&#13;</P>
+<P><A NAME="TMPID3293"></A>The use of single or double quotes to delimit a column name is supported. Using quotes is only mandatory for referencing data source column names that contain a space character. This also applies if the LiveReport renames a column to a name containing a space character. Double quotes should not be used if the <TT CLASS="literal">LL_REPTAG</TT> is inside a conditional tag.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG01-EXAMP">Example</A></P><A NAME="AEN3022"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG=NAME /]
+[LL_REPTAG="NAME" /]
+[LL_REPTAG="FIRST NAME" /]
+[LL_WEBREPORT_INCLUDEIF "John" != "[LL_REPTAG='FIRST NAME' /]" /]</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG08">[LL_REPTAG_!variablename /]</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG08-NAME">Syntax</A></P>
+<P><A NAME="REPTAGEXCL"></A><B CLASS="highlight">[LL_REPTAG_!&lt;<I CLASS="varname">variablename</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG08-DESC">Description</A></P>
+<P><A NAME="TMPID3308"></A>This tag is a shortcut to [LL_REPTAG_%&lt;<I CLASS="varname">variablename</I>> CURRENTVAL /], <span><A HREF="wr-tag-cdfirst.htm#WR-TAG-CDREPTAG06">LL_REPTAG_%variablename</A></span>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG08-EXAMP">Example</A></P>
+<P><A NAME="TMPID3313"></A>The following two tags are equal:</P><A NAME="AEN3034"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_%myVar CURRENTVAL /]
+[LL_REPTAG_!myVar /]</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG08-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID3317"></A>For more information, see <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCONCATVAR">CONCATVAR</A></span>, and <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCURRENTVAL">CURRENTVAL</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG05">LL_REPTAG_$constname</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG05-NAME">Syntax</A></P>
+<P><A NAME="CONSTNAME"></A><B CLASS="highlight">[LL_REPTAG_$&lt;<I CLASS="varname">constname</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG05-DESC">Description</A></P>
+<P><A NAME="TMPID3331"></A>This tag provides a way to access constants that have been defined using the <B CLASS="guilabel">Constants</B> tab of a WebReports <B CLASS="guilabel">Properties</B> page. For more information, see <span><A HREF="wr-constant-info.htm">WebReports Constants</A></span>. The constant name in the Reportview should exactly match the name that has been specified on the <B CLASS="guilabel">Constants</B> page. The tag is replaced by the value that has been defined for the corresponding constant.</P>
+<P><A NAME="TMPID3337"></A>Constants are particularly useful for referencing Sub-WebReports and other Content Server objects as it means that <TT CLASS="literal">objectids</TT> don't need to be hardcoded within the Reportview. For more information, see <span><A HREF="wr-server-calsuweb.htm">Calling Sub-WebReports</A></span>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG05-EXAMP">Example</A></P>
+<P><A NAME="TMPID3343"></A>For example, if a constant called <TT CLASS="literal">MyConst</TT> has been defined with a constant value of <TT CLASS="literal">12345</TT>, the following tag will return <TT CLASS="literal">'12345'</TT>:</P><A NAME="AEN3061"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_$MyConst /]</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG05-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID3350"></A>For more information, see <span><A HREF="wr-subwebreports-info.htm">Using Sub-WebReports</A></span> and <span><A HREF="wr-constant-info.htm">WebReports Constants</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG06">LL_REPTAG_%variablename</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG06-NAME">Syntax</A></P>
+<P><A NAME="VARNAME"></A><B CLASS="highlight">[LL_REPTAG_%&lt;<I CLASS="varname">variablename</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG06-DESC">Description</A></P>
+<P><A NAME="TMPID3363"></A>This tag provides a way to reference variables that have been defined by using <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETVAR">SETVAR</A></span>, <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span> or <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCONCATVAR">CONCATVAR</A></span>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="REPTAG06-EXAMP">Example</A></P>
+<P><A NAME="TMPID3369"></A>If, for example, <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span> had been used in the row section to accumulate a mathematical total in a variable called <TT CLASS="literal">MyVar</TT>, the final total could be accessed by using:</P><A NAME="AEN3080"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_%MyVar /]</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG06-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID3375"></A>More information on using variable tags and the associated sub-tags can be found in <span><A HREF="wr-variable-info.htm">Using Variables</A></span>. For more information, see <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETVAR">SETVAR</A></span>, <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STADDVAR">ADDVAR</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCONCATVAR">CONCATVAR</A></span> and <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCURRENTVAL">CURRENTVAL</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG04">LL_REPTAG_&amp;parmname</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG04-NAME">Syntax</A></P>
+<P><A NAME="PARMNAME"></A><B CLASS="highlight">[LL_REPTAG_&amp;&lt;<I CLASS="varname">parmname</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG04-DESC">Description</A></P>
+<P><A NAME="TMPID3391"></A>This tag provides a means of accessing any parameter in the URL used to invoke the WebReport. Any values in the URL prefixed by an ampersand “&amp;” can be referenced in this way. This means that existing parameters such as <TT CLASS="literal">&amp;ObjAction</TT> can be referenced as well as any number of bespoke parameters.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG04-EXAMP">Example</A></P>
+<P><A NAME="TMPID3396"></A>For example, if the following URL were executed:</P><A NAME="AEN3099"></A>
+<PRE 
+CLASS="screen"
+>...?func=ll&amp;objId=47478&amp;objAction=RunReport<B
+CLASS="highlight"
+>&amp;myparm=testdata</B
+>&amp;nexturl=....</PRE
+>
+<P><A NAME="TMPID3399"></A>The parameter <TT CLASS="literal">myparm</TT> can be accessed by using <TT CLASS="literal">[LL_REPTAG_&amp;myparm /]</TT>. This tag will resolve to the value in the URL, in the example above that value is <TT CLASS="literal">testdata</TT>, where it can be used as output or as part of a conditional statement.</P>
+<P><A NAME="TMPID3403"></A>For example, <TT CLASS="literal">[LL_WEBREPORT_INCLUDEIF "<B CLASS="highlight">[LL_REPTAG_&amp;myparm /]</B>" == "testdata" /]</TT></P>
+<P><A NAME="TMPID3406"></A>If a parameter is referenced in the Reportview but is not provided in the URL a blank string will be inserted in the output unless a parameter default is set on the <B CLASS="guilabel">Parameters</B> tab of a WebReports <B CLASS="guilabel">Properties</B> page.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG04-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID3412"></A>For more information, see <span><A HREF="wr-parameter-info.htm">Using Parameters</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG02">LL_REPTAG_column number</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG02-NAME">Syntax</A></P>
+<P><A NAME="REPORTTAGUNDERSCORE"></A><B CLASS="highlight">[LL_REPTAG_&lt;<I CLASS="varname">column number</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG02-DESC">Description</A></P>
+<P><A NAME="TMPID3424"></A>Reference column data with the column number. Content Server columns are numbered from left to right starting at 1.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF17"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3427"></A><B CLASS="note">Note: </B><BR>Pay particular attention to the use of an underscore “_” instead of an equal “=” sign in this form of <TT CLASS="literal">LL_REPTAG</TT>. This roughly matches the Content Server WebForm tag model. This form of the tag can be useful if one Reportview is to be used in multiple WebReports where the column titles may vary.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG03">LL_REPTAG_“literal text”</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG03-NAME">Syntax</A></P>
+<P><A NAME="LITERALNAME"></A><B CLASS="highlight">[LL_REPTAG_“&lt;<I CLASS="varname">literal text</I>>” /]</B></P>
+<P><A NAME="TMPID3443"></A>or</P>
+<P><A NAME="TMPID3444"></A><B CLASS="highlight">[LL_REPTAG_'&lt;<I CLASS="varname">literal text</I>>' /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG03-DESC">Description</A></P>
+<P><A NAME="TMPID3449"></A>This tag provides a means of specifying a string of text to be inserted in the Reportview. Any sub-tags included in this tag definition will operate on the text specified between the two quotes. Either double quotes or single quotes may be used but must be matched.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG03-EXAMP">Example</A></P>
+<P><A NAME="TMPID3452"></A><TT CLASS="literal">[LL_REPTAG_"this text will be displayed in capitals" UPPER /]</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CDREPTAG07">LL_REPTAG_@function</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG07-NAME">Syntax</A></P>
+<P><A NAME="FUNCNAME"></A><B CLASS="highlight">[LL_REPTAG_@&lt;<I CLASS="varname">function</I>> /]</B></P>
+<P><A NAME="TMPID3462"></A><B CLASS="highlight">[LL_REPTAG_@&lt;<I CLASS="varname">function</I>>&lt;<I CLASS="varname">reference options</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG07-DESC">Description</A></P>
+<P><A NAME="TMPID3468"></A>This tag type provides data functions. The result of each function is inserted into the output; however, these tags are currently only supported in the header or footer of a Reportview. In other words, before the <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTROW">STARTROW</A></span> or after the <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDROW">ENDROW</A></span> tag.</P>
+<P class="before-ul"><A NAME="TMPID3471"></A>For each function there are optional characters following the function name which reference either a specific row of data or a column or both. These reference characters are:</P><A NAME="AEN3160"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN3161"></A><A NAME="TMPID3474"></A><TT CLASS="literal">[r]</TT>: this optional parameter, only used by <TT CLASS="literal">@DATA</TT>, specifies the row index.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF18"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3478"></A><B CLASS="note">Note: </B><BR>The reserved word <TT CLASS="literal">LAST</TT> can be used instead of <TT CLASS="literal">r</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="compact"><A NAME="TMPID3481"></A><TT CLASS="literal">[r]</TT> can be followed by:</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN3171"></A><A NAME="TMPID3484"></A><TT CLASS="literal">_c</TT>: specifies a column number, or</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN3174"></A><A NAME="TMPID3487"></A><TT CLASS="literal">_&lt;<I CLASS="varname">colname</I>></TT>: specifies a column name.</P></LI></UL>
+<P><A NAME="TMPID3490"></A>When one of the functions below is specified, the function will be executed against which ever data has been referenced. For any math tags, if non-numeric values are found in the column then an error is returned.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF19"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3492"></A><B CLASS="note">Note: </B><BR>There are sub-tags which will help to format the values returned by these functions.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG07-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3182"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Parameter</TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Description</TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_@AVERAGE_&lt;<I CLASS="varname">column</I>> /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the average of all valid numbers in the specified column.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_@DATA[r]_&lt;<I CLASS="varname">column</I>> /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a single cell of data specified by the row and column.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_@MIN_&lt;<I CLASS="varname">column</I>> /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the lowest, minimum, value from all the values in the specified column.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_@MAX_&lt;<I CLASS="varname">column</I>> /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the greatest, maximum, value from all the values in the specified column.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">[LL_REPTAG_@RESPONSEDATA.&lt;<I CLASS="varname">data field name</I>> /]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns fields returned by Content Server in the response to a request. These fields are normally used in Content Server pages to display data. For example, some Content Server browse pages use a field in the response from a browse request called: <TT CLASS="literal">hasStagedContent</TT>. This value could be referenced in a WebReport using: <TT CLASS="literal">[LL_REPTAG_@RESPONSEDATA.hasStagedContent /]</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">[LL_REPTAG_@SUM_&lt;<I CLASS="varname">column</I>> /]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the sum of all the values in the specified column.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CDREPTAG07-EXAMP">Example</A></P>
+<P><A NAME="TMPID3555"></A>If the average of column 2 is required, the following syntax could be used: <TT CLASS="literal">[LL_REPTAG_@AVERAGE_2 /]</TT></P>
+<P><A NAME="TMPID3557"></A>If the sum of a column called “hours” is required, the following syntax could be used: <TT CLASS="literal">[LL_REPTAG_@SUM_hours /]</TT></P>
+<P><A NAME="TMPID3560"></A>If the contents of a column called <TT CLASS="literal">dataid</TT> from the last row of data is required, the following syntax could be used: <TT CLASS="literal">[LL_REPTAG_@DATA[last]_dataid /]</TT></P>
+<P><A NAME="TMPID3563"></A>If the contents of a column 2 from row 1 of the data is required, the following syntax could be used: <TT CLASS="literal">[LL_REPTAG_@DATA[ 1 ]_2 /]</TT></P>
+<P><A NAME="TMPID3565"></A>If the contents of a field in the Content Server request response is required, the following syntax could be used: <TT CLASS="literal">[LL_REPTAG_@RESPONSEDATA.HASSTAGEDCONTENT /]</TT></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

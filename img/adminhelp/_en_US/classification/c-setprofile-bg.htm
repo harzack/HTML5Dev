@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESCLS100500-H-AGD-EN">
+<META PiXprocLocator="classification">
+<title>Configuring the Classification Profile for Intelligent Classifications</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/classification/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'c-setprofile-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Classifications';
+          header.title2 = 'Configuring the Classification Profile for Intelligent Classifications';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID617"></A>When using Intelligent Classification functionality for Classifications with a management type of assisted or automatic, you must define and set a profile. In this profile, you specify the criteria that items must meet to be assigned the Classification. For each profile, the system examines every item that is added or modified (provided that the item's type is a managed object). It then determines if the item meets the profile's criteria for the corresponding Classification. If the item fits the profile for a Classification, the system does one of the following:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN619"></A><A NAME="TMPID620"></A>If the Classification's management type is assisted, the system suggests the Classification for the item on the Manage Pending Objects page. The Classification can then be accepted, rejected, or left as pending.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN621"></A><A NAME="TMPID622"></A>If the Classification's management type is automatic, the system automatically assigns the Classification to the item.</P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF13"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID624"></A><B CLASS="NOTE">Note: </B><BR>You cannot set a profile for a Classification whose management type is <I CLASS="EMPHASIS">manual</I>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID626"></A>For more information about managed objects, see <span><A HREF="c-admclassitems-bg.htm">Configuring Item Types as Classifiable</A></span>. For more information about accepting or rejecting system-suggested Classifications for items, see <span><A HREF="c-maint-bg.htm">Maintaining Classifications</A></span>. For more information about setting a Classifications management type, see <span><XPROC NAME="ExtXrefStart" HREF="llescls-h-ugd.c-addclass-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/classification/c-addclass-bg.htm">Adding Classifications</A><XPROC NAME="ExtXrefEnd" HREF="llescls-h-ugd.c-addclass-bg" FMT=""></span>.</P>
+<P CLASS="BRIDGEHEAD-BOLDPARA"><A NAME="TMP4REF14">Profile Tab</A></P>
+<P class="before-ul"><A NAME="TMPID632"></A>If the management type is assisted or automatic, the <B CLASS="GUILABEL">Profile</B> tab will be visible when you view a Classification's Properties page, and you will be able to:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN634"></A><A NAME="TMPID636"></A>Set the relevance score threshold.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN636"></A><A NAME="TMPID638"></A>Add and remove Exemplar Documents.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN638"></A><A NAME="TMPID640"></A>See the key phrases that are generated.</P></LI></UL>
+<P><A NAME="TMPID641"></A>Each of these criteria are used to determine if a managed object meets the Classification's profile and to determine if it should be automatically classified or if the classification should be suggested.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TMP4REF15">Setting the Relevance Score Threshold</A></P>
+<P><A NAME="TMPID643"></A>The relevance score threshold determines how closely a document must satisfy your profile parameters. The higher the threshold, the more exact the match must be. The value must be from 1 to 100. The default value is 40.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF16"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID645"></A><B CLASS="NOTE">Note: </B><BR>You must click the <B CLASS="GUILABEL">Construct Profile Query</B> button on the <B CLASS="GUILABEL">Profile</B> tab, and the <B CLASS="GUILABEL">Save as Profile</B> button on the Search page, before a change to the relevance score threshold takes effect.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="TMP4REF17">Adding Exemplar Documents to the Profile</A></P>
+<P><A NAME="TMPID650"></A>If you already have one or more documents or emails that exemplify a Classification, you can quickly define a classification profile by adding these documents or emails to the profile as <I CLASS="EMPHASIS">Exemplar Documents</I>. Content Server then determines and displays the Exemplar Document's key phrases (recurring words and word combinations, especially those involving unusual words). These phrases are used to determine if items satisfy the profile.</P>
+<P><A NAME="TMPID653"></A>Once you add the Exemplar Documents, you must construct the <I CLASS="EMPHASIS">Profile Query</I> to store the key phrases in the profile. A Profile Query is a set of search criteria that defines the parameters for automatic and assisted Classifications.</P>
+<P><A NAME="TMPID655"></A>When an Exemplar Document is added to a classification profile, Content Server automatically adds key phrases from the Document to the Profile Query Search page. Additionally, the <I CLASS="EMPHASIS">location</I> of the Exemplar Document is shown in the Location column on the Profile tab.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF18"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID659"></A><B CLASS="NOTE">Note: </B><BR>Content Server can extract key phrases from only the <I CLASS="EMPHASIS">latest major version</I> of an Exemplar Document that contains both major and minor versions. Although you can add Documents without a major version as Exemplar Documents, these documents cannot contribute key phrases to the classification profile.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF19">Constructing the Profile Query</A></P>
+<P class="before-ul"><A NAME="TMPID663"></A>You can construct the Profile Query using the Content Server Search page. Any information that is searchable in Content Server can be configured as criteria for Intelligent Classifications. Managed objects that meet the criteria specified in the Profile Query, and that satisfy the relevance score threshold specified in the Classifications profile, are either assigned the Classification or the Classification is suggested, depending on the management type for the Classification. By default, the Classification Profile Query page opens with additional fields in the <B CLASS="GUILABEL">Full Text</B> section. These fields allow you to:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN667"></A><A NAME="TMPID669"></A>Specify key phrases.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN669"></A><A NAME="TMPID671"></A>Edit key phrases from Exemplar Documents to change the automatically extracted phrases.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN671"></A><A NAME="TMPID673"></A>Edit key phrases from a complex query of an imported Classification taxonomy.</P></LI></UL>
+<P><A NAME="TMPID674"></A>Each section is labeled with instructional text.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF20"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID676"></A><B CLASS="NOTE">Note: </B><BR>You can edit the key phrases in the fields for Exemplar Documents and complex queries from imported Classification taxonomies; however, Content Server will not save your edits.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="otModuleHide if-elsearch-show BRIDGEHEAD-BOLDPARA" id="TMP4REF21" ><A NAME="TMP4REF21">Classification Profile Search Templates</A></P>
+<P CLASS="otModuleHide if-elsearch-show" id="TMPID679"><A NAME="TMPID679"></A>Classification profile search templates include a read-only <B CLASS="GUILABEL">Scope</B> component that references Enterprise and Enterprise Library search slices. Content Server can test Profile Queries against Enterprise and Enterprise Library data sources using the Search button. Once you are satisfied with your profile and you have saved it, Content Server  will perform either automatic or assisted Classification, depending on the management type you enabled on the Extras tab of your Classification's Properties page.</P>
+<P CLASS="otModuleHide if-elsearch-show" id="TMPID683"><A NAME="TMPID683"></A>The Enterprise and Enterprise Library search slices are highlighted in the read-only <B CLASS="GUILABEL">Scope</B> component. This indicates that the slices are preselected and cannot be modified. </P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="c-todefrst-p.htm" revision="">To Define the Relevance Score Threshold</A></p></li>
+<li><p><A  HREF="c-addexemp-p.htm" revision="">To Add an Exemplar Document</A></p></li>
+<li><p><A  HREF="c-cnstprofquer-p.htm" revision="">To Construct the Profile Query</A></p></li>
+<li><p><A  HREF="c-testprofquer-ent-el-p.htm" revision="">To Test a Profile Query Against Enterprise and Enterprise Library Data</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

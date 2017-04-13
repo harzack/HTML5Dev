@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>LLAttrBlobData : méthode 3</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-catmeth3-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Catégories et attributs';
+          header.title2 = 'LLAttrBlobData : méthode 3';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID18902"></A>Cette approche se situe à mi-chemin entre les deux méthodes précédentes. Elle utilise une requête SQL pour renvoyer une structure de données Content Server, à partir de la table LLAttrBlobData, qui peut ensuite être indexée au moyen d'une série de sous-balises. Nous avons toujours besoin d'une source de données pour cette méthode. Cependant, au lieu de renvoyer une colonne de données, comme nous l'avons fait lors de la méthode 1, nous renvoyons une colonne de structures de données Content Server. La requête SQL peut présenter l'apparence suivante : </P><A NAME="AEN18141"></A>
+<PRE 
+CLASS="screen"
+>select LLAttrBlobData.SegmentBlob from LLAttrBlobData, DTree
+	where
+		LLAttrBlobData.ID = DTree.DATAID and
+		LLAttrBlobData.VERNUM = DTree.VERSIONNUM and
+		&amp;my other criteria&gt;</PRE
+>
+<P><A NAME="TMPID18905"></A>Cette requête doit produire une sortie semblable à celle-ci : </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN18143"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">SegmentBlob</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">A&lt;1,?,{338223,5}=A&lt;1,?,'CustomID'=0,'ID'=1,'Values'={A&lt;1,?,2=A&lt;1,?,'ID'=2,'Values'={'JRS62-99'}&gt;,3=A&lt;1,?,'ID'=3,'Values'={18}&gt;,4=A&lt;1,?,'ID'=4,'Values'={10657}&gt;,5=A&lt;1,?,'ID'=5,'Values'={D/2006/6/25:0:0:0}&gt;,6=A&lt;1,?,'ID'=6 ,'Values'={D/1999/4/1:0:0:0}&gt;,7=A&lt;1,?,'ID'=7,'Values'={true}&gt;&gt;}&gt;&gt;</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID18918"></A>Ces données semblent complexes. Cependant, après avoir maîtrisé quelques concepts simples, vous devriez les comprendre assez facilement. Tout d'abord, l'intégralité de cette structure de données est constituée de deux types de données seulement, des LIST et des ASSOC. Une LIST est similaire à un tableau classique, contenu entre accolades lorsqu'il est aplati sous forme de chaîne pour être stocké dans la base de données Content Server. Dans les résultats ci-dessus, {338223,5} est une LIST contenant 2 éléments. Nous pouvons accéder à chaque élément de notre choix, au moyen de l'expression LIST:1 ou LIST:2. Une ASSOC est similaire à une LIST, mais elle utilise une clé pour indexer la structure, au lieu d'un index numérique. Les données ci-dessus contiennent plusieurs ASSOC imbriquées, l'une d'entre elles étant A&lt;1,?,'ID'=2,'Values'={'JRS62-99'}&gt;. Cette ASSOC comporte 2 clés, ID et Values, auxquelles nous pouvons accéder respectivement par les expressions ASSOC:ID et ASSOC:Values. En gardant à l'esprit ces structures de données, nous pouvons créer un affichage de rapport afin d'accéder aux valeurs d'attributs particulières qui nous intéressent. </P><A NAME="AEN18156"></A>
+<PRE 
+CLASS="screen"
+>&lt;TABLE CELLSPACING="1" STYLE="font-size:11px" BORDER="0"&gt;
+	&lt;TR STYLE="background-color:#999999;color:white;bold;"&gt;
+	&lt;TD&gt;Trial Name&lt;/TD&gt;
+	&lt;TD&gt;Number of Failures&lt;/TD&gt;
+	&lt;TD&gt;Assignee&lt;/TD&gt;
+	&lt;TD&gt;Start Date&lt;/TD&gt;
+	&lt;TD&gt;End Date&lt;/TD&gt;
+	&lt;TD&gt;Complete&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_STARTROW /]
+&lt;TR&gt;
+	&lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:2 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+	&lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:3 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+	&lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:4 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+	&lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:5 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+	&lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:6 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+	&lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:7 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_ENDROW /]
+&lt;/TABLE&gt;</PRE
+>
+<P><A NAME="TMPID18920"></A>Dans l'affichage de rapport, notez que toutes les colonnes commencent de la même façon : <TT CLASS="literal">[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1</TT> </P>
+<P><A NAME="TMPID18922"></A>Comme c'est le cas ici, si vous recherchez uniquement des attributs classiques plutôt que des attributs à valeurs multiples, des ensembles ou des ensembles à valeurs multiples, vous pouvez employer la même syntaxe. Si vous souhaitez accéder à ces autres types d'attributs, cela est possible à condition d'utiliser une syntaxe légèrement différente. La sortie provenant de l'affichage de rapport ci-dessus doit présenter l'apparence suivante : </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN18160"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Nom de l'essai</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Nombre d'échecs</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Utilisateur avec une tâche assignée</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Date de début</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Date de fin</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Achevé</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">JRS62-99</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">18</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">10657</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Dim Jun 25 00:00:00 2006</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Jeu Avr 01 00:00:00 1999</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">true</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID18965"></A>Dans l'exemple ci-dessus, il convient de noter qu'une clé ASSOC de {338223,5} constitue un concept légèrement plus complexe que celui d'une LIST/ASSOC normale. En effet, toute la LIST est utilisée comme clé dans la première ASSOC de la colonne SEGMENTBLOB. Comme les valeurs de la liste (respectivement dataid et numéro de version) ne sont pas statiques, il est souvent plus facile d'utiliser ASSOC:1 au lieu de <TT CLASS="literal">ASSOC:"{338223,5}"</TT>, car cette première expression constitue toujours un index vers le premier élément de l'ASSOC, quel que soit le nom de la clé. Si vous utilisez cette méthode, vous devez être sûr que votre champ est toujours présent au même index numérique. </P>
+<P><A NAME="TMPID18967"></A>Le guide sur les balises contient des informations détaillées sur les opérateurs LIST et ASSOC utilisés ci-dessus. </P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

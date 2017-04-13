@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>SQL Template Fields</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-sqlfield-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'SQL Templates';
+          header.title2 = 'SQL Template Fields';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID778"></A>This section explains the fields found in the SQL Template. For examples demonstrating how these fields are used, see <span><A HREF="lr-urlpartem-bg.htm">Template Examples</A></span>.</P>
+<DIV title="SQL Template Fields" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="LR-SQLTEM-TBL"></A><B>Table 1-1: SQL Template Fields</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="166" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Field Name</TD></TR></TABLE></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Description</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="166" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">#</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The template number. This field shows the reference that is used to insert a template in the main SQL query. The tilde symbol (~) is used with the template number to indicate where the template is to be inserted. For example, “~1” specifies where template 1 should be inserted, assuming that various conditions are met. Note that if no template reference is found in the SQL query then the template will be inserted at the end of the SQL.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="166" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Auto-Where</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Checking this box provides the capability to automatically add the correct filter word, either <TT CLASS="literal">WHERE</TT> or <TT CLASS="literal">AND</TT> or <TT CLASS="literal">OR</TT>, to the beginning of a template. This is useful when there is no <TT CLASS="literal">WHERE</TT> clause in the main SQL and the order of template insertion is not known. This option will always use <TT CLASS="literal">WHERE</TT> for the first template being added and then either <TT CLASS="literal">AND</TT> or <TT CLASS="literal">OR</TT>, depending on which of these words is in the original template source, for each subsequent template. If the template source does not contain one of these words, then the default will be either <TT CLASS="literal">WHERE</TT> or <TT CLASS="literal">AND</TT>. The simplest way to use this feature is to place either <TT CLASS="literal">OR</TT> or <TT CLASS="literal">AND</TT> as the first word in the template source and then the feature will replace this word with <TT CLASS="literal">WHERE</TT> if the template becomes the first one to be inserted into the SQL.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">For more information, see <span><A HREF="lr-dynfil-bg.htm">Dynamic filtering with the Auto-Where feature</A></span>. For examples using the <B CLASS="guilabel">Auto-Where</B> option, see <span><A HREF="lr-example1-bg.htm#LR-EXREUSETEM-EX">Re-using a template with a variable input</A></span> and <span><A HREF="lr-example1-bg.htm#LR-EXMULTVAR-EX">Re-using a template with multiple variable inputs</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="166" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">SQL Source</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The content of the template that will optionally be added to the SQL is defined in this field. This source can include normal parameters in the form: %1, %2, as well as markers in the form #1, #2 which are used in conjunction with the URL  Parameter, <TT CLASS="literal">Include IF</TT> condition, described in the “Include IF” row in this table and in <span><A HREF="lr-sqlfield-bg.htm#LR-SQLINCLIF">Include IF</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="166" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Auto Comma</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Checking this box enables a feature that will ensure that any comma separated variables have the correct number of commas in place after the variables have been resolved. Examples of comma separated variables include <TT CLASS="literal">%1</TT>, <TT CLASS="literal">%2</TT> and <TT CLASS="literal">%3</TT>. For example if <TT CLASS="literal">%2</TT> resolves to a blank string the list would automatically be converted to remove any empty commas. Thus <B CLASS="highlight">12,,24</B> will be converted to <B CLASS="highlight">12,24</B>. Note that the original list must be syntactically correct.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">For more information, see <span><A HREF="lr-autcomm-bg.htm">Using the Auto Comma feature</A></span>. For examples using the <B CLASS="guilabel">Auto Comma</B> option, see <span><A HREF="lr-example2-bg.htm#LR-EXTEMPEM-EX">Including a template if any of the parameters are not empty</A></span> and <span><A HREF="lr-example4-bg.htm#LR-EXCONDBE-EX">Viewing behavior for the condition: Not all inputs set to flag</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="166" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Include IF</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" WIDTH="333" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The conditions for template inclusion are selected using this option. For the purposes of the descriptions below, the term “User Input” refers to any parameters that have been passed to the LiveReport in the form <TT CLASS="literal">&amp;inputlabel1=somedata</TT>. Many of the template conditions are dependent on the contents of one or more of these user inputs and these user inputs can be used flexibly within the template source.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">For information about the conditions available for the <TT CLASS="literal">Include IF</TT> field, see <span><A HREF="lr-sqlfield-bg.htm#LR-SQLINCLIF">Include IF</A></span>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LR-SQLINCLIF">Include IF</A></P>
+<P class="before-ul"><A NAME="TMPID860"></A>The options available for the <TT CLASS="literal">Include IF</TT> field are:</P><A NAME="AEN863"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN864"></A><A NAME="TMPID864"></A><B CLASS="highlight">Mandatory (no condition)</B>: the template will always be inserted when this option is selected. This option is useful for breaking the SQL down into smaller pieces.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN867"></A><A NAME="TMPID867"></A><B CLASS="highlight">URL Parameter</B>: this option specifies that this template will be inserted if a named parameter is found in the URL. When this option is selected, a <B CLASS="guilabel">Parm Name</B> text field is revealed. This is used to specify the name of the URL parameter which will cause the template to be included. This parameter in the URL can also be used to specify which user inputs will be inserted into the template when markers in the form <TT CLASS="literal">#1</TT> have been used in the template source. These markers specify where in the source each user input will be inserted. For example, a template could be enabled (included) by a URL parameter in the form: <TT CLASS="literal">&amp;addtemplate=U2,U3</TT>. This specifies a list of user inputs which can be used by this template. Each item in this list represents a user input. For example, <TT CLASS="literal">U2 = USERINPUT 2</TT>. The user input specified by the first item in the list is inserted in place of marker 1 (#1) so in this example, #1 is replaced by the <TT CLASS="literal">&amp;inputlabel2</TT> value. The second item references U3 so the <TT CLASS="literal">&amp;inputlabel3</TT> value is substituted in place of marker 2 (#2). Several examples of this abstraction are included later in this document. Note that the URL parameter must specify at least as many user inputs as are included in the template source in order for the template to be included.</P>
+<P><A NAME="TMPID875"></A>See <span><A HREF="lr-example1-bg.htm">Using a URL Parameter to Control Template Insertion</A></span> for examples.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN878"></A><A NAME="TMPID878"></A><B CLASS="highlight">No inputs set to flag</B>: this option specifies that the template's inclusion is dependent on the settings for any user inputs which are used in the template source using the normal parameter form. For example, %1. When this option is selected a Flag Value text field is revealed. This is used to specify what value will be used as a flag in passed user inputs. The most commonly used value will be an empty string but other likely examples are <B CLASS="guilabel">none</B> and <B CLASS="guilabel">all</B>. This option specifies that the template will only be included if none of the user inputs have been set to the specified flag. For example, if a template is using two input parameters and one of them has been set to an empty string then the template will be excluded.</P>
+<P><A NAME="TMPID882"></A>See <span><A HREF="lr-example2-bg.htm">Using User Input Values to Control Template Insertion</A></span> for examples.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN885"></A><A NAME="TMPID885"></A><B CLASS="highlight">Not all inputs set to flag</B>: this option is very similar to the previous option; however, with this option set, the template will be included, unless all used input values have been set to the specified flag. For example, if the Flag Value is empty (considered an empty string) and there are two user inputs used in the template, then the template will be included unless both inputs are set to an empty string.</P>
+<P><A NAME="TMPID887"></A>See <span><A HREF="lr-example2-bg.htm">Using User Input Values to Control Template Insertion</A></span> for examples.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN890"></A><A NAME="TMPID890"></A><B CLASS="highlight">Template condition true</B>: with this option set, the template will be included based on whether another template evaluates to true or not. The Template # option is used to specify which preceding template's condition should be used. For example, if the template # is set to 2, then the template with this option set will only be included if template 2 evaluates to true.</P>
+<P><A NAME="TMPID892"></A>This condition is useful when pieces of SQL need to be inserted in different parts of the main SQL source, based on the same condition. One of the SQL pieces might have the actual conditions defined for inclusion while the other one(s) would just use <TT CLASS="literal">Template Condition True</TT> to reference the other template.</P>
+<P><A NAME="TMPID894"></A>For an example of this condition, see <span><A HREF="lr-example3-bg.htm#LR-EXADDTEM-EX">Adding two templates based on a single condition</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN897"></A><A NAME="TMPID897"></A><B CLASS="highlight">Template condition false</B>: with this option set, the template will be included based on whether another template evaluates to false or not. The Template # option is used to specify which preceding template's condition should be used. For example, if the template # is set to 2, then this template will only be included if template 2 evaluates to false.</P>
+<P><A NAME="TMPID899"></A>This option is useful when you have two templates that are mutually exclusive. Using this condition saves having to work out the appropriate set of conditions for one template only to be included when another one is being excluded. For an example of this condition, see <span><A HREF="lr-example2-bg.htm#LR-EXTEMPEM-EX">Including a template if any of the parameters are not empty</A></span>.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

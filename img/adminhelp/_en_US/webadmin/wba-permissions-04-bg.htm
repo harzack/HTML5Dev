@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Understanding Role-Based Permissions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-permissions-04-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Permissions';
+          header.title2 = 'Understanding Role-Based Permissions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID242"></A>Projects simplify the definition of access control by providing a role-based permissions model. When you create a Project, Content Server automatically creates a Coordinator, Member, and Guest group for the Project. Each of these groups is assigned a Project role and therefore receives a different level of permissions.</P>
+<P class="before-ul"><A NAME="TMPID244"></A>The following list describes the different Project roles and the permissions associated with it:</P><A NAME="AEN265"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN266"></A><A NAME="TMPID247"></A><B CLASS="guilabel">Guest</B> – users who are made guests of a Project can open the items contained in the Project.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN269"></A><A NAME="TMPID250"></A><B CLASS="guilabel">Member</B> – Project members can open and modify the items contained in the Project. Members can also add items, edit attributes, add and delete versions, and reserve items contained in the Project. Members can also delete the items they create or add to the Project.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN272"></A><A NAME="TMPID253"></A><B CLASS="guilabel">Coordinator</B> – In addition to the Guest and Member permissions, Coordinators can establish access privileges, define permissions, add or remove participants, and change a participant's role within the Project.</P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="P85-9651">Adding Projects to Folders</A></P>
+<P class="before-ul"><A NAME="TMPID256"></A>When you add a Project to a folder, users and groups who have access to the folder become participants in the Project. In addition, the folder's permissions are mapped to the three types of Project roles. The type of permissions that a user or group has for a folder determines whether they become Guests, Members, or Coordinators of any new Project added to that folder. Permissions are mapped in the following manner:</P><A NAME="AEN277"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN278"></A><A NAME="TMPID259"></A>Users or groups with <B CLASS="guilabel">See</B> and <B CLASS="guilabel">See Contents</B> permissions on the folder become Guests of the Project.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN282"></A><A NAME="TMPID263"></A>Users or groups with <B CLASS="guilabel">See</B>, <B CLASS="guilabel">See Contents</B>, and <B CLASS="guilabel">Add Items</B> permissions on the folder become Members of the Project.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN287"></A><A NAME="TMPID268"></A>Users or groups with <B CLASS="guilabel">Modify</B>, <B CLASS="guilabel">Edit Attributes</B>, <B CLASS="guilabel">Delete Versions</B>, and <B CLASS="guilabel">Reserve</B> permissions on the folder (in addition to <B CLASS="guilabel">See</B>, <B CLASS="guilabel">See Contents</B>, and <B CLASS="guilabel">Add Items</B> permissions) also become Members of the Project.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN296"></A><A NAME="TMPID277"></A>Users or groups with all permissions on the folder become Coordinators of the Project.</P></LI></UL>
+<P><A NAME="TMPID278"></A>By default, when you add an item to a Project you can modify the permissions assigned to that item. However, you cannot reduce the permissions for a Coordinator of a Project. Coordinators always have full access to all items in the Project.</P>
+<P><A NAME="TMPID279"></A>To expand or reduce the access for certain Guests or Members of a Project, a Coordinator of a Project can edit their permissions on items in the Project Workspace. Coordinators can also change the roles of participants in a Project.</P>
+<P><A NAME="TMPID280"></A>Members of a Project can create a subproject by adding a Project within the parent Project. In this case, Coordinator, Member, and Guest groups are initially copied to the subproject. The creator of the subproject can expand or reduce the access for certain Guests or Members of the parent Project, but cannot remove Coordinators of the parent Project from the subproject's Coordinator group.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

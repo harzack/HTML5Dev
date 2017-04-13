@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Indexation des données sur votre système de fichiers</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-nwdwdtfw-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Création des index à l\'aide de modèles';
+          header.title2 = 'Indexation des données sur votre système de fichiers';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID357"></A>Avec la technologie Directory Walker de Content Server, vous pouvez créer des flux de données qui indexent les données dans votre système de fichiers. Cela permet aux utilisateurs Content Server d'effectuer des recherches dans ces données au sein de Content Server. Pour chaque index Directory Walker créé, spécifiez un ensemble d'un ou plusieurs répertoires de niveau supérieur à indexer qui sont stockés dans le système de fichiers.</P>
+<P><A NAME="TMPID361"></A>Un flux de données Directory Walker consiste en un processus Directory Walker, un processus Conversion de documents et un processus Distributeur de mise à jour. Le processus Directory Walker <I CLASS="emphasis">parcourt</I> les répertoires de niveau supérieur spécifiés (et leurs sous-répertoires, si nécessaire) et recherche les fichiers qui correspondent aux critères spécifiés.</P>
+<P><A NAME="TMPID363"></A>Vous déterminez les types de fichiers recueillis par le processus Directory Walker en spécifiant les critères d'inclusion et d'exclusion (tels que les modèles de noms de fichier, les intervalles de dates et les intervalles de tailles de fichier). Le processus Directory Walker enregistre les fichiers qui correspondent à vos critères dans un IPool. Le processus Conversion de documents lit les données à partir de cet IPool, les convertit au format HTML ou texte brut, puis les enregistre dans un deuxième IPool. Le processus Distributeur de mise à jour lit les données à partir de ce deuxième IPool, transmet les données aux moteurs d'indexation qu'il gère, puis crée des commandes afin de générer ou mettre à jour l'index correspondant.</P>
+<P><A NAME="TMPID364"></A>Lors de la création d'un flux de données Directory Walker, Content Server génère des <I CLASS="emphasis">fichiers Historique des fichiers parcourus</I>. Les fichiers Historique des fichiers parcourus contiennent des informations sur les fichiers déjà parcourus par le processus Directory Walker. Lorsqu'un processus Directory Walker parcourt un ensemble de répertoires déjà parcouru, il compare les fichiers de la base de données Historique des fichiers parcourus aux fichiers enregistrés dans le répertoire pour identifier les nouveaux fichiers, ainsi que les fichiers mis à jour ou supprimés. Le processus Directory Walker extrait des informations relatives aux fichiers ajoutés, remplacés ou supprimés dans le flux de données. Il n'extrait pas une nouvelle fois la totalité du jeu de fichiers. Ainsi, la mise à jour de l'index s'en trouve plus efficace. Vous pouvez modifier l'emplacement des fichiers de la base de données Historique des fichiers parcourus dans l'onglet <B CLASS="guilabel">Infos spécifiques</B> de la page Propriétés du processus Directory Walker.</P>
+<P><A NAME="TMPID368"></A>Si les données des répertoires indexés sont susceptibles de changer, vous pouvez <A href="../websystemobj/wbs-specdflw-bg.htm">assurer la maintenance des flux de données</A> de sorte que les répertoires soient parcourus à nouveau ou configurer un processus de flux de données pour qu'il s'exécute selon un programme défini. Pour de plus amples informations, reportez-vous à la rubrique <A href="../websystemobj/wbs-configdflwstrt-p.htm">Pour configurer les options de lancement d'un processus de flux de données</A>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF5">Configuration d'une source de données Directory Walker</A></P>
+<P><A NAME="TMPID372"></A>Commencez par configurer une source de données Directory Walker en la nommant et en spécifiant les numéros de port sur lesquels ses processus effectuent la réception.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF6">Configuration d'un mappage de liens hypertextes</A></P>
+<P><A NAME="TMPID374"></A>Après avoir nommé la source de données et spécifier ses numéros de port, configurez ses mappages de liens hypertextes. Les mappages de liens hypertextes permettent aux utilisateurs d'accéder à des informations dans une source de données Directory Walker lors de l'affichage des résultats de recherche. Les documents contenus dans les sources de données Directory Walker sont identifiés par leur nom de chemin complet. Lorsque ces documents sont renvoyés dans une recherche, ils apparaissent sur la page Résultats de recherche sous leur nom de chemin. Pour vérifier que chaque résultat relie au document approprié, vous devez créer un mappage de liens hypertextes chargé de configurer la source de données de manière qu'elle traite les documents à travers un serveur Web. Pour que les mappages de liens hypertextes fonctionnent correctement, vous devez exécuter un serveur Web.</P>
+<P><A NAME="TMPID375"></A>Vous consignez les répertoires à parcourir lorsque vous configurez un processus Directory Walker. Tous les répertoires consignés doivent avoir une racine commune. Par exemple, si vous définissez le processus Directory Walker pour qu'il parcoure <TT CLASS="literal">c:/dirA/dir1</TT> et <TT CLASS="literal">c:/dirA/dir2</TT>, vous pouvez créer un mappage de liens hypertextes à partir de <TT CLASS="literal">c:/dirA</TT>. Si vous consignez des répertoires ayant des racines différentes, tels que <TT CLASS="literal">c:/dirA</TT> et <TT CLASS="literal">c:/dirB</TT> ou <TT CLASS="literal">c:/dirA</TT> et <TT CLASS="literal">d:/dirA</TT>, vous ne pouvez pas créer de mappage de liens hypertextes à partir de ces deux chemins. Si vos répertoires n'ont pas de racine commune, envisagez de créer des index Directory Walker individuels pour eux pour qu'ils puissent utiliser les mappages de liens hypertextes.</P>
+<P><A NAME="TMPID383"></A>Vous pouvez configurer des mappages de liens hypertextes lorsque vous créez une source de données Directory Walker ou lorsque vous configurez son gestionnaire de recherche. Pour les autres sources de données non Entreprise, vous configurez les mappages de liens hypertextes lors de la <span><A href="../webotcindex/wbo-confighypmap-rf.htm">Configuration des mappages de liens hypertextes</A></span>. Voici quelques exemples de sources de données non-Entreprise : la source de données de l'aide administrateur, la source de données Directory Walker, la source de données de l'aide utilisateur et la source de données producteur XML Activator.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF7">Configuration des informations Directory Walker</A></P>
+<P><A NAME="TMPID386"></A>Une fois que vous avez configuré une source de données Directory Walker, configurez les informations Directory Walker. Directory Walker est un processus qui extrait des données de votre système de fichiers pour les enregistrer dans un IPool.</P>
+<P><A NAME="TMPID387"></A>Lorsque vous créez un index Directory Walker en cliquant sur <B CLASS="guilabel">Source de données Directory Walker</B> dans le menu <B CLASS="guilabel">Ajouter un élément</B> de la page Administration système, Content Server spécifie automatiquement les options de journalisation relatives au flux de données correspondant (fichiers journaux, niveaux et emplacements par défaut). Si vous voulez spécifier des options de journalisation personnalisées, vous pouvez modifier les valeurs par défaut sur la page Propriétés du processus Directory Walker une fois que Content Server a généré le flux de données.</P>
+<P><A NAME="TMPID392"></A>Lors de la spécification de répertoires sur la page Créer une nouvelle source de données Directory Walker, vous devez spécifier les chemins de répertoire tels qu'ils sont mappés/montés sur l'hôte du serveur d'administration dont vous avez sélectionné le raccourci dans la liste déroulante <B CLASS="guilabel">Hôte</B>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF8">Configuration des informations de conversion de documents</A></P>
+<P><A NAME="TMPID395"></A>Une fois que vous avez configuré une source de données Directory Walker et le processus Directory Walker, vous devez configurer les informations de conversion de documents intermédiaires. Le processus Conversion de documents lit les données d'un IPool, les convertit au format HTML ou texte brut, puis les enregistre dans un autre IPool.</P>
+<P><A NAME="TMPID396"></A>Lorsque vous spécifiez les répertoires de lecture et d'écriture du processus Conversion de documents, vous devez indiquer le chemin des répertoires tel qu'il est mappé/monté sur l'hôte du serveur d'administration dont vous avez sélectionné le raccourci dans la liste déroulante <B CLASS="guilabel">Hôte</B>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF9">Configuration des informations du moteur d'indexation</A></P>
+<P><A NAME="TMPID399"></A>Après avoir configuré une source de données Directory Walker et les processus Directory Walker et Conversion de documents, vous devez configurer les informations du distributeur de mise à jour. Pour plus d'informations sur la configuration des processus de mise à jour d'indexation, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-configindexeng-so.htm">Configuration des processus d'indexation</A></span>.</P>
+<P><A NAME="TMPID401"></A>Lorsque vous spécifiez les répertoires de lecture et d'indexation du processus de mise à jour de l'index, vous devez indiquer le chemin des répertoires tel qu'il est mappé/monté sur l'hôte du serveur d'administration dont vous avez sélectionné le raccourci dans la liste déroulante <B CLASS="guilabel">Hôte</B>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF10">Finalisation d'une source de données Directory Walker</A></P>
+<P><A NAME="TMPID404"></A>Une fois que vous avez configuré une source de données Directory Walker et les processus Directory Walker, Conversion de documents et Distributeur de mise à jour, vous pouvez terminer la configuration de la source de données Directory Walker.</P>
+<P><A NAME="TMPID405"></A>Vous pouvez indiquer si vous voulez que les processus du flux de données Directory Walker démarrent dès leur création ou vous pouvez les lancer manuellement après avoir créé le flux de données. Par exemple, si vous voulez <span><A href="../xmlsearch/xml-indexoverview-bg.htm">Indexation des données XML</A></span> dans les moteurs de recherche associés à cette source de données, vous pouvez créer le flux de données, publier les régions, puis lancer les processus de flux de données pour que les régions XML soient indexées lors de leur exécution.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-setupwkrsrc-p.htm" revision="">Pour configurer une source de données Directory Walker</A></p></li>
+<li><p><A  href="../websystemobj/wbs-confighyperlink-p.htm" revision="">Pour configurer les mappages de liens hypertextes</A></p></li>
+<li><p><A  href="../websystemobj/wbs-configdirwkrinfo-p.htm" revision="">Pour configurer les informations Directory Walker</A></p></li>
+<li><p><A  href="../websystemobj/wbs-configdocconvinfo-p.htm" revision="">Pour configurer les informations de conversion de documents</A></p></li>
+<li><p><A  href="../websystemobj/wbs-configindexinfo-p.htm" revision="">Pour configurer les informations du moteur d'indexation</A></p></li>
+<li><p><A  href="../websystemobj/wbs-cmpltdirwkrsrc-p.htm" revision="">Pour configurer la source de données Directory Walker</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

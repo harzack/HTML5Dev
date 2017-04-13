@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Configuration des paramètres de performances</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-confperformance-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des paramètres et réglages du serveur';
+          header.title2 = 'Configuration des paramètres de performances';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID3146"></A>Vous pouvez modifier les paramètres de performances suivants du serveur sur la page Configurer les paramètres de performances :</P><A NAME="AEN2805"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2806"></A><A NAME="TMPID3149"></A><span><A href="../webadmin/wba-confperformance-bg.htm#USERRIGHTS">Seuil de droits d'utilisateur</A></span></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2809"></A><A NAME="TMPID3152"></A><span><A href="../webadmin/wba-confperformance-bg.htm#NUMOFSESSIONS">Nombre de sessions</A></span></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2812"></A><A NAME="TMPID3155"></A><span><A href="../webadmin/wba-confperformance-bg.htm#SERVERTHREADS">Threads serveur</A></span></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2815"></A><A NAME="TMPID3158"></A><span><A href="../webadmin/wba-confperformance-bg.htm#RECIEVEBEFORESEND">Recevoir avant d'envoyer</A></span></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2818"></A><A NAME="TMPID3161"></A><span><A href="../webadmin/wba-confperformance-bg.htm#WEBCACHE">Activer la mise en mémoire cache des éléments Web</A></span></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2821"></A><A NAME="TMPID3164"></A><span><A href="../webadmin/wba-confperformance-bg.htm#FILEBUFFER">Taille du tampon pour les fichiers</A></span></P></LI></UL>
+<P><A NAME="TMPID3166"></A>La page <B CLASS="guilabel">Configurer les paramètres de performances</B> est accessible à partir de la page Administration. Sélectionnez <B CLASS="guilabel">Configuration du serveur</B>. Ensuite, sélectionnez <B CLASS="guilabel">Configurer les paramètres de performances</B>.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="USERRIGHTS">Seuil de droits d'utilisateur</A></P>
+<P><A NAME="TMPID3171"></A>Ce paramètre vous permet de définir la façon dont Content Server assure la vérification des autorisations en fonction du nombre de droits dont dispose un utilisateur particulier. La valeur par défaut du seuil de droits d'utilisateur est définie sur 250. Si, pour un utilisateur particulier, ce nombre de droits est égal ou inférieur au nombre spécifié (le <I CLASS="emphasis">seuil</I>), Content Server calcule, selon sa méthode standard, les autorisations dont l'utilisateur bénéficie pour accéder à l'élément voulu. Si ce nombre dépasse le seuil, Content Server adopte une méthode plus récente qui contribue à améliorer les performances des systèmes Content Server où les utilisateurs disposent chacun d'un plus grand nombre d'autorisations.</P>
+<P><A NAME="TMPID3177"></A>Content Server effectue la vérification des autorisations à l'aide d'un des deux algorithmes disponibles. Un algorithme effectue la vérification des autorisations à l'aide de requêtes SQL ; l'autre se procure toutes les listes de contrôle d'accès sur un élément, puis vérifie les droits de l'utilisateur sur chaque liste de contrôle d'accès individuelle en utilisant la logique du programme. Content Server choisit entre ces deux algorithmes en fonction du nombre de droits dont dispose l'utilisateur comparé au nombre spécifié dans le champ Seuil des droits d'utilisateur de la page Configurer les paramètres du serveur. </P>
+<P><A NAME="TMPID3180"></A>Pour plus d'informations, voir <A href="../webadmin/wba-ini-options-rf.htm"> <TT CLASS="literal">maxRightsString</TT></A> dans la section <TT CLASS="literal">[options]</TT> de la référence de fichier opentext.ini.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="NUMOFSESSIONS"> Nombre de sessions</A></P>
+<P><A NAME="TMPID3185"></A>Ce paramètre définit le nombre maximal de sessions de connexion de l'utilisateur mises en mémoire cache sur un thread du serveur. La valeur par défaut du nombre de sessions est définie sur 100. Lorsque le nombre maximum de sessions est atteint, la session de connexion utilisateur la plus ancienne est supprimée. Les sessions de connexion de l'utilisateur sont mises en mémoire cache séparément sur chaque thread. Lorsqu'un utilisateur retourne à un thread après la suppression de ses informations de connexion dans la mémoire cache, sa requête suivante met un peu plus de temps à s'exécuter. Plus le nombre maximal de sessions est bas, moins le serveur doit consacrer de mémoire pour suivre les sessions de connexion de l'utilisateur sur chaque thread. Toutefois, plus le nombre est élevé, moins le serveur supprime d'informations de connexion de l'utilisateur dans la mémoire cache. L'utilisation de la mémoire d'un serveur peut être importante pour un système sur lequel plusieurs threads sont exécutés. Vous pouvez essayer différentes valeurs pour le nombre maximal de sessions, selon le nombre d'utilisateurs qui accèdent à votre système Content Server. </P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="SERVERTHREADS">Threads serveur</A></P>
+<P class="before-ul"><A NAME="TMPID3188"></A>Ce paramètre définit le nombre de threads utilisés par Content Server. Le <B CLASS="guilabel">Nombre de threads</B> par défaut est 8. Vous voudrez peut-être augmenter ou diminuer le nombre de threads, selon :</P><A NAME="AEN2849"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2850"></A><A NAME="TMPID3193"></A>la vitesse d'exécution des requêtes individuelles ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2852"></A><A NAME="TMPID3195"></A>la capacité requise ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2854"></A><A NAME="TMPID3197"></A>votre profil d'utilisation ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2856"></A><A NAME="TMPID3199"></A>la disponibilité des ressources de processeur et de RAM sur votre matériel Content Server.</P></LI></UL>
+<P><A NAME="TMPID3201"></A>Le nombre optimal de threads dépend de l'environnement dans lequel l'instance de Content Server est exécutée (par exemple, nombre et vitesse des processeurs, quantité de mémoire physique, vitesse de la connexion réseau et accès aux disques en local ou via le réseau). Il dépend aussi du profil d'utilisation de votre instance de Content Server (par exemple, types de requêtes effectués et fréquences auxquelles chacun de ces types de requêtes a lieu). </P>
+<P><A NAME="TMPID3204"></A>Pour déterminer le nombre de threads que votre serveur peut prendre en charge, Open Text vous conseille de tester différentes valeurs. Vous pouvez mesurer les résultats en utilisant les journaux Content Server et les utilitaires disponibles dans le système d'exploitation. Pour plus d'informations, contactez le service d'assistance clientèle d'Open Text.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF39"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3207"></A><B CLASS="note">Note : </B><BR>Ne définissez pas un nombre de threads supérieur à ce nombre.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="RECIEVEBEFORESEND">Recevoir avant d'envoyer </A></P>
+<P><A NAME="TMPID3209"></A>Ce paramètre réduit le temps consacré par le serveur au téléchargement et à l'ouverture de documents. Le paramètre par défaut pour Recevoir avant d'envoyer est défini sur <TT CLASS="literal">FALSE</TT>. Lorsque <TT CLASS="literal">ReceiveBeforeSend=TRUE</TT>, les réponses du serveur sont mises en mémoire tampon sur le serveur Web, qui se charge ensuite d'envoyer le contenu au navigateur. Cela permet aux threads serveur disponibles de passer plus rapidement à d'autres requêtes. Du point de vue d'un utilisateur final, l'extraction et le téléchargement des documents prennent autant de temps.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="WEBCACHE">Activer la mise en mémoire cache des éléments Web</A></P>
+<P><A NAME="TMPID3213"></A>Ce paramètre permet au serveur Web de mettre en mémoire cache les documents extraits par Content Server. Le paramètre par défaut pour Activer la mise en mémoire cache des éléments Web est défini sur FALSE. Lorsque la mise en mémoire cache des éléments Web est activée, le serveur valide les documents. Si le processus de validation confirme que la copie en cours du document est en mémoire cache, le document sera transmis par le cache Web au lieu du serveur.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF40"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3216"></A><B CLASS="note">Note : </B><BR>Dans Content Server, la mise en mémoire cache des éléments Web n'est utilisée que dans le cas de requêtes de documents à télécharger ou extraire.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="FILEBUFFER">Taille du tampon pour les fichiers</A></P>
+<P><A NAME="TMPID3219"></A>Ce paramètre vous permet de configurer la taille du tampon pour les fichiers lors de la copie d'éléments sur et à partir du magasin de fichiers externe. La taille du tampon pour les fichiers doit être saisie en octets et la valeur doit être comprise entre 16 384 (16 Ko) et 2 097 152 (2 Mo). Par défaut, la taille du tampon pour les fichiers utilisée pour copier des éléments est 524 288 (500 Ko). </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-confperformance-p.htm" revision="">Pour configurer les paramètres de performances</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

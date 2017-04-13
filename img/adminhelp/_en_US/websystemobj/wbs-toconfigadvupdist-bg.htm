@@ -1,0 +1,189 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Setting Advanced Update Distributor Settings</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-toconfigadvupdist-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Indexing Processes';
+          header.title2 = 'Setting Advanced Update Distributor Settings';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID8916"></A>The Advanced Settings tab of the Update Distributor Properties page</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF164"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID8918"></A><B CLASS="note">Note: </B><BR>Some settings on this tab will be affected by related settings on the <B CLASS="guilabel">Specific</B> tab of a partition map's Properties page. For more information, see <span><A href="../websystemobj/wbs-toconfigpartmap-bg.htm">Configuring a Partition Map</A></span>. The affected settings are identified below in the descriptions.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN8201"></A>
+<TH SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Element</TH>
+<TH SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="3" ALIGN="CENTER" VALIGN="TOP"><B CLASS="guilabel">Advanced Settings</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Allowed Index Engine Timeouts</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Specifies the number of consecutive Index Engine timeouts that are allowed before the Update Distributor process stops. The length of time that is considered a timeout is defined by the <B CLASS="guilabel">Index Engine Update Timeout</B> parameter.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Index Engine Update Timeout</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Specifies the amount of time that the Update Distributor process waits for a response from an Index Engine before an index update is aborted.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Concurrent Checkpoint Write Limit</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Specifies the number of Index Engine checkpoint files that may be written in parallel. This feature prevents the writing of checkpoint files from saturating disk input/output and “thrashing”. Possible values are integers from <TT CLASS="literal">1</TT> to very large, but a too large value will not prevent “thrashing”. The default value is <TT CLASS="literal">8</TT>. An integer less than <TT CLASS="literal">1</TT> will disable this feature.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Start Directory</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Specifies the directory in which the Update Distributor runs. This setting must be an absolute path in the <I CLASS="emphasis">Content Server_home</I>/bin directory of the Admin server that runs the Update Distributor.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Batch Size</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Specifies the number of objects in transactional batches. The default is <TT CLASS="literal">500</TT>.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">OpenText recommends you set this value to:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8964"></A><TT CLASS="literal">100</TT> when <B CLASS="guilabel">Value Storage Mode</B> is selected</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8968"></A><TT CLASS="literal">500</TT> or more for Low Memory Mode</P></TD></TR></TABLE>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF165"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID8971"></A><B CLASS="note">Note: </B><BR>This value should be less than the <B CLASS="guilabel">Number of Items</B> setting in the <B CLASS="guilabel">IPool Limits</B> section of the <B CLASS="guilabel">Set Extractor General Settings</B> page. For details, see <span><A href="../websystemobj/wbs-setextrgenset-bg.htm">Setting Extractor General Settings</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Partition Biasing</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Specifies the number of partitions to fill before new ones are created. This setting is optional, and is empty by default.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Index Engines may be more efficient at using the CPU, and at reducing the number of checkpoint files that need to be written, when this setting is at about 6 or 8 partitions. OpenText recommends that you not modify the <B CLASS="guilabel">Partition Biasing</B>, unless instructed to do so by OpenText Customer Support.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="3" ALIGN="CENTER" VALIGN="TOP"><B CLASS="guilabel">Logging</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Log File</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Specifies the location of the Update Distributor process's log file. The log file records information about the process and can be used for troubleshooting if any problems occur.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Debug Level</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Specifies the type of message that will be recorded in the Update Distributor process's log file:<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8995"></A><B CLASS="guilabel">Info Level</B>, which records all types of messages</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID8998"></A><B CLASS="guilabel">Status Level</B>, which records periodic status messages, warning messages, and all error messages</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9001"></A><B CLASS="guilabel">Warning Level</B>, which records warning messages and all error messages</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9004"></A><B CLASS="guilabel">Error Level</B>, which records typical error messages and severe error messages </P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9007"></A><B CLASS="guilabel">Severe Error Level</B>, which records severe error messages.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Logging Flush Interval</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Specifies the number of new messages that are recorded in the Update Distributor process's log before the process writes it to disk.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Log File Options</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Specifies the parameters for writing log files.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="66" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="95" ALIGN="LEFT" VALIGN="TOP">Log File Actions</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Specifies how the Update Distributor process's log file is affected when the process restarts:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9022"></A><B CLASS="guilabel">Add to Existing</B>, which adds any new information to the end of the current log file</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9025"></A><B CLASS="guilabel">Create New</B>, which overwrites the existing log file</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9028"></A><B CLASS="guilabel">Create New (Save Existing)</B>, which saves and renames the existing log file and creates a new log file based on the existing log file</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID9031"></A><B CLASS="guilabel">Rolling</B>, which saves and closes the existing log file and creates a new log file</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="66" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="95" ALIGN="LEFT" VALIGN="TOP">Log File Size</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Specifies a limit, in MB, on the maximum total size for log files. The default is <TT CLASS="literal">100</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="66" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="95" ALIGN="LEFT" VALIGN="TOP">Startup Logs To Keep</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Specifies the number of log files to keep before starting to overwrite them. The default is <TT CLASS="literal">5</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="66" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" WIDTH="95" ALIGN="LEFT" VALIGN="TOP">Additional Logs To Keep</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Specifies the number of additional log files to keep before starting to overwrite them. The default is <TT CLASS="literal">10</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="3" ALIGN="CENTER" VALIGN="TOP"><B CLASS="guilabel">Actions</B></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Process</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Starts or stops the Index Engine process or all indexing processes (the Update Distributor process and the Index Engine process(es) that belong to an Indexing and Searching system). Whether you stop all indexing processes or only the Update Distributor process, indexing stops. If the indexing processes are not running, the <B CLASS="guilabel">Start</B> buttons are displayed, and if the indexing processes are running or are scheduled to run, the <B CLASS="guilabel">Stop</B> buttons are displayed.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Indexing Processes</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Stops and then starts all indexing processes belonging to an Indexing and Searching system 			</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" COLSPAN="2" ALIGN="LEFT" VALIGN="TOP">Option</TD>
+<TD SCOPE="COL" WIDTH="338" ALIGN="LEFT" VALIGN="TOP">Resynchronizes the information about the Update Distributor process with the information in the Content Server database</TD></TR></TABLE>
+</DIV></P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-toconfigadvupdist-p.htm" revision="">To Set Advanced Update Distributor Settings</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

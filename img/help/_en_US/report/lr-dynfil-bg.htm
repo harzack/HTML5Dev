@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Dynamic filtering with the Auto-Where feature</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-dynfil-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Using Templates';
+          header.title2 = 'Dynamic filtering with the Auto-Where feature';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID912"></A>Each template includes a check box called <B CLASS="guilabel">Auto-Where</B>. This feature is provided to make it easier to use templates for dynamically adding multiple filter clauses using either <TT CLASS="literal">WHERE</TT>, <TT CLASS="literal">AND</TT> or <TT CLASS="literal">OR</TT>. Although templates can be used to store any part of a SQL query, one of the most obvious uses of templates is to allow a varying number of these filter clauses to be added to the original query. For example, these are some examples of SQL statements that are used for filtering:</P>
+<A NAME="AEN918"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN919"></A><A NAME="TMPID919"></A>WHERE Name = 'test'</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN921"></A><A NAME="TMPID921"></A>AND DATAID &gt; 2000</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN923"></A><A NAME="TMPID923"></A>OR Name LIKE '%new%'</P></LI></OL>
+<P><A NAME="TMPID924"></A>Unless the main SQL source includes the first (WHERE) filter clause, the first template to be added to the source needs to be preceded by <TT CLASS="literal">WHERE</TT>, instead of <TT CLASS="literal">AND</TT> or <TT CLASS="literal">OR</TT>. The problem is that when the template source is written, it is not necessarily possible to determine which template will be the first one as the conditions for inclusion/exclusion are determined when the report is being run. In particular, when a single template is being used repeatedly to provide filter clauses, this is possible with the URL parameter condition, we need to be able to specify that the first copy of the template must be preceded by <TT CLASS="literal">WHERE</TT>.</P>
+<P><A NAME="TMPID929"></A>The Auto-Where feature deals with all of these scenarios and is controlled subject to the following rules:</P>
+<A NAME="AEN931"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN932"></A><A NAME="TMPID932"></A>Any templates that do not have <TT CLASS="literal">Auto-Where</TT> selected will be ignored by the <TT CLASS="literal">Auto-Where</TT> feature, even if one of the reserved words <TT CLASS="literal">WHERE</TT>, <TT CLASS="literal">AND</TT> or <TT CLASS="literal">OR</TT> have been included in the template source.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN939"></A><A NAME="TMPID939"></A>For each template that has this feature enabled, the first word in the source is checked and treated as follows:</P><A NAME="AEN941"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN942"></A><A NAME="TMPID942"></A>If the first word is <TT CLASS="literal">WHERE</TT>, <TT CLASS="literal">AND</TT> or <TT CLASS="literal">OR</TT> and this is the first template to be included, then the word is converted to, or left as, <TT CLASS="literal">WHERE</TT> in the template source for insertion.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN948"></A><A NAME="TMPID948"></A>If neither <TT CLASS="literal">WHERE</TT>, <TT CLASS="literal">AND</TT> nor <TT CLASS="literal">OR</TT> are found and this is the first template to be included, then the word <TT CLASS="literal">WHERE</TT> is added to the front of the template source before insertion.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN954"></A><A NAME="TMPID954"></A>If the first word is <TT CLASS="literal">AND</TT> or <TT CLASS="literal">OR</TT> and this is NOT the first template to be included, then the word is left as is in the template source for insertion.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN958"></A><A NAME="TMPID958"></A>If the first word is <TT CLASS="literal">WHERE</TT> and this is NOT the first template to be included, then <TT CLASS="literal">WHERE</TT> is replaced with <TT CLASS="literal">AND</TT> before the template source is inserted.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN963"></A><A NAME="TMPID963"></A>If none of these words is found and this is NOT the first template to be included then the word <TT CLASS="literal">AND</TT> is added to the front of the template source before insertion.</P></LI></UL></LI></OL>
+<P><A NAME="TMPID965"></A>For examples using the <B CLASS="guilabel">Auto-Where</B> option, see <span><A HREF="lr-example1-bg.htm#LR-EXREUSETEM-EX">Re-using a template with a variable input</A></span> and <span><A HREF="lr-example1-bg.htm#LR-EXMULTVAR-EX">Re-using a template with multiple variable inputs</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

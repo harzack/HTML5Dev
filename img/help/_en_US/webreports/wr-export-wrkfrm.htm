@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Exporting to a WebForm</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-export-wrkfrm.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Exporting Report Data';
+          header.title2 = 'Exporting to a WebForm';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID847"></A>When exporting to a WebForm, the user has the capability to take the results of a report, or selectively choose parts of it, and insert those results into a Content Server WebForm. This provides a powerful capability where a report developer can import data from other systems into a WebForm, or possibly from one WebForm to another within the same system. Advanced users could use this capability to create a cache from a larger data set and then have other reports run against this cache, which is being updated on a regular schedule.</P>
+<P><A NAME="TMPID849"></A>The <B CLASS="guilabel">Export to WebForm</B> feature allows the user to update existing WebForm data, overwrite the existing WebForm data, or append more data to the existing WebForm data.</P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN769"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID852"></A>In order to specify what pieces of data from the WebReport are inserted into the WebForm the <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETFORM">SETFORM</A></span> sub-tag must be used:</P>
+<P><A NAME="TMPID854"></A><TT CLASS="literal">[LL_REPTAG=USERID SETFORM:USER /]</TT> will take the id of the user and insert it into the column <TT CLASS="literal">USER</TT>.</P>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN775"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID858"></A>A slightly more advanced example might involve using sub-tags to operate on the data before inserting it into the WebForm:</P>
+<P><A NAME="TMPID859"></A><TT CLASS="literal">[LL_REPTAG=USERID USERINFO:GROUPID SETFORM:GROUP /]</TT> uses <TT CLASS="literal">USERINFO</TT> with the <TT CLASS="literal">GROUPID</TT> parameter to retrieve the group of the current user.</P>
+<P><A NAME="TMPID863"></A><span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETFORM">SETFORM</A></span> then takes this and inserts it into the WebForm field called <TT CLASS="literal">GROUP</TT>. It is possible to use <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETFORM">SETFORM</A></span> to insert data for as many fields as needed.</P>
+</DIV></P>
+<P><IMG SRC="image015.png"></P>
+<P><A NAME="TMPID872"></A>For more information, see <span><A HREF="wr-export-expwebfrm.htm">Exporting to a WebForm - Parameters and Example</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

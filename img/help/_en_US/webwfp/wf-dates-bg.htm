@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWFP100500-H-UGD-EN-1">
+<META PiXprocLocator="webwfp">
+<title>Specifying Dates</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webwork/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-dates-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Understanding Dates and Priorities';
+          header.title2 = 'Specifying Dates';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID902"></A>Workflow participants can schedule and monitor the progress of an executing Workflow if you configure the Workflow and its steps to use durations (due dates) and start dates. You can also set Content Server to recalculate the due date for the Workflow at the completion of any <B CLASS="GUILABEL">Initiator</B>, <B CLASS="GUILABEL">User</B>, <B CLASS="GUILABEL">Evaluate</B>, or <B CLASS="GUILABEL">Item Handler</B> step.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="DUEDATES">Specifying Due Dates</A></P>
+<P><A NAME="TMPID910"></A>Content Server calculates a step due date at Workflow initiation by adding the step durations you specify in <B CLASS="GUILABEL">Initiator</B>, <B CLASS="GUILABEL">User</B>, <B CLASS="GUILABEL">Item Handler</B>, and <B CLASS="GUILABEL">Sub-Workflow</B> steps to the Workflow start date. For example, if a Workflow contains three <B CLASS="GUILABEL">User</B> steps, each given a duration of one day, a Workflow started on September 22 will have a due date of September 25. <B CLASS="GUILABEL">Milestone</B> and <B CLASS="GUILABEL">Process</B> steps execute automatically and do not have durations.</P>
+<P><A NAME="TMPID919"></A>If the Workflow includes one or more <B CLASS="GUILABEL">Evaluate</B> steps, Content Server calculates the due dates for all branches from each <B CLASS="GUILABEL">Evaluate</B> step and uses the greater date as the Workflow's due date.</P>
+<P><A NAME="TMPID923"></A>If you include an explicit start date for a Workflow step, Content Server includes the time before the step is set to start in its due date calculations. If you do not set an explicit start date, Content Server calculates due dates from the time the step arrives on a user's <B CLASS="GUILABEL">Assignments</B> page.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF8"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P CLASS="NOTE" ALIGN="LEFT"><B>Notes: </B></P>
+<UL class="NOTE">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN783"></A><A NAME="TMPID930"></A>You can indicate that Content Server must calculate the step task due date using a standard work week (that is, exclude weekends) in the Workflow Map general properties. For more information on general properties, see <span><A HREF="wf-properties-bg.htm">Defining General Properties</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN788"></A><A NAME="TMPID936"></A>Users with appropriate permissions can modify due dates in an executing Workflow instance on Workflow status pages. For more information about management permissions, see <span><A HREF="wf-manag-permissions-bg.htm">Setting Management Permissions</A></span>. For more information about monitoring Workflows, see <span><XPROC NAME="ExtXrefStart" HREF="lleswfw-h-ugd.wf-status-bg" FMT="" NO1ST><A  HREF="../../../help/_en_US/webwork/wf-status-bg.htm">Monitoring Workflows and Assignments</A><XPROC NAME="ExtXrefEnd" HREF="lleswfw-h-ugd.wf-status-bg" FMT=""></span>.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="RECALC">Automatically Recalculating the Due Date</A></P>
+<P><A NAME="TMPID941"></A>You can specify that Content Server must automatically recalculate the Workflow due date after <B CLASS="GUILABEL">Initiator</B>, <B CLASS="GUILABEL">Evaluate</B>, <B CLASS="GUILABEL">Sub-Workflow</B>, <B CLASS="GUILABEL">Item Handler</B>, and <B CLASS="GUILABEL">User</B> steps are completed. For example, if a <B CLASS="GUILABEL">User</B> step is completed in less time than specified for its duration, Content Server recalculates the Workflow due date by subtracting the amount of time left in the step's duration.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF9"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID951"></A><B CLASS="NOTE">Note: </B><BR>If you specify the recalculate due date option on a step, but do not specify a duration, the system cannot calculate the Workflow due date and the step due date. If you do not specify the step duration, the Workflow displays &lt;None&gt; or &lt;No Due date&gt; as the due date.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="START">Specifying a Start Date</A></P>
+<P><A NAME="TMPID954"></A>You can specify a start date, which is an explicit date when work on the step is scheduled to begin, for <B CLASS="GUILABEL">Initiator</B>, <B CLASS="GUILABEL">User</B>, and <B CLASS="GUILABEL">Item Handler</B> steps. A step does not appear in the assignee's <B CLASS="GUILABEL">Assignments</B> page until the start date is reached.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-CALCDATESSUBWF">Calculating Due Dates with Sub-Workflows</A></P>
+<P><A NAME="TMPID961"></A>When a Workflow is initiated, due dates for the main Workflow and Sub-Workflow are calculated based on the duration and start date values you provide on all steps. Whenever a step is completed (sent on), the Workflow engine looks for any non-completed step that is configured to use the re-calculate due dates option. Therefore, steps in a Sub-Workflow can affect the due dates of steps in the main Workflow if they are configured to use the re-calculate due dates option. For example, if the steps in a Sub-Workflow that take longer to complete, then their expected durations cause the start and due dates of remaining tasks in the main Workflow to be revised to later dates.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-CALCDUEDATESMEVAL">Calculating Due Dates with Multiple Evaluate Steps</A></P>
+<P><A NAME="TMPID964"></A>If you set the due date for the Workflow to be calculated by Content Server, and the Workflow includes one or more <B CLASS="GUILABEL">Evaluate</B> steps, Content Server calculates the due dates for both branches of each <B CLASS="GUILABEL">Evaluate</B> step and sets the later date as the Workflow's due date.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

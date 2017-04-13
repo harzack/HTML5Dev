@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWFP100500-H-UGD-EN-1">
+<META PiXprocLocator="webwfp">
+<title>Creating Folders</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webattribute/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-folders-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Defining Item Handler Step Operations';
+          header.title2 = 'Creating Folders';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4696"></A>You can configure a Workflow Map to automatically create folders in a Content Server container item or the Workflow Map Attachments folder. Also, you can create a subfolder definition within a folder definition. When Workflow Map processing reaches an <B CLASS="GUILABEL">Item Handler</B> step, it creates the folders you define on its <B CLASS="GUILABEL">Folder Definitions</B> tab. Each request to create a folder is called a <I CLASS="EMPHASIS">folder definition</I>. Optionally, you can use folder definitions as the target and source for other <B CLASS="GUILABEL">Item Handler</B> step operations. For example, you can configure a move or copy request in an <B CLASS="GUILABEL">Item Handler</B> step that moves or copies a Content Server item into a folder created as a result of a folder definition. For more information about configuring the <B CLASS="GUILABEL">Item Handler</B> step to move or copy items, see <span><A HREF="wf-movecopy-bg.htm">Moving or Copying Items</A></span>. After you create a folder definition, you can modify it.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF32"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P CLASS="NOTE" ALIGN="LEFT"><B>Notes: </B></P>
+<UL class="NOTE">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4057"></A><A NAME="TMPID4715"></A>The <B CLASS="GUILABEL">Item Handler</B> step may not process folder definitions in the order that they appear on the <B CLASS="GUILABEL">Folder Definitions</B> tab.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4061"></A><A NAME="TMPID4719"></A>Folders created by the <B CLASS="GUILABEL">Item Handler</B> step do not inherit the Categories of the Content Server container in which they are created. For more information about Content Server Categories and Attributes, see <span><XPROC NAME="ExtXrefStart" HREF="lleswat-h-ugd.catatt-overview-so" FMT="" NO1ST><A  HREF="../../../help/_en_US/webattribute/catatt-overview-so.htm">Working With Categories and Attributes</A><XPROC NAME="ExtXrefEnd" HREF="lleswat-h-ugd.catatt-overview-so" FMT=""></span>.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-WORKEXISTFOLDER">Working with Existing Folders</A></P>
+<P class="before-ul"><A NAME="TMPID4726"></A>You must specify how the <B CLASS="GUILABEL">Item Handler</B> step should respond if it encounters an existing folder with the same name as the one to be created in a folder definition. You can choose one of the following actions:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4071"></A><A NAME="TMPID4730"></A><B CLASS="GUILABEL">Reuse existing folder of same name</B>, which indicates that the step will use the existing folder rather than create a folder.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4074"></A><A NAME="TMPID4733"></A><B CLASS="GUILABEL">Create new folder with appended number</B>, which creates the folder and appends a number (the system starts numbering at 2 and increments by 1) to make a unique folder name.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-CHOOSEFOLDERTARGET">Choosing the Folder Target</A></P>
+<P class="before-ul"><A NAME="TMPID4737"></A>The folder target is the location where you want the <B CLASS="GUILABEL">Item Handler</B> step to create a folder. A folder target can be any of the following:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4081"></A><A NAME="TMPID4741"></A>The Workflow Map Attachments folder or a folder in the Workflow Attachments folder.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4084"></A><A NAME="TMPID4745"></A>A Content Server container, such as a workspace, project, or folder.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4087"></A><A NAME="TMPID4748"></A>A folder definition defined on the same step.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4089"></A><A NAME="TMPID4750"></A>An Item Reference attribute that refers to a Content Server container.</P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF33"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P CLASS="NOTE" ALIGN="LEFT"><B>Notes: </B></P>
+<UL class="NOTE">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4094"></A><A NAME="TMPID4755"></A>Folder definitions are available as targets only when you have one or more folder definitions defined for the same step.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4096"></A><A NAME="TMPID4757"></A>An Item Reference attribute is available as a target only if you have configured one or more attributes that refer to a Content Server container for the Workflow Map. Also, an Item Reference attribute specified as a target cannot contain more than one value.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wf-folders-p.htm" revision="">To Add or Modify a Folder Definition</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

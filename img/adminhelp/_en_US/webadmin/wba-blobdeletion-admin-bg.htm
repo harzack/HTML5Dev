@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Administering Blob Deletion Failures</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-blobdeletion-admin-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Database Administration';
+          header.title2 = 'Administering Blob Deletion Failures';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID15136"></A>The Flexible Storage Management module enables tracking of blob deletion errors. You can monitor blob deletion errors and attempt to delete the blobs that failed to delete on previous deletion attempts. If a deletion failure is detected, the Administer Blob Deletion Failures page lists information about the blob deletion, such as its Logical Provider name, the class of the error, and the error string associated with the deletion failure, if one exists. This page provides you with the date and time the next automated attempt to delete the blob will occur, and gives you the date that the failure was queued.</P>
+<P><A NAME="TMPID15137"></A>If you want to manually retry to delete blobs, you can do so on the Administer Blob Deletion Failures page. However, it is possible that manual blob deletion attempts can fail, just as automated attempts can fail.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF138"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID15139"></A><B CLASS="note">Note: </B><BR>Blobs that are not deleted because the physical storage retention period is not yet expired are not available for manual deletion retries.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID15140"></A>Administrators can view the scheduled activity for retrying blob deletion failures, and set the schedule to a specific day and time when they want to the Provider Blob Deletion Failure Retry Agent to run. When the retry agent runs, it processes log file entries, inserting those entries into the ProviderRetry database table. The log files contain blob deletion failure entries that the system attempted to insert into the ProviderRetry database table, but failed. The retry agent then searches for blob deletion records more than 24 hours old. The retry agent then attempts to delete each blob deletion failure entry listed in the ProviderRetry database table.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF139"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID15142"></A><B CLASS="note">Note: </B><BR>By default, the Provider Blob Deletion Failure Retry Agent schedule is set to run every night at 12:00 a.m.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID15143"></A>Blob deletion failures are events that can be audited by Content Server. The following events can be audited:</P><A NAME="AEN14053"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14054"></A><A NAME="TMPID15147"></A><B CLASS="guilabel">Provider Retry Deleted</B>, which is created when a blob that could not initially be deleted is successfully deleted.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14057"></A><A NAME="TMPID15150"></A><B CLASS="guilabel">Provider Retry Queued</B>, which is created when a blob deletion fails and a row in the ProviderRetry database table is either inserted or updated.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14060"></A><A NAME="TMPID15153"></A><B CLASS="guilabel">Provider Queuing Error</B>, which is created when a blob deletion fails and the system is unable to either insert a row into the ProviderRetry table or add a row to the log file indicating that the blob deletion failed.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN14063"></A><A NAME="TMPID15156"></A><B CLASS="guilabel">Provider Retry Retried</B>, which is created whenever the system attempts to delete a blob that previously could not be deleted.</P></LI></UL>
+<P><A NAME="TMPID15158"></A>For more information about event auditing, see <span><A href="../webadmin/wba-audit-admin-so.htm">Administering Event Auditing</A></span>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-blobdeletion-monitor-p.htm" revision="">To Monitor Blob Deletion Failures</A></p></li>
+<li><p><A  href="../webadmin/wba-blobdeletion-config-agent-p.htm" revision="">To Configure the Provider Blob Deletion Failure Retry Agent</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

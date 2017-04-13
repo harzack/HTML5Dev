@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-EN-1">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Formatting XML Message Content</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-customxmlmsg2-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Customizing XML Messages';
+          header.title2 = 'Formatting XML Message Content';
+           header.draw();
+  </script>
+
+<DIV title="To format XML message content:" CLASS="PROCEDURE">
+<P><B>To format XML message content:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID841"></A>Double-click the <B CLASS="GUILABEL">Workflow Interchange</B> step and click the <B CLASS="GUILABEL">Actions</B> tab. </P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID845"></A>Click the <B CLASS="GUILABEL">Edit</B> icon <IMG  src="../../../16pencil.gif">  for <B CLASS="GUILABEL">Accept an XML Initiation Message</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID850"></A>Click the <B CLASS="GUILABEL">Format</B> tab.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID853"></A>In the <B CLASS="GUILABEL">Format</B> area, select <B CLASS="GUILABEL">Custom Format</B> in the list.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID857"></A>Do any of the following: </P><A NAME="AEN847"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN848"></A><A NAME="TMPID860"></A>Type the name and path of an XSLT stylesheet in any of the fields to transform the message with XSLT stylesheets. </P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF14"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P CLASS="NOTE" ALIGN="LEFT"><B>Notes: </B></P><A NAME="AEN851"></A>
+<UL class="NOTE">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN852"></A><A NAME="TMPID864"></A>For XML send actions, you specify separate stylesheets for outgoing XML messages and for incoming acknowledgements from the target system. For XML accept actions, you specify stylesheets for incoming XML messages and outgoing acknowledgements that the action returns. The specified path is relative to the support directory.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN854"></A><A NAME="TMPID866"></A>The XSLT stylesheet must be placed in the Content Server support directory by the system administrator.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN857"></A><A NAME="TMPID869"></A>Type the name and value of a parameter in the <B CLASS="GUILABEL">Name</B> and <B CLASS="GUILABEL">Value</B> fields and then click the <B CLASS="GUILABEL">Add Value</B> icon <IMG  src="../../../add-row.gif">  to set the parameters if you specify stylesheets that accept XSL parameters. </P>
+<table CLASS="IMPORTANT">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="IMPORTANT"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID875"></A><B CLASS="IMPORTANT">Important: </B><BR>XSL parameter values are XSL expressions, not strings. If you want to pass a string value to the stylesheet, it must be enclosed in quotes. Consult the XSLT specification at http://www.w3.org for a description of XSL expressions.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID877"></A>Select the <B CLASS="GUILABEL">Use and require XML Namespaces</B> check box to ensure that the elements in all XML messages produced by the action are assigned their default XML namespaces. </P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF15"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P CLASS="NOTE" ALIGN="LEFT"><B>Notes: </B></P><A NAME="AEN869"></A>
+<UL class="NOTE">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN870"></A><A NAME="TMPID882"></A>The default namespaces are required on all XML messages that the action accepts, in accordance with the XML Namespaces Recommendation at <A HREF="http://www.w3.org/" TARGET="_blank">http://www.w3.org</A>. For more information about the proper namespaces for each element, see <A HREF="xml-configgenparams3-p.htm">Message Fields and Formats</A>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN874"></A><A NAME="TMPID886"></A>Namespaces can make XML processing somewhat more complicated, but they are useful in advanced XML systems to manage the integration of XML components from various sources. If you are using XML Workflow Interchange to connect Content Server Workflows, you should clear the <B CLASS="GUILABEL">Use and require XML namespaces</B> check box unless the other Content Server system is set up to require namespaces.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID892"></A>Click <B CLASS="GUILABEL">Apply</B>.</P></LI></OL></DIV>
+<P class="nr1"><A NAME="TMPID894"></A>For more information related to this procedure, see <span><A HREF="xml-customxmlmsg-bg.htm">Customizing XML Messages</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

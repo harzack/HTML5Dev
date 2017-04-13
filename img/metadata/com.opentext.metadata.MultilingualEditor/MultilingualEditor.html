@@ -1,0 +1,78 @@
+<html>
+	<head>	
+	<script language='javascript' src='com.opentext.metadata.MultilingualEditor.nocache.js'></script>
+	<SCRIPT LANGUAGE="JavaScript">
+	
+	function metadataOverlay(trigger)
+{
+	// Initialize View
+	// jsInitEditor is a GWT-dynamically created function
+	// that calls the class' initEditor function
+
+	jsInitEditor(trigger);		
+	
+	document.getElementById("metadata_overlay").style.visibility = "visible";
+	document.getElementById(trigger+"_" + this.langIDs[0]).focus();
+	
+}
+
+function globalHover ( imgID, fName) 
+{
+	document.getElementById( imgID ).src = fName;
+}
+
+function fadeIn(id, opa)
+{	/*
+	var div = document.getElementById(id);
+
+	if (opa != 30) 
+	{	
+		div.style.opacity= opa/100;
+		div.style.filter="alpha(opacity=" + opa + ")";
+		opa += 5;
+		window.setTimeout(function(){fadeIn(id,opa)}, 10);
+	}*/
+
+}
+
+	</SCRIPT>
+
+	</head>
+
+	<body>
+	<FORM NAME="CreateForm" ACTION="`urlPrefix`" METHOD="post" ENCTYPE="multipart/form-data" ONRESET="ClearField(this)">	
+			
+	Click here to <a href='#' onclick='metadataOverlay("comment")'>open</a>
+	
+	<TABLE WIDTH="100%" CELLSPACING="0" CELLPADDING="0" BORDER="0">
+		<div id="metadata_overlay">
+			<div id="metadata_multilingualeditor"
+					
+				// Sample Input
+				data2='{"enabledLanguages":[{"Enabled":1,"Language":"French","LanguageID":3,"LanguageLocal":"Français","LocaleCode":"fr","SystemDefault":1,"UserDefault":1},{"Enabled":1,"Language":"German","LanguageID":5,"LanguageLocal":"Deutsch","LocaleCode":"de","SystemDefault":0,"UserDefault":0},{"Enabled":1,"Language":"Polish","LanguageID":6,"LanguageLocal":"polski","LocaleCode":"pl","SystemDefault":0,"UserDefault":0}],"imgPrefix":"\\/img\\/","inputFields":[{"ControlName":"name","DisplayName":"Name","Values":[]},{"ControlName":"comment","DisplayName":"Description","Values":[]}],"systemDefaultLang":3,"userDefaultLang":3}'
+				data ='{"enabledLanguages":[{"Enabled":1,"Language":"French","LanguageID":3,"LanguageLocal":"Français","LocaleCode":"fr","SystemDefault":1,"UserDefault":1},{"Enabled":1,"Language":"German","LanguageID":5,"LanguageLocal":"Deutsch","LocaleCode":"de","SystemDefault":0,"UserDefault":0},{"Enabled":1,"Language":"Polish","LanguageID":6,"LanguageLocal":"polski","LocaleCode":"pl","SystemDefault":0,"UserDefault":0}],"imgPrefix":"\\/img\\/","inputFields":[{"ControlName":"name","DisplayName":"Name","Values":[{"Name":"name_3","Value":"New Project 2"},{"Name":"name_5","Value":"sdfsdf"},{"Name":"name_6","Value":"sdfsdfsdfds"}]},{"ControlName":"comment","DisplayName":"Description","Values":[{"Name":"comment_3","Value":"dsfdsfds\\r\\n"},{"Name":"comment_5","Value":"sdfdsfds"},{"Name":"comment_6","Value":"sdfdsfdsfds"}]}],"systemDefaultLang":3,"userDefaultLang":3}'>
+				
+			</div>
+		</div>	
+		<TR>
+					<TD CLASS="label" NOWRAP>
+						<LABEL FOR="name">Name:</LABEL>
+					</TD>
+					<TD CLASS="labelVerticalDividerRight"  STYLE="background-repeat: repeat-y;"></TD>
+					<TD><INPUT CLASS="valueEditable" TYPE="text" ID="name" NAME="name" VALUE="New Name" SIZE="40" MAXLENGTH="248" ></TD>
+					
+		</TR>
+				
+		<TR>
+					<TD CLASS="label" VALIGN="TOP" NOWRAP>
+						<LABEL FOR="comment">Description:</LABEL>
+					</TD>
+					<TD CLASS="labelVerticalDividerRight" STYLE="background-repeat: repeat-y;"></TD>
+					<TD><TEXTAREA CLASS="valueEditable" ID="comment" NAME="comment" VALUE="New COMMENT" WRAP=SOFT ROWS="5" COLS="40" >
+						</TEXTAREA>
+					</TD>
+		</TR>										
+	</TABLE>
+	</FORM>
+	</body>
+</html>

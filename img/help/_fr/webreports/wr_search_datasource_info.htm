@@ -1,0 +1,88 @@
+<!-- wr_search_datasource_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Search Data Sources</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_search_datasource_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+	var header = new AdminHeader();
+	header.title1 = 'Advanced Information';
+	header.title2 = 'Search Data Sources';
+	header.draw();
+</SCRIPT>
+
+<p class="body">
+<u><SPAN class="gui">Using Saved Queries</SPAN></u>
+</p>
+
+<p class="body">
+A WebReport can use a saved query (created by saving an advanced search) as a data source.
+The search queries can either use standard Full Text specifications (e.g. all words) or complex LQL queries.
+When a data source is selected, the corresponding search specification will be run whenever the WebReport is run.  The columns returned by a saved search are described in the chart below:
+<BR><BR>
+
+<table class="body" border="1" summary="">
+	<tr bgcolor="lightgray">
+		<td><B>Field</B></td>
+		<td><B>Description</B></td>
+	</tr>
+
+	<tr>
+		<td>DataID</td>
+		<td class="body">The Data ID for the object as stored in the Livelink DTREE database table.</td>
+	</tr>
+	<tr>
+		<td>ParentID </td>
+		<td class="body">The ID of the object's parent container as stored in the Livelink DTREE database table.</td>
+	</tr>
+	<tr>
+		<td >Name</td>
+		<td class="body">The name of the object as stored in the Livelink DTREE database table.</td>
+	</tr>
+	<tr>
+		<td>CreatedBy</td>
+		<td class="body">The date of the object's creation as stored in the Livelink DTREE database table.</td>
+	</tr>
+	<tr>
+		<td>ModifyDate</td>
+		<td class="body">The date the object was last modified as stored in the Livelink DTREE database table.</td>
+	</tr>
+	<tr>
+		<td>Record</td>
+		<td class="body">A full record of all the fields for the object that are stored in the Livelink DTREE database table.
+        These fields are stored in a special (RECORD) structure which can be accessed using the RECORD sub-tag. E.g.:<br>
+[LL_REPTAG=RECORD RECORD:SUBTYPE /]</td>
+	</tr>
+		<tr>
+		<td ><i>[Optional Fields]</i></td>
+		<td class="body">In addition to the fixed fields above, any other system attributes (regions) which have been enabled for search display can also be referenced
+		using a WebReports data tag. As these fields are system dependent it is necessary to ask the administrator to provide a list of these attributes/regions.</td>
+	</tr>
+</table>
+</p>
+
+
+<p class=body>
+<SPAN class="gui"><u>Using Parameters in Search Queries</u></SPAN>
+</p><p class=body>
+WebReports support the use of user-defined parameters in the Full Text section of the search query.
+This is designed to work in a similar way to LiveReport parameters.
+Parameters are specified in the format: %n where n is a number from 1 to 99.
+These parameters can be added to multiple Full Text boxes. When the WebReport is run, parameters are passed
+by adding &inputLabeln to the URL.
+For example, if the Full Text box contained: test %1, the parameter &inputLabel1=cat in the URL would result in the
+search query looking for the words 'test' and 'cat'.
+</p>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

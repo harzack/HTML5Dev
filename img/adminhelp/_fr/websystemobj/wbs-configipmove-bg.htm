@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Envoi d'un élément à un IPool utilisant ipmove</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-configipmove-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Ajout et configuration d\'un processus T';
+          header.title2 = 'Envoi d\'un élément à un IPool utilisant ipmove';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID6280"></A>Vous pouvez utiliser un processus T, ainsi que le processus <TT CLASS="literal">ipmove</TT> afin de spécifier s'il faut chercher un modèle dans les métadonnées pour inclure ou exclure un élément de l'envoi à un IPool particulier.</P>
+<P><A NAME="TMPID6282"></A>La section <TT CLASS="literal">ipmove</TT> du fichier <TT CLASS="literal">opentext.ini</TT> indique le chemin d'accès au fichier du message, mais le processus ipmove ne lit pas les paramètres ou les arguments de la section <TT CLASS="literal">ipmove</TT>. Pour en savoir plus, voir <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-ipmove-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-ini-ipmove-rf.htm">[ipmove]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-ipmove-rf" FMT=""></span>.</P>
+<P><A NAME="TMPID6287"></A>Le processus <TT CLASS="literal">ipmove</TT> lit les paramètres ou les arguments du fichier <TT CLASS="literal">-config</TT> qui lui est transmis sur la ligne de commande, par exemple :</P><A NAME="AEN5578"></A>
+<PRE 
+CLASS="screen"
+>F:/OpenText/cs1064dev02/bin/ipmove -config F:/OpenText/cs1064dev02/config/stormskyX9099X18137X67963.ini</PRE
+>
+<P><A NAME="TMPID6291"></A>Voici un exemple du contenu du fichier <TT CLASS="literal">stormskyX9099X18137X67963.ini</TT> :</P><A NAME="AEN5581"></A>
+<PRE 
+CLASS="screen"
+>[ipmove]
+ReadArea_1=67746_3
+ReadIpool_1=file://F:/OpenText/cs1064dev02/index/enterprise/data_flow
+WriteArea_1=67746_4
+WriteIpool_1=file://F:/OpenText/cs1064dev02/index/enterprise/data_flow</PRE
+>
+<P><A NAME="TMPID6294"></A>OpenText vous recommande de définir le paramètre <TT CLASS="literal">readfields=true</TT> pour le processus <TT CLASS="literal">ipmove</TT> en modifiant son Modèle de commande à l'aide de l'onglet Infos spécifiques du processus T dans l'interface utilisateur d'Content Server. Pour en savoir plus, consultez le document <span><A href="../websystemobj/wbs-toconfigtwt-p.htm">Pour configurer le processus T</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Exemples de fichier de contrôle d'importation de dossiers</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-folsamp-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Exemples de fichier de contrôle d\'importation de l\'importateur d\'objet';
+          header.title2 = 'Exemples de fichier de contrôle d\'importation de dossiers';
+           header.draw();
+  </script>
+
+<DIV title="Pour créer un dossier 'Documents' dans le dossier 'Projets' de l'espace de travail Entreprise, en octroyant les autorisations 'Client' de groupe 'Voir et Voir le contenu' et en retirant des autorisations du groupe public :   " CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF41"></A><B><IMG title="Pour créer un dossier 'Documents' dans le dossier 'Projets' de l'espace de travail Entreprise, en octroyant les autorisations 'Client' de groupe 'Voir et Voir le contenu' et en retirant des autorisations du groupe public :   " SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-29 : Pour créer un dossier « Documents » dans le dossier « Projets » de l'espace de travail Entreprise, en octroyant les autorisations « Client » de groupe <I CLASS="emphasis">Voir et Voir le contenu</I> et en retirant des autorisations du groupe public :   </B></P><A NAME="AEN4318"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="folder" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects&lt;/location&gt;
+    &lt;title language="en"&gt;Documents&lt;/title&gt;
+    &lt;description language="en"&gt;This folder is to store documents&lt;/description&gt;
+    &lt;acl group="Client" permissions="100000000"&gt;&lt;/acl&gt;
+    &lt;acl standard="world" permissions="000000000"&gt;&lt;/acl&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour créer un dossier 'Documents' dans le dossier 'Projets' de l'espace de travail Entreprise, en octroyant les autorisations 'Client' de groupe 'Voir et Voir le contenu' et en retirant des autorisations du groupe public :   " SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour mettre à jour un dossier existant nommé 'Documents' situé dans l'espace de travail Entreprise, en ajoutant un surnom. Dans cet exemple, la case 'Ajouter un titre à l'emplacement' est cochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF42"></A><B><IMG title="Pour mettre à jour un dossier existant nommé 'Documents' situé dans l'espace de travail Entreprise, en ajoutant un surnom. Dans cet exemple, la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-30 : Pour mettre à jour un dossier existant nommé « Documents » situé dans l'espace de travail Entreprise, en ajoutant un surnom. Dans cet exemple, la case « Ajouter un titre à l'emplacement » est cochée :</B></P><A NAME="AEN4323"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="en"&gt;Documents&lt;/title&gt;
+    &lt;nickname&gt;docs&lt;/nickname&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour mettre à jour un dossier existant nommé 'Documents' situé dans l'espace de travail Entreprise, en ajoutant un surnom. Dans cet exemple, la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour mettre à jour un dossier existant nommé 'Documents' situé dans l'espace de travail Entreprise, en ajoutant un surnom. Dans cet exemple, la case 'Ajouter un titre à l'emplacement' est décochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF43"></A><B><IMG title="Pour mettre à jour un dossier existant nommé 'Documents' situé dans l'espace de travail Entreprise, en ajoutant un surnom. Dans cet exemple, la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-31 : Pour mettre à jour un dossier existant nommé « Documents » situé dans l'espace de travail Entreprise, en ajoutant un surnom. Dans cet exemple, la case « Ajouter un titre à l'emplacement » est décochée :</B></P><A NAME="AEN4328"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise:Documents&lt;/location&gt;
+    &lt;nickname&gt;docs&lt;/nickname&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour mettre à jour un dossier existant nommé 'Documents' situé dans l'espace de travail Entreprise, en ajoutant un surnom. Dans cet exemple, la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour mettre à jour un dossier existant en retirant des autorisations du groupe public, lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF44"></A><B><IMG title="Pour mettre à jour un dossier existant en retirant des autorisations du groupe public, lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-32 : Pour mettre à jour un dossier existant en retirant des autorisations du groupe public, lorsque la case « Ajouter un titre à l'emplacement » est cochée :</B></P><A NAME="AEN4332"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects&lt;/location&gt;
+    &lt;title language="en"&gt;Documents&lt;/title&gt;
+    &lt;acl standard="world" permissions="000000000"&gt;&lt;/acl&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour mettre à jour un dossier existant en retirant des autorisations du groupe public, lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour mettre à jour un dossier existant en retirant des autorisations du groupe public, lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF45"></A><B><IMG title="Pour mettre à jour un dossier existant en retirant des autorisations du groupe public, lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-33 : Pour mettre à jour un dossier existant en retirant des autorisations du groupe public, lorsque la case « Ajouter un titre à l'emplacement » est décochée :</B></P><A NAME="AEN4336"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;acl standard="world" permissions="000000000"&gt;&lt;/acl&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour mettre à jour un dossier existant en retirant des autorisations du groupe public, lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour renommer un dossier existant de 'Documents' en 'Mes documents' lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF46"></A><B><IMG title="Pour renommer un dossier existant de 'Documents' en 'Mes documents' lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-34 : Pour renommer un dossier existant de « Documents » en « Mes documents » lorsque la case « Ajouter un titre à l'emplacement » est décochée :</B></P><A NAME="AEN4342"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="folder" action="update"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;My Documents&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour renommer un dossier existant de 'Documents' en 'Mes documents' lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour supprimer un dossier nommé 'Temp' du dossier 'Espace de travail Entreprise' lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF47"></A><B><IMG title="Pour supprimer un dossier nommé 'Temp' du dossier 'Espace de travail Entreprise' lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-35 : Pour supprimer un dossier nommé « Temp » du dossier « Espace de travail Entreprise » lorsque la case « Ajouter un titre à l'emplacement » est cochée :</B></P><A NAME="AEN4348"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="folder" action="delete"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="en"&gt;Temp&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour supprimer un dossier nommé 'Temp' du dossier 'Espace de travail Entreprise' lorsque la case 'Ajouter un titre à l'emplacement' est cochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Pour supprimer un dossier nommé 'Temp' du dossier 'Espace de travail Entreprise' lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF48"></A><B><IMG title="Pour supprimer un dossier nommé 'Temp' du dossier 'Espace de travail Entreprise' lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 6-36 : Pour supprimer un dossier nommé « Temp » du dossier « Espace de travail Entreprise » lorsque la case « Ajouter un titre à l'emplacement » est décochée :</B></P><A NAME="AEN4354"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="folder" action="delete"&gt;
+    &lt;location&gt;Enterprise:Temp&lt;/location&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Pour supprimer un dossier nommé 'Temp' du dossier 'Espace de travail Entreprise' lorsque la case 'Ajouter un titre à l'emplacement' est décochée :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

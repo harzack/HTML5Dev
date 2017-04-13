@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Utilisation des paramètres</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-parameter-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation du module WebReports';
+          header.title2 = 'Utilisation des paramètres';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1215"></A>Lors de l'exécution d'un WebReport, les paramètres peuvent être inclus dans l'URL pour le WebReport lui-même, ainsi que pour la source de données associée. Ces deux types de paramètres, les paramètres du WebReport et les paramètres de source de données, sont décrits ci-dessous. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-PARAM-WRP">Paramètres de WebReport</A></P>
+<P><A NAME="TMPID1218"></A>Plusieurs paramètres permettent de contrôler le comportement du WebReport. La plupart d'entre eux sont conçus pour permettre aux concepteurs de WebReport de créer des URL uniques afin de modifier le comportement du WebReport en fonction des exigences de l'application. Outre ces paramètres intégrés, le module WebReports prend également en charge la création et l'utilisation de paramètres uniques définis par les développeurs de WebReport. Pour les transmettre, il suffit de placer <TT CLASS="literal">&amp;parmname=data</TT> dans la liste des paramètres de l'URL où <TT CLASS="literal">parmname</TT> peut être une chaîne quelconque de caractères alphanumériques standard. </P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN1203"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID1222"></A>?func=ll&amp;objId=47478&amp;objAction=RunReport&amp;myparm=testdata&amp;nexturl=</P>
+<P><A NAME="TMPID1223"></A>Ces données sont alors accessibles dans l'affichage de rapport à l'aide de la syntaxe de balise définie. Dans cet exemple, <TT CLASS="literal">[LL_REPTAG_&amp;myparm /]</TT> renvoie « testdata ». Des sous-balises peuvent être utilisées pour modifier les données renvoyées par une balise de paramètre.</P>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-PARAM-DSP">Paramètres de source de données</A></P>
+<P><A NAME="TMPID1228"></A>Les sources de données, les rapports LiveReport et les requêtes de recherche permettent de définir et de collecter les paramètres d'entrée à l'exécution du rapport :</P>
+<A NAME="AEN1210"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1211"></A><A NAME="TMPID1231"></A><I CLASS="emphasis">Lorsqu'un rapport LiveReport est utilisé comme source de données</I>, l'invite standard du rapport LiveReport apparaît avant l'exécution du WebReport si aucun paramètre n'est indiqué dans l'URL. Dans ce scénario, à l'exécution de l'objet WebReport, l'utilisateur reçoit les invites du rapport LiveReport comme s'il avait exécuté directement le rapport LiveReport. Une fois les invites requises complétées, le WebReport continue normalement.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1214"></A><A NAME="TMPID1234"></A><I CLASS="emphasis">Lorsqu'un WebReport a été défini à l'aide d'une requête enregistrée comme source de données</I>, il est possible d'insérer des variables dans la spécification de recherche de texte intégral de la requête enregistrée. Par exemple, le terme <TT CLASS="literal">%1</TT> peut être placé dans le champ <B CLASS="guilabel">Termes de la recherche de texte intégral</B> de toute zone de recherche de texte intégral. Ces variables seront remplacées par les paramètres correspondants dans l'URL. Les paramètres URL suivent la même convention que dans un rapport LiveReport. </P>
+<P><A NAME="TMPID1238"></A>Par exemple, <TT CLASS="literal">inputlabel&lt;<I CLASS="varname">x</I>>=value</TT>, où &lt;<I CLASS="varname">x</I>> est un nombre compris entre 1 et 99 qui correspond aux variables <TT CLASS="literal">%1</TT>, <TT CLASS="literal">%2</TT>, etc.</P></LI></OL>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN1225"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID1245"></A><TT CLASS="literal"> ...?func=ll&amp;objId=47478&amp;objAction=RunReport&amp;inputLabel1=WebReport&amp;nexturl=... </TT></P>
+<P><A NAME="TMPID1247"></A>Dans cet exemple, une variable telle que <TT CLASS="literal">%1</TT> serait remplacée par le mot « WebReport » à l'aide d'un paramètre URL sous la forme : <TT CLASS="literal">inputlabel1=WebReport</TT>.</P>
+</DIV></P>
+<P><A NAME="TMPID1251"></A>Ces variables peuvent également servir dans des requêtes complexes du langage de requête Content Server, LQL. D'autres informations sur l'utilisation de la recherche sont disponibles dans l'aide en ligne. </P>
+<P><A NAME="TMPID1253"></A>Si un WebReport est exécuté en appelant son URL à partir d'une page développée par un utilisateur, par exemple un document HTML ou un autre WebReport, il est alors possible de fournir les paramètres d'entrée requis pour le WebReport et la source de données dans l'URL utilisée pour appeler le WebReport. Si tous les paramètres de rapport LiveReport requis sont transmis dans l'URL, l'utilisateur n'est pas invité à saisir les paramètres d'entrée de façon normale. </P>
+<P><A NAME="TMPID1254"></A>WebReports fournit une fonction qui permet de définir des valeurs par défaut pour les paramètres normalement transmis via l'URL. Lorsqu'une valeur par défaut est définie pour un paramètre, elle est alors utilisée si aucun paramètre correspondant ne se trouve dans l'URL. </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-parameter-tabset.htm" revision="">Réglages de l'onglet Paramètres</A></p></li>
+<li><p><A  HREF="wr-parameter-types.htm" revision="">Types de paramètres</A></p></li>
+<li><p><A  HREF="wr-parameter-procedures.htm" revision="">Procédures relatives aux paramètres WebReport</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

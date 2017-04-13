@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Utilisation des fonctions prédéfinies</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-predef-functions.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Services WR';
+          header.title2 = 'Utilisation des fonctions prédéfinies';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID18107"></A>Le fichier <TT CLASS="filename">ajax.js</TT> fourni avec WebReports comprend une fonction conçue pour faciliter l'utilisation des services WebReports avec la technologie AJAX. AJAX signifie Asynchronous JavaScript and XML. Le fichier <TT CLASS="filename">ajax.js</TT> est accédé par l'inclusion d'un <TT CLASS="literal">SCRIPT</TT> comme suit : <TT CLASS="literal">&lt;SCRIPT SRC="/&lt;support dir&gt;/webreports/library/ajax.js"&gt;&lt;/SCRIPT&gt;</TT> </P>
+<P><A NAME="TMPID18114"></A>Si le fichier est inclus dans un WebReport ou ActiveView, la balise <TT CLASS="literal">LIBPATH</TT> peut être utilisée comme suit : <TT CLASS="literal">&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;</TT></P>
+<P><A NAME="TMPID18117"></A>Le tableau suivant décrit la fonction disponible et ses paramètres.</P>
+<DIV title=" 'executeWRService( serviceType, responseTarget, parmList, responseType, getPost)'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="WR-SERVICES-PREDF-T"></A><B>Tableau 1-55 :  <B CLASS="highlight">executeWRService( serviceType, responseTarget, parmList, responseType, getPost)</B></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Paramètre</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Facultatif/obligatoire</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">servicetype</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Obligatoire</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Ce paramètre attend une chaîne avec l'un des types de services pris en charge pour exécuter un service WR, comme indiqué dans <span><A HREF="wr-services-availsvcs.htm#WR-SERVICES-SVCTYP-T"><NOBR>Tableau 1-52</NOBR></A> a <A HREF="wr-services-availsvcs.htm">Types de services disponibles</A></span>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">responseTarget</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Obligatoire</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Ce paramètre attend une fonction JavaScript créée par le développeur ou une chaîne représentant l'ID d'un objet HTML dans lequel les données renvoyées doivent être insérées. Si une fonction JavaScript est créée et transmise à ce paramètre, elle doit être écrite pour accepter <TT CLASS="literal">http_request</TT> comme paramètre. Par exemple :</TD></TR></TABLE> <A NAME="AEN17391"></A>
+<PRE 
+CLASS="screen"
+>&#13;function myHandlerFunction(httpRequest) {
+alert('the response was: '+ httpRequest.responseText);
+}
+executeWRService( 'gettagdata', myHandlerFunction, "&amp;statictag=userid &amp;subtags=USERINFO:GROUPID", 'json')</PRE
+></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">parmList</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Facultatif</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Ce paramètre permet de spécifier une chaîne contenant d'autres paramètres à ajouter à l'URL conformément à chaque type de service. Par exemple, le type de service <TT CLASS="literal">gettagdata</TT> utilise une combinaison de <TT CLASS="literal">&amp;tagdata</TT>, <TT CLASS="literal">&amp;statictag</TT> ou <TT CLASS="literal">&amp;subtags</TT> comme indiqué dans la syntaxe décrite dans la section <span><A HREF="wr-services-availsvcs.htm#WR-SERVICES-SUPPPARAMS"><NOBR>Tableau 1-53</NOBR></A> a <A HREF="wr-services-availsvcs.htm">Types de services disponibles</A></span>. Les paramètres doivent être spécifiés dans le format de type <TT CLASS="literal">&amp;name=value</TT>. Par exemple, <TT CLASS="literal">"&amp;tagdata=12345&amp;subtags=CAT:myCategory:attr1:display"</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">responseType</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Facultatif</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Ce paramètre attend une chaîne avec l'un des types de réponses pris en charge pour les services WR, <TT CLASS="literal">chaîne</TT>, <TT CLASS="literal">json</TT>, <TT CLASS="literal">xml</TT>, comme indiqué dans <span><A HREF="wr-services-availsvcs.htm#WR-SERVICES-VALVALUES"><NOBR>Tableau 1-54</NOBR></A> a <A HREF="wr-services-availsvcs.htm">Types de services disponibles</A></span>. Sinon, la valeur par défaut est <B CLASS="highlight">json</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">getPost</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Facultatif</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Ce paramètre permet de spécifier si la requête AJAX doit être <TT CLASS="literal">GET</TT> ou <TT CLASS="literal">POST</TT>. S'il est omis, la méthode <TT CLASS="literal">POST</TT> est utilisée.</TD></TR></TABLE> </TD></TR></TABLE></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

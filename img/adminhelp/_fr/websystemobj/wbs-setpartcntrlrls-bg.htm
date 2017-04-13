@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Ajout de règles de contrôle de la gestion des partitions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-setpartcntrlrls-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion des règles de contrôle';
+          header.title2 = 'Ajout de règles de contrôle de la gestion des partitions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID8677"></A>Les règles de contrôle de gestion des partitions vous permettent de définir les statuts ou conditions rencontrés par les partitions et d'associer certaines actions à ces conditions. Par exemple, vous pouvez ajouter une règle de contrôle basée sur la capacité des partitions qui génèrera un rapport lorsque chaque partition a atteint 75 % de sa capacité. Pour plus d'informations sur les partitions, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-understandingpartmaps-bg.htm">Utilisation des schémas de partition</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF168"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID8680"></A><B CLASS="note">Note : </B><BR>Content Server envoie des e-mails d'alerte relatifs aux objets système aux destinataires spécifiés sur la page Configurer l'envoi d'e-mails d'alerte relatifs aux objets système. Pour en savoir plus, voir <span><A href="../websovmgmt/sov-cnfsoaed-p.htm">Pour activer la recherche d'erreurs et l'envoi d'e-mails</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID8683"></A>Outre l'ajout de règles de contrôle qui surveillent la capacité des partitions, vous pouvez ajouter des règles de contrôle de gestion des partitions pour créer automatiquement de nouvelles partitions lorsque les conditions des règles sont remplies (règles de contrôle de <I CLASS="emphasis">création des partitions</I>). Ces règles de contrôle peuvent être basées sur la capacité des partitions ou sur un intervalle de temps défini (création de partitions <I CLASS="emphasis">basée sur la date</I>).</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF169"> 		Règle de contrôle de la création des partitions 	</A></P>
+<P><A NAME="TMPID8687"></A>Lorsque vous ajoutez une règle de contrôle de la création des partitions, vous pouvez spécifier plusieurs paramètres. Vous pouvez faire en sorte que Content Server modifie les modes (<I CLASS="emphasis">descende</I>) des partitions précédentes à mesure que de nouvelles partitions sont créées, sélectionner le nombre de partitions à créer et spécifier des modèles de nom et de répertoire de partitions (variables qui déterminent la manière dont Content Server nomme automatiquement les partitions et les répertoires dans lesquels elles sont stockées). Les emplacements du disque pour les répertoires qui stockent les partitions proviennent de la configuration des partitions du site, qui doit déjà être définie pour que ces règles fonctionnent correctement. Pour en savoir plus, voir <span><A href="../websystemobj/wbs-configpartitions-bg.htm">Configuration des partitions</A></span>. Lorsque vous ajoutez des règles de contrôle pour créer automatiquement des partitions, vous pouvez programmer des processus de sauvegarde automatique pour ces partitions. Avant de pouvoir programmer un processus de sauvegarde, vous devez créer manuellement un gestionnaire de sauvegarde et au moins un processus de sauvegarde. Une fois les processus de sauvegarde créés pour la première partition, les partitions suivantes copient le nombre de processus défini pour la partition précédente et appliquent un ensemble similaire aux nouvelles partitions. Lorsque vous descendez une partition en mode Lecture seule, toutes les sauvegardes programmées existantes sont annulées et une dernière sauvegarde complète est effectuée. Pour plus d'informations sur l'automatisation des processus de sauvegarde, reportez-vous à la rubrique <span><A href="../otadmin/ota-ibrbackupoverview-so.htm">Sauvegarde et restauration des index</A></span>.</P>
+<table CLASS="warning">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="warning" ALIGN="CENTER"><IMG ALT="Avertissement" SRC="../../images/pi_warning.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID8694"></A><B CLASS="warning">Avertissement</B><BR>Lorsque vous modifiez une partition sur En lecture seule, le moteur d'indexation pour cette partition s'arrête et cesse d'indexer tout élément mis à jour ou supprimé.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID8695"></A>Les règles de contrôle de la création des partitions basée sur la date sont déclenchées lorsque la date de création d'objet dans le flux de données la plus récente est identique ou ultérieure à la date de déclenchement spécifiée. La règle attend alors que le nombre de messages IPool du flux de données atteigne zéro, crée de nouvelles partitions, puis définit la date de déclenchement suivante en fonction d'un intervalle spécifié. L'intervalle détermine la durée entre le déclenchement de la règle et la date de déclenchement suivante.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF170"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID8697"></A><B CLASS="note">Note : </B><BR>Les règles de contrôle de la création des partitions fondée sur la date sont disponibles uniquement si vous avez défini le paramètre <TT CLASS="literal">wantDescendingExtractor</TT> du fichier <TT CLASS="literal">opentext.ini</TT> sur <TT CLASS="literal">false</TT>. Pour en savoir plus, voir <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-livelinkextractor-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-ini-livelinkextractor-rf.htm">[LivelinkExtractor]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-livelinkextractor-rf" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-tosetcap-p.htm" revision="">Pour ajouter une règle de contrôle basée sur la capacité des partitions</A></p></li>
+<li><p><A  href="../websystemobj/wbs-tosetcapbased-p.htm" revision="">Pour ajouter une règle de contrôle pour la création de partitions basée sur la capacité</A></p></li>
+<li><p><A  href="../websystemobj/wbs-tosetdatebased-p.htm" revision="">Pour ajouter une règle de contrôle pour la création de partitions basée sur la date</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

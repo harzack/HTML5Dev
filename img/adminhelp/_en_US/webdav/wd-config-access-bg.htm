@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWDV100500-H-AGD-EN">
+<META PiXprocLocator="webdav"><title>Configuring WebDAV Access</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wd-config-access-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering OpenText WebDAV';
+          header.title2 = 'Configuring WebDAV Access';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID284"></A>When a folder has categories with required attributes, the Content Server user interface forces users to provide values for these attributes when adding documents to the folder. Since it is not possible through WebDAV to present the user interfaces required for this functionality, one of the following non-interactive behaviors must be used instead:</P><A NAME="AEN282"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN283"></A><A NAME="TMPID289"></A>If the Content Server installation includes the Personal Staging module, you can elect to create a document in a personal staging folder. For information about the Personal Staging module, see the <I CLASS="EMPHASIS">OpenText WebDAV Release Notes</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN289"></A><A NAME="TMPID295"></A>You can elect to create the document but leave the required attributes blank. The attributes can be filled in later using the Content Server user interface if necessary. This is the most convenient option for users, but can defeat the intended purpose of requiring attributes on those folders in the first place.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN292"></A><A NAME="TMPID298"></A>You can allow the documents to be created but have the categories that include those attributes removed. This is consistent with the capabilities of the Content Server user interface but makes it more difficult for users to fill in the attributes later, because they have to find and add the proper categories.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN295"></A><A NAME="TMPID301"></A>You can disallow the creation of documents in folders using WebDAV. Although this causes WebDAV clients to fail and display an error when attempting to create a new document, existing documents can still be edited.</P></LI></UL>
+<P><A NAME="TMPID304"></A>WebDAV allows you to omit certain items from WebDAV folder listings for users without system administration rights, according to the needs and expectations of your user community. You can omit hidden items as well as categories and report volumes.</P>
+<P><A NAME="TMPID307"></A>Hiding items designated as hidden omits hidden items from folder listings in the same way that they are omitted from Content Server browse pages. By default, this option is turned off, allowing the hidden items to be easily authored and edited using WebDAV clients.</P>
+<P><A NAME="TMPID310"></A>Hiding categories and report volumes removes these items from the WebDAV root folder. As these locations are rarely used by most users and WebDAV editing is not usually appropriate for these objects, this option is enabled by default to reduce the complexity of users' views.</P>
+<P><A NAME="TMPID313"></A>Hiding Content Server items removes them from the WebDAV folder view for all users.</P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wd-config-access2-p.htm" revision="">To specify category inheritance rules</A></p></li>
+<li><p><A  HREF="wd-config-access1-p.htm" revision="">To hide items from the WebDAV view</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

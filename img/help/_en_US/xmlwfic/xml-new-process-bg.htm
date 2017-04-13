@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-EN-1">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>New Process</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-new-process-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Task Information';
+          header.title2 = 'New Process';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1360"></A>New process information is returned in reply to an initiation message when that message starts a process on the receiving system.</P>
+<P class="before-ul"><A NAME="TMPID1361"></A>New process information includes two variable fields:</P><A NAME="AEN1322"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1323"></A><A NAME="TMPID1364"></A>An opaque handle, which identifies the new process within the target system. If present, this is guaranteed never to be reused.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1325"></A><A NAME="TMPID1366"></A>A URL, which is available if the status of the new process can be checked with a Web interface.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-040">XML Representation</A></P>
+<P><A NAME="TMPID1369"></A><TT CLASS="LITERAL">&lt;newproc handle="…"&gt;</TT></P>
+<P><A NAME="TMPID1371"></A><TT CLASS="LITERAL">&lt;target url="…" type="browser"/&gt;</TT></P>
+<P><A NAME="TMPID1373"></A><TT CLASS="LITERAL">&lt;/newproc&gt;</TT></P>
+<P><A NAME="TMPID1375"></A>In XML, the new process information consists of a <TT CLASS="LITERAL">newproc</TT> element that contains one or more target elements. Target elements are distinguished by their type attributes.</P>
+<P><A NAME="TMPID1377"></A>Currently, only browser targets are supported, so all <TT CLASS="LITERAL">newproc</TT> elements have exactly one target child element. However, systems that process these XML messages should anticipate additional target types in the future.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-041">XML Namespaces (if used)</A></P>
+<P><A NAME="TMPID1381"></A><TT CLASS="LITERAL">&lt;newproc xmlns="http://www.opentext.com/llx/Workflow/"&gt;</TT></P>
+<P><A NAME="TMPID1383"></A><TT CLASS="LITERAL">&lt;target xmlns="http://www.opentext.com/llx/"&gt;</TT></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-042">HTML Representation</A></P>
+<P><A NAME="TMPID1387"></A><TT CLASS="LITERAL">newprocess_handle=…</TT></P>
+<P><A NAME="TMPID1389"></A><TT CLASS="LITERAL">newprocess_browser_url =…</TT></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

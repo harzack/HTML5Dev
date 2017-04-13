@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Setting Schedules for WebReports</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-schedule-procedures.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working with WebReports';
+          header.title2 = 'Setting Schedules for WebReports';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1065"></A>WebReports developers, or users with reserve permission, can set up execution schedules for individual WebReports to run without user intervention. Scheduled reports run in the background and output their results to a Content Server document node or to email. The schedule allows for reports to run a fixed number of times or forever, starting from a specific date and time. The time between repeated report runs can be from 5 minutes to 520 weeks. One schedule can be set per user per WebReport.</P>
+<P><A NAME="TMPID1068"></A>In some circumstances it might be necessary to have a WebReport run on the same day of the month, every month. As an example, an employee overtime report might be required on the 25<SUP>th</SUP> of each month. The fixed scheduling interval that WebReports provides means this can't be readily achieved through the interface, rather you need to use sub-WebReports. See <span><A HREF="wr-schedule-setrunsame.htm">To Set a WebReport to Run on the Same Date or Day</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-SCHEDULE-IMPNOT">Important Notes and Recommendations</A></P>
+<A NAME="AEN963"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN964"></A><A NAME="TMPID1075"></A>Users should be cautious about when and how often to schedule a report that returns a very large dataset. Such reports can require significant resources and might impact system performance if run too often or at peak times.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN966"></A><A NAME="TMPID1077"></A>If Content Server services are turned off or Content Server Agents are disabled for another reason, scheduled reports will not run. Once enabled again, WebReports will run a report at the soonest opportunity if a report was missed, regardless of the schedule. After this, WebReports will run the report at the next time in the future that fits the schedule. If irregular run times are observed it is most likely due to this.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN970"></A><A NAME="TMPID1081"></A>The output destination settings, email or Content Server, are the same for scheduling as for the default action for a user clicking the WebReport link. If these need to be different OpenText recommends that two WebReports with the same reportview are used. The scheduled report can be hidden or placed in a permissioned folder.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN974"></A><A NAME="TMPID1085"></A>Scheduled WebReports run as if they were run by the user that set the schedule. This means that where a permissions filter is used in a data source, such as a LiveReport or a search query, it will return results that this user has the permissions to see. Always output sensitive reports to an appropriately permissioned location in Content Server.</P></LI></OL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-schedule-setsched-p.htm" revision="">To Set a Schedule</A></p></li>
+<li><p><A  HREF="wr-schedule-setrunsame.htm" revision="">To Set a WebReport to Run on the Same Date or Day</A></p></li>
+<li><p><A  HREF="wr-schedule-remchng-p.htm" revision="">To Remove or Change a Schedule</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

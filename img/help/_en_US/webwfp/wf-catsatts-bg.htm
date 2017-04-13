@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWFP100500-H-UGD-EN-1">
+<META PiXprocLocator="webwfp">
+<title>Working with Categories and Attributes in Workflow Maps</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/form/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-catsatts-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Defining Item Handler Step Operations';
+          header.title2 = 'Working with Categories and Attributes in Workflow Maps';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID5383"></A>You can configure a Workflow Map to automatically perform category and attribute operations on Content Server items, Workflow Map attachments, Workflow Map attributes, and fields in Forms that have been added to the Workflow Map. When Workflow Map processing reaches an <B CLASS="GUILABEL">Item Handler</B> step, it performs the category and attribute operations you define. The actions you can perform include:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4693"></A><A NAME="TMPID5398"></A>Add, delete, or modify categories and attributes on a Content Server item.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4696"></A><A NAME="TMPID5401"></A>Modify the current values of Workflow Map attributes or fields in a Form added to the Workflow Map.</P></LI></UL>
+<table class="otModuleShow if-llesfrm-h-ugd-hide NOTE" id="TMP4REF58" >
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF58"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID5407"></A><B CLASS="NOTE">Note: </B><BR>Your administrator must install the Content Server Forms module on your Content Server before you can perform category and attribute operations with Form fields.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID5410"></A>The operations you define are based on a mapping between the values in a Content Server Category attribute and a Workflow Map attribute or Form field, not the attribute definitions. The data transfer actions you specify apply only to the values contained in each instance of the attribute or field. For example, imagine that a Workflow Map contains the following attribute of type Integer popup:</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4708"></A>
+<TH SCOPE="COL" WIDTH="130" ALIGN="LEFT" VALIGN="TOP">Name</TH>
+<TH SCOPE="COL" WIDTH="370" ALIGN="LEFT" VALIGN="TOP">Legal Values</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="130" ALIGN="LEFT" VALIGN="TOP">Price</TD>
+<TD SCOPE="COL" WIDTH="370" ALIGN="LEFT" VALIGN="TOP">5, 10, 15, 20, 25, 30</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID5428"></A>Next, imagine that your Content Server contains a category attribute of type Integer popup:</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4722"></A>
+<TH SCOPE="COL" WIDTH="130" ALIGN="LEFT" VALIGN="TOP">Name</TH>
+<TH SCOPE="COL" WIDTH="370" ALIGN="LEFT" VALIGN="TOP">Legal Values</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="130" ALIGN="LEFT" VALIGN="TOP">Cost</TD>
+<TD SCOPE="COL" WIDTH="370" ALIGN="LEFT" VALIGN="TOP">0, 10, 20, 30</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID5442"></A>You can create a mapping definition between the Price and Cost attributes, but the operations you perform can apply only to the common legal values in each attribute (10, 20, 30). You cannot specify an operation that will change the Cost attribute to accept the value 5. In addition, if the attributes do not have common values, you can define a mapping, but you cannot perform an operation between the attributes.</P>
+<table class="otModuleHide if-llesfrm-h-ugd-show NOTE" id="TMP4REF59" >
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF59"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID5444"></A><B CLASS="NOTE">Note: </B><BR>Form fields of type Set are not supported in category operations.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF60">Choosing Categories and Attributes and Configuring Mappings</A></P>
+<P class="before-ul"><A NAME="TMPID5446"></A>When you want to define category operations in your Workflow Map, you must complete the following task:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4741"></A><A NAME="TMPID5451"></A>Choose the Content Server Categories with which you want to work. The categories you choose are displayed on the <B CLASS="GUILABEL">Definitions</B> tab.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID5454"></A>If you want to define attribute operations, you must complete these additional tasks:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4747"></A><A NAME="TMPID5457"></A>Choose the category attributes with which you want to work. You can choose one or more attribute from each category.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4749"></A><A NAME="TMPID5459"></A>Define a mapping between the category attributes you have selected and the Workflow Map attributes or Form fields.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF61">Defining a Mapping Between Category Attributes and Workflow Map Attributes or Form Fields</A></P>
+<P><A NAME="TMPID5465"></A>After you choose the categories and attributes with which you want to work, you create a relationship between each category attribute and a Workflow Map attribute or Form field, called a <I CLASS="EMPHASIS">mapping</I>. You can select only those Workflow Map attributes or Form fields that have the same attribute type as the category attribute type. For example, if the type of category attribute is Text Popup, you can create a mapping only to those Workflow Map attributes or Form fields that are of type Text Popup.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF62">Specifying the Item and Operation</A></P>
+<P class="before-ul"><A NAME="TMPID5474"></A>After you have selected categories and attributes, you must specify the item on which the data transfer operation is performed and the type of operations the step will perform. The item on which the data transfer operation is performed can be one of the following:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4762"></A><A NAME="TMPID5477"></A>A Workflow Map attachment, a Content Server item, a folder created by a folder definition on the same step, or an Item Reference attribute that refers to a Content Server item.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4767"></A><A NAME="TMPID5483"></A>The Workflow Map attributes or Form fields, which causes the values of Workflow Map attributes or Form fields to be updated with the values of the category attributes to which they are mapped.</P></LI></UL>
+<P><A NAME="TMPID5488"></A>For more information about folder definitions and Item Reference attributes, see <span><A HREF="wf-folders-bg.htm">Creating Folders</A></span> and <span><A HREF="wf-attributes-bg.htm">Defining Attributes</A></span>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF63"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P CLASS="NOTE" ALIGN="LEFT"><B>Notes: </B></P>
+<UL class="NOTE">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4776"></A><A NAME="TMPID5494"></A>Folder definitions are available only if you have one or more folder definitions defined for the same <B CLASS="GUILABEL">Item Handler</B> step.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4779"></A><A NAME="TMPID5497"></A>An Item Reference attribute is available only if you have configured one for the Workflow Map.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID5500"></A>After you specify an item, you select the data transfer operations you want the step to perform. You can perform the following operations:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4784"></A><A NAME="TMPID5503"></A><B CLASS="GUILABEL">Update Workflow Map Attribute or Form Field Values</B>, which updates Workflow Map attributes or Form fields with the values of the category attributes to which they are mapped.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4789"></A><A NAME="TMPID5510"></A><B CLASS="GUILABEL">Remove Categories</B>, which deletes the categories and attributes you selected from the item you specify.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4792"></A><A NAME="TMPID5513"></A><B CLASS="GUILABEL">Add Categories</B>, which adds the categories and attributes you selected to the item you specify.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4795"></A><A NAME="TMPID5516"></A><B CLASS="GUILABEL">Set attribute values</B>, which updates the category attribute values with the values of the mapped Workflow Map attributes or Form fields.</P></LI></UL>
+<P><A NAME="TMPID5520"></A>For example, if you want to update a Workflow Map attribute with the value of the category attribute to which you have created a mapping, you can specify a document as the item, and then choose Workflow Map attributes as the data operation. If you want to add the categories and attributes that you have selected, you specify the document as the item, and then choose the <B CLASS="GUILABEL">Add Categories</B> operation.</P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wf-catsatts-addcat-p.htm" revision="">To Choose a Category</A></p></li>
+<li><p><A  HREF="wf-catsatts-addatt-p.htm" revision="">To Choose an Attribute</A></p></li>
+<li><p><A  HREF="wf-catsatts-addmap-p.htm" revision="">To Define an Attribute Mapping</A></p></li>
+<li><p><A  HREF="wf-catsatts-item-op-p.htm" revision="">To Specify the Item and Operation</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,159 @@
+<!-- wr_catjsarray_functions.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>CAT:JSARRAY Function Reference</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_catjsarray_functions.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'CAT:JSARRAY Function Reference';
+        header.draw();
+
+</SCRIPT>
+
+<p class="body">
+The following functions are used in conjuction with the <b>[LL_REPTAG=DATAID CAT:JSARRAY /]</b> tag.  This tag returns a JavaScript object
+representation of all the category and attribute data for a specific node. Detailed information is provided below for these functions which are used specifically
+for indexing CAT:JSARRAY fields/values. These functions are available to use in your reporting applications.</p>
+
+<p class="body"><u><SPAN class="gui">CAT:JSARRAY Function Reference Guide</SPAN></u>
+
+<p class="body">
+<b>categoryId</b> - is the objectId of the category.
+<br>
+<b>nodeId</b> - is the objectId of the node that the category is applied to. This corresponds to 'DATAID' in [LL_REPTAG=DATAID CAT:JSARRAY /] tag.
+</p>
+
+<p class="body">
+<b>cat_data.getCatName(categoryId, nodeId)</b>
+<ul><li>Returns the name of the category.</li>
+	<li>Takes arguments: categoryId (<b>required</b>), nodeId (<b>optional</b>)</li>
+		<ul>
+			<li>nodeId is an optional argument. If not specified pass 'null', '', or nothing.</li>
+		</ul>
+	<li>Returns <em>null</em> if an error is encountered or the category name is not found.</li>
+</ul>
+</p>
+
+<p class="body">
+<b>cat_data.getAttrName(categoryId, attributeId, nodeId)</b>
+<ul><li>Returns the name of the attribute.</li>
+	<li>Takes arguments: categoryId (<b>required</b>), attributeId (<b>required</b>), nodeId (<b>optional</b>)</li>
+		<ul>
+			<li>attributeId has the format '2','3','4',etc. (string) or 2,3,4,etc. (integer)</li>
+			<li>nodeId is an optional argument. If not specified pass 'null', '', or nothing.</li>
+		</ul>
+	<li>Returns <em>null</em> if an error is encountered or the attribute is not found.</li>
+</ul>
+</p>
+
+<p class="body">
+<b>cat_data.getAttrDataByField(categoryId, attributeId, fieldName, nodeId)</b>
+<ul><li>Returns attribute info based on the field name specified.</li>
+	<li>Takes arguments: categoryId (<b>required</b>), attributeId (<b>required</b>), fieldName (<b>required</b>), nodeId (<b>optional</b>)</li>
+		<ul>
+			<li>attributeId has the format '2','3','4',etc. (string) or 2,3,4,etc. (integer)</li>
+			<li>fieldName - should be one of the following: '<b>req</b>', '<b>type</b>', '<b>len</b>', '<b>maxlen</b>', '<b>rows</b>', '<b>maxrows</b>', '<b>multi</b>', '<b>set</b>'. It must be <b>case-sensitive</b>.</li>
+			<li>nodeId is an optional argument. If not specified pass 'null', '', or nothing.</li>
+		</ul>
+	<li>Returns <em>null</em> if an error is encountered or the field name is not found.</li>
+</ul>
+</p>
+
+<p class="body">
+<b>cat_data.getAttrNameValuePairs(categoryId, nodeId)</b>
+<ul><li>Returns a JS array (multi-dimension) with all the fieldIds and attribute values. E.g. [ ('_1_1_2_1', '2008/2/5:0:0:0'), ('_1_1_3_1', true), etc... ]</li>
+	<li>Takes arguments: categoryId (<b>required</b>), nodeId (<b>required</b>)</li>
+	<li>Basically everything you need to make a submission of the category data.</li>
+	<li>Returns <em>null</em> if an error is encountered or if the fieldId/value pairs are not found.</li>
+</ul>
+</p>
+
+<p class="body">
+<b>cat_data.getAttrValue(categoryId, attribute, nodeId)</b>
+<ul><li>Returns the value of an attribute.</li>
+	<li>If the attribute is multi-value it returns an array. E.g. [1,2,3]</li>
+	<li>If the attribute is multi-value in a multi-value set, an array of arrays is returned. E.g. [ [1,2,3], [2], [4,6,8] ]</li>
+	<li>Takes arguments: categoryId (<b>required</b>), attribute (<b>required</b>), nodeId (<b>required</b>)</li>
+	<li>attribute parameter can be any of the following:</li>
+		<ul>
+			<li>attributeId - '2','3','4',etc. (string) or 2,3,4,etc. (integer)</li>
+			<li>Attribute display name. E.g. 'Date of Test'. It must be <b>case-sensitive</b> for the function to return a value(s).</li>
+				<ul>
+					<li>In addition, the set name can also be passed (E.g. 'Tester Details') which will return all attribute values in the set in a multi-dimensional array.</li>
+					<li>Each index in the array will represent the row attribute values. E.g. [ [row1 attr values], [row2 attr values], [row3 attr values], etc...]</li>
+				</ul>
+			<li>fieldId - has the representation '_1_1_2_1' where '2' is the attributeId. It is a unique identifier and will always return 1 attribute value.</li>
+		</ul>
+	<li>The function will determine whether a name or id is passed in and take the appropriate action.</li>
+	<li>Returns <em>null</em> if an error is encountered or the attribute value is not found.</li>
+</ul>
+</p>
+
+<p class="body"><u><SPAN class="gui">Examples using CAT:JSARRAY Functions</SPAN></u></p>
+
+<p class="body"><b>Example Category definition:</b><br></p>
+<img src="./cat_jsarray.png" border=0><br><br>
+<p class="body"><b>Example Category data:</b><br></p>
+<img src="./cat_jsarray_data.png" border=0><br><br>
+
+<p class="body"><b>Example code accessing/retrieving data from 'Example Category data' above using the CAT:JSARRAY functions:</b></p>
+
+<p class="body">
+<PRE>
+[LL_WEBREPORT_STARTROW /]
+[LL_WEBREPORT_ENDROW /]
+
+[LL_REPTAG_"108158" CAT:JSARRAY /]
+
+&lt;script&gt;
+
+	// categoryId = 108157  (categoryId of Type Testing Category)
+	// nodeId = 108158  	(objectId of a document which has this category applied to it)
+
+	// Get category name
+	var catName = cat_data.getCatName(108157, 108158);
+
+	// Get attribute name
+	var attrName = cat_data.getAttrName(108157, 2, 108158);
+
+	// Get attribute info based on field names
+	var attrReq = cat_data.getAttrDataByField(108157, 3, 'req', 108158);
+	var attrMulti = cat_data.getAttrDataByField(108157, 5, 'multi', 108158);
+	var attrMaxlen = cat_data.getAttrDataByField(108157, 6, 'maxlen', 108158);
+
+	// Get all attribute fieldIds and values
+	var attrs = cat_data.getAttrNameValuePairs(108157, 108158);
+
+	// Get some attribute values
+	var valueAttr = cat_data.getAttrValue(108157, 4, 108158);
+	var lastNameAttr = cat_data.getAttrValue(108157, 'Last Name', 108158);
+	var phoneNumAttr = cat_data.getAttrValue(108157, '_1_1_5_1_8_1', 108158);
+
+
+	// Display Results
+	alert(catName);				// 'Type Testing Category' is displayed
+	alert(attrName);			// 'Date of Test' is displayed
+	alert(attrReq);				// 'false' is displayed, meaning 'Pass or Fail' attribute is not required.
+	alert(attrMulti);			// 'true' is displayed. 'Tester Details' is a multi-value set.
+	alert(attrMaxlen);			// '32' is displayed, which is the max length of 'First Name' attribute.
+	alert(attrs.toString());		// Displays all the attribute fieldId and values in the category in an array representation.
+	alert(valueAttr);			// '453' is displayed.
+	alert(lastNameAttr);			// Array is returned with the values: 'Butler','Brown'
+	alert(phoneNumAttr);			// '44556677' is returned.
+
+&lt;/script&gt;
+</PRE>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

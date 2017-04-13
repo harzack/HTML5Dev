@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOE100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="objectexporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle de la balise exclude</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoe-cfile-excl-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Syntaxe du fichier de contrôle exportateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle de la balise exclude';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="OEEXCL01">Balise exclude</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="OEEXCL02">Description</A></P>
+<P class="nr1"><A NAME="TMPID484"></A>Chaque fois que vous exécutez une exportation, les types d'objet suivants sont exportés : raccourci, document composite, vue personnalisée, discussion, document, dossier, projet, réponse, sujet et url. Pour éviter qu'un type d'objet spécifique soit exporté, utilisez la balise <TT CLASS="literal">exclude</TT> .   </P>
+<P CLASS="bridgehead-subheading3"><A NAME="OEEXCL03">Syntaxe</A></P><A NAME="AEN470"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;exclude&gt;
+  &lt;object&gt;alias&lt;/object&gt;
+&lt;/exclude&gt;</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="OEEXCL04">Utilisation</A></P>
+<A NAME="AEN472"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN473"></A><A NAME="TMPID498"></A>La balise <TT CLASS="literal">exclude</TT> est facultative.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN476"></A><A NAME="TMPID501"></A>Si elle est utilisée, la balise <TT CLASS="literal">exclude</TT> a une balise subordonnée requise,  <span><A HREF="llesoe-cfile-excl-rf.htm#OEOBJ01">Balise object</A></span>, décrite ci-dessous.</P></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="OEEXCL05">Notes</A></P>
+<P><A NAME="TMPID506"></A>Si des objets de recueil, tels que des dossiers, sont exclus, les objets de ces recueils exclus ne seront pas exportés.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="OEEXCL06">Exemple</A></P>
+<P><A NAME="TMPID509"></A>Dans cet exemple, tous les objets de l'espace de travail Entreprise, sauf les documents composites et les vues personnalisées, seront exportés vers :</P><A NAME="AEN484"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;export&gt;
+  &lt;node&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;docstorage&gt;c:\docs&lt;docstorage&gt;
+    &lt;exclude&gt;
+      &lt;object&gt;compounddoc&lt;/object&gt;
+      &lt;object&gt;customview&lt;/object&gt;
+    &lt;/exclude&gt;
+  &lt;/node&gt;
+&lt;/export&gt;</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="OEOBJ01">Balise object</A></P>
+<P><A NAME="TMPID513"></A>La balise <TT CLASS="literal">object</TT> définit le nom de l'objet à exclure. La syntaxe de cette balise est la suivante : <A NAME="AEN488"></A>
+<PRE 
+CLASS="screen"
+>&lt;object&gt;discussion&lt;/object&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN489"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID527"></A>La balise <TT CLASS="literal">object</TT> est requise lorsque la balise <TT CLASS="literal">exclude</TT> est utilisée.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID531"></A>Les valeurs pouvant être utilisées avec la balise <TT CLASS="literal">object</TT> sont les suivantes : <TT CLASS="literal">alias (raccourci)</TT>, <TT CLASS="literal">compounddoc (document composite)</TT>, <TT CLASS="literal">customview (vue personnalisée)</TT> , <TT CLASS="literal">discussion</TT>, <TT CLASS="literal">document</TT>, <TT CLASS="literal">folder (dossier)</TT> , <TT CLASS="literal">project (projet)</TT>, <TT CLASS="literal">reply (réponse)</TT>, <TT CLASS="literal">topic (sujet)</TT>et <TT CLASS="literal">url</TT>.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

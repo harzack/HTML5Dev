@@ -1,0 +1,132 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBN100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webnotify">
+<title>Configuration des activités programmées</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/recman/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/recmansecurity/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbn-confsched.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation des notifications';
+          header.title2 = 'Configuration des activités programmées';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID650"></A>Vous pouvez activer, configurer et programmer les événements suivants :</P><A NAME="AEN385"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN386"></A><B>Producteur d'événements à minuit</B></P>
+<P class="nr1"><A NAME="TMPID655"></A>Exécute sur le système des événements réguliers qui n'ont pas leur propre programme d'activités et qui sont programmés pour s'exécuter une fois par jour.</P>
+<P class="before-ul"><A NAME="TMPID656"></A>Il existe une API où les développeurs peuvent enregistrer les gestionnaires avec un événement afin d'exécuter ces gestionnaires à chaque exécution de l'événement. Dans une configuration système par défaut, ces gestionnaires comprennent :</P><A NAME="AEN391"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN392"></A><B>TaskLate (Tâche en retard)</B></P>
+<P class="nr1"><A NAME="TMPID660"></A>qui génère des notifications pour les tâches qui sont en retard.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN395"></A><B>WorkflowLate (Workflow en retard)</B></P>
+<P class="nr1"><A NAME="TMPID663"></A>qui génère des notifications pour les workflows qui sont en retard.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN398"></A><B>WorkflowStepLate (Etape de workflow en retard)</B></P>
+<P class="nr1"><A NAME="TMPID666"></A>qui génère des notifications pour les étapes de workflow qui sont en retard.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN401"></A><B>DTreeNotifyPurge (Elimination de DTreeNotify)</B></P>
+<P class="nr1"><A NAME="TMPID669"></A>qui élimine les tableaux de notifications s'ils ne sont pas utilisés. Par exemple, si le système est uniquement un système de recherche, alors les tableaux de notifications ne sont pas utilisés.</P></LI></UL>
+<P><A NAME="TMPID670"></A>Par défaut, cet événement s'exécute tous les jours à minuit. Ce paramètre peut être modifié dans la section <B CLASS="guilabel">Programme d'activités</B>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN406"></A><B>Nouvel essai après l'échec de suppression du blob du fournisseur</B></P>
+<P class="nr1"><A NAME="TMPID675"></A>Si le stockage blob est utilisé pour un fournisseur de stockage, les données du blob peuvent être conservées après une suppression ; cet événement essaiera de supprimer toutes les données qui ne devraient plus être conservées.</P>
+<P><A NAME="TMPID676"></A>Il est également possible que les données du blob ne soient pas déplacées. Dans ce cas, cet événement essaiera de terminer toute demande de déplacement en suspens.</P>
+<P><A NAME="TMPID677"></A>Par défaut, cet événement s'exécute tous les jours à minuit. Ce paramètre peut être modifié dans la section <B CLASS="guilabel">Programme d'activités</B>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN413"></A><B>Glisser et déposer la notification d'éléments incomplets</B></P>
+<P class="nr1"><A NAME="TMPID682"></A>Informe les utilisateurs par e-mail lorsqu'ils font glisser et déposent un élément dans un recueil auquel est assignée une catégorie avec des attributs requis, mais qu'ils n'ont pas encore complété les informations d'attributs requises pour cet élément. En d'autres termes, cet élément envoie une notification lorsqu'un élément, qui a été glissé et déposé dans Content Server, n'a pas été entièrement ajouté à Content Server en raison de données incomplètes.</P>
+<P><A NAME="TMPID685"></A>Des notifications par e-mail sont envoyées aux utilisateurs ayant des éléments incomplets aux moments spécifiés dans le <B CLASS="guilabel">Programme d'activités</B>, sauf si l'élément a été ajouté dans la limite de temps <B CLASS="guilabel">Retard d'exécution</B>. Le paramètre <B CLASS="guilabel">Retard d'exécution</B> donne aux utilisateurs un certain temps pour compléter les éléments une fois glissés et déposés dans un recueil, avant l'envoi d'une notification. Si, par exemple, le programme d'activités est défini pour rechercher des éléments incomplets à 13 h 00 et que le <B CLASS="guilabel">Retard d'exécution</B> est défini sur 30 minutes, les éléments ajoutés entre 12 h 30 et 13 h 00 seront inclus dans la période de notification suivante dans le <B CLASS="guilabel">Programme d'activités</B>.</P>
+<P><A NAME="TMPID691"></A>Par défaut, cet événement s'exécute toutes les cinq minutes, chaque jour. Ce paramètre peut être modifié dans la section <B CLASS="guilabel">Programme d'activités</B>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN427"></A><B>Vider les messages antérieurs</B></P>
+<P class="nr1"><A NAME="TMPID696"></A>Supprime les messages de notification de plus de trente jours.</P>
+<P><A NAME="TMPID697"></A>Cet événement s'exécute toutes les cinq minutes, chaque jour. Le programme n'est pas configurable pour cet événement.</P>
+<P><A NAME="TMPID698"></A>Les messages antérieurs seront vidés les jours et aux heures spécifiés sur le <B CLASS="guilabel">Programme d'activités</B> du producteur d'événements à minuit.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN434"></A><B>Faire expirer les mots de passe</B></P>
+<P class="nr1"><A NAME="TMPID703"></A>Désactive les comptes des utilisateurs dont les mots de passe ont expiré. Ceci garantit qu'un nouveau mot de passe ne pourra pas être spécifié lors de la prochaine tentative de connexion à Content Server de l'utilisateur.</P>
+<P><A NAME="TMPID705"></A>Par défaut, cet événement s'exécute tous les jours à minuit. Ce paramètre peut être modifié dans la section <B CLASS="guilabel">Programme d'activités</B>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN441"></A><B>Contrôle de l'expiration du mot de passe</B></P>
+<P class="nr1"><A NAME="TMPID710"></A>Assure le suivi du statut d'expiration du mot de passe de tous les utilisateurs et informe les utilisateurs par e-mail lorsque leur mot de passe est sur le point d'expirer. Vous saisissez le nombre de jours avant l'expiration du mot de passe où vous souhaitez que la première notification par e-mail soit envoyée. Vous saisissez également le nombre de jours durant lesquels vous souhaitez que les notifications par e-mail soient exécutées. </P>
+<P><A NAME="TMPID711"></A>Par défaut, cet événement s'exécute tous les jours à minuit. Le programme n'est pas configurable pour cet événement.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN446"></A><B>Notification d'échec de connexion</B></P>
+<P class="nr1"><A NAME="TMPID715"></A>Informe l'administrateur lorsque le nombre d'échecs de tentatives de connexion excède un seuil configurable dans un délai lui aussi configurable.</P>
+<P><A NAME="TMPID716"></A>Par défaut, cet événement s'exécute tous les jours à minuit. Ce paramètre peut être modifié dans la section <B CLASS="guilabel">Programme d'activités</B>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN452"></A><B>Agent client 5 minutes</B></P>
+<P class="nr1"><A NAME="TMPID721"></A>Cet événement est identique à celui du producteur d'événements à minuit, excepté qu'il s'exécute conformément à un programme différent. Cet événement est utilisé lorsque vous avez besoin d'exécuter des tâches plus d'une fois par jour.</P>
+<P class="before-ul"><A NAME="TMPID722"></A>Il existe une API où les développeurs peuvent enregistrer les gestionnaires avec un événement afin d'exécuter ces gestionnaires à chaque exécution de l'événement. Dans une configuration système par défaut, ces gestionnaires comprennent :</P><A NAME="AEN457"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN458"></A><B>ClearCache (Vider cache)</B></P>
+<P class="nr1"><A NAME="TMPID726"></A>qui vide les entrées antérieures de la table LLCache.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN461"></A><B>DistributedAgent Controller (Contrôleur de l'agent distribué)</B></P>
+<P class="nr1"><A NAME="TMPID729"></A>qui contrôle les files d'attentes du travailleur pour les tâches hors service et les marque pour un nouvel essai ou une annulation, selon le cas. </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN464"></A><B>PollClosed (Sondage fermé)</B></P>
+<P class="nr1"><A NAME="TMPID732"></A>qui rend compte des sondages qui ont été fermés depuis la dernière exécution.</P></LI></UL>
+<P><A NAME="TMPID733"></A>Par défaut, cet événement s'exécute toutes les cinq minutes, chaque jour. Ce paramètre peut être modifié dans la section <B CLASS="guilabel">Programme d'activités</B>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN469"></A><B>Transférer les événements de notification</B></P>
+<P class="nr1"><A NAME="TMPID738"></A>Déplace les événements de NotifyEvents à LLEventQueue pour leur traitement.</P>
+<P><A NAME="TMPID739"></A>Par défaut, cet événement s'exécute toutes les cinq minutes, chaque jour. Ce paramètre peut être modifié dans la section <B CLASS="guilabel">Programme d'activités</B>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN475"></A><B>Processeur d'événements de client</B></P>
+<P class="nr1"><A NAME="TMPID744"></A>Les développeurs ne doivent plus sous-classer ce processus car il s'agit d'un agent obsolète.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN479"></A><B>Processeur d'événements du nœud</B></P>
+<P class="nr1"><A NAME="TMPID748"></A>Convertit les événements de nœud individuels en événements de message pour tous les utilisateurs que cette combinaison nœud/événement intéresse. Vous pouvez définir le nombre d'instances du processeur d'événements d'objet exécutées en parallèle.</P>
+<P><A NAME="TMPID749"></A>Par défaut, cet événement s'exécute toutes les cinq minutes, chaque jour. Ce paramètre peut être modifié dans la section <B CLASS="guilabel">Programme d'activités</B>.</P>
+<P><A NAME="TMPID751"></A>Une option supplémentaire permettant d'activer ou de désactiver les vérifications d'autorisation pour les notifications des groupes et des rôles est disponible. Le paramètre est activé par défaut, ce qui signifie que les autorisations sont vérifiées lors de chaque activité programmée. Si le paramètre est désactivé, la vérification d'autorisation supplémentaire n'a lieu que lorsque l'utilisateur intéressé est un utilisateur individuel. La vérification est ignorée lorsque l'utilisateur intéressé est un rôle (par exemple, pour les projets ou les communautés). </P></LI>
+<LI class="otModuleHide if-llesrcm-h-agd-showblock vlli" >
+<P class="nr1"><A NAME="AEN486"></A><A NAME="TMPID753"></A><B CLASS="guilabel">Evénements de recherche de sort final</B></P>
+<P><A NAME="TMPID755"></A>Cet événement est utilisé pour activer les recherches de sort final dans Records Management. Cet événement est désactivé par défaut.</P></LI>
+<LI class="otModuleHide if-llesrcm-h-agd-showblock vlli" >
+<P class="nr1"><A NAME="AEN490"></A><A NAME="TMPID757"></A><B CLASS="guilabel">Attentes avec recherche</B></P>
+<P><A NAME="TMPID759"></A>Lorsque cet événement est activé, les requêtes d'attente dans Records Management s'exécutent automatiquement en fonction des jours et des heures que vous spécifiez dans la section <B CLASS="guilabel">Programme d'activités</B>.</P></LI>
+<LI class="otModuleHide if-llesrcs-h-agd-showblock vlli" >
+<P class="nr1"><A NAME="AEN495"></A><A NAME="TMPID762"></A><B CLASS="guilabel">Règles définies pour l'habilitation de sécurité</B></P>
+<P><A NAME="TMPID764"></A>Lorsque cet événement est activé, les règles définies pour l'habilitation de sécurité sont exécutées les jours et aux heures que vous spécifiez pour l'agent, tant que la valeur Date d'exécution de l'élément a été atteinte. La valeur Date d'exécution est spécifiée lorsque la règle définie est créée. Lorsque les règles définies sont exécutées, les marquages supplémentaires et les niveaux d'habilitation de sécurité de l'élément sont mis à jour selon la règle définie. </P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF10"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID766"></A><B CLASS="note">Note : </B><BR>Les utilisateurs peuvent personnaliser les trois programmes par défaut lorsqu'ils configurent leur propre programme de notification personnel.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wbn-config-sched-activ-p.htm" revision="">Pour configurer des activités programmées</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

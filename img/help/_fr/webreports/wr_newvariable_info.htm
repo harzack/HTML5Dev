@@ -1,0 +1,107 @@
+<!-- wr_variable_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Using Variables</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_variable_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'WebReports:';
+        header.title2 = 'Using Variables';
+        header.draw();
+
+</SCRIPT>
+
+<p class="body">
+Various components in WebReports support the concept of variables. Variables provide the ability to store and or accumulate
+results from other tags for output into the reportview. Variables are supported by the following tag and sub-tags:
+<ul type="disc">
+	<li><SPAN class="gui"><a href="wr_tag_syntax.htm#varname">[LL_REPTAG_%&lt;varname&gt; /]</a></span> - tag returns whatever is stored in a variable represented
+    by "varname". Varname is a set of valid characters (e.g. no spaces or special characters). This variable name
+    should match with a variable previously created by one of the sub-tags which support variable setting</li>
+    <li><SPAN class="gui"><a href="wr_tag_syntax.htm#setvar">SETVAR</a></span> - sub-tag which allows any
+    tag result to be stored in a named variable</li>
+    <li><SPAN class="gui"><a href="wr_tag_syntax.htm#addvar">ADDVAR</a></span> - sub-tag which allows any numeric
+    tag result to be added to the numeric value in a named variable </li>
+    <li><SPAN class="gui"><a href="wr_tag_syntax.htm#concatvar">CONCATVAR</a></span>- sub-tag which allows any text/string
+    based result to be concatenated to the text in a named variable </li>
+</ul>
+
+</p>
+<p class="body">
+A more detailed description of these sub-tags and the variable tag are described in the <a href="wr_tag_syntax.htm">syntax guide</a>.
+This section describes some guidelines and notes for the usage of this feature.
+<ul type="disc">
+	<li>
+	As Variables are set by various different types of WebReport tags, the order in which they are set is dependent on the order in which these tags are processed.  WebReports processes each tag type
+	in the following order:
+	<ul type="circle">
+ 	<li>All passed parameter tag values from top to bottom of the reportview</li>
+	<li>All column name tag values from top to bottom of the reportview</li>
+	<li>All static tag values from top to bottom of the reportview (e.g.  any tags which return static Livelink environment information which is not returned from the data source)</li>
+	<li>All report tag values (columns of data from the data source) from top to bottom of the row section  from first row to last row (according to the sort order)</li>
+	<li>All function and variable  tags from top to bottom of the reportview (this is where the current variable values will be resolved)</li>
+ 	</ul>
+	<br>
+	(See the advanced topic: <a href="wr_processing_order_info.htm">How report views are processed</a> for more information.)<br>
+
+	In general, for any concatenation or addition operations with variables where the order is important, try to use the same type of tag. For example, if multiple function results (such as @SUM) are being
+	added together, this is supported because all function results are being processed in sequential order as they appear in the report view.  If the requirement was to concatenate a combination of parameters,
+	constants, and math results then this would not be processed in the order expected by the report designer.  Currently to work around this problem, a variable for each type of tag would have to be
+	created and set with the results for all tags of a specific type.  Each of these variables could then be concatenated to provide a cumulative result as shown in the next bullet
+	</li>
+	<li>When Variables are being resolved they can also set variables to be used in subsequent  variables by using the
+    setting sub-tags (e.g. SETVAR)<br>
+    e.g. given the following sequence of tags:<br>
+    <SPAN class="gui">
+    [LL_REPTAG_%subtotal /] ,                <BR>
+    [LL_REPTAG_@SUM ADDVAR:subtotal SHOW /] ,    <BR>
+    [LL_REPTAG_@subtotal ADDVAR:total /]   <BR>
+    [LL_REPTAG_%total ROUND:2 /]            <BR>
+    </span>
+    If the variable called subtotal started with a value of <b>10</b>, a variable called total started with a value of <b>20</b> and @SUM returned
+    a value of <b>100.12345</b>, the output of these tags
+    would be:<br>
+     <b>10 , 110.12345 , 130.12</b> <BR>
+    Note that when the sub-tags SETVAR, ADDVAR and CONCATVAR are used they will normally not return the result to the output unless the SHOW sub-tag
+    is also used as in:<br>
+    [LL_REPTAG_@SUM ADDVAR:subtotal <b>SHOW</b> /]
+    </li>
+    <li>
+    Variables can be used within row sections to accumulate numbers or strings from multiple rows. This is most useful for concatenating string
+    values into a single string which can be used anywhere that the variable tag can be used (including export fields such as the E-Mail To: list). <br>
+    <u>Example 1:</u><br>
+    <SPAN class="gui">
+    [LL_REPTAG=USERID USERINFO:EMAIL CONCATVAR:tolist:"," /] <br>
+    </SPAN>
+    If this tag was used in a row section (between the STARTROW AND ENDROW tags), it would build a string of email addresses with a comma  separating each email address.<br>
+	<u>Example 2:</u><br>
+	 <SPAN class="gui">
+    [LL_REPTAG=cost ADDVAR:subtotal /] <br>
+    </SPAN>
+	 If this tag was used in a row section (between the STARTROW AND ENDROW tags), it would add the value of the column "cost" for each row to the variable called subtotal.
+    </li>
+	<li>
+	Variables can be used as operands for [LL_WEBREPORT_INCLUDEIF  or [LL_WEBREPORT_EXITIF conditional tags but can <b>not</b> be used in the [LL_WEBREPORT_IF tag.  It is also important to note that
+	variables which are set within [LL_WEBREPORT_IF/ENDIF sections will still be set even if the IF clause is ultimately set to FALSE. This is related to the order in which tags are processed in the reportview.
+	</li>
+
+</ul>
+</p>
+
+<p>
+One of the main differences between these sub-tags and the many other sub-tags is that each of these sub-tags is designed to store or set the tag data in some other data storage location. Normally this means that 
+the data from the corresponding tag will not actually be returned and displayed in the output of the WebReport.  
+</p>
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>

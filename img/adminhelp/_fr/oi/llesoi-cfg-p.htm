@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<title>Configurer l'importateur d'objet</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfg-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration de l\'importateur d\'objet';
+          header.title2 = 'Configurer l\'importateur d\'objet';
+           header.draw();
+  </script>
+  <A NAME="PROC-CONFIG1"></A>
+<DIV title="Pour configurer l'importateur d'objet :" CLASS="procedure">
+<P><B>Pour configurer l'importateur d'objet :</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID332"></A>Créez un répertoire de fichier de contrôle, visible pour Content Server, où l'importateur d'objet cherchera les fichiers de contrôle d'importation.  </P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID338"></A>Créez un répertoire de travail, visible pour Content Server, où l'importateur d'objet traitera les fichiers de contrôle d'importation.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID341"></A>Créez un répertoire de journaux où l'importateur d'objet copiera les fichiers journaux. Ce répertoire doit toujours se trouver soit dans : <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\logs</TT> soit dans <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\object_importer</TT>. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF2"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID349"></A><B CLASS="note">Note : </B><BR>Si une valeur a été saisie dans le champ <B CLASS="guilabel">Répertoire de chargement</B> de la page <B CLASS="guilabel">Configurer les paramètres du serveur</B>, les importations doivent avoir lieu à partir de ce répertoire. Les valeurs spécifiées entre les balises <TT CLASS="literal">&lt;file&gt;&lt;/file&gt;</TT> du fichier de contrôle d'importation doivent contenir uniquement le nom du fichier. Par exemple, <TT CLASS="literal">&lt;file&gt;readme.txt&lt;/file&gt;</TT>. Pour plus d'informations sur la page <B CLASS="guilabel">Configurer les paramètres du serveur</B>,  consultez la section <I CLASS="emphasis">Configuration des paramètres de base du serveur</I> dans <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-confserver-params-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-confserver-params-bg.htm">Configuration des paramètres de base du serveur</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-confserver-params-bg" FMT=""></span>. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID358"></A>Dans la section <B CLASS="guilabel">Administration de l'importateur d'objet</B> de la page d'administration de Content Server, cliquez sur <B CLASS="guilabel">Configurer</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID363"></A>Sur la page <B CLASS="guilabel">Configurer l'importateur d'objet</B>, dans la section <B CLASS="guilabel">Répertoire</B> :</P>
+<OL CLASS="substeps" TYPE="a">
+<LI>
+<P class="nr1"><A NAME="TMPID368"></A>Dans le champ <B CLASS="guilabel">Fichier de contrôle</B>, indiquez le chemin complet du répertoire que vous avez créé à l'étape 1. C'est le répertoire dans lequel l'importateur d'objet recherche les fichiers d'importation.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID371"></A>Dans le champ <B CLASS="guilabel">Travail</B>, indiquez le chemin complet du répertoire que vous avez créé à l'étape 2. C'est le répertoire dans lequel l'importateur d'objet traite les fichiers d'importation.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID374"></A>Dans le champ <B CLASS="guilabel">Journal</B>, indiquez le chemin complet du répertoire que vous avez créé à l'étape 3. C'est le répertoire dans lequel l'importateur d'objet écrit les fichiers journaux et qui doit toujours se trouver soit dans <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\logs</TT> soit dans <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\object_importer</TT>.</P></LI></OL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID383"></A>Dans la section <B CLASS="guilabel">Avancé</B> :</P>
+<OL CLASS="substeps" TYPE="a">
+<LI>
+<P class="nr1"><A NAME="TMPID387"></A>Dans le champ <B CLASS="guilabel">Adresse sur erreur</B>, spécifiez une adresse e-mail pour la notification des erreurs critiques. Cela n'inclut pas les erreurs liées aux données importées car celles-ci sont enregistrées dans le fichier journal.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID390"></A>Dans le champ <B CLASS="guilabel">Signaler tous les</B>, spécifiez la fréquence de mise à jour de la base de données. Pour des raisons de performance, OpenText recommande que cette valeur soit définie en fonction de la taille du fichier de téléchargement. Si une valeur de zéro, (0), est spécifiée, la mise à jour n'aura pas lieu.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID394"></A>Lors de la création d'objets dans Content Server à l'aide de l'importateur d'objet, vous devez spécifier le chemin de l'objet parent entre les balises <TT CLASS="literal">&lt;location&gt;&lt;/location&gt;</TT> . Pour créer des dossiers manquants, et ajouter l'objet lorsque le chemin parent n'existe pas, activez la case à cocher <B CLASS="guilabel">Créer la structure du répertoire</B>. Si la case n'est pas cochée, l'objet ne sera pas ajouté et une erreur sera enregistrée.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID399"></A>Pour supprimer le fichier de contrôle du répertoire de travail une fois le traitement terminé, activez la case à cocher <B CLASS="guilabel">Supprimer les fichiers de contrôle</B>. Si la case n'est pas cochée, le fichier de contrôle reste dans le répertoire de travail. Cette case ne s'applique qu'aux importations programmées.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID402"></A>Pour arrêter le traitement lorsqu'une erreur se produit pendant le traitement d'un fichier de contrôle, activez la case à cocher <B CLASS="guilabel">Arrêter le traitement en cas d'erreur</B>. Par défaut, l'importateur d'objet traitera le fichier de contrôle entier, en ignorant toute erreur rencontrée.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID405"></A>La case <B CLASS="guilabel">Ajouter un titre à l'emplacement</B> sert à maintenir la compatibilité entre différentes versions de l'importateur d'objet, de sorte que les fichiers de contrôle existants puissent toujours être utilisés. Pour les nouvelles installations, OpenText vous recommande de laisser cette option désactivée afin de pouvoir renommer les objets.</P>
+<P><A NAME="TMPID408"></A>Désactivez cette option pour les fichiers de contrôle créés pour, et utilisés dans, Object Importer Version 1.0.x, Object Importer Version 1.1.7 et Object Importer Version 1.1.7.1. Activez cette option pour ceux qui sont utilisés dans les versions de Object Importer postérieures à 1.1.7.1 et antérieures à la version 3. </P>
+<table CLASS="caution">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="caution" ALIGN="CENTER"><IMG ALT="Attention" SRC="../../images/pi_caution.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID414"></A><B CLASS="caution">Attention</B><BR>Sachez qu'une fois que vous avez créé des fichiers de contrôle avec une méthode, vous ne devez pas utiliser l'autre méthode car cela pourrait entraîner des résultats indésirables.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID416"></A>Pendant une importation programmée, lorsque l'agent est activé, une liste de fichiers figurant dans le répertoire de chargement à ce moment là est noté par Object Importer. Ces fichiers sont ensuite traités, en ignorant tout nouveau fichier qui pourrait être ajouté. Pour sonder le répertoire de chargement jusqu'à ce qu'il n'y ait plus de fichiers à traiter, activez la case à cocher <B CLASS="guilabel">Actualiser les fichiers de contrôle</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID420"></A>Pour pouvoir être en mesure de modifier la « date de modification » d'un document pendant l'opération de création uniquement, activez la case à cocher <B CLASS="guilabel">Date de modification du document</B>. Cette option ne s'applique pas à l'opération de mise à jour et, par conséquent, ne fonctionnera que sur les documents n'ayant qu'une seule version.</P>
+<P><A NAME="TMPID423"></A>Normalement, Content Server n'autorise pas ce comportement car l'ajout d'une version constitue une modification, ce qui définit automatiquement le champ <B CLASS="guilabel">Date de modification</B> sur la date en cours. Définir le paramètre « date de modification » n'est pas une opération définitive car celle-ci sera réinitialisée sur la date en cours lorsque certaines actions seront réalisées dans Content Server. Ces actions incluent la modification du nom du document ou des autorisations sur le document.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID429"></A>Pour définir la valeur de la balise <TT CLASS="literal">&lt;owner&gt;</TT> sur « Admin » si la valeur est introuvable dans le système, au lieu de renvoyer une erreur, activez la case à cocher <B CLASS="guilabel">Propriétaire par défaut à administrer</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID434"></A>Pour définir la valeur de la balise <TT CLASS="literal">&lt;createdby&gt;</TT> sur « Admin » si la valeur est introuvable dans le système, au lieu de renvoyer une erreur, activez la case à cocher <B CLASS="guilabel">Créateur par défaut à administrer</B>.</P></LI></OL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID439"></A>Cliquez sur <B CLASS="guilabel">Mettre à jour</B>.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

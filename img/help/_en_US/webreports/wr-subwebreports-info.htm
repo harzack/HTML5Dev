@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Using Sub-WebReports</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-subwebreports-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'Using Sub-WebReports';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID22360"></A>A WebReport can call another WebReport (a “sub-WebReport”) whose results will be returned and inserted into the parent report at the point where the tag is placed. Sub-WebReports can be thought of as “sub-routines” that form part of the overall report results. This tag is particularly useful where you wish to collect the results from several different queries (e.g. LiveReport SQL queries) and present them in a single report. For example it is often simpler to use two or more simple SQL queries in place of one complex one or you may wish to combine results from a SQL query with results from a search query.</P>
+<P class="before-ul"><A NAME="TMPID22363"></A>There are two ways to call a sub-WebReport:</P><A NAME="AEN21082"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21083"></A><A NAME="TMPID22366"></A>if the RKTEngine is enabled: [LL_REPTAG_'&lt;Sub-WebReport ID&gt;' RUNSWR /]</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN21085"></A><A NAME="TMPID22368"></A>if the RKTEngine is not enabled or installed: [LL_WEBREPORT_SUBWEBREPORT NODEID:&lt;Sub-WebReport ID&gt; /]</P></LI></UL>
+<P><A NAME="TMPID22369"></A>Both approaches produce the same result, except that the RKTEngine allows further sub-tags to be added after RUNSWR. For example: [LL_REPTAG_'&lt;Sub-WebReport ID&gt;' RUNSWR SHOW SETVAR:SubWRValue /].</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-subwebparm.htm" revision="">Parameters</A></p></li>
+<li><p><A  HREF="wr-subwebinher.htm" revision="">Inheritance</A></p></li>
+<li><p><A  HREF="wr-subwebrtrn.htm" revision="">Returning a nodeID to the calling WebReport if the sub-WebReport has a destination of Content Server</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

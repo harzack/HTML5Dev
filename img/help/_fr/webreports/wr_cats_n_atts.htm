@@ -1,0 +1,507 @@
+<!-- wr_cats_n_atts.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Categories & Attributes</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_cats_n_atts.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+
+        var header = new AdminHeader();
+        header.title1 = 'Detailed Examples';
+        header.title2 = 'Categories & Attributes';
+        header.draw();
+
+
+	function openHelpWindow( helpref ) {
+		var url = './wr_tag_syntax.htm#' + helpref;
+		onlinehelp = window.open(url,'SyntaxGuide',"width=1100,height=500,resizable=yes,menubar=yes,scrollbars=yes,toolbar=yes");
+		onlinehelp.focus();
+	}
+
+
+</SCRIPT>
+
+<p class="body">
+Writing reports on Content Server Categories and Attributes can be complex and time-consuming.  In the following text we demonstrate
+how it is possible to use a combination of SQL and WebReports based techniques to improve development time and performance in this area.  We demonstrate the
+CAT sub-tag, a SQL based approach and a combination of SQL and sub-tags.
+<BR><BR>
+Examples will be based on the following category.<BR><BR>
+<IMG SRC="./wr_cat_capture.gif" BORDER="0">
+<BR><BR>
+It is worth noting this Category only contains simple attributes.  It is possible to have multi-value attributes, sets and
+multi-value sets.  Each of these present specific reporting challenges, however, unless you are very familiar with SQL, the CAT approach
+followed by caching is likely to yield the most satisfactory results within a short development period.
+
+<BR><BR>
+<B><U>CAT - Method 1</U></B><BR><BR>
+The CAT sub-tag could be considered a WebReports macro.  It operates on a Content Server object id and can retrieve any piece of
+Category and Attribute data stored against that object.  This may be subsequently used as output or as the basis for filtering
+or sorting although here we are only interested in displaying the data.  With CAT we still need a data source.  In this case
+we will use a LiveReport
+
+<PRE>
+select LLAttrData.ID <font color="purple">DATAID</font>
+	from
+		LLAttrData, DTree
+	where
+		LLAttrData.DEFID = 338223 and
+		LLAttrData.ATTRID = 1 and
+		LLAttrData.VERNUM = DTree.VERSIONNUM and
+		LLAttrData.ID = DTree.DATAID
+</PRE>
+</p>
+
+
+
+<p class="body">
+This simple query will return a single column of Content Server dataids that have the Category, 338223, applied to their latest version.  Obviously
+any filter criteria could be used, the important thing is that we have a list of dataids that we want to see the category information for.
+Given the above we can create a WebReport to extract category information.
+
+
+<PRE>
+&lt;TABLE CELLSPACING="1" STYLE="font-size:11px" BORDER="0"&gt;
+&lt;TR STYLE="background-color:#999999;color:white;bold;"&gt;
+	&lt;TD&gt;&nbsp;Trial Name&nbsp;&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;Number of Failures&nbsp;&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;Assignee&nbsp;&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;Start Date&nbsp;&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;End Date&nbsp;&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;Complete&nbsp;&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_STARTROW /]
+&lt;TR BGCOLOR="ffffff"&gt;
+	&lt;TD&gt;&nbsp;[LL_REPTAG=<font color="purple">DATAID</font> CAT:"Test Category":"Trial Name":DISPLAY /]&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;[LL_REPTAG=<font color="purple">DATAID</font> CAT:"Test Category":"Number of Failures":DISPLAY /]&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;[LL_REPTAG=<font color="purple">DATAID</font> CAT:"Test Category":"Assignee":DISPLAY /]&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;[LL_REPTAG=<font color="purple">DATAID</font> CAT:"Test Category":"Start Date":DISPLAY /]&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;[LL_REPTAG=<font color="purple">DATAID</font> CAT:"Test Category":"End Date":DISPLAY /]&lt;/TD&gt;
+	&lt;TD&gt;&nbsp;[LL_REPTAG=<font color="purple">DATAID</font> CAT:"Test Category":"Complete":DISPLAY /]&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_ENDROW /]
+&lt;/TABLE&gt;
+</PRE>
+</p>
+
+<p class="body">
+This reportview is designed to be as simple as possible.  It takes the DATAID column returned by the data source and uses this
+to extract each of the attributes we want for the category <i>Test Category</i>.  The results are inserted into a HTML table that
+looks similar to a LiveReport output although we could use any type of formatting.
+
+<BR><BR>
+
+<TABLE CELLSPACING="1" STYLE="font-size:11px" BORDER=1>
+<TR STYLE="background-color:lightgray;font-weight:bold;">
+<TD>&nbsp;Trial Name&nbsp;</TD>
+<TD>&nbsp;Number of Failures&nbsp;</TD>
+<TD>&nbsp;Assignee&nbsp;</TD>
+<TD>&nbsp;Start Date&nbsp;</TD>
+<TD>&nbsp;End Date&nbsp;</TD>
+<TD>&nbsp;Complete&nbsp;</TD>
+</TR>
+
+<TR BGCOLOR="ffffff">
+<TD>&nbsp;JRS62-99</TD>
+<TD>&nbsp;18</TD>
+<TD>&nbsp;10657</TD>
+<TD>&nbsp;Sun Jun 25 00:00:00 2006</TD>
+<TD>&nbsp;Thu Apr 01 00:00:00 1999</TD>
+<TD>&nbsp;TRUE</TD>
+</TR>
+
+</TABLE>
+<BR>
+Note that the value returned for <i>Complete</i> is TRUE because this is how the user sees the value in the Category.  This differs
+from the results you see for the SQL method because the database stores the values as 0 or 1 and Content Server converts this to TRUE or FALSE for
+display in the checkbox attribute type.
+
+<BR><BR>
+Depending on the size of the Content Server system and its actual usage the steps above maybe sufficient to deliver a finished report.  If, however,
+performance needs improving, look at the section, Caching Results with WebReports.
+
+<BR><BR>
+The CAT sub-tag has a substantial reference section in the <A HREF="javascript:openHelpWindow('subtagcat');">Tag Guide</A>.
+
+<BR><BR>
+<B><U>SQL - Method 2</U></B><BR><BR>
+This involves some understanding of how Content Server Categories and Attributes are stored in the database.  There are two key tables,
+LLAttrData and LLAttrBlobData each of which present their own set of reporting challenges.  LLAttrData often runs into tens of millions of rows
+whilst LLAttrBlobData contains data structures internal to Content Server such as Assocs and RecArrays.<BR><BR>
+
+
+
+The data below is a snap shot from the LLAttrData table showing the entries for a category applied to the Content Server node with ID 338112.
+
+
+<BR><BR>
+<TABLE CELLSPACING="1" STYLE="font-size:11px" BORDER="1">
+<TR STYLE="background-color:lightgray;font-weight:bold;">
+	<TD VALIGN="BOTTOM" ALIGN="RIGHT">&nbsp;ID&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="RIGHT">&nbsp;VERNUM&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="RIGHT">&nbsp;DEFID&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="RIGHT">&nbsp;DEFVERN&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="RIGHT">&nbsp;ATTRID&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="RIGHT">&nbsp;ATTRTYPE&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="RIGHT">&nbsp;CUSTOMID&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="RIGHT">&nbsp;ENTRYNUM&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="RIGHT">&nbsp;PARENTKEYID&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="RIGHT">&nbsp;KEYID&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="CENTER">&nbsp;VALINT&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="CENTER">&nbsp;VALREAL&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="CENTER">&nbsp;VALDATE&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="LEFT">&nbsp;VALSTR&nbsp;</TD>
+	<TD VALIGN="BOTTOM" ALIGN="CENTER">&nbsp;VALLONG&nbsp;</TD>
+</TR>
+<TR BGCOLOR="ffffff">
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=purple>338112</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=orange>338223</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;4&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;-18&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;-1&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="LEFT" NOWRAP>&nbsp;Test Category&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+</TR>
+<TR BGCOLOR="ffffff">
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=purple>338112</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=orange>338223</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;4&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;2&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;-1&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="LEFT" NOWRAP>&nbsp;JRS62-99&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+</TR>
+<TR BGCOLOR="ffffff">
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=purple>338112</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=orange>338223</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;4&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=red>3</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;2&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=red>18</font>&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+</TR>
+<TR BGCOLOR="ffffff">
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=purple>338112</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=orange>338223</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;4&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;4&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;14&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;10657&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+</TR>
+<TR BGCOLOR="ffffff">
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=purple>338112</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=orange>338223</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;4&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=green>5</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;-7&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;<font color=green>06/25/2006 12:00 AM</font>&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+</TR>
+<TR BGCOLOR="ffffff">
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=purple>338112</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=orange>338223</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;4&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;6&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;-7&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;04/01/1999 12:00 AM&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+</TR>
+<TR BGCOLOR="ffffff">
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=purple>338112</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=orange>338223</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;4&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=blue>7</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;5&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;0&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;1&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=blue>1</font>&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;?&nbsp;</TD>
+</TR>
+</TABLE>
+<BR>
+
+<B>Some important LLAttrData columns:</b>
+<BR><BR>
+<TABLE STYLE="font-size:11px" >
+	<TR><TD>ID&nbsp;</TD><TD>The DATAID of the item this Category is applied to</TD></TR>
+	<TD>VERNUM&nbsp;</TD><TD>The version of the item that the Category is applied to</TD></TR>
+	<TD>DEFID&nbsp;</TD><TD>The DATAID of the Category that is applied to the item</TD></TR>
+	<TD>DEFVERN&nbsp;</TD><TD>The version of the Category that is applied</TD></TR>
+	<TD>ATTRID&nbsp;</TD><TD>The ID of the attribute</TD></TR>
+	<TD>ATTRTYPE&nbsp;</TD><TD>The data type of this attribute</TD></TR>
+	<TD>VALINT&nbsp;</TD><TD>Type specific data for Integers, Users and Booleans</TD></TR>
+	<TD>VALREAL&nbsp;</TD><TD>Type specific data for Reals</TD></TR>
+	<TD>VALDATE&nbsp;</TD><TD>Type specific data for Dates</TD></TR>
+	<TD>VALSTR&nbsp;</TD><TD>Type specific data for Strings</TD></TR>
+</TABLE>
+<BR>
+By forming a SQL statement as follows it is possible to effectively flatten the LLAttrData table.<BR>
+<PRE>
+select LLAttrData.ID dataid,
+
+	max(case when LLAttrData.ATTRID = 2 then LLAttrData.VALSTR end) Trial_Name,
+	max(case when LLAttrData.ATTRID = <font color=red>3</font> then LLAttrData.VALINT end) <font color=red>Number_of_Failures,</font>
+	max(case when LLAttrData.ATTRID = 4 then LLAttrData.VALINT end) Assignee,
+	max(case when LLAttrData.ATTRID = <font color=green>5</font> then LLAttrData.VALDATE end) <font color=green>Start_Date,</font>
+	max(case when LLAttrData.ATTRID = 6 then LLAttrData.VALDATE end) End_Date,
+	max(case when LLAttrData.ATTRID = <font color=blue>7</font> then LLAttrData.VALINT end) <font color=blue>Complete</font>
+
+	from LLAttrData, DTree where
+		LLAttrData.DEFID = <font color=orange>338223</font> and
+		LLAttrData.VERNUM = DTree.VERSIONNUM and
+		LLAttrData.ID = DTree.DATAID
+
+group by LLAttrData.ID
+</PRE>
+</p>
+
+
+
+<p class="body">
+The output from the statement above should look as follows.<BR><BR>
+
+<TABLE CELLSPACING="1" STYLE="font-size:11px" BORDER="1">
+<TR STYLE="background-color:lightgray;font-weight:bold;">
+	<TD>&nbsp;DATAID&nbsp;</TD>
+	<TD>&nbsp;TRIAL_NAME&nbsp;</TD>
+	<TD>&nbsp;NUMBER_OF_FAILURES&nbsp;</TD>
+	<TD>&nbsp;ASSIGNEE&nbsp;</TD>
+	<TD>&nbsp;START_DATE&nbsp;</TD>
+	<TD>&nbsp;END_DATE&nbsp;</TD>
+	<TD>&nbsp;COMPLETE&nbsp;</TD>
+</TR>
+<TR BGCOLOR="ffffff">
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=purple>338112</font>&nbsp;</TD>
+	<TD ALIGN="LEFT" NOWRAP>&nbsp;JRS62-99&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=red>18</font>&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;10657&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;<font color=green>06/25/2006 12:00 AM</font>&nbsp;</TD>
+	<TD ALIGN="CENTER" NOWRAP>&nbsp;04/01/1999 12:00 AM&nbsp;</TD>
+	<TD ALIGN="RIGHT" NOWRAP>&nbsp;<font color=blue>1</font>&nbsp;</TD>
+</TR>
+</TABLE>
+
+
+<BR>
+
+Assuming a relatively lightly loaded database and powerful machine it maybe possible to finish with the
+SQL at this point as the result is much easier to read than what we started with in LLAttrData.  If performance
+needs improving, look at the next section, Caching Results with WebReports.
+
+<BR><BR>
+<B><U>LLAttrBlobData - Method 3</U></B><BR><BR>
+This approach is half way between the previous two methods.  It uses a SQL query to return a Content Server data structure from the
+table LLAttrBlobData which can then be indexed via a series of sub-tags.  We still need a data source for this method, however,
+rather than returning a column of data ids as we did in method one, we return a column of Content Server data structures.  The SQL
+query might look like:<BR><BR>
+
+<PRE>
+select LLAttrBlobData.SegmentBlob from LLAttrBlobData, DTree
+	where
+		LLAttrBlobData.ID = DTree.DATAID and
+		LLAttrBlobData.VERNUM = DTree.VERSIONNUM and
+		&lt;my other criteria&gt;
+</PRE>
+</p>
+
+<p class="body">
+This query should produce output like:<BR><BR>
+<TABLE CELLSPACING="1" STYLE="font-size:11px" BORDER="1">
+	<TR STYLE="background-color:lightgray;font-weight:bold;">
+	<TD VALIGN="BOTTOM" ALIGN="LEFT">&nbsp;SegmentBlob&nbsp;</TD>
+	</TR>
+	<TR BGCOLOR="ffffff">
+	<TD ALIGN="LEFT" NOWRAP>&nbsp;A&lt;1,?,{338223,5}=A&lt;1,?,'CustomID'=0,'ID'=1,'Values'={A&lt;1,?,2=A&lt;1,?,'ID'=2,'Values'={'JRS62-99'}&gt;,3=A&lt;1,?,'ID'=3,'Values'={18}&gt;,4=A&lt;1,?,'ID'=4,'Values'={10657}&gt;,5=A&lt;1,?,'ID'=5,'Values'={D/2006/6/25:0:0:0}&gt;,6=A&lt;1,?,'ID'=6,'Values'={D/1999/4/1:0:0:0}&gt;,7=A&lt;1,?,'ID'=7,'Values'={true}&gt;&gt;}&gt;&gt;&nbsp;</TD>
+	</TR>
+</TABLE>
+
+<BR>
+This data looks complex although once a few simple concepts are understood it is relatively easy to understand.  First of all, this whole data structure consists
+of just two data types, LISTs and ASSOCs.  A LIST is like a conventional array and is contained within curly brackets when flattened into a string for storage in the Content Server database.
+In the results above, {338223,5} is a LIST that contains 2 elements.  We could access each of the elements with LIST:1 or LIST:2 depending on which we want.
+An ASSOC is similar to a LIST but rather than having a numeric index it has a key which is used to index the structure.  In the data above there are many nested
+ASSOCs, one of which is A&lt;1,?,'ID'=2,'Values'={'JRS62-99'}&gt;.  This ASSOC has 2 keys, ID and Values which we can access with either ASSOC:ID or ASSOC:Values.
+Keeping these data structures in mind we can create a reportview to access the individual attribute values we are interested in.
+
+
+<PRE>
+&lt;TABLE CELLSPACING="1" STYLE="font-size:11px" BORDER="0"&gt;
+	&lt;TR STYLE="background-color:#999999;color:white;bold;"&gt;
+	&lt;TD>Trial Name&lt;/TD&gt;
+	&lt;TD>Number of Failures&lt;/TD&gt;
+	&lt;TD>Assignee&lt;/TD&gt;
+	&lt;TD>Start Date&lt;/TD&gt;
+	&lt;TD>End Date&lt;/TD&gt;
+	&lt;TD>Complete&lt;/TD&gt;
+&lt;/TR&gt;
+[LL_WEBREPORT_STARTROW /]
+&lt;TR&gt;
+	&lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:2 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+	&lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:3 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+	&lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:4 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+	&lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:5 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+	&lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:6 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+	&lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:7 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+&lt;/TR>
+[LL_WEBREPORT_ENDROW /]
+&lt;/TABLE>
+</PRE>
+</p>
+
+
+
+<p class="body">
+In the reportview you will notice all the columns start the same way: [LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1
+If, as in this case, you are only looking at regular Attributes rather than multi-value attributes, sets or multi-value sets then the same
+syntax can be employed.  All these Attribute types can be accessed, just a slightly different syntax is required. The output from the
+reportview above should look like:<BR><BR>
+<TABLE CELLSPACING="1" STYLE="font-size:11px" BORDER="1">
+<TR STYLE="background-color:lightgray;font-weight:bold;">
+	<TD> Trial Name </TD>
+	<TD> Number of Failures </TD>
+	<TD> Assignee </TD>
+	<TD> Start Date </TD>
+	<TD> End Date </TD>
+	<TD> Complete </TD>
+</TR>
+<TR>
+	<TD>&nbsp;JRS62-99</TD>
+	<TD>&nbsp;18</TD>
+	<TD>&nbsp;10657</TD>
+	<TD>&nbsp;Sun Jun 25 00:00:00 2006</TD>
+	<TD>&nbsp;Thu Apr 01 00:00:00 1999</TD>
+	<TD>&nbsp;true</TD>
+</TR>
+</TABLE>
+<BR><BR>
+It is worth noting that in the above example an ASSOC key of {338223,5} is a slightly more complex concept that that of a normal LIST/ASSOC.  The reason for
+this is because the whole LIST is used as the key into the first ASSOC in the SEGMENTBLOB column.  Because the values in the list (dataid and version
+number respectively) are not static it is often easier to use ASSOC:1 in place of ASSOC:"{338223,5}" as this will always index into the
+first element of the ASSOC irrespective of the key name.  If using this method you need to be sure that your field will always be at the same numeric index.
+<BR><BR>
+The tag guide contains detailed information on the <A HREF="javascript:openHelpWindow('subtaglist');">LIST</A> and
+<A HREF="javascript:openHelpWindow('subtagassoc');">ASSOC</A> operators used above.
+
+
+<BR><BR>
+<B><U>LQL - Method 4</U></B><BR><BR>
+A further option for Category and Attribute reporting is via the search index.  This is often a useful option on systems
+where the database is heavily utilized.  Perform an Advanced Search and construct an LQL query of the form <i>Attr_338223_2:"JRS62-99"</i> which
+will return all documents that have the Category 338223 (Test Category) applied with Attribute 2 (Trial Name) equal to "JRS62-99".
+If the search is now saved it can be used as a WebReport data source in the same way a LiveReport might be.  The search data source
+returns a list of predetermined columns, one of which is DATAID.  This means we can use the CAT sub-tag to display the data
+in exactly the same way as the reportview in method 1.
+
+<BR><BR>
+More information on search data sources can be found <a href="wr_search_datasource_info.htm">here</a>.
+
+<BR><BR>
+<B><U>Caching Results with WebReports</U></B><BR><BR>
+Even with the most appropriate method from above it's possible performance is still an issue.  If this is the case
+we can look at "caching" the raw data into a new table.
+
+WebReports can write the results of any query into a dedicated SQL table by using the WebForm export destination.
+If we do this for the super-set of results then we have a much smaller data
+set to work with and therefore improved performance.
+
+<BR><BR>
+Create a new Form Template and give it fields that you wish to display in the final WebReport output.  In our case
+these relate directly to our Category so we create a Template with 6 fields which each reflect the types that we have in
+the Category itself.  We are going to use SQL table storage for the form so remember to give the fields names that
+will be valid database columns (no spaces etc.).  Once the template is completed, create a SQL table with a name of
+your choice and then create a Form from the template.  At this point the "cache" is complete, all we need to do
+is write into it.
+<BR><BR>
+It is worth noting that if we wish to permission check the final results and/or provide hyperlinks back to
+the original data we will need to cache the dataid as well as the category fields we're interested in.
+<BR><BR>
+Take the WebReport created in any of the methods above and modify it so that it uses the <A HREF="javascript:openHelpWindow('setform');">SETFORM</A> sub-tag to map
+data from the source tag to the destination field.  If we take the example from the CAT reportview we should end up
+with something like this in the row section:
+<BR><BR>
+<PRE>
+[LL_REPTAG=DATAID CAT:"Test Category":"Trial Name":DISPLAY SETFORM:TRIAL /]
+[LL_REPTAG=DATAID CAT:"Test Category":"Number of Failures":DISPLAY SETFORM:FAILURES /]
+[LL_REPTAG=DATAID CAT:"Test Category":"Assignee":DISPLAY SETFORM:ASSIGN /]
+[LL_REPTAG=DATAID CAT:"Test Category":"Start Date":DISPLAY SETFORM:STDT /]
+[LL_REPTAG=DATAID CAT:"Test Category":"End Date":DISPLAY SETFORM:EDDT /]
+[LL_REPTAG=DATAID CAT:"Test Category":"Complete":DISPLAY SETFORM:STATUS /]
+</PRE>
+</p>
+
+<p class="body">
+Now set the destination tab of the WebReport to export to Form and browse for the Form we have just created.  Set
+the <i>Append Results</i> field to <i>Overwrite Existing Data</i>.  Next set a schedule appropriate to your user needs
+and processing availability.  As an example, you might set this to run at the end of each month for payroll processing because
+the data isn't required at any other time.  In some cases it might need to run hourly, the specific need will need to be determined
+by the WebReport developer and the end user.
+<BR><BR>
+The final step is to create a LiveReport/WebReport to report on the data in the new table containing the cached data.  If at this point
+performance is an issue the WebReport developer should consider paginating the data before delivery to the browser.
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

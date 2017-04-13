@@ -1,0 +1,139 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>To Restore an Index Using the Restore Wizard</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-ibrtorestoreindex-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Restoring Indexes';
+          header.title2 = 'To Restore an Index Using the Restore Wizard';
+           header.draw();
+  </script>
+  <A NAME="PROCID-OTA11041"></A>
+<DIV title=" To restore an index using the Restore Wizard:" CLASS="procedure">
+<P><B><A NAME="PROCID-OTA11041"></A> To restore an index using the Restore Wizard:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID12028"></A>Restart the data flow associated with the data source for whose index you want to restore.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12030"></A>Restart the search process associated with the data source for whose index you want to restore.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12032"></A>Stop the Backup Manager associated with the data source for whose index you want to restore.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12034"></A>Remove all the files from the directory of the index that you want to restore.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF242"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12036"></A><B CLASS="note">Note: </B><BR>The directory path of a data source's index is stored in the <B CLASS="guilabel">Index Directory</B> field on the Specific tab of the Properties page for the data source's Index Engine process.</P>
+<P><A NAME="TMPID12038"></A>Do <B CLASS="highlight">not</B> delete the index signature file and the <TT CLASS="literal">FieldModeDefinitions.ini</TT> file when clearing the index directory prior to doing the restore. If you delete the signature file, the search processes probably will not start because they are missing.</P>
+<P><A NAME="TMPID12041"></A>If the processes remain running, the Restore Wizard will fail since it cannot overwrite files that are in use.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12043"></A>On the System Volume Object page, click the <B CLASS="guilabel">Functions</B> icon of the data source whose index you want to restore, and then choose <B CLASS="guilabel">Maintenance</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12047"></A>On the Data Source Maintenance page, click the <B CLASS="guilabel">Restore the index</B> radio button, and then click the <B CLASS="guilabel">OK</B> button you have not previously created a Backup Manager, you will be prompted to add a backup manager now. Click the <B CLASS="guilabel">OK</B> button on the Backup Manager Create Confirmation page. On the Add: Backup Manager page, type the required information, and then click the <B CLASS="guilabel">Add</B> button.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12053"></A>On the Data Source Restore Search Index Wizard page, at the Partitions step, select all the partitions you want to restore, and then click the <B CLASS="guilabel">Next</B> button.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12056"></A>At the Backup Image step, for the first partition that you are restoring, type the absolute path of the directory that contains the last backup image in the <B CLASS="guilabel">Image Location</B> field, and then click the <B CLASS="guilabel">Next</B> button.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF243"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12060"></A><B CLASS="note">Note: </B><BR>You must include the path to the directory in which the backup image is stored. The Restore Wizard needs the last backup image to determine the set of backup images to be restored.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12062"></A>At the File Status step, click the <B CLASS="guilabel">Check Status</B> button to refresh the process's progress.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12065"></A>When the Restore Wizard returns a page indicating that it has determined the set of backup images to be restored, click the <B CLASS="guilabel">Next</B> button.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID12068"></A>At the Restore Status step, when the Restore Wizard displays the list of the backup images it must restore, click the level of error messaging you want in the <B CLASS="guilabel">Alert Level</B> drop-down list:</P><A NAME="AEN11340"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11341"></A><A NAME="TMPID12072"></A><B CLASS="guilabel">None</B>, which is the default</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11344"></A><A NAME="TMPID12075"></A><B CLASS="guilabel">Information</B>, which notifies the recipient of general status and other system information</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11347"></A><A NAME="TMPID12078"></A><B CLASS="guilabel">Warning</B>, which notifies the recipient of non-critical errors in the system</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11350"></A><A NAME="TMPID12081"></A><B CLASS="guilabel">Error</B>, which notifies the recipient of general system errors</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11353"></A><A NAME="TMPID12084"></A><B CLASS="guilabel">Severe Error</B>, which notifies the recipient of critical system errors</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF244"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12087"></A><B CLASS="note">Note: </B><BR>For more information about error messaging, see <span><A href="../websovmgmt/sov-cnfsoaed-p.htm">To Enable Error-Checking and E-Mail Delivery</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12090"></A>Click the <B CLASS="guilabel">Next</B> button.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12093"></A>At the Images step, when the Restore Wizard displays a backup image to be restored, type the backup image's absolute path in the <B CLASS="guilabel">Location</B> field, and then click the <B CLASS="guilabel">Next</B> button.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF245"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12097"></A><B CLASS="note">Note: </B><BR>You must include the path to the directory in which the backup image is stored.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12099"></A>Click the <B CLASS="guilabel">Check Status</B> button to refresh the process's progress. When the Restore Wizard has completed restoring the specified image, click the <B CLASS="guilabel">Next</B> button.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12103"></A>At the Summary step, click the <B CLASS="guilabel">Next</B> button to validate the restored index.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12106"></A>At the Index Validation step, click the <B CLASS="guilabel">Check Status</B> button to refresh the process's progress. If you enabled error messaging for the Restore Wizard, Content Server will send an alert message when the restore is complete. Optionally, if you selected more than one partition to restore, click the <B CLASS="guilabel">OK</B> button to repeat the steps in the Restore Wizard to restore the remainder of the partitions. Do not click the <B CLASS="guilabel">Resynchronize</B> button until all partitions have been restored.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID12112"></A>After all partitions have been restored, do one of the following:</P><A NAME="AEN11383"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11384"></A><A NAME="TMPID12115"></A>Click the <B CLASS="guilabel">OK</B> button to close the Restore Wizard without resynchronizing the Admin server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11387"></A><A NAME="TMPID12118"></A>Click the <B CLASS="guilabel">Resynchronize</B> button to resynchronize the Admin server immediately.</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF246"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12121"></A><B CLASS="note">Note: </B><BR>If you need to restore other indexes that are administered by the same Admin server, restore them first, and then see <span><A href="../otadmin/ota-resynchlladminserver-bg.htm">Resynchronizing Admin Servers</A></span> and restart the data source's data flow and Search Manager.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID12124"></A>Restart the data source's data flow process and restart the search process.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

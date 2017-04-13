@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Traitement des affichages de rapports</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-processing-order-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'Traitement des affichages de rapports';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID16369"></A>Pour la plupart des développements WebReports, il n'est pas nécessaire de comprendre les détails du traitement des affichages de rapports. Cependant, ces informations peuvent être utiles pour certaines situations spécifiques avancées. Par exemple, pour déterminer les balises qui peuvent être utilisées en tant que paramètres pour d'autres balises, certaines instructions utiles vous permettront de mieux comprendre ces scénarios. </P>
+<P><A NAME="TMPID16371"></A>En général, les sous-balises peuvent être utilisées dans les balises de données, et les balises de données peuvent être utilisées dans les balises de contrôle de contenu. Il y a cependant des cas dans lesquels vous pouvez utiliser divers types de balises de données dans d'autres balises de données. Le succès de ce type d'imbrication dépend de l'ordre dans lequel chaque type de balise est traité. </P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN15628"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID16373"></A>Dans l'exemple suivant, une balise de paramètre, <TT CLASS="literal">nodefield</TT>, remplace le paramètre de sous-balise <TT CLASS="literal">NODEINFO</TT>. La balise de paramètre <TT CLASS="literal">direction</TT> est insérée en tant que paramètre d'ordre pour <TT CLASS="literal">[LL_WEBREPORT_SORT /]</TT> : </P>
+<P><A NAME="TMPID16378"></A><TT CLASS="literal"> [LL_WEBREPORT_SORT "[LL_REPTAG=DATAID NODEINFO:[LL_REPTAG_&amp;nodefield /] /]" [LL_REPTAG_&amp;direction /] /] </TT></P>
+</DIV></P>
+<P class="before-ul"><A NAME="TMPID16380"></A>Officiellement, seuls les paramètres, les constantes et les balises de nom de colonne sont pris en charge pour l'insertion dans les balises de données. Mais d'autres combinaisons sont possibles en fonction de l'ordre de traitement ci-dessous. Ces balises de données peuvent être substituées dans les composants suivants de l'affichage de rapport :</P><A NAME="AEN15637"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15638"></A><A NAME="TMPID16383"></A>Paramètres des balises de contrôle de contenu. Les balises de contrôle de contenu font référence à toutes les balises avec le préfixe <TT CLASS="literal">[LL_WEBREPORT_</TT>. Un exemple de balise de contrôle de contenu est le paramètre d'ordre de tri d'une balise de tri.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15641"></A><A NAME="TMPID16386"></A>Paramètres de sous-balises.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-PROCESSING-ADVNOT">L'ordre dans lequel les types de balises sont traités</A></P>
+<P><A NAME="TMPID16389"></A>La liste suivante décrit l'ordre dans lequel les différents types de balises sont traités. La compréhension de cet ordre de traitement est utile pour déterminer l'utilisation des balises les unes avec les autres. Par exemple, les paramètres transmis sont traités avant les balises de tri. Par conséquent, toute information transmise dans les paramètres peut être utilisée comme partie de la balise de tri. </P>
+<A NAME="AEN15645"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15646"></A><A NAME="TMPID16392"></A>Toutes les valeurs de balises de paramètre transmises sont insérées du haut vers le bas dans l'affichage de rapport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15648"></A><A NAME="TMPID16394"></A>Toutes les valeurs de balises de constante sont insérées du haut vers le bas dans l'affichage de rapport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15650"></A><A NAME="TMPID16396"></A>Toutes les valeurs de balises de nom de colonne sont insérées du haut vers le bas dans l'affichage de rapport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15652"></A><A NAME="TMPID16398"></A>Toutes les balises de fonction sont interprétées, et marquées pour une insertion ultérieure, du haut vers le bas dans l'affichage de rapport. Les balises <TT CLASS="literal">@DATA</TT> sont insérées à cette étape.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15655"></A><A NAME="TMPID16401"></A>Toutes les valeurs de balises statiques sont insérées du haut vers le bas dans l'affichage de rapport. En d'autres termes, toutes les balises qui renvoient des informations statiques d'environnement Content Server ne provenant pas de la source de données.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15658"></A><A NAME="TMPID16404"></A>L'affichage de rapport est divisé en trois sections. Toutes les balises de données de ligne sont interprétées, pour une insertion ultérieure, dans la section de ligne.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15660"></A><A NAME="TMPID16406"></A>Toutes les variables sont préparées et marquées pour une résolution ultérieure du haut vers le bas dans l'affichage de rapport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15662"></A><A NAME="TMPID16408"></A>Toutes les balises de tri sont traitées et les données sont manipulées. Les tris sont réalisés dans l'ordre d'affichage de la balise de tri du haut vers le bas dans l'affichage de rapport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15664"></A><A NAME="TMPID16410"></A>Toutes les valeurs des balises de rapport, les colonnes de données de la source de données, sont insérées du haut vers le bas dans la section de ligne, de la première ligne à la dernière, selon l'ordre de tri.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15666"></A><A NAME="TMPID16412"></A>Toutes les fonctions et les variables sont insérées du haut vers le bas dans l'affichage de rapport. C'est là que les valeurs de la variable actuelle seront résolues.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15668"></A><A NAME="TMPID16414"></A>Toutes les balises conditionnelles if/endif sont résolues du haut vers le bas dans l'affichage de rapport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15670"></A><A NAME="TMPID16416"></A>Tous les sous-rapports WebReports sont appelés, et la sortie obtenue insérée, du haut vers le bas dans l'affichage de rapport.</P></LI></OL>
+<P><A NAME="TMPID16417"></A>La manière dont les balises sont créées et spécifiées dans l'affichage de rapport est validée chaque fois qu'une nouvelle version est ajoutée au WebReport. Cette validation facilite la recherche d'erreurs de syntaxe pouvant exister dans l'affichage de rapport. Cependant, cette validation peut parfois interférer avec des structures de balises plus complexes. Les utilisateurs chevronnés peuvent souhaiter désactiver la validation pour utiliser des scénarios complexes. Cependant, ceci ne doit être fait qu'après un test de base, avec la validation activée, et de préférence sur un système test afin d'éviter toute éventuelle erreur d'exécution. La validation peut être désactivée en utilisant la balise suivante : <TT CLASS="literal">[LL_WEBREPORT_DEBUGON /]</TT> </P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

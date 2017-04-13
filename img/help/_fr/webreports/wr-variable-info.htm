@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Utilisation des variables</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-variable-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'Utilisation des variables';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID17820"></A>Divers composants dans WebReports prennent en charge le concept de variables. Les variables donnent la possibilité de stocker et/ou d'accumuler les résultats provenant d'autres balises pour une sortie dans l'affichage de rapport. Les variables sont prises en charge par la balise et les sous-balises suivantes : </P><A NAME="AEN17066"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17067"></A><A NAME="TMPID17824"></A><TT CLASS="literal">[LL_REPTAG_%&lt;<I CLASS="varname">nom_variable</I>> /]</TT> : cette balise renvoie tout ce qui est stocké dans une variable représentée par « nom_variable ». Nom_variable est un ensemble de caractères valides, par exemple sans espaces ou caractères spéciaux. Ce nom de variable doit correspondre à une variable créée précédemment par l'une des sous-balises qui prennent en charge le paramètre de variable.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17072"></A><A NAME="TMPID17829"></A><TT CLASS="literal">SETVAR</TT> : sous-balise qui permet de stocker tout résultat de balise dans une variable nommée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17075"></A><A NAME="TMPID17832"></A><TT CLASS="literal">ADDVAR</TT> : sous-balise qui permet d'ajouter tout résultat de balise numérique dans la valeur numérique d'une variable nommée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17078"></A><A NAME="TMPID17835"></A><TT CLASS="literal">CONCATVAR</TT> : sous-balise qui permet de concaténer tout résultat basé sur un texte/une chaîne dans le texte d'une variable nommée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17081"></A><A NAME="TMPID17838"></A><TT CLASS="literal">CURRENTVAL</TT> : sous-balise qui renvoie la valeur actuelle d'une variable et/ou le résultat d'une sous-balise d'action de variable.</P></LI></UL>
+<P><A NAME="TMPID17840"></A>Vous trouverez une description plus détaillée de ces sous-balises et de la balise de variable dans le guide sur la syntaxe. Cette section décrit certaines instructions et remarques concernant l'utilisation de cette fonction.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-VARIABLE-ADVNOT">L'ordre des variables définies par les balises WebReports</A></P>
+<P><A NAME="TMPID17844"></A>Les variables étant définies par différents types de balises WebReports, l'ordre dans lequel elles sont définies dépend de l'ordre dans lequel elles sont traitées. WebReports traite chaque type de balise dans l'ordre suivant :</P>
+<A NAME="AEN17089"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17090"></A><A NAME="TMPID17849"></A>Toutes les valeurs de balises de paramètre transmises du haut vers le bas dans l'affichage de rapport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17092"></A><A NAME="TMPID17851"></A>Toutes les valeurs de balises de nom de colonne du haut vers le bas dans l'affichage de rapport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17094"></A><A NAME="TMPID17853"></A>Toutes les valeurs de balises statiques du haut vers le bas dans l'affichage de rapport. Par exemple, toutes les balises qui renvoient des informations statiques d'environnement Content Server ne provenant pas de la source de données.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17097"></A><A NAME="TMPID17856"></A>Toutes les valeurs des balises de rapport, les colonnes de données de la source de données, du haut vers le bas dans la section de ligne, de la première ligne à la dernière, selon l'ordre de tri.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17099"></A><A NAME="TMPID17858"></A>Toutes les balises de fonction et de variable du haut vers le bas dans l'affichage de rapport. C'est là que les valeurs de la variable actuelle seront résolues.</P></LI></OL>
+<P><A NAME="TMPID17859"></A>Voir <span><A HREF="wr-processing-order-info.htm">Traitement des affichages de rapports</A></span> pour plus d'informations concernant l'ordre de traitement. </P>
+<P class="before-ul"><A NAME="TMPID17861"></A>En général, pour toutes les opérations de concaténation ou d'addition avec des variables pour lesquelles l'ordre est important, essayez d'utiliser le même type de balise. Par exemple, si plusieurs résultats de fonction, comme <TT CLASS="literal">@SUM</TT>, sont additionnés, cette opération est prise en charge car tous les résultats de fonction sont traités selon l'ordre séquentiel dans lequel ils apparaissent dans l'affichage de rapport. S'il fallait concaténer une combinaison de paramètres, de constantes et de résultats mathématiques, le traitement ne serait pas réalisé dans l'ordre attendu par le concepteur du rapport. Actuellement, pour contourner ce problème, il faudrait créer une variable pour chaque type de balise et la définir pour les résultats de toutes les balises spécifiques. Chaque variable pourrait alors être concaténée pour donner un résultat cumulatif comme le montre le point suivant :</P><A NAME="AEN17105"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17106"></A><A NAME="TMPID17865"></A>Une fois les variables résolues, il est également possible de définir des variables à utiliser dans les variables suivantes à l'aide des sous-balises de paramétrage, comme <TT CLASS="literal">SETVAR</TT>. Considérons les séquences de balises suivantes : </P>
+<P><A NAME="TMPID17867"></A><TT CLASS="literal">[LL_REPTAG_%subtotal /]</TT></P>
+<P><A NAME="TMPID17869"></A><TT CLASS="literal">[LL_REPTAG_@SUM ADDVAR:subtotal SHOW /]</TT></P>
+<P><A NAME="TMPID17871"></A><TT CLASS="literal">[LL_REPTAG_@subtotal ADDVAR:total /]</TT></P>
+<P><A NAME="TMPID17873"></A><TT CLASS="literal">[LL_REPTAG_%total ROUND:2 /]</TT></P>
+<P><A NAME="TMPID17875"></A>Si la variable appelée sous-total commence par la valeur 10, si la variable appelée total commence par la valeur 20 et si @SUM renvoie la valeur 100.12345, la sortie de ces balises sera :</P>
+<P><A NAME="TMPID17876"></A>10, 110,12345, 130,12</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF56"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID17878"></A><B CLASS="note">Note : </B><BR>Lorsque les sous-balises <TT CLASS="literal">SETVAR</TT>, <TT CLASS="literal">ADDVAR</TT> et <TT CLASS="literal">CONCATVAR</TT> sont utilisées, elles ne renverront normalement pas de résultat vers la sortie, sauf si la sous-balise <TT CLASS="literal">SHOW</TT> est également utilisée, comme dans : <TT CLASS="literal">[LL_REPTAG_@SUM ADDVAR:subtotal SHOW /]</TT></P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17126"></A><A NAME="TMPID17885"></A>Les variables peuvent être utilisées dans les sections de ligne pour accumuler les nombres ou les chaînes provenant de plusieurs lignes. Ceci s'avère utile pour concaténer les valeurs de chaîne dans une chaîne unique qui peut être utilisée dès que la balise de variable peut être utilisée (y compris les champs d'exportation tels que E-mail vers : liste).</P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN17128"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID17887"></A><TT CLASS="literal">[LL_REPTAG=USERID USERINFO:EMAIL CONCATVAR:tolist:"," /]</TT> </P>
+<P><A NAME="TMPID17889"></A>Si cette balise était utilisée dans une section de ligne, entre les balises <TT CLASS="literal">STARTROW</TT> et <TT CLASS="literal">ENDROW</TT>, elle établirait une chaîne d'adresses e-mail avec une virgule séparant chaque adresse e-mail.</P>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN17134"></A><B>Exemple</B></P>
+<P class="nr1"><A NAME="TMPID17893"></A><TT CLASS="literal">[LL_REPTAG=cost ADDVAR:subtotal /]</TT></P>
+<P><A NAME="TMPID17895"></A>Si cette balise était utilisée dans une section de ligne, entre les balises <TT CLASS="literal">STARTROW</TT> et <TT CLASS="literal">ENDROW</TT>, elle ajouterait la valeur de la colonne « coût » pour chaque ligne sur la variable appelée sous-total.</P>
+</DIV></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17141"></A><A NAME="TMPID17900"></A>Les variables peuvent être utilisées comme opérandes pour les balises conditionnelles <TT CLASS="literal">[LL_WEBREPORT_INCLUDEIF</TT> ou <TT CLASS="literal">[LL_WEBREPORT_EXITIF</TT>, mais ne peuvent pas être utilisées dans la balise <TT CLASS="literal">[LL_WEBREPORT_IF</TT>. Il est également important de noter que les variables définies dans les sections <TT CLASS="literal">[LL_WEBREPORT_IF/ENDIF</TT> resteront définies même si la clause <TT CLASS="literal">IF</TT> est finalement évaluée comme <TT CLASS="literal">FALSE</TT>. Ceci est dû à l'ordre dans lequel les balises sont traitées dans l'affichage de rapport.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

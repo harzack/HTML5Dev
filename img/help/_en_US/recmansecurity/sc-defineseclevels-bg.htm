@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESRCS100500-H-UGD-EN">
+<META PiXprocLocator="recmansecurity">
+<META mancondkey="lleswbu-h-ugd"><title>Defining Security Clearance Levels</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'sc-defineseclevels-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Understanding Security Clearance';
+          header.title2 = 'Defining Security Clearance Levels';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID49"></A>Security clearance levels are implemented by assigning a security clearance level to objects and users. These levels, which are hierarchical, provide access to individual objects. The levels are also used to filter searches and provide users with lists of objects that only they can see based on their assigned security clearance level.</P>
+<P><A NAME="TMPID50"></A>Security clearance levels are a single attribute attached to each individual object. Typically, this type of filtering is performed before a check of the object's Access Control List (ACL).</P>
+<P><A NAME="TMPID51"></A>Users assigned a high security clearance level can see objects with lower security clearance levels, but users assigned a low security clearance level cannot see objects with higher security clearance levels.</P>
+<DIV title="Security Clearance Levels" CLASS="TABLE">
+<P CLASS="TABLE" ALIGN="LEFT"><A NAME="TAB-SECCLRLEVELS"></A><B>Table 1-1: Security Clearance Levels</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="TABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" WIDTH="356" ALIGN="LEFT" VALIGN="TOP">Name</TH>
+<TH SCOPE="COL" WIDTH="142" ALIGN="LEFT" VALIGN="TOP">Level</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="356" ALIGN="LEFT" VALIGN="TOP">Top Secret</TD>
+<TD SCOPE="COL" WIDTH="142" ALIGN="LEFT" VALIGN="TOP">90</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="356" ALIGN="LEFT" VALIGN="TOP">Secret</TD>
+<TD SCOPE="COL" WIDTH="142" ALIGN="LEFT" VALIGN="TOP">50</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="356" ALIGN="LEFT" VALIGN="TOP">Confidential - A</TD>
+<TD SCOPE="COL" WIDTH="142" ALIGN="LEFT" VALIGN="TOP">40</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="356" ALIGN="LEFT" VALIGN="TOP">Confidential - B</TD>
+<TD SCOPE="COL" WIDTH="142" ALIGN="LEFT" VALIGN="TOP">30</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="356" ALIGN="LEFT" VALIGN="TOP">Confidential - C</TD>
+<TD SCOPE="COL" WIDTH="142" ALIGN="LEFT" VALIGN="TOP">20</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID77"></A>Using the examples from <span><A HREF="sc-defineseclevels-bg.htm#TAB-SECCLRLEVELS"><NOBR>Table&nbsp;1-1</NOBR></A></span>, Top Secret can see level 90 and all levels below level 90; Secret can see level 50 and all levels below level 50, etc.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF0"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID80"></A><B CLASS="NOTE">Note: </B><BR>If you change the Security Level on a container and choose <B CLASS="GUILABEL">Apply to this Item and Sub-items</B>, the new Security Level is applied to the container and sub-containers, as well as the items in those containers. However, if the Security Clearance Level you assign to the container is lower than the Security Clearance Level currently assigned to a sub-container or item, the new Security Clearance Level will not be assigned to those sub-containers and items. The Security Clearance Level can be changed on these sub-containers individually.</P>
+<DIV title="Security Clearance Level is Higher on a Sub-container or Item than the Parent Container" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF1"></A><B><IMG title="Security Clearance Level is Higher on a Sub-container or Item than the Parent Container" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-1: Security Clearance Level is Higher on a Sub-container or Item than the Parent Container</B></P>
+<P class="nr1"><A NAME="TMPID84"></A>Assume <B CLASS="GUILABEL">Folder 1</B> is assigned a Security Clearance Level of 60, <B CLASS="GUILABEL">Folder 2</B> (child container in <B CLASS="GUILABEL">Folder 1</B>) is assigned a Security Clearance Level of 30, and <B CLASS="GUILABEL">Folder 3</B> (child container in <B CLASS="GUILABEL">Folder 1</B>) is assigned a Security Clearance Level of 90.</P>
+<P><A NAME="TMPID90"></A>If you change the Security Clearance Level of <B CLASS="GUILABEL">Folder 1</B> from <TT CLASS="LITERAL">60</TT> to <TT CLASS="LITERAL">70</TT>, select the <B CLASS="GUILABEL">Upgrade and Downgrade</B> Inheritance option, and choose <B CLASS="GUILABEL">Apply to this Item and Sub-items</B>, <B CLASS="GUILABEL">Folder 1</B> and <B CLASS="GUILABEL">Folder 2</B> will be assigned a Security Clearance Level of <TT CLASS="LITERAL">70</TT>, but <B CLASS="GUILABEL">Folder 3</B> will retain its current higher Security Clearance Level of <TT CLASS="LITERAL">90</TT>.</P><IMG title="Security Clearance Level is Higher on a Sub-container or Item than the Parent Container" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

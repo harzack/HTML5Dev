@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Adding a Directory Walker Process</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbw-adddirwk-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Creating Index Components Individually';
+          header.title2 = 'Adding a Directory Walker Process';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1761"></A>You create most Content Server indexes using the Index Templates that Content Server provides. Index templates allow you to create all the system objects that are associated with a particular index in a single step. For example, you can create the Enterprise index, a Directory Walker index, an XML Activator Producer index, an Admin Help index, or a User Help index by clicking commands on the <B CLASS="guilabel">Add Item</B> menu on the System Administration page. After you provide the required information, Content Server automatically generates the corresponding system objects (for example, the data source folder, the Data Flow Manager, the data flow and all its processes, and the Search Manager and its Search Engines) in a single step. You can also create indexes by adding individual system objects to a data source folder that you add to the System Administration page. For more information about adding index components, see <span><A href="../websystemobj/wbs-creindexindiv-so.htm">Creating Index Components Individually</A></span>.</P>
+<P><A NAME="TMPID1767"></A>You create a Directory Walker process when you want to index data that is stored in your file system. For each Directory Walker process that you create, you specify the top-level directories and subdirectory levels that you want the process to scan. The Directory Walker process walks through the top-level directories that you specify (and their subdirectories, if necessary) and extracts files that match the criteria that you specify.</P>
+<P><A NAME="TMPID1768"></A>You determine the types of files that the Directory Walker process collects by specifying inclusion and exclusion criteria (such as, file name patterns, date ranges, and file size ranges). The Directory Walker process writes the files that match your criteria to a data interchange pool (IPool), where they can be accessed by the next process in the data flow.</P>
+<P><A NAME="TMPID1769"></A>If you create a Directory Walker index using the index template that Content Server provides, Content Server sets up logging for the index using default values. In this case, Content Server generates a Directory Walker log file in the logs directory of your Content Server installation (<I CLASS="emphasis">Content Server_home</I>/logs) and sets the log level to <B CLASS="guilabel">Default</B>. After the Directory Walker data flow is created, you can modify these values when you configure the Directory Walker process. If you create a Directory Walker index by adding individual system objects to a data source folder, you must specify the log file location and log level for the Directory Walker process. A Directory Walker process's log file describes the current status of the process, indicating whether it started and stopped successfully and listing any warnings or errors that occurred as the process extracted data.</P>
+<P><A NAME="TMPID1777"></A>You can also configure a Directory Walker process to store information in <I CLASS="emphasis">crawl history database files</I>. Crawl history database files contain information about the files that the Directory Walker process walks. When a Directory Walker process walks a set of directories that have already been walked, it compares the crawl history database files to the files that are currently stored in the directory to locate new, updated, or deleted files. The Directory Walker process extracts information about added, replaced, or deleted files to the data flow. It does not extract the entire file set again, which makes index updating more efficient. When you create a Directory Walker process individually, you must specify the directory where the Directory Walker process stores its crawl history database files. When you create a Directory Walker data flow using the index templates, Content Server automatically creates the crawl history database files for you. You can then modify the location of the files when you configure the Directory Walker process.</P>
+<P><A NAME="TMPID1780"></A>There are four steps involved in creating an XML Activator Producer data flow.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF37">Setting Up a Directory Walker Process</A></P>
+<P><A NAME="TMPID1782"></A>You set up a Directory Walker process by naming it and specifying the Admin server on whose host you want the process to run.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF38">Setting Log Options and History Files</A></P>
+<P><A NAME="TMPID1784"></A>If you want to log the activity of the Directory Walker process that you are adding to a data flow, you can specify the name of the log file that you want to associate with the process and the type of activity that you want to record. If you do not want to log the activity of the Directory Walker process, you do not specify log information when adding a Directory Walker process.</P>
+<P><A NAME="TMPID1785"></A>You also specify the location of the <I CLASS="emphasis">crawl history database files</I> that the Directory Walker creates. When a Directory Walker process runs, information about which files the process walks are stored in the crawl history database files. The Directory Walker process uses this information when it again walks a directory to locate new, updated, or deleted files. OpenText recommends that you store crawl history database files in the directory where the Directory Walker process writes data: the directory that you specify in the <B CLASS="guilabel">Write Directory</B> field on the Add: Directory Walker page.</P>
+<P><A NAME="TMPID1789"></A>When specifying directories on the Add: Directory Walker page, you must specify the directory paths as they are mapped/mounted on the host of the Admin server whose shortcut you selected in the <B CLASS="guilabel">Host</B> drop-down list.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF39">Setting Directory Groups</A></P>
+<P><A NAME="TMPID1792"></A>Before a Directory Walker process can run, you must identify the directories that you want the process to scan for data. You specify the top-level directories and the levels of subdirectories that you want the process to scan. For each group of directories that you specify, you can also identify the types of files that you want the Directory Walker process to include or exclude.</P>
+<P><A NAME="TMPID1793"></A>When specifying directories on the Add: Directory Walker page, you must specify the directory paths as they are mapped/mounted on the host of the Admin server whose shortcut you selected in the <B CLASS="guilabel">Host</B> drop-down list.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF40">Setting IPool and Start/Stop Options</A></P>
+<P><A NAME="TMPID1796"></A>After you set up the Directory Walker process, specify its log and crawl history parameters, and specify which directories you want the process to scan, you must set the location of the process's data interchange pool (IPool), and set Start Options and Stop Options.</P>
+<P><A NAME="TMPID1797"></A>When specifying directories on the Add: Directory Walker page, you must specify the directory paths as they are mapped/mounted on the host of the Admin server whose shortcut you selected in the <B CLASS="guilabel">Host</B> drop-down list.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF41"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1800"></A><B CLASS="note">Note: </B><BR>If you mix path formats in the Directory Walker, for example, a mapped drive as the directory to be crawled and a UNC directory in the Exclude field, the exclude restriction is ignored. The include restriction is also ignored in the Include field.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webdirwalk/wbw-setupdirwk-p.htm" revision="">To Set Up a Directory Walker Process</A></p></li>
+<li><p><A  href="../webdirwalk/wbw-logdirwk-p.htm" revision="">To Set Log Options and History Files</A></p></li>
+<li><p><A  href="../webdirwalk/wbw-setupdirgrp-p.htm" revision="">To Set Directory Groups:</A></p></li>
+<li><p><A  href="../webdirwalk/wbw-ipoolstrtstp-p.htm" revision="">To Set IPool and Start/Stop Options</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

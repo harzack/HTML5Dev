@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Example using the CAT:JSARRAY Functions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-cat-exampl.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'CAT:JSARRAY Function Reference';
+          header.title2 = 'Example using the CAT:JSARRAY Functions';
+           header.draw();
+  </script>
+
+<DIV title="CAT:JSARRAY Functions Example" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-CTJSARRFUNC-EX"></A><B><IMG title="CAT:JSARRAY Functions Example" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-13: CAT:JSARRAY Functions Example</B></P>
+<P class="nr1"><A NAME="TMPID18617"></A><B CLASS="highlight">Example Category definition:</B></P>
+<P><IMG SRC="image001.png"></P>
+<P><A NAME="TMPID18620"></A><B CLASS="highlight">Example Category data:</B></P>
+<P><IMG SRC="image002.png"></P>
+<P><A NAME="TMPID18623"></A>Example code accessing/retrieving data from 'Example Category data' above using the <TT CLASS="literal">CAT:JSARRAY</TT> functions:</P><A NAME="AEN17375"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_STARTROW /]
+[LL_WEBREPORT_ENDROW /]
+
+[LL_REPTAG_"108158" CAT:JSARRAY /]
+
+&lt;script&gt;
+
+  // categoryId = 108157  (categoryId of Type Testing Category)
+  // nodeId = 108158      (objectId of a document which has this category applied to it)
+
+  // Get category name
+  var catName = cat_data.getCatName(108157, 108158);
+
+  // Get attribute name
+  var attrName = cat_data.getAttrName(108157, 2, 108158);
+
+  // Get attribute info based on field names
+  var attrReq = cat_data.getAttrDataByField(108157, 3, 'req', 108158);
+  var attrMulti = cat_data.getAttrDataByField(108157, 5, 'multi', 108158);
+  var attrMaxlen = cat_data.getAttrDataByField(108157, 6, 'maxlen', 108158);
+
+  // Get all attribute fieldIds and values
+  var attrs = cat_data.getAttrNameValuePairs(108157, 108158);
+
+  // Get some attribute values
+  var valueAttr = cat_data.getAttrValue(108157, 4, 108158);
+  var lastNameAttr = cat_data.getAttrValue(108157, 'Last Name', 108158);
+  var phoneNumAttr = cat_data.getAttrValue(108157, '_1_1_5_1_8_1', 108158);
+
+  // Display Results
+  alert(catName);             // 'Type Testing Category' is displayed
+  alert(attrName);            // 'Date of Test' is displayed
+  alert(attrReq);             // 'false' is displayed, meaning 'Pass or Fail' attribute is not required.
+  alert(attrMulti);           // 'true' is displayed. 'Tester Details' is a multi-value set.
+  alert(attrMaxlen);          // '32' is displayed, which is the max length of 'First Name' attribute.
+  alert(attrs.toString());    // Displays all the attribute fieldId and values in the category in an array representation.
+  alert(valueAttr);           // '453' is displayed.
+  alert(lastNameAttr);        // Array is returned with the values: 'Butler','Brown'
+  alert(phoneNumAttr);        // '44556677' is returned.
+
+&lt;/script&gt;</PRE
+><IMG title="CAT:JSARRAY Functions Example" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P class="nr1"><A NAME="TMPID18626"></A>More CAT:JSARRAY examples can be found at <span><A HREF="wr-catjsarray-info.htm">CAT:JSARRAY Examples</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

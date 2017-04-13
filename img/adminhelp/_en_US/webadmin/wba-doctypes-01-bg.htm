@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Modifying the MIME Types List</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-doctypes-01-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering MIME Types and Icons';
+          header.title2 = 'Modifying the MIME Types List';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID12101"></A>When a file is uploaded to the Content Server database, the following list shows the actions performed by Content Server to determine the document’s MIME type. If the first action fails to determine the MIME type, the next action occurs.</P>
+<A NAME="AEN11184"></A>
+<OL COMPACT="COMPACT" TYPE="1" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN11185"></A><A NAME="TMPID12106"></A>Content Server looks for information about the file's MIME type from the user's Web browser.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN11188"></A><A NAME="TMPID12109"></A>Content Server looks up the file's extension in the <TT CLASS="filename">mime.types</TT> file to see if it is mapped to a MIME type in that file.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN11192"></A><A NAME="TMPID12113"></A>Content Server attempts to identify the MIME type using an <TT CLASS="literal">autorecognition</TT> program.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN11196"></A><A NAME="TMPID12117"></A>Content Server assigns the file the first MIME type listed in the <TT CLASS="filename">mime.types</TT> file. By default, this is <TT CLASS="filename">application/activemessage</TT>.</P></LI></OL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF100"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12122"></A><B CLASS="note">Note: </B><BR>The default actions, and the order in which they occur, can be changed on the <B CLASS="guilabel">System Administration</B> page.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID12124"></A>In addition to assigning MIME types to uploaded documents, the <TT CLASS="filename">mime.types</TT> file controls the MIME types displayed in the <B CLASS="guilabel">MIME Type</B> list on the <B CLASS="guilabel">Specific Info</B> page of Documents in Content Server. By default, the <TT CLASS="filename">mime.types</TT> file contains approximately 100 MIME types.</P>
+<P><A NAME="TMPID12130"></A>Using a text editor, you can easily modify the <TT CLASS="filename">mime.types</TT> file to add a MIME type, remove a MIME type, or map a new file extension to an existing MIME type.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-MIMETYPES-BG">The Mime Types list</A></P>
+<P><A NAME="TMPID12134"></A>The <B CLASS="guilabel">Mime Types</B> can be found in the <TT CLASS="filename">Content Server_home/config/mime.types</TT> file, and it can be modified using a text editor.</P>
+<DIV title="An Example of a Mime Types List" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF101"></A><B><IMG title="An Example of a Mime Types List" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 8-1: An Example of a Mime Types List</B></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN11219"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="command"># MIME type to file extension mapping file.<BR>#<BR># This is a whitespace-separated values file where blank lines and text  <BR># following "#" is ignored.<BR>#<BR># Each line is a separate entry with the following format:<BR># &lt;mime type&gt; &lt;file extension&gt; ...<BR>application/activemessage<BR>application/andrew-inset<BR>application/applefile<BR>application/atomicmail<BR>application/dca-rft<BR>application/dec-dx<BR>application/mac-binhex40<BR>application/macwriteii<BR>application/msword         doc W6BN<BR>application/vnd.ms-excel   xls xlb XLS5<BR>application/powerpoint     ppt SLD3</TT></TD></TR></TABLE>
+</DIV></P><IMG title="An Example of a Mime Types List" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P><A NAME="TMPID12147"></A>A MIME type is added to the list in the following format:</P>
+<P><A NAME="TMPID12148"></A><TT CLASS="literal">&lt;<I CLASS="varname">mime_type</I>> &lt;<I CLASS="varname">file_extension1</I>> &lt;<I CLASS="varname">file_extension2</I>> ...</TT></P>
+<P><A NAME="TMPID12153"></A>Taking one example of a &lt;<I CLASS="varname">mime_type</I>> from the MIME Types list above: <TT CLASS="filename">application/msword</TT>, the two associated &lt;<I CLASS="varname">file_extensions</I>> are: <TT CLASS="filename">doc</TT> and <TT CLASS="filename">W6BN</TT>. However, when adding a new MIME type, it is not necessary to map a file extension to the MIME type.</P>
+<P><A NAME="TMPID12159"></A>You can use the <TT CLASS="literal">#</TT> character to append a comment to any entry. Everything after the <TT CLASS="literal">#</TT> character is considered to be a comment and is ignored by Content Server.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-doctypes-mimetypedetect-p.htm" revision="">To Configure MIME Type Detection Rules</A></p></li>
+<li><p><A  href="../webadmin/wba-doctypes-01-p.htm" revision="">To Modify the MIME Types List</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWFW100500-H-AGD-EN-1">
+<META PiXprocLocator="webwork">
+<META mancondkey="lleswbn-h-agd -- lleseps-h-agd -- lleswfp-h-ugd -- llesrt-h-ugd -- lleswba-h-agd"><title>To Prevent Users from Searching the Workflow Volume</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-browsewfvol-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Access to the Workflow Volume';
+          header.title2 = 'To Prevent Users from Searching the Workflow Volume';
+           header.draw();
+  </script>
+  <A NAME="PROC-AID2"></A>
+<DIV title="To prevent users from searching the workflow volume:" CLASS="PROCEDURE">
+<P><B>To prevent users from searching the workflow volume:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID398"></A>Make a backup copy of the Content Server initialization file, <TT CLASS="FILENAME">&lt;<I CLASS="VARNAME">Content Server_home</I>>\config\opentext.ini</TT>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID404"></A>Edit <TT CLASS="FILENAME">opentext.ini</TT> and locate the <TT CLASS="LITERAL">[LivelinkExtractor]</TT> section.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID408"></A>Exclude the workflow volume (161) from the search index by adding it to the <TT CLASS="LITERAL">ExcludedVolumeTypes</TT> parameter as follows: <TT CLASS="LITERAL">ExcludedVolumeTypes={ 162, 161 }</TT>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID412"></A>Save your changes to file.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID414"></A>Restart Content Server, the Content Server Admin Server, and the Web application server.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID418"></A>On the <B CLASS="GUILABEL">Content Server Administration</B> page, click the <B CLASS="GUILABEL">Open the System Object Volume</B> link in the <B CLASS="GUILABEL">Search Administration</B> area.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID424"></A>Click the <B CLASS="GUILABEL">Functions</B> icon for the <B CLASS="GUILABEL">Enterprise Data Source Folder</B>, and then choose <B CLASS="GUILABEL">Maintenance</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID429"></A>On the <B CLASS="GUILABEL">Data Source Maintenance</B> page, click the <B CLASS="GUILABEL">Purge the data flow, reconstruct the index, and then extract the data from the source</B> radio button.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID433"></A>Click <B CLASS="GUILABEL">OK</B>, and then click <B CLASS="GUILABEL">OK</B> again.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID437"></A>When complete, click <B CLASS="GUILABEL">Continue</B>. </P></LI></OL></DIV>
+<P class="nr1"><A NAME="TMPID439"></A>For information related to this procedure, see <span><A HREF="wf-browsewfvol-bg.htm">Administering Access to the Workflow Volume</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

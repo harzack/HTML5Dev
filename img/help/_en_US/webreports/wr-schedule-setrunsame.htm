@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>To Set a WebReport to Run on the Same Date or Day</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-schedule-setrunsame.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Setting Schedules for WebReports';
+          header.title2 = 'To Set a WebReport to Run on the Same Date or Day';
+           header.draw();
+  </script>
+
+<DIV title="To set a WebReport to run on the same date or day:" CLASS="procedure">
+<P><B><A NAME="AEN1017ttl"></A>To set a WebReport to run on the same date or day:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID1130"></A>Create a WebReport as normal and set its output destination to the desired location.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID1132"></A>Create a second WebReport that has no data source and set it to run on a daily schedule at the time you want the report to execute on the 25<SUP>th</SUP>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID1135"></A>Make the second WebReport call the first one by using <TT CLASS="literal">[LL_WEBREPORT_SUBWEBREPORT ... /]</TT>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID1138"></A>Finally, wrapper the call to the sub-WebReport with a <TT CLASS="literal">[LL_WEBREPORT_IF ... /]</TT> statement that checks the day of the month.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF9"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1141"></A><B CLASS="note">Note: </B><BR>Your second WebReport, the <I CLASS="emphasis">master</I> report, should contain code something like this:</P><A NAME="AEN1033"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_IF "[LL_REPTAG_DATE DATE:'%d' /]" == "25" /]
+    [LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$main_rep /] /]
+[LL_WEBREPORT_ENDIF /]</PRE
+></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

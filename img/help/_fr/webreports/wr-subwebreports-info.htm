@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Utilisation de sous-rapports WebReports</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-subwebreports-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'Utilisation de sous-rapports WebReports';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID17607"></A>Un WebReport peut appeler un autre WebReport (un « sous-rapport WebReport ») dont les résultats seront renvoyés et insérés dans le rapport parent, à l'endroit où la balise est placée. Les sous-rapports WebReport peuvent être considérés comme des « sous-routines », qui font partie des résultats de rapport globaux. Cette balise est particulièrement utile lorsque vous souhaitez collecter les résultats de plusieurs requêtes différentes (par exemple des requêtes SQL LiveReport) et les présenter dans un rapport unique. Ainsi, il est souvent plus facile d'utiliser plusieurs requêtes SQL simples à la place d'une seule requête complexe. Vous pouvez également préférer combiner les résultats d'une requête SQL avec ceux d'une autre requête de recherche. </P>
+<P class="before-ul"><A NAME="TMPID17610"></A>Il existe deux façons d'appeler un sous-rapport WebReport : </P><A NAME="AEN16863"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16864"></A><A NAME="TMPID17613"></A>Si le moteur RKT est activé : [LL_REPTAG_'&lt;Sub-WebReport ID&gt;' RUNSWR /] </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN16866"></A><A NAME="TMPID17615"></A>Si le moteur RKT n'est ni activé, ni installé : [LL_WEBREPORT_SUBWEBREPORT NODEID:&lt;Sub-WebReport ID&gt; /]</P></LI></UL>
+<P><A NAME="TMPID17616"></A>Les deux approches ont le même résultat, sauf que le moteur RKT permet l'ajout d'autres sous-balises après RUNSWR. Par exemple : [LL_REPTAG_'&lt;Sub-WebReport ID&gt;' RUNSWR SHOW SETVAR:SubWRValue /]. </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-subwebparm.htm" revision="">Paramètres</A></p></li>
+<li><p><A  HREF="wr-subwebinher.htm" revision="">Héritage</A></p></li>
+<li><p><A  HREF="wr-subwebrtrn.htm" revision="">Renvoyer un nodeID au WebReport appelant si le sous-rapport WebReport a une destination de Content Server</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

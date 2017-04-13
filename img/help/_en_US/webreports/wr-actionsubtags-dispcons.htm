@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Display Considerations</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-actionsubtags-dispcons.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Action Sub-tags';
+          header.title2 = 'Display Considerations';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID17811"></A>Normally the use of an Action Sub-tag in a tag means that the tag data is not returned to the output of the WebReport. If it is required that the tag data will also be displayed in the report output, then the <TT CLASS="literal">SHOW</TT> sub-tag must be used. This should usually be in the rightmost position in the sub-tag list. Note that this sub-tag always causes the original tag value, prior to the action being performed, to be displayed. For variable action sub-tags it is important to note that any variable calculations are not included in the displayed data. The examples below should clarify this.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF37"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID17814"></A><B CLASS="note">Note: </B><BR>The examples below all use a “literal tag” which returns a fixed value as specified between quotes. This tag is sometimes useful where a specific number must be used with action sub-tags, for example to add a specific number, but is used here primarily to simplify the examples.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN16575"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Example</TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Description</TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_"2" <B CLASS="highlight">SETVAR:test</B> /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">A variable called <B CLASS="highlight">test</B> is created and set to the value: <B CLASS="highlight">2</B>. It is not displayed in the output. This value for <B CLASS="highlight">test</B> will be assumed in the subsequent examples.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_"123" <B CLASS="highlight">ADDVAR:test</B> /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The value <B CLASS="highlight">123</B> is added to the variable named <B CLASS="highlight">test</B>, making the new value of <B CLASS="highlight">test</B> equal to <B CLASS="highlight">125</B>. Nothing is displayed in the report output.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_"123" ADDVAR:test <B CLASS="highlight">SHOW</B> /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The value <B CLASS="highlight">123</B> is added to the variable named <B CLASS="highlight">test</B>, assuming <B CLASS="highlight">test</B> is still set to <B CLASS="highlight">2</B>. This makes the new value of <B CLASS="highlight">test</B> equal to <B CLASS="highlight">125</B>. The tag value of <B CLASS="highlight">123</B> is displayed in the report output.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_"123" <B CLASS="highlight">DEC</B> ADDVAR:test SHOW /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The value <B CLASS="highlight">123</B> is decremented by the DEC subtag, changing the value to <B CLASS="highlight">122</B>. This is then added to the variable named <B CLASS="highlight">test</B> making the new value of <B CLASS="highlight">test</B> equal to <B CLASS="highlight">124</B>. The tag output, after the DEC sub-tag has modified it, of <B CLASS="highlight">122</B> is displayed in the report output.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

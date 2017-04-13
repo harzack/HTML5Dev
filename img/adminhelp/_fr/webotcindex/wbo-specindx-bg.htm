@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Gestion des processus de recherche</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbo-specindx-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion de la recherche';
+          header.title2 = 'Gestion des processus de recherche';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID12204"></A>Les processus de recherche fonctionnent ensemble de la manière suivante pour permettre aux utilisateurs Content Server d'effectuer des recherches dans l'index d'une source de données :</P><A NAME="AEN11446"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11447"></A><A NAME="TMPID12208"></A>Le gestionnaire de recherche accepte les demandes de recherche (sous la forme d'une requête) des utilisateurs dans Content Server et confie la gestion de la requête à un fédérateur de recherche.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11450"></A><A NAME="TMPID12211"></A>Le fédérateur de recherche transmet la requête de recherche à tous les moteurs de recherche qu'il gère.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11452"></A><A NAME="TMPID12213"></A>Les moteurs de recherche effectuent la recherche dans les index de leurs partitions, puis produisent des résultats de recherche fondés sur les données localisées.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11454"></A><A NAME="TMPID12215"></A>Les moteurs de recherche transmettent les résultats de la recherche au fédérateur de recherche.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11456"></A><A NAME="TMPID12217"></A>Le fédérateur de recherche fusionne tous les résultats reçus et transmet les résultats définitifs de la recherche au gestionnaire de recherche.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN11458"></A><A NAME="TMPID12219"></A>Le gestionnaire de recherche accepte les résultats de la recherche et les envoie à Content Server qui les affiche sur les pages Résultats de recherche, à l'attention des utilisateurs Content Server.</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF262"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12223"></A><B CLASS="note">Note : </B><BR>Lorsque vous établissez une connexion avec le fédérateur de recherche, la valeur de seuil du délai d'attente par défaut pour émettre une requête est très courte et la connexion peut donc facilement être perdue. Vous pouvez augmenter le temps disponible pour émettre une requête en appuyant sur la touche Entrée tout de suite après avoir ouvert le client de recherche. Cela vous laisse 3 minutes pour saisir votre requête avant que le Fédérateur de recherche ne se ferme.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF263">Ajout des processus de recherche</A></P>
+<P><A NAME="TMPID12225"></A>Lors de la création de l'index d'une source de données à l'aide des modèles de Content Server, un gestionnaire de recherche, un fédérateur de recherche et un moteur de recherche sont créés automatiquement. Si vous créez l'index d'une source de données en ajoutant des objets système individuellement, vous devez vous-même ajouter un gestionnaire de recherche, un fédérateur de recherche et un moteur de recherche.</P>
+<P><A NAME="TMPID12227"></A>Vous pouvez à tout moment ajouter des fédérateurs de recherche et des moteurs de recherche à votre système d'indexation et de recherche. Lors de l'ajout d'un fédérateur de recherche, un ou plusieurs moteurs de recherche sont également ajoutés simultanément. Un moteur de recherche est ajouté pour chaque partition présente sur votre système ; par exemple, s'il y a trois partitions sur votre système, l'ajout d'un fédérateur de recherche entraîne l'ajout de trois moteurs de recherche. </P>
+<P><A NAME="TMPID12228"></A>L'ajout de plusieurs fédérateurs de recherche peut créer un système de recherche <I CLASS="emphasis">redondant</I>. La redondance signifie que la recherche continue même si un fédérateur de recherche devient indisponible ; d'autres fédérateurs de recherche sont disponibles pour traiter n'importe quelle requête de recherche. L'ajout de plusieurs partitions à votre système peut permettre d'accroître la vitesse de la recherche puisque d'autres moteurs de recherche sont disponibles pour effectuer une recherche simultanée dans plusieurs ensembles de données de petite taille. Si vous voulez afficher tous les fédérateurs de recherche et moteurs de recherche présents dans un système d'indexation et de recherche, vous pouvez afficher un <I CLASS="emphasis">schéma de partition</I>. Pour plus d'informations sur les schémas de partition, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-understandingpartmaps-bg.htm">Utilisation des schémas de partition</A></span>. </P>
+<P><A NAME="TMPID12232"></A>Vous pouvez afficher le statut des fédérateurs de recherche en cours d'exécution pour vérifier s'ils sont actifs ou inactifs. Si un gestionnaire de recherche contient plusieurs fédérateurs de recherche, le statut et le nombre de fédérateurs de recherche en cours d'exécution s'affichent dans la colonne Statut.</P>
+<P><A NAME="TMPID12233"></A>Si vous n'avez plus besoin d'un moteur de recherche, vous pouvez le supprimer, mais toutes les partitions de votre système doivent avoir au moins un moteur de recherche pour qu'une recherche puisse y être effectuée. Vous pouvez également supprimer un fédérateur de recherche si vous n'avez plus besoin des moteurs de recherche qu'il gère. La suppression d'un fédérateur de recherche entraîne la suppression de tous ses moteurs de recherche. La suppression des moteurs de recherche fonctionne de la même manière que la plupart des autres suppressions d'éléments Content Server.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF264">Configuration des processus de recherche</A></P>
+<P><A NAME="TMPID12236"></A>Une fois que vous avez ajouté des processus de recherche à votre système d'indexation et de recherche, vous pouvez les configurer de manière à contrôler leur mode de fonctionnement. Pour certains paramètres, les valeurs par défaut sont automatiquement configurées lors de l'ajout des processus, mais il est parfois nécessaire de modifier ces valeurs. Avant de configurer les processus de recherche, vous devez les arrêter. Vous pouvez arrêter un processus individuel ou arrêter tous les processus de recherche en même temps. Que vous arrêtiez un processus individuel ou tous les processus en même temps, cette action entraîne l'arrêt des recherches pour le système d'indexation et de recherche auquel appartiennent les processus.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF265">Resynchronisation</A></P>
+<P><A NAME="TMPID12238"></A>Un serveur d'administration enregistre les informations dans un fichier <TT CLASS="filename">otadmin.cfg</TT> et un fichier <TT CLASS="filename">search.ini</TT> afin de représenter les modifications apportées à la base de données Content Server (par exemple, si une partition a été configurée ou supprimée). Les fichiers <TT CLASS="filename">otadmin.cfg</TT> et <TT CLASS="filename"> search.ini</TT> sont des fichiers de configuration qui stockent des informations sur les objets système associés aux sources de données. Plus spécifiquement, le fichier <TT CLASS="filename">search.ini</TT> contient des paramètres définis par défaut lors de la création des composants des systèmes d'indexation et de recherche (par exemple, partitions, moteurs d'indexation et moteurs de recherche). OpenText vous recommande vivement de ne pas modifier les paramètres du fichier <TT CLASS="filename">search.ini</TT>. Les informations contenues dans les fichiers <TT CLASS="filename">otadmin.cfg</TT> et <TT CLASS="filename">search.ini</TT> doivent toujours être identiques aux informations correspondantes dans la base de données Content Server. Il arrive cependant que ces informations divergent (par exemple, si les informations enregistrées dans le fichier sont supprimées ou endommagées). Dans ce cas, il peut être nécessaire de <I CLASS="emphasis">resynchroniser</I> les processus de recherche. La resynchronisation des processus de recherche modifie les fichiers <TT CLASS="filename">otadmin.cfg</TT> et <TT CLASS="filename">search.ini</TT> pour refléter les informations relatives aux processus actuellement stockées dans la base de données Content Server.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF266">Configuration des responsables de recherche</A></P>
+<P><A NAME="TMPID12255"></A>Vous pouvez configurer les responsables de recherche de manière à personnaliser le fonctionnement de la recherche dans un système d'indexation et de recherche. Par exemple, vous pouvez faire en sorte que les utilisateurs puissent effectuer des recherches dans les régions de l'index d'une source de données lors de la configuration des régions d'index. Vous pouvez également configurer les options de classement avancé, ce qui permet de déterminer quels documents de votre site sont les plus appropriés dans les résultats de recherche. Pour plus d'informations sur la configuration de classement avancé, reportez-vous à la rubrique <span><A href="../webotcindex/wbo-configadvrank-bg.htm">Configuration du classement avancé</A></span>.</P>
+<P><A NAME="TMPID12257"></A>Pour les sources de données non-Entreprise, vous pouvez configurer des mappages de liens hypertextes lors de la configuration de leur gestionnaire de recherche. Les mappages des liens hypertextes permettent aux utilisateurs d'accéder aux informations de l'index de la source de données lors de l'affichage des résultats de la recherche. Pour en savoir plus, voir <span><A href="../webotcindex/wbo-confighypmap-bg.htm">Configuration des mappages de liens hypertextes</A></span>.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF267">Définition du nombre de résultats de recherche</A></P>
+<P><A NAME="TMPID12260"></A>Vous pouvez configurer le nombre de résultats de recherche supplémentaires pour lesquels Content Server vérifie les autorisations, et si la fin de l'ensemble de résultats « non autorisés » peut être atteinte dans cet intervalle, le nombre exact est affiché. Seuls les résultats qu'un utilisateur est autorisé à consulter peuvent être inclus dans le nombre. La valeur maximale de <TT CLASS="literal">225</TT>, qui est définie par défaut, affiche le nombre de résultats de recherche jusqu'à 225, ainsi que le nombre de pages sur lesquelles ils sont affichés. Les utilisateurs peuvent cliquer sur toutes les pages des résultats pour les consulter immédiatement.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF268"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID12265"></A><B CLASS="note">Note : </B><BR>Le paramètre <TT CLASS="literal">resultCountLookAhead</TT> affecte uniquement les utilisateurs ne disposant pas de passe-droits (et les utilisateurs qui ne sont pas dans le nouveau groupe). Les utilisateurs qui ont besoin d'un nombre précis à tout moment peuvent être assignés au nouveau groupe « Afficher les Comptes de résultats non autorisés ».</P>
+<P><A NAME="TMPID12268"></A>Les administrateurs bénéficient d'un passe-droit qui leur donne automatiquement toutes les autorisations sur tous les éléments et emplacements dans Content Server sans vérification des autorisations.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID12270"></A>Pour plus d'informations sur le paramètre <TT CLASS="literal">resultCountLookAhead</TT>, voir <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-searchoptions-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-ini-searchoptions-rf.htm">La section [SearchOptions]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-searchoptions-rf" FMT=""></span>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webotcindex/wbo-tomonitorsrchfeds-p.htm" revision="">Pour afficher le statut d'un fédérateur de recherche</A></p></li>
+<li><p><A  href="../webotcindex/wbo-toconfigsrchfeds-p.htm" revision="">Pour configurer un fédérateur de recherche</A></p></li>
+<li><p><A  href="../webotcindex/wbo-toconfigadvsrchfeds-p.htm" revision="">Pour définir les paramètres avancés du fédérateur de recherche</A></p></li>
+<li><p><A  href="../webotcindex/wbo-specinfoent-p.htm" revision="">Pour configurer un moteur de recherche</A></p></li>
+<li><p><A  href="../webotcindex/wbo-tostartstopsrchprocs-p.htm" revision="">Pour lancer ou arrêter des processus de recherche</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

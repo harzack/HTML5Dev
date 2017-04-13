@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>To Re-index the Enterprise Content</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-reindxll-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Verifying Content and Re-indexing';
+          header.title2 = 'To Re-index the Enterprise Content';
+           header.draw();
+  </script>
+  <A NAME="PROCID-OTA1922"></A>
+<DIV title=" To re-index the Enterprise content:" CLASS="procedure">
+<P><B><A NAME="PROCID-OTA1922"></A> To re-index the Enterprise content:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID10880"></A>Ensure that all of the processes in the Enterprise data flow are scheduled or running.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID10882"></A>On the System Volume Object page, click the Enterprise Data Source Folder's <B CLASS="guilabel">Functions</B> icon, and then choose <B CLASS="guilabel">Maintenance</B>.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID10886"></A>On the Data Source Maintenance page, click one of the following radio buttons:</P><A NAME="AEN10166"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10167"></A><A NAME="TMPID10889"></A><B CLASS="guilabel">Re-extract the data from the source</B>, which re-extracts the data from the Content Server database without purging the Enterprise index</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10171"></A><A NAME="TMPID10893"></A><B CLASS="guilabel">Purge the data flow, reconstruct the index, and then extract the data from the source</B>, which deletes the contents of the Enterprise index before re-extracting the data from the Content Server database</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF206"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID10897"></A><B CLASS="note">Note: </B><BR>With a new installation of Content Server, the latest versions of several search configuration files are available. These files change occasionally to improve the performance and efficiency of the search engine, or to tune the behavior of  the DCS. If you have upgraded from an older version of Content Server or applied an Update to Content Server, these new files are not used. Instead, your existing configuration files are retained for compatibility.</P>
+<P><A NAME="TMPID10900"></A>If you are performing a purge and re-index operation, this is a good time to review  your old configuration files and potentially replace them with newer configuration files. Once you have an existing index, changing these files is not always possible. One source for new configuration files is the <TT CLASS="literal">Content Server_home\config\reference</TT> directory for your version of Content Server. In particular, you should consider the following configuration files located in the <TT CLASS="literal">Content Server_home\config</TT> directory:</P><A NAME="AEN10185"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10186"></A><A NAME="TMPID10908"></A><TT CLASS="literal">dcs.ini</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10189"></A><A NAME="TMPID10911"></A><TT CLASS="literal">LLFieldDefinitions.txt</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10192"></A><A NAME="TMPID10914"></A><TT CLASS="literal">LLFieldDefinitions_EL.txt</TT></P></LI></UL>
+<P><A NAME="TMPID10916"></A>You may also want to modify these files to meet any specific requirements you may have. If changing the files, you should first disable the Extractor and ensure there are no IPool messages waiting for processing. Then modify the files, perform the Purge and re-index operation, and enable the Extractor to build a new index with the updated settings.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID10918"></A>Click the <B CLASS="guilabel">OK</B> button.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID10921"></A>On the <A href="../otadmin/ota-lldsmtres-rf.htm">Data Source Maintenance Results</A> page, click the <B CLASS="guilabel">Continue</B> button. </P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

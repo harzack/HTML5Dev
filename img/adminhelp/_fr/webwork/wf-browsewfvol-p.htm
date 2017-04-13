@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWFW100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webwork">
+<META mancondkey="lleswbn-h-agd -- lleseps-h-agd -- lleswfp-h-ugd -- llesrt-h-ugd -- lleswba-h-agd"><title>Pour empêcher les utilisateurs d'effectuer des recherches dans le volume du workflow</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-browsewfvol-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion de l\'accès au volume du workflow';
+          header.title2 = 'Pour empêcher les utilisateurs d\'effectuer des recherches dans le volume du workflow';
+           header.draw();
+  </script>
+  <A NAME="PROC-AID2"></A>
+<DIV title="Pour empêcher les utilisateurs d'effectuer des recherches dans le volume du workflow :" CLASS="procedure">
+<P><B>Pour empêcher les utilisateurs d'effectuer des recherches dans le volume du workflow :</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID348"></A>Faites une copie de sauvegarde du fichier d'initialisation Content Server, <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\config\opentext.ini</TT>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID354"></A>Modifiez <TT CLASS="filename">opentext.ini</TT> et recherchez la section <TT CLASS="literal"> [LivelinkExtractor]</TT>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID358"></A>Excluez le volume du workflow (161) de l'index de recherche en l'ajoutant au paramètre <TT CLASS="literal">ExcludedVolumeTypes</TT> comme ceci : <TT CLASS="literal">ExcludedVolumeTypes={ 162, 161 }</TT>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID362"></A>Enregistrez les modifications apportées au fichier.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID364"></A>Redémarrez Content Server, le serveur d'administration Content Server et le serveur d'application Web.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID368"></A>Sur la page <B CLASS="guilabel">Administration Content Server</B>, cliquez sur le lien <B CLASS="guilabel">Ouvrir le volume des objets système</B> dans la zone <B CLASS="guilabel">Administration de recherche</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID374"></A>Cliquez sur l'icône <B CLASS="guilabel">Fonctions</B> pour le <B CLASS="guilabel"> Dossier de la source de données de l'entreprise</B>, puis choisissez <B CLASS="guilabel">Maintenance</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID379"></A>Sur la page <B CLASS="guilabel">Maintenance des sources de données</B>, cliquez sur le bouton radio <B CLASS="guilabel">Eliminez le flux de données, reconstruisez l'index, puis extrayez les données de la source</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID383"></A>Cliquez sur <B CLASS="guilabel">OK</B>, puis à nouveau sur <B CLASS="guilabel">OK</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID387"></A>Une fois l'action terminée, cliquez sur <B CLASS="guilabel">Continuer</B>. </P></LI></OL></DIV>
+<P class="nr1"><A NAME="TMPID389"></A>Pour plus d'informations sur cette procédure, consultez la section <span><A HREF="wf-browsewfvol-bg.htm">Gestion de l'accès au volume du workflow</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,379 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESAPP100500-H-UGD-EN-1">
+<META PiXprocLocator="appearances">
+<META mancondkey="lleswbb-h-ugd -- llesrt-h-ugd"><title>Using Javascript Library Functions to Create Custom Views and Appearances</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'app-libraryfunctions-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working with Javascript Functions for Custom Views and Appearances';
+          header.title2 = 'Using Javascript Library Functions to Create Custom Views and Appearances';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID586"></A>The following sections describe the classes, variables, and formats used by the classes.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF5">OTvar – Replacement Variables</A></P>
+<P><A NAME="TMPID588"></A>Replacement variables are used to replace the variable class with actual data from Content Server once the page is loaded. Replacement variables are in the following format: <TT CLASS="LITERAL">&lt;ot:OTvar_component_variablename/&gt;</TT>.</P>
+<div title="Replacement Variables with Information about the Current Node">
+<P><B>Replacement Variables with Information about the Current Node</B></P>
+<DL CLASS="VL"><A NAME="AEN594"></A>
+<DT class="vl"><A NAME="TMPID594"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_node_childCount/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID597"></A><B CLASS="GUILABEL">Description</B>: Number of children in this node.</P></DD>
+<DT class="vl"><A NAME="TMPID600"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_node_description/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID603"></A><B CLASS="GUILABEL">Description</B>: Description for this node.</P></DD>
+<DT class="vl"><A NAME="TMPID606"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_node_createDate/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID609"></A><B CLASS="GUILABEL">Description</B>: Date and time that this node was created. Appears in the following format: <TT CLASS="LITERAL">2008-06-17 16:36:26</TT>.</P></DD>
+<DT class="vl"><A NAME="TMPID613"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_node_creator/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID616"></A><B CLASS="GUILABEL">Description</B>: Login name of the creator of this node.</P></DD>
+<DT class="vl"><A NAME="TMPID619"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_node_ID/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID622"></A><B CLASS="GUILABEL">Description</B>: ID of this node.</P></DD>
+<DT class="vl"><A NAME="TMPID625"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_node_parentID/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID628"></A><B CLASS="GUILABEL">Description</B>: ID of this node's parent.</P></DD>
+<DT class="vl"><A NAME="TMPID631"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_node_modifyDate/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID634"></A><B CLASS="GUILABEL">Description</B>: Date and time that this node was last modified. Appears in the following format: <TT CLASS="LITERAL">2008-08-25 13:58:30</TT>.</P></DD>
+<DT class="vl"><A NAME="TMPID638"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_node_name/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID641"></A><B CLASS="GUILABEL">Description</B>: Name of this node.</P></DD>
+<DT class="vl"><A NAME="TMPID644"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_node_type/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID647"></A><B CLASS="GUILABEL">Description</B>: Type number of this node.</P></DD></DL></div>
+<div title="Replacement Variables with Information about the Current User">
+<P><B>Replacement Variables with Information about the Current User</B></P>
+<DL CLASS="VL"><A NAME="AEN652"></A>
+<DT class="vl"><A NAME="TMPID652"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_currentUser_birthday/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID655"></A><B CLASS="GUILABEL">Description</B>: Birthdate of the current user. Appears in the following format: <TT CLASS="LITERAL">1974-08-19 00:00:00</TT>.</P></DD>
+<DT class="vl"><A NAME="TMPID659"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_currentUser_email/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID662"></A><B CLASS="GUILABEL">Description</B>: Email address of the current user.</P></DD>
+<DT class="vl"><A NAME="TMPID665"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_currentUser_firstName/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID668"></A><B CLASS="GUILABEL">Description</B>: Current user's first name.</P></DD>
+<DT class="vl"><A NAME="TMPID671"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_currentUser_ID/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID674"></A><B CLASS="GUILABEL">Description</B>: Current user's ID.</P></DD>
+<DT class="vl"><A NAME="TMPID677"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_currentUser_lastName/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID680"></A><B CLASS="GUILABEL">Description</B>: Current user's last name.</P></DD>
+<DT class="vl"><A NAME="TMPID683"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_currentUser_login/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID686"></A><B CLASS="GUILABEL">Description</B>: Current user's login name.</P></DD></DL></div>
+<div title="Replacement Variables with Information about the 'Content Server' System">
+<P><B>Replacement Variables with Information about the Content Server System</B></P>
+<DL CLASS="VL"><A NAME="AEN691"></A>
+<DT class="vl"><A NAME="TMPID692"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_livelink_cgiPath/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID695"></A><B CLASS="GUILABEL">Description</B>: Relative path to the Content Server cgi.</P></DD>
+<DT class="vl"><A NAME="TMPID699"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_livelink_name/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID702"></A><B CLASS="GUILABEL">Description</B>: Display name for this Content Server install.</P></DD>
+<DT class="vl"><A NAME="TMPID706"><B><TT CLASS="LITERAL">Variable: &lt;ot:OTvar_livelink_supportPath/&gt;</TT></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID709"></A><B CLASS="GUILABEL">Description</B>: Relative path to the Content Server support directory.</P></DD></DL></div>
+<P><A NAME="TMPID712"></A>You can now easily add references to various directories in Content Server using variables.</P>
+<DIV title="Using a Replacement Variable" CLASS="EXAMPLE">
+<P CLASS="EXAMPLE" ALIGN="LEFT"><A NAME="TMP4REF6"></A><B><IMG title="Using a Replacement Variable" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 3-1: Using a Replacement Variable</B></P>
+<P class="nr1"><A NAME="TMPID716"></A>Joe Smith wants to create a Custom View using an image that is located in the Content Server <I CLASS="EMPHASIS">support</I> directory. He can now include <TT CLASS="LITERAL">&lt;img src="{ot:OTvar_livelink_supportPath}myImage.jpg"&gt;&lt;/img&gt;</TT> and it automatically becomes <TT CLASS="LITERAL">&lt;img src="/img/myImage.jp"&gt;&lt;/img&gt;</TT>, assuming that the URL Prefix for the <TT CLASS="FILENAME">/support</TT> directory is set to <TT CLASS="FILENAME">/img</TT>. The URL Prefix is specified by the Content Server administrator.</P><IMG title="Using a Replacement Variable" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF7">OTmacro: Macros</A></P>
+<P><A NAME="TMPID725"></A>The Macros group of classes will have their variable content replaced with actual Content Server data when the page is loaded. Macros are in the following format: <TT CLASS="LITERAL">&lt;ot:variable_name options=""&gt;&lt;/ot:variable_name&gt;</TT></P>
+<P><A NAME="TMPID728"></A>Variable options can appear in any order. You only need to add options if you want to alter them.</P>
+<div title="OTmacro: Macros">
+<P><B>OTmacro: Macros</B></P>
+<DL CLASS="VL"><A NAME="AEN732"></A>
+<DT class="vl"><A NAME="TMPID732"><B>Class: OTmacro_debug</B></A></DT>
+<DD>
+<P class="before-ul nr1"><A NAME="TMPID734"></A><B CLASS="GUILABEL">Purpose</B>: For debugging only. This class will print out all variables, functions, and macros available on the current page.</P>
+<P><A NAME="AEN739"></A><B>Options</B></P>
+<UL title="Options">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN741"></A><A NAME="TMPID739"></A>none</P></LI></UL>
+<P><A NAME="AEN743"></A><B>Examples</B></P>
+<UL title="Examples">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN745"></A><A NAME="TMPID743"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_debug&gt;&lt;/ot:OTmacro_debug&gt;</TT></P></LI></UL></DD>
+<DT class="vl"><A NAME="TMPID746"><B>Class: OTmacro_foldersWithDescriptions</B></A></DT>
+<DD>
+<P class="before-ul nr1"><A NAME="TMPID748"></A><B CLASS="GUILABEL">Purpose</B>: Creates a list of Folders that are children of the specified node (defaults to the current node). Contains descriptions (optionally filtering on the content of the description).</P>
+<P><A NAME="AEN753"></A><B>Options</B></P>
+<UL title="Options">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN755"></A><A NAME="TMPID753"></A>contains: a string that must be present in the Folder description in order for it to be included in the list.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN757"></A><A NAME="TMPID755"></A>max: an integer indicating the maximum number of items to include in the list. The maximum default number of items is 24.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN759"></A><A NAME="TMPID757"></A>parentID: an integer indicating the ID of the parent container from which to get children. Default: current node.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN761"></A><A NAME="TMPID759"></A>functionMenus: a boolean that indicates if function menus should be made available with each item in the list. Default: True.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN763"></A><A NAME="TMPID761"></A>icons: a boolean that indicates if icons indicating the item's type should be included in the list. Default: True.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN765"></A><A NAME="TMPID763"></A>columns: an integer between 1 and 4 that indicates the number of columns in which to display the results. Default: 3 columns.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN767"></A><A NAME="TMPID765"></A>classes: a string containing a space separated list of CSS classes to apply to the resulting list.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN769"></A><A NAME="TMPID767"></A>nameFilter: a string that must be present in the name of the item in order for it to be included in the list.</P></LI></UL>
+<P><A NAME="AEN771"></A><B>Examples</B></P>
+<UL title="Examples">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN773"></A><A NAME="TMPID771"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_foldersWithDescriptions/&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN776"></A><A NAME="TMPID774"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_foldersWithDescriptions options=""&gt;&lt;/ot:OTmacro_foldersWithDescriptions&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN779"></A><A NAME="TMPID777"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_foldersWithDescriptions options=""&gt;&lt;/ot:OTmacro_foldersWithDescriptions&gt;</TT></P></LI></UL></DD>
+<DT class="vl"><A NAME="TMPID780"><B>Class: OTmacro_recentlyUpdatedDocuments</B></A></DT>
+<DD>
+<P class="before-ul nr1"><A NAME="TMPID782"></A><B CLASS="GUILABEL">Purpose</B>: Creates a list of documents that are children of the specified node (defaults to the current node) that are the most recently updated.</P>
+<P><A NAME="AEN787"></A><B>Options</B></P>
+<UL title="Options">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN789"></A><A NAME="TMPID787"></A>max: an integer indicating the maximum number of items to include in the list. The maximum default number of items is 24.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN791"></A><A NAME="TMPID789"></A>parentID: an integer indicating the ID of the parent container from which to get children. Default: current node.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN793"></A><A NAME="TMPID791"></A>functionMenus: a boolean that indicates if function menus should be made available with each item in the list. Default: True.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN795"></A><A NAME="TMPID793"></A>icons: a boolean that indicates if icons indicating the item's type should be included in the list. Default: True.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN797"></A><A NAME="TMPID795"></A>columns: an integer between 1 and 4 that indicates the number of columns in which to display the results. Default: 3 columns.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN799"></A><A NAME="TMPID797"></A>classes: a string containing a space separated list of CSS classes to apply to the resulting list.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN801"></A><A NAME="TMPID799"></A>nameFilter: a string that must be present in the name of the item in order for it to be included in the list.</P></LI></UL>
+<P><A NAME="AEN803"></A><B>Examples</B></P>
+<UL title="Examples">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN805"></A><A NAME="TMPID803"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_recentlyUpdatedDocuments/&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN808"></A><A NAME="TMPID806"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_recentlyUpdatedDocuments options=""&gt;&lt;/ot:OTmacro_recentlyUpdatedDocuments&gt;</TT></P></LI></UL></DD>
+<DT class="vl"><A NAME="TMPID809"><B>Class: OTmacro_listFolders</B></A></DT>
+<DD>
+<P class="before-ul nr1"><A NAME="TMPID811"></A><B CLASS="GUILABEL">Purpose</B>: Creates a list of Folders that are children of the specified node (defaults to the current node).</P>
+<P><A NAME="AEN816"></A><B>Options</B></P>
+<UL title="Options">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN818"></A><A NAME="TMPID816"></A>max: an integer indicating the maximum number of items to include in the list. The maximum default number of items is 24.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN820"></A><A NAME="TMPID818"></A>parentID: an integer indicating the ID of the parent container from which to get children. Default: current node.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN822"></A><A NAME="TMPID820"></A>functionMenus: a boolean that indicates if function menus should be made available with each item in the list. Default: True.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN824"></A><A NAME="TMPID822"></A>icons: a boolean that indicates if icons indicating the item's type should be included in the list. Default: True.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN826"></A><A NAME="TMPID824"></A>columns: an integer between 1 and 4 that indicates the number of columns in which to display the results. Default: 3 columns.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN828"></A><A NAME="TMPID826"></A>classes: a string containing a space separated list of CSS classes to apply to the resulting list.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN830"></A><A NAME="TMPID828"></A>nameFilter: a string that must be present in the name of the item in order for it to be included in the list.</P></LI></UL>
+<P><A NAME="AEN832"></A><B>Examples</B></P>
+<UL title="Examples">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN834"></A><A NAME="TMPID832"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_listFolders/&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN837"></A><A NAME="TMPID835"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_listFolders options="max:30"/&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN840"></A><A NAME="TMPID838"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_listFolders options="max:30, parentID:2000"/&gt;</TT></P></LI></UL></DD>
+<DT class="vl"><A NAME="TMPID841"><B>Class: OTmacro_listContainers</B></A></DT>
+<DD>
+<P class="before-ul nr1"><A NAME="TMPID843"></A><B CLASS="GUILABEL">Purpose</B>: Creates a list of containers that are children of the specified node (defaults to the current node).</P>
+<P><A NAME="AEN848"></A><B>Options:</B></P>
+<UL title="Options:">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN850"></A><A NAME="TMPID848"></A>max: an integer indicating the maximum number of items to include in the list. The maximum default number of items is 24.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN852"></A><A NAME="TMPID850"></A>parentID: an integer indicating the ID of the parent container from which to get children. Default: current node.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN854"></A><A NAME="TMPID852"></A>functionMenus: a boolean that indicates if function menus should be made available with each item in the list. Default: True.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN856"></A><A NAME="TMPID854"></A>icons: a boolean that indicates if icons indicating the item's type should be included in the list. Default: True.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN858"></A><A NAME="TMPID856"></A>columns: an integer between 1 and 4 that indicates the number of columns in which to display the results. Default: 3 columns.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN860"></A><A NAME="TMPID858"></A>classes: a string containing a space separated list of CSS classes to apply to the resulting list.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN862"></A><A NAME="TMPID860"></A>nameFilter: a string that must be present in the name of the item in order for it to be included in the list.</P></LI></UL>
+<P><A NAME="AEN864"></A><B>Examples</B></P>
+<UL title="Examples">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN866"></A><A NAME="TMPID864"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_listContainers/&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN869"></A><A NAME="TMPID867"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_listContainers options="max:30"/&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN872"></A><A NAME="TMPID870"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_listContainers options="max:30, parentID:2000"/&gt;</TT></P></LI></UL></DD>
+<DT class="vl"><A NAME="TMPID873"><B>Class: OTmacro_listItems</B></A></DT>
+<DD>
+<P class="before-ul nr1"><A NAME="TMPID875"></A><B CLASS="GUILABEL">Purpose</B>: Creates a list of items that are children of the specified node (defaults to the current node).</P>
+<P><A NAME="AEN880"></A><B>Options</B></P>
+<UL title="Options">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN882"></A><A NAME="TMPID880"></A>max: an integer indicating the maximum number of items to include in the list. The maximum default number of items is 24.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN884"></A><A NAME="TMPID882"></A>type: an integer indicating the only item type to show. Default: Show All.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN886"></A><A NAME="TMPID884"></A>parentID: an integer indicating the ID of the parent container from which to get children. Default: current node.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN888"></A><A NAME="TMPID886"></A>functionMenus: a boolean that indicates if function menus should be made available with each item in the list. Default: True.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN890"></A><A NAME="TMPID888"></A>icons: a boolean that indicates if icons indicating the item's type should be included in the list. Default: True.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN892"></A><A NAME="TMPID890"></A>columns: an integer between 1 and 4 that indicates the number of columns in which to display the results. Default: 3 columns.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN894"></A><A NAME="TMPID892"></A>classes: a string containing a space separated list of CSS classes to apply to the resulting list.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN896"></A><A NAME="TMPID894"></A>nameFilter: a string that must be present in the name of the item in order for it to be included in the list.</P></LI></UL>
+<P><A NAME="AEN898"></A><B>Examples</B></P>
+<UL title="Examples">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN900"></A><A NAME="TMPID898"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_listItems/&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN903"></A><A NAME="TMPID901"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_listItems options="max:30"/&gt;&lt;/ot:OTmacro_listItems&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN906"></A><A NAME="TMPID904"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_listItems options="max:30, parentID:2000"/&gt;&lt;/ot:OTmacro_listItems&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN909"></A><A NAME="TMPID907"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_listItems options="max:30, parentID:2000, type:202"/&gt;&lt;/ot:OTmacro_listItems&gt;</TT></P></LI></UL>
+<P><A NAME="AEN912"></A><B>Example showing classes</B></P>
+<UL title="Example showing classes">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN914"></A><A NAME="TMPID912"></A><TT CLASS="LITERAL">&lt;ot:OTmacro_listitems options="max:30, parentID:2000, classes:'firstClass,another'"/&gt;</TT></P>
+<P class="vlli"><A NAME="TMPID914"></A>The options specified in this example result in the unordered lists to have the classes: <TT CLASS="LITERAL">"firstClass, another"</TT>.</P>
+<P class="vlli"><A NAME="TMPID916"></A><TT CLASS="LITERAL">&lt;ul start="8" class="firstClass, another"&gt;</TT></P></LI></UL></DD></DL></div>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF8">OTfunc: Helper Functions</A></P>
+<P><A NAME="TMPID919"></A>The OTfunc classes are Javascript functions that may be useful when designing customized macros. The are not frequently used.</P>
+<div title="Otfunc: Helper Functions">
+<P><B>Otfunc: Helper Functions</B></P>
+<DL CLASS="VL"><A NAME="AEN923"></A>
+<DT class="vl"><A NAME="TMPID923"><B>Class: OTfunc.toDate</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID925"></A><B CLASS="GUILABEL">Purpose</B>: Returns a date string as is returned by Content Server into a Javascript date object.</P>
+<P><A NAME="TMPID928"></A><B CLASS="GUILABEL">Input</B>: dateString:&lt;<I CLASS="VARNAME">the_string_to_be_converted</I>>.</P>
+<P><A NAME="TMPID931"></A><B CLASS="GUILABEL">Output</B>: A Javascript date object set to the date represented by the string.</P></DD>
+<DT class="vl"><A NAME="TMPID934"><B>Class: OTfunc.substitueAttributeVariable</B></A></DT>
+<DD>
+<P class="before-ul nr1"><A NAME="TMPID936"></A><B CLASS="GUILABEL">Purpose</B>: To exchange all occurrences of a given variable founds within a given attribute with the given value</P>
+<P><A NAME="AEN941"></A><B>Input</B></P>
+<UL title="Input">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN943"></A><A NAME="TMPID941"></A>attributeName:&lt;<I CLASS="VARNAME">the_attribute_to_search_in</I>></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN946"></A><A NAME="TMPID944"></A>variableName:&lt;<I CLASS="VARNAME">the_name_of_the_variable_being_searched</I>></P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN949"></A><A NAME="TMPID947"></A>variableValue:&lt;<I CLASS="VARNAME">the_value_to_be_substituted</I>></P></LI></UL>
+<P><A NAME="AEN952"></A><B>Output</B></P>
+<UL title="Output">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN954"></A><A NAME="TMPID952"></A>none</P></LI></UL></DD></DL></div>
+<P CLASS="BRIDGEHEAD-SUBHEADING1 BH1SEP"><A NAME="TMP4REF9">User Customizations</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF10">Customized Javascript</A></P>
+<P><A NAME="TMPID955"></A>You can add your own custom Javascript file, which will be available within all Appearances and Custom Views. If you want to add a Javascript function that appears in the entire Content Server system, you can add the script to the <TT CLASS="FILENAME">custom.js</TT> file, located in the <TT CLASS="FILENAME">root</TT> folder of the Content Server <TT CLASS="FILENAME">support</TT> directory.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF11"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID962"></A><B CLASS="NOTE">Note: </B><BR>You must have the proper permissions to access the <TT CLASS="FILENAME">support</TT> directory. For more information about these permissions, contact your Administrator.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF12">Customvar: User Created Replacement Variables</A></P>
+<P><A NAME="TMPID965"></A>You can create your own replacement variables, which will be automatically processed by adding them to the CUSTOMvar Javascript object. <P>
+<DIV CLASS="INFORMALEXAMPLE">
+<P><A NAME="AEN969"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID967"></A>If you want to create a replacement tag that always shows the most important objective, you can add the following to the <TT CLASS="FILENAME">custom.js</TT> file:</P>
+<P><A NAME="TMPID969"></A><TT CLASS="LITERAL">Customvar.mainObjective='Sell! Sell! Sell!';</TT></P>
+</DIV></P></P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF13"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID972"></A><B CLASS="NOTE">Note: </B><BR>When you define a replacement variable, you must use a <I CLASS="EMPHASIS">period (.)</I> after <TT CLASS="LITERAL">Customvar</TT> instead of an <I CLASS="EMPHASIS">underscore (_)</I>.</P>
+<P><A NAME="TMPID976"></A>The <TT CLASS="LITERAL">Customvar</TT> object can be extended inside a script block within an Appearance. The replacement variable defined will <I CLASS="EMPHASIS">only be available with that Appearance</I>, and will appear with any Custom Views that display in conjunction with that particular Appearance.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF14">CUSTOMmacro: User Created Macros</A></P>
+<P><A NAME="TMPID980"></A>You can create your own macros, which will be automatically processed by adding them to the <TT CLASS="LITERAL">CUSTOMmacro</TT> Javascript object.</P>
+<P>
+<DIV CLASS="INFORMALEXAMPLE">
+<P><A NAME="AEN985"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID983"></A>If you want to create a macro that wishes users happy birthday, you can add the following to the <TT CLASS="FILENAME">custom.js</TT> file:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN988"></A>CUSTOMmacro.birthdayGreeting = function( options, element ){            
+
+ var BirthdayString;
+    var birthday = OTfunc.toDate(OTvar.currentUser.birthday);
+    var today = new Date();
+    var age;
+
+ if (birthday.getUTCDate() === today.getUTCDate()
+    &amp;&amp; birthday.getUTCMonth() === today.getUTCMonth())
+    {   
+        age = today.getUTCFullYear() - birthday.getUTCFullYear();
+        BirthdayString = (" Happy Birthday! You are now " + age + " years old.");
+    	$(element).after(BirthdayString);
+    	// $(element).before(BirthdayString);
+    }
+}</PRE
+>
+</DIV></P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF15"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID987"></A><B CLASS="NOTE">Note: </B><BR>The <TT CLASS="LITERAL">OTVar</TT> and <TT CLASS="LITERAL">OTfunc</TT> objects are referenced in order to retrieve the user's birthday and convert it to a Javascript date for comparison.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID990"></A>Each macro function is passed in two variables: <TT CLASS="LITERAL">options</TT> and <TT CLASS="LITERAL">element</TT>. The <TT CLASS="LITERAL">options</TT> variable contains a Javascript object that contains a named property for each of the options set in the <TT CLASS="LITERAL">options</TT> attribute of the macro tag. </P>
+<P>
+<DIV CLASS="INFORMALEXAMPLE">
+<P class="nr1"><A NAME="AEN998"></A><B>Example: </B><A NAME="TMPID996"></A>If you had created the following macro:
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1000"></A>CUSTOMmacro.test = function( options, element ){
+
+    if ( typeof(options.test) != 'undefined' )
+    {
+        $(element).after(options.test);
+        // $(element).before(options.test);
+    } else {
+
+        $(element).after("No test option found");
+        // $(element).before(options.test);
+    }
+
+}&#13;</PRE
+> and then entered <TT CLASS="LITERAL">&lt;ot:CUSTOMmacro_test options=""&gt;&lt;/ot:CUSTOMmacro_test&gt;</TT> in an Appearance or Custom View, when the page is viewed, the word <I CLASS="EMPHASIS">hello</I> will appear inside the macro tag. If the <TT CLASS="LITERAL">test</TT> option is not found, <I CLASS="EMPHASIS">No test option found</I> would be inserted into the macro tag.</P>
+</DIV></P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="app-libraryfunctions-p.htm" revision="">To Add a Javascript Function to a Custom View or Global Appearance</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

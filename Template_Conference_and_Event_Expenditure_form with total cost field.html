@@ -13,7 +13,12 @@
  .topSection { text-align: right; }
 </STYLE>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<TITLE>Form</TITLE>
+</HEAD>
+
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="[LL_SUPPORTPATH /]core/ajax_dhtml_util.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="[LL_SUPPORTPATH /]webform/formssupport.js"></SCRIPT>
+
 <script> 
 // BEGINING OF CUSTOM SCRIPTS
 
@@ -23,8 +28,19 @@
 
 // this function is called when the page loads, and hide the detail blocks by default
 function init() { 
-    // get the blocks with class starting by detail with jquery selector and hide them
+    // get the blocks with class starting by detail and hide them
     $('[class^="detail"]').hide();
+    /*
+    var l;
+    var m;
+    for (l = 1; l < 6; l++) {
+    	var detailClass = "detail"+l;
+    	var detailBlocks = document.getElementsByClassName(detailClass);
+    	for (m = 0; m < detailBlocks.length; m++) {
+    		detailBlocks[m].style.display = "none";
+    	}
+     }
+     */
   }  
 
 
@@ -49,13 +65,19 @@ function init() {
 	// now toggle the visibility of the blocks based on the checkbox status
 	 if (checkbox.checked) {
 	 	for (i = 0; i < tBlock.length; i++) {
-        	tBlock[i].style.display = "block";
+        	tBlock[i].style.display = "table-row";
     		}
     	// if hospitality details is displayed (#2), hide hospitality details fields when unchecked
     	if ( nBlock === 2) {
-				$checkboxh = $('[ID^="checkboxh"]');
+    			$checkboxh = $('[ID^="checkboxh"]');
 				for (k = 1; k < $checkboxh.length+1; k++) {
 					if ($checkboxh[k-1].checked === false) {
+    /*		for (n = 1; n < 8; n++) {
+    			checkNum = "checkboxh" + n;
+    			console.log(checkNum);
+				checkboxh = document.getElementById(checkNum);
+				for (k = 1; k < checkboxh.length+1; k++) {
+					if (checkboxh[k-1].checked === false) {  */
 						className = "hospitality"+k;
 						hospitalityd = document.getElementsByClassName(className);
 						for (j = 0; j < hospitalityd.length; j++) {
@@ -63,6 +85,7 @@ function init() {
     						}
 					}
 				}
+		/*	  } */
 			} 
 	 	 }
 	 else {
@@ -89,7 +112,7 @@ function init() {
 	// now toggle the visibility of the blocks based on the checkbox status
 	 if (checkbox.checked) {
 	 	for (i = 0; i < tBlock.length; i++) {
-        	tBlock[i].style.display = "block";
+        	tBlock[i].style.display = "table-row";
     		}
 	 	 }
 	 else {
@@ -129,11 +152,6 @@ function init() {
 // END OF THE CUSTOM SCRIPTS
 </script>
 
-<TITLE>Form</TITLE>
-</HEAD>
-
-<SCRIPT LANGUAGE="JavaScript1.2" SRC="[LL_SUPPORTPATH /]core/ajax_dhtml_util.js"></SCRIPT>
-<SCRIPT LANGUAGE="JavaScript1.2" SRC="[LL_SUPPORTPATH /]webform/formssupport.js"></SCRIPT>
 <BODY Class="pageBody">
 <FORM NAME="myForm" ACTION="[LL_CGIPATH /]" ENCTYPE="multipart/form-data" METHOD="POST">
 
@@ -1390,7 +1408,7 @@ savedValue.value = nameField.value;
 <INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_80_1" TITLE="Breakfast - Standard cost per person" ID="_1_1_21_80_1" VALUE="[LL_FormTag_1_1_21_80_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider" >
+<TR CLASS="horizontalCellDivider hospitality1" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -1410,7 +1428,7 @@ savedValue.value = nameField.value;
 <INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_81_1" TITLE="Breakfast - Maximum cost per person" ID="_1_1_21_81_1" VALUE="[LL_FormTag_1_1_21_81_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider" >
+<TR CLASS="horizontalCellDivider hospitality1" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -1451,7 +1469,7 @@ savedValue.value = nameField.value;
 <INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_82_1" TITLE="Lunch - Standard cost per person" ID="_1_1_21_82_1" VALUE="[LL_FormTag_1_1_21_82_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider" >
+<TR CLASS="horizontalCellDivider hospitality2" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -1471,7 +1489,7 @@ savedValue.value = nameField.value;
 <INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_83_1" TITLE="Lunch - Maximum cost per person" ID="_1_1_21_83_1" VALUE="[LL_FormTag_1_1_21_83_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider" >
+<TR CLASS="horizontalCellDivider hospitality2" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -1512,7 +1530,7 @@ savedValue.value = nameField.value;
 <INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_84_1" TITLE="Dinner - Standard cost per person" ID="_1_1_21_84_1" VALUE="[LL_FormTag_1_1_21_84_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider" >
+<TR CLASS="horizontalCellDivider hospitality3" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -1532,7 +1550,7 @@ savedValue.value = nameField.value;
 <INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_85_1" TITLE="Dinner - Maximum cost per person" ID="_1_1_21_85_1" VALUE="[LL_FormTag_1_1_21_85_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider" >
+<TR CLASS="horizontalCellDivider hospitality3" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -1573,7 +1591,7 @@ savedValue.value = nameField.value;
 <INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_86_1" TITLE="Refreshments AM - Standard cost per person" ID="_1_1_21_86_1" VALUE="[LL_FormTag_1_1_21_86_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider" >
+<TR CLASS="horizontalCellDivider hospitality4" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -1593,7 +1611,7 @@ savedValue.value = nameField.value;
 <INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_87_1" TITLE="Refreshments AM - Maximum cost per person" ID="_1_1_21_87_1" VALUE="[LL_FormTag_1_1_21_87_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider" >
+<TR CLASS="horizontalCellDivider hospitality4" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -1634,7 +1652,7 @@ savedValue.value = nameField.value;
 <INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_88_1" TITLE="Refreshments PM - Standard cost per person" ID="_1_1_21_88_1" VALUE="[LL_FormTag_1_1_21_88_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider" >
+<TR CLASS="horizontalCellDivider hospitality5" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -1654,7 +1672,7 @@ savedValue.value = nameField.value;
 <INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_89_1" TITLE="Refreshments PM - Maximum cost per person" ID="_1_1_21_89_1" VALUE="[LL_FormTag_1_1_21_89_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider" >
+<TR CLASS="horizontalCellDivider hospitality5" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -1695,7 +1713,7 @@ savedValue.value = nameField.value;
 <INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_90_1" TITLE="Reception - Standard cost per person" ID="_1_1_21_90_1" VALUE="[LL_FormTag_1_1_21_90_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider" >
+<TR CLASS="horizontalCellDivider hospitality6" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -1715,7 +1733,7 @@ savedValue.value = nameField.value;
 <INPUT CLASS="valueEditable" TYPE="text" NAME="_1_1_21_91_1" TITLE="Reception - Maximum cost per person" ID="_1_1_21_91_1" VALUE="[LL_FormTag_1_1_21_91_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="markDirty();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider" >
+<TR CLASS="horizontalCellDivider hospitality6" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="/img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="/img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>

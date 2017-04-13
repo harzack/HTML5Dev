@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Solaris X Server Display Memory Issue</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="4">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'aidotdf-36.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Installing OpenText Document Filters';
+          header.title2 = 'Solaris X Server Display Memory Issue';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID6171"></A>If your OpenText Document Filters installation is used to do batch processing of many files on the Solaris operating system, a known X Display memory issue may cause problems.</P>
+<P><A NAME="TMPID6174"></A>Information provided by Oracle Corporation on the <A HREF="http://download.oracle.com/docs/cd/E14154_01/dev.835/e12884/c03_unix.htm" TARGET="_blank">UNIX Implementation Details</A> page of their website (<TT CLASS="literal">http://download.oracle.com/docs/cd/E14154_01/dev.835/e12884/c03_unix.htm</TT>) states:</P>
+<P><A NAME="TMPID6177"></A>“On Solaris, the X Server does not free the memory for a display until the last close display call is made on that display. This problem is limited strictly to the Sun Solaris OS and does not affect any other platforms, UNIX or otherwise. It also does not affect HTML Export when graphics conversions are turned off.”</P>
+<P><A NAME="TMPID6179"></A>“This problem is most noticeable when doing large amounts of graphics processing, when system memory usage can grow without bound. This memory can only be freed by shutting down the X Windows display the user pointed the technology to use via the DISPLAY environment variable. If that display is the ‘console’ display, the user must log out of the console in order to free the memory. Users may be able to avoid this problem by choosing a display that they can close periodically.”</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

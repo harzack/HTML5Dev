@@ -1,0 +1,245 @@
+<!-- wr_export_procedures.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Export Destinations</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_export_procedures.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+
+<SCRIPT LANGUAGE="JavaScript">
+        var header = new AdminHeader();
+        header.title1 = 'Working With WebReports';
+        header.title2 = 'Export Destinations';
+        header.draw();
+</SCRIPT>
+
+<p class="body">
+A WebReport is exported by selecting <SPAN class="gui">Export</SPAN> from the Function menu which
+brings up the <SPAN class="gui">Export page.</span>  Export is also
+configurable as the default report behavior through
+<SPAN class="gui">Properties -&gt;&nbsp;Destination</span> on the function menu.
+</p>
+<p class="body"><u><SPAN class="gui">Exporting to Desktop</SPAN></u>
+<p class="body">Select <SPAN class="gui">Desktop</SPAN> as the export destination and select the
+<SPAN class="gui">Export Mime Type</SPAN> for the resulting export file.  The Mime type will be used by WebReports
+to determine the file extension and therefore the file type to be downloaded.  This is ultimately used
+in the determination of the application which will open the exported file.  On
+clicking export, the user is usually presented with a download dialogue.  At this point, it
+is possible to change the filename which will be defaulted to the name of the
+corresponding WebReport.</p>
+<p class="body">
+<b>Useful tips:</b>
+<ul>
+<li>MS Excel does a reasonable job of rendering HTML.  If you want a report to open in an Excel spreadsheet,
+try using the basic reportview and making minor edits to remove function menus etc.</li>
+<li>Some versions of MS Excel support a type of XML called SpreadsheetML.  If you use this to format a reportview,
+very complex spreadsheets can be opened directly from WebReports.</li>
+</ul>
+</p>
+<p class="body"><u><SPAN class="gui">Exporting to Content Server - Node</SPAN></u>
+<p class="body">It is possible to export the report output to a new Content Server document. This can either be done from the WebReport Export option
+by selecting <SPAN class="gui">Export to Content Server</span> or by setting the default <SPAN class="gui">Output Destination</SPAN> as <SPAN class="gui">Content Server</SPAN>
+and then running the WebReport.  In either case, the <SPAN class="gui">Export Type</SPAN> option is set to <SPAN class="gui">Content Server Node</span>.  
+As with the desktop export, it is possible to specify the Mime type of the resultant document.  In addition to this, the user needs to select
+a destination container by clicking the <b>Browse Livelink</b> button.  The default name will be the WebReport name followed by <i>- Snap Shot</i> and the default location
+will be the folder containing the WebReport.  The <SPAN class="gui">Duplicate Name Action</SPAN> determines how the Export handles duplicate node names:</p>
+<ul>
+<li><b>Delete Original</b> -  Delete the original node if it already exists and create a new node with exactly the same name.</li>
+<li><b>Add Version to Original</b> - If the node name already exists, add a version to that node.  If the node doesn't exist it will be created.</li>
+<li><b>Generate Unique Number</b> - Create a new document every time the export occurs - a number will be appended to the node name in order to distinguish it from the previous exports.</li>
+</ul>
+<p class="body">The export feature also provides the flexibility for the user to add a description to the new
+document as well as specify category details.</p>
+
+
+<p class="body">
+<b>Useful tips:</b>
+<ul>
+<li>Several of these export fields support replacements tags.  These tags can be used in the user interface or in the URL
+directly. An example of this might be to do an export to the personal workspace of the current user executing the report.  This
+could be achieved by using <b>[LL_REPTAG_USERID USERINFO:PWS /]</b> in the <b>Create In</b> field.</li>
+<li>When WebReports are executing on a schedule it is often useful to have the resultant Content Server documents created in the same
+folder for an extended period of time.  In this case it might be useful to use <b>[LL_REPTAG_DATE DATE:"%Y%m%d" /]</b>
+within the <b>Name</b> field along with a descriptive name.  Even if the document is later updated by, for example, a permission
+or attribute change you will still be able to see the creation date at a glance.</li>
+<li>Remember that colons (:) are not supported within a Content Server node name.  It is easy to forget that when you use
+a replacement tag in the node name, it may insert a colon and therefore stop the export occurring.  To get around this
+you might use the REPLACE sub-tag similar to this <b>[LL_REPTAG_DATETIME REPLACE:":":"." /]</b> to change colons to full stops.</li>
+</ul>
+</p>
+
+<p class="body"><u><SPAN class="gui">Exporting to Content Server - Version</SPAN></u>
+<p class="body">Exporting report data to a new document version is similar
+to adding a new Node with three main exceptions:</p>
+<ul>
+  <li>
+    <p class="body">Users are required to select an existing document or customview rather than a container.&nbsp;</li>
+  <li>
+    <p class="body">You have the option to insert the exported report into the
+    document you are adding a version to.&nbsp; This can be at the start or end,
+    or, if using tags, anywhere in the body of the document.</li>
+  <li>
+	<p class="body">If the document selected has advanced versioning enabled, you can choose to add either a Minor or a Major version.</li>
+</ul>
+<p class="body">On clicking export, a new version is added to the selected document with the new mime type, description
+and categories as specified on the export page.</p>
+
+
+<p class="body">
+<b>Useful tips:</b>
+<ul>
+<li>If you have a report that takes a long time to execute or is executed by a high number of people it is often
+useful to publish a link to a document and then have a WebReport update that document on a regular basis.  This should benefit users
+by providing more responsive "reports" and also benefit the system by reducing the number of SQL queries executed against the Database.</li>
+<li>Similar to the previous tip, a WebReport can be used to update a customview on a regular basis, for example, to update the Enterprise workspace every hour to show the most accessed documents.
+By using a series of sub-WebReports in this way,
+it is possible to pull disparate information together into a single location.</li>
+</ul>
+</p>
+
+<p class="body"><u><SPAN class="gui">Exporting to E-Mail</SPAN></u>
+<p class="body">The WebReports export feature allows users to export report data to e-mail.  The
+export to E-Mail screen allows the user to specify E-Mail addresses in three different ways:</p>
+<ul>
+<li>Typing in comma (,) separated E-Mail addresses manually</li>
+<li>Selecting either a Content Server User or Group</li>
+<li>Selecting a CSV file of addresses from within Content Server</li>
+</ul>
+
+<p class="body">It is possible to use these three methods in any combination.  It is also worth noting
+that, if selecting a Content Server User or Group, no e-mail will be sent if an e-mail address is not
+specified in the user's Content Server profile.</p>
+
+<p class="body">
+<b>Useful tips:</b>
+<ul>
+<li>If you want a report to send an e-mail to the person who is viewing it, use <b>[LL_REPTAG_USERID USERINFO:MAILADDRESS /]</b>.  Whenever the report is executed
+the static tag LL_REPTAG_USERID will be replaced with the ID of the current user.  This is then passed into the USERINFO sub-tag which uses the MAILADDRESS
+parameter to retrieve the appropriate e-mail address.</li>
+<li>Building on the previous tip, imagine that you have a WebReport returning a list of users who have late tasks (this could be regular tasks or workflow tasks) and you
+want to mail these individuals with a list of their late tasks on a regular basis.  Set
+this report to run on a schedule of your choosing, we'll say once per week for the example.  Now create another WebReport that takes a user id as a parameter and returns all
+the late tasks associated with that userid.  Set the default behavior of this WebReport to export to e-mail and use <b>[LL_REPTAG_&inputLabel1 USERINFO:MAILADDRESS /]</b> in the <i>E-Mail Address</i> field.  When
+this WebReport executes you will be prompted for a user id.  When you enter this the report will send an e-mail to that user with a list of all their late tasks.  The final step is
+to have the first WebReport (the one on the schedule) call the second one as a sub-WebReport and pass the id of the user as a parameter.  This can be achieved by using <b>[LL_WEBREPORT_SUBWEBREPORT NODEID:xxxx PARM:INPUTLABEL1:[LL_REPTAG=yyyy /] /]</b>
+in the row section of the WebReport.</li>  
+<li>
+It is possible to specify that some email addresses will be on the copy list (CC) and some addresses will be on the blind copy (BCC) list. This is done using special markers in the email list as follows:<br>
+<p class=gui>
+$CC &lt;comma delimited list of email addresses&gt;$<br>
+$BCC &lt;comma delimited list of email addresses&gt;$<br>
+</p>
+<p class=body>	 
+These markers can appear multiple times and can either be used in the E-mail Address, text input, or in a text file distribution list. If two markers are included one after the other, it is not necessary to use a $ marker to end
+each item. Also the end $ marker is not required at the end of the list. For example, the following examples are all valid. 
+</p>				   
+ <p class=gui>
+$CC &lt;comma delimited list of email addresses&gt;$BCC &lt;comma delimited list of email addresses&gt;<br>
+&lt;list of comma delmiited email addresses (to list)&gt;$CC &lt;comma delimited list of email addresses&gt;$BCC &lt;comma delimited list of email addresses$&lt;more "to list" items&gt;$BCC &lt;more BCC items&gt;
+</p>
+</li>
+</ul>
+</p>
+
+<p class="gui">
+<U><a name="formexport"></a>Exporting to a WebForm</u>
+</P>
+<p class="body">When exporting
+to a WebForm, the user has the capability to take the results of a report, or selectively choose parts of it, and
+insert those results into a Content Server WebForm.  This provides a powerful capability where a report developer can import data from
+other systems into a WebForm, or possibly from one WebForm to another within the same system.  Advanced users could use this capability to create a
+cache from a larger data set and then have other reports run against this cache, which is being updated on a regular schedule.  The export to WebForm feature
+allows the user to update the existing WebForm data, overwrite the existing data or append more data to the existing data.  In order to specify what pieces
+of data from the WebReport are inserted into the WebForm the <a href="wr_tag_syntax.htm#setform">SETFORM</a> sub-tag must be used.  <b>[LL_REPTAG=USERID SETFORM:USER /]</b> would, for example,
+take the id of the user and insert it into the column USER.  A slightly more advanced example might involve using sub-tags to operate on the data
+before inserting it into the WebForm. <b>[LL_REPTAG=USERID USERINFO:GROUPID SETFORM:GROUP /]</b> uses <a href="wr_tag_syntax.htm#subtaguserinfo">USERINFO</a> with the GROUPID parameter to
+retrieve the group of the current user, SETFORM then takes this and inserts it into the WebForm field called GROUP.  It's possible to use SETFORM to
+insert data for as many fields as you need.</p>
+
+<p class="body">
+<b>Useful tips:</b>
+<ul>
+<li>Use this feature in combination with a file as a data source to migrate data from other systems into a WebForm.</li>
+<li>Schedule a WebReport to append data to a WebForm on a regular basis to track trends which can then be observed with other reports that
+use the WebForm itself as a data source.</li>
+<li>Use sub-WebReports to write data into an unlimited number of WebForms at the same time by using one sub WebReport to update each WebForm.</li>
+</ul>
+</p>
+
+<p class="gui">
+<U><a name="workflowexport"></a>Exporting to a Workflow</u>
+</P>
+<p class="body">This feature can be used to trigger Content Server
+Workflows based on results in a WebReport.  It can be used in conjunction with sub-WebReports to launch an unlimited number of Workflows
+from an unlimited number of Workflow maps.  The report itself can be optionally attached to the Workflow as a document and WebForms associated with the Workflow populated with
+data from the WebReport.  Additionally any number of Workflow attributes can be populated as well as other metadata including things
+like the Workflow due date and title.  In order to determine which elements of a WebReport are used to set data in a Workflow we need to
+use the sub-tags <a href="wr_tag_syntax.htm#setwfattach">SETWFATTACH</a>, <a href="wr_tag_syntax.htm#setwfattr">SETWFATTR</a>, <a href="wr_tag_syntax.htm#setwfcomment">SETWFCOMMENT</a>, <a href="wr_tag_syntax.htm#setwfform">SETWFFORM</a> and <a href="wr_tag_syntax.htm#setwftaskinfo">SETWFTASKINFO</a>.</p>
+
+<p class="body">
+<b>Useful tips:</b>
+<ul>
+<li>Use sub-WebReports to trigger multiple workflow instances in the same way as was described for sending multiple e-mails.</li>
+</ul>
+</p>
+
+
+<p class="body"><u><SPAN class="gui">Exporting to the server</SPAN></u><p class="body">This
+feature is only available to users logged in as the Content Server Admin user.&nbsp;
+It allows the Admin user to define an export location on the server and export
+the report to that place.&nbsp; If this is set as the default behavior,
+WebReports users with permission to run reports will be able to execute the
+report but they will not be able to change the existing server path or define a
+new export path.&nbsp; The path should be specified like any other path on the
+file system - for example 'C:\export_testing\test_export.xml'</p>
+
+<p class="body">
+<b>Useful tips:</b>
+<ul>
+<li>This feature is for advanced report developers who might, for example, want their report to output their data to a specific location
+on a regular schedule so that a third party application might then pick this up and use it in a non-Content Server application.</li>
+<li>WebReports supports server files as a data source type.  If you have multiple Content Server instances that you need to share data you might configure one
+WebReport to write data to the location and another to read from the same location.</li>
+</ul>
+</p>
+
+<p class="body"><u><SPAN class="gui">Exporting to a FTP Server</SPAN></u><p class="body">This
+feature allows the developer to define an export location on a FTP server and export
+the report to that place using a Passive connection.&nbsp;A relative
+file path should be used for the output location - eg: 'FolderA/WR_output.html'.  There are three options available if a file already exists on the FTP server with the same name:
+<ul>
+<li><b>Replace Existing</b> - The existing file will be overwritten with the new WebReport output.</li>
+<li><b>Unique Name</b> - A unique number will be appended directly before the output file's extension - example: 'WR_output1.html'.</li>
+<li><b>Skip Output</b> - The WebReport output will not be transferred to the FTP server.</li>
+</ul>
+</p>
+
+<p class="body">
+<b>Useful tips:</b>
+<ul>
+<li>If the FTP server allows anonymous login, simply check the 'Anonymous User Login' checkbox.  The feature will attempt to login using the Anonymous username and use the email address of the user executing the WebReport as the password.</li>
+</ul>
+</p>
+
+<p class="body"><u><SPAN class="gui">File Conversion Using XML Job Tickets</SPAN></u><p class="body">This feature allows the use of Adlib's XML Job Ticket feature during file conversion.  
+A user with Administrative rights may specify a previously created XML Job Ticket file from the server, which allows a wide variety of conversion options when a
+file is converted using Adlib's Express Server software for conversion.
+</p>
+
+<p class="body">
+<b>Useful tips:</b>
+<ul>
+<li>For more detailed information on using XML Job Tickets for file conversion, see advanced <a href="wr_pdf_info.htm">PDF Conversion</a> information.</li>
+</ul>
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>
+

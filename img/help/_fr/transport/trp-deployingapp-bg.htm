@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESTRP100500-H-UGD-FR">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="transport">
+<META mancondkey="llesrt-h-ugd -- lleswbd-h-ugd"><title>Déploiement d'un atelier</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'trp-deployingapp-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation de la fonction Transport';
+          header.title2 = 'Déploiement d\'un atelier';
+           header.draw();
+  </script>
+
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF20"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID420"></A><B CLASS="note">Note : </B><BR>Vous devez être un administrateur d'entrepôt pour déployer un atelier. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul nr1"><A NAME="TMPID421"></A>Pour déployer un atelier vers le système cible, procédez comme suit :</P><A NAME="AEN424"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN425"></A><A NAME="TMPID424"></A>Exportez le lot de transport depuis le système source et enregistrez le fichier vers un emplacement externe (par exemple, une clé USB ou un emplacement réseau).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN427"></A><A NAME="TMPID426"></A>Créez un atelier dans l'entrepôt de transport sur le système cible. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN429"></A><A NAME="TMPID428"></A>Chargez le lot de transport vers le système cible via le menu <B CLASS="guilabel">Ajouter un élément</B>. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN432"></A><A NAME="TMPID431"></A>Décompressez le lot de transport vers un atelier sur le système cible. Après décompression du lot, l'atelier vers lequel le lot a été décompressé apparaît. Vous pouvez ainsi voir les fichiers transportés.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF21"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID433"></A><B CLASS="note">Note : </B><BR>Si plusieurs lots contiennent des éléments que vous souhaitez déployer vers le système cible, vous pouvez les décompresser vers le même atelier et les déployer vers Content Server en même temps. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN437"></A><A NAME="TMPID436"></A>Vérifiez l'atelier pour vous assurer que vous les dépendances des éléments sont respectées pour chaque élément.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN439"></A><A NAME="TMPID438"></A>Déployer l'atelier. La page Déployer l'atelier affiche le nombre d'éléments dans l'atelier, ainsi qu'une description de l'atelier, si elle a été fournie lors de la création de l'atelier. La page Déployer l'atelier affiche également la liste des éléments qui seront déployés, ainsi que les informations suivantes pour chaque élément : type, nom, emplacement dans lequel sera créé l'élément et état de l'élément (si l'élément est prêt pour le déploiement ou s'il manque des dépendances). S'il manque des dépendances à un élément, ou si, pour une toute autre raison, celui-ci n'est pas prêt pour le déploiement, il ne sera pas créé lors du déploiement de l'atelier. Si un élément en cours de déploiement possède le même nom qu'un élément situé dans le recueil parent auquel il doit être ajouté, il sera ajouté en tant que nouvelle version.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF22">Traitement des dépendances de transport</A></P>
+<P><A NAME="TMPID440"></A>La fonction Transport analyse le système pour vérifier que les dépendances de l'élément sont respectées. Par exemple, si des autorisations ou un classement ont été attribués à un élément, la fonction Transport analyse Content Server pour vérifier l'existence de l'autorisation et du classement. Si un atelier est déployé avec un utilisateur ou un groupe qui n'existe pas sur le système cible, les autorisations sur l'atelier sont supprimées. Si l'utilisateur ou le groupe existe sur le système cible, les autorisations sur l'atelier sont attribuées automatiquement.</P>
+<P class="before-ul"><A NAME="TMPID442"></A>Lorsque vous ouvrez un élément sur l'atelier, la page Vue d'ensemble apparaît et comprend les informations suivantes :</P><A NAME="AEN445"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN446"></A><A NAME="TMPID445"></A><B CLASS="guilabel">Nom</B> : nom actuel de l'élément</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN449"></A><A NAME="TMPID448"></A><B CLASS="guilabel">Version</B> : numéro de version actuelle de l'élément à déployer</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN452"></A><A NAME="TMPID451"></A><B CLASS="guilabel">Taille</B> : taille de l'élément</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN455"></A><A NAME="TMPID454"></A><B CLASS="guilabel">Créé par</B> : nom de l'utilisateur qui a créé l'élément</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN458"></A><A NAME="TMPID457"></A><B CLASS="guilabel">Créé le</B> : date à laquelle l'élément d'origine a été créé</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN461"></A><A NAME="TMPID460"></A><B CLASS="guilabel">Parent</B> : dossier dans lequel l'élément d'origine était situé</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN464"></A><A NAME="TMPID463"></A><B CLASS="guilabel">Instance d'origine</B> : instance Content Server dans laquelle l'élément d'origine était situé</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN468"></A><A NAME="TMPID467"></A><B CLASS="guilabel">Description</B> : description de l'élément, si elle a été fournie lors de la création de l'élément</P></LI></UL>
+<P><A NAME="TMPID469"></A>Si l'élément que vous déployez a des dépendances sur d'autres éléments, elles sont répertoriées sur la page Vue d'ensemble de l'élément. Les informations suivantes sont disponibles pour chaque élément dépendant : le type et le nom de l'élément, si l'élément existe sur le système cible, et si l'élément existe sur l'atelier actuel. Si l'élément dépendant existe sur l'atelier, une coche verte apparaît indiquant que l'élément est prêt pour le déploiement.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID471"></A><B CLASS="important">Important : </B><BR>Tous les éléments dépendants doivent figurer dans le système cible pour déployer un atelier. Le bouton <B CLASS="guilabel">Déployer</B> sera désactivé jusqu'à ce que toutes les dépendances soient respectées.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID473"></A>Si un élément a une dépendance sur un ou plusieurs éléments de même type et même nom d'élément, il ne peut être déployé. Si un élément n'est pas prêt pour le déploiement, vous pouvez utiliser le bouton <B CLASS="guilabel">Modifier</B> pour apporter des changements avant le début du déploiement. Si le recueil parent d'un élément n'existe pas sur le système cible, vous pouvez remplacer ce recueil parent par un recueil existant.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF23"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID476"></A><B CLASS="note">Note : </B><BR>Les colonnes de dépendance <B CLASS="guilabel">Existe dans l'instance</B> et <B CLASS="guilabel">Existe dans l'atelier</B> sont visibles uniquement pour les administrateurs d'entrepôt. De même, seuls les administrateurs d'entrepôt peuvent modifier les dépendances des éléments. Le bouton <B CLASS="guilabel">Modifier</B> ne sera visible que si vous êtes un administrateur d'entrepôt.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="trp-export-boxes-p.htm" revision="">Pour exporter un lot</A></p></li>
+<li><p><A  HREF="trp-import-boxes-p.htm" revision="">Pour importer un lot</A></p></li>
+<li><p><A  HREF="trp-unpack-box-towrkbnch-p.htm" revision="">Pour décompresser un lot vers un atelier</A></p></li>
+<li><p><A  HREF="trp-edit-parent-cont-p.htm" revision="">Pour modifier le recueil parent d'un élément</A></p></li>
+<li><p><A  HREF="trp-deploy-obj-p.htm" revision="">Pour déployer un élément</A></p></li>
+<li><p><A  HREF="trp-deploy-workbench-p.htm" revision="">Pour déployer un atelier</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

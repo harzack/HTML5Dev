@@ -1,0 +1,433 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWFP100500-H-UGD-EN-1">
+<META PiXprocLocator="webwfp">
+<META mancondkey="llesesn-h-ugd -- llespob-h-ugd -- lleswfm-h-ugd -- lleswbd-h-ugd -- llesfwf-h-ugd -- llesfrm-h-ugd -- lleschn-h-ugd -- lleswfw-uqs -- lleswfp-cwm -- lleswat-h-ugd -- llesafm-h-ugd -- llesxwe-h-ugd -- llesrt-h-ugd -- lleslfm-h-ugd -- lleswfw-h-ugd -- llesrcm-h-ugd"><title>Using Dynamic Replacement Tags</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-use-tags-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Defining Steps and Links';
+          header.title2 = 'Using Dynamic Replacement Tags';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4073"></A>You can use dynamic replacement tags in a Workflow Map to individualize initiated Workflows.</P>
+<P>
+<DIV CLASS="INFORMALEXAMPLE">
+<P class="nr1"><A NAME="AEN3448"></A><B>Example: </B><A NAME="TMPID4077"></A>Place the <TT CLASS="LITERAL">&lt;Initiator /&gt;</TT> tag in the title of a Workflow so that it appears as “John's Workflow Map” after initiation, by typing <TT CLASS="LITERAL">&lt;Initiator /&gt;'s Workflow Map</TT> in the Workflow Map's <B CLASS="GUILABEL">Title</B> field on the <B CLASS="GUILABEL">General Settings</B> page.</P>
+</DIV></P>
+<P><A NAME="TMPID4087"></A>The following dynamic replacement tags are available:</P>
+<div>
+<DL CLASS="VL"><A NAME="AEN3458"></A>
+<DT class="vl"><A NAME="TMPID4090"><B>&lt;Initiator /&gt;</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID4092"></A>Shows the Initiator's display name.</P></DD>
+<DT class="vl"><A NAME="TMPID4094"><B>&lt;InitiatedDate /&gt;</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID4096"></A>Shows the date when the Workflow is initiated.</P></DD>
+<DT class="vl"><A NAME="TMPID4098"><B>&lt;InitiatorMail /&gt;</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID4100"></A>Shows the Initiator's email address.</P></DD>
+<DT class="vl"><A NAME="TMPID4102"><B>&lt;WorkflowTitle /&gt;</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID4104"></A>Shows the Workflow title.</P></DD>
+<DT class="vl"><A NAME="TMPID4106"><B>&lt;WorkID /&gt;</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID4108"></A>Shows the Workflow's number.</P></DD>
+<DT class="vl"><A NAME="TMPID4110"><B>&lt;ParentTitle /&gt;</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID4112"></A>Shows the title of a Sub-Workflow's main Workflow.</P></DD>
+<DT class="vl"><A NAME="TMPID4114"><B>&lt;SubInitiatedDate /&gt;</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID4116"></A>Shows the date when a Sub-Workflow is initiated.</P></DD>
+<DT class="vl"><A NAME="TMPID4118"><B>&lt;SubWorkTitle /&gt;</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID4120"></A>Shows the Sub-Workflow title.</P></DD>
+<DT class="vl"><A NAME="TMPID4122"><B>&lt;DataType_1_3_AttrName /&gt;</B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID4124"></A>This is a multi-value attribute data type substitution tag. For example, if you have an attribute named <TT CLASS="LITERAL">Languages</TT> that is assigned the values <TT CLASS="LITERAL">French</TT>, <TT CLASS="LITERAL">German</TT>, and <TT CLASS="LITERAL">English</TT>, you can use it in the same way that other tags are used. The syntax for a single value attribute is the same: <TT CLASS="LITERAL">&lt;DataType_1_3_AttrName /&gt;</TT>.</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3500"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tag</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Result</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> &lt;DataType_1_3_Languages[3]&nbsp;/&gt;&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">English</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> &lt;DataType_1_3_Languages[*]&nbsp;/&gt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">French, German, English</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> &lt;DataType_1_3_Languages&nbsp;/&gt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">French, German, English</TD></TR></TABLE>
+</DIV></P></DD></DL></div>
+<P><A NAME="TMPID4148"></A>Dynamic replacement tags can be typed only as shown above.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF26"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID4150"></A><B CLASS="NOTE">Note: </B><BR><TT CLASS="LITERAL">&lt;SubWorkID /&gt;</TT> replacement tags are not currently supported.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<table CLASS="IMPORTANT">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="IMPORTANT"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID4153"></A><B CLASS="IMPORTANT">Important: </B><BR>Dynamic replacement takes place at the time a Workflow is initiated, and replacement values are not updated during the course of Workflow processing, even if the base values are changed by users or system events. For dynamic replacement to succeed, the dynamic replacement tag must refer to a variable that has a value when the workflow is initiated. <P>
+<DIV CLASS="INFORMALEXAMPLE">
+<P class="IMPORTANT"><A NAME="AEN3524"></A><B>Example: </B><A NAME="TMPID4155"></A>You use a <TT CLASS="LITERAL">&lt;DataType_1_3_AttrName /&gt;</TT> tag in the Workflow Process Comments. The dynamic replacement does not succeed if the attribute value is null when the Workflow is started and a value is assigned to the attribute only during the course of Workflow execution. The value must exist before the Workflow is started.</P>
+</DIV></P></P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID4157"></A>The following table explains where tags can be used in main Workflows and Sub-Workflow areas:</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3528"></A>
+<TH SCOPE="COL" WIDTH="172" ALIGN="LEFT" VALIGN="TOP">Workflow Area</TH>
+<TH SCOPE="COL" WIDTH="327" ALIGN="LEFT" VALIGN="TOP">Tag</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="172" ALIGN="LEFT" VALIGN="TOP">Workflow Initiation Message <SUP><A HREF="wf-use-tags-bg.htm#FN1">1</A></SUP></TD>
+<TD SCOPE="COL" WIDTH="327" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4174"></A><TT CLASS="LITERAL">&lt;Initiator /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4177"></A><TT CLASS="LITERAL">&lt;InitiatedDate /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4180"></A><TT CLASS="LITERAL">&lt;InitiatorMail /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4183"></A><TT CLASS="LITERAL">&lt;WorkflowTitle /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4186"></A><TT CLASS="LITERAL">&lt;WorkID /&gt;</TT></P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="172" ALIGN="LEFT" VALIGN="TOP">Workflow Title <SUP><A HREF="wf-use-tags-bg.htm#FN1">1</A></SUP></TD>
+<TD SCOPE="COL" WIDTH="327" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4195"></A><TT CLASS="LITERAL">&lt;Initiator /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4198"></A><TT CLASS="LITERAL">&lt;InitiatedDate /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4201"></A><TT CLASS="LITERAL">&lt;InitiatorMail /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4204"></A><TT CLASS="LITERAL">&lt;WorkID /&gt;</TT></P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="172" ALIGN="LEFT" VALIGN="TOP">Workflow Package Description <SUP><A HREF="wf-use-tags-bg.htm#FN1">1</A></SUP></TD>
+<TD SCOPE="COL" WIDTH="327" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4213"></A><TT CLASS="LITERAL">&lt;Initiator /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4216"></A><TT CLASS="LITERAL">&lt;InitiatedDate /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4219"></A><TT CLASS="LITERAL">&lt;InitiatorMail /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4222"></A><TT CLASS="LITERAL">&lt;WorkflowTitle /&gt;</TT></P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="172" ALIGN="LEFT" VALIGN="TOP">Step Names <SUP><A HREF="wf-use-tags-bg.htm#FN2">2</A></SUP></TD>
+<TD SCOPE="COL" WIDTH="327" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4231"></A><TT CLASS="LITERAL">&lt;Initiator /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4234"></A><TT CLASS="LITERAL">&lt;InitiatedDate /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4237"></A><TT CLASS="LITERAL">&lt;InitiatorMail /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4240"></A><TT CLASS="LITERAL">&lt;WorkflowTitle /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4243"></A><TT CLASS="LITERAL">&lt;ParentTitle /&gt;</TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4248"></A><TT CLASS="LITERAL">&lt;SubInitiatedDate /&gt;</TT> <SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4253"></A><TT CLASS="LITERAL">&lt;SubWorkTitle /&gt; </TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4258"></A><TT CLASS="LITERAL">&lt;DataType_&lt;<I CLASS="VARNAME">x</I>>_&lt;<I CLASS="VARNAME">y</I>>_&lt;<I CLASS="VARNAME">AttrName</I>> /&gt;</TT></P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="172" ALIGN="LEFT" VALIGN="TOP">User Step Instructions</TD>
+<TD SCOPE="COL" WIDTH="327" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4268"></A><TT CLASS="LITERAL">&lt;Initiator /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4271"></A><TT CLASS="LITERAL">&lt;InitiatedDate /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4274"></A><TT CLASS="LITERAL">&lt;InitiatorMail /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4277"></A><TT CLASS="LITERAL">&lt;WorkflowTitle /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4280"></A><TT CLASS="LITERAL">&lt;ParentTitle /&gt;</TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4285"></A><TT CLASS="LITERAL">&lt;SubInitiatedDate /&gt;</TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4290"></A><TT CLASS="LITERAL">&lt;SubWorkTitle /&gt;</TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4295"></A><TT CLASS="LITERAL">&lt;DataType_&lt;<I CLASS="VARNAME">x</I>>_&lt;<I CLASS="VARNAME">y</I>>_&lt;<I CLASS="VARNAME">AttrName</I>> /&gt;</TT></P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="172" ALIGN="LEFT" VALIGN="TOP">User Package Description</TD>
+<TD SCOPE="COL" WIDTH="327" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4305"></A><TT CLASS="LITERAL">&lt;Initiator /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4308"></A><TT CLASS="LITERAL">&lt;InitiatedDate /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4311"></A><TT CLASS="LITERAL">&lt;InitiatorMail /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4314"></A><TT CLASS="LITERAL">&lt;WorkflowTitle /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4317"></A><TT CLASS="LITERAL">&lt;ParentTitle /&gt; </TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4322"></A><TT CLASS="LITERAL">&lt;SubInitiatedDate /&gt;</TT> <SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4327"></A><TT CLASS="LITERAL">&lt;SubWorkTitle /&gt; </TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="172" ALIGN="LEFT" VALIGN="TOP">Process Comments</TD>
+<TD SCOPE="COL" WIDTH="327" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4336"></A><TT CLASS="LITERAL">&lt;DataType_&lt;<I CLASS="VARNAME">x</I>>_&lt;<I CLASS="VARNAME">y</I>>_&lt;<I CLASS="VARNAME">AttrName</I>> /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4342"></A><TT CLASS="LITERAL">&lt;Initiator /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4345"></A><TT CLASS="LITERAL">&lt;InitiatedDate /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4348"></A><TT CLASS="LITERAL">&lt;InitiatorMail /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4351"></A><TT CLASS="LITERAL">&lt;WorkflowTitle /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4354"></A><TT CLASS="LITERAL">&lt;WorkID /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4357"></A><TT CLASS="LITERAL">&lt;ParentTitle /&gt; </TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4362"></A><TT CLASS="LITERAL">&lt;SubInitiatedDate /&gt;</TT> <SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="172" ALIGN="LEFT" VALIGN="TOP">Process Message</TD>
+<TD SCOPE="COL" WIDTH="327" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4371"></A><TT CLASS="LITERAL">&lt;DataType_&lt;<I CLASS="VARNAME">x</I>>_&lt;<I CLASS="VARNAME">y</I>>_&lt;<I CLASS="VARNAME">AttrName</I>> /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4377"></A><TT CLASS="LITERAL">&lt;Initiator /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4380"></A><TT CLASS="LITERAL">&lt;InitiatedDate /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4383"></A><TT CLASS="LITERAL">&lt;InitiatorMail /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4386"></A><TT CLASS="LITERAL">&lt;WorkflowTitle /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4389"></A><TT CLASS="LITERAL">&lt;WorkID /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4392"></A><TT CLASS="LITERAL">&lt;ParentTitle /&gt; </TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4397"></A><TT CLASS="LITERAL">&lt;SubInitiatedDate /&gt; </TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="172" ALIGN="LEFT" VALIGN="TOP">Process Subject</TD>
+<TD SCOPE="COL" WIDTH="327" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4406"></A><TT CLASS="LITERAL">&lt;DataType_&lt;<I CLASS="VARNAME">x</I>>_&lt;<I CLASS="VARNAME">y</I>>_&lt;<I CLASS="VARNAME">AttrName</I>> /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4412"></A><TT CLASS="LITERAL">&lt;Initiator /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4415"></A><TT CLASS="LITERAL">&lt;InitiatedDate /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4418"></A><TT CLASS="LITERAL">&lt;InitiatorMail /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4421"></A><TT CLASS="LITERAL">&lt;WorkflowTitle /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4424"></A><TT CLASS="LITERAL">&lt;WorkID /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4427"></A><TT CLASS="LITERAL">&lt;ParentTitle /&gt; </TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4432"></A><TT CLASS="LITERAL">&lt;SubInitiatedDate /&gt; </TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="172" ALIGN="LEFT" VALIGN="TOP">Item Handler Functions <SUP><A HREF="wf-use-tags-bg.htm#FN4">4</A></SUP></TD>
+<TD SCOPE="COL" WIDTH="327" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4443"></A><TT CLASS="LITERAL">&lt;DataType_&lt;<I CLASS="VARNAME">x</I>>_&lt;<I CLASS="VARNAME">y</I>>_&lt;<I CLASS="VARNAME">AttrName</I>> /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4449"></A><TT CLASS="LITERAL">&lt;Initiator /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4452"></A><TT CLASS="LITERAL">&lt;InitiatedDate /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4455"></A><TT CLASS="LITERAL">&lt;InitiatorMail /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4458"></A><TT CLASS="LITERAL">&lt;WorkflowTitle /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4461"></A><TT CLASS="LITERAL">&lt;WorkID /&gt;</TT></P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4464"></A><TT CLASS="LITERAL">&lt;SubInitiatedDate /&gt; </TT><SUP><A HREF="wf-use-tags-bg.htm#FN3">3</A></SUP></P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="FN1"></A><SUP>1</SUP> Available in main Workflow only, not Sub-Workflow.</P>
+<P><A NAME="FN2"></A><SUP>2</SUP> Applies to Start, User, Initiator, and Sub-Workflow steps.</P>
+<P><A NAME="FN3"></A><SUP>3</SUP> Tags available in Sub-Workflows only.</P>
+<P><A NAME="FN4"></A><SUP>4</SUP> Tags can be used in Item Handler fields that allow you to specify a name, including name override fields.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-WORKINGMULTIVALUEATTR">Working with Multi-value Attribute Data Type Substitution Parameters</A></P>
+<P><A NAME="TMPID4478"></A>Multi-value attribute data type substitution tags use the following syntax:</P>
+<P><A NAME="TMPID4479"></A><TT CLASS="LITERAL">&lt;DataType_&lt;<I CLASS="VARNAME">x</I>>_&lt;<I CLASS="VARNAME">y</I>>_&lt;<I CLASS="VARNAME">AttrName</I>> /&gt;</TT></P>
+<P><A NAME="TMPID4484"></A>where &lt;<I CLASS="VARNAME">x</I>> is the type, &lt;<I CLASS="VARNAME">y</I>> is the subtype, and &lt;<I CLASS="VARNAME">AttrName</I>> is the name of the attribute. The value of type for all Workflow Map data packages (for example, Attachments, Comments, Attributes, and Forms) is always 1. The subtype identifies the data type. For example, the subtype value for Workflow Map Attributes is 3 and the subtype value for a Form field is 4.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="FORMFIELD">Working with Form Fields</A></P>
+<P><A NAME="TMPID4494"></A>If you are working with Form fields, the multi-value attribute data type substitution tags use the following syntax:</P>
+<P><A NAME="TMPID4495"></A><TT CLASS="LITERAL">&lt;DataType_&lt;<I CLASS="VARNAME">x</I>>_&lt;<I CLASS="VARNAME">y</I>>_&lt;<I CLASS="VARNAME">z</I>>_&lt;<I CLASS="VARNAME">FieldName</I>> /&gt;</TT></P>
+<P><A NAME="TMPID4501"></A>where &lt;<I CLASS="VARNAME">x</I>> is ordinal number of the Form in the Workflow Map, &lt;<I CLASS="VARNAME">y</I>> is 4, and &lt;<I CLASS="VARNAME">z</I>> identifies the Form. For example, if a Workflow Map includes three Forms, the valid values for z are 1, 2, and 3. Also, if a Workflow Map contains one Form and that Form contains a field named “Author”, the data replacement tag is <TT CLASS="LITERAL">&lt;DataType_1_4_1_Author /&gt;.</TT></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

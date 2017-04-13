@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESCLS100500-H-AGD-FR">
+<META name="PiXprocLocator" content="classification">
+<title>Exportation et importation de taxonomies de classement</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/webattribute/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'c-expimpclass-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administration de Classements';
+          header.title2 = 'Exportation et importation de taxonomies de classement';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1446"></A>Vous exportez et importez des <I CLASS="emphasis">taxonomies de classement</I> lorsque vous souhaitez copier une hiérarchie de classements (arbres de classement ou classements et tous les classements qu'ils contiennent) d'une installation Content Server vers une autre, ou au sein d'une même installation Content Server. Supposons, par exemple, que vous ayez défini un Arbre de classement nommé <I CLASS="emphasis">Documents de marketing</I>, contenant de nombreux classements, et que vous souhaitiez créer une hiérarchie de classements identique sur une autre installation Content Server ; il vous suffit d'exporter et d'importer l'Arbre de classement.</P>
+<P><A NAME="TMPID1452"></A>Vous pouvez procéder de la sorte pour un espace de travail Classement dans sa totalité, un Arbre de classement ou un classement. Lorsque vous exportez un espace de travail Classement, tous les Arbre de classement et classements contenus dans cet espace de travail sont exportés. Lorsque vous exportez un classement, celui-ci devient un Arbre de classement. Supposons, par exemple, que vous ayez un Arbre de classement nommé <I CLASS="emphasis">Développement produits</I>, dans lequel figure un classement nommé <I CLASS="emphasis">Plannings de projet</I>. Vous pouvez exporter le classement <I CLASS="emphasis">Plannings de projet</I> et l'importer dans une autre installation Content Server. Dans ce cas, le classement <I CLASS="emphasis">Plannings de projet</I> est importé sous forme d'Arbre de classement.</P>
+<P><A NAME="TMPID1458"></A>Si vous souhaitez élaborer une hiérarchie de classements, sans avoir à ajouter chaque classement à l'espace de travail Classement individuellement, vous pouvez créer un fichier XML définissant une hiérarchie de classements (une <I CLASS="emphasis">taxonomie de classement XML</I>), puis l'importer. Pour obtenir plus d'informations sur la création d'une taxonomie XML, reportez-vous à la rubrique <span><A HREF="c-constxml-bg.htm">Construction et importation d'une taxonomie XML</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF43"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1462"></A><B CLASS="note">Note : </B><BR>Si vous n'avez pas activé la fonctionnalité Classement intelligent, lorsque vous importez des arbres de classement, le type de gestion est défini sur « manuel » et tous les profils associés sont désactivés. Pour plus d'informations sur l'activation de Classement intelligent, reportez-vous à la rubrique <span><A HREF="c-enableic-bg.htm">Activation de la fonctionnalité de Classement intelligent</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF44">Exportation de taxonomies de classement</A></P>
+<P><A NAME="TMPID1465"></A>Lorsque vous exportez un espace de travail Classement ou une partie de son contenu, Content Server écrit les informations dans un fichier XML. Le fichier XML contient toutes les informations définissant les Arbre de classement et les classements, ainsi que la hiérarchie de classements qu'ils peuvent contenir (par exemple, les noms et les types de gestion de chaque classement). Le système stocke ensuite ce fichier XML dans le répertoire temp du répertoire où est installée l'application Content Server (par exemple, &lt;<I CLASS="varname">content_server_home</I>>/temp), puis il le transfère vers l'espace de travail de l'utilisateur qui effectue l'exportation.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF45"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1470"></A><B CLASS="note">Note : </B><BR>Selon les activités en cours sur le système, il est possible que le fichier XML contenant les Arbre de classement et les classements exportés n'apparaisse pas immédiatement dans Mon espace de travail.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF46">Importation de taxonomies de classement</A></P>
+<P><A NAME="TMPID1472"></A>Lorsque vous importez une taxonomie de classement dans l'espace de travail Classement, Content Server lit dans le fichier XML correspondant les informations qui définissent le ou les Arbre de classement et la hiérarchie de classements qu'ils contiennent. Lorsque vous lancez le processus d'importation, le système construit cette hiérarchie de classements dans l'espace de travail Classement.</P>
+<P><A NAME="TMPID1474"></A>Lorsque vous importez une taxonomie de classement, vous pouvez également appliquer des catégories. Les catégories s'appliquent à tous les nouveaux Arbre de classement et aux classements créés lors du processus d'importation. Par défaut, lorsque vous spécifiez les paramètres d'importation, toutes les catégories appliquées au volume de classements apparaissent dans le champ <B CLASS="guilabel">Catégories</B>.</P>
+<P><A NAME="TMPID1476"></A>Vous pouvez supprimer ces catégories, en ajouter de nouvelles ou modifier les catégories à appliquer aux classements importés. Pour plus d'informations sur les catégories, reportez-vous à la rubrique <span><XPROC NAME="ExtXrefStart" HREF="lleswat-h-ugd.catatt-overview-so" FMT="" NO1ST><A  HREF="../../../help/_fr/webattribute/catatt-overview-so.htm">Utilisation des catégories et des attributs</A><XPROC NAME="ExtXrefEnd" HREF="lleswat-h-ugd.catatt-overview-so" FMT=""></span>.</P>
+<P><A NAME="TMPID1478"></A>Une fois l'Arbre de classement importé, activez ses classements assistés et automatiques en régénérant le fichier de requête de classement. Pour en savoir plus, voir <span><A HREF="c-maint-bg.htm">Maintenance des classements</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF47"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1481"></A><B CLASS="note">Note : </B><BR>Selon les activités en cours sur le système, il est possible que l'Arbre de classement et les classements importés n'apparaissent pas immédiatement dans l'espace de travail Classement. Lorsque vous importez un Arbre de classement comportant un grand nombre de classements (nombre supérieur à 1 000) et que l'importation échoue, vous pouvez éliminer l'Arbre de classement. Ce processus d'élimination, tout comme la dissociation, permet de supprimer tous les classements qui ont été importés, mais est plus rapide. Pour en savoir plus, voir <span><A HREF="c-purgelgclass-p.htm">Pour éliminer des classements</A></span>. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="c-expclass-p.htm" revision="">Pour exporter une taxonomie de classement</A></p></li>
+<li><p><A  HREF="c-impclass-p.htm" revision="">Pour importer une taxonomie de classement</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

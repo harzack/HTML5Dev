@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Utilisation d'une catégorie Content Server comme source de données</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-datasource-cscategory.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'Utilisation d\'une catégorie Content Server comme source de données';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID13958"></A>Un WebReport peut utiliser une catégorie Content Server comme source de données. Un utilisateur peut sélectionner une ou plusieurs catégories Content Server, puis un ou plusieurs attributs dans chaque catégorie. Le WebReport va traiter une requête SQL par rapport à la base de données <TT CLASS="literal">DTREE</TT> Content Server et aux tables <TT CLASS="literal">LLATTRDATA</TT>, puis renvoyer un enregistrement pour chaque élémentContent Server avec les catégories sélectionnées appliquées. </P>
+<P><A NAME="TMPID13965"></A>Chaque enregistrement renvoyé à partir de la requête contiendra les valeurs suivantes :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN13240"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Champ</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Descriptions</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DataID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le DataID de l'objet tel que stocké dans la table de base de données <TT CLASS="literal">DTREE</TT> Content Server.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ParentID</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le ParentID de l'objet tel que stocké dans la table de base de données <TT CLASS="literal">DTREE</TT> Content Server.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Sous-type :</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le sous-type de l'objet tel que stocké dans la table de base de données <TT CLASS="literal">DTREE</TT> Content Server.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Nom</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Le nom de l'objet tel que stocké dans la table de base de données <TT CLASS="literal">DTREE</TT> Content Server.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Valeurs d'attributs</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">La valeur actuelle de chaque attribut sélectionné tel que stockée dans la table <TT CLASS="literal">LLAttrData</TT> Content Server. L'en-tête de la colonne sera le nom de l'attribut système. Par exemple, le nom d'origine de l'attribut avec les espaces remplacées par des traits de soulignement.</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-DATASOURCE-FEATCAT">Fonctionnalités d'une catégorie comme source de données</A></P>
+<P class="before-ul"><A NAME="TMPID14002"></A>Une fois la source de données <B CLASS="highlight">Catégorie Content Server</B> sélectionnée, les fonctionnalités suivantes sont disponibles :</P><A NAME="AEN13278"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13279"></A><A NAME="TMPID14007"></A>Utilisation du bouton <B CLASS="guilabel">Parcourir Content Server</B> pour sélectionner une catégorie Content Server. Après la sélection d'une catégorie, la page est actualisée et affiche tous les attributs de la catégorie.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13284"></A><A NAME="TMPID14012"></A><B CLASS="highlight">Sélection d'attributs</B> : sélectionnez la case à cocher en regard d'un attribut spécifique pour inclure l'attribut dans les résultats de la requête. Après la sélection d'un attribut, le menu Paramètres s'affiche pour cet attribut. Si un attribut est désélectionné, le menu Paramètres disparaît pour cet attribut.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13287"></A><A NAME="TMPID14015"></A>Utilisation des boutons <B CLASS="guilabel">Cocher tout</B> et <B CLASS="guilabel">Décocher tout</B> pour cocher ou décocher toutes les cases à cocher de la catégorie spécifiée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13291"></A><A NAME="TMPID14019"></A>Utilisation de l'icône <B CLASS="guilabel">Supprimer la catégorie</B>, <IMG SRC="image027.gif"> , pour supprimer une catégorie spécifiée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13295"></A><A NAME="TMPID14023"></A>Utilisation de l'icône <B CLASS="guilabel">Ajouter une catégorie</B>, <IMG SRC="image028.gif"> , pour ajouter une autre catégorie. L'icône <B CLASS="guilabel">Ajouter une catégorie</B> sera uniquement affichée à la fin de la liste actuelle de catégories. L'administrareur Content Server peut configurer le nombre de catégories pouvant être incluses dans la liste Source de données, ainsi l'icône Ajouter une catégorie ne s'affiche pas une fois cette limite atteinte.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13301"></A><A NAME="TMPID14029"></A><B CLASS="guilabel">Opérateur de jointure Et/Ou de la catégorie</B> : pour chaque nouvelle catégorie, sélectionnez le bouton radio Et/Ou pour spécifier si les catégories seront jointes dans la requête par une <B CLASS="guilabel">jointure interne</B> (Et) ou par une <B CLASS="guilabel">jointure externe gauche</B> (Ou).</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-DATASOURCE-PARMCAT">Utilisation des paramètres avec une catégorie comme source de données</A></P>
+<P><A NAME="TMPID14035"></A>L'éditeur de WebReport peut définir une catégorie/des attributs comme paramètres WebReport et spécifier un opérateur de requête à partir de la page <B CLASS="guilabel">Source de données </B> WebReports. Quand une catégorie/un attribut a été coché sur la page <B CLASS="guilabel">Source de données</B>, une nouvelle icône <B CLASS="highlight">menu Ajouter un paramètre</B>, <IMG SRC="image029.gif"> ,s'affiche. A partir de celle-ci, un opérateur de requête peut être sélectionné. Quand un opérateur de requête a été sélectionné dans le menu Paramètres, l'attribut est alors disponible via le processus « Extraction de paramètre » dans l'onglet <B CLASS="guilabel">Paramètres</B>. </P>
+<P><A NAME="TMPID14043"></A>Quand un attribut a un paramètre opérateur de requête sélectionné, l'icône <B CLASS="highlight">menu Editer un paramètre</B>, <IMG SRC="image030.gif"> , s'affiche et une coche, <IMG SRC="image031.gif"> , s'affiche en regard de l'opérateur de requête sélectionné. </P>
+<P class="before-ul"><A NAME="TMPID14047"></A>Si un attribut est actuellement utilisé comme paramètre et si l'opérateur de requête est modifié sur la page <B CLASS="guilabel">Source de données</B>, la requête est désormais basée sur l'opérateur de requête nouvellement sélectionné. Une option proposera au concepteur du WebReport de mettre à jour le texte affiché sur la page <B CLASS="guilabel">Paramètres</B> ; quel que soit le texte affiché sur la page <B CLASS="guilabel">Paramètres</B>, la requête SQL traitée utilisera toujours l'opérateur de requête tel que sélectionné dans le menu Paramètres sur la page <B CLASS="guilabel">Source de données</B>. Pour désactiver un opérateur de requête sélectionné dans le menu Paramètres :</P><A NAME="AEN13324"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN13325"></A><A NAME="TMPID14054"></A>sélectionnez un autre opérateur de requête à partir du même menu pour définir un nouvel opérateur de requête,</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN13327"></A><A NAME="TMPID14056"></A>ou sélectionnez l'opérateur de requête existant pour reconfigurer l'opérateur de requête comme indéfini.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-DATASOURCE-CATDATACT">Actions source de données catégorie</A></P>
+<P><A NAME="TMPID14059"></A>Trois actions supplémentaires sont disponibles pour l'éditeur de WebReport quand une catégorie Content Server est la source de données sélectionnée.</P>
+<A NAME="AEN13332"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13333"></A><A NAME="TMPID14063"></A>Sélectionnez le bouton <B CLASS="guilabel">Afficher SQL</B> pour voir le SQL généré pour les catégories, les attributs et les paramètres définis actuellement sélectionnés.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF20"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID14066"></A><B CLASS="note">Note : </B><BR>Seul un éditeur WebReports avec des privilèges <I CLASS="emphasis">Modification</I> peut afficher le SQL.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13340"></A><A NAME="TMPID14070"></A>Sélectionnez la case à cocher <B CLASS="guilabel">Filtrer les résultats par autorisations utilisateur</B> pour vous assurer que les résultats de la requête seront limités en fonction des autorisations des utilisateurs qui exécutent le WebReport. L'utilisateur doit avoir l'autorisation <I CLASS="emphasis">Voir</I> pour voir un élément spécifique.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF21"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID14074"></A><B CLASS="note">Note : </B><BR>La valeur par défaut pour cette fonctionnalité est <I CLASS="emphasis">COCHEE</I> ; seul un utilisateur avec des privilèges Administrateur Content Server peut modifier cette fonctionnalité.</P>
+<P><A NAME="TMPID14077"></A>Le filtre des autorisations est appliqué aux résultats de requête comme processus séparé, une fois la requête de base de données terminée.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13349"></A><A NAME="TMPID14079"></A>Définissez le <B CLASS="guilabel">Nombre maximal de résultats</B> sur une valeur de nombre entier indiquant le nombre maximal de résultats que la requête de base de données doit renvoyer. Notez que le nombre d'éléments affichés peut être inférieur au <B CLASS="guilabel">Nombre maximal de résultats</B> quand le filtre des autorisations est appliqué après le renvoi de la requête. L'éditeur WebReports ne peut sélectionner une valeur supérieure à celle définie par l'administrateur Content Server.</P></LI></OL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

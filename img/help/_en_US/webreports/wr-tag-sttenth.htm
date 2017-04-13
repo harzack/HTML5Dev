@@ -1,0 +1,779 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>LENGTH, LIST, LLURL, LOWER, LPAD</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-sttenth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sub-Tags';
+          header.title2 = 'LENGTH, LIST, LLURL, LOWER, LPAD';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID8232"></A>This section details the sub-tags: <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLENGTH">LENGTH</A></span>, <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>, <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLLURL">LLURL</A></span>, <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLOWER">LOWER</A></span> and  <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLPAD">LPAD</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STLENGTH">LENGTH</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLENGTH-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGLENGTH"></A><B CLASS="highlight">LENGTH</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLENGTH-DESC">Description</A></P>
+<P><A NAME="TMPID8246"></A>Returns the length of the data returned in the main tag. For example, if the data resolved by the main tag was 10 characters long, using this sub-tag would cause the characters 10 to be returned instead. This sub-tag can be useful for determining data validity, greater than a minimum number of characters, and HTML SIZE parameters.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLENGTH-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID8249"></A>For more information, see <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STAVERAGE">AVERAGE</A></span>, <span><A HREF="wr-tag-steleventh.htm#WR-TAG-STMAX">MAX</A></span>, <span><A HREF="wr-tag-steleventh.htm#WR-TAG-STMIN">MIN</A></span>, and <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSUM">SUM</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STLIST">LIST</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLIST-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGLIST"></A><B CLASS="highlight">LIST:&lt;<I CLASS="varname">index</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLIST-DESC">Description</A></P>
+<P><A NAME="TMPID8263"></A>For a Content Server &lt;<I CLASS="varname">LIST</I>> data type the specified index can be retrieved. Index starts at 1.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLIST-EXAMP">Example</A></P>
+<P><A NAME="TMPID8268"></A>For example, <TT CLASS="literal">[LL_REPTAG_1 LIST:3&gt; /]</TT> would return the third item in a list.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLIST-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID8272"></A>See also: <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECORD">RECORD</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECARRAY">RECARRAY</A></span>, and <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOLIST">TOLIST</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STLLURL">LLURL</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLLURL-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGLLURL"></A><B CLASS="highlight">LLURL:&lt;<I CLASS="varname">parms</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLLURL-DESC">Description</A></P>
+<P><A NAME="TMPID8286"></A>This sub-tag allows URLs to be easily built and/or snippets of Content Server functionality to be easily inserted. For example, if your report needs to contain an image representing the node type, the following could be used: <TT CLASS="literal">[LL_REPTAG=DATAID LLURL:GIF /]</TT> resulting in <IMG  src="../../../webdoc/appword.gif">  if <TT CLASS="literal">DATAID</TT> was a Word document. For this sub-tag to function correctly, the data returned from the main tag must be a Content Server object ID, for example, the <TT CLASS="literal">DATAID</TT> column of the <TT CLASS="literal">DTREE</TT> table.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF24"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID8295"></A><B CLASS="note">Note: </B><BR>For URLs, the default behavior is that a URL will be built without verifying that a valid <TT CLASS="literal">DataID</TT> has been provided, and without verifying if the user running the WebReport has sufficient permissions to execute the URL. To force checking of a valid <TT CLASS="literal">DataID</TT>, and that the user has at least <I CLASS="emphasis">See Contents</I> permission, add <TT CLASS="literal">:PERMCHECK</TT> to the end of the <TT CLASS="literal">LLURL</TT> syntax. For example, <TT CLASS="literal">LLURL:BROWSE:PERMCHECK</TT>. For more specific permission levels, the <TT CLASS="literal">PERMCHECK</TT> sub-tag can be used with the <TT CLASS="literal">[LL_WEBREPORTS_IF ... /]</TT> statement.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="STLLURL-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN7449"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Modifier</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Example Output</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:ADDITEM</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Creates an <B CLASS="guilabel">Add Item</B> menu similar to that found in the Content Server Header relating to the specified node as supplied to this sub-tag. Used by itself will create the full menu, while using the three possible parameters: <TT CLASS="literal">FOLDER</TT>, <TT CLASS="literal">DOCUMENT</TT> or <TT CLASS="literal">ITEMMENU</TT> will create the individual parts of the <B CLASS="guilabel">Add Item</B> menu. Only one parameter may be used at a time, if used at all. The created menu is subject to user permissions, and only allowed items will be created.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Example using the <TT CLASS="literal">DOCUMENT</TT> parameter: <IMG SRC="image042.png"></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Example of using the <TT CLASS="literal">FOLDER</TT> parameter: <IMG SRC="image043.png"></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Example of using the <TT CLASS="literal">ITEMMENU</TT> parameter: <IMG SRC="image044.png"></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Example of not using any parameters: <IMG SRC="image045.png"></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:ADDITEM:ITEMMENU:RAW</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns an Oscript representation of the <B CLASS="guilabel">Add Item</B> menu for a specific container.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">See <span><A HREF="wr-requestds-info.htm">Requests as Data Sources</A></span> for how to use the output of this and related tags as the data source to another WebReport.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">See the <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span> sub-tag for how to convert this into a data structure that can be interpreted by JavaScript in the client.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">See related tags <span><A HREF="wr-tag-stthird.htm#CATRAWST">CAT:RAW</A></span> and <span><A HREF="wr-tag-sttenth.htm#LLURLFUNCRAW">LLURL:FUNCTIONMENU:RAW</A></span>.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">V{&lt;<I CLASS="varname">'name','url','img'</I>>&lt;<I CLASS="varname">'ActiveView','/livelink/livelink.exe?func=ll&amp;objType=30309&amp;objAction=create&amp;parentId=2000&amp;nextURL=...','/livelinksupport/activeview/activeview.gif'</I>> ...</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:BROWSE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a browse URL for usage within a user defined anchor tag.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=ll&amp;objId=2000&amp;objAction=browse</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:COMMENTS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Inserts the HTML for a Comments image if the Content Server Pulse module is installed, and the node has Comments entered against it.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:DEFAULTHREF</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a default behavior URL, that includes the URL prefix and <TT CLASS="literal">nextURL</TT> for object types that have the <TT CLASS="literal">includeNextURL</TT> feature set to true.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">For example, <TT CLASS="literal">nextURL</TT> will be included if the object type is a LiveReport, WebReport or Workflow Map, but not if the object type is a document, folder or URL.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=NODEID LLURL:DEFAULTHREF /]</TT>, where the node is a document: <TT CLASS="filename">/Livelink/livelink.exe?func=ll&amp;objaction=overview&amp;objid=896068</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=NODEID LLURL:DEFAULTHREF /]</TT>, where the node is a LiveReport: <TT CLASS="filename">/Livelink/livelink.exe?func=ll&amp;objId=896065&amp;objAction=RunReport&amp;nexturl=%2FLivelink%2Flivelink%2Eexe%3Ffunc%3Dll%26objId%3D896056%26objAction%3DRunReport%26nexturl%3D%252FLivelink%252Flivelink%252Eexe%253Ffunc%253Dll%2526objId%253D896054%2526objAction%253Dbrowse%2526sort%253D%252Ddate%2526viewType%253D1</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:DEFAULTLINK</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a default behavior URL for regular object types, non-workflow. Does not return the URL prefix or nextURL.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=NODEID LLURL:DEFAULTLINK /]</TT>, where the node is a document: <TT CLASS="literal">?func=doc.fetch&amp;nodeId=19681</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:DOWNLOAD</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a download URL.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=ll&amp;objId=19683&amp;objAction=download</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:DROPDOWNLIST</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Inserts a fully functional drop-down menu showing the location hierarchy back to the Enterprise. Each value in the drop-down is hyper-linked allowing users to click anywhere in the hierarchy.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Conflicts can occur when <TT CLASS="literal">LLURL:DROPDOWNLIST</TT> is used more than once in a WebReport. A third parameter can be specified to uniquely identify the instance of the drop-down list within the page and to prevent conflicts. For example:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_'2000' LLURL:DROPDOWNLIST:inst1 /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_'2001' LLURL:DROPDOWNLIST:inst2 /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:FEATURED</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the HTML for the featured items pane. The main tag should be the <TT CLASS="literal">DATAID</TT> of a folder.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><IMG SRC="image046.png"></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:FETCH</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a fetch URL.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Dynamically-generated depending on the node subtype. Example: <TT CLASS="literal">?func=doc.fetch&amp;nodeId=19681</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:FORMADD</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Creates the URL to add a form. This <TT CLASS="literal">LLURL</TT> variation can only be used when the associated tag is a valid Form dataid. It does not work with workflow-related forms.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=ll&amp;objid=4735&amp;objAction=Edit</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:FORMDELETE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Creates the URL to delete a form record from the associated SQL table. This <TT CLASS="literal">LLURL</TT> variation can only be used when the data source includes the columns of data from an SQL table that has been created by a form template. For example, the <TT CLASS="literal">SEQ</TT> and <TT CLASS="literal">DATAID</TT> columns must be in the data source. It can only be used with a row section data tag or an <span><A HREF="wr-tag-cdfirst.htm#REPORTTAGDATA">[LL_REPTAG_@DATA[r]_column /]</A></span>... tag.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The <TT CLASS="literal">&amp;nexturl=</TT> parameter is required when you use <TT CLASS="literal">LLURL:FORMEDIT</TT> to edit a form record. When a record is updated, the page will redirect to the location specified in the <TT CLASS="literal">&amp;nexturl=</TT> parameter, and prevent the user from seeing the Content Server error: Argument “NextURL” is required.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">&#13;?func=ll&amp;objid=4735&amp;objAction=DeleteStored&amp;LL_Seq=27&amp;LL_VisualSeq=27</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:FORMEDIT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Creates the URL to edit a form record from the associated SQL table. This <TT CLASS="literal">LLURL</TT> variation can only be used when the data source includes the columns of data from an SQL table that has been created by a form template. For example, the <TT CLASS="literal">SEQ</TT> and <TT CLASS="literal">DATAID</TT> columns must be in the data source. It can only be used with a row section data tag or an <span><A HREF="wr-tag-cdfirst.htm#REPORTTAGDATA">[LL_REPTAG_@DATA[r]_column /]</A></span>... tag.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Further details on <TT CLASS="literal">LLURL</TT> and the <TT CLASS="literal">FORMEDIT</TT> option can be found in <span><A HREF="wr-llurlformedit-info.htm">LLURL:FORMEDIT</A></span>.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Workflow Forms Examples (9.7+)</B>:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=VOLUMEID LLURL:FORMEDIT /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=formwf.FormEdit&amp;WorkID=13092&amp;SubWorkID=13092&amp;formid=1&amp;editable=88087218</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=VOLUMEID LLURL:FORMEDIT:FORMID:3:VIEWNAME:adminview5 /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=formwf.FormEdit&amp;WorkID=13252&amp;SubWorkID=13252&amp;formid=3&amp;viewname=adminview5&amp;editable=89949656</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=VOLUMEID LLURL:FORMEDIT:FORMID:1 /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=formwf.FormEdit&amp;WorkID=9634&amp;SubWorkID=9634&amp;formid=1&amp;editable=88250578</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Workflow Forms Examples (9.5-9.6)</B>:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=VOLUMEID LLURL:FORMEDIT /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=formwf.FormEdit&amp;WorkID=13092&amp;SubWorkID=13092&amp;formid=1&amp;editable=true</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=VOLUMEID LLURL:FORMEDIT:FORMID:3:VIEWNAME:adminview5 /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=formwf.FormEdit&amp;WorkID=13252&amp;SubWorkID=13252&amp;formid=3&amp;viewname=adminview5&amp;editable=true</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=VOLUMEID LLURL:FORMEDIT:FORMID:1 /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=formwf.FormEdit&amp;WorkID=9634&amp;SubWorkID=9634&amp;formid=1&amp;editable=true</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Standalone Forms Examples</B>:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=DATAID LLURL:FORMEDIT /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=ll&amp;objId=10082&amp;objAction=EditForm&amp;LL_seq=5</TT></TD></TR></TABLE>&#13;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:FUNCTIONMENU</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Inserts a fully operational function menu for the current node, non-workflow. Conflicts can occur when a function menu is required multiple times in the same page with the same DataID. A third parameter can be specified to uniquely identify the instance of the function menu within the page and to event conflicts. For example:</TD></TR></TABLE> <A NAME="AEN7677"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_'2000' LLURL:FUNCTIONMENU /]
+[LL_REPTAG_'2000' LLURL:FUNCTIONMENU:inst2 /]</PRE
+></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=DATAID LLURL:FUNCTIONMENU /]</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:FUNCTIONMENU:RAW</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the internal Oscript representation of a Content Server function menu. See related tags <span><A HREF="wr-tag-stthird.htm#CATRAWST">CAT:RAW</A></span> and <span><A HREF="wr-tag-sttenth.htm#LLURLADDITRAW">LLURL:ADDITEM:ITEMMENU:RAW</A></span>.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=DATAID LLURL:FUNCTIONMENU:RAW /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">A&lt;1,?,1=A&lt;1,?,'ID'=1,'Name'='Open','Order'='0', 'URL'='/Livelink/livelink.exe?func=ll&amp;objId=2000&amp;objAction=browse'&gt;, 2=A&lt;1,?,'ID'=2,'Name'='Configure','Order'='2'...</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:GIF</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Inserts the complete HTML for the default node image. Supports an optional <TT CLASS="literal">PATH</TT> parameter which returns the path of the image rather than the complete HTML source.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><IMG SRC="image047.png"></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:GIF:LARGE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Optional parameter for <span><A HREF="wr-tag-sttenth.htm#STLLURL-GIF">LLURL:GIF</A></span> that inserts the large Content Server image for the current object. Supports an optional <TT CLASS="literal">PATH</TT> parameter which returns the path of the image rather than the complete HTML source.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><IMG SRC="image048.png"></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:GIF:XLARGE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Optional parameter for <span><A HREF="wr-tag-sttenth.htm#STLLURL-GIF">LLURL:GIF</A></span> that inserts the extra large Content Server image for the current object if its available. This option is only supported from Livelink 9.7. Supports an optional <TT CLASS="literal">PATH</TT> parameter which returns the path of the image rather than the complete HTML source.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:HYPERLINKTRAIL</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Similar to <TT CLASS="literal">DROPDOWNLIST</TT> but this option displays a fully functional hyperlink trail between the Enterprise and the current node.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Enterprise</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">My Folder</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:INFO</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">AUDIT</TT>, <TT CLASS="literal">CATEGORIES</TT>, <TT CLASS="literal">GENERAL</TT>, <TT CLASS="literal">PRESENTATION</TT>, <TT CLASS="literal">REFERENCES</TT>, <TT CLASS="literal">SPECIFIC</TT> and <TT CLASS="literal">VERSIONS</TT> may all be used following the info parameter to provide a URL to the page in question.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">For example, <TT CLASS="literal">[LL_REPTAG=DATAID LLURL:INFO:AUDIT /]</TT> would provide a link to the audit tab of the node. If you wish to refer to a custom tab use the value from the URL when viewing the tab. For example, <TT CLASS="literal">...&amp;objAction=mytab...</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=ll&amp;objId=22128&amp;objAction=audit</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:MODIFIED</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Inserts the HTML for a new or modified image if the node has been modified/added in the last &lt;<I CLASS="varname">x</I>> days.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><IMG SRC="image049.png"></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:OPEN</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns an open URL.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Dynamically-generated depending on the node subtype. Example: <TT CLASS="literal">/81206/config.txt?func=doc.Fetch&amp;nodeid=81206</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:OVERVIEW</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns an overview URL for a document.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=ll&amp;objId=123456&amp;objAction=overview</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:PROMOTED</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a set of links for available actions specific to the type of object specified by a node id. These links are similar to those found on Content Server browse pages.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Edit Reportview</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Export</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Download Reportview</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:RENDITION:&lt;<I CLASS="varname">Type</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the GIF, URL or FUNCTIONMENU associated with a rendition. If the rendition type is variable, for example, some nodes have PDF renditions and others have TIFF renditions, the DEFAULT operator can be inserted in it's place to establish which rendition to use based on the priority defined in the renditions administration section.<TT CLASS="literal">USENODE</TT> is an optional parameter supported with all the variants which allows the <TT CLASS="literal">URL</TT>, <TT CLASS="literal">FUCTIONMENU</TT> or <TT CLASS="literal">GIF</TT> from the node to be used if the specified rendition does not exist.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Displaying a GIF image for a rendition of type PDF: <TT CLASS="literal">[LL_REPTAG=DATAID LLURL:RENDITION:PDF:GIF /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Inserting a function menu associated with a rendition of type PDF: <TT CLASS="literal">[LL_REPTAG=DATAID LLURL:RENDITION:PDF:FUNCTIONMENU /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Creating a URL associated with a rendition of type TIFF: <TT CLASS="literal">[LL_REPTAG=DATAID LLURL:RENDITION:TIFF:DEFAULTLINK /]</TT> <TT CLASS="literal">?func=doc.fetch&amp;nodeid=95550&amp;vernum=1&amp;verType=TIFF</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Creating a URL associated with the highest priority rendition (PDF here): <TT CLASS="literal">[LL_REPTAG=DATAID LLURL:RENDITION:DEFAULT:DEFAULTLINK /]</TT> <TT CLASS="literal">?func=doc.fetch&amp;nodeid=95550&amp;vernum=1&amp;verType=PDF</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Creating a URL associated with a rendition of type JPG that doesn't exist (USENODE for standard URL): <TT CLASS="literal">[LL_REPTAG=DATAID LLURL:RENDITION:JPG:DEFAULTLINK:USENODE /]</TT> <TT CLASS="literal">?func=doc.fetch&amp;nodeid=97850</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:REPORT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a report URL.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Examples of using the REPORT parameter</B>:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=DATAID LLURL:REPORT /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=ll&amp;objId=20073&amp;objAction=RunReport</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">&lt;<I CLASS="varname">a href="[LL_REPTAG=DATAID LLURL:REPORT /]&amp;inputLabel1=[LL_REPTAG=DATAID /]"</I>> Run Report&lt;<I CLASS="varname">/a</I>></TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This will output a hyperlink to the WebReport and include a parameter value.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:SEARCHSIDEBAR</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the HTML required to build the sidebar/facet panel for a set of Search Results. If facet data cannot be found, a blank string is returned. The value in the Data Tag is ignored.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The reportview/template requires a series of nested tables, DIV elements, and support files to replicate the standard Content Server Search Results screen.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Example using the SEARCHSIDEBAR parameter</B>: note that additional Javascript libraries must also be loaded into the page:</TD></TR></TABLE> <A NAME="AEN7846"></A>
+<PRE 
+CLASS="screen"
+>&lt;table&gt;
+  &lt;tr&gt;
+    [LL_REPTAG_'12345' LLURL:SEARCHSIDEBAR /]  [//Inserts a TD containing the Search Sidebar HTML
+    &lt;td&gt;(...main table contents...)&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</PRE
+></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">LLURL:SHORTLINK</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a URL similar to DEFAULTLINK but in the 9.5+ format. Unlike sub-tags such as <span><A HREF="wr-tag-sttenth.htm#ST-LLURLOPEN">LLURL:OPEN</A></span>, this option must be used in conjunction with <TT CLASS="literal">[LL_REPTAG_URLPREFIX /]</TT>.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">/open/24603</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:SIDEBAR</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the HTML required to build out the sidebar/facet browser for the node supplied in the data tag. For best results, this subtag should only be used with DataIDs of container-type objects. Note that use of this subtag with non-container type IDs may result in certain features of the Sidebar not working properly due to the nature of the Sidebar expectations.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Only supported in Content Server 10.0.3 and higher.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The reportview/template requires a series of nested tables and DIV elements according to the standard Content Server browse.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">More information about <TT CLASS="literal">LLURL</TT> and the <TT CLASS="literal">SIDEBAR</TT> option can be found at <span><A HREF="wr-llurlsidebar-info.htm">LLURL:SIDEBAR</A></span>.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Example using the SIDEBAR parameter</B>: <TT CLASS="literal">[LL_REPTAG_'12345' LLURL:SIDEBAR /]   [// where '12345' is the DATAID of a folder</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:SIDEBAR:RAW</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the facet data for a container node in a raw Oscript RecArray.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Only supported in Content Server 10.0.3 and higher.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Can be used with <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span> to convert it to a <TT CLASS="literal">JSON</TT> object for further manipulation.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Example using the SIDEBAR:RAW parameter</B>: <TT CLASS="literal">[LL_REPTAG_'12345' LLURL:SIDEBAR:RAW /]   [// where '12345' is the DATAID of a folder</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:SIDEBAR:FORCEALL</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Forces the all the sidebar panels to load for the given container ID, regardless of whether they are disabled in the Admin pages. Useful when using the sidebar in a WebReport; this syntax allows you to load the Content Filter for a given container inside a WebReport - even though WebReports aren't containers.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Example using the SIDEBAR:FORCEALL parameter</B>: <TT CLASS="literal">[LL_REPTAG_'12345' LLURL:SIDEBAR:FORCEALL /]   [// where '12345' is the DATAID of a folder</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:SHORTLINK</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a URL similar to <TT CLASS="literal">DEFAULTLINK</TT> but in the 9.5+ format. Unlike options such as <TT CLASS="literal">LLURL:OPEN</TT>, this option must be used in conjunction with <TT CLASS="literal">[LL_REPTAG_URLPREFIX /]</TT>.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">/open/24603</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:SUBTYPEFILTER</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns all of the necessary code to display the subtype filter list as seen in the standard Livelink 9.7.1 browse view. This is currently only supported on Livelink 9.7.1. Given the dataid of a folder, this feature will provide the subtypes that are unique within that folder. In addition, a comma-separated list of subtypes, for example, <TT CLASS="literal">{0,144,30303,...}</TT>, can be specified in the main tag to indicate the subtypes that should appear in the filter list. The code generated by this sub-tag will only work if the Content Server <TT CLASS="filename">browsecorermenu.js</TT> file has been included. This can be done using <TT CLASS="literal">[LL_WEBREPORT_JSLIBS COREMENU /]</TT> to include the correct library.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">For Content Server 10 and greater please use the <TT CLASS="literal">BROWSE</TT> library selector instead, as the <TT CLASS="literal">COREMENU</TT> library selector is obsolete.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Examples using the SUBTYPEFILTER parameter</B>: <IMG SRC="image050.png"></TD></TR></TABLE>&#13;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:UPALEVEL</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Inserts the HTML for a fully functional “browse for parent” image &amp; link.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><IMG SRC="image051.png"></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:VIEW</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a view URL.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=doc.View&amp;nodeId=24603</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:WEBDAV:LONG</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a WebDAV URL to access the Content Server item through a client tool such as Microsoft WebFolders. This URL is in the long format and can be observed from Properties &gt; WebDAV on the function menu.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">http://&lt;server&gt;/livelinkdav/enterprise/Testing/Test%20Case%20Five/</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:WEBDAV:NAME</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a WebDAV URL Name to access the Content Server item through a client tool such as Microsoft WebFolders. This value can be set from Properties &gt; WebDAV on the function menu.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">http://&lt;server&gt;/livelinkdav/nodes/1365253/myname</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:WEBDAV:SHORT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a WebDAV URL to access the Content Server item through a client tool such as Microsoft WebFolders. This URL is in the short format and can be observed from Properties &gt; WebDAV on the function menu.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">http://&lt;server&gt;/livelinkdav/nodes/898753/</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:WFDEFAULTLINK</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Builds the link to open a workflow if a subworkid is returned from the main tag. Supports an optional parameter where the user can specify which tab to open on the Workflow page. Supported parameters are: <TT CLASS="literal">GENERAL</TT>, <TT CLASS="literal">STEP</TT>, <TT CLASS="literal">MAP</TT>, <TT CLASS="literal">MANAGE</TT>, <TT CLASS="literal">AUDIT</TT>, <TT CLASS="literal">ATTACHMENTS</TT>, <TT CLASS="literal">ATTRIBUTES</TT>, <TT CLASS="literal">COMMENTS</TT>, <TT CLASS="literal">FORMS</TT>, <TT CLASS="literal">WEBREPORTS</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Creating a link to a workflow</B>: <TT CLASS="literal">[LL_REPTAG=SUBWORKID LLURL:WFDEFAULTLINK /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=work.statusheader&amp;PaneIndex=1&amp;workid=73951&amp;subworkid=73951</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Creating a link to a workflow opening at the comments pane</B>: <TT CLASS="literal">[LL_REPTAG=SUBWORKID LLURL:WFDEFAULTLINK:COMMENTS /]</TT></TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">?func=work.statusheader&amp;PaneIndex=7&amp;workid=73951&amp;subworkid=73951</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">LLURL:WFFUNCTIONMENU</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Inserts a workflow function menu. Requires that the main tag returns a subworkid.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=SUBWORKID LLURL:WFFUNCTIONMENU /]</TT></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLLURL-EXAMP">Example</A></P>
+<P><A NAME="TMPID8875"></A>Generally speaking this sub-tag can be broken down into two types of output. One group that returns part of a URL or link which can be used within your own HTML code, examples of this include <span><A HREF="wr-tag-sttenth.htm#LLURLBROWSE">LLURL:BROWSE</A></span> and <span><A HREF="wr-tag-sttenth.htm#LLURLDEFAULTLINK">LLURL:DEFAULTLINK</A></span>. In this situation the sub-tag would usually be used in conjunction with <span><A HREF="wr-tag-cdfifteenth.htm#WR-TAG-CDURLPREFIX">URLPREFIX</A></span>. Example of building an HTML anchor tag:</P><A NAME="AEN8020"></A>
+<PRE 
+CLASS="screen"
+>&lt;a href=      "[LL_REPTAG_URLPREFIX /][LL_REPTAG=DATAID LLURL:BROWSE /]"&gt;my browse link&lt;/a&gt;</PRE
+>
+<P><A NAME="TMPID8880"></A>Which, following execution should resolve to something like:</P><A NAME="AEN8022"></A>
+<PRE 
+CLASS="screen"
+>&lt;a href= "http://localhost/ll9.5sp1/livelink.exe?func=ll&amp;objId=41680&amp;objAction=browse&amp;sort=name"&gt; my browse link&lt;/a&gt;</PRE
+>
+<P><A NAME="TMPID8882"></A>The second group insert complete images or links as they would appear in Content Server. Examples of this second group include <span><A HREF="wr-tag-sttenth.htm#LLURLFUNCMENU">LLURL:FUNCTIONMENU</A></span>, <span><A HREF="wr-tag-sttenth.htm#LLURLDROPDOWN">LLURL:DROPDOWNLIST</A></span>, and <span><A HREF="wr-tag-sttenth.htm#STLLURL-GIF">LLURL:GIF</A></span>. A function menu might be added with the following syntax: <TT CLASS="literal">[LL_REPTAG=DATAID LLURL:FUNCTIONMENU /]</TT> and if viewed in a WebReport the output of this tag would simply appear as a fully operational function menu <TT CLASS="literal">( [Functions] )</TT>. However, in order for the menu to operate WebReports inserts something similar to the following:</P><A NAME="AEN8030"></A>
+<PRE 
+CLASS="screen"
+>&lt;a href="#" onclick="javascript:showFunctionMenu2(document.location.search.slice(document.location.search.indexOf('&amp;nexturl')),41842,event);return false;"&gt;&lt;img src="/img_main/actions.gif" id="x41842" border="0" title="Functions" name="x41842"&gt;&lt;/a&gt;
+&lt;div id="z41842" style="visibility:hidden; position: absolute; min-width:1px; text-align: left; background-color: #eeeeee;"&gt;&lt;/div&gt;</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="STLLURL-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID8892"></A>For more information, see <span><A HREF="wr-tag-cdfifteenth.htm#WR-TAG-CDURLPREFIX">URLPREFIX</A></span>, <span><A HREF="wr-tag-stthird.htm#WR-TAG-STCAT">CAT</A></span>, and <span><A HREF="wr-tag-stseventeenth.htm#WR-TAG-SUBTOJSON">TOJSON</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STLOWER">LOWER</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLOWER-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGLOWER"></A><B CLASS="highlight">LOWER</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLOWER-DESC">Description</A></P>
+<P><A NAME="TMPID8904"></A>Sets all text in the field to lower case.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STLPAD">LPAD</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLPAD-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGLPAD"></A><B CLASS="highlight">LPAD:&lt;<I CLASS="varname">pad char</I>>:&lt;<I CLASS="varname">width</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLPAD-DESC">Description</A></P>
+<P><A NAME="TMPID8915"></A>Adds the specified padding character to the left of the existing data to make the result the specified final width.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STLPAD-EXAMP">Example</A></P>
+<P><A NAME="TMPID8918"></A>For example, given a data tag returning the number “123”, <TT CLASS="literal">[LL_REPTAG_1 LPAD:0:6 /]</TT> would return: <TT CLASS="literal">000123</TT></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,573 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Expressions logiques</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-logicexpression-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Informations avancées sur WebReports';
+          header.title2 = 'Expressions logiques';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID15675"></A>WebReports propose plusieurs balises conditionnelles pour un filtrage sélectif de la sortie au moyen d'expressions logiques. Voici quelques exemples de balises prenant en charge des expressions logiques :</P><A NAME="AEN14937"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN14938"></A><A NAME="TMPID15679"></A><TT CLASS="literal">[LL_WEBREPORT_EXITIF (logical expression) /]</TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN14941"></A><A NAME="TMPID15682"></A><TT CLASS="literal">[LL_WEBREPORT_INCLUDEIF (logical expression) /]</TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN14944"></A><A NAME="TMPID15685"></A><TT CLASS="literal">[LL_WEBREPORT_IF (logical expression) /]</TT></P></LI></UL>
+<P class="before-ul"><A NAME="TMPID15687"></A>Les expressions logiques de ces balises sont constituées d'une ou plusieurs clauses logiques séparées par un opérateur booléen logique. Voici quelques exemples d'opérateurs booléens :</P><A NAME="AEN14948"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN14949"></A><A NAME="TMPID15690"></A>ET</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN14951"></A><A NAME="TMPID15692"></A>OR</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN14953"></A><A NAME="TMPID15694"></A>&amp;&amp;</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN14955"></A><A NAME="TMPID15696"></A>||</P></LI></UL>
+<P><A NAME="TMPID15697"></A>Par exemple : <I CLASS="emphasis">clause1</I> AND <I CLASS="emphasis">clause2</I> OR <I CLASS="emphasis">clause3</I></P>
+<P><A NAME="TMPID15701"></A>Chacune de ces clauses est constituée de deux opérandes comparés au moyen de l'un des opérateurs de comparaison. Pour obtenir la liste des opérateurs pris en charge, voir <span><A HREF="wr-logicexpression-info.htm#LOGEXP-T"><NOBR>Tableau&nbsp;1-47</NOBR></A></span>. Par exemple, chaque clause prend la forme : <I CLASS="emphasis">« parmA »</I> == <I CLASS="emphasis">« parmB »</I> </P>
+<P><A NAME="TMPID15707"></A>Dans ces clauses, chaque opérande peut être une valeur constante ou l'une des balises de rapports WebReports prise en charge dans les expressions logiques. Pour le moment, les variables ne sont pas prises en charge dans les expressions <TT CLASS="literal">IF/ENDIF</TT> et la balise <TT CLASS="literal">ACTUALROWS</TT> ne peut pas être utilisée dans une section de lignes. Par exemple : <TT CLASS="literal">"[LL_REPTAG_TOTALROWS /]" &gt;= "10"</TT> </P>
+<P><A NAME="TMPID15712"></A>Sur la base de ces deux concepts, une expression logique à clauses multiples peut présenter l'apparence suivante : <TT CLASS="literal">[LL_WEBREPORT_IF "[LL_REPTAG_TOTALROWS /]" &gt;= "10" AND "[LL_REPTAG_&amp;reptype /]" == "parmB"&gt; /]...[LL_WEBREPORT_ENDIF /]</TT> </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="OPERATORS">Opérateurs</A></P>
+<P><A NAME="TMPID15716"></A>WebReports prend en charge des opérateurs logiques variés, décrits au tableau suivant.</P>
+<DIV title="Liste des opérateurs pris en charge" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="LOGEXP-T"></A><B>Tableau 1-47 : Liste des opérateurs pris en charge</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opérateur</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Signification</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Notes</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">==</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">egal à</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Effectue une comparaison de chaînes.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">!= ou &lt;&gt;</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">différent de</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Effectue une comparaison de chaînes.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">&lt;=</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">inférieur ou égal à</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compare les opérandes de la façon suivante :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15759"></A>Si les deux opérandes peuvent être traités comme des entiers, une <B CLASS="highlight">comparaison d'entiers</B> est effectuée ;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15762"></A>si tel n'est pas le cas, si les deux opérandes peuvent être traités comme des dates, une <B CLASS="highlight">comparaison de dates</B> est effectuée ;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15765"></A>si tel n'est pas le cas, une <B CLASS="highlight">comparaison de chaînes</B> est effectuée.</P></TD></TR></TABLE> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">&gt;=</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">inférieur ou égal à</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compare les opérandes de la façon suivante :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15776"></A>Si les deux opérandes peuvent être traités comme des entiers, une <B CLASS="highlight">comparaison d'entiers</B> est effectuée ;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15779"></A>si tel n'est pas le cas, si les deux opérandes peuvent être traités comme des dates, une <B CLASS="highlight">comparaison de dates</B> est effectuée ;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15782"></A>si tel n'est pas le cas, une <B CLASS="highlight">comparaison de chaînes</B> est effectuée.</P></TD></TR></TABLE> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">&lt;</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">inférieur à</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compare les opérandes de la façon suivante :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15793"></A>Si les deux opérandes peuvent être traités comme des entiers, une <B CLASS="highlight">comparaison d'entiers</B> est effectuée ;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15796"></A>si tel n'est pas le cas, si les deux opérandes peuvent être traités comme des dates, une <B CLASS="highlight">comparaison de dates</B> est effectuée ;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15799"></A>si tel n'est pas le cas, une <B CLASS="highlight">comparaison de chaînes</B> est effectuée.</P></TD></TR></TABLE> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">&gt;</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">supérieur à</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compare les opérandes de la façon suivante :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15810"></A>Si les deux opérandes peuvent être traités comme des entiers, une <B CLASS="highlight">comparaison d'entiers</B> est effectuée ;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15813"></A>si tel n'est pas le cas, si les deux opérandes peuvent être traités comme des dates, une <B CLASS="highlight">comparaison de dates</B> est effectuée ;</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="compact nr1"><A NAME="TMPID15816"></A>si tel n'est pas le cas, une <B CLASS="highlight">comparaison de chaînes</B> est effectuée.</P></TD></TR></TABLE> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">IN</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Le second opérande contient le premier opérande</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compare les opérandes sous forme de chaînes et renvoie <TT CLASS="literal">TRUE</TT> si le premier opérande est contenu au moins une fois dans le second. La comparaison n'est pas sensible à la casse. Si l'un des opérandes est une chaîne vide, <TT CLASS="literal">IN</TT> renvoie la valeur <TT CLASS="literal">TRUE</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">NOTIN</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Le second opérande ne contient pas le premier opérande</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compare les opérandes sous forme de chaînes et renvoie <TT CLASS="literal">FALSE</TT> si le premier opérande est contenu au moins une fois dans le second. La comparaison n'est pas sensible à la casse. Si l'un des opérandes est une chaîne vide, <TT CLASS="literal">NOTIN</TT> renvoie la valeur <TT CLASS="literal">FALSE</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">STARTIN</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Le second opérande commence par le premier opérande</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Compare les opérandes sous forme de chaînes et renvoie <TT CLASS="literal">TRUE</TT> si le premier opérande apparaît au début du second. La comparaison n'est pas sensible à la casse. Si l'un des opérandes est une chaîne vide, <TT CLASS="literal">STARTIN</TT> renvoie la valeur <TT CLASS="literal">TRUE</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">CHILDOF</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Le premier opérande est un nœud enfant du second opérande</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Traite les opérandes comme des nœuds Content Server et renvoie la valeur <TT CLASS="literal">TRUE</TT> si le premier nœud est contenu directement ou indirectement dans le second. Si l'un des opérandes n'est pas un <TT CLASS="literal">ID</TT> d'objet Content Server valide, <TT CLASS="literal">CHILDOF</TT> renvoie la valeur <TT CLASS="literal">FALSE</TT>. Si l'un des opérandes est une chaîne vide, <TT CLASS="literal">CHILDOF</TT> renvoie la valeur <TT CLASS="literal">TRUE</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">NOTCHILDOF</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Le premier opérande n'est pas un nœud enfant du second opérande</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Traite les opérandes comme des nœuds Content Server et renvoie la valeur <TT CLASS="literal">FALSE</TT> si le premier nœud est contenu directement ou indirectement dans le second. Si l'un des opérandes n'est pas un <TT CLASS="literal">ID</TT> d'objet Content Server valide, <TT CLASS="literal">NOTCHILDOF</TT> renvoie la valeur <TT CLASS="literal">TRUE</TT>. Si l'un des opérandes est une chaîne vide, <TT CLASS="literal">NOTCHILDOF</TT> renvoie la valeur <TT CLASS="literal">FALSE</TT>.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="DATECOMPARISON">Traitement des dates</A></P>
+<P class="before-ul"><A NAME="TMPID15885"></A>Pour certains opérateurs :</P><A NAME="AEN15144"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN15145"></A><A NAME="TMPID15888"></A><TT CLASS="literal">&lt;=</TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN15148"></A><A NAME="TMPID15891"></A><TT CLASS="literal">&gt;=</TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN15151"></A><A NAME="TMPID15894"></A><TT CLASS="literal">&lt;</TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN15154"></A><A NAME="TMPID15897"></A><TT CLASS="literal">&gt;</TT></P></LI></UL>
+<P><A NAME="TMPID15899"></A>WebReports tente tout d'abord de convertir les opérandes chaîne en entiers. Si la conversion en entier échoue, WebReports tente de convertir les opérandes en dates. En fait, les opérandes ne peuvent pas avoir un type particulier, car ils sont tous des chaînes brutes ; cependant, les chaînes respectant un format particulier peuvent être interprétées comme si elles étaient d'un type précis, comme un entier ou une date. Seules les chaînes respectant l'un des formats de dates décrits au tableau ci-dessous sont converties en dates et comparées comme des dates. Les formats pris en charge correspondent à ceux des balises et des dates de sources de données WebReports couramment utilisées. </P>
+<P><A NAME="TMPID15903"></A>Tous les exemples suivants sont traités comme des dates par WebReports.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN15163"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Balise</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Format</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Notes</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_DATE /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Mai 17 2008</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date actuelle provenant du serveur Livelink</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_DATETIME /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Jeu Mai 17 11:59:04 2007</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date et heure actuelles provenant du serveur Livelink</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=CreateDate /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Jeu Mai 17 11:59:04 2007</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date et heure provenant de la table DTree. Même format que celui d'une base de données SQL Server ou Oracle.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG=DataId NODEINFO:CreateDate /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Jeu Mai 17 11:59:04 2007</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Date et heure fournies par la sous-balise <TT CLASS="literal">NODEINFO</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_&amp;dateParm /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">J/2007/5/17:8:13:0</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Paramètre WebReports défini comme une date dans l'onglet des paramètres avec le champ de l'heure activé. L'heure affichée ici est 8:13 AM. Ce format inhabituel est un format système interne utilisé par Content Server pour représenter les dates stockées sous forme de chaînes. Notez qu'un paramètre WebReports non défini comme une date dans l'onglet des paramètres n'est pas converti en date, sauf si son contenu respecte le format indiqué. Par exemple, un paramètre chaîne contenant 5/17/2007 n'est pas converti en date pour comparaison.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">[LL_REPTAG_&amp;inputlabel1 /]</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">J/2007/5/17:0:0:0</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Paramètre d'entrée de date défini dans LiveReport et non dans l'onglet <B CLASS="guilabel">Paramètres</B> de WebReports. Aucune heure ne peut être spécifiée</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PROCESSING-ORDER">Ordre d'évaluation</A></P>
+<P><A NAME="TMPID15977"></A>Les clauses logiques de WebReports ne prennent en charge aucune parenthèse pour déterminer un ordre particulier d'évaluation des expressions. Dans toute expression logique, chaque clause est évaluée de gauche à droite. Le résultat logique de chaque clause, <TT CLASS="literal">TRUE</TT> ou <TT CLASS="literal">FALSE</TT>, est comparé au résultat de la clause suivante sur la droite. Le résultat combiné de ces deux opérations est ensuite passé à la clause suivante sur la droite, et ainsi de suite. Les opérateurs logiques sont comparés conformément à la logique booléenne classique. Par exemple : </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN15238"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Résultat de la clause de gauche</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Opérateur de clause</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Résultat de la clause de droite</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Résultat logique</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ET</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ET</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ET</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">OR</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">FALSE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">OR</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">OR</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><TT CLASS="literal">TRUE</TT></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID16080"></A>Pour illustrer l'évaluation de clauses multiples, étudiez l'exemple suivant :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN15338"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Clause 1</TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Clause 2</TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Clause 3</TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Clause 4</TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">« 5 » == « 5 »</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ET</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">« 10 » != « 5 »</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">OR</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">« 10 » == « 2 »</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">ET</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">« 5 » == « 10 »</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID16127"></A>Cette simple expression est évaluée de gauche à droite comme suit :</P>
+<A NAME="AEN15385"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15386"></A><A NAME="TMPID16130"></A>La clause 1 est évaluée à <TT CLASS="literal">TRUE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15389"></A><A NAME="TMPID16133"></A>La clause 2 est évaluée à <TT CLASS="literal">TRUE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="WRLE3"></A><A NAME="TMPID16136"></A>Clause 1(<TT CLASS="literal">TRUE</TT>) <B CLASS="highlight">AND</B> Clause 2(<TT CLASS="literal">TRUE</TT>) résulte en la valeur <TT CLASS="literal">TRUE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15398"></A><A NAME="TMPID16142"></A>La clause 3 est évaluée à <TT CLASS="literal">FALSE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="WRLE5"></A><A NAME="TMPID16145"></A>Le résultat précédent de <span><A HREF="wr-logicexpression-info.htm#WRLE3">3</A></span>, soit <TT CLASS="literal">TRUE</TT>, <B CLASS="highlight">OR</B> Clause 3 (<TT CLASS="literal">FALSE</TT>) résulte en la valeur <TT CLASS="literal">TRUE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15408"></A><A NAME="TMPID16152"></A>La clause 4 est évaluée à <TT CLASS="literal">FALSE</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN15411"></A><A NAME="TMPID16155"></A>Le résultat précédent de <span><A HREF="wr-logicexpression-info.htm#WRLE5">5</A></span>, soit <TT CLASS="literal">TRUE</TT>, <B CLASS="highlight">AND</B> Clause 4 (<TT CLASS="literal">FALSE</TT>) résulte en la valeur <TT CLASS="literal">FALSE</TT>.</P></LI></OL>
+<P><A NAME="TMPID16161"></A>Le résultat final de cette expression logique est donc <TT CLASS="literal">FALSE</TT>. D'après cet exemple, il est évident que le paramètre le plus à droite a la priorité la plus élevée. Par exemple, si la clause la plus à droite résulte en la valeur <TT CLASS="literal">FALSE</TT> et si elle est précédée de l'opérateur logique <TT CLASS="literal">AND</TT>, le résultat est toujours <TT CLASS="literal">FALSE</TT>, quels que soient les autres paramètres. De même, si la clause la plus à droite résulte en la valeur <TT CLASS="literal">TRUE</TT> et si elle est précédée de l'opérateur logique <TT CLASS="literal">OR</TT>, le résultat de l'expression est toujours <TT CLASS="literal">TRUE</TT>. </P>
+<P><A NAME="TMPID16169"></A>Si cette expression logique était rédigée en utilisant des parenthèses, elle aurait l'apparence suivante :</P><A NAME="AEN15427"></A>
+<PRE 
+CLASS="screen"
+>&#13;((((« 5 » == « 5 ») AND (« 10 » != « 5 »)) OR (« 10 » == « 2 »)) AND (« 5 » == « 10 »))</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

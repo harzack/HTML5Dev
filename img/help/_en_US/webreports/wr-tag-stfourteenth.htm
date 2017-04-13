@@ -1,0 +1,1188 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>PARSECSV, PATCHANGE, PATFIND, PERMACTION, PERMCHECK, PERMINFO, PERMTOASSOC, PLUCK, PLURALIZE, POCOPY, POINFO, PREV</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stfourteenth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sub-Tags';
+          header.title2 = 'PARSECSV, PATCHANGE, PATFIND, PERMACTION, PERMCHECK, PERMINFO, PERMTOASSOC, PLUCK, PLURALIZE, POCOPY, POINFO, PREV';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID10603"></A>This section details the sub-tags: <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPARSECSV">PARSECSV</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATCHANGE">PATCHANGE</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATFIND">PATFIND</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMACTION">PERMACTION</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMCHECK">PERMCHECK</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMINFO">PERMINFO</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMTOASSOC">PERMTOASSOC</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPLUCK">PLUCK</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPLURALIZE">PLURALIZE</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPOCOPY">POCOPY</A></span>, <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPOINFO">POINFO</A></span> and <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPREV">PREV</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPARSECSV">PARSECSV</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPARSECSV-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGPARSECSV"></A><B CLASS="highlight">PARSECSV</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPARSECSV-DESC">Description</A></P>
+<P><A NAME="TMPID10624"></A>This sub-tag parses a string with comma-separated values and returns a structured RecArray.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPARSECSV-EXAMPL">Example</A></P>
+<P><A NAME="TMPID10627"></A>For example:</P>
+<P><A NAME="TMPID10628"></A><TT CLASS="literal">[LL_REPTAG_'A,B,C' PARSECSV /]</TT></P>
+<P><A NAME="TMPID10630"></A>Returns:</P>
+<P><A NAME="TMPID10631"></A><TT CLASS="literal">V{&lt;<I CLASS="varname">'Column1','Column2','Column3'</I>>&lt;<I CLASS="varname">'A','B','C'</I>>}</TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPARSECSV-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID10637"></A>For more information, see <span><A HREF="wr-tag-ccfourth.htm#WR-TAG-CCFOR">FOR</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPATCHANGE">PATCHANGE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATCHANGE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGPATCHANGE"></A><B CLASS="highlight">PATCHANGE:&lt;<I CLASS="varname">find pattern</I>>:&lt;<I CLASS="varname">new pattern</I>></B></P>
+<P><A NAME="TMPID10647"></A>or</P>
+<P><A NAME="TMPID10648"></A><B CLASS="highlight">PATCHANGE:&lt;<I CLASS="varname">find pattern</I>>:&lt;<I CLASS="varname">new pattern</I>>:&lt;<I CLASS="varname">ignoreCase?</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATCHANGE-DESC">Description</A></P>
+<P><A NAME="TMPID10655"></A>Returns a modified version of the main tag based on the &lt;<I CLASS="varname">find pattern</I>> and &lt;<I CLASS="varname">new pattern</I>> specified.</P>
+<P><A NAME="TMPID10658"></A>The &lt;<I CLASS="varname">find pattern</I>> is specified with a series of special operators as per the table below. This is a simplified and slightly modified subset of UNIX's regular expression pattern matching. For Content Server developers this syntax is based on the Oscript <TT CLASS="literal">PATFIND</TT> and <TT CLASS="literal">PATCHANGE</TT> builtins. This is almost identical to the <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATFIND">PATFIND</A></span> syntax but includes the ability to specify parts of the &lt;<I CLASS="varname">find pattern</I>> which can be referenced for substitution in the &lt;<I CLASS="varname">new pattern</I>>. If no match if found, <B CLASS="highlight">the original tag contents is returned unchanged</B>.</P>
+<P><A NAME="TMPID10667"></A>The &lt;<I CLASS="varname">new pattern</I>> can also include some special characters which are also shown below. The &lt;<I CLASS="varname">new pattern</I>> is normally a fixed pattern of characters but any characters to be retained from the &lt;<I CLASS="varname">find pattern</I>> are enclosed in the &lt;<I CLASS="varname">...</I>> characters and then inserted in the &lt;<I CLASS="varname">new pattern</I>> using the pound, #, symbol. By default this sub-tag ignores the case of characters when matching. Specifying <TT CLASS="literal">FALSE</TT> as a third parameter causes the change operation to be case sensitive.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATCHANGE-PARAM">Parameters</A></P>
+<DIV title="Find Pattern Special Characters" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPATCH-TBL1"></A><B>Table 1-36: Find Pattern Special Characters</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Character</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">c</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match exact character.<B CLASS="highlight">c</B> is any character here.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@c</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match escaped character, such as <B CLASS="highlight">@%</B>, <B CLASS="highlight">@[</B>, <B CLASS="highlight">@*</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">?</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match any character except end of line.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">%</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match beginning of line.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">$</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match end of line. Null string before end of line.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">[...]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match character class. In other words, match any of the specified characters, such as [abc] or [a-z].</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">[!...]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match negated character class. In other words, match all but these characters, such as <TT CLASS="literal">[! ]</TT> for no spaces.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">*</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match zero or more occurrences of the previous element, such as [0-9]* for zero or more digits.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">+</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match one or more occurrences of the previous element, such as [A-Za-z]+ for one or more letters.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">&lt;<I CLASS="varname">...</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Brackets tagged material which is specially extracted for later reference or use.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="New Pattern Special Characters" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPATCH-TBL2"></A><B><FONT COLOR="WHITE">.</FONT><BR>Table 1-37: New Pattern Special Characters</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Character</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">&amp;</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Ditto (Whole String).</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@<I CLASS="emphasis">c</I></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Escaped character, such as @&amp;.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">#<I CLASS="emphasis">n</I></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Tagged substring insertion.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATCHANGE-EXAMP">Example</A></P>
+<P><A NAME="TMPID10792"></A>This example of the <TT CLASS="literal">PATCHANGE</TT> sub-tag assumes that the associated tag contains the string: “This is a test sentence 123, end”</P>
+<P><A NAME="TMPID10795"></A><TT CLASS="literal">PATCHANGE:"?* &lt;<I CLASS="varname">t?+t</I>> *sen[!0-9]+&lt;<I CLASS="varname">[0-9]+</I>>?*":"Word: #1; Number: #2"</TT></P>
+<P><A NAME="TMPID10799"></A>would return:  Word: test; Number: 123</P>
+<P><A NAME="TMPID10800"></A>In the example above:</P>
+<A NAME="AEN9871"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9872"></A><A NAME="TMPID10803"></A>Any characters that are matched, but not enclosed in angled brackets, &lt;<I CLASS="varname"></I>>, will not be included in the replacement.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9875"></A><A NAME="TMPID10806"></A><TT CLASS="literal">&lt;<I CLASS="varname">t?+t</I>></TT>: finds a match with the word “test”. Because it is the first “tagged substring”, this word is substituted in place of <TT CLASS="literal">#1</TT> in the replace string.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9882"></A><A NAME="TMPID10813"></A><TT CLASS="literal">&lt;<I CLASS="varname">[0-9]+</I>></TT>: finds a match with the numbers “123”. Because it is the second “tagged substring”, these characters are substituted in place of <TT CLASS="literal">#2</TT> in the replace string.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9889"></A><A NAME="TMPID10820"></A>The part of the find pattern: <TT CLASS="literal">sen[!0-9]+</TT> finds the characters “sen” followed by 1 or more characters that are NOT numbers.</P></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATCHANGE-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID10825"></A>For more detailed information about <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATFIND">PATFIND</A></span> or <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATCHANGE">PATCHANGE</A></span> the Content Server SDK documentation should be consulted.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPATFIND">PATFIND</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATFIND-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGPATFIND"></A><B CLASS="highlight">PATFIND:&lt;<I CLASS="varname">find pattern</I>></B></P>
+<P><A NAME="TMPID10836"></A>or</P>
+<P><A NAME="TMPID10837"></A><B CLASS="highlight">PATFIND:&lt;<I CLASS="varname">find pattern</I>>:&lt;<I CLASS="varname">ignoreCase?</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATFIND-DESC">Description</A></P>
+<P><A NAME="TMPID10843"></A>Returns either TRUE or FALSE based on whether the specified pattern is found within the string returned by the main tag. The &lt;<I CLASS="varname">find pattern</I>>is specified with a series of special operators as per the table below. This is a simplified and slightly modified subset of UNIX's regular expression pattern matching. For Content Server developers this syntax is based on the Oscript <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATFIND">PATFIND</A></span> and <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATCHANGE">PATCHANGE</A></span> builtins. By default, this sub-tag ignores the case of characters when matching. Specifying <TT CLASS="literal">FALSE</TT> as a second parameter causes the find operation to be case sensitive.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATFIND-PARAM">Parameters</A></P>
+<DIV title="Find Pattern Special Characters" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPATFND-TBL1"></A><B>Table 1-38: Find Pattern Special Characters</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Character</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">c</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match exact character.<B CLASS="highlight">c</B> is any character here.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">@<I CLASS="emphasis">c</I></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match escaped character, such as <B CLASS="highlight">@%</B>, <B CLASS="highlight">@[</B>, <B CLASS="highlight">@*</B>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">?</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match any character except end of line.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">%</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match beginning of line.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">$</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match end of line. Null string before end of line.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">[...]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match character class. Match any one of these characters, such as [abc] or [a-z].</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">[!...]</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match negated character class. In other words, match all but these characters, such as [! ] for no spaces.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">*</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match zero or more occurrences of the previous element, such as [0-9]* for zero or more digits.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">+</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Match one or more occurrences of the previous element, such as [A-Za-z]+ for one or more letters.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATFIND-EXAMP">Example</A></P>
+<P><A NAME="TMPID10926"></A>The following example of the <TT CLASS="literal">PATFIND</TT> sub-tag assumes that the associated tag contains the string, “This is a test sentence 123, end”:</P>
+<P><A NAME="TMPID10929"></A><TT CLASS="literal">PATFIND:"sen?+ *[0-9]+"</TT></P>
+<P><A NAME="TMPID10931"></A>would return “TRUE”.</P>
+<P><A NAME="TMPID10933"></A>This pattern details that:</P>
+<A NAME="AEN9998"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN9999"></A><A NAME="TMPID10936"></A>the specific characters, “sen”,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10002"></A><A NAME="TMPID10939"></A>followed by one or more characters as directed by “?+”,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10005"></A><A NAME="TMPID10942"></A>followed by zero or more spaces as directed by “ *”,</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10008"></A><A NAME="TMPID10945"></A>followed by one or more digits as directed by “[0-9]+”,</P></LI></OL>
+<P><A NAME="TMPID10947"></A>As such, the tag will find a match on the string “sentence 123”, and therefore the tag returns <TT CLASS="literal">TRUE</TT>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPATFIND-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID10952"></A>For more information about <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATFIND">PATFIND</A></span> or <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPATCHANGE">PATCHANGE</A></span> see the Content Server SDK documentation.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPERMACTION">PERMACTION</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMACTION-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGPERMACTION"></A><B CLASS="highlight">PERMACTION:&lt;<I CLASS="varname">operation</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMACTION-DESC">Description</A></P>
+<P class="before-ul"><A NAME="TMPID10965"></A>This sub-tag provides the flexibility to add, remove, and modify permissions of content within Content Server. Because of the powerful nature of this sub-tag, its effects should be carefully understood before usage. The sub-tag behaves like the other WebReports sub-tags in that you cannot modify the permissions of nodes to which you do not have permissions through the regular interface. The key difference is that using WebReports allows these changes to be automated so they can be done much faster than through the interface. Content Server supports 3 permission models:</P><A NAME="AEN10028"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10029"></A><A NAME="TMPID10970"></A>the standard permission model (SPM), for example the Content Server objects such as documents and folders</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10032"></A><A NAME="TMPID10973"></A>the project permission model (PPM), for example, projects</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10034"></A><A NAME="TMPID10975"></A>and the work items permission model (WPM), for example, discussions, channels, or task lists.</P></LI></UL>
+<P><A NAME="TMPID10976"></A>The <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMACTION">PERMACTION</A></span> sub-tag provides the functionality to update all 3 permission models. The tables below describes how to use the <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMACTION">PERMACTION</A></span> sub-tag and the object(s) it affects.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMACTION-PARAM">Parameters</A></P>
+<P class="before-ul"><A NAME="TMPID10981"></A>In the tables below, the following acronyms are used:</P><A NAME="AEN10041"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10042"></A><A NAME="TMPID10984"></A><B CLASS="highlight">ACL</B>: the access control list that defines those users or groups who have been granted permission to access a Content Server object.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10046"></A><A NAME="TMPID10988"></A><B CLASS="highlight">SPM</B>: the standard permission model that includes documents and folders.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10049"></A><A NAME="TMPID10991"></A><B CLASS="highlight">PPM</B>: the project permission model that includes projects.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10052"></A><A NAME="TMPID10994"></A><B CLASS="highlight">WPM</B>: the work items permission model that includes discussions, channels, and tasks.</P></LI></UL>
+<DIV title="'PERMACTION:ACL:'userID'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPERMACTION-T1"></A><B>Table 1-39: <B CLASS="highlight">PERMACTION:ACL:&lt;<I CLASS="varname">userID</I>></B></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Operation</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:ACL:&lt;<I CLASS="varname">userID</I>>:REMOVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Removes the user or group specified by &lt;<I CLASS="varname">userID</I>> from a Content Server object's permission ACL. This operation is supported by <B CLASS="highlight">SPM</B> and <B CLASS="highlight">WPM</B> objects.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:ACL:&lt;<I CLASS="varname">userID</I>>:UPDATE:&lt;<I CLASS="varname">perms</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the permissions specified by &lt;<I CLASS="varname">perms</I>> for the user or group specified by &lt;<I CLASS="varname">userID</I>> in a Content Server object's permission ACL. If the user or group specified is not currently in the ACL, they will be added. This operation is supported by <B CLASS="highlight">SPM</B> and <B CLASS="highlight">WPM</B> objects.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="'PERMACTION:OWNER'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPERMACTION-T2"></A><B><FONT COLOR="WHITE">.</FONT><BR>Table 1-40: <B CLASS="highlight">PERMACTION:OWNER</B></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Operation</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:OWNER:UPDATE:&lt;<I CLASS="varname">perms</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the permissions specified by &lt;<I CLASS="varname">perms</I>> for the current owner in the Content Server object's default access. This operation is supported by <B CLASS="highlight">SPM</B> and <B CLASS="highlight">WPM</B> objects.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:OWNER:CHANGE:&lt;<I CLASS="varname">userID</I>>:&lt;<I CLASS="varname">perms</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Sets the owner section of the default access for a Content Server object's permissions to the user specified by &lt;<I CLASS="varname">userID</I>> with the permissions specified by &lt;<I CLASS="varname">perms</I>>. This operation is supported by <B CLASS="highlight">SPM</B> and <B CLASS="highlight">WPM</B> objects.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:OWNER:REMOVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Removes the current owner from the default access section of permissions for the Content Server object. This will set the <TT CLASS="literal">OWNER</TT> section of default access to “No Owner”. This operation is supported by <B CLASS="highlight">SPM</B> and <B CLASS="highlight">WPM</B> objects.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="'PERMACTION:OWNERGROUP'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPERMACTION-T3"></A><B><FONT COLOR="WHITE">.</FONT><BR>Table 1-41: <B CLASS="highlight">PERMACTION:OWNERGROUP</B></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Operation</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:OWNERGROUP:UPDATE:&lt;<I CLASS="varname">perms</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the permissions specified by &lt;<I CLASS="varname">perms</I>> for the current owner group in the Content Server object's default access. This operation is supported by <B CLASS="highlight">SPM</B> and <B CLASS="highlight">WPM</B> objects.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:OWNERGROUP:CHANGE:&lt;<I CLASS="varname">userID</I>>:&lt;<I CLASS="varname">perms</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Sets the owner group section of the default access for a Content Server object's permissions to the group specified by &lt;<I CLASS="varname">userID</I>> with the permissions specified by &lt;<I CLASS="varname">perms</I>>. This operation is supported by <B CLASS="highlight">SPM</B> and <B CLASS="highlight">WPM</B> objects.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:OWNERGROUP:REMOVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Removes the current owner group from the default access section of permissions for the Content Server object. This will set the owner group section of default access to “No Owner Group”. This operation is supported by <B CLASS="highlight">SPM</B> and <B CLASS="highlight">WPM</B> objects.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<DIV title="'PERMACTION:PUBLIC'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPERMACTION-T4"></A><B><FONT COLOR="WHITE">.</FONT><BR>Table 1-42: <B CLASS="highlight">PERMACTION:PUBLIC</B></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Operation</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:PUBLIC:UPDATE:&lt;<I CLASS="varname">perms</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the permissions specified by &lt;<I CLASS="varname">perms</I>> for public access in the Content Server object's default access. This operation is supported by <B CLASS="highlight">SPM</B>, <B CLASS="highlight">PPM</B>, and <B CLASS="highlight">WPM</B> objects.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:PUBLIC:REMOVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Removes public access from the default access section of permissions for the Content Server object. This will set the public access section of default access to “No Public Access”. This operation is supported by <B CLASS="highlight">SPM</B> and <B CLASS="highlight">WPM</B> objects.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P><A NAME="TMPID11172"></A>This next table relates to Projects only:</P>
+<DIV title="'PERMACTION:'role'" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPERMACTION-T5"></A><B>Table 1-43: <B CLASS="highlight">PERMACTION:&lt;<I CLASS="varname">role</I>></B></B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Operation</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:&lt;<I CLASS="varname">role</I>>:UPDATE:&lt;<I CLASS="varname">userID</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Updates the Role specified by &lt;<I CLASS="varname">role</I>>, for the user or group specified by &lt;<I CLASS="varname">userID</I>>, in the Project's <B CLASS="guilabel">Participant</B> page. If the user or group specified is not a Project Participant, they will be added. This operation is only supported by <B CLASS="highlight">PPM</B> objects.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:&lt;<I CLASS="varname">role</I>>:REMOVE:&lt;<I CLASS="varname">userID</I>></B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Removes the user or group specified by &lt;<I CLASS="varname">userID</I>> from the Role specified by &lt;<I CLASS="varname">role</I>> in the Project's <B CLASS="guilabel">Participant</B> page. This operation is only supported by <B CLASS="highlight">PPM</B> objects.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMACTION:&lt;<I CLASS="varname">role</I>>:REMOVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Removes all users and groups with the specified &lt;<I CLASS="varname">role</I>> from the Project's <B CLASS="guilabel">Participant</B> page. This operation is only supported by <B CLASS="highlight">PPM</B> objects.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P><A NAME="TMPID11223"></A>This sub-tag expects the data id of the content in Content Server the user wants to perform permission actions upon, to be specified in the main tag. For <B CLASS="highlight">SPM</B> objects, for example documents or folders, there are two ways to specify permissions for any action that requires &lt;<I CLASS="varname">perms</I>>:</P>
+<A NAME="AEN10286"></A>
+<OL COMPACT="COMPACT" TYPE="1" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10287"></A><A NAME="TMPID11229"></A>You can use a decimal number representing a binary bit mask for Content Server permissions. While some developers may be familiar with this, it is too much to display here.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10290"></A><A NAME="TMPID11232"></A>You can also specify a list of permissions using any combination of the following keywords:</P>
+<DIV title="Permissions Keywords" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="STPRMACTN-TBL1"></A><B>Table 1-44: Permissions Keywords</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Keyword</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Permission Affected</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">SEE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">See</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">SEECONTENTS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">See Contents</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">MODIFY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Modify</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EDITATTRS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Edit Attributes</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">RESERVE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Reserve or Checkout</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">DELETEVERS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Delete Versions</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">DELETE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Delete the Object</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EDITPERMS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Edit Permissions</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">ADDITEMS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Add Items</TD></TR></TABLE></TD></TR></TABLE></DIV></LI></OL>
+<P><A NAME="TMPID11301"></A>Note that the permissions specified in this sub-tag follow the permissions model of the Content Server interface, meaning that selecting just one permission will also set the other required permissions. For example, choosing <TT CLASS="literal">MODIFY</TT> will set the “See”, “See Contents” and “Modify” permissions for an object.</P>
+<P class="before-ul"><A NAME="TMPID11307"></A>To specify permissions for <B CLASS="highlight">WPM</B> objects, for example discussions, channels or task lists, the following keywords can be substituted for &lt;<I CLASS="varname">perms</I>> in any of the applicable <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMACTION">PERMACTION</A></span> operations:</P><A NAME="AEN10370"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10371"></A><A NAME="TMPID11313"></A>NONE</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10373"></A><A NAME="TMPID11315"></A>READ</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10375"></A><A NAME="TMPID11317"></A>WRITE</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10377"></A><A NAME="TMPID11319"></A>ADMINISTER</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID11320"></A>To specify permissions for <B CLASS="highlight">PPM</B> objects, for example Projects, the following table displays the three types of roles that can be substituted for &lt;<I CLASS="varname">&lt;role&gt;</I>> in the applicable <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMACTION">PERMACTION</A></span> operations:</P><A NAME="AEN10383"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10384"></A><A NAME="TMPID11326"></A>COORD: indicates a Coordinator.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10386"></A><A NAME="TMPID11328"></A>MEMBER</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN10388"></A><A NAME="TMPID11330"></A>GUEST</P></LI></UL>
+<P><A NAME="TMPID11331"></A>For the scenario where <TT CLASS="literal">PUBLIC</TT> permissions can be updated for PPM objects, <TT CLASS="literal">PERMACTION:PUBLIC:UPDATE:&lt;<I CLASS="varname">perms</I>></TT>, the acceptable values for &lt;<I CLASS="varname">perms</I>> in this case is <TT CLASS="literal">ENABLED</TT> or <TT CLASS="literal">DISABLED</TT>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMACTION-EXAMP">Example</A></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN10398"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID11341"></A>If a user creating a WebReport wants to update the permissions for a user with a user ID of <TT CLASS="literal">1234</TT> in the ACL of a document, in this case <TT CLASS="literal">DATAID</TT>, with the permissions of <TT CLASS="literal">See</TT> and <TT CLASS="literal">See Contents</TT>, they could use either:</P>
+<P><A NAME="TMPID11346"></A><TT CLASS="literal">[LL_REPTAG=DATAID PERMACTION:ACL:1234:UPDATE:"SEE,SEECONTENTS" /]</TT></P>
+<P><A NAME="TMPID11348"></A>Which is using the list of keywords, <TT CLASS="literal">SEE,SEECONTENTS</TT> to specify the permissions to update, or, the user could:</P>
+<P><A NAME="TMPID11350"></A><TT CLASS="literal">[LL_REPTAG=DATAID PERMACTION:ACL:1234:UPDATE:36995 /]</TT></P>
+<P><A NAME="TMPID11352"></A>Which is specifying a decimal representation of the binary bit mask, <TT CLASS="literal">36995</TT>, for <TT CLASS="literal">See</TT> and <TT CLASS="literal">See Contents</TT>.</P>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN10414"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID11357"></A>If a user creating a WebReport wants to change the Owner of a task list to the Admin user, with a userid of <TT CLASS="literal">1000</TT>, and give them Administer access, they can use the following tag:</P>
+<P><A NAME="TMPID11359"></A><TT CLASS="literal">[LL_REPTAG=DATAID PERMACTION:OWNER:CHANGE:1000:ADMINISTER /]</TT></P>
+<P><A NAME="TMPID11361"></A>Where <TT CLASS="literal">DATAID</TT> returns the dataID of the task list and <TT CLASS="literal">ADMINISTER</TT> is a keyword for WPM objects.</P>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN10422"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID11365"></A>If a user creating a WebReport wants to set the Admin user, with a userid of <TT CLASS="literal">1000</TT>, in a Project to a Member role, the following tag can be used:</P>
+<P><A NAME="TMPID11367"></A><TT CLASS="literal">[LL_REPTAG=DATAID PERMACTION:MEMBER:UPDATE:1000 /]</TT></P>
+<P><A NAME="TMPID11369"></A>Where <TT CLASS="literal">DATAID</TT> returns the dataID of the project and <TT CLASS="literal">MEMBER</TT> is a keyword for PPM objects.</P>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPERMCHECK">PERMCHECK</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMCHECK-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGPERMCHECK"></A><B CLASS="highlight">PERMCHECK:&lt;<I CLASS="varname">parm</I>></B></P>
+<P><A NAME="TMPID11379"></A>or</P>
+<P><A NAME="TMPID11380"></A><B CLASS="highlight">PERMCHECK:&lt;<I CLASS="varname">parm</I>>:&lt;<I CLASS="varname">user/group ID</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMCHECK-DESC">Description</A></P>
+<P><A NAME="TMPID11386"></A>Checks if the current, or a specified, user has permission to perform the specified action for that object. Returns TRUE or FALSE based on the result of this verification.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF26"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<A NAME="AEN10443"></A>
+<OL TYPE="1" class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10444"></A><A NAME="TMPID11390"></A>When this tag is used, the value that would normally be returned by the main tag is replaced by either TRUE or FALSE.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10446"></A><A NAME="TMPID11392"></A>This tag is only valid when used with a tag that normally returns a valid Content Server object id. For example, IDs, DATAIDs, and VOLUMEIDs. An invalid report tag will cause this sub-tag to return FALSE.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10449"></A><A NAME="TMPID11395"></A>The specified actions map to Content Server permissions as shown in the chart below. Examples of actions include <TT CLASS="literal">see</TT>, <TT CLASS="literal">edit</TT>, and <TT CLASS="literal">delete</TT>. To use this chart:</P>
+<A NAME="AEN10455"></A>
+<OL TYPE="a">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10456"></A><A NAME="TMPID11402"></A>Find the highest level of Content Server permission that the user is expected to have, and that will therefore return TRUE from this tag.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN10459"></A><A NAME="TMPID11405"></A>Use the setting listed under <B CLASS="highlight">Permcheck Action</B>.</P></LI></OL></LI></OL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMCHECK-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10463"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Permcheck Action</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Forms</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">DTree Objects</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">NONE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SEE</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SEE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SEECONTENTS</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SEE</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SEE CONTENTS</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT STATIONERY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">MODIFY</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SQL SUBMIT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT ATTRIBUTES</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DELETE VERSIONS</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RESERVE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ADD ITEMS</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">MODIFY</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">MODIFY</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDITATTRIBUTES</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT ATTRIBUTES</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RESERVE</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RESERVE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DELETE</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ADMINISTER</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DELETE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DELETE</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT PERMISSIONS</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DELETEVERSIONS</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DELETE VERSIONS</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDITPERMISSIONS</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EDIT PERMISSIONS</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ADDITEMS</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ADD ITEMS</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMCHECK-EXAMP">Example</A></P>
+<P><A NAME="TMPID11491"></A>If the <TT CLASS="literal">EDIT</TT> action has been specified against a form DataID, then the tag will only return TRUE if the user has at least “Edit Stationery” permission for the associated form.</P>
+<P><A NAME="TMPID11494"></A>To make sure that a delete button is only visible for users who have “Administer” permission to an associated form, the following WebReport declaration could be used. This assumes that form Dataid is being returned in the underlying report data:</P><A NAME="AEN10549"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_IF "[LL_REPTAG=DATAID PERMCHECK:DELETE /]" == "TRUE" /]
+   &lt;<I
+CLASS="varname"
+>INPUT TYPE=BUTTON NAME="del" VALUE="Delete" ONCLICK="deleteItem()"</I
+>>
+[LL_WEBREPORT_ENDIF /]</PRE
+>
+<P><A NAME="TMPID11498"></A>This could also be done using JavaScript code as below; however, this code will still be visible if a user views the source HTML from their browser:</P><A NAME="AEN10552"></A>
+<PRE 
+CLASS="screen"
+>If ( "[LL_REPTAG=DATAID PERMCHECK:DELETE /]" == "TRUE" ) {
+   document.write('&lt;<I
+CLASS="varname"
+>INPUT TYPE=BUTTON NAME="delbutton" VALUE="Delete" ONCLICK="deleteItem();"</I
+>>');
+};</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPERMINFO">PERMINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMINFO-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGPERMINFO"></A><B CLASS="highlight">PERMINFO:&lt;<I CLASS="varname">format</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMINFO-DESC">Description</A></P>
+<P><A NAME="TMPID11510"></A>For a valid node ID, this sub-tag will a return a list of Assocs containing permission data for the node according to the format parameter that has been provided. Can be chained with the <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> and <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> sub-tags to return more specific information. Only returns data if the user has <I CLASS="emphasis">Edit Permissions</I> on the node, otherwise an empty string will be returned.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMINFO-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10565"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Format</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMINFO</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a list containing separate Assocs for the Owner, Owner Group, Public Access and any Assigned Access entries.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11536"></A>The first Assoc will contain the permission data for the Owner.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11538"></A>The second Assoc will contain the permission data for the Owner Group.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11540"></A>The third Assoc will contain the permission data for Public Access.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID11542"></A>If there are any Assigned Access entries, then there will be a separate Assoc for each one from the fourth list entry onwards.</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMINFO:OWNER</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a list containing an Assoc containing the permission data for the Owner.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMINFO:OWNERGROUP</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a list containing an Assoc containing the permission data for the Owner Group.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMINFO:PUBLICACCESS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a list containing an Assoc containing the permission data for Public Access.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">PERMINFO:ASSIGNEDACCESS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns a list containing separate Assocs for each entry in Assigned Access.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMINFO-EXAMP">Example</A></P>
+<P><A NAME="TMPID11569"></A><TT CLASS="literal">PERMINFO LIST:1 ASSOC:NAME</TT></P>
+<P><A NAME="TMPID11571"></A>Will return the name of the node Owner.</P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN10620"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID11573"></A><TT CLASS="literal">PERMINFO:PUBLICACCESS LIST:1 ASSOC:PERMASSOC ASSOC:RESERVE</TT></P>
+<P><A NAME="TMPID11575"></A>Will return TRUE or FALSE based on whether Public Access has <I CLASS="emphasis">Reserve</I> permission on the node.</P>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMINFO-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID11579"></A>For more information, see the <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> and <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> sub-tags.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPERMTOASSOC">PERMTOASSOC</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMTOASSOC-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGPERMTOASSOC"></A><B CLASS="highlight">PERMTOASSOC</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMTOASSOC-DESC">Description</A></P>
+<P><A NAME="TMPID11590"></A>This sub-tag converts a permission bitmask into an Assoc for easier reading.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMTOASSOC-EXAMPL">Example</A></P>
+<P><A NAME="TMPID11593"></A>The following tag:</P>
+<P><A NAME="TMPID11594"></A><TT CLASS="literal">[LL_REPTAG_'36995' PERMTOASSOC /]</TT></P>
+<P><A NAME="TMPID11596"></A>Will return:</P><A NAME="AEN10640"></A>
+<PRE 
+CLASS="screen"
+>A&lt;1,?,'Create'=false,'Delete'=false,'DeleteVer'=false,'EditAttr'=false,'EditPerm'=false,'Modify'=false,'Reserve'=false,'See'=true,'SeeContent'=true&gt;.</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="STPERMTOASSOC-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID11600"></A>For more information, see the <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPERMACTION">PERMACTION</A></span> and <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> sub-tags.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPLUCK">PLUCK</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPLUCK-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGPLUCK"></A><B CLASS="highlight">PLUCK&lt;<I CLASS="varname">field</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPLUCK-DESC">Description</A></P>
+<P><A NAME="TMPID11612"></A>The <TT CLASS="literal">PLUCK</TT> sub-tag is used to extract a value from a collection of Records or Assocs, and returns the values as a List. The main tag must be a RecArray, or List of Assocs, or List of Records.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPLUCK-EXAMPL">Example</A></P>
+<P><A NAME="TMPID11616"></A>The following tag will extract all the <TT CLASS="literal">NAME</TT> values from the data source:</P>
+<P><A NAME="TMPID11618"></A><TT CLASS="literal">[LL_REPTAG_DATASOURCE PLUCK:NAME /]</TT></P>
+<P><A NAME="TMPID11620"></A>Will return:</P><A NAME="AEN10659"></A>
+<PRE 
+CLASS="screen"
+>{'Show All [Type] Items','My Tasks Due Next Week','All Tasks Due Next Week', ... }</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="STPLUCK-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID11624"></A>For more information, see the <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>, <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECORD">RECORD</A></span>, and <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> sub-tags.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPLURALIZE">PLURALIZE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPLURALIZE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGPLURALIZE"></A><B CLASS="highlight">PLURALIZE&lt;<I CLASS="varname">suffix</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPLURALIZE-DESC">Description</A></P>
+<P><A NAME="TMPID11637"></A>Returns a plural suffix if the main tag is not 1. By default, this suffix is “s”.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPLURALIZE-EXAMPL">Example</A></P>
+<P><A NAME="TMPID11641"></A>Consider the following tag:</P>
+<P><A NAME="TMPID11642"></A><TT CLASS="literal">[LL_REPTAG_DATASOURCE LENGTH /] row[LL_REPTAG_DATASOURCE LENGTH PLURALIZE /]</TT></P>
+<P><A NAME="TMPID11644"></A>If <TT CLASS="literal">[LL_REPTAG_DATASOURCE LENGTH /]</TT> is 1, the output will be “1 row”. If <TT CLASS="literal">[LL_REPTAG_DATASOURCE LENGTH /]</TT> is 2, the output will be “2 rows”.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPOCOPY">POCOPY</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOCOPY-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGPOCOPY"></A><B CLASS="highlight">POCOPY:&lt;<I CLASS="varname">parm</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOCOPY-DESC">Description</A></P>
+<P><A NAME="TMPID11658"></A>Provides access to Physical Objects data associated with the main copy of the physical item. This information can usually be found in the <B CLASS="guilabel">Circulation</B> tab of Physical Items. If the Physical Objects module is not installed, this sub-tag returns nothing for all options.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOCOPY-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10691"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Modifier</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description in Content Server Interface</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:UNIQUEID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Unique ID</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:LOCATION</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Current Location</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:BORROWEDBY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Unique ID</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:OBTAINEDBY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Borrowed By</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:COMMENT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Comment</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:BORROWEDDATE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Borrowed Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:RETURNDATE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Return By Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POCOPY:BOXID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Box ID</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOCOPY-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID11725"></A>See also <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPOINFO">POINFO</A></span> for other Physical Objects functionality.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPOINFO">POINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOINFO-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGPOINFO"></A><B CLASS="highlight">POINFO:&lt;<I CLASS="varname">parm</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOINFO-DESC">Description</A></P>
+<P><A NAME="TMPID11736"></A>Provides access to Physical Objects data found on Physical Items. If the Physical Objects module is not installed this sub-tag returns nothing for all options.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOINFO-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN10763"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Modifier</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description in Content Server Interface</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:ITEMTYPE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Physical Item Type</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:HOMELOC</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Home Location</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:KEYWORDS</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Keywords</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:FROM</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">From Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:TO</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">To Date</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:LOCTYPE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Locator Type</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:REFRATE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Ref Rate</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:OFFSITEID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Offsite Storage ID</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:FACILITY</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Facility</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:AREA</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Area</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:LOCATOR</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Locator</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:TXID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Transfer ID</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:CLIENT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Client</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">POINFO:TEMPID</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Temporary ID</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPOINFO-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID11838"></A>See also <span><A HREF="wr-tag-stfourteenth.htm#WR-TAG-STPOCOPY">POCOPY</A></span> for other Physical Objects functionality.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STPREV">PREV</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPREV-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGPREV"></A><B CLASS="highlight">PREV</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STPREV-DESC">Description</A></P>
+<P><A NAME="TMPID11848"></A>Returns the same column from the previous row of data. If this sub-tag is used on the first row of data, a blank string is returned.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

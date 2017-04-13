@@ -1,0 +1,299 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<title>[FilterEngine]</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/websbroker/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/websystemobj/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-ini-filterengine-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Understanding the opentext.ini file';
+          header.title2 = '[FilterEngine]';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID6533"></A>The settings in the <TT CLASS="literal">[FilterEngine]</TT> section control the central behavior of the Document Conversion Service, DCS. The DCS converts documents from their native formats to HTML or raw text for viewing and indexing purposes. To do so, the DCS uses document conversion filters. For information about document conversion filters, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbb-h-agd.wbb-selecting-filter-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/websbroker/wbb-selecting-filter-rf.htm">Understanding Document Conversion Filters</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbb-h-agd.wbb-selecting-filter-rf" FMT=""></span>.</P>
+<P class="before-ul"><A NAME="TMPID6536"></A>There are three ways to configure the DCS.</P><A NAME="AEN5821"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5822"></A><A NAME="TMPID6539"></A>You can globally configure all DCSs at your site by setting the parameters in the <TT CLASS="literal">[FilterEngine]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5826"></A><A NAME="TMPID6543"></A>You can globally configure the specific settings for a conversion filter in one of the following <TT CLASS="filename">opentext.ini</TT> file sections: <TT CLASS="literal">[DCS]</TT>, <TT CLASS="literal">[DCSworker]</TT>, <TT CLASS="literal">[DCSxpdf]</TT>, <TT CLASS="literal">[DCSservers]</TT>, <TT CLASS="literal">[DCSview]</TT>, <TT CLASS="literal">[DCSpipe]</TT>, <TT CLASS="literal">[DCSipool]</TT>, <TT CLASS="literal">[QDF]</TT>, <TT CLASS="literal">[DCSIm]</TT>, and <TT CLASS="literal">[Summarizer]</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5839"></A><A NAME="TMPID6556"></A>You can locally configure an individual DCS by setting command line arguments for the DCS.  </P></LI></UL>
+<P><A NAME="TMPID6557"></A>Some of the parameters in the DCS sections of the <TT CLASS="filename">opentext.ini</TT> file and some of the DCS command line arguments are also parameters in the <TT CLASS="literal">[FilterEngine]</TT> section. The DCS parameters and command line arguments perform the same function as the corresponding <TT CLASS="literal">[FilterEngine]</TT> parameters; however, setting the values for parameters in the DCS sections of the <TT CLASS="filename">opentext.ini</TT> file or in the DCS command line arguments overrides the settings in the <TT CLASS="literal">[FilterEngine]</TT> section.</P>
+<P><A NAME="TMPID6563"></A>The <TT CLASS="literal">[FilterEngine]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file contains the following parameters:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN5850"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6576"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#CONNTENTTRUNCSIZE">conntenttruncsize</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6579"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#DLLPATHFE">dllpath</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6582"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#ENCODINGFE">encoding&lt;n&gt;</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6585"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#LOGFILEFE">logfile</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6588"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#MAXFILESIZEFE">maxfilesize</A></span></P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6593"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#SUMMARYFE">summary</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6596"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#SUMMARYHOTWORDSFE">summaryhotwords</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6599"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#SUMMARYSENTENCESFE">summarysentences</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6602"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#TIMEOUTFE">timeout</A></span></P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6607"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#TMPDIRFE">tmpdir</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6610"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#WINDOWFE">window</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6613"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#MINWINDOWFE">minwindow</A></span></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID6616"></A><span><A href="../webadmin/wba-ini-filterengine-rf.htm#MAXTIMEFE">maxtime</A></span></P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CONNTENTTRUNCSIZE">conntenttruncsize</A></P><A NAME="AEN5903"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5904"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID6623"></A>Specifies the maximum truncated size, in MB, DCS will use when converting documents from their native formats. When the document exceeds this limit, it will be truncated.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5907"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID6626"></A><TT CLASS="literal">conntenttruncsize=8</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5911"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6630"></A>An integer equal to or greater than <TT CLASS="literal">1</TT>. The default value is <TT CLASS="literal">10</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="DLLPATHFE">dllpath</A></P><A NAME="AEN5917"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5918"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID6638"></A>Specifies the location of the directory containing Content Server's conversion filters. A document created by a word processor, such as Microsoft Word, contains formatting information that is not necessary or required for searching. Conversion filters extract text content that is suitable for reading and indexing from word processor files.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5922"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID6642"></A><TT CLASS="literal">dllpath=C:\OPENTEXT\filters</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5926"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6646"></A>An absolute path. The default value is <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\filters</TT>, where &lt;<I CLASS="varname">Content Server_home</I>> is the root of your Content Server installation. </P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="ENCODINGFE">encoding&lt;n&gt;</A></P><A NAME="AEN5936"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5937"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID6658"></A>The <TT CLASS="literal">encoding&lt;<I CLASS="varname">n</I>></TT> parameter allows you to specify multiple character encoding values, which can enable successful character encoding conversion for indexed documents. The DCS will attempt to detect the character encoding of text documents that are being indexed. If the DCS is not able to detect the encoding, it will attempt UTF-8 character encoding using the encoding values specified for this parameter. The DCS attempts to use the encoding values in the order that they are listed in the <TT CLASS="literal">[FilterEngine]</TT> section. The DCS continues to attempt character encoding until it either is successful or runs out of valid encoding values to try. The first encoding value for which the data can be successfully converted is considered to be the correct encoding. Each <TT CLASS="literal">encoding&lt;<I CLASS="varname">n</I>></TT> entry in the <TT CLASS="literal">[FilterEngine]</TT> section must have the following format: <TT CLASS="literal">encoding&lt;<I CLASS="varname">n</I>>=&lt;<I CLASS="varname">encodingvalue</I>></TT>, where <TT CLASS="literal">&lt;<I CLASS="varname">n</I>></TT> is a unique number.</P>
+<P><A NAME="TMPID6670"></A>In the example shown in the <I CLASS="emphasis">Syntax</I> section below, the DCS would attempt to convert documents using the <TT CLASS="literal">Shift JIS</TT> encoding. If the <TT CLASS="literal">Shift JIS</TT> encoding fails, the DCS would then attempt to use the <TT CLASS="literal">EUC-JP</TT> encoding.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5956"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID6677"></A><TT CLASS="literal">encoding1=Shift JIS</TT><BR> <TT CLASS="literal">encoding2=EUC-JP</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5961"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6682"></A>A character encoding specification name. If no value is specified for this parameter, <TT CLASS="literal">ISO-8859-1</TT> is used. If you do not include the <TT CLASS="literal">encoding&lt;<I CLASS="varname">n</I>></TT> parameter in the <TT CLASS="filename">opentext.ini</TT> file at all, the DCS uses <TT CLASS="literal">Latin-1</TT> encoding by default. For more information, contact OpenText Customer Support.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LOGFILEFE">logfile</A></P><A NAME="AEN5971"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5972"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID6694"></A>Specifies the location and prefix for the Document Conversion log file. The admin port number assigned to this process is appended to the log file, followed by the .log suffix. This prevents multiple processes from writing to the same file.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5975"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID6697"></A><TT CLASS="literal">logfile=C:\OPENTEXT\logs\dcs</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5979"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6701"></A>An absolute path. The default value is <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\logs\dcs</TT>, where &lt;<I CLASS="varname">Content Server_home</I>> is the root of your Content Server installation.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF76"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6709"></A><B CLASS="note">Note: </B><BR>This is a required parameter. To disable logging, set <TT CLASS="literal">logLevel</TT> to <TT CLASS="literal">0</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MAXFILESIZEFE">maxfilesize</A></P><A NAME="AEN5993"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5994"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID6717"></A>Specifies the maximum size, in MB, of a file that can be converted in memory.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN5997"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID6720"></A><TT CLASS="literal">maxfilesize=8</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6001"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6724"></A>An integer greater than one. The default value is <TT CLASS="literal">8</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMMARYFE">summary</A></P><A NAME="AEN6006"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6007"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID6731"></A>Specifies whether the DCS generates summaries of the documents that it converts to HTML. If the user sets their search display options to show summaries, Content Server displays these summaries with search results on the Search Result page.</P>
+<P><A NAME="TMPID6733"></A>By default, the <TT CLASS="literal">summary</TT> parameter is set to <TT CLASS="literal">TRUE</TT> on the command line of each DCS. To set the <TT CLASS="literal">summary</TT> parameter to <TT CLASS="literal">FALSE</TT>, you must modify the command line of each DCS rather than change the parameter in the <TT CLASS="filename">opentext.ini</TT> file, since arguments set on the command line override the global parameters set in the <TT CLASS="filename">opentext.ini</TT> file. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbs-h-agd.wbs-htmlcmdlnargs-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/websystemobj/wbs-htmlcmdlnargs-rf.htm">Command Line Arguments</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbs-h-agd.wbs-htmlcmdlnargs-rf" FMT=""></span>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6019"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6743"></A><TT CLASS="literal">TRUE</TT> or <TT CLASS="literal">FALSE</TT>. The default value is <TT CLASS="literal">TRUE</TT>.</P>
+<P><A NAME="TMPID6747"></A>A value of <TT CLASS="literal">TRUE</TT> means that the DCS generates summaries. A value of <TT CLASS="literal">FALSE</TT> means that the DCS does not generate summaries. </P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMMARYHOTWORDSFE">summaryhotwords</A></P><A NAME="AEN6029"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6030"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID6755"></A>Specifies the number of hotwords that the summarizer uses to generate a document summary. Reducing this value may speed up summarization, but there are many other variables that also affect the speed of this process.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6757"></A><B CLASS="important">Important: </B><BR>OpenText strongly recommends that you not modify the value of this parameter.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6036"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6761"></A>An integer greater than, or equal to, one. The default value is <TT CLASS="literal">20</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SUMMARYSENTENCESFE">summarysentences</A></P><A NAME="AEN6041"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6042"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID6768"></A>Specifies the number of sentences to generate in summaries.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6045"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID6771"></A><TT CLASS="literal">summarysentences=5</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6049"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6775"></A>An integer greater than, or equal to, one. By default, this parameter does not appear in the <TT CLASS="literal">[FilterEngine]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file, which is equivalent to <TT CLASS="literal">summarysentences=5</TT>. </P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TIMEOUTFE">timeout</A></P><A NAME="AEN6056"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6057"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID6784"></A>Specifies the maximum number of seconds to wait before terminating a worker process.</P>
+<P><A NAME="TMPID6785"></A>The DCS monitors the time that worker processes spend converting documents and terminates the worker processes that exceed this limit. This timeout threshold is defined by the <TT CLASS="literal">timeout</TT> parameter.</P>
+<P><A NAME="TMPID6787"></A>When the worker process tries to convert a corrupt or otherwise badly formed document, it fails and returns an error code to the DCS. Some documents, however, can cause the filtering system to remain in an infinite processing loop. On rare occasions, the conversion filter progressively uses up system resources while in this infinite loop.</P>
+<P><A NAME="TMPID6788"></A>The DCS has a default <TT CLASS="literal">timeout</TT> value of 30 seconds, after which it stops the worker process. However, if the worker process is using up memory quickly, it could consume all the available memory before the 30 seconds have elapsed. In this case, you can lower the <TT CLASS="literal">timeout</TT> value so that the conversion filter will not consume all the memory before it times out.</P>
+<P><A NAME="TMPID6791"></A>The value of the <TT CLASS="literal">timeout</TT> parameter should be as low as possible, without causing the conversion process to end before a valid document can be converted. You can estimate an appropriate <TT CLASS="literal">timeout</TT> value by enabling logging for a reasonable period of time, for 24 hours for example, and examining the maximum amount of time the process spends converting a valid document. The length of the maximum valid conversion time is usually a small number of seconds. Once you have determined this value, you can change the <TT CLASS="literal">timeout</TT> value to one and a half or two times the maximum valid conversion time. The additional time allows for documents that are larger than those that were converted during the test period.</P>
+<P><A NAME="TMPID6795"></A>The value of the <TT CLASS="literal">timeout</TT> parameter can also be customized for each conversion filter. This is done by specifying the parameter <TT CLASS="literal">x-timeout</TT> in the INI section of each conversion filter.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6073"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID6800"></A><TT CLASS="literal">timeout=30</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6077"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6804"></A>An integer greater than, or equal to, one. The default value is <TT CLASS="literal">30</TT>. </P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMPDIRFE">tmpdir</A></P><A NAME="AEN6082"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6083"></A><B>Description:</B></P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF77"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6812"></A><B CLASS="note">Note: </B><BR>In the Windows version of Content Server, this value has no effect. All temporary files are written to the directory specified by the TMP environment variable. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="nr1"><A NAME="TMPID6814"></A>This parameter specifies the directory that DCSs use to store temporary conversion files. Temporary conversion files are files with <TT CLASS="filename">.in</TT> and <TT CLASS="filename">.out</TT> extensions, and the temporary files created by the filtering system. The value of this parameter can be no larger than 256 bytes.</P>
+<P><A NAME="TMPID6817"></A>In UNIX operating systems, OpenText recommends that you use the <TT CLASS="filename">/tmp</TT> directory as the temporary directory for DCSs. Specifying a temporary file system, such as <TT CLASS="filename">/tmp</TT> for UNIX, significantly improves the performance of DCSs. In UNIX versions of Content Server, the <TT CLASS="literal">tmpdir</TT> parameter is set by default to <TT CLASS="filename">/tmp</TT> during the installation of Content Server.</P>
+<P><A NAME="TMPID6825"></A>Sometimes, temporary files are discarded by abnormally terminated worker processes in UNIX. OpenText recommends that you clean up the temporary directory on a regular basis.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6101"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID6829"></A><TT CLASS="literal">tmpdir=/tmp</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6105"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6833"></A>An absolute path.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WINDOWFE">window</A></P><A NAME="AEN6109"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6110"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID6839"></A>Specifies the maximum number of IPool messages to be processed from the IPool read area before the DCS commits an IPool transaction.</P>
+<P><A NAME="TMPID6840"></A>This parameter is the first of three throughput-limiting mechanisms in the <TT CLASS="literal">[FilterEngine]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file, followed by the <A href="../webadmin/wba-ini-filterengine-rf.htm#MINWINDOWFE"><TT CLASS="literal">minwindow</TT></A> and <A href="../webadmin/wba-ini-filterengine-rf.htm#MAXTIMEFE"><TT CLASS="literal">maxtime</TT></A> parameters.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6120"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID6849"></A><TT CLASS="literal">window=10</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6124"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6853"></A>An integer greater than, or equal to, one. The default value is <TT CLASS="literal">10</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF78"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID6856"></A><B CLASS="note">Note: </B><BR>Setting this value higher than the default improves conversion filter throughput but also increases the amount of disk space used by the DCS.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MINWINDOWFE">minwindow</A></P><A NAME="AEN6131"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6132"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID6862"></A>Specifies the minimum number of IPool messages to process from the read IPool area before the DCS commits an IPool transaction. If the number of available messages in the read area is less than the value specified for the <TT CLASS="literal">minwindow</TT> parameter, the transaction will be committed after the DCS processes the last IPool message.</P>
+<P><A NAME="TMPID6864"></A>This parameter is the second of three throughput-limiting mechanisms in the <TT CLASS="literal">[FilterEngine]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file, after the <A href="../webadmin/wba-ini-filterengine-rf.htm#WINDOWFE"><TT CLASS="literal">window</TT></A> parameter and before the <A href="../webadmin/wba-ini-filterengine-rf.htm#MAXTIMEFE"><TT CLASS="literal">maxtime</TT></A> parameter.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6143"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID6873"></A><TT CLASS="literal">minwindow=5</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6147"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6877"></A>An integer greater than, or equal to, one. The default value is <TT CLASS="literal">5</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MAXTIMEFE">maxtime</A></P><A NAME="AEN6152"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6153"></A><B>Description:</B></P>
+<P class="nr1"><A NAME="TMPID6884"></A>Specifies the maximum amount of time, in milliseconds, to allow for processing of an IPool transaction. When a transaction exceeds this time limit, the transaction is committed after the current IPool message has been fully processed, regardless of whether the <TT CLASS="literal">window</TT> or <TT CLASS="literal">minwindow</TT> criteria have been satisfied.</P>
+<P><A NAME="TMPID6887"></A>This parameter is the last of three throughput-limiting mechanisms in the <TT CLASS="literal">[FilterEngine]</TT> section of the <TT CLASS="filename">opentext.ini</TT> file, after the <A href="../webadmin/wba-ini-filterengine-rf.htm#WINDOWFE"><TT CLASS="literal">window</TT></A> and <A href="../webadmin/wba-ini-filterengine-rf.htm#MINWINDOWFE"><TT CLASS="literal">minwindow</TT></A> parameters.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6165"></A><B>Syntax:</B></P>
+<P class="nr1"><A NAME="TMPID6896"></A><TT CLASS="literal">maxtime=120000</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN6169"></A><B>Values:</B></P>
+<P class="nr1"><A NAME="TMPID6900"></A>An integer greater than, or equal to, one. The default value is <TT CLASS="literal">120000</TT>, or two minutes.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

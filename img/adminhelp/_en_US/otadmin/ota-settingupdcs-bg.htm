@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Setting Up the Document Conversion Service</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-settingupdcs-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Data Flow Processes';
+          header.title2 = 'Setting Up the Document Conversion Service';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID5235"></A>The Document Conversion Service (DCS) is a process that converts documents from their native formats to HTML or raw text. Admin servers manage DCSs in Content Server DCS provides two services in Content Server: it converts items so that users can hit highlight or view them in Content Server, and it converts data as it passes through an indexing data flow. In data flows, the DCS is referred to as the Document Conversion process. When you set up the DCS, you determine how it operates for converting items for Content Server operations, such as hit highlighting and viewing. For more information about configuring the DCS as it operates for converting data in data flows, see <span><A href="../websystemobj/wbs-spechtml-bg.htm">Configuring Document Conversion Processes</A></span>. Setting up the DCS involves enabling and configuring it, and monitoring its status.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF107">Enabling the DCS</A></P>
+<P><A NAME="TMPID5242"></A>When you install or upgrade Content Server, you can enable the DCS for your default Admin server to manage. Anytime you add a new Admin server or configure an existing Admin server, you can also enable a DCS for each server to manage. Each Admin server can manage only one DCS. Enabling multiple DCSs allows you to distribute the document conversion load across many Admin servers, therefore improving the overall performance of your system. If an Admin server becomes unavailable, the DCS that it manages also becomes unavailable; however, if other Admin servers are available and manage a DCS, those DCSs can handle document conversion. You can disable a DCS at your site at any time; however, at least one DCS should be enabled so that document conversion can occur.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF108">Configuring DCS Settings</A></P>
+<P><A NAME="TMPID5245"></A>After you enable DCSs, you can configure them. Each DCS has its own configuration file that reflects the settings that you configure for it.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF109"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID5247"></A><B CLASS="note">Note: </B><BR>The DCS configuration file is stored in the config directory of a primary Content Server installation.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID5249"></A>When you enable a DCS, Content Server configures most DCS settings for you. You can change the settings at any time to customize how the DCS operates. An example of settings that Content Server configures automatically are port numbers. Content Server selects available ports for the DCS and configures the DCS port number and the Admin port number. The Admin port number is the number of the port on which the DCS listens for information from the Admin server; the DCS port number is the number of the port that Content Server operations use to communicate with the DCS. Other settings that Content Server may configure automatically include the log file, which is the location of the file that records logging information for the DCS you are configuring; the start directory and the filter path, which are the locations where document conversion filters are stored; and the rules file, which is the location where the document conversion rules file is stored. The document conversion rules file is a file that DCS uses to determine which conversion filters to use.</P>
+<P><A NAME="TMPID5255"></A>One setting that is not configured automatically and that you must specify is the temporary file directory. The temporary file directory is a temporary storage location that is required by conversion filters.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF110"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID5257"></A><B CLASS="note">Note: </B><BR>Content Server appends the Admin port number to log file names when it creates DCS log files. For example, the log file that corresponds to a DCS that listens on Admin port number 5868, has the file name dcs_5868.log. The start directory location and the filter path should match; however, on Windows operating systems, they must match.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID5259"></A>Content Server also configures default values for the following settings:</P><A NAME="AEN4631"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4632"></A><A NAME="TMPID5263"></A>Log level, which specifies which type of logging information is recorded (for example, <B CLASS="guilabel">0</B> specifies that logging will not occur; <B CLASS="guilabel">1</B> specifies that only errors and documents that could not be indexed are recorded; <B CLASS="guilabel">2</B> specifies that errors and document conversion events, such as filter loading information are recorded; <B CLASS="guilabel">3</B> specifies that errors, document conversion events, and performance statistics are recorded; and <B CLASS="guilabel">4</B> specifies that errors, performance statistics, and IPool events are recorded)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4639"></A><A NAME="TMPID5270"></A>Document conversion timeout, which specifies the maximum number of seconds that Content Server waits to display converted documents to users before returning an error</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4642"></A><A NAME="TMPID5273"></A>Number of threads, which specifies the number of document conversion requests that the DCS processes simultaneously</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4644"></A><A NAME="TMPID5275"></A>Queue size, which specifies the maximum number of documents that the DCS will allow to wait to be converted</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF111"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID5277"></A><B CLASS="note">Note: </B><BR>The values that you specify for the number of threads and the queue size depend on variables at your Content Server site, including the number of users, number of computers dedicated to DCSs, and the amount of available system resources.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF112">Monitoring DCS Status</A></P>
+<P class="before-ul"><A NAME="TMPID5280"></A>Monitoring the status of a DCS allows you to maintain its performance. DCSs can have one of the following statuses:</P><A NAME="AEN4651"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4652"></A><A NAME="TMPID5283"></A><B CLASS="guilabel">Running</B>, which indicates that the DCS is running</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4655"></A><A NAME="TMPID5286"></A><B CLASS="guilabel">Not running</B>, which indicates that the DCS is stopped and is not scheduled to run</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4658"></A><A NAME="TMPID5289"></A><B CLASS="guilabel">Disabled</B>, which indicates that the DCS has been disabled manually </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4661"></A><A NAME="TMPID5292"></A><B CLASS="guilabel">Missing from an Admin server</B>, which indicates that the Admin server that manages the DCS cannot locate the DCS's configuration. You should resynchronize the Admin server to re-create the DCS. For more information about resynchronizing Admin servers, see <span><A href="../otadmin/ota-resynchlladminserver-bg.htm">Resynchronizing Admin Servers</A></span></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4665"></A><A NAME="TMPID5296"></A><B CLASS="guilabel">Returned an error</B>, which indicates that a DCS error has occurred.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4668"></A><A NAME="TMPID5299"></A><B CLASS="guilabel">Returned an Admin server error</B>, which indicates that an error occurred with the Admin server while it was retrieving the DCS process. In this case, the Admin server may have stopped running.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4671"></A><A NAME="TMPID5302"></A><B CLASS="guilabel">Unknown State</B>, which indicates that the DCS is unable to communicate with the Admin server.</P></LI></UL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../otadmin/ota-toconfigdcs-p.htm" revision="">To Configure the Document Conversion Service</A></p></li>
+<li><p><A  href="../websystemobj/wbs-spechtmlrf-p.htm" revision="">To Configure Document Conversion Parameters</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

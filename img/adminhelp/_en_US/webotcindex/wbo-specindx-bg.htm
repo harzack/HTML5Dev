@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Administering Searching Processes</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbo-specindx-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Searching';
+          header.title2 = 'Administering Searching Processes';
+           header.draw();
+  </script>
+
+<P class="before-ul nr1"><A NAME="TMPID13856"></A>Searching processes work together in the following way to allow users in Content Server to search a data source's index:</P><A NAME="AEN13092"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13093"></A><A NAME="TMPID13860"></A>The Search Manager accepts search requests (in the form of a Query) from users in Content Server and then gives the request to a Search Federator to handle.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13096"></A><A NAME="TMPID13863"></A>The Search Federator gives the search request to all the Search Engines that it manages.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13098"></A><A NAME="TMPID13865"></A>The Search Engines search their partitions' indexes, and then produce search results based on the data they locate.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13100"></A><A NAME="TMPID13867"></A>The Search Engines give the search results to the Search Federator.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13102"></A><A NAME="TMPID13869"></A>The Search Federator merges together all the search results that it receives and then gives the final search results to the Search Manager.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13104"></A><A NAME="TMPID13871"></A>The Search Manager accepts the search results and then gives them to Content Server to be displayed to users in Content Server on Search Results pages.</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF288"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID13875"></A><B CLASS="note">Note: </B><BR>When you establish a connection with the Search Federator, the default timeout threshold value to issue a query is very short, so the connection can be easily lost. You can increase the time available to issue a query by pressing the ENTER key immediately after you open the Search Client. This will give you 3 minutes to type in your query before the Search Federator closes.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF289">Adding Searching Processes</A></P>
+<P><A NAME="TMPID13877"></A>When you create a data source's index using Content Server templates, a Search Manager, a Search Federator, and a Search Engine are created automatically. If you create a data source's index by adding system objects individually, you must add a Search Manager, a Search Federator, and a Search Engine yourself.</P>
+<P><A NAME="TMPID13879"></A>You can add Search Federators and Search Engines to your Indexing and Searching system at any time. When you add a Search Federator, you also add one or more Search Engines simultaneously. One Search Engine is added for each partition in your system; for example, if there are three partitions in your system, adding a Search Federator also adds three Search Engines. </P>
+<P><A NAME="TMPID13880"></A>Adding multiple Search Federators can create a <I CLASS="emphasis">redundant</I> searching system. Redundancy means that searching continues even if a Search Federator becomes unavailable; other Search Federators are available to handle any search requests. When you add multiple partitions to your system, you can increase the speed of searching because more Search Engines are available to search smaller sets of data simultaneously. If you want to see all the Search Federators and Search Engines in an Indexing and Searching system, you can view a <I CLASS="emphasis">partition map</I>. For more information about partition maps, see  <span><A href="../websystemobj/wbs-understandingpartmaps-bg.htm">Working with Partition Maps</A></span>. </P>
+<P><A NAME="TMPID13884"></A>You can view the status of Search Federators that are running to see if they are active or idle. If a Search Manager contains more than one Search Federator, the status and the number of Search Federators running is listed in the Status column.</P>
+<P><A NAME="TMPID13885"></A>If you no longer need a Search Engine, you can delete it; however, each partition in your system must have at least one Search Engine for it to be searchable. You can also delete a Search Federator if you no longer need the Search Engines it manages, as deleting a Search Federator also deletes all of its Search Engines. You delete Search Engines the same way that you delete most other Content Server items.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF290">Configuring Searching Processes</A></P>
+<P><A NAME="TMPID13888"></A>After you add searching processes to your Indexing and Searching system, you can configure them to control how they operate. Default values are configured for some settings automatically when you add the processes; however, you may need to change these values. Before you configure searching processes, you must stop them. You can stop an individual process, or you can stop all searching processes at once. Whether you stop an individual process or all searching processes, this stops searching for the Indexing and Searching system to which the processes belong.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF291">Resynchronizing</A></P>
+<P><A NAME="TMPID13890"></A>An Admin server writes information to an <TT CLASS="filename">otadmin.cfg</TT> file and a <TT CLASS="filename">search.ini</TT> file to reflect changes in the Content Server database (for example, if a partition has been configured or deleted). The <TT CLASS="filename">otadmin.cfg</TT> and <TT CLASS="filename">search.ini</TT> files are configuration files that store information about the system objects that are associated with data sources. Specifically, the <TT CLASS="filename">search.ini</TT> file contains settings that are set by default when components of Indexing and Searching systems (for example, partitions, Index Engines, and Search Engines) are created. OpenText strongly recommends that you do not modify the settings in the <TT CLASS="filename">search.ini</TT> file. At all times, the information in <TT CLASS="filename">otadmin.cfg</TT> and <TT CLASS="filename">search.ini</TT> files must match the corresponding information in the Content Server database. However, this information can become mismatched (for example, if the information recorded in the file is deleted or has become corrupted). If this occurs, you may need to <I CLASS="emphasis">resynchronize</I> searching processes. Resynchronizing searching processes modifies the <TT CLASS="filename">otadmin.cfg</TT> and <TT CLASS="filename">search.ini</TT> files to reflect information about the processes that is currently stored in the Content Server database.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF292">Configuring Search Managers</A></P>
+<P><A NAME="TMPID13907"></A>You can configure Search Managers to customize searching behavior for an Indexing and Searching system. For example, you can make regions in a data source's index available to users for searching when you configure index regions. You can also configure advanced ranking options, which allows you to determine which documents at your site are most relevant in search results. For more information about configuring advanced ranking, see <span><A href="../webotcindex/wbo-configadvrank-bg.htm">Configuring Advanced Ranking</A></span>.</P>
+<P><A NAME="TMPID13909"></A>For a non-Enterprise data source, you can set up hyperlink mappings when you configure its Search Manager. Hyperlink mappings allow users to access information in the data source's index when viewing search results. For more information, see <span><A href="../webotcindex/wbo-confighypmap-bg.htm">Configuring Hyperlink Mappings</A></span>.</P>
+<P CLASS="bridgehead-subheading1 BH1SEP"><A NAME="TMP4REF293">Defining Search Results Counts</A></P>
+<P><A NAME="TMPID13912"></A>You can configure the number of extra search results Content Server will check the permissions for, and if the end of the “unpermissioned” result set can be reached in that range, the exact count is displayed. Only the results a user has permission to see are included in the count. The maximum value of <TT CLASS="literal">225</TT>, which is the default, will display the number of search results, up to 225, and the number of pages they are displayed on. Users can click on any page of the results to see them immediately.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF294"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID13917"></A><B CLASS="note">Note: </B><BR>The <TT CLASS="literal">resultCountLookAhead</TT> parameter only affects non-bypass users (and users not in the new group). Users who need an accurate count all the time can be assigned to the new “See Unpermissioned Result Counts” group.</P>
+<P><A NAME="TMPID13920"></A>Administrators have a bypass privilege that automatically grants full permissions to all items and locations in Content Server without permissions verification.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID13922"></A>For more information about the <TT CLASS="literal">resultCountLookAhead</TT> parameter, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-searchoptions-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-searchoptions-rf.htm">[SearchOptions]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-searchoptions-rf" FMT=""></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

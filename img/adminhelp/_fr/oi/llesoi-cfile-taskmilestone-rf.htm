@@ -1,0 +1,203 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle des étapes clés de tâches</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-taskmilestone-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Syntaxe du fichier de contrôle Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle des étapes clés de tâches';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TSKMLETAG01">taskmilestone</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TSKMLETAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID2779"></A>Utilisez <TT CLASS="literal">type="taskmilestone"</TT> sur la balise <TT CLASS="literal">node</TT> pour créer, mettre à jour ou supprimer une étape clé de tâche.  </P>
+<P CLASS="bridgehead-subheading3"><A NAME="TSKMLETAG03">Syntaxe</A></P><A NAME="AEN2668"></A>
+<PRE 
+CLASS="screen"
+>&lt;node type="taskmilestone" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="TSKMLETAG04">Utilisation</A></P>
+<A NAME="AEN2670"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2671"></A><A NAME="TMPID2792"></A>La création ou la mise à jour d'une étape clé de tâche peut inclure un certain nombre de balises subordonnées facultatives : <span><A HREF="llesoi-cfile-taskmilestone-rf.htm#ACTDTTAG1">Balise actualdate</A></span>, <span><A HREF="llesoi-cfile-taskmilestone-rf.htm#CURRDTTAG1">Balise currentdate</A></span> et <span><A HREF="llesoi-cfile-taskmilestone-rf.htm#ORIGDTTAG1">Balise originaldate</A></span>. Ces balises subordonnées sont détaillées ci-dessous.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2676"></A><A NAME="TMPID2797"></A>La création, mise à jour ou suppression d'une étape clé de tâche peut également nécessiter un certain nombre de balises subordonnées, telles que la balise <TT CLASS="literal">location</TT> . Ces autres balises subordonnées sont détaillées dans <span><A HREF="llesoi-cfilesamp-bg.htm">Descriptions et syntaxe des balises Importateur d'objet</A></span>.</P></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="TSKMLETAG05">Exemple</A></P>
+<P><A NAME="TMPID2802"></A>Pour créer une étape clé de tâche nommée « New Milestone », rattachée à une liste de tâches nommée « New Task List » dans l'espace de travail Enterprise :</P><A NAME="AEN2684"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="taskmilestone" action="create"&gt;
+    &lt;location&gt;Enterprise:New Task List&lt;/location&gt;
+    &lt;title language="en"&gt;New Milestone&lt;/title&gt;
+    &lt;actualdate&gt;20110114&lt;/actualdate&gt;
+    &lt;currentdate&gt;20110107150000&lt;/currrentdate&gt;
+    &lt;originaldate&gt;20100201&lt;/originaldate&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="ACTDTTAG1">Balise actualdate</A></P>
+<P><A NAME="TMPID2808"></A>La balise <TT CLASS="literal">actualdate</TT> permet d'ajouter ou de mettre à jour la date réelle pour l'étape clé de tâche. La syntaxe de cette balise est la suivante : <A NAME="AEN2688"></A>
+<PRE 
+CLASS="screen"
+>&lt;actualdate&gt;20100601&lt;/actualdate&gt;
+&lt;actualdate&gt;2010060150000&lt;/actualdate&gt;</PRE
+> <A NAME="AEN2689"></A>
+<PRE 
+CLASS="screen"
+>&lt;actualdate clear="true"&gt;&lt;/actualdate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2690"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2825"></A>La balise <TT CLASS="literal">actualdate</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="taskmilestone"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2829"></A>La balise <TT CLASS="literal">actualdate</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2832"></A>La balise <TT CLASS="literal">actualdate</TT> est facultative dans les cas suivants :</P><A NAME="AEN2712"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2713"></A><A NAME="TMPID2836"></A><TT CLASS="literal">&lt;node type="taskmilestone" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2716"></A><A NAME="TMPID2839"></A><TT CLASS="literal">&lt;node type="taskmilestone" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2719"></A><A NAME="TMPID2842"></A><TT CLASS="literal">&lt;node type="taskmilestone" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2847"></A>Les dates doivent être au format AAAAMMJJ ou AAAAMMJJHHMMSS, où la valeur HH se rapporte au format 24 heures et doit être comprise entre 01 et 24. Si le format AAAMMJJ est utilisé, l'heure prend par défaut la valeur 000000.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2849"></A>Pour effacer la valeur de la balise, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CURRDTTAG1">Balise currentdate</A></P>
+<P><A NAME="TMPID2853"></A>La balise <TT CLASS="literal">currentdate</TT> permet d'ajouter ou de mettre à jour la date actuelle pour l'étape clé de tâche, parfois connue sous le nom <I CLASS="emphasis">Date prévue</I>. La syntaxe de cette balise est la suivante : <A NAME="AEN2733"></A>
+<PRE 
+CLASS="screen"
+>&lt;currentdate&gt;20101130&lt;/currentdate&gt;
+&lt;currentdate&gt;20101130150000&lt;/currrentdate&gt;</PRE
+> <A NAME="AEN2734"></A>
+<PRE 
+CLASS="screen"
+>&lt;currentdate clear="true"&gt;&lt;/currentdate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2735"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2871"></A>La balise <TT CLASS="literal">currentdate</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="taskmilestone"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2875"></A>La balise <TT CLASS="literal">currentdate</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2878"></A>La balise <TT CLASS="literal">currentdate</TT> est facultative dans les cas suivants :</P><A NAME="AEN2757"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2758"></A><A NAME="TMPID2882"></A><TT CLASS="literal">&lt;node type="taskmilestone" action="create"&gt;</TT> </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2761"></A><A NAME="TMPID2885"></A><TT CLASS="literal">&lt;node type="taskmilestone" action="update"&gt;</TT> </P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2890"></A>La date doit être au format AAAAMMJJ ou AAAAMMJJHHMMSS, où la valeur HH se rapporte au format 24 heures et doit être comprise entre 01 et 24. Si le format AAAMMJJ est utilisé, l'heure prend par défaut la valeur 000000. Si cette balise n'est pas spécifiée lors de la création, la date système actuelle est utilisée.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2892"></A>Pour effacer la valeur de la balise, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="ORIGDTTAG1">Balise originaldate</A></P>
+<P><A NAME="TMPID2896"></A>La balise <TT CLASS="literal">originaldate</TT> permet d'ajouter ou de mettre à jour la date d'origine pour l'étape clé de tâche. La syntaxe de cette balise est la suivante : <A NAME="AEN2774"></A>
+<PRE 
+CLASS="screen"
+>&lt;originaldate&gt;20100701&lt;/originaldate&gt;
+&lt;originaldate&gt;20100701150000&lt;/originaldate&gt;</PRE
+> <A NAME="AEN2775"></A>
+<PRE 
+CLASS="screen"
+>&lt;originaldate clear="true"&gt;&lt;/originaldate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2776"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2913"></A>La balise <TT CLASS="literal">originaldate</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="taskmilestone"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2917"></A>La balise <TT CLASS="literal">originaldate</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2920"></A>La balise <TT CLASS="literal">originaldate</TT> est facultative dans les cas suivants :</P><A NAME="AEN2798"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2799"></A><A NAME="TMPID2924"></A><TT CLASS="literal">&lt;node type="taskmilestone" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2802"></A><A NAME="TMPID2927"></A><TT CLASS="literal">&lt;node type="taskmilestone" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2805"></A><A NAME="TMPID2930"></A><TT CLASS="literal">&lt;node type="taskmilestone" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2935"></A>Les dates doivent être au format AAAAMMJJ ou AAAAMMJJHHMMSS. Si le format AAAMMJJ est utilisé, l'heure prend par défaut la valeur 000000. Si cette balise n'est pas spécifiée lors de la création, la date système actuelle est utilisée.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2937"></A>Pour effacer la valeur de la balise, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

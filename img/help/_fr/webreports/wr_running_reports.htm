@@ -1,0 +1,77 @@
+<!-- wr_running_reports.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Running a WebReport</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_running_reports.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+
+<SCRIPT LANGUAGE="JavaScript">
+
+	var header = new AdminHeader();
+	header.title1 = 'Working With WebReports';
+	header.title2 = 'Running a WebReport';
+   	header.draw();
+
+	function makeTagWindow (posn) {
+		var url = 'wr_tag_syntax.htm';
+		var tw = window.open(url,'ContentTagBrowser',"width=800,height=665,resizable=yes,menubar=no,scrollbars=yes,toolbar=no");
+	}
+</SCRIPT>
+
+<p class="body">
+<a href="javascript:makeTagWindow()">Click here to open the WebReports Tag Guide</a>
+</p>
+<p class="body">
+By default, running a WebReport causes the combined output of the processed reportview and any data source to be delivered to the
+user's browser.  WebReports can also be 'delivered' to other destinations using a variety of <a href="wr_export_procedures.htm">
+Export</a> options.
+There are three commonly used ways to run a WebReport.
+<ol class="body">
+  <P><li>Selecting the WebReport link from Livelink. Where a WebReport is visible in a Livelink container, the name link can be clicked to run
+the current version of the WebReport. This approach can also be used for versions that have been listed using the <SPAN class="gui">Properties->Versions</SPAN>
+option from the function menu of a WebReport object.  This differs from normal documents where this action would cause a view or open option to be
+executed. Note: the behavior of the WebReport link can be altered by changing the defaults through the <SPAN class="gui">Properties->Specific tab</SPAN></li></P>
+
+<P><li>Selecting the <SPAN class="gui">Open</SPAN> option from the function menu <img src="../../images/functionsicon.gif" border=0 alt="Functions Icon">. This performs the same action as clicking the name link.</LI></P>
+
+<P><li>Invoking the appropriate WebReport URL. This option can be used to create complex relationships between different objects in Livelink.
+For example, a Livelink Customview can invoke a WebReport to collect data for display; a Livelink WebForm could invoke a WebReport
+to build form information such as pick lists; A WebReport can invoke another WebReport to create relational database type applications.
+This option can also be used to invoke a WebReport from a Livelink <SPAN class="gui">URL</SPAN> object. The reason for using this approach
+is that it is possible to create unique URLs which include parameters that can be used in the reportview. Any parameters passed in
+the URL can be referenced within the reportview using special tags (e.g. [LL_REPTAG_&parmname /]). Thus multiple
+URLs can be created to allow a single WebReport to behave in different ways. It is also possible to include input parameters to be passed directly
+to the underlying data sources. For more information regarding WebReport parameters, see the advanced section on
+<a href="wr_parameter_info.htm">Parameter Usage</a>
+</li></P>
+</ol>
+</p>
+
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD>
+</TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><IMG SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><B CLASS="NOTE">Note: </B>
+<BR>
+WebReports provides a feature to allow defaults to be set for any parameters that would normally be passed through the URL. When a default value is set for
+a parameter, then this value will be used if no corresponding parameter is found in the URL. More information about <a href="wr_parameter_procedures.htm">Using Parameters</a> can be found
+through the online help.
+</P>
+</TD>
+</TR>
+</TABLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

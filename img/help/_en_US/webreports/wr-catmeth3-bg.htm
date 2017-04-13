@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>LLAttrBlobData - Method 3</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-catmeth3-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Categories and Attributes';
+          header.title2 = 'LLAttrBlobData - Method 3';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID23699"></A>This approach is half way between the previous two methods. It uses a SQL query to return a Content Server data structure from the table LLAttrBlobData which can then be indexed via a series of sub-tags. We still need a data source for this method, however, rather than returning a column of data ids as we did in method one, we return a column of Content Server data structures. The SQL query might look like:</P><A NAME="AEN22377"></A>
+<PRE 
+CLASS="screen"
+>select LLAttrBlobData.SegmentBlob from LLAttrBlobData, DTree
+  where
+    LLAttrBlobData.ID = DTree.DATAID and
+    LLAttrBlobData.VERNUM = DTree.VERSIONNUM and
+    &amp;my other criteria&gt;</PRE
+>
+<P><A NAME="TMPID23702"></A>This query should produce output like:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN22379"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">SegmentBlob</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">A&lt;1,?,{338223,5}=A&lt;1,?,'CustomID'=0,'ID'=1,'Values'={A&lt;1,?,2=A&lt;1,?,'ID'=2,'Values'={'JRS62-99'}&gt;,3=A&lt;1,?,'ID'=3,'Values'={18}&gt;,4=A&lt;1,?,'ID'=4,'Values'={10657}&gt;,5=A&lt;1,?,'ID'=5,'Values'={D/2006/6/25:0:0:0}&gt;,6=A&lt;1,?,'ID'=6 ,'Values'={D/1999/4/1:0:0:0}&gt;,7=A&lt;1,?,'ID'=7,'Values'={true}&gt;&gt;}&gt;&gt;</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID23715"></A>This data looks complex although once a few simple concepts are understood it is relatively easy to understand. First of all, this whole data structure consists of just two data types, <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span>s and <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span>s. A LIST is like a conventional array and is contained within curly brackets when flattened into a string for storage in the Content Server database. In the results above, {338223,5} is a LIST that contains 2 elements. We could access each of the elements with LIST:1 or LIST:2 depending on which we want. An ASSOC is similar to a LIST but rather than having a numeric index it has a key which is used to index the structure. In the data above there are many nested ASSOCs, one of which is A&lt;1,?,'ID'=2,'Values'={'JRS62-99'}&gt;. This ASSOC has 2 keys, ID and Values which we can access with either ASSOC:ID or ASSOC:Values. Keeping these data structures in mind we can create a reportview to access the individual attribute values we are interested in.</P><A NAME="AEN22394"></A>
+<PRE 
+CLASS="screen"
+>&lt;TABLE CELLSPACING="1" STYLE="font-size:11px" BORDER="0"&gt;
+  &lt;TR STYLE="background-color:#999999;color:white;bold;"&gt;
+    &lt;TD&gt;Trial Name&lt;/TD&gt;
+    &lt;TD&gt;Number of Failures&lt;/TD&gt;
+    &lt;TD&gt;Assignee&lt;/TD&gt;
+    &lt;TD&gt;Start Date&lt;/TD&gt;
+    &lt;TD&gt;End Date&lt;/TD&gt;
+    &lt;TD&gt;Complete&lt;/TD&gt;
+  &lt;/TR&gt;
+  [LL_WEBREPORT_STARTROW /]
+  &lt;TR&gt;
+    &lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:2 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+    &lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:3 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+    &lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:4 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+    &lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:5 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+    &lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:6 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+    &lt;TD&gt;[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1 ASSOC:7 ASSOC:'Values' LIST:1 /]&lt;/TD&gt;
+  &lt;/TR&gt;
+  [LL_WEBREPORT_ENDROW /]
+&lt;/TABLE&gt;</PRE
+>
+<P><A NAME="TMPID23719"></A>In the reportview you will notice all the columns start the same way: <TT CLASS="literal">[LL_REPTAG=SEGMENTBLOB ASSOC:"{338223,5}" LIST:1 ASSOC:'Values' LIST:1</TT></P>
+<P><A NAME="TMPID23721"></A>If, as in this case, you are only looking at regular Attributes rather than multi-value attributes, sets or multi-value sets then the same syntax can be employed. All these Attribute types can be accessed, just a slightly different syntax is required. The output from the reportview above should look like:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN22398"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Trial Name</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Number of Failures</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Assignee</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Start Date</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">End Date</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Complete</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">JRS62-99</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">18</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">10657</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Sun Jun 25 00:00:00 2006</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Thu Apr 01 00:00:00 1999</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">true</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID23764"></A>It is worth noting that in the above example an ASSOC key of {338223,5} is a slightly more complex concept that that of a normal LIST/ASSOC. The reason for this is because the whole LIST is used as the key into the first ASSOC in the SEGMENTBLOB column. Because the values in the list (dataid and version number respectively) are not static it is often easier to use ASSOC:1 in place of <TT CLASS="literal">ASSOC:"{338223,5}"</TT> as this will always index into the first element of the ASSOC irrespective of the key name. If using this method you need to be sure that your field will always be at the same numeric index.</P>
+<P><A NAME="TMPID23766"></A>The tag guide contains detailed information on the <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> and <span><A HREF="wr-tag-stfirst.htm#WR-TAG-STASSOC">ASSOC</A></span> operators used above.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

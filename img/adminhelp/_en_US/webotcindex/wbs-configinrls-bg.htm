@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Configuring Remote Search</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webotcindex/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-configinrls-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Searching';
+          header.title2 = 'Configuring Remote Search';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID14169"></A>You can use OpenText Content Server Remote Search to search multiple Content Server installations. You set up a remote connection between installations by adding and configuring a remote Content Server system, which resides within a Data Source and is accessible to slices. This allows the Administrator the ability to create new slices to search against remote Content Server systems, or add the object to existing ones. For information about slices, see <span><A href="../websystemobj/wbs-sysobjsl-bg.htm">Creating Slices</A></span>. When the administrator browses to the parent of this object, this object would have a status or either idle, searching, or process error, like other search processes. For information about data sources, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-dbadmin-add-configure-so" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-dbadmin-add-configure-so.htm">Adding and Configuring a New Database</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-dbadmin-add-configure-so" FMT=""></span>. The Specific properties page would consist of the following settings: </P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF295">Configuring Remote Search</A></P>
+<P><A NAME="TMPID14178"></A>You configure a Remote Search process to open a connection between Content Server systems by adding a remote Content Server system to the Enterprise Data Source Folder. This process acts as a web browser by communicating information to the Content Server system which functions as a <I CLASS="emphasis">remote server</I> via HTTP. Also, this process accepts connections from a Content Server system which functions as a <I CLASS="emphasis">client server</I>. When adding a remote Content Server system, you must set up user authentication for the Administrator logging into that remote Content Server system. For information about search processes, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswbo-h-agd.wbo-specindx-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webotcindex/wbo-specindx-bg.htm">Administering Searching Processes</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswbo-h-agd.wbo-specindx-bg" FMT=""></span>. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes: </B></P><A NAME="AEN13422"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="TMP4REF296"></A><A NAME="TMPID14189"></A>This user can either be the System Administrator or a user with system administration privileges.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="TMP4REF297"></A><A NAME="TMPID14191"></A>When a Content Server system functioning as a client server runs search result operations that are to be handled by a Content Server system functioning as a remote server, the client server must be added as a Valid Referrer to the remote server. Examples of search result operations include Hit Highlighting and Function Menu commands. For more information about adding a Valid Referrer to Content Server, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-confsecurity-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-confsecurity-bg.htm">Configuring Security Parameters</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-confsecurity-bg" FMT=""></span>.  </P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID14196"></A>You must also indicate the permission-type for the user performing the search on the remote Content Server system. When adding a new remote Content Server system, you can specify one of the following user access control settings:</P><A NAME="AEN13434"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13435"></A><A NAME="TMPID14201"></A><B CLASS="guilabel">Native User Only</B>, searches on the remote server are performed as the initiating user from the local Content Server system.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF298"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID14205"></A><B CLASS="note">Note: </B><BR>If the user does not already exist on the remote server, the search query will return a “no results found” error, and is logged in the log file as a warning.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13442"></A><A NAME="TMPID14208"></A><B CLASS="guilabel">Named Public User</B>, searches on the remote server are always performed as a single user. The user name is entered in the input field.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13445"></A><A NAME="TMPID14211"></A><B CLASS="guilabel">Native User with Fallback to Named Public User</B>, same as <B CLASS="guilabel">Native User Only</B> if the initiating user from the local Content Server system exists on the remote server. If the local user does not exist on the remote server, searches execute as the specified user name on the remote server.</P></LI></UL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webotcindex/wbs-toaddrls-p.htm" revision="">To Configure Remote Search</A></p></li>
+<li><p><A  href="../webotcindex/wbs-totestconnection-p.htm" revision="">To Test a Remote Search Connection</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

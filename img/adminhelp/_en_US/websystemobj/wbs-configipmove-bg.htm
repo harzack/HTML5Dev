@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Sending an Item to an IPool Using ipmove</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-configipmove-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Adding and Configuring a Tee Process';
+          header.title2 = 'Sending an Item to an IPool Using ipmove';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID7790"></A>You can use a Tee process and the <TT CLASS="literal">ipmove</TT> process to specify whether to search for a pattern in the metadata to include or exclude an item from being sent to a particular IPool.</P>
+<P><A NAME="TMPID7792"></A>The <TT CLASS="literal">ipmove</TT> section of the <TT CLASS="literal">opentext.ini</TT> file specifies the path to the message file, but the ipmove process does not read settings or arguments from the <TT CLASS="literal">ipmove</TT> section. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-ipmove-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-ipmove-rf.htm">[ipmove]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-ipmove-rf" FMT=""></span>.</P>
+<P><A NAME="TMPID7797"></A>The <TT CLASS="literal">ipmove</TT> process reads settings or arguments from the <TT CLASS="literal">-config</TT> file which is passed to it on the command line, for example:</P><A NAME="AEN7082"></A>
+<PRE 
+CLASS="screen"
+>F:/OpenText/cs1064dev02/bin/ipmove -config F:/OpenText/cs1064dev02/config/stormskyX9099X18137X67963.ini</PRE
+>
+<P><A NAME="TMPID7801"></A>A sample of the contents of the <TT CLASS="literal">stormskyX9099X18137X67963.ini</TT> file is:</P><A NAME="AEN7085"></A>
+<PRE 
+CLASS="screen"
+>[ipmove]
+ReadArea_1=67746_3
+ReadIpool_1=file://F:/OpenText/cs1064dev02/index/enterprise/data_flow
+WriteArea_1=67746_4
+WriteIpool_1=file://F:/OpenText/cs1064dev02/index/enterprise/data_flow</PRE
+>
+<P><A NAME="TMPID7804"></A>OpenText recommends you set the <TT CLASS="literal">readfields=true</TT> parameter for the <TT CLASS="literal">ipmove</TT> process by editing its Command Template, using the Specific Info tab of the Tee process in the Content Server user interface. For details, see <span><A href="../websystemobj/wbs-toconfigtwt-p.htm">To Configure a Tee Process</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

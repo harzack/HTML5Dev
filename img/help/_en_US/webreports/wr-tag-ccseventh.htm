@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>RUNIF</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-ccseventh.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Content Control Tags';
+          header.title2 = 'RUNIF';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID2978"></A>This section details the content control tag <span><A HREF="wr-tag-ccseventh.htm#WR-TAG-CCRUNIF">RUNIF</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCRUNIF">RUNIF</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="RUNIF-NAME">Syntax</A></P>
+<P><A NAME="WEBREPORTRUNIF"></A><B CLASS="highlight">[LL_WEBREPORT_RUNIF /]</B></P>
+<P><A NAME="TMPID2986"></A><B CLASS="highlight">[LL_WEBREPORT_RUNIF (expression) [:USECASE] /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="RUNIF-DESC">Description</A></P>
+<P><A NAME="TMPID2990"></A>Causes the processing of a WebReport to be aborted if a condition is met. If the specified expression evaluates to <TT CLASS="literal">FALSE</TT>, then the data source is not run and no processing of the WebReport occurs.</P>
+<P><A NAME="TMPID2992"></A>Due to the order in which the tags are processed, the <TT CLASS="literal">RUNIF</TT> tag conditions are limited to constants, parameters, literals, and any of the static Data Tags that are valid in the Header Section.</P>
+<P><A NAME="TMPID2994"></A>Variables are not supported in the conditions of the <TT CLASS="literal">RUNIF</TT> tag, since the WebReport will need to run in order to process those variables.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="RUNIF-PARAM">Parameters</A></P>
+<P><A NAME="TMPID2998"></A>Format for (expression): <TT CLASS="literal">"parmA" &lt;<I CLASS="varname">operator</I>> "parmB" &lt;<I CLASS="varname">optional clauses</I>></TT></P>
+<P CLASS="bridgehead-subheading3"><A NAME="RUNIF-EXAMP">Example</A></P>
+<P><A NAME="TMPID3004"></A><TT CLASS="literal">[LL_WEBREPORT_RUNIF "[LL_REPTAG_$GROUPA USERINGROUP /]" == "TRUE" /]</TT></P>
+<P><A NAME="TMPID3006"></A>In this example, if the user running the report is not in group A, as referenced by a constant, then the report does not run. This tag only works in the header section. In other words, before the <TT CLASS="literal">[LL_WEBREPORT_STARTROW /]</TT> tag.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="RUNIF-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID3010"></A>For more information, see <span><A HREF="wr-tag-ccfifth.htm#WR-TAG-CCINCLUDEIF">INCLUDEIF</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

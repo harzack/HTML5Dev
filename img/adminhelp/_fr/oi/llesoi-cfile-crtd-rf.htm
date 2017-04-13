@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle de la balise created</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-crtd-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Descriptions et syntaxe des balises Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle de la balise created';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CRTDTAG01">Description</A></P>
+<P class="nr1"><A NAME="TMPID3703"></A>Utilisez la balise <TT CLASS="literal">created</TT> pour spécifier une date de création différente pour l'objet.  </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CRTDTAG02">Syntaxe</A></P><A NAME="AEN3543"></A>
+<PRE 
+CLASS="screen"
+>&lt;created&gt;20100731&lt;/created&gt;</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CRTDTAG03">Utilisation</A></P>
+<A NAME="AEN3545"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3546"></A><A NAME="TMPID3715"></A>La balise <TT CLASS="literal">created</TT> n'est pas obligatoire.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3549"></A><A NAME="TMPID3718"></A>La balise <TT CLASS="literal">created</TT> est facultative dans les cas suivants :</P><A NAME="AEN3552"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3553"></A><A NAME="TMPID3722"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3558"></A><A NAME="TMPID3727"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3563"></A><A NAME="TMPID3732"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="addversion"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3568"></A><A NAME="TMPID3737"></A><TT CLASS="literal">&lt;node type="</TT>&lt;<I CLASS="varname">any_type</I>><TT CLASS="literal">" action="sync"&gt;</TT></P></LI></UL></LI></OL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CRTDTAG04">Notes</A></P>
+<A NAME="AEN3574"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3575"></A><A NAME="TMPID3745"></A>Les dates doivent être au format AAAAMMJJ ou AAAAMMJJHHMMSS, où la valeur HH se rapporte au format 24 heures et doit être comprise entre 01 et 24. Si le format AAAMMJJ est utilisé, l'heure prend par défaut la valeur 000000. Si cette balise n'est pas spécifiée lors de la création, la date système actuelle est utilisée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3577"></A><A NAME="TMPID3747"></A>Pour les objets de type document, il existe deux champs 'created', un pour le document et un pour chaque version du document. Si cette balise est 	spécifiée lors d'une opération <TT CLASS="literal">action="create"</TT>, la date sera modifiée au niveau du document <I CLASS="emphasis">et</I> et de la version du document.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3581"></A><A NAME="TMPID3751"></A>Lors de la mise à jour d'un document avec la balise <TT CLASS="literal">&lt;file&gt;</TT> présente, ou lors de l'ajout d'une nouvelle version, la date s'appliquera à la nouvelle version. Lors de la mise à jour d'un document sans la balise <TT CLASS="literal">&lt;file&gt;</TT>, la date s'appliquera au document. </P></LI></OL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CRTDTAG05">Exemple</A></P><A NAME="AEN3586"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node type="document" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;title language="en"&gt;My Guidelines&lt;/title&gt;
+    &lt;file&gt;c:\temp\guidelines.doc&lt;\file&gt;
+    &lt;createdby&gt;Admin&lt;/createdby&gt;
+    &lt;created&gt;20100731&lt;/created&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

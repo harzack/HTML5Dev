@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESFWF100500-H-UGD-EN-1">
+<META PiXprocLocator="formwfpaint">
+<title>Adding Forms to the Work Package</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-forms-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Using Forms in Workflow Maps';
+          header.title2 = 'Adding Forms to the Work Package';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID83"></A>You can add Content Server Form Templates and Forms to your Workflow Map's work package when you want to make Forms available on Start, User, Initiator, and Item Handler steps. You must enable Forms in the Workflow work package before you can add Forms to the Workflow. If you want to remove Forms from the Workflow Map, you can delete them.</P>
+<P><A NAME="TMPID91"></A>If a Form is available at the User step, assignees access the Form on the workflow step page when they perform work on a step. For example, you can define a survey as a Form, add the Form to the Workflow Map work package, and then make it available on a User step. When the Workflow is initiated and arrives at the User step, the step appears on the assignee's <B CLASS="GUILABEL">My Assignments</B> page. To complete the task, the assignee clicks the step name and clicks the <B CLASS="GUILABEL">Forms</B> tab, where the assignee can complete the survey.</P>
+<P><A NAME="TMPID99"></A>If a single Form is available at the User step, the Form opens immediately. If several Forms are available at the User step, the assignee must click each Form's name on the <B CLASS="GUILABEL">Forms</B> page to open the Form and complete the corresponding task.</P>
+<P><A NAME="TMPID106"></A>When you add a Form, you must specify a Form name and data storage mechanism. You can also specify whether Content Server creates a version of the Form each time a user completes it, the default Form displayed when a user accesses the step, and whether the Form is required. If a Form is required, a step assignee must view the Form when performing work on the step.</P>
+<P><A NAME="TMPID115"></A>After you add a Form to the work package, you can modify the Form by specifying the default field values or changing the Form settings, and make the Form available on steps.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="STORAGE">Choosing a Storage Mechanism</A></P>
+<P class="before-ul"><A NAME="TMPID122"></A>For each Form that you add to a Workflow Map's work package, you select a storage mechanism. After a Workflow is initiated, the storage mechanism saves the data that users supply in the Form while it moves through Workflow processing. You can choose one of the following storage mechanisms:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN124"></A><A NAME="TMPID127"></A>SQL Table</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN126"></A><A NAME="TMPID129"></A>Content Server Workflow</P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF0"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID132"></A><B CLASS="NOTE">Note: </B><BR>Your administrator may make additional custom mechanisms available.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="SQLTABLE">Using the SQL Table Storage Mechanism</A></P>
+<P><A NAME="TMPID135"></A>SQL Table is available as a storage mechanism for a Workflow Form if the Form is based on a Form Template that is associated with a database table. When a user clicks the Form's <B CLASS="GUILABEL">Save</B> or <B CLASS="GUILABEL">Apply</B> button, Content Server sends the data to the HTTP server and the SQL Table mechanism stores the current Form data as a record in the Content Server database table that is associated with the Form Template on which the Form is based.</P>
+<P><A NAME="TMPID146"></A>Saved Form data is accessible in Content Server by LiveReports and external applications, even after the Workflow has been completed. Content Server indexes Form data that is saved with a Workflow Map, so this data can be searched through Content Server Search.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="WF">Using the Content Server Workflow Storage Mechanism</A></P>
+<P><A NAME="TMPID155"></A>Content Server Workflow is available as a storage mechanism for any Form in a Workflow. When a user clicks the Form's <B CLASS="GUILABEL">Save</B> or <B CLASS="GUILABEL">Apply</B> button that sends the data to the HTTP server, the Content Server Workflow mechanism stores the current Form data in the Workflow Map's work package. Submitted Form data is accessible in the context of the Workflow only.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-FORMDISABLEVERSION">Disabling Versioning for Form Fields</A></P>
+<P><A NAME="TMPID166"></A>By default, Content Server displays the current value of Form fields, but it stores the current and all previous versions of field values in the Content Server database. If you want to view previous versions of field values (for example, if you are performing an audit on a Workflow that includes the Form), you can create a LiveReport to retrieve from the Content Server database all values specified for a field during Workflow processing. If you want Content Server to store only the current field values, you can disable versioning for the Form.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-FORMDISPLAYATTACH">Allowing Access to Workflow Attachments</A></P>
+<P><A NAME="TMPID176"></A>If the Workflow to which you are adding the Form includes attachments, you can allow Form users to access Workflow Attachments directly from the Form. Form users can perform the same tasks on the Workflow <B CLASS="GUILABEL">Attachments</B> page, such as viewing or adding Documents or other tasks (depending on privileges), that they could if they navigated to the Workflow <B CLASS="GUILABEL">Attachments</B> page in the Workflow. The Workflow Attachments area displays any Documents or other items that have been added during earlier steps in the Workflow. If the user assigned to the step does not have permission to access the Workflow Attachments area, an error message is displayed notifying the user that the Workflow Attachments area cannot be displayed, but the user is not prevented from adding data to the Form or completing the step.</P>
+<P><A NAME="TMPID184"></A>By default, Content Server adds a <B CLASS="GUILABEL">Display Attachments</B> button to the Form when you enable Workflow attachment access for the Form Task step. When users click the button, the Workflow Attachments are displayed in a separate window. If you create a custom view of the Form you must add a custom button to display attachments or you can embed the Workflow Attachments area within the Form. For more information about adding a custom button or displaying the attachments in a frame in a custom view of a Form, see the <span><XPROC NAME="ExtXrefStart" HREF="llesfrm-cwm.-" FMT="" NO1ST><i>Open Text Forms - Forms Designer's Guide (LLESFRM-CWM)</i><XPROC NAME="ExtXrefEnd" HREF="llesfrm-cwm.-" FMT=""></span> in the <A title="OpenText Knowledge Center" HREF="https://knowledge.opentext.com" TARGET="_blank">OpenText Knowledge Center</A>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID197"></A><B CLASS="NOTE">Note: </B><BR>Access to attachments is not available for PDF Forms and eForms.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wf-forms-enable-p.htm" revision="">To Enable Forms in the Work Package</A></p></li>
+<li><p><A  HREF="wf-forms-add-p.htm" revision="">To Add a Form to the Work Package</A></p></li>
+<li><p><A  HREF="wf-forms-mod-p.htm" revision="">To Modify a Form in the Work Package</A></p></li>
+<li><p><A  HREF="wf-forms-avail-p.htm" revision="">To Make a Form Available in a Step</A></p></li>
+<li><p><A  HREF="wf-forms-del-p.htm" revision="">To Delete a Form from the Work Package</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

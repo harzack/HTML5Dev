@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Configuration de l'indexation de gros volumes</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-sthghvol-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion de la recherche';
+          header.title2 = 'Configuration de l\'indexation de gros volumes';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID2841"></A>En temps normal, Content Server ne requiert qu'un seul processus Extracteur dans une source de données Entreprise pour extraire les données de la base de données Content Server ; il s'agit de la configuration par défaut de Content Server. Cependant, dans certains cas, lorsque le volume d'objets en cours d'indexation est trop important, les sources et les flux de données doivent être personnalisés pour permettre l'indexation de gros volumes. Ainsi, si une entreprise de grande envergure souhaite stocker et indexer l'ensemble de ses e-mails dans Content Server, la quantité de données peut nécessiter une indexation de gros volumes adaptée aux besoins du site.</P>
+<P class="before-ul"><A NAME="TMPID2846"></A>L'indexation de gros volumes consiste à configurer au moins l'un des éléments suivants :</P><A NAME="AEN2216"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2217"></A><A NAME="TMPID2849"></A>des processus Extracteur Entreprise multiples dans une source de données Entreprise ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2219"></A><A NAME="TMPID2851"></A>des processus de conversion de documents multiples dans une source de données Entreprise ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2221"></A><A NAME="TMPID2853"></A>des sources de données Entreprise multiples.</P></LI></UL>
+<P><A NAME="TMPID2854"></A>Pour plus d'informations sur l'ajout des processus Extracteur Entreprise et Conversion de documents, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-addanyprocs-bg.htm">Ajout de processus de flux de données</A></span>.</P>
+<P><A NAME="TMPID2856"></A>Les sources de données Entreprise multiples ne sont disponibles que si vous avez défini dans opentext.ini le paramètre <TT CLASS="literal">wantMultipleEnterprise</TT> de la section <B CLASS="guilabel">[SearchOptions]</B> sur <TT CLASS="literal">true</TT>. Pour en savoir plus, voir <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/lleswba-h-agd.wba-ini-searchoptions-rf" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-ini-searchoptions-rf.htm">La section [SearchOptions]</A><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/lleswba-h-agd.wba-ini-searchoptions-rf" FMT=""></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF63">Considérations lors de la configuration de l'indexation de gros volumes</A></P>
+<P><A NAME="TMPID2862"></A>La combinaison des processus et des sources de données requise pour une installation dépend des données à indexer. OpenText vous recommande de contacter les services généraux ou le service d'assistance clientèle pour une analyse de votre système avant de mettre en œuvre l'indexation de gros volumes. OpenText vous recommande également de planifier l'utilisation des ports et des répertoires partagés pour les sous-zones IPool avant la mise en œuvre. La fonction de flux de données de test est utile à cet égard, notamment pour déterminer si les sous-zones IPool ont été correctement spécifiées. Pour plus d'informations sur la fonction de flux de données de test, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-specdflw-bg.htm">Maintenance des flux de données</A></span>. Pour plus d'informations sur l'affichage des numéros de port sur votre système, reportez-vous à la rubrique <span><A href="../otadmin/ota-maintainlladminserver-rf.htm">Maintenance des serveurs d'administration</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF64">Réextraction des données Entreprise</A></P>
+<P><A NAME="TMPID2868"></A>Lorsque vous ajoutez une source de données Entreprise à Content Server, vous pouvez extraire à nouveau les données Entreprise de la base de données lors de sa création. Si votre base de données n'est pas très volumineuse, la commande de réextraction peut être utile car elle redistribue les données Entreprise dans les sources de données Entreprise, en équilibrant plus efficacement la charge. Cependant, si votre base de données est très volumineuse, la réextraction n'est pas forcément utile car elle risque d'être extrêmement longue. Pour plus d'informations, contactez le service d'assistance clientèle d'OpenText.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-addprocenterdsrc-bg.htm" revision="">Ajout de processus multiples dans une source de données Entreprise</A></p></li>
+<li><p><A  href="../otadmin/ota-maintainlladminserver-rf.htm" revision="">Maintenance des serveurs d'administration</A></p></li>
+<li><p><A  href="../otadmin/ota-configsrchlocmods-rf.htm" revision="">Configuration des modificateurs d'emplacement de recherche</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

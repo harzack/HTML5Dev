@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>L'Assoc Context</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="4">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-server-contassoc.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Transmission de données à un script';
+          header.title2 = 'L\'Assoc Context';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID17193"></A>Le script peut accéder aux données provenant de la source de données et transmises au WebReport. Le premier paramètre transmis à la première fonction Oscript déclarée dans le script est toujours un Assoc appelé <TT CLASS="literal">Context</TT>. S'il existe une source de données pour le WebReport, l'Assoc Context contient une clé appelée <TT CLASS="literal">data</TT> comportant un RecArray, un tableau à deux dimensions représentant toutes les données transmises au WebReport par la source de données. </P><A NAME="AEN16449"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_STARTSCRIPT NAME:myFunc /]
+function String anyName(Dynamic context)
+  String cell = ""
+    if isDefined (context.data)  // check there is a data source
+      cell = context.data[1][1] // return the first cell of data
+    end
+  return cell
+end
+[LL_WEBREPORT_ENDSCRIPT /]</PRE
+>
+<P><A NAME="TMPID17197"></A>Notez que le script vérifie si context.data est bien défini. En l'absence de données renvoyées par la source de données ou en l'absence de source de données, context.data n'est pas défini. Si cette éventualité n'est pas vérifiée, le traitement de l'intégralité du WebReport échoue. Il incombe toujours au script de vérifier que les données qu'il attend ont réellement été transmises. </P>
+<P><A NAME="TMPID17198"></A>Le script peut lire ce RecArray, mais il peut aussi y écrire. Cela signifie qu'un script appelé dans la section d'en-tête peut modifier les données provenant de la source de données avant qu'elles soient sorties dans la section des lignes du WebReport. </P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

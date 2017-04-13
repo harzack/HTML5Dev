@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-EN-1">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Configuring XML and HTML Initiation Action Properties</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-configgenparams2-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring General Action Parameters';
+          header.title2 = 'Configuring XML and HTML Initiation Action Properties';
+           header.draw();
+  </script>
+
+<DIV title="To configure XML and HTML initiation action properties:" CLASS="PROCEDURE">
+<P><B>To configure XML and HTML initiation action properties:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID571"></A>Double-click the <B CLASS="GUILABEL">Workflow Interchange</B> step and click the <B CLASS="GUILABEL">Actions</B> tab. </P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID575"></A>In the <B CLASS="GUILABEL">Step Ready</B> area, select the <B CLASS="GUILABEL">Perform Action</B> list and select <B CLASS="GUILABEL">Send an XML Initiation Message</B> or <B CLASS="GUILABEL">Send an HTML Initiation Message</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID581"></A>Click an action's <B CLASS="GUILABEL">Edit</B> icon <IMG  src="../../../16pencil.gif">.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID585"></A>Type the name of the action in the <B CLASS="GUILABEL">Name</B> field.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF5"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID588"></A><B CLASS="NOTE">Note: </B><BR>The name appears in the list of actions configured for the step but does not appear in any messages. You can use it to describe the purpose of a send action or to distinguish between multiple actions of the same type that are configured on the same step.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID590"></A>Type the absolute URL to which the message should be sent in the <B CLASS="GUILABEL">Target URL</B> field. For example, http://www.opentext.com.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID593"></A>If the target system is a Web server that supports HTTP basic authentication or a Content Server instance that supports Content Server cookie-based authentication, type a username and password in the <B CLASS="GUILABEL">Authentication</B> area. These credentials are supplied to the target Web server if required.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF6"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID598"></A><B CLASS="NOTE">Note: </B><BR>If credentials are required, OpenText recommends creating a user for this specific purpose. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID601"></A>In the <B CLASS="GUILABEL">HTTP Method</B> area, click one of the following options to choose the method used to send the message to the target system:</P><A NAME="AEN591"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN592"></A><A NAME="TMPID605"></A><B CLASS="GUILABEL">POST</B>, which is used by a Web browser to submit forms and should be selected when you are sending data to a server process.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN595"></A><A NAME="TMPID608"></A><B CLASS="GUILABEL">PUT</B>, which is used to save documents into a writable Web server directory.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF7"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID611"></A><B CLASS="NOTE">Note: </B><BR>When <B CLASS="GUILABEL">PUT</B> is selected from the list in the <B CLASS="GUILABEL">HTTP Method</B> area, the last segment of the target URL (the part after the last forward slash) is the name of the file created in the destination directory. If the target URL ends with a forward slash, a default filename is generated automatically. Default filenames generated in this way are different for every Workflow Interchange task in every initiated Workflow.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID615"></A><SPAN class="boxed-optional">Optional</SPAN> If you know that the target system requires custom HTTP headers to properly process the message, you can add those headers in the <B CLASS="GUILABEL">Additional Headers</B> area. Type the name and value of the header in the <B CLASS="GUILABEL">Name</B> and <B CLASS="GUILABEL">Value</B> fields, and then click the <B CLASS="GUILABEL">Add value</B> icon  <IMG  src="../../../add-row.gif">.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID622"></A>Click <B CLASS="GUILABEL">Apply</B>. </P></LI></OL></DIV>
+<P class="nr1"><A NAME="TMPID624"></A>For more information related to this procedure, see <span><A HREF="xml-configgenparams-bg.htm">Configuring General Action Parameters</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

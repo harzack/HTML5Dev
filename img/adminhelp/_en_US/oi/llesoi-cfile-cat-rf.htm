@@ -1,0 +1,271 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>category Tag Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-cat-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Tag Descriptions and Syntax';
+          header.title2 = 'category Tag Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="CATTAG01">category Tag</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="CATTAG2">Description</A></P>
+<P class="nr1"><A NAME="TMPID3552"></A>The <TT CLASS="LITERAL">category</TT> tag specifies a Category name that is to be applied to an object.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="CATTAG3">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3390"></A>&lt;category name="Content Server Categories:Test"&gt;&lt;/category&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="CATTAG4">Usage</A></P>
+<A NAME="AEN3393"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3394"></A><A NAME="TMPID3566"></A>The <TT CLASS="LITERAL">category</TT> tag is not a required tag.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN3397"></A><A NAME="TMPID3569"></A>The <TT CLASS="LITERAL">category</TT> tag is optional when:</P><A NAME="AEN3400"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3401"></A><A NAME="TMPID3573"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3406"></A><A NAME="TMPID3578"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3411"></A><A NAME="TMPID3583"></A><TT CLASS="LITERAL">&lt;node type="</TT>&lt;<I CLASS="VARNAME">any_type</I>><TT CLASS="LITERAL">" action="sync"&gt;</TT></P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3416"></A><A NAME="TMPID3588"></A>Creating or updating a Category can include a number of subordinate tags: <span><A HREF="llesoi-cfile-cat-rf.htm#ATTRIBTAG01">attribute Tag</A></span>, <span><A HREF="llesoi-cfile-cat-rf.htm#LLESOI-CFILE-NONIN-RF">noninherit Tag</A></span>, <span><A HREF="llesoi-cfile-cat-rf.htm#LLESOI-CFILE-SETAT-RF">setattribute Tag</A></span>, and <span><A HREF="llesoi-cfile-cat-rf.htm#LLESOI-CFILE-SUBIT-RF">subitems Tag</A></span>. These subordinate tags are detailed below.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="CATTAG5">Notes</A></P>
+<A NAME="AEN3423"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3424"></A><A NAME="TMPID3597"></A>The Category, with all referenced attributes, must exist in Content Server before you can use it. If the Category, and all referenced attributes, do not exist in Content Server, the Category will not be created and an error message will appear in the log file.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3428"></A><A NAME="TMPID3601"></A>If the Category has previously been applied to the object, directly or through inheritance, only the attribute data specified will be updated. If the Category has not been applied to the object, it will be added, and any attribute data will be updated.</P>
+<P><A NAME="TMPID3602"></A>If the Category has changed in Content Server, the Category on the object must be “updated” before altering the category data using Object Importer. This can be done in the Categories tab for a given object through the standard Content Server interface.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3435"></A><A NAME="TMPID3608"></A>You can apply as many Categories as you want for any object using Object Importer. You cannot remove Categories from any object using Object Importer.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="ATTRIBTAG01">attribute Tag</A></P>
+<P><A NAME="TMPID3613"></A>The <TT CLASS="LITERAL">attribute</TT> tag is used to assign a value to an existing attribute. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3442"></A>&lt;attribute name="Name"&gt;John Doe&lt;/attribute&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3443"></A>&lt;attribute name ="xyz" clear="true"&gt;&lt;/attribute&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3444"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Example</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3632"></A>The <TT CLASS="LITERAL">attribute</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3635"></A>The <TT CLASS="LITERAL">attribute</TT> tag cannot exist on its own, and must be contained within a <TT CLASS="LITERAL">category</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3639"></A>Multiple line <TT CLASS="LITERAL">attribute</TT> tags are supported in the import control file.</P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3644"></A>The number and syntax of any attribute's values depends on the values which have been set up, and applied to the attribute, in Content Server.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3647"></A>If the attribute supports multiple values, these can be added by specifying multiple attribute tags in the import control file.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3649"></A>To clear an attribute's value, use <TT CLASS="LITERAL">clear="true"</TT>.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">4. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3652"></A>Dates must be in the format YYYYMMDD or YYYYMMDDHHMMSS, where HH refers to the 24-hour clock and is a value between 01 and 24. If YYYYMMDD is used, the time defaults to 000000.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">5. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3654"></A>When defining a check box attribute type, use <TT CLASS="LITERAL">TRUE</TT> for selected and <TT CLASS="LITERAL">FALSE</TT> for cleared.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">6. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3658"></A>All values must be specified when updating a multi-value attribute, (MVA). For example, if an attribute contains five values before the update, and the import control file specifies three values, the MVA will only contain the three values after the update.</P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3487"></A>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;category name="Content Server Categories:Test"&gt;
+      &lt;attribute name="Name"&gt;John Doe&lt;/attribute&gt;
+      &lt;attribute name="DateOfBirth"&gt;19650216&lt;/attribute&gt;
+    &lt;/category&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3489"></A>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;category name="Content Server Categories:Test"&gt;
+      &lt;attribute name="Color"&gt;Red&lt;/attribute&gt;
+      &lt;attribute name="Color"&gt;Green&lt;/attribute&gt;
+      &lt;attribute name="Color"&gt;Blue&lt;/attribute&gt;
+    &lt;/category&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-NONIN-RF">noninherit Tag</A></P>
+<P><A NAME="TMPID3666"></A>The <TT CLASS="LITERAL">noninherit</TT> tag determines whether inheritance can be enabled or disabled on Categories. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3494"></A>&lt;noninherit&gt;FALSE&lt;/noninherit&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3495"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Example</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3684"></A>The <TT CLASS="LITERAL">noninherit</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3687"></A>The <TT CLASS="LITERAL">noninherit</TT> tag cannot exist on its own, and must be contained within a <TT CLASS="LITERAL">category</TT> tag.</P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3693"></A>The <TT CLASS="LITERAL">noninherit</TT> tag must be set to either <TT CLASS="LITERAL">TRUE</TT> or <TT CLASS="LITERAL">FALSE</TT>.</P>
+<P><A NAME="TMPID3697"></A>If the <TT CLASS="LITERAL">noninherit</TT> tag is set to <TT CLASS="LITERAL">TRUE</TT>, inheritance can be enabled on Categories. If the <TT CLASS="LITERAL">noninherit</TT> tag is set to <TT CLASS="LITERAL">FALSE</TT>, inheritance can be disabled on Categories.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3703"></A>The default inheritance behavior is derived from the parent object.</P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3531"></A>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;category name="Content Server Categories:Test"&gt;
+      &lt;attribute name="Name"&gt;Jane Doe&lt;/attribute&gt;
+      &lt;noninherit&gt;FALSE&lt;/noninherit&gt;
+    &lt;/category&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-SETAT-RF">setattribute Tag</A></P>
+<P><A NAME="TMPID3709"></A>In addition to regular attributes, setattributes are also supported. The <TT CLASS="LITERAL">setattribute</TT> tag is used to assign a value to an existing setattribute. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3536"></A>&lt;setattribute name="Fruit"&gt;&lt;/setattribute&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3537"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Example</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3725"></A>The <TT CLASS="LITERAL">setattribute</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3728"></A>The <TT CLASS="LITERAL">setattribute</TT> tag cannot exist on its own, and must be contained within a <TT CLASS="LITERAL">category</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3732"></A>The <TT CLASS="LITERAL">setattribute</TT> tag can contain attributes.</P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3560"></A>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;category name="Content Server Categories:SetTest"&gt;
+      &lt;setattribute name="Fruit"&gt;
+        &lt;attribute name="Name"&gt;Orange&lt;/attribute&gt;
+        &lt;attribute name="Color"&gt;Orange&lt;/attribute&gt;
+      &lt;/setattribute&gt;
+    &lt;/category&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-SUBIT-RF">subitems Tag</A></P>
+<P><A NAME="TMPID3739"></A>The <TT CLASS="LITERAL">subitems</TT> tag is used to apply a Category, and its attribute values, recursively to all children of the current object. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3565"></A>&lt;subitems&gt;reapply&lt;/subitems&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN3566"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Example</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3757"></A>The <TT CLASS="LITERAL">subitems</TT> tag is not a required tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID3760"></A>The <TT CLASS="LITERAL">subitems</TT> tag cannot exist on its own, and must be contained within a <TT CLASS="LITERAL">category</TT> tag.</P></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">The only valid value for the <TT CLASS="LITERAL">subitems</TT> tag is <TT CLASS="LITERAL">reapply</TT>.</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN3592"></A>&#13;&lt;import&gt;
+  &lt;node type="document" action="update"&gt;
+    &lt;category name="Content Server Categories:Test"&gt;
+      &lt;attribute name="Name"&gt;Jane Doe&lt;/attribute&gt;
+      &lt;subitems&gt;reapply&lt;/subitems&gt;
+    &lt;/category&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

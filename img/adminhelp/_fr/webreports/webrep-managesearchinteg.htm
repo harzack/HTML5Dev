@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<title>Gérer l'intégration de la requête de recherche</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'webrep-managesearchinteg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'AdministrationWebReports';
+          header.title2 = 'Gérer l\'intégration de la requête de recherche';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID312"></A>Le module WebReports prend en charge une fonction d'intégration de recherche, qui permet de lancer un ou plusieurs WebReports à partir de l'écran <B CLASS="guilabel">Recherche avancée</B> standard. </P>
+<P><A NAME="TMPID316"></A>Pour activer cette fonction, les actions suivantes sont nécessaires : </P>
+<A NAME="AEN310"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN311"></A><A NAME="TMPID319"></A>Vous devez activer cette fonction sur la page <B CLASS="guilabel">Gérer l'intégration de la requête de recherche</B> et spécifier un nom approprié pour le nouveau bouton de recherche.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN314"></A><A NAME="TMPID322"></A>Une fois la fonction activée, vous devez redémarrer Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN317"></A><A NAME="TMPID325"></A>Vous devez définir un ou plusieurs WebReports pour qu'ils utilisent un « lancement de recherche » en tant que source de données. Pour ce faire, sélectionnez l'onglet <B CLASS="guilabel">Source</B> dans la page <B CLASS="guilabel">Propriétés</B> du WebReport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN323"></A><A NAME="TMPID331"></A>A partir de la page <B CLASS="guilabel">Gérer l'intégration de la requête de recherche</B>, vous pouvez activer ou désactiver les WebReports utilisant cette source de données.</P>
+<P><A NAME="TMPID334"></A>Les autorisations des WebReports utilisant cette source de données sont configurées pour restreindre l'accès à ces WebReports aux utilisateurs appropriés uniquement.</P></LI></OL>
+<P><A NAME="TMPID336"></A>Une fois la configuration répertoriée ci-dessus établie, l'écran <B CLASS="guilabel">Recherche avancée</B> affiche le bouton de recherche personnalisé. Lorsque l'utilisateur sélectionne ce bouton de recherche personnalisé, la recherche est lancée dans les WebReports que l'utilisateur est autorisé à exécuter. Si l'utilisateur est autorisé à effectuer une recherche sur plusieurs WebReports, lorsqu'il sélectionne le bouton de recherche personnalisé, la liste de ces WebReports s'affiche et l'utilisateur peut sélectionner celui dans lequel effectuer la recherche. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WEBR-TECHNTS">Remarques techniques sur l'intégration de la recherche</A></P>
+<P><A NAME="TMPID343"></A>Lorsque plusieurs instances de Content Server sont utilisées, il convient de tenir compte des points suivants :</P>
+<A NAME="AEN337"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN338"></A><A NAME="TMPID347"></A>L'option d'activation est propre au serveur et stockée dans le fichier <TT CLASS="filename">opentext.ini</TT>. Il en résulte que cette fonction peut être restreinte à une instance Content Server spécifique. Inversement, si tous les serveurs d'un cluster doivent se comporter de la même façon, cette fonction doit être activée, et le texte du bouton défini, pour chaque serveur. Pour ce faire, il est également possible de copier le fichier <TT CLASS="filename">opentext.ini</TT> sur chaque serveur.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN343"></A><A NAME="TMPID352"></A>L'activation ou la désactivation de WebReports distincts porte sur l'ensemble du système. Les WebReports désactivés sont donc indisponibles sur toutes les instances Content Server.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN348"></A><A NAME="TMPID357"></A>Si cette page est affichée sur un serveur où la fonction est désactivée, la liste des WebReports actifs et/ou inactifs n'est pas visible. Pour que cette liste devienne disponible :</P><A NAME="AEN351"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN352"></A><A NAME="TMPID361"></A>Activez l'<B CLASS="guilabel">Intégration de la recherche</B>.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN355"></A><A NAME="TMPID364"></A>Fournissez un nom pour le bouton.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN357"></A><A NAME="TMPID366"></A>Cliquez sur <B CLASS="guilabel">Appliquer</B>.</P></LI></UL>
+<P><A NAME="TMPID368"></A>Cependant, comme noté ci-dessus, cela n'active pas la fonction, sauf si Content Server est ensuite redémarré.</P></LI></OL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

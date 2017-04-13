@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWDV100500-H-AGD-EN">
+<META PiXprocLocator="webdav"><title>Configuring Kerberos Authentication</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wd-configkerbauth-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring WebDAV Authentication';
+          header.title2 = 'Configuring Kerberos Authentication';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID695"></A>Kerberos Authentication is the MIT V5 Kerberos standard. It is the default for network authentication on systems with Windows 2000 or later installed. It is also available on UNIX hosts.</P>
+<P><A NAME="TMPID696"></A>Where Basic/Content Server Authentication involves a client sending a user name and password as part of its HTTP request to a target server, a client that has Kerberos Authentication enabled sends tokens as part of its request to the target server. The client communicates with an intermediary (Kerberos server) to obtain its tokens, while the target server communicates with the Kerberos server to verify the tokens. Either Windows 2000, 2003 or later Active Directory (Windows Domain Controller) or another Kerberos server (for example, on a UNIX host) can comprise the Kerberos server.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF15"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P CLASS="NOTE" ALIGN="LEFT"><B>Notes: </B></P><A NAME="AEN687"></A>
+<UL class="NOTE">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN688"></A><A NAME="TMPID701"></A>Kerberos configuration requires that WebDAV be provided with a service account in the Active Directory, which designates the  WebDAV service as the recipient of HTTP requests sent to its server. On Windows servers, the computer account for the server itself typically represents this service account; however, IIS also relies on this account to perform its own authentication. Therefore, OpenText does not recommend using  WebDAV Kerberos Authentication on Windows servers with IIS. Rather, the Directory Services should be used.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN694"></A><A NAME="TMPID707"></A>WebDAV does not support Kerberos Authentication for configurations with BEA WebLogic Server, Apache Tomcat Server, or Sun Java System Application Server. OpenText has determined that the server in this configuration is deficient in a key function.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID710"></A>With Kerberos Authentication, Microsoft clients such as Internet Explorer can access WebDAV resources with Single Sign-On (SSO) capability. SSO minimizes the frequency with which a user must enter their user name and password.</P>
+<P class="before-ul"><A NAME="TMPID711"></A>SSO with Microsoft clients requires the following:</P><A NAME="AEN700"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN701"></A><A NAME="TMPID714"></A>Clients must be running Windows 2000 Professional SP2 or later.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN703"></A><A NAME="TMPID716"></A>Internet Explorer must be properly configured.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN705"></A><A NAME="TMPID718"></A>All users must be members of an Active Directory domain.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN707"></A><A NAME="TMPID720"></A>WebDAV must be provided with an appropriate service account in that same domain or in a domain it trusts.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID722"></A>To configure WebDAV to authenticate users with Kerberos, you must:</P><A NAME="AEN712"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN713"></A><A NAME="TMPID726"></A>Configure the Kerberos Server by creating a service account</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN715"></A><A NAME="TMPID728"></A>Configure Content Server</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN718"></A><A NAME="TMPID731"></A>Configure Internet Explorer</P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF16"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID733"></A><B CLASS="NOTE">Note: </B><BR>For detailed information on configuring Kerberos authentication, see "Configuring Kerberos Authentication" in the <I CLASS="EMPHASIS">OpenText WebDAV Installation and Administration Guide</I>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wd-configkerbauth1-p.htm" revision="">To enable Kerberos Authentication</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

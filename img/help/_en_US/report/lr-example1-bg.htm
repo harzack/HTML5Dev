@@ -1,0 +1,163 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Using a URL Parameter to Control Template Insertion</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-example1-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Template Examples';
+          header.title2 = 'Using a URL Parameter to Control Template Insertion';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1054"></A>The URL Parameter condition is used to specify the name of a parameter in the URL that will cause the template to be inserted. There are a couple of ways that this can be used. In the simplest example, the URL parameter only needs to be set to true, for example, <TT CLASS="literal">&amp;someparm=true</TT>. The URL Parameter option for inserting templates can also be used to specify which of any input parameters in the URL should be used in the template. This feature can be useful where a few inputs might be used to supply data to more than one template and or the same template may be re-used with different inputs inserted. Note that in this usage, even though the word true is not being passed through the parameter, the template will be included provided the number of user inputs specified in the URL match with any required parameters in the template source. This is explained more fully in the following examples.</P>
+<DIV title="Adding an order clause to the SQL query" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXORDCL-EX"></A><B><IMG title="Adding an order clause to the SQL query" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-1: Adding an order clause to the SQL query</B></P>
+<P class="nr1"><A NAME="TMPID1058"></A>In this simple example, a template is defined with a fixed <TT CLASS="literal">ORDER BY</TT> clause that will be inserted if the parameter <TT CLASS="literal">&amp;nameorder=true</TT> is included in the URL. The <TT CLASS="literal">~1</TT> marker in the SQL source specifies that if the template is added, it should be added after the main query. Note, if <TT CLASS="literal">&amp;nameorder</TT> is not included in the URL, or the URL includes <TT CLASS="literal">&amp;nameorder=false</TT>, then the <TT CLASS="literal">~1</TT> marker is replaced with an empty string (nothing).</P>
+<A NAME="AEN1066"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1067"></A><A NAME="TMPID1067"></A>In the <B CLASS="guilabel">Main SQL Source</B>, in the <B CLASS="guilabel">SQL</B> field, type:</P><A NAME="AEN1071"></A>
+<PRE 
+CLASS="screen"
+>select * from DTREE
+~1</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1072"></A><A NAME="TMPID1072"></A>In the <B CLASS="guilabel">Template Setup</B>, in the <B CLASS="guilabel">Templates</B> area, define <B CLASS="guilabel">~1</B>:</P><A NAME="AEN1077"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1078"></A><A NAME="TMPID1078"></A>Do not select the <B CLASS="guilabel">Auto-Where</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1081"></A><A NAME="TMPID1081"></A>In the <B CLASS="guilabel">SQL Source</B> field, type “order by Name”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1085"></A><A NAME="TMPID1085"></A>Do not select the <B CLASS="guilabel">Auto-Comma</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1088"></A><A NAME="TMPID1088"></A>From the <B CLASS="guilabel">Include IF</B> list, select “URL Parameter”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1092"></A><A NAME="TMPID1092"></A>In the <B CLASS="guilabel">Options</B> field, type “nameorder” as the <B CLASS="guilabel">Param Name</B>.</P></LI></UL></LI></OL>
+<P><A NAME="TMPID1096"></A>If you access the following URL:</P><A NAME="AEN1098"></A>
+<PRE 
+CLASS="screen"
+>.../livelink.exe?func=ll&amp;objAction=RunReport&amp;objId=32666&amp;nameorder=true...</PRE
+>
+<P><A NAME="TMPID1098"></A>The resulting SQL will contain, in the <B CLASS="guilabel">SQL Source</B> field, “select * from DTREE order by Name”.</P><IMG title="Adding an order clause to the SQL query" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Re-using a template with a variable input" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXREUSETEM-EX"></A><B><IMG title="Re-using a template with a variable input" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-2: Re-using a template with a variable input</B></P>
+<P class="nr1"><A NAME="TMPID1103"></A>In this example, the same template will be added repeatedly using a different user input parameter each time. This has the effect of constructing multiple <TT CLASS="literal">OR</TT> clauses. The use of the <B CLASS="guilabel">Auto-Where</B> feature allows the template feature to automatically add <TT CLASS="literal">WHERE</TT> instead of <TT CLASS="literal">OR</TT> when the first template is inserted, and then to use <TT CLASS="literal">OR</TT> for each subsequent template that is inserted.</P>
+<A NAME="AEN1110"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1111"></A><A NAME="TMPID1111"></A>In the <B CLASS="guilabel">Main SQL Source</B>, in the <B CLASS="guilabel">SQL</B> field, type:</P><A NAME="AEN1115"></A>
+<PRE 
+CLASS="screen"
+>select * from DTREE
+~1</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1116"></A><A NAME="TMPID1116"></A>In the <B CLASS="guilabel">Template Setup</B>, in the <B CLASS="guilabel">Templates</B> area, define <B CLASS="guilabel">~1</B>:</P><A NAME="AEN1121"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1122"></A><A NAME="TMPID1122"></A>Select the <B CLASS="guilabel">Auto-Where</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1125"></A><A NAME="TMPID1125"></A>In the <B CLASS="guilabel">SQL Source</B> field, type “OR name = #1”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1129"></A><A NAME="TMPID1129"></A>Do not select the <B CLASS="guilabel">Auto-Comma</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1132"></A><A NAME="TMPID1132"></A>From the <B CLASS="guilabel">Include IF</B> list, select “URL Parameter”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1136"></A><A NAME="TMPID1136"></A>In the <B CLASS="guilabel">Options</B> field, type “nameclause” as the <B CLASS="guilabel">Param Name</B>.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1141"></A><A NAME="TMPID1141"></A>In the <B CLASS="guilabel">Inputs</B> area, include some generic inputs. For example, include three different inputs, of type <TT CLASS="literal">STRING</TT>, called “Parm 1”, “Parm 2” and “Parm 3”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1148"></A><A NAME="TMPID1148"></A>In the <B CLASS="guilabel">Parameters</B> area, include three user input fields.</P></LI></OL>
+<P><A NAME="TMPID1150"></A>If you access the following URL, note that only the parameters are shown:</P><A NAME="AEN1152"></A>
+<PRE 
+CLASS="screen"
+>&amp;nameclause=U1 &amp;nameclause=U2 &amp;nameclause=U3
+&amp;inputlabel1=cat &amp;inputlabel2=dog &amp;inputlabel3=frog</PRE
+>
+<P><A NAME="TMPID1152"></A>The resulting SQL will contain, in the <B CLASS="guilabel">SQL Source</B> field, “select * from DTREE WHERE name = 'cat' OR name = 'dog' OR name = 'frog'”.</P><IMG title="Re-using a template with a variable input" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Re-using a template with multiple variable inputs" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXMULTVAR-EX"></A><B><IMG title="Re-using a template with multiple variable inputs" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-3: Re-using a template with multiple variable inputs</B></P>
+<P class="nr1"><A NAME="TMPID1157"></A>This example is similar to the previous one but the template specifies two variables to be inserted. This means that if the URL parameter specifies less than two user inputs, as in the previous example, then the template will not be included. This example shows two different templates, with slightly different purposes. One supports a direct match using equals (=) and the other supports a partial match using <TT CLASS="literal">LIKE</TT>. Either one can be selected using the appropriate Parameter Names, either <TT CLASS="literal">likecompare</TT> or <TT CLASS="literal">equalscompare</TT>. These two parameters are passed along with a list of which User Inputs to use in the SQL. For example, “U1,U2” means use <TT CLASS="literal">inputlabel1</TT> and <TT CLASS="literal">inputlabel2</TT>.</P>
+<A NAME="AEN1165"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1166"></A><A NAME="TMPID1166"></A>In the <B CLASS="guilabel">Main SQL Source</B>, in the <B CLASS="guilabel">SQL</B> field, type</P><A NAME="AEN1170"></A>
+<PRE 
+CLASS="screen"
+>select * from DTREE
+~1
+~2</PRE
+></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1171"></A><A NAME="TMPID1171"></A>In the <B CLASS="guilabel">Template Setup</B>, in the <B CLASS="guilabel">Templates</B> area, define <B CLASS="guilabel">~1</B>:</P><A NAME="AEN1176"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1177"></A><A NAME="TMPID1177"></A>Select the <B CLASS="guilabel">Auto-Where</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1180"></A><A NAME="TMPID1180"></A>In the <B CLASS="guilabel">SQL Source</B> field, type “AND #1 LIKE #2”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1184"></A><A NAME="TMPID1184"></A>Do not select the <B CLASS="guilabel">Auto-Comma</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1187"></A><A NAME="TMPID1187"></A>From the <B CLASS="guilabel">Include IF</B> list, select “URL Parameter”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1191"></A><A NAME="TMPID1191"></A>In the <B CLASS="guilabel">Options</B> field, type “likecompare” as the <B CLASS="guilabel">Param Name</B>.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1196"></A><A NAME="TMPID1196"></A>In the <B CLASS="guilabel">Template Setup</B>, in the <B CLASS="guilabel">Templates</B> area, define <B CLASS="guilabel">~2</B>:</P><A NAME="AEN1201"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1202"></A><A NAME="TMPID1202"></A>Select the <B CLASS="guilabel">Auto-Where</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1205"></A><A NAME="TMPID1205"></A>In the <B CLASS="guilabel">SQL Source</B> field, type “AND #1 = #2”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1209"></A><A NAME="TMPID1209"></A>Do not select the <B CLASS="guilabel">Auto-Comma</B> box.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1212"></A><A NAME="TMPID1212"></A>From the <B CLASS="guilabel">Include IF</B> list, select “URL Parameter”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1216"></A><A NAME="TMPID1216"></A>In the <B CLASS="guilabel">Options</B> field, type “equalscompare” as the <B CLASS="guilabel">Param Name</B>.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1221"></A><A NAME="TMPID1221"></A>In the <B CLASS="guilabel">Inputs</B> area, include four generic inputs:</P><A NAME="AEN1224"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN1225"></A><A NAME="TMPID1225"></A>An input of <B CLASS="guilabel">Type</B> <TT CLASS="literal">InsertString</TT> with a <B CLASS="guilabel">Prompt</B> of “fieldname”.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN1231"></A><A NAME="TMPID1231"></A>An input of <B CLASS="guilabel">Type</B> <TT CLASS="literal">String</TT> with a <B CLASS="guilabel">Prompt</B> of “fieldvalue”.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN1237"></A><A NAME="TMPID1237"></A>An input of <B CLASS="guilabel">Type</B> <TT CLASS="literal">InsertString</TT> with a <B CLASS="guilabel">Prompt</B> of “fieldname2”.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN1243"></A><A NAME="TMPID1243"></A>An input of <B CLASS="guilabel">Type</B> <TT CLASS="literal">String</TT> with a <B CLASS="guilabel">Prompt</B> of “fieldvalue2”.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1249"></A><A NAME="TMPID1249"></A>In the <B CLASS="guilabel">Parameters</B> area, include four user input fields.</P></LI></OL>
+<P><A NAME="TMPID1251"></A>If you access the following URL, note that only the parameters are shown:</P><A NAME="AEN1253"></A>
+<PRE 
+CLASS="screen"
+>&amp;likecompare=u1,u2&amp;equalscompare=u3,u4
+&amp;inputLabel1=name&amp;inputLabel2=%new%&amp;inputLabel3=dataid&amp;inputLabel4=12345</PRE
+>
+<P><A NAME="TMPID1253"></A>The resulting SQL will contain, in the <B CLASS="guilabel">SQL Source</B> field, “select * from DTREE WHERE name LIKE '%new%' AND dataid = '12345'”.</P>
+<DIV title="A graphic representation of this example" CLASS="figure">
+<P><A NAME="FIG-SQLEX3"></A><IMG alt="A graphic representation of this example" SRC="lr_examp3.png"></P>
+<P><IMG alt="A graphic representation of this example" SRC="lr_exmple3a.png"></P>
+<P CLASS="figure" ALIGN="LEFT"><B>Figure 1-4: A graphic representation of this example</B></P></DIV><IMG title="Re-using a template with multiple variable inputs" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

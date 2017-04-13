@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Examples</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-services-exampl.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WR Services';
+          header.title2 = 'Examples';
+           header.draw();
+  </script>
+
+<DIV title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost )" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-SERVICES-EXECWRS1-EX"></A><B><IMG title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost )" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-38: executeWRService( serviceType, responseTarget, parmList, responseType, getPost )</B></P>
+<P class="nr1"><A NAME="TMPID22940"></A>This example shows two different ways to call the <TT CLASS="literal">gettagdata</TT> service using the predefined function: <TT CLASS="literal">executeWRService</TT>. In one instance, we have written a special function called <TT CLASS="literal">handleServiceJSON</TT> which is designed to “eval” the JSON data, in other words convert the JSON data to Javascript objects, and use the resulting JavaScript structures to display the result of the request.</P>
+<P><A NAME="TMPID22945"></A>In this request we are using <TT CLASS="literal">&amp;tagdata=</TT> with a data ID and then using the <TT CLASS="literal">NODEINFO:NAME</TT> sub-tag variation to lookup the name of an item. Note that as we requested a responseType of “<TT CLASS="literal">json</TT>”, the resulting data structure includes a field called “error” which indicates whether we have valid data or not.</P>
+<P><A NAME="TMPID22951"></A>In the <TT CLASS="literal">handleServiceJSON</TT> function, we use this field to determine whether to alert an error or to display the content. In the second instance, the get URL button, we simply pass the name of an HTML object on the page. When the request returns from Content Server, it automatically inserts the resulting text into the specified HTML component. Because we simply want text dumped into the page, and we don't plan on analyzing the response for errors or handling it programmatically, the reponseType of “<TT CLASS="literal">string</TT>” was selected in this example.</P>
+<P><A NAME="TMPID22956"></A><A NAME="AEN21637"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+&lt;script&gt;
+
+function handleServiceJSON(request) {
+    var rt = request.responseText;
+    var jsvar = eval('(' + rt + ')')
+    var error = jsvar.error;
+    var content = jsvar.content;
+    if (error == 'true') {
+         alert('error text is: ' + content);
+    } else {
+         alert('Object name is:' + content);
+    }
+}
+
+function getName(did){
+     did = document.getElementById('dataid').value;
+     getNameParms = '&amp;tagdata=' + did + '&amp;subtags=nodeinfo:name';
+     executeWRService( 'gettagdata', handleServiceJSON,getNameParms,'json');
+}
+
+function showURL(did){
+     did = document.getElementById('dataid').value;
+     getURLparms = '&amp;tagdata=' + did + '&amp;subtags=LLURL:OPEN';
+     executeWRService('gettagdata', 'displayname', getURLparms,'string');
+}
+&lt;/script&gt;
+
+&lt;input type=text value="[LL_REPTAG_MYID /]" ID=dataid&gt;&amp;nbsp;&amp;nbsp;URL:&amp;nbsp;&lt;SPAN ID=displayname&gt;&lt;/SPAN&gt;&lt;br&gt;
+&lt;input type=button value="Get Item Name" onclick=getName()&gt;&amp;nbsp;&lt;input type=button value="Get URL" onclick=showURL()&gt;</PRE
+></P><IMG title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost )" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost )" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-SERVICES-EXECWRS2-EX"></A><B><IMG title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost )" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-39: executeWRService( serviceType, responseTarget, parmList, responseType, getPost )</B></P>
+<P class="nr1"><A NAME="TMPID22960"></A>This example shows the use of the <TT CLASS="literal">getstatictags</TT> service. The service is invoked using the <TT CLASS="literal">executeWRService</TT> function in <TT CLASS="filename">ajax.js</TT>. Besides using the identifier “<TT CLASS="literal">getstatictags</TT>” to select the correct service, a function called <TT CLASS="literal">handleStaticTags</TT>, specifically written for this sample application, is passed to the <TT CLASS="literal">executeWRService</TT> function which in turn, sets up a request to Content Server. The request is setup so that when the request returns from Content Server, the <TT CLASS="literal">handleStaticTags</TT> function is called. In this example, we've written code in <TT CLASS="literal">handleStaticTags</TT> to take the JSON structure from the <TT CLASS="literal">request.responseText</TT>, convert it to a JavaScript structure and then traverse this structure in order to show all the static tag values that were returned from Content Server.</P>
+<P><A NAME="TMPID22974"></A><A NAME="AEN21655"></A>
+<PRE 
+CLASS="screen"
+>&lt;SCRIPT SRC="[LL_REPTAG_LIBPATH /]ajax.js"&gt;&lt;/SCRIPT&gt;
+&lt;script&gt;
+
+function handleStaticTags(request) {
+
+     var rt = request.responseText;
+     var jsvar = eval('(' + rt + ')')
+     var error = jsvar.error;
+     var content = jsvar.content;     // This should be an array of tags
+
+     if (error) {
+          alert('error text is: ' + content);
+     } else {
+          tempStr = '';
+          for (tag in content) {
+              tempStr += tag + ' = ' + content[tag] + '&lt;br&gt;';
+          }
+          document.getElementById('display').innerHTML = tempStr;
+
+     }
+}
+
+function getStaticTags(){
+     executeWRService( 'getstatictags', handleStaticTags,'json');
+}
+
+&lt;/script&gt;
+&lt;input type=button value="Get Static Tags" onclick=getStaticTags()&gt;
+&lt;hr&gt;
+&lt;DIV ID="display"&gt;
+
+&lt;/DIV&gt;</PRE
+></P><IMG title="executeWRService( serviceType, responseTarget, parmList, responseType, getPost )" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

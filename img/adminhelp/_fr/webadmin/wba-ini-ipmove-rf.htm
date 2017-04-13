@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<title>[ipmove]</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/websystemobj/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-ini-ipmove-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Compréhension du fichier opentext.ini';
+          header.title2 = '[ipmove]';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID8449"></A>La section <TT CLASS="literal">[ipmove]</TT> est utilisée pour contrôler l'envoi d'un élément à un iPool particulier.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF79"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID8452"></A><B CLASS="note">Note : </B><BR>Il existe un fichier de configuration distinct pour définir tous les arguments, par exemple, <TT CLASS="literal">\bin\ipmove -inifile opentext.ini -config myconfig</TT>, où <TT CLASS="literal">myconfig</TT> est un fichier au même format que le fichier d'initialisation standard. Pour définir les paramètres <TT CLASS="literal">[ipmove]</TT>, OpenText vous recommande d'utiliser le fichier <TT CLASS="literal">myconfig</TT>, plutôt que de modifier directement le fichier <TT CLASS="filename">opentext.ini</TT>. Pour en savoir plus, consultez le document <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbs-h-agd.wbs-configipmove-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/websystemobj/wbs-configipmove-bg.htm">Envoi d`un élément à un IPool utilisant ipmove</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbs-h-agd.wbs-configipmove-bg" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="READFIELDS">readfields</A></P><A NAME="AEN7664"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7665"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID8465"></A>Le paramètre <TT CLASS="literal">readfields</TT> fonctionne, lorsqu'il existe plus d'un iPool d'écriture, avec l'emplacement spécifié dans le champ <B CLASS="guilabel">Chemin d'accès au fichier</B>, dans la section <B CLASS="guilabel">Contenu d'objet non EFS</B> de la page Définition des paramètres généraux de l'Extracteur. Pour en savoir plus, consultez le document <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbs-h-agd.wbs-setextrgenset-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/websystemobj/wbs-setextrgenset-bg.htm">Définition des paramètres généraux de l`Extracteur</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbs-h-agd.wbs-setextrgenset-bg" FMT=""></span>.</P>
+<P><A NAME="TMPID8470"></A>Si l'emplacement d'un chemin de répertoire est spécifié pour le champ <B CLASS="guilabel">Chemin d'accès au fichier</B>, le nom d'origine du chemin d'accès est transmis au premier iPool. Tous les autres iPools qui obtiennent cet élément obtiennent également un exemplaire du fichier temporaire spécifié dans le champ <B CLASS="guilabel">Chemin d'accès au fichier</B>. Il incombe au consommateur iPool de supprimer le fichier temporaire lorsqu'il a consommé le contenu et exécuté la transaction.</P>
+<P><A NAME="TMPID8473"></A>Si un iPool de sortie n'est pas sélectionné, et si <TT CLASS="literal">readfields</TT> n'est pas défini, alors la copie du fichier temporaire spécifié dans l'emplacement <B CLASS="guilabel">Chemin d'accès au fichier</B> n'a <B CLASS="highlight">pas </B> lieu. En effet, les messages iPool sont copiés rapidement et les entrées ne sont pas analysées. La non-suppression éventuelle du fichier temporaire peut se produire avec un processus Two Way Tee ou avec une fusion.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7679"></A><B>Syntaxe :</B></P>
+<P class="nr1"><A NAME="TMPID8479"></A><TT CLASS="literal">readfields=TRUE</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN7683"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID8483"></A><TT CLASS="literal">TRUE</TT> ou <TT CLASS="literal">FALSE</TT>. La valeur par défaut est <TT CLASS="literal">FALSE</TT>.</P>
+<P><A NAME="TMPID8487"></A>La définition de <TT CLASS="literal">readfields=TRUE</TT> est uniquement requise en cas d'absence de modèle et en cas de spécification de plusieurs sorties.  Si vous spécifiez un modèle, <TT CLASS="literal">readfields=TRUE</TT> est automatiquement défini.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

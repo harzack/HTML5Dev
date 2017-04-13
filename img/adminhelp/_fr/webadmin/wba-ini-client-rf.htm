@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>[Client]</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-ini-client-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Compréhension du fichier opentext.ini';
+          header.title2 = '[Client]';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4682"></A>La section [Client] du fichier <TT CLASS="filename">opentext.ini</TT> contient des options propres à la configuration des clients Content Server.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-INI-ERRRED">ErrorRedirectURL</A></P><A NAME="AEN4019"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4020"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID4690"></A>URL vers laquelle les utilisateurs sont redirigés lorsqu'ils tentent de se connecter à Content Server alors que le serveur Livelink n'est pas en cours d'exécution. Les informations qui s'affichent sur la page par défaut sont transmises dans une variable CGI nommée <TT CLASS="literal">errid</TT>. Les connexions client Servlet ne sont pas redirigées.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4025"></A><B>Syntaxe :</B></P>
+<P class="nr1"><A NAME="TMPID4695"></A><TT CLASS="literal">ErrorRedirectURL=http://www.opentext.com</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4029"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID4699"></A>Toute URL valable. Par défaut, le paramètre <TT CLASS="literal">ErrorRedirectURL</TT> ne figure pas dans le fichier <TT CLASS="filename">opentext.ini</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-INI-ERRSTAT">ErrorStatus</A></P><A NAME="AEN4035"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4036"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID4707"></A>Lorsque le serveur n'est pas en cours d'exécution, ce code est envoyé dans l'en-tête HTTP.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4039"></A><B>Syntaxe :</B></P>
+<P class="nr1"><A NAME="TMPID4710"></A><TT CLASS="literal">ErrorStatus=503</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4043"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID4714"></A>Un code HTTP valide. Par défaut, le paramètre <TT CLASS="literal">ErrorStatus</TT> ne figure pas dans le fichier <TT CLASS="filename">opentext.ini</TT>.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-INI-STRCLP">StrictClientParse</A></P><A NAME="AEN4049"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4050"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID4722"></A>Impose aux clients d'être stricts lors de l'analyse d'une requête Web d'entrée. Un message d'erreur s'affiche, évitant ainsi au serveur de recevoir des requêtes incomplètes.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4053"></A><B>Syntaxe :</B></P>
+<P class="nr1"><A NAME="TMPID4725"></A><TT CLASS="literal">StrictClientParse=TRUE</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4057"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID4729"></A><TT CLASS="literal">TRUE</TT> ou <TT CLASS="literal">FALSE</TT>. La valeur par défaut est <TT CLASS="literal">TRUE</TT>.</P>
+<P><A NAME="TMPID4733"></A>La définition de ce paramètre sur <TT CLASS="literal">FALSE</TT> n'impose pas au client d'être strict lors de l'analyse d'une requête Web d'entrée.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-INI-RECBSND">ReceiveBeforeSend</A></P><A NAME="AEN4066"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4067"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID4740"></A>Lorsque ce paramètre est défini sur <TT CLASS="literal">TRUE</TT>, il transmet la charge du téléchargement des fichiers au serveur Web. Ceci libère des threads Content Server plus rapidement pour exécuter d'autres fonctions.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4072"></A><B>Syntaxe :</B></P>
+<P class="nr1"><A NAME="TMPID4745"></A><TT CLASS="literal">ReceiveBeforeSend=FALSE</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4076"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID4749"></A><TT CLASS="literal">TRUE</TT> ou <TT CLASS="literal">FALSE</TT>. La valeur par défaut est <TT CLASS="literal">FALSE</TT>.</P>
+<P><A NAME="TMPID4753"></A>La définition de ce paramètre sur <TT CLASS="literal">TRUE</TT> transmet la charge du téléchargement des fichiers au serveur Web. </P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-INI-MAXHEADERBYTES">MaxHeaderBytes</A></P><A NAME="AEN4085"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4086"></A><B>Description :</B></P>
+<P class="nr1"><A NAME="TMPID4760"></A>Définit la taille maximum des en-têtes HTTP en octets. Content Server utilise ce paramètre pour limiter la taille des en-têtes HTTP. Si la taille réelle de l'en-tête HTTP envoyé par Content Server est supérieure à cette limite (si l'en-tête HTTP contient un cookie de grande taille, par exemple), le navigateur peut être incapable d'afficher les pages Web Content Server.</P>
+<P><A NAME="TMPID4764"></A>Par défaut, le paramètre <TT CLASS="literal">MaxHeaderBytes</TT> ne figure pas dans le fichier <TT CLASS="filename">opentext.ini</TT>.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4095"></A><B>Syntaxe :</B></P>
+<P class="nr1"><A NAME="TMPID4769"></A><TT CLASS="literal">MaxHeaderBytes=2000</TT> </P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN4099"></A><B>Valeurs :</B></P>
+<P class="nr1"><A NAME="TMPID4773"></A>Un entier positif représentant la taille maximum des en-têtes en octets. La valeur par défaut est <TT CLASS="literal">2000</TT>.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

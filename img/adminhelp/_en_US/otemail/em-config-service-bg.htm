@@ -1,0 +1,209 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="EMSVC100502-H-AGD-EN-1">
+<META name="pvScheme" content="010203">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="otemail">
+<title>Configuring Email Services</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'em-config-service-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Email Services Administration: <NOBR>OpenText Content Server Admin Online Help</NOBR>';
+          header.title2 = 'Configuring Email Services';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID56"></A> Email Services supports several configuration settings. You can choose which email fields to extract for indexing and whether to index standard Content Server attributes. You can choose whether the email message body should be stored for viewing. You can also select the number of items per page to display in the paged email folders.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF0"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID60"></A><B CLASS="note">Note: </B><BR>The Content Server full text search can be used to search the full content of emails. To allow for searching on individual email properties from the Content Server Advanced Search, you must perform the following steps:</P><A NAME="AEN62"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN63"></A><A NAME="TMPID65"></A>Configure the email fields for indexing in the Email Services configuration.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN66"></A><A NAME="TMPID68"></A>Configure the email fields to be <B CLASS="guilabel">Queryable</B> in the Search Manager. For more information, see the <I CLASS="emphasis">Content Server Admin help</I> (Content Server Index and Search Administration – Administering Searching – Configuring Index Regions).</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID73"></A>On the <B CLASS="guilabel">Configure Email Services</B> page, you can configure the following settings for Email Services:</P>
+<div>
+<DL CLASS="vl">
+<DT class="vl"><A NAME="AEN76"></A><A NAME="TMPID79"><B><B CLASS="guilabel">Extractable E-mail Fields</B></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID84"></A>You can specify which email fields you want to extract for indexing. A field must be extracted to allow searching on that field. However, you may choose to not extract certain email fields to reduce the size of the search index and rely on full text searching of the messages.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID86"></A><B CLASS="note">Note: </B><BR>Choosing not to extract certain email fields for indexing can affect the functionality of other Content Server products.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></DD>
+<DT class="vl"><A NAME="TMPID89"><B><B CLASS="guilabel">Extractable Attributes</B></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID98"></A>You can choose whether to index standard Content Server attributes for emails or not. Limiting what can be extracted for indexing can help to reduce the memory required for the search index, particularly in organizations that handle large volumes of emails.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF2"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes: </B></P><A NAME="AEN100"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN101"></A><A NAME="TMPID103"></A>If you choose not to extract standard Content Server attributes, the functionality of all applications that use Content Server to store and search for emails may be affected.</P></LI>
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN105"></A><A NAME="TMPID111"></A>If you choose not to extract the standard Content Server attributes, the attributes listed below will not be indexed for emails and will not be searchable for any emails in the system.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID113"></A>If you do not index standard Content Server attributes, the following attributes will not be indexed:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN110"></A>
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTSubType</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCreateDate</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTTimeCompleted</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTSubTypeName</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCreateTime</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTDateStarted</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTOwnerID</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTModifyDate</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTTimeStarted</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTDataID</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTModifyTime</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTStatus</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTRootSubType</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTAssignedTo</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTPriority</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTRightIDs</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTAssignedToName</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTReserved</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTName</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTAssignedToFullName</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTReservedDate</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTLocation</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTDateAssigned</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTReservedTime</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCDMajor</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTTimeAssigned</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTReservedBy</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCDMinor</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTDateEffective</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTReservedByName</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTDComment</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTTimeEffective</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTReservedByFullName</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCatalog</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTDateDue</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCreatedBy</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTDCategory</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTTimeDue</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCreatedByName</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTUserID</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTDateExpiration</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTCreatedByFullName</TT></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTUserName</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTTimeExpiration</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="121" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTUserFullName</TT></TD>
+<TD SCOPE="COL" WIDTH="159" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">OTDateCompleted</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR></TABLE>
+</DIV></P></DD><br><br>
+<DT class="vl"><A NAME="TMPID232"><B><B CLASS="guilabel">Store Message Body</B></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID239"></A>You can choose whether the email message body should be stored as metadata in the database for viewing when email nodes are previewed in Content Server.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF3"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes: </B></P><A NAME="AEN237"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="vlli"><A NAME="AEN238"></A><A NAME="TMPID244"></A>For Email Monitoring, OpenText does <I CLASS="emphasis">not</I> recommend storing the email message body content. Your database may become too large.</P>
+<P class="vlli"><A NAME="TMPID248"></A>If you choose not to store the email message body content for viewing, the body of an email will not display in the HTML view. However, you can view the body of messages if they are rendered in the view produced by OpenText Document Filters instead. For more information, see <span><XPROC NAME="ExtXrefStart" HREF="llescf-agd.-" FMT="" NO1ST><i>OpenText Document Filters - Administrator's Guide (LLESCF-AGD)</i><XPROC NAME="ExtXrefEnd" HREF="llescf-agd.-" FMT=""></span>.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></DD>
+<DT class="vl"><A NAME="TMPID263"><B><B CLASS="guilabel">Extracting Additional E-mail Properties</B></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID271"></A>In addition to the standard email properties, you can specify custom email properties to extract and store. To configure <A NAME="AEN257"></A><SPAN CLASS="phrase">Microsoft Outlook</SPAN> to extract and store additional email properties on the server, you need to add the list of properties to the <B CLASS="guilabel">Extracting Additional E-mail Properties</B> field. Entries should be entered on one row per line, in the following format:</P>
+<P><A NAME="TMPID280"></A><TT CLASS="literal">&lt;<I CLASS="varname">MailSystem</I>>|&lt;<I CLASS="varname">PropertyName</I>>|&lt;<I CLASS="varname">Display Name</I>>|&lt;<I CLASS="varname">Region Name</I>></TT></P>
+<P><A NAME="TMPID286"></A>where </P>
+<P><A NAME="TMPID294"></A>&lt;<I CLASS="varname">MailSystem</I>> identifies the mail environment to try extracting the properties from. The values are either <TT CLASS="literal">OUTLOOK</TT> or <TT CLASS="literal">LOTUS</TT>. </P>
+<P><A NAME="TMPID301"></A>&lt;<I CLASS="varname">PropertyName</I>> identifies the name of the property to extract in the mail system.</P>
+<P><A NAME="TMPID303"></A>For Microsoft Outlook, enter the &lt;<I CLASS="varname">Identifier Number</I>> of the MAPI property. For a named property, you must enter both the GUID of the property, plus the name of the property as either a string or number, separated by a comma.</P>
+<P><A NAME="TMPID306"></A>For Lotus Notes, enter the &lt;<I CLASS="varname">Field Name</I>> of the <B CLASS="guilabel">Document Property</B>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF4"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID311"></A><B CLASS="note">Note: </B><BR>If a property cannot be found, it will not be stored in the database. Moreover, standard properties (Subject, From, To, CC, SentDate, ReceivedDate) are always extracted and stored separately from custom properties.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID312"></A>&lt;<I CLASS="varname">Display Name</I>> is the display name that you want to use for the property on the <B CLASS="guilabel">Properties – E-mail</B> tab in Content Server.</P>
+<P><A NAME="TMPID316"></A>&lt;<I CLASS="varname">Region Name</I>> (optional) is the region name to be used by the search engine for indexing. If you want the additional email property to be searchable, you must specify a region name. This can be omitted if you do not require the email property to be searchable.</P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN288"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID319"></A><TT CLASS="literal">OUTLOOK|0x0017|Importance Flag|EmailImportance</TT></P>
+<P><A NAME="TMPID321"></A><TT CLASS="literal">LOTUS|($Classification)|Lotus Classification</TT></P>
+<P><A NAME="TMPID323"></A><TT CLASS="literal">OUTLOOK|{00020329-0000-0000-C000-000000000046},Keywords|Classification|EmailClassification</TT></P>
+</DIV></P></DD>
+<DT class="vl"><A NAME="TMPID341"><B><B CLASS="guilabel">Signed/Encrypted Message Classes</B></B></A></DT>
+<DD>
+<P class="nr1"><A NAME="TMPID344"></A>You can define the special Microsoft Outlook message classes for signed or encrypted email messages. By default, Enterprise Connect recognizes certain Message Classes in Content Server as signed or encrypted.</P>
+<P><A NAME="TMPID348"></A>Enterprise Connect cannot properly process these types and uses the properties entered in this section to provide an appropriate message to users who add these types of emails to Content Server. If the list of messages included in this section is incomplete, the list can be modified to include additional messages. Enter each message class on a separate line.</P></DD></DL></div><A NAME="EM-CONFIG-SERVICE1-P"></A>
+<DIV title="To configure settings for 'Email Services':" CLASS="procedure">
+<P><B><A NAME="EM-CONFIG-SERVICE1-P"></A>To configure settings for Email Services:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID383"></A>On the <B CLASS="guilabel">Content Server Administration</B> page, click the <B CLASS="guilabel">Configure Email Services</B> link in the <B CLASS="guilabel">Email Services Administration</B> section.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID391"></A>On the <B CLASS="guilabel">Configure Email Services</B> page, select the options for Email Services.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID396"></A>Click <B CLASS="guilabel">Submit</B>.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

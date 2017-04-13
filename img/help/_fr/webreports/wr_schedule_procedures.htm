@@ -1,0 +1,96 @@
+<!-- wr_schedule_procedures.htm -->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+	<TITLE>Scheduling WebReports</TITLE>
+	<LINK REL="stylesheet" HREF="../../ix21.css">
+	<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+
+<BODY ONLOAD="checkFrame('wr_schedule_procedures.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+
+<SCRIPT LANGUAGE="JavaScript">
+        var header = new AdminHeader();
+        header.title1 = 'Working With WebReports';
+        header.title2 = 'Scheduling WebReports';
+        header.draw();
+</SCRIPT>
+
+
+<p class="body">
+WebReport developers can set up execution schedules for individual WebReports to run without user intervention.
+Scheduled reports run in the background and output their results to a Content Server document node or to e-mail.  The schedule allows for reports to run a
+fixed number of times or forever, starting from a specific date and time.  The time between repeated report runs can be from 5 minutes to 520 weeks.  One
+schedule can be set per user per WebReport.</p>
+
+<p class="infin">
+<B><u>How To Set a Schedule</u></B>
+</p>
+<p class="body">
+To set a schedule, select <SPAN class="gui">Properties -&gt;&nbsp;Destination</SPAN> from the function menu of the WebReport.  Choose the desired output destination: either Content Server or
+E-Mail and fill in the required details for that output destination.  Check the <SPAN class="gui">Set Schedule</SPAN> checkbox and an additional set of options appear.
+</p>
+
+<ul>
+  <P><li class="body" type="disc">In <SPAN class="gui">Next run after</SPAN> fields set the date and time that the report should first run.  Note that actual execution times may be up to 5 minutes after the
+  								time set here. Typically report runs happen on the hour and 5, 10, 15 minutes etc. past the hour.</li></P>
+  <P><li class="body" type="disc">In the <SPAN class="gui">Run</SPAN> fields either check <SPAN class="gui">Forever</SPAN> or enter the number of times the report should run in <SPAN class="gui">Times</span>.</li></P>
+  <P><li class="body" type="disc">Set the interval between report runs in minutes, hours, days, and weeks.</li></P>
+  <P><li class="body" type="disc">Click <SPAN class="gui">Update</SPAN> and the schedule will be set.</li></P>
+</ul>
+
+<p class="infin">
+<B><u>How to Set a WebReport to Run on the same Date or Day</u></B>
+</p>
+<p class="body">
+In some circumstances it might be necessary to have a WebReport run on the same day of the month, every month. As an example, an employee overtime report might be
+required on the 25th of each month. The fixed scheduling interval that WebReports provides means this can't be readily achieved through the interface,
+rather you need to use sub-WebReports. Use the following method to achieve this:
+</p>
+<ul>
+  <P><li class="body" type="disc">Create a WebReport as normal and set it's output destination to the desired location </li></P>
+  <P><li class="body" type="disc">Create a second WebReport that has no data source and set it to run on a daily schedule at the time you want the report to execute on the 25th </li></P>
+  <P><li class="body" type="disc">Make the second WebReport call the first one by using [LL_WEBREPORT_SUBWEBREPORT... </li></P>
+  <P><li class="body" type="disc">Finally, wrap the call to the sub-WebReport with an [LL_WEBREPORT_IF statement that checks the day of the month </li></P>
+</ul>
+<p class="body">
+When complete you should be left with something like this:
+<pre>
+[LL_WEBREPORT_IF "[LL_REPTAG_DATE DATE:'%d' /]" == "25" /]
+  [LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG$main_rep /] /]
+[LL_WEBREPORT_ENDIF /]
+</pre>
+</p>
+
+<p class="infin">
+<B><u>How to Remove or Change a Schedule</u></B>
+</p>
+<p class="body">
+To remove a schedule, open the WebReports <SPAN class="gui">Properties -&gt;&nbsp;Destination</SPAN> page and uncheck the <SPAN class="gui">Set Schedule</SPAN> checkbox and Click <SPAN class="gui">Update</SPAN>.
+Other schedule settings will be retained but the report will no longer run until the checkbox is re-checked.  To alter settings make your changes and click <SPAN class="gui">Update</SPAN>.
+</p>
+<p class="body">
+If a report has been scheduled to run a fixed number of times, the remaining number of times and next run time will be updated by Content Server so you can see how
+many more runs are expected and when the next one will happen.
+</p>
+<p class="body">
+Note that the Content Server Administrator has the power to disable or delete schedules created by other users.  This is achieved in the Content Server Administration pages
+(see the WebReports Installation and Administration Guide for more details).
+</p>
+
+<p class="infin">
+<B><u>Important Notes and Recommendations</u></B>
+</p>
+<ul>
+  <P><li class="body" type="disc">Be cautious about when and how often to schedule a report that returns a very large dataset.  Such reports can require significant resources and might impact system performance if run too often or at peak times.</li></P>
+  <P><li class="body" type="disc">If Content Server services are turned off or Content Server Agents are disabled for another reason, scheduled reports will not run.  Once on again, WebReports will run a report at the soonest opportunity if a report was missed (regardless of the schedule).  After this, WebReports will run the report at the next time in the future that fits the schedule.  If irregular run times are observed it is most likely due to this.</li></P>
+  <P><li class="body" type="disc">The output destination settings (e-mail or Content Server) are the same for scheduling as for the default action for a user clicking the WebReport link.  If these need to be different it is recommended that two WebReports with the same reportview are used.  The scheduled report can be hidden or placed in a permissioned folder. </li></P>
+  <P><li class="body" type="disc">Scheduled WebReports run as if they were run by the user that set the schedule.  This means that where a permissions filter is used in the underlying data source it will return results that this user has the permissions to see.  Always output sensitive reports to an appropriately permissioned location in Content Server. </li></P>
+</ul>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

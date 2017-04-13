@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<title>Creating the Enterprise Index</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-nwupetix-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Creating Indexes Using Templates';
+          header.title2 = 'Creating the Enterprise Index';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID107"></A>The Enterprise index is an index of all the data that is stored in the Content Server database. Under normal circumstances, the Enterprise index is automatically created when you install Content Server. At that time, the processes that generate the Enterprise index and keep it up to date are initialized. During the installation and initial setup of Content Server, the Create New Enterprise Data Source page appears automatically, prompting you to create the Enterprise index. If the Enterprise index was not created on installation, or if it was subsequently deleted, you can automatically generate it by choosing <B CLASS="guilabel">Enterprise Data Source</B> on the <B CLASS="guilabel">Add Item</B> menu on the System Administration page. In this case, Content Server generates all the system objects required to create the Enterprise index in a single step. However, if you want to create the Enterprise index's system objects individually, you can add a data flow process. For more information, see <A href="../websystemobj/wbs-addanyprocs-bg.htm">Adding Data Flow Processes</A>.</P>
+<P><A NAME="TMPID115"></A>An Enterprise data flow contains one or more Extractor processes, one or more Document Conversion processes, and an Update Distributor process. An Extractor process monitors the Content Server database continuously to determine whether new information has been added, modified, or deleted. It then instructs the Server to send the additions, modifications, and deletions to a data interchange pool (IPool). A Document Conversion process reads from this IPool, converts the new and modified data into HTML or raw text, and writes the converted data to another IPool along with deletion notifications. The Update Distributor process reads data from this IPool, passes it onto the Index Engine processes that it manages, and updates the Enterprise index. The Update Distributor and Index Engines are also processes in an Indexing and Searching system. </P>
+<P><A NAME="TMPID117"></A>Because only one Extractor process is normally required to extract data from the Content Server database, and only one Document Conversion process is normally required to convert the data into HTML or raw text, OpenText recommends that each Content Server system have only one Extractor process and only one Document Conversion process, unless OpenText Global Services or Customer Support has advised adding multiple processes as part of a strategy of high-volume indexing. For more information about high-volume indexing, see<span><A href="../websystemobj/wbs-sthghvol-so.htm">Setting Up High-Volume Indexing</A></span>.</P>
+<P><A NAME="TMPID123"></A>The Enterprise index is updated incrementally to reflect the most recent changes made to the Content Server database. This means that Content Server users will always receive the most up-to-date search results possible.</P>
+<P><A NAME="TMPID126"></A>There are two scenarios in which you normally create the Enterprise index: during the installation and setup of Content Server or after installation and setup are complete.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF0">Creating an Enterprise Index During Installation</A></P>
+<P class="before-ul"><A NAME="TMPID129"></A>The following conditions must be true:</P><A NAME="AEN142"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN143"></A><A NAME="TMPID132"></A>The Create New Update Enterprise Data Source page is displayed in your Web browser, where it appeared as part of the installation and setup of Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN146"></A><A NAME="TMPID135"></A>If you want to create the Enterprise index on a secondary Content Server host, you have already installed and registered that host. For more information see <span><XPROC NAME="ExtXrefStart" HREF="../websystemobj/llescor-igd.srcid68675-chapter1" FMT="" NO1ST><i>OpenText Content Server - Installation Guide (LLESCOR-IGD)</i><XPROC NAME="ExtXrefEnd" HREF="../websystemobj/llescor-igd.srcid68675-chapter1" FMT=""></span>.</P></LI></UL>
+<P><A NAME="TMPID138"></A>If you are installing a primary Content Server installation on a host where others already exist, ensure that the servers and data flow processes corresponding to those existing installations are running before you create the data flow processes of this Enterprise index. This allows Content Server to automatically detect the port numbers that are already in use. If you want to create the Enterprise index on a remote Content Server host, set up the Admin server on that host before configuring the Extractor process.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF1">Creating an Enterprise Index After Installation</A></P>
+<P><A NAME="TMPID143"></A>You can create an Enterprise index after installation if the original Enterprise index was deleted or if you did not create an Enterprise index during the installation process. The index that you create in this way will include one Extractor process, one Document Conversion process, and one Update Distributor process.</P>
+<P><A NAME="TMPID144"></A>Because only one Enterprise index with the standard set of processes is normally required to extract data from the Content Server database, OpenText recommends that each Content Server system have only this index, unless OpenText Global Services or Customer Support has advised adding multiple indexes or processes as part of a strategy of high-volume indexing. For more information about high-volume indexing, see <span><A href="../websystemobj/wbs-sthghvol-so.htm">Setting Up High-Volume Indexing</A></span>.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-enterindxdurinst-p.htm" revision="">To Create the Enterprise Index During Installation</A></p></li>
+<li><p><A  href="../websystemobj/wbs-enterindxaftinst-p.htm" revision="">To Create the Enterprise Index After Installation</A></p></li>
+<li><p><A  href="../websystemobj/wbs-browsysv-p.htm" revision="">To Access the System Object Volume</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

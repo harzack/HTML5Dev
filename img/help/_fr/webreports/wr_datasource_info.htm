@@ -1,0 +1,84 @@
+<!-- wr_datasource_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Data Source Parameters</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_datasource_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+	var header = new AdminHeader();
+	header.title1 = 'Advanced Information';
+	header.title2 = 'Data Source Parameters';
+	header.draw();
+</SCRIPT>
+
+<p class="body">
+WebReport data sources (LiveReports, Search Queries, Forms, etc.) can be manipulated using special parameters called data source parameters.  These
+parameters are passed in the URL when a WebReport is executed and control things like the maximum number of results on each page. One useful application of
+them is pagination, of which an example can be found <a href="wr_pagination_info.htm#DSstartrow">here</a>.
+</p>
+
+<p class="gui"><u>Data Source Parameters</u></p>
+<table border="1" cellpadding="5">
+	<tr class="body" bgcolor="lightgray" >
+		<td><nobr><B>Parameter Name</B></nobr></td>
+		<td><B>Description</B></td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;sourceid</td>
+		<td>This parameter allows an alternative data source to be specified as a dataid. The dataid must correspond with one of the node types
+		which are currently supported by WebReports as data sources (see <a href="wr_changing_datasources.htm">Data Source Configuration</a>).</td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;DSstartrow</td>
+		<td>This parameter allows the starting row from the data source to be specified using a number from 1 to N. This means that any rows prior to the specified
+DSstartrow will not be used in the report. For example if the data source normally had 100 rows of data and a DSstartrow of 21 was specified (without any <b>DSendrow</b> 
+or <b>DSmaxrows</b> parameters), then only rows 21 through 100 would be used. This parameter can be combined with the <b>DSendrow</b> or <b>DSmaxrows</b> parameters.</td>
+	</tr>
+		<tr class="body">
+		<td>&nbsp;DSendrow</td>
+		<td>This parameter allows the last row from the data source to be specified using a number from 1 to N. This means that any rows after the specified DSendrow
+will not be used in the report. For example if the data source normally had 100 rows of data and an DSendrow of 75 was specified (without any <b>DSstartrow</b> or <b>DSmaxrows</b>
+parameters), then only rows 1 through 75 would be used. This parameter can be used with the <b>DSstartrow</b> or <b>DSmaxrows</b> parameters.
+When used with the <b>DSmaxrows</b> parameter,
+whichever parameter results in the most limited set of data, will have precedence. For example, given the parameters: DSstartrow=1, DSendrow=75 and DSmaxrows=20,
+only rows 1 through 20 would be used. Given the parameters: DSstartrow=1, DSendrow=20 and DSmaxrows=100, only rows 1 through 20 would be used. If this parameter is
+specified as a negative number then zero(0) rows are returned. If this parameter specifies a row number less than the <b>DSstartrow</b> parameter then zero rows are
+also returned.</td>
+	</tr>
+	<tr class="body">
+		<td>&nbsp;DSmaxrows</td>
+		<td>This parameter specifies the maximum number of rows to be used from the data source using a number from 1 to N. This means that there will never be more
+rows than the number specified in <b>DSmaxrows</b>. As described for <b>DSendrow</b>, <b>DSmaxrows</b> specifies a maximum number of rows but the actual number of rows may
+be less than <b>DSmaxrows</b> if the DSstartrow and DSendrow parameters combine to specify a smaller set of data. If this parameter is
+specified as a negative number then zero(0) rows are returned. Note: DSmaxrows can also be specified simply as 'maxrows' for compatibility with an earlier version
+of this feature. It is preferable to use the DSmaxrows variation of this parameter as the maxrows variation could be discontinued in a future release.</td>
+	</tr>		
+	<tr class="body">
+		<td>&nbsp;DSREQUESTDATA</td>
+		<td>This parameter is used to provide data that can be used as a datasource. This feature is unrelated to the above parameters and is explained in more detail
+		under Advanced Information: <a href="wr_requestds_info.htm">Requests as Datasources</a>.</td>
+	</tr>
+</table>
+</p>
+
+<p class="gui"><U>Example of  URL Invocation</U></P>
+<P class="body">
+?func=ll&objId=1234&objAction=RunReport&<b>sourceid</b>=12345&<b>DSstartrow</b>=11&<b>DSendrow</b>=100&<b>DSmaxrows</b>=50<br>
+</p>
+<p class="body">
+In this example, the data source identified by nodeid 12345 will be used to supply data for the WebReport. The data used will end at row 50 (despite the DSendrow
+parameter being set to 100) because the DSmaxrows parameter is set to 50.
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+</body>
+</HTML>
+

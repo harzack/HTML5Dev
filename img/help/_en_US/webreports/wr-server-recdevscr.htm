@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Recommendations for Developing Scripted Reportviews</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-server-recdevscr.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Server Side Scripting';
+          header.title2 = 'Recommendations for Developing Scripted Reportviews';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID21879"></A>WebReports with server-side scripting should be developed on a non-production Content Server instance. Preferably this instance would be running the Content Server Builder to aid in debugging and the developer would have the System Administration Rights privilege. After the WebReports have been developed and tested to ensure they are fit for use in production, they can be moved to the production instance using XMLExport and XMLImport. You can also move them one by one, using download reportview.</P>
+<P class="before-ul"><A NAME="TMPID21884"></A>Once in place on the production instance, a System Administrator should use the WebReports admin page <B CLASS="guilabel">Manage WebReports Scripting</B> to review all the reports and enable them if they are satisfied that the reports and in particular the scripting aspects are safe. The kinds of pitfalls to check for are:</P><A NAME="AEN20607"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20608"></A><A NAME="TMPID21889"></A>Possibility of infinite loops which could tie up threads on Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20611"></A><A NAME="TMPID21892"></A>Possibility of consuming too much memory through unrestrained data creation or iterations.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20613"></A><A NAME="TMPID21894"></A>Lack of checks for undefined data or passed parameters. For example, the script must check for and handle undefined parameters.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN20615"></A><A NAME="TMPID21896"></A>Presence of the <TT CLASS="literal">scheduler.debugbreak()</TT> statement which is useful during development but not desirable for production.</P></LI></UL>
+<P><A NAME="TMPID21898"></A>The first two of these represent the risks with the greatest potential to impact Content Server.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

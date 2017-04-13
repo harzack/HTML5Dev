@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Messages Interchange </title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-understandmessages-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Mise en route de XML Workflow Interchange';
+          header.title2 = 'Messages Interchange ';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID108"></A>Tous les messages envoyés ou reçus par XML Workflow Interchange contiennent des données de formulaire XML ou HTML (formulaires en plusieurs parties de type MIME) transférées à l'aide du protocole HTTP. Lorsqu'un message est envoyé par une tâche Workflow Interchange, il peut comprendre des données provenant de lots de travail formulaires, commentaires, pièces jointes et attributs associés à la tâche. Le destinataire d'un message renvoie une indication du statut, le cas échéant, les nouvelles valeurs de certaines données ou de toutes les données.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF0"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID111"></A><B CLASS="note">Note : </B><BR>les commentaires du schéma source ne sont pas visibles sur un workflow lancé à distance.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID112"></A>Le type de données qui peut être transféré dans un message et une réponse dépend du type d'événement d'échange qui se produit. </P>
+<P class="before-ul"><A NAME="TMPID113"></A>Lors d'un <B CLASS="highlight">événement de lancement</B>, les informations suivantes peuvent être échangées :</P><A NAME="AEN114"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN115"></A><A NAME="TMPID117"></A>Informations de la tâche source (message uniquement), comprenant l'URL utilisée pour envoyer des messages de modification de tâche à la tâche source.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN117"></A><A NAME="TMPID119"></A>Informations sur le nouveau processus (réponse uniquement), y compris l'URL utilisée pour vérifier le statut du processus créé.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN119"></A><A NAME="TMPID121"></A>Informations sur le statut de la tâche (réponse uniquement). La réponse peut définir le statut de la tâche sur <B CLASS="guilabel">Terminé</B> pour terminer la tâche source sans envoyer de message de modification de tâche.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN122"></A><A NAME="TMPID124"></A>Commentaires (message et réponse).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN124"></A><A NAME="TMPID126"></A>Attributs de workflow (message et réponse).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN126"></A><A NAME="TMPID128"></A>Formulaires de workflow (message et réponse).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN128"></A><A NAME="TMPID130"></A>Pièces jointes au workflow (message uniquement).</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID131"></A>Lors d'un <B CLASS="highlight">événement de modification de tâche</B>, les informations suivantes peuvent être échangées :</P><A NAME="AEN132"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN133"></A><A NAME="TMPID135"></A>Informations sur le statut de la tâche (message uniquement). Le message peut définir le statut de la tâche sur <B CLASS="guilabel">Terminé</B> pour la terminer.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN136"></A><A NAME="TMPID138"></A>Commentaires (message et réponse).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN138"></A><A NAME="TMPID140"></A>Attributs de workflow (message et réponse).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN140"></A><A NAME="TMPID142"></A>Formulaires de workflow (message et réponse).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN142"></A><A NAME="TMPID144"></A>Pièces jointes au workflow (message uniquement).</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID145"></A>Les messages et réponses de données de formulaire XML et HTML contiennent plus ou moins les mêmes informations ; chaque format peut être personnalisé dans le concepteur de workflow. Le choix du format dépend de votre application. Lorsque vous choisissez un format, tenez compte des points suivants :</P><A NAME="AEN145"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN146"></A><A NAME="TMPID148"></A>Les données de formulaire HTML sont plus faciles à traiter par les technologies traditionnellement utilisées pour interagir avec les formulaires HTML, comme les servlets, les applications CGI et les pages .asp.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN148"></A><A NAME="TMPID150"></A>Les documents joints à un workflow peuvent être envoyés uniquement au format HTML. Le format XML comprend uniquement l'ID de dossier de la pièce jointe.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN150"></A><A NAME="TMPID152"></A>Le concepteur de workflow Content Server permet de personnaliser des formats de messages de données de formulaire HTML simples. Par exemple, vous pouvez changer le nom des champs du formulaire utilisés pour transférer chaque élément de données.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN153"></A><A NAME="TMPID155"></A>Les formats de message XML sont plus susceptibles d'êtres compatibles avec les versions actuelles et futures de XML Workflow Interchange.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN156"></A><A NAME="TMPID158"></A>Les messages XML peuvent contenir des informations sur la plage des valeurs autorisées dans les attributs et les formulaires.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN158"></A><A NAME="TMPID160"></A>Lorsque vous renseignez des attributs et des formulaires, les messages XML permettent de contrôler les champs hérités de versions précédentes.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN160"></A><A NAME="TMPID162"></A>Dans les messages XML, il est possible de supprimer les valeurs existantes d'un attribut.</P></LI></UL>
+<P><A NAME="TMPID163"></A>OpenText recommande l'utilisation des messages XML par défaut pour la connexion des workflows Content Server et des données de formulaire HTML par défaut pour l'envoi de messages de lancement aux servlets Java et applications CGI personnalisés.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

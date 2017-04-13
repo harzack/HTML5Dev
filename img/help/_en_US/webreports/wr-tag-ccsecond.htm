@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>CALL, COMPILER</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-ccsecond.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Content Control Tags';
+          header.title2 = 'CALL, COMPILER';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1897"></A>This section details the content control tags <span><A HREF="wr-tag-ccsecond.htm#WR-TAG-CCCALL">CALL</A></span> and <span><A HREF="wr-tag-ccsecond.htm#WR-TAG-CCCOMPILER">COMPILER</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCCALL">CALL</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CALL-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCALL"></A><B CLASS="highlight">[LL_WEBREPORT_CALL /]</B></P>
+<P><A NAME="TMPID1906"></A>or</P>
+<P><A NAME="TMPID1907"></A><B CLASS="highlight">[LL_WEBREPORT_CALL NAME:&lt;<I CLASS="varname">script name</I>> PARM:&lt;<I CLASS="varname">arg1</I>>:&lt;<I CLASS="varname">arg2</I>>:&lt;<I CLASS="varname">argN</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="CALL-DESC">Description</A></P>
+<P><A NAME="TMPID1915"></A>Calls a server side Oscript function defined by <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTSCRIPT">STARTSCRIPT</A></span> and <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDSCRIPT">ENDSCRIPT</A></span> tags. The particular script to call is identified by the <TT CLASS="literal">&lt;<I CLASS="varname">script name</I>></TT> parameter. The script may optionally be passed a list of arguments seperated by semi-colons. Note that server side scripting must be enabled by an administrator at the server level and for each WebReport each time a new reportview is added. Scripts are rendered inactive unless enabled. Server side scripting is powerful but must be used with great care. Users should read all the related documentation before using server side scripting.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CALL-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID1922"></A>See <span><A HREF="wr-server-scripting-info.htm">Server Side Scripting</A></span> for a summary.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCCOMPILER">COMPILER</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="COMPILER-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGCOMPILER"></A><B CLASS="highlight">[LL_WEBREPORT_COMPILER /]</B></P>
+<P><A NAME="TMPID1930"></A>or</P>
+<P><A NAME="TMPID1931"></A><B CLASS="highlight">[LL_WEBREPORT_COMPILER RUNTIMETAGS:TRUE /]</B></P>
+<P><A NAME="TMPID1933"></A>or</P>
+<P><A NAME="TMPID1934"></A><B CLASS="highlight">[LL_WEBREPORT_COMPILER RUNTIMETAGS:FALSE /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="COMPILER-DESC">Description</A></P>
+<P><A NAME="TMPID1938"></A>Determines if constants and parameters in the report should be evaluated at runtime for tags. This is required if any tags are defined in the constants tab. It is effectively the same as having an <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STEVAL">EVAL</A></span> sub-tag on each parameter and constant.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="COMPILER-EXAMP">Example</A></P>
+<P><A NAME="TMPID1942"></A>For example, having <TT CLASS="literal">[LL_REPTAG_&amp;p /]</TT> in a report with <TT CLASS="literal">&amp;p=[LL_REPTAG_"literal" UPPER /]</TT> in the URL will output:</P><A NAME="AEN1806"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_"literal" UPPER /]</PRE
+>
+<P><A NAME="TMPID1946"></A>If you enable <TT CLASS="literal">RUNTIMETAGS</TT> with <TT CLASS="literal">[LL_WEBREPORT_COMPILER RUNTIMETAGS:TRUE /]</TT>, the output will be:</P><A NAME="AEN1810"></A>
+<PRE 
+CLASS="screen"
+>LITERAL</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="COMPILER-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID1952"></A>See the <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STEVAL">EVAL</A></span> sub-tag.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

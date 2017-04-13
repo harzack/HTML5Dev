@@ -1,0 +1,199 @@
+<!-- wr_reportviews_info.htm -->
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+<TITLE>Reportviews</TITLE>
+<LINK REL="stylesheet" HREF="../../ix21.css">
+<script language="JavaScript" src="../../llhelp.js">
+</script>
+</HEAD>
+<BODY ONLOAD="checkFrame('wr_reportviews_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+<SCRIPT LANGUAGE="JavaScript">
+	var header = new AdminHeader();
+	header.title1 = 'Advanced Information';
+	header.title2 = 'Reportviews';
+	header.draw();
+</SCRIPT>
+
+<p class="body">
+The reportview is a template for formatting the data source.  It may be any language or syntax that is supported by the end user's application (e.g. HTML, JavaScript, SpreadsheetML, etc.) to build the structure and appearance of the output document.
+In order to be useful it must also contain WebReport <a href="wr_tag_types.htm">Tags</a> which are similar to the format used by Content Server WebForms.
+</p>
+
+<ul>
+  <li>A reportview is a file, often in HTML format, containing special tags which define how and where data from Content Server should be inserted </li>
+  <li>Any text editor can be used to create the reportview</li>
+  <li>The standard Content Server header (including the dashboard and menus) is added to the reportview by default but can be disabled using the [LL_WEBREPORT_EXCLUDEHEADER /] tag.</li>
+  <li>The standard Content Server footer is added to the reportview by default but can be disabled using the [LL_WEBREPORT_EXCLUDEFOOTER /] tag.</li>
+</ul>
+
+</p>
+
+<p class="body">
+<b><U>Default Reportviews</U></b><BR><BR>
+When adding a new WebReport to Content Server, the user is given the option of selecting a default
+reportview.  Default reportviews provide a variety of generic starting points which can be used for
+developing a WebReport. Some reportviews may be useful immediately but in other cases it will be necessary to
+edit them to meet specific requirements. Once a WebReport has been created
+using a default reportview, the user can either <a href="wr_online_editing.htm">edit the reportview online</a>, or download the reportview
+for editing on their desktop. These default reportviews are provided
+when the WebReports module is installed; however, a Content Server administrator can modify them to provide
+a company look and feel.
+</p>
+
+<p class="body">
+<b><U>Pre-Packaged Reportviews</U></b><BR><BR>
+<table border="1" cellpadding="5">
+	<tr class="body" bgcolor="lightgray" >
+		<td><B>Reportview Name</B></td>
+		<td><B>Location</B></td>
+		<td><B>Description</B></td>
+	</tr>
+
+	<tr class="body">
+		<td>basic_report</td>
+		<td>defaultreportviews</td>
+		<td>This reportview is designed to be no frills.  In terms of speed, it should be the fastest of the HTML reportviews as it contains less HTML and fewer sub-tags.  If you want a very simple preformatted report to open in MS Excel, remove the function menu and other graphics then set the mime type to application/vnd.ms.excel.</td>
+	</tr>
+	<tr class="body">
+		<td>basic_scripted</td>
+		<td>defaultreportviews</td>
+		<td>As above but utilizing Oscript in the reportview to provide dynamic columns etc.</td>
+	</tr>
+	<tr class="body">
+		<td>blank_report</td>
+		<td>defaultreportviews</td>
+		<td>This is simply a blank reportview that the developer can use as a stub for editing.</td>
+	</tr>
+	<tr class="body">
+		<td>browse_flexible_cs10</td>
+		<td>defaultreportviews<br>(CS 10 only)</td>
+		<td>This reportview is designed to mimic the standard Content Server 10 folder browse functionality.</td>
+	</tr>
+	<tr class="body">
+		<td>browse_flexible_cs10_with_sidebar</td>
+		<td>defaultreportviews<br>(CS 10 only)</td>
+		<td>This reportview is designed to mimic the standard Content Server 10 folder browse functionality, with added sidebar functionality.</td>
+	</tr>
+	<tr class="body">
+		<td>browse_flexible_971</td>
+		<td>defaultreportviews</td>
+		<td>This reportview is designed to mimic the standard Content Server 9.7.1 folder browse functionality.</td>
+	</tr>
+	<tr class="body">
+		<td>browse_97</td>
+		<td>defaultreportviews</td>
+		<td>This reportview is designed to mimic the standard Livelink 9.7.0 folder browse functionality.  In addition to Copy, Move and Delete operations, it also allows the user to perform multi-file output operations such as Zip and Download, Zip and Email, and Print on data from different locations as though it were located within the same folder.</td>
+	</tr>
+	<tr class="body">
+		<td>csv_report</td>
+		<td>defaultreportviews</td>
+		<td>This reportview will output your data in a CSV format.  Double quotes are used as the escape sequence.</td>
+	</tr>
+	<tr class="body">
+		<td>csv_scripted</td>
+		<td>defaultreportviews</td>
+		<td>As above but utilizing Oscript in the reportview to provide dynamic columns etc.</td>
+	</tr>
+	<tr class="body">
+		<td>form_report</td>
+		<td>defaultreportviews</td>
+		<td>This reportview provides a replacement to the WebForms List Data functionality.  The reportview also provides appropriately permissioned links for the editing and deletion of form data.</td>
+	</tr>
+	<tr class="body">
+		<td>form_scripted</td>
+		<td>defaultreportviews</td>
+		<td>This is an advanced reportview that contains server side scripting (this will need to be enabled by your administrator).  The reportview provides the user
+		with dynamic columns and filters meaning that it can be applied to a form data source with any number of fields.</td>
+	</tr>
+	<tr class="body">
+		<td>plainhtml_report</td>
+		<td>defaultreportviews</td>
+		<td>A no frills HTML reportview.</td>
+	</tr>
+	<tr class="body">
+		<td>spreadsheetml_report</td>
+		<td>defaultreportviews</td>
+		<td>This reportview is a basic example of SpreadsheetML with little formatting.  It places report data into
+		a simple table.  The resulting file is a complete and portable document that by default opens in
+		MS Excel.  Note for Excel to open by default the destination mime type must be set to text/xml or application/vnd.ms-excel</td>
+	</tr>
+	<tr class="body">
+		<td>wordml_report</td>
+		<td>defaultreportviews</td>
+		<td>Allows WebReports to view Content Server data in a preformatted Word document using WordML.  This format is only supported by newer versions of Microsoft Office.  Note that the destination mime type must be set to application/msword or text/xml for Word to open.</td>
+	</tr>
+	<tr class="body">
+		<td>xml_report</td>
+		<td>defaultreportviews</td>
+		<td>A very simple XML report that might be used in an Ajax type situation to pull back additional data to the application.  It is important to remember to set the destination mime type to text/xml in this situation.</td>
+	</tr>
+	<tr class="body">
+		<td>browse_97_drag&drop_report</td>
+		<td>defaultreportviews</td>
+		<td>Similar to the browse views in the defaultreportviews folder but contains optional drag and drop functionality by providing a tab at the top of the report; this is meant to be used with one of the draganddrop_view_webdav reportviews.</td>
+	</tr>
+	<tr class="body">
+		<td>draganddrop_view_webdav360</td>
+		<td>defaultreportviews</td>
+		<td>This creates a page similar to the drag and drop page provided by WebDAV, for use on Content Server instances running WebDAV 3.6.0.  It is designed to be called from a WebReport similar to the browse_97_drag&drop_report reportview, which provides a way to access drag and drop from a WebReport.</td>
+	</tr>	
+	<tr class="body">
+		<td>draganddrop_view_webdav36x_64bit</td>
+		<td>defaultreportviews<br>(CS 9.7.1 Only)</td>
+		<td>This creates a page similar to the drag and drop page provided by WebDAV, for use on Content Server instances running WebDAV 3.6.0.  It is designed to be called from a WebReport similar to the browse_97_drag&drop_report reportview, which provides a way to access drag and drop from a WebReport.  Intended for 64-bit client browsers.</td>
+	</tr>
+	<tr class="body">
+		<td>draganddrop_view_webdav1000_cs10</td>
+		<td>defaultreportviews<br>(CS 10 Only)</td>
+		<td>This creates a page similar to the drag and drop page provided by WebDAV, for use on Content Server instances running WebDAV 10.0.0.  It is designed to be called from a WebReport similar to the browse_97_drag&drop_report reportview, which provides a way to access drag and drop from a WebReport.</td>
+	</tr>
+	<tr class="body">
+		<td>browse_95_96</td>
+		<td>examplereportviews</td>
+		<td>This reportview is designed to mimic the standard Livelink 9.5 and Livelink 9.6 folder browse functionality.  It allows the user to perform Copy, Move and Delete operations on data from different locations as though it were located within the same folder.</td>
+	</tr>
+	<tr class="body">
+		<td>browse_5.0.1</td>
+		<td>examplereportviews</td>
+		<td>Similar to the browse views in the defaultreportviews folder but uses advanced sort functionality and other features available in WebReports 5.0.1.</td>
+	</tr>
+	<tr class="body">
+		<td>browse_jssort</td>
+		<td>examplereportviews</td>
+		<td>Similar to the browse views in the defaultreportviews folder but sorting with JavaScript rather than additional requests.</td>
+	</tr>
+	<tr class="body">
+		<td>wordml_adv</td>
+		<td>examplereportviews</td>
+		<td>This reportview is an example of WordML with formatting and images.  It contains a cover page,
+	followed by a table containing the report data.  The resulting file is a complete and portable document
+	that by default opens in Microsoft Word.  The possibilities for formatting are extensive, and this serves
+	as an example of some features.  Note that you must set the destination mime type to application/msword or text/xml to have the report open in word.</td>
+	</tr>
+	<tr class="body">
+		<td>spreadsheetml_adv</td>
+		<td>examplereportviews</td>
+		<td>Advanced SpreadsheetML example containing a coversheet with company data and a separate worksheet with the report data.</td>
+	</tr>
+	<tr class="body">
+		<td>draganddrop_view_webdav35x</td>
+		<td>examplereportviews</td>
+		<td>This creates a page similar to the drag and drop page provided by WebDAV, for use on Livelink instances running WebDAV 3.5.x.  It is designed to be called from a WebReport similar to the browse_97_drag&drop_report reportview, which provides a way to access drag and drop from a WebReport.</td>
+	</tr>
+</table>
+
+<br>
+Note that all reportviews contained in the defaultreportviews folder are available for selection when a user creates a new WebReport.  The reportviews in this folder
+can be changed by the administrator.  As an example, you could move one or all of the reportviews in the examplereportviews folder into the defaultreportviews folder then all would
+be available on the Add New WebReport screen.
+<br><br>
+The location field in the table above refers to a folder on the Content Server.  This is accessed via <i>&lt;install path&gt;module</i>\<i>webreports_n_n_n</i>\ though this will only be available to the Content Server administrator.
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

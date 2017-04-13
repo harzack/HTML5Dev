@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webadmin">
+<META mancondkey="llesrep-h-agd -- llesrcs-h-ugd -- llescvp-h-agd -- llescls-h-ugd -- llesrcs-h-agd -- lleswfw-h-agd -- llescls-h-agd -- lleswbn-h-agd -- lleswat-h-agd -- lleswbs-h-agd -- llesrt-h-ugd -- lleselv-h-agd -- lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- lleswbu-h-ugd -- llesrcm-h-ugd -- llestrp-h-agd -- casp-h-ise -- llesrcm-h-agd -- llesapp-h-ugd -- llesrep-h-ugd -- lleswbd-h-ugd -- llessoc-h-agd -- llescl-h-agd"><title>Managing Internal and External Storage</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-dbadmin-intext-stor-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Database Administration';
+          header.title2 = 'Managing Internal and External Storage';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID14851"></A>Before you create your Content Server database, decide whether you want to use internal or external document storage for documents and other items that users add to Content Server. When you use internal storage, both the content and <I CLASS="emphasis">metadata</I> (data describing a Content Server item) for uploaded files are stored inside the datafiles of the RDBMS. When you use external storage, only the metadata for uploaded files is stored in the database, whereas the content of the files is stored on the file system. </P>
+<P><A NAME="TMPID14856"></A>When an item is added to Content Server, the system creates a record for it in the ProviderData table, as well as in other Content Server database tables. The ProviderData table stores information that tells Content Server where to retrieve the file when users request to view or fetch it. In the case of internal storage, the ProviderData table stores the internal database location of the file. In the case of external storage, the ProviderData table stores the physical path of the file on the file system. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF134"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID14861"></A><B CLASS="note">Note: </B><BR>When you use external document storage, Content Server uses a numbering algorithm to name files so it can keep track of multiple versions of the same file. Content Server does not store files on the file system under the same names as they had when they were copied from users' disks. For example, if a user adds a file called <TT CLASS="filename">Expense12Mar.xls</TT> to Content Server, its name in the external storage directory may be something like <TT CLASS="filename">2934eriw.233</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID14867"></A>When deciding between internal and external document storage, consider the following issues:</P><A NAME="AEN13781"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13782"></A><A NAME="TMPID14870"></A>What are the implications of internal versus external storage for your &lt;&gt;backup and recovery strategy? </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13784"></A><A NAME="TMPID14872"></A>Will your Content Server database contain large documents and what performance level do you require in handling such documents?</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13787"></A><A NAME="TMPID14875"></A>If you decide to use external document storage, do you want to locate the storage device locally or remotely to the primary Content Server host? How will you configure your system accordingly? </P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF135">Implications for Backup and Recovery Strategy </A></P>
+<P><A NAME="TMPID14878"></A>Each RDBMS server supported by Content Server has sophisticated backup and recovery tools that allow backups to be made without taking databases offline. If you use internal document storage, your backup and recovery strategy may be simpler because you can use the backup and recovery tools of your RDBMS to backup the content of files uploaded to the Content Server database. </P>
+<P><A NAME="TMPID14881"></A>When you use external document storage, your backup and recovery strategy may be more complex, depending on your requirements. One approach is to take the Content Server database and external document store offline to create backups. This has the benefit of generating a static dataset and a backup that is synchronized with the metadata in the Content Server database. On the other hand, taking the Content Server database offline may not be a viable option for global organizations that operate 24 hours a day. </P>
+<P><A NAME="TMPID14885"></A>In this case, other, more complex backup and recovery strategies are possible. For example, if you backup the external document store while it is online, you then need to run a synchronization utility to correct differences between the external store and the backup that developed during the time that the backup was being generated. If you need assistance in designing a backup and recovery strategy for an external document store, contact OpenText Professional Services. </P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF136">Performance Requirements for Handling Large Documents </A></P>
+<P><A NAME="TMPID14888"></A>Internal database transactions are somewhat inefficient at handling large documents. The larger the file size, the more work that has to be done to add, fetch, or modify the file. External file systems, on the other hand, are much more efficient at handling large files. Testing by OpenText has shown that document-handling transactions using an external document store are up to three times faster than transactions using an internal document store. </P>
+<P><A NAME="TMPID14890"></A>If you anticipate that your Content Server database will contain large documents and you want to optimize the performance of handling such documents, OpenText recommends that you use external document storage. </P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF137">Setting Up an External Document Store </A></P>
+<P class="before-ul"><A NAME="TMPID14894"></A>Before you perform the steps of selecting the external document storage option and specifying the physical path of the external document store, note the following points: </P><A NAME="AEN13808"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13809"></A><A NAME="TMPID14897"></A>You must create the directory that you want to use as the external document store before you create the Content Server database. Content Server will not create the directory if it does not exist.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13813"></A><A NAME="TMPID14901"></A>If the external document store directory is not on the same host as your primary Content Server installation, you need to map/mount the directory on the primary Content Server host. In the case of UNIX, use an NFS mount. In the case of Windows NT or Windows 2000, map a drive letter to the external document directory. Another important point regarding a remote external document store on Windows NT or Windows 2000 is that it must be owned by the Content Server user. To achieve this, you need to create a user with the same name, password, and privileges on both the primary Content Server host and the remote external document store host. The  servers on the primary Content Server host need to run as this user and the document store directory on the remote host must be owned by this user. For more information about the privileges that the Windows NT or Windows 2000 user must have, see <I CLASS="emphasis">Creating a Windows NT or Windows 2000 User</I> in the <I CLASS="emphasis">Content Server First-Time Installation Guide</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13823"></A><A NAME="TMPID14912"></A>After you create and mount/map the external document store directory on a remote host, try connecting to it from the primary Content Server host as the operating system user that you created to run Content Server to test whether you can access and write to it. If you encounter permission or ownership problems when performing this test, correct the problems before you create the Content Server database.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN13828"></A><A NAME="TMPID14917"></A>If you locate the external store on the primary Content Server host, writing and retrieving documents may be slightly faster, because there is no network delay. Testing by OpenText has shown that the performance improvement obtained by locating the external document store on the primary Content Server host is marginal compared to locating it on a remote host. The performance improvement may be more significant if you are operating in an environment where the network is very busy. If this is the case, consider placing the components of the Content Server system on their own isolated subnetwork. </P></LI></UL>
+<P><A NAME="TMPID14922"></A>Content Server databases can store documents either internally or externally on the file system. Whether a given database uses internal or external document storage is determined at the time that the Content Server database tables are created. </P>
+<P><A NAME="TMPID14925"></A>The External Storage Settings page appears when you click the <B CLASS="guilabel">External Storage Settings</B> link on the <B CLASS="guilabel">Maintain Current Database</B> page of an external-storage database. (This link is not displayed on the <B CLASS="guilabel">Maintain Current Database</B> page of internal-storage databases.) The <B CLASS="guilabel">External Storage Settings</B> page displays the current path of the external document directory and a link to the External Document Directory page, on which you can change (move) the external document directory, if desired. </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-dbadmin-set-external-storage-bg.htm" revision="">Setting External Storage Parameters</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

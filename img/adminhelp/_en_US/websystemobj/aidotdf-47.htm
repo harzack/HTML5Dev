@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>Verifying the installation</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="4">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'aidotdf-47.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Installing OpenText Document Filters';
+          header.title2 = 'Verifying the installation';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID5984"></A>The <TT CLASS="literal">verify_im_filter.sh</TT> script is available for Solaris and Linux installations of OpenText Document Filters (OTDF), beginning with Content Server 10.5, Update 2014-03. The OTDF team will generate a script, upon request, for other releases of Content Server.</P>
+<P><A NAME="TMPID5990"></A>The <TT CLASS="literal">verify_im_filter.sh</TT> script will diagnose your issues where  Content Server is running, but the DCSIm process is not executing conversions. The script verifies the filter is installed correctly and all of the dependencies are installed on your system.</P>
+<P class="before-ul"><A NAME="TMPID5993"></A><TT CLASS="literal">$OTHOME</TT> refers to the path to the Content Server installation. The following relative paths exist in the <TT CLASS="literal">$OTHOME</TT> folder:</P><A NAME="AEN5359"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5360"></A><A NAME="TMPID5999"></A><TT CLASS="literal">"	./config</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5363"></A><A NAME="TMPID6002"></A><TT CLASS="literal">"	./lib</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5366"></A><A NAME="TMPID6005"></A><TT CLASS="literal">"	./filters/image</TT></P></LI></UL>
+<DIV title="To verify the installation:" CLASS="procedure">
+<P><B><A NAME="AEN5369ttl"></A>To verify the installation:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID6010"></A>Browse to this script in the <TT CLASS="literal">$OTHOME/filters/image</TT> folder.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID6013"></A>Open a terminal window, and change to the <TT CLASS="literal">$OTHOME/filters/image</TT> folder and execute the script.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID6016"></A>Redirect the output of the script to a file, for example, <TT CLASS="literal">&gt;./verify_im_filter.sh $OTHOME &gt; $OTHOME/verify.txt</TT>.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID6019"></A>Open the <TT CLASS="literal">verify.txt</TT> file to examine the output:</P><A NAME="AEN5383"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5384"></A><A NAME="TMPID6023"></A>The "ENVIRONMENT SETTINGS" section of the output lists variables necessary for the script to execute. If the script produces a number of errors, examining the "ENV SET" section may provide clues to the cause, such as an incorrect command line option.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5386"></A><A NAME="TMPID6025"></A>Dependent libraries which are required on the machine are listed in the "VERIFY" section. In this section, an ERROR message is included if the intended library is not found on the machine. Either the library must be installed by the customer, or the LD_LIBRARY_PATH in start_llserver needs to include the path to the installed library.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5388"></A><A NAME="TMPID6027"></A>Another reason for an ERROR message to be included in the "VERIFY" section is if the required library is found, but the installed version is not the 64-bit version. You will need to install the 64-bit version of the library.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5390"></A><A NAME="TMPID6029"></A>If the script reports that the Xvfb (Virtual Frame Buffer) is not found and it is installed, please check the <TT CLASS="literal">startXVFB.sh</TT> script to make sure the path to the Xvfb is set correctly.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5393"></A><A NAME="TMPID6032"></A>The "CHECK LIBS" section inspects the filter libraries included with Content Server. An ERROR message is included if the library is missing or is not 64-bit. In either case, the appropriate library will need to be installed. A WARNING message is included if the file permission is not executable. If the file is not executable, the product will still run. Setting the file permission to executable is only necessary if all other actions failed to solve the issue.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5396"></A><A NAME="TMPID6035"></A>If the script runs without a warning or an error, but OpenText Document Filters still fails to convert documents, there is likely an issue with configuration.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN5400"></A><A NAME="TMPID6039"></A>Finally, please execute the <TT CLASS="literal">shutdownXVFB.sh</TT> script. This script stops the last <TT CLASS="literal">Xvfb</TT> process initiated by the current user. In the unlikely event that the <TT CLASS="literal">Xvfb</TT> process is in a bad state, ending the process may be the solution.</P></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID6044"></A>Ensure Content Server is restarted before further testing.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Referencing Constants in the WebReport Reportview</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-constant-refconst.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Constants';
+          header.title2 = 'Referencing Constants in the WebReport Reportview';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1264"></A>Once a constant has been defined, the corresponding value can be inserted into the reportview as many times as required. It is not necessary to define a constant prior to adding the corresponding tag in the reportview. It may be faster to define them using the automatic method, as detailed in <span><A HREF="wr-constant-autaddcon-p.htm">To Automatically Add a New Constant for the WebReport</A></span>, once you have finished changing the reportview.</P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN1154"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID1267"></A>In this first example, if a constant called <TT CLASS="literal">reportID</TT> had been stored to reference another WebReport, the syntax used could be as follows:</P>
+<P><A NAME="TMPID1269"></A><TT CLASS="literal">?func=ll&amp;objid=[LL_REPTAG_$reportID /]&amp;objaction=runreport</TT></P>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN1159"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID1272"></A>However, it might be more appropriate to use the same constant with <TT CLASS="literal">LLURL</TT> as follows:</P>
+<P><A NAME="TMPID1274"></A><TT CLASS="literal">[LL_REPTAG_$reportID LLURL:REPORT /]</TT></P>
+<P><A NAME="TMPID1276"></A>which should resolve to <TT CLASS="literal">?func=ll&amp;objid=xyz&amp;objaction=runreport</TT>, where <TT CLASS="literal">xyz</TT> is is the value of the constant <TT CLASS="literal">reportID</TT>.</P>
+</DIV></P>
+<P><A NAME="TMPID1280"></A>The benefit of the approach in the second example above occurs if Content Server changes the way this URL works, the report will continue to function, whereas the first example would require changes to the report.</P>
+<P><A NAME="TMPID1282"></A>If working in the WebReports online editor, it is possible to use the drag-and-drop interface to speed up some activities. For more information about using the drag-and-drop interface, see <span><A HREF="wr-constant-dragdrop-p.htm">To Drag and Drop a Constant to the WebReport Reportview</A></span>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

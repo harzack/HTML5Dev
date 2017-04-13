@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESXWI100500-H-UGD-EN-1">
+<META name="PiXprocLocator" content="xmlwfic">
+<META mancondkey="lleswfw-h-ugd"><title>Source Task</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'xml-source-status-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Task Information';
+          header.title2 = 'Source Task';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1322"></A>Source task information is carried in an initiation message that informs the target system about the client process. </P>
+<P class="before-ul"><A NAME="TMPID1323"></A>Source task information includes two variable fields:</P><A NAME="AEN1287"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1288"></A><A NAME="TMPID1326"></A>An opaque handle, which identifies the task within the source system. If present, this field is guaranteed never to be reused for another source task. A target system might use this value to detect duplicate messages.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1290"></A><A NAME="TMPID1328"></A>An HTTP URL, which can have messages sent to it. This field is only available if the source task can be configured to accept task edit messages over HTTP.</P></LI></UL>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-036">XML Representation</A></P>
+<P><A NAME="TMPID1331"></A><TT CLASS="LITERAL">&lt;sourcetask handle="…"&gt;</TT></P>
+<P><A NAME="TMPID1333"></A><TT CLASS="LITERAL">&lt;target url="…" type="HTTP"/&gt;</TT></P>
+<P><A NAME="TMPID1335"></A><TT CLASS="LITERAL">&lt;/sourcetask&gt;</TT></P>
+<P><A NAME="TMPID1337"></A>In XML, the source task information consists of a <TT CLASS="LITERAL">sourcetask</TT> element that contains one or more target elements. Target elements are distinguished by their type attributes.</P>
+<P><A NAME="TMPID1339"></A>Only HTTP targets are supported. All <TT CLASS="LITERAL">sourcetask</TT> elements have exactly one target child element, but systems that process these XML messages should anticipate additional target types in the future.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-037">XML Namespaces (if used)</A></P>
+<P><A NAME="TMPID1343"></A><TT CLASS="LITERAL">&lt;sourcetask xmlns="http://www.opentext.com/llx/Workflow/"&gt;</TT></P>
+<P><A NAME="TMPID1345"></A><TT CLASS="LITERAL">&lt;target xmlns="http://www.opentext.com/llx/"&gt;</TT></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="AID-038">HTML Representation</A></P>
+<P><A NAME="TMPID1349"></A><TT CLASS="LITERAL">sourcetask_handle=…</TT></P>
+<P><A NAME="TMPID1351"></A><TT CLASS="LITERAL">sourcetask_http_url=…</TT></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

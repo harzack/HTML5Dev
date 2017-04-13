@@ -1,0 +1,325 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>document Control File Syntax</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-doc-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Object Importer Control File Syntax';
+          header.title2 = 'document Control File Syntax';
+           header.draw();
+  </script>
+
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="DOCTAG01">document</A></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="DOCTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID1366"></A>Use <TT CLASS="LITERAL">type="document"</TT> on the <TT CLASS="LITERAL">&lt;node&gt;</TT> tag to create, update, or delete a Document.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="DOCTAG03">Syntax</A></P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1304"></A>&lt;node type="document" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="DOCTAG04">Usage</A></P>
+<A NAME="AEN1306"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1307"></A><A NAME="TMPID1380"></A>Creating, updating, or deleting a Document can include a number of subordinate tags: <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-FILE-RF">file Tag</A></span>, <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-MIME-RF">mime Tag</A></span>, <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-VERCON-RF">versioncontrol Tag</A></span>, <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-VERMAJ-RF">versionmajor Tag</A></span>, <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-VERMIN-RF">versionminor Tag</A></span>, and <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-VERTYP-RF">versiontype Tag</A></span>. These subordinate tags are detailed below.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1315"></A><A NAME="TMPID1388"></A>Creating, updating, or deleting a Document can also require a number of other subordinate tags, such as the <TT CLASS="LITERAL">location</TT> tag. These other subordinate tags are detailed in <span><A HREF="llesoi-cfilesamp-bg.htm">Object Importer Tag Descriptions and Syntax</A></span>.</P></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="DOCTAG05">Notes</A></P>
+<A NAME="AEN1320"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1321"></A><A NAME="TMPID1395"></A>Livelink Enterprise Server 9.6 introduced the ability to specify major and minor document versions. Object Importer supports both this functionality, with versions, and the previous functionality, without versions. To support the functionality without versions, it is not necessary to do anything new to the import control file.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1324"></A><A NAME="TMPID1398"></A>To support the functionality with versions, you must add the <TT CLASS="LITERAL">&lt;versioncontrol&gt;</TT> tag to the import control file during document creation.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1327"></A><A NAME="TMPID1401"></A>When adding a version to an existing Document that is under advanced version control, use the <TT CLASS="LITERAL">&lt;versiontype&gt;</TT> tag. Instead of the <TT CLASS="LITERAL">&lt;versiontype&gt;</TT> tag, you can use the <TT CLASS="LITERAL">&lt;versionmajor&gt;</TT> or <TT CLASS="LITERAL">&lt;versionminor&gt;</TT> tags. More information about the <TT CLASS="LITERAL">&lt;versiontype&gt;</TT>, <TT CLASS="LITERAL">&lt;versionmajor&gt;</TT>, and <TT CLASS="LITERAL">&lt;versionminor&gt;</TT> tags can be found below.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1336"></A><A NAME="TMPID1410"></A>If the <TT CLASS="LITERAL">&lt;versiontype&gt;</TT>, <TT CLASS="LITERAL">&lt;versionmajor&gt;</TT>, and <TT CLASS="LITERAL">&lt;versionminor&gt;</TT> tags are not specified  in the import control file, the document will be added using the next minor version increment. If the <TT CLASS="LITERAL">&lt;versiontype&gt;</TT>, <TT CLASS="LITERAL">&lt;versionmajor&gt;</TT>, and <TT CLASS="LITERAL">&lt;versionminor&gt;</TT> tags are specified in the import control file, and the Document is not under advanced version control, the tags are ignored.</P>
+<table CLASS="IMPORTANT">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="IMPORTANT"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID1418"></A><B CLASS="IMPORTANT">Important: </B><BR>Using <TT CLASS="LITERAL">&lt;versiontype&gt;</TT>, <TT CLASS="LITERAL">&lt;versionmajor&gt;</TT>, and <TT CLASS="LITERAL">&lt;versionminor&gt;</TT> together in the same import control file will generate an error.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI></OL>
+<P CLASS="BRIDGEHEAD-SUBHEADING3"><A NAME="DOCTAG06">Example</A></P>
+<P><A NAME="TMPID1424"></A>To create a minor version of a Document called “guidelines.doc” in the “Documents” folder of the Enterprise Workspace's “Projects” folder:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1354"></A>&#13;&lt;import&gt;
+  &lt;node type="document" action="create"&gt;
+    &lt;location&gt;Enterprise:Projects:Documents&lt;/location&gt;
+    &lt;file&gt;c:\temp\guidelines.doc&lt;/file&gt;
+    &lt;versioncontrol&gt;TRUE&lt;/versioncontrol&gt;
+    &lt;versiontype&gt;MINOR&lt;/versiontype&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+>
+<P><A NAME="TMPID1429"></A>To view more <TT CLASS="LITERAL">document</TT> examples, see <span><A HREF="llesoi-cfile-docsamp-rf.htm">document Import Control File Examples</A></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-FILE-RF">file Tag</A></P>
+<P><A NAME="TMPID1434"></A>The <TT CLASS="LITERAL">file</TT> tag sets the absolute path name of the file to be imported into Content Server. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1362"></A>&lt;file&gt;c:/documents/readme.txt&lt;/file&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1363"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1451"></A>The <TT CLASS="LITERAL">file</TT> tag cannot exist on its own and must be contained within a <TT CLASS="LITERAL">&lt;node type="document"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1455"></A>The <TT CLASS="LITERAL">file</TT> tag is required if the <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-MIME-RF">mime Tag</A></span> is used.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1459"></A>The <TT CLASS="LITERAL">file</TT> tag is required when:</P><A NAME="AEN1386"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1387"></A><A NAME="TMPID1463"></A><TT CLASS="LITERAL">&lt;node type="document" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1390"></A><A NAME="TMPID1466"></A><TT CLASS="LITERAL">&lt;node type="document" action="addversion"&gt;</TT></P></LI></UL></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">4. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1469"></A>The <TT CLASS="LITERAL">file</TT> tag is optional when:</P><A NAME="AEN1396"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1397"></A><A NAME="TMPID1473"></A><TT CLASS="LITERAL">&lt;node type="document" action="update"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">The path to the file must be visible by the server that is processing the import control file, either the local or the mapped drive. The files to be imported into Content Server should not be placed anywhere in the directory structure of the Content Server instance. An example of a good location to place these files is: <TT CLASS="FILENAME">C:/temp/</TT>.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-MIME-RF">mime Tag</A></P>
+<P><A NAME="TMPID1482"></A>The <TT CLASS="LITERAL">mime</TT> tag is used to assign the mime-type of the document. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1408"></A>&lt;mime&gt;image/jpeg&lt;/mime&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1409"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1498"></A>The <TT CLASS="LITERAL">mime</TT> tag cannot exist on its own. It must be contained within a <TT CLASS="LITERAL">&lt;node type="document"</TT> tag, and must be used in conjunction with the <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-FILE-RF">file Tag</A></span>.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1503"></A>The <TT CLASS="LITERAL">mime</TT> tag is optional when:</P><A NAME="AEN1429"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1430"></A><A NAME="TMPID1507"></A><TT CLASS="LITERAL">&lt;node type="document" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1433"></A><A NAME="TMPID1510"></A><TT CLASS="LITERAL">&lt;node type="document" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1436"></A><A NAME="TMPID1513"></A><TT CLASS="LITERAL">&lt;node type="document" action="addversion"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1439"></A><A NAME="TMPID1516"></A><TT CLASS="LITERAL">&lt;node type="document" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">If not specified, Content Server will try to determine the mime-type from the extension of the Document, based on the mapping file <TT CLASS="FILENAME">&lt;<I CLASS="VARNAME">Content Server_home</I>>\config\mime.types</TT>.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-VERCON-RF">versioncontrol Tag</A></P>
+<P><A NAME="TMPID1526"></A>The <TT CLASS="LITERAL">versioncontrol</TT> tag is used to support the import of major and minor document versions. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1451"></A>&lt;versioncontrol&gt;TRUE&lt;/versioncontrol&gt;
+&lt;versiontype&gt;MINOR&lt;/versiontype&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1452"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1542"></A>The <TT CLASS="LITERAL">versioncontrol</TT> tag cannot exist on its own and must be contained within a <TT CLASS="LITERAL">&lt;node type="document"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1546"></A>The <TT CLASS="LITERAL">versioncontrol</TT> tag is required if the <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-VERTYP-RF">versiontype Tag</A></span> is used.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1550"></A>The <TT CLASS="LITERAL">versioncontrol</TT> tag is required when:</P><A NAME="AEN1475"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1476"></A><A NAME="TMPID1554"></A><TT CLASS="LITERAL">&lt;node type="document" action="addversion"&gt;</TT>, and neither the <TT CLASS="LITERAL">versionmajor</TT> nor the <TT CLASS="LITERAL">versionminor</TT> tags are used.</P></LI></UL></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">4. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1559"></A>The <TT CLASS="LITERAL">versioncontrol</TT> tag is optional when:</P><A NAME="AEN1484"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1485"></A><A NAME="TMPID1563"></A><TT CLASS="LITERAL">&lt;node type="document" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1488"></A><A NAME="TMPID1566"></A><TT CLASS="LITERAL">&lt;node type="document" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1491"></A><A NAME="TMPID1569"></A><TT CLASS="LITERAL">&lt;node type="document" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1574"></A>When the value is set to <TT CLASS="LITERAL">TRUE</TT>, the version imported into Content Server will be the next minor version increment.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1578"></A>If major/minor versions are not utilized, do not include this tag.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-VERMAJ-RF">versionmajor Tag</A></P>
+<P><A NAME="TMPID1581"></A>The <TT CLASS="LITERAL">versionmajor</TT> tag can be used in place of the <TT CLASS="LITERAL">&lt;versiontype&gt;MAJOR&lt;/versiontype&gt;</TT> tag to state a specific major version number. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1506"></A>&lt;versionmajor&gt;2&lt;/versionmajor&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1507"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1598"></A>The <TT CLASS="LITERAL">versionmajor</TT> tag cannot exist on its own and must be contained within a <TT CLASS="LITERAL">&lt;node type="document"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1602"></A>The <TT CLASS="LITERAL">versionmajor</TT> tag is optional when:</P><A NAME="AEN1526"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1527"></A><A NAME="TMPID1606"></A><TT CLASS="LITERAL">&lt;node type="document" action="addversion"&gt;</TT>, and neither the <TT CLASS="LITERAL">versionminor</TT> nor the <TT CLASS="LITERAL">versiontype</TT> tags are used.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1532"></A><A NAME="TMPID1611"></A><TT CLASS="LITERAL">&lt;node type="document" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1535"></A><A NAME="TMPID1614"></A><TT CLASS="LITERAL">&lt;node type="document" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1538"></A><A NAME="TMPID1617"></A><TT CLASS="LITERAL">&lt;node type="document" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Object Importer will check that the major version you are entering is greater than the latest version; if the version is not greater, Object Importer reports an error.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-VERMIN-RF">versionminor Tag</A></P>
+<P><A NAME="TMPID1625"></A>The <TT CLASS="LITERAL">versionminor</TT> tag can be used in place of the <TT CLASS="LITERAL">&lt;versiontype&gt;MINOR&lt;/versiontype&gt;</TT> tag to specify a specific minor version number. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1549"></A>&lt;versionminor&gt;5&lt;/versionminor&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1550"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1642"></A>The <TT CLASS="LITERAL">versionminor</TT> tag cannot exist on its own and must be contained within a <TT CLASS="LITERAL">&lt;node type="document"</TT> tag.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1646"></A>The <TT CLASS="LITERAL">versionminor</TT> tag is optional when:</P><A NAME="AEN1569"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1570"></A><A NAME="TMPID1650"></A><TT CLASS="LITERAL">&lt;node type="document" action="addversion"&gt;</TT>, and neither the <TT CLASS="LITERAL">versionmajor</TT> nor the <TT CLASS="LITERAL">versiontype</TT> tags are used.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1575"></A><A NAME="TMPID1655"></A><TT CLASS="LITERAL">&lt;node type="document" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1578"></A><A NAME="TMPID1658"></A><TT CLASS="LITERAL">&lt;node type="document" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1581"></A><A NAME="TMPID1661"></A><TT CLASS="LITERAL">&lt;node type="document" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Object Importer will check that the minor version you are entering is greater than the latest version; if the version is not greater, Object Importer reports an error.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFILE-VERTYP-RF">versiontype Tag</A></P>
+<P><A NAME="TMPID1669"></A>The <TT CLASS="LITERAL">versiontype</TT> tag is used to support the import of major or minor document versions. This tag's syntax is: 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1591"></A>&lt;versioncontrol&gt;FALSE&lt;/versioncontrol&gt;
+&lt;versiontype&gt;MAJOR&lt;/versiontype&gt;</PRE
+> 
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN1592"></A>&lt;versioncontrol&gt;TRUE&lt;/versioncontrol&gt;
+&lt;versiontype&gt;MINOR&lt;/versiontype&gt;</PRE
+></P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1593"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Usage</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1686"></A>The <TT CLASS="LITERAL">versiontype</TT> tag cannot exist on its own and must be contained within a <TT CLASS="LITERAL">&lt;node type="document"</TT> tag. It must also be accompanied by the <span><A HREF="llesoi-cfile-doc-rf.htm#LLESOI-CFILE-VERCON-RF">versioncontrol Tag</A></span>.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID1691"></A>The <TT CLASS="LITERAL">versiontype</TT> tag is optional when:</P><A NAME="AEN1613"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1614"></A><A NAME="TMPID1695"></A><TT CLASS="LITERAL">&lt;node type="document" action="addversion"&gt;</TT>, and neither the <TT CLASS="LITERAL">versionmajor</TT> nor the <TT CLASS="LITERAL">versionminor</TT> tags are used.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1619"></A><A NAME="TMPID1700"></A><TT CLASS="LITERAL">&lt;node type="document" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1622"></A><A NAME="TMPID1703"></A><TT CLASS="LITERAL">&lt;node type="document" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1625"></A><A NAME="TMPID1706"></A><TT CLASS="LITERAL">&lt;node type="document" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&#13;<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1711"></A>When the value is set to <TT CLASS="LITERAL">MAJOR</TT>, the version imported into Content Server will be the next major version increment.</P></TD></TR>
+<TR CLASS="LIDIST">
+<TD CLASS="LIDIST" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1715"></A>When the value is set to <TT CLASS="LITERAL">MINOR</TT>, the version imported into Content Server will be the next minor version increment.</P></TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

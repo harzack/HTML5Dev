@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>LLURL:SIDEBAR</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-llurlsidebar-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'LLURL:SIDEBAR';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID20418"></A>The <span><A HREF="wr-tag-sttenth.htm#TAG-LLURLSDE">LLURL:SIDEBAR</A></span> subtag inserts the output that is generated from the facet panels to a sidebar container within the reportview or template. Due to the nature of this feature, it relies heavily on a pre-determined HTML structure that involves a series of Forms and nested Tables and DIVS. The “13_browse_flexible_cs10_with_sidebar.txt” default reportview contains the necessary elements to get the SideBar functionality working, so it's best to use this as an example or starting point for creating customized reportviews that make use of the SideBar feature. See below for a diagram of the required HTML elements and the suggested layout for a reportview/template.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-LLURLSDBRINS">What It Inserts</A></P>
+<P><A NAME="TMPID20423"></A>The <span><A HREF="wr-tag-sttenth.htm#TAG-LLURLSDE">LLURL:SIDEBAR</A></span> subtag expects the DataID of a container object, and will return the sidebar contents (included facet panels and facet contents) for that container. There are a number of additional form elements/javascript function calls in Content Server 10 that need to be set to the same ID in order to maintain consistent behavior for the sidebar. All of these are outlined and updated with the appropriate values in the default reportview/template that includes the SideBar. The <span><A HREF="wr-tag-sttenth.htm#TAG-LLURLSDBRRW">LLURL:SIDEBAR:RAW</A></span> code wraps the returned facet/sidebar data in a “sidebar-wrapper” table cell. For example, <TT CLASS="literal">&lt;td valign="top" class="sidebar-wrapper"&gt;</TT></P>
+<P><A NAME="TMPID20429"></A>In WebReports, the <TT CLASS="literal">SBCONTAINER</TT> variable is set at the top of the reportview and is used at the appropriate locations within the reportview. To use a different ID than the parent folder of the WebReport, it's best to update this variable with the new ID, as that variable is already in the correct position. For example, to change the sidebar to load up facet data for a container with an ID of 12345, set the <TT CLASS="literal">SBCONTAINER</TT> variable with the following: <TT CLASS="literal">[LL_REPTAG_'12345' SETVAR:SBCONTAINER /]</TT>.</P>
+<P><A NAME="TMPID20433"></A><B CLASS="highlight">Usage example in WebReports</B>: [LL_REPTAG_%SBCONTAINER LLURL:SIDEBAR /]</P>
+<P><A NAME="TMPID20435"></A><B CLASS="highlight">Usage example in ActiveView</B>: [LL_REPTAG=OVERRIDEOBJID LLURL:SIDEBAR /]</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-LLURLSDBRPRF">USERPREF Enhancements</A></P>
+<P class="before-ul"><A NAME="TMPID20439"></A>There are two new options available in the <span><A HREF="wr-tag-steighteenth.htm#WR-TAG-SUBUSERPREF">USERPREF</A></span> subtag that allows the sidebar to behave according to each users' settings. These new settings in Content Server 10 are found by selecting <B CLASS="guilabel">Settings</B> from the <B CLASS="guilabel">Tools</B> menu. Next, select the <B CLASS="guilabel">General</B> tab. The new settings can be surfaced using the following subtags:</P><A NAME="AEN19172"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19173"></A><A NAME="TMPID20447"></A>USERPREF:GENERAL:SBLOCATION - returns 'right' or 'left' based on the 'Sidebar Location' setting</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19175"></A><A NAME="TMPID20449"></A>USERPREF:GENERAL:SIDEBAR - returns 'true' or 'false' based on the 'Show Sidebar in Browse' setting</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-LLURLSDBREX">Example</A></P>
+<P><A NAME="TMPID20452"></A>Use [LL_REPTAG_USERID USERPREF:GENERAL:SIDEBAR /] to determine whether or not the user executing the WebReport wants the Sidebar showing in when they Browse.</P>
+<P><A NAME="TMPID20453"></A><B CLASS="highlight">Required HTML structure:</B> The following is a diagram outlining the nested HTML elements required for the SideBar elements to load properly</P>
+<P><IMG SRC="image036.png"></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

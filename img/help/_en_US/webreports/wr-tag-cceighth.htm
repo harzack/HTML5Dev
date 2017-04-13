@@ -1,0 +1,223 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>SETDATASOURCE, SORT, STARTROW, STARTSCRIPT, SUBWEBREPORT, SUPPRESSERRORLOG</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-cceighth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Content Control Tags';
+          header.title2 = 'SETDATASOURCE, SORT, STARTROW, STARTSCRIPT, SUBWEBREPORT, SUPPRESSERRORLOG';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3014"></A>This section details the content control tags: <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSETDATASOURCE">SETDATASOURCE</A></span>, <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSORT">SORT</A></span>, <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTROW">STARTROW</A></span>,  <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTSCRIPT">STARTSCRIPT</A></span>,  <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSUBWEBREPORT">SUBWEBREPORT</A></span> and <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSUPPRESSERRORLOG">SUPPRESSERRORLOG</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCSETDATASOURCE">SETDATASOURCE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SETDATASOURCE-NAME">Syntax</A></P>
+<P><A NAME="WEBREPORTSETDATASOURCE"></A><B CLASS="highlight">[LL_WEBREPORT_SETDATASOURCE /]</B></P>
+<P><A NAME="TMPID3027"></A><B CLASS="highlight">[LL_WEBREPORT_SETDATASOURCE SRC:&lt;<I CLASS="varname">data</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SETDATASOURCE-DESC">Description</A></P>
+<P><A NAME="TMPID3032"></A>This tag will replace the data source with the value of the <TT CLASS="literal">SRC</TT> parameter. It will not prevent the original data source from executing, so care should be taken not to needlessly execute a query that will not be used.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="SETDATASOURCE-PARAM">Parameter</A></P>
+<P><A NAME="TMPID3036"></A>The <TT CLASS="literal">SRC</TT> parameter must be a <TT CLASS="literal">RecArray</TT> or a <TT CLASS="literal">List of Records</TT>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="SETDATASOURCE-EXAMPL">Example</A></P>
+<P><A NAME="TMPID3042"></A>For example, the following will replace the datasource with a <TT CLASS="literal">RecArray</TT> containing one field, called “field”, and three records:</P><A NAME="AEN2800"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_SETDATASOURCE SRC:"V{&lt;<I
+CLASS="varname"
+>'field'</I
+>>&lt;<I
+CLASS="varname"
+>'one</I
+>>&lt;<I
+CLASS="varname"
+>'two'</I
+>>&lt;<I
+CLASS="varname"
+>'three'</I
+>>}" /]</PRE
+>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN2805"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID3051"></A>A more complicated example is the execution of a LiveReport using the RUNSQL sub-tag:</P><A NAME="AEN2807"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_SETDATASOURCE SRC:[LL_REPTAG_"9999" RUNSQL /] /]</PRE
+>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SETDATASOURCE-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID3055"></A>For more information, see <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECARRAY">RECARRAY</A></span> and RUNSQL.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCSORT">SORT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SORT-NAME">Syntax</A></P>
+<P><A NAME="WEBREPORTSORT"></A><B CLASS="highlight">[LL_WEBREPORT_SORT /]</B></P>
+<P><A NAME="TMPID3063"></A>or</P>
+<P><A NAME="TMPID3064"></A><B CLASS="highlight">[LL_WEBREPORT_SORT “&lt;<I CLASS="varname">Sort Key</I>>”:ASC/DESC &lt;<I CLASS="varname">Additional Sort Keys</I>> &lt;<I CLASS="varname">Global Direction</I>> “USECASE” &lt;<I CLASS="varname">Directives</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SORT-DESC">Description</A></P>
+<P><A NAME="TMPID3074"></A>Used to sort the report data set according to a specified column. This tag must be used in the row template section, between the <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTROW">STARTROW</A></span> and <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDROW">ENDROW</A></span> tags. The column to be sorted can be specified by either column name or number. Either the number of the data column, as returned from left to right, or the name of the data column can be used to specify a column to sort by. Alternatively if a report tag is used, the report will be sorted according to the result of the specified tag and sub-tags.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="SORT-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2829"></A>
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Parameter Type</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Sort Keys</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Each key is made up of either a column name/number reference, or a WebReports tag and sub-tag combination enclosed in single or double quotes and optionally followed by a colon and a direction parm as shown in the syntax example.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Global Direction</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Can be one of <TT CLASS="literal">DESC</TT> or <TT CLASS="literal">ASC</TT> and defaults to <TT CLASS="literal">ASC</TT>. The directions specified for each individual sort key override the global direction.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="96" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Directives</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Can be one or more “directives” in the format <TT CLASS="literal">@PREDEFKEY</TT>, <TT CLASS="literal">@PARMNAMES</TT> along with any associated information. Used to predefine sortkeys that can be associated with simple URL values. For example, <TT CLASS="literal">&amp;sortcol=col1</TT> could be used to trigger a sort key such as <TT CLASS="literal">[LL_REPTAG=DATAID CAT:cat1:attr1:display /]</TT>. See <span><A HREF="wr-sort-info.htm">Sorting Results</A></span> for more information.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SORT-EXAMP">Example</A></P>
+<P><A NAME="TMPID3112"></A>This example will sort according to the order of numeric data ids:</P><A NAME="AEN2866"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_SORT "DATAID" /]</PRE
+>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN2867"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID3115"></A>This example will sort according to the node name, even though they are both using the same report column:</P><A NAME="AEN2869"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_SORT "DATAID" "[LL_REPTAG=DATAID NODEINFO:NAME /]" /]</PRE
+>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN2870"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID3118"></A>This example will sort first on the <TT CLASS="literal">PARENTID</TT> column in descending order, then on the name in ascending order:</P><A NAME="AEN2873"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_SORT "PARENTID":DESC "[LL_REPTAG=DATAID NODEINFO:NAME /]":ASC /]</PRE
+>
+</DIV></P>
+<P>
+<DIV CLASS="informalexample">
+<P><A NAME="AEN2874"></A><B>Example</B></P>
+<P class="nr1"><A NAME="TMPID3122"></A>This example is the same as the third, with the <TT CLASS="literal">PARENTID</TT> column sorted in the default direction, ascending:</P><A NAME="AEN2877"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_SORT "PARENTID" "[LL_REPTAG=DATAID NODEINFO:NAME /]" /]</PRE
+>
+</DIV></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SORT-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID3127"></A>The <TT CLASS="literal">SORT</TT> tag also supports a series of directives that allow sortkeys to be pre-defined and associated with simple URL parameters. See <span><A HREF="wr-sort-info.htm">Sorting Results</A></span> for more detail.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCSTARTROW">STARTROW</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STARTROW-NAME">Syntax</A></P>
+<P><A NAME="WEBREPORTSTARTROW"></A><B CLASS="highlight">[LL_WEBREPORT_STARTROW /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STARTROW-DESC">Description</A></P>
+<P><A NAME="TMPID3138"></A>The <TT CLASS="literal">STARTROW</TT> tag is used to mark the start of the report row template that will be applied to every row of data in the report row template. In other words, all code between the <TT CLASS="literal">STARTROW</TT> tag and the <TT CLASS="literal">[LL_WEBREPORT_ENDROW /]</TT> will be repeated for every row of data output in the data source.</P>
+<P><A NAME="TMPID3142"></A><B CLASS="highlight">Report Row Template usage</B>: the section in the Reportview that is stored between <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTROW">STARTROW</A></span> and <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDROW">ENDROW</A></span> could be used to generate repeated HTML table rows, or to assign report data to a JavaScript array for later data manipulation and display.</P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3147"></A><B CLASS="important">Important: </B><BR>Any code between these tags will be repeated for each and every row of data in the associated data source. If the <span><A HREF="wr-tag-cceighth.htm#WR-TAG-CCSTARTROW">STARTROW</A></span> and <span><A HREF="wr-tag-ccthird.htm#WR-TAG-CCENDROW">ENDROW</A></span> tags are omitted, any data source will be ignored.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCSTARTSCRIPT">STARTSCRIPT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STARTSCRIPT-NAME">Syntax</A></P>
+<P><A NAME="STARTSCRIPT"></A><B CLASS="highlight">[LL_WEBREPORT_STARTSCRIPT /]</B></P>
+<P><A NAME="TMPID3156"></A><B CLASS="highlight">[LL_WEBREPORT_STARTSCRIPT NAME:&lt;<I CLASS="varname">script name</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STARTSCRIPT-DESC">Description</A></P>
+<P><A NAME="TMPID3161"></A>Defines a block of server side Oscript that can be called by the <span><A HREF="wr-tag-ccsecond.htm#WR-TAG-CCCALL">CALL</A></span> tag. Each script block is labelled with a name defined by the &lt;<I CLASS="varname">script name</I>> parameter. Inside the script block one or more Oscript functions may optionally be declared. The first function is passed two parameters. The first parameter is a Dynamic that is assigned the “context” Assoc containing report data. The second parameter is an Oscript List containing the list of arguments if present in the <span><A HREF="wr-tag-ccsecond.htm#WR-TAG-CCCALL">CALL</A></span> tag. When a script block is called the first Oscript function declared in the block runs. Additional Oscript functions declared in the same script block may be called by the first function.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF16"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3167"></A><B CLASS="note">Note: </B><BR>Server side scripting must be enabled by an administrator at the server level and for each WebReport each time a new Reportview is added. Scripts are rendered inactive unless enabled. Server side scripting is powerful but must be used with great care. Users should read all the related documentation before using server side scripting. See <span><A HREF="wr-server-scripting-info.htm">Server Side Scripting</A></span> for a summary.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="STARTSCRIPT-EXAMP">Example</A></P><A NAME="AEN2916"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_STARTSCRIPT NAME:&lt;<I
+CLASS="varname"
+>script name</I
+>> /]
+function String anyName(Dynamic c, List args)
+   String result
+   ...
+   return result
+end
+[LL_WEBREPORT_ENDSCRIPT /]</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCSUBWEBREPORT">SUBWEBREPORT</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SUBWEBREPORT-NAME">Syntax</A></P>
+<P><A NAME="SUBWR"></A><B CLASS="highlight">[LL_WEBREPORT_SUBWEBREPORT /]</B></P>
+<P><A NAME="TMPID3179"></A><B CLASS="highlight">[LL_WEBREPORT_SUBWEBREPORT NODEID:&lt;<I CLASS="varname">nodeid of the sub-WebReport</I>> PARM:&lt;<I CLASS="varname">parm1 name</I>>:&lt;<I CLASS="varname">parm1 value</I>> PARM:&lt;<I CLASS="varname">parm2 name</I>>:&lt;<I CLASS="varname">parm2 value</I>> ... &lt;<I CLASS="varname">options</I>> /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SUBWEBREPORT-DESC">Description</A></P>
+<P><A NAME="TMPID3189"></A>Used to call another WebReport, a “sub-WebReport”, whose results will be returned and inserted into the parent report at the point where the tag is placed. Sub-WebReports can be thought of as “sub-routines” that form part of the overall report results.</P>
+<P class="before-ul"><A NAME="TMPID3192"></A>This tag is particularly useful where you wish to collect the results from several different queries, for example LiveReport SQL queries, and present them in a single report. For example, it is often simpler to use two or more simple SQL queries in place of one complex SQL query. You can also combine results from an SQL query with results from a search query.</P><A NAME="AEN2935"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2936"></A><A NAME="TMPID3195"></A>Specify the sub-WebReport by its node ID in the <TT CLASS="literal">NODEID</TT> parameter. In the second example below, a WebReport constant is used to specify the node ID of the sub-WebReport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2939"></A><A NAME="TMPID3198"></A>Optionally, parameters that would normally be passed to a WebReport through the calling URL, can be specified using the <TT CLASS="literal">PARM:&lt;<I CLASS="varname">parm name</I>>:&lt;<I CLASS="varname">parm value</I>></TT> construct. To pass parameters that might contain spaces or colons, use double or single quotes to delimit the parameters value, see the first example below. LiveReport “InputLabel” parameters can also be passed using <TT CLASS="literal">PARM</TT>. If parameters are required but are not specified, defaults will be used if they have been setup in the sub-WebReport.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2946"></A><A NAME="TMPID3205"></A>The <TT CLASS="literal">LL_WEBREPORT_SUBWEBREPORT</TT> tag can be placed anywhere in the Reportview, but its use within the row section should be treated with caution if either the parent or sub-WebReport could return a large result set due to the potential performance impact.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2949"></A><A NAME="TMPID3208"></A>If a sub-WebReport's default action is set to export report results rather than return them to the browser, the standard status message will be inserted in the parent report and the sub-WebReport's results will be exported.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2951"></A><A NAME="TMPID3210"></A>Scope of parameters, and constants: the constants and parameters for all parent reports are in scope for a sub-WebReport. In cases where the same parameter or constant is used by different reports to hold a different value, the value set most recently, in other words set by the more deeply nested report, will be returned.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2953"></A><A NAME="TMPID3212"></A>Sub-WebReports can, themselves, call a sub-WebReport; reports can be nested up to five reports deep, though this number can be configured by the Content Server administrator.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2956"></A><A NAME="TMPID3215"></A>If the destination of the sub-WebReport is a Content Server Node, then the nodeID can be returned to the calling WebReport by adding the <TT CLASS="literal">SHOWNODEID</TT> argument to the <TT CLASS="literal">SUBWEBREPORT</TT> call. For example, <TT CLASS="literal">[LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$mySubReport /] SHOWNODEID /]</TT></P></LI></UL>
+<P CLASS="bridgehead-subheading3"><A NAME="SUBWEBREPORT-EXAMP">Example</A></P><A NAME="AEN2963"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_SUBWEBREPORT NODEID:68873 PARM:InputLabel1:299 PARM:myStatus:"awaiting review" /]
+[LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$mySubReport /] /]
+[LL_WEBREPORT_SUBWEBREPORT NODEID:[LL_REPTAG_$mySubReport /] SHOWNODEID /]</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="SUBWEBREPORT-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID3225"></A>See <span><A HREF="wr-requestds-info.htm#WR-REQUESTDS-EX1">Calling as a Sub-WebReport</A></span> and <TT CLASS="literal">RUNSWR</TT> for more information.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-CCSUPPRESSERRORLOG">SUPPRESSERRORLOG</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SUPPRESSERRORLOG-NAME">Syntax</A></P>
+<P><A NAME="WEBREPORTSUPPRESSERRORLOG"></A><B CLASS="highlight">[LL_WEBREPORT_SUPPRESSERRORLOG /]</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="SUPPRESSERRORLOG-DESC">Description</A></P>
+<P><A NAME="TMPID3236"></A>Prevents any error messages from being displayed in the output. Errors can arise due to misplaced tags or mistyped tags.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

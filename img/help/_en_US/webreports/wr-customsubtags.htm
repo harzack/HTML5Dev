@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Custom Sub-tags</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-customsubtags.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'Custom Sub-tags';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID18759"></A><B>Using Custom Sub-tags with WebReports: </B></P>
+<P><A NAME="TMPID18762"></A>Developers can create their own sub-tags using ordinary text documents and 'drop' them into a folder on the server, allowing you to generate sub-tag features customized for your needs and have them included in your WebReport reportview for use just like any other sub-tag listed in the Tag Guide. There are no restrictions on what can be coded in a custom sub-tag because they are located on the server - this means that OScript packages that are normally blocked for use in a WebReport reportview with server-side scripting will be available in a custom sub-tag. The result will be a WebReports sub-tag that behaves just like any other sub-tag that is packaged with WebReports.</P>
+<P><A NAME="TMPID18764"></A>A sample custom sub-tag called 'sample.txt' can be found in the <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>\module\webreports_&lt;<I CLASS="varname">n</I>>_&lt;<I CLASS="varname">n</I>>_&lt;<I CLASS="varname">n</I>>\subtags</TT> folder on the server where your Content Server instance is installed. This file is a template you can use to start building your new sub-tag. New sub-tags can be based on this file and saved into the same folder.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF41"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID18773"></A><B CLASS="note">Note: </B><BR>The Content Server service must be restarted in order for new custom sub-tags to be available.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID18775"></A>The first line in the custom sub-tag file template is:</P>
+<P><A NAME="TMPID18776"></A><TT CLASS="literal">// @MINPARMS=0,@MAXPARMS=10</TT></P>
+<P><A NAME="TMPID18778"></A>which is where you would specify the number of parameters you want to make available when calling the sub-tag, so if you specify:</P>
+<P><A NAME="TMPID18779"></A><TT CLASS="literal">// @MINPARMS=1,@MAXPARMS=1</TT></P>
+<P><A NAME="TMPID18781"></A>this means that when you call the sub-tag, you must also pass one parameter. In your code, you can access these parameters using <TT CLASS="filename">myTag&lt;<I CLASS="varname">n</I>></TT>, where &lt;<I CLASS="varname">n</I>> is the number of the parameter you want to access (starting at number 2 as the first value in <TT CLASS="filename">myTag</TT> is a unique identifier assigned to the sub-tag).</P>
+<P><A NAME="TMPID18786"></A>You can test that your sub-tag code compiles correctly using the <B CLASS="guilabel">Build All Sub-tags</B> page in the <B CLASS="guilabel">WebReports Administration</B> section of the administration pages.</P>
+<DIV title="Creating a custom sub-tag" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="WR-CUSTST-EX"></A><B><IMG title="Creating a custom sub-tag" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Example 1-14: Creating a custom sub-tag</B></P>
+<P class="nr1"><A NAME="TMPID18791"></A>The following text can be saved into a file called <TT CLASS="filename">addintegers.txt</TT>. It will create a custom sub-tag called <TT CLASS="literal">ADDINTEGERS</TT>. The sub-tag takes between two and three parameters and adds them together, returning the total. The code contains error handling, so if any of the parameters are not integers, or the total is not an integer, an error message will be returned instead of the total.</P><A NAME="AEN17540"></A>
+<PRE 
+CLASS="screen"
+>// @MINPARMS=2,@MAXPARMS=3
+function Dynamic _ADDINTEGERS( Assoc rep, integer subTagInd, List myTag, Integer rowNo=-1,Integer colNo=-1,RecArray sourceData = undefined)
+
+  // All parameters are passed as strings.
+  Integer parm1 = Str.StringToInteger( myTag[2] )
+  Integer parm2 = Str.StringToInteger( myTag[3] )
+
+  Integer total
+
+  // Are both parameters valid integers?
+  if IsDefined( parm1 ) &amp;&amp; IsDefined( parm2 )
+    // Add the two numbers together.
+    total = parm1 + parm2
+
+    // Check to see if the third parameter (optional) is specified.
+    if isDefined( myTag[4] )
+      // Convert the string parameter to an integer.
+      Integer parm3 = Str.StringToInteger( myTag[4] )
+      // Is the parameter a valid integer?
+      If IsDefined( parm3 )
+        // Add the parameter to the running total.
+        total = total + parm3
+      end
+    end
+
+    // Is the total a valid integer?
+    if IsDefined( total )
+      // Set rep.data to the value we want to return to the WebReport.
+      // Ensure returned data is a string type.
+      rep.Data = Str.String( total )
+    else
+      // Return an error message
+      rep.Data = .manageError( .fSubtags, myTag, 'ADDINTEGERS', 1001, 'Numbers do not add up to a valid integer', 'LONG')
+    end
+  else
+    // Return an error message
+    rep.Data = .manageError( .fSubtags, myTag, 'ADDINTEGERS', 1002, 'Parameters must be valid integers', 'LONG')
+  end
+end</PRE
+>
+<P><A NAME="TMPID18795"></A>You can then call the new custom sub-tag as follows:</P>
+<A NAME="AEN17542"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17543"></A><A NAME="TMPID18798"></A><TT CLASS="literal">[LL_REPTAG_'' ADDINTEGERS:2:3 /]</TT>  returns 5.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17546"></A><A NAME="TMPID18801"></A><TT CLASS="literal">[LL_REPTAG_'' ADDINTEGERS:2:3:4 /]</TT> returns 9.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN17549"></A><A NAME="TMPID18804"></A><TT CLASS="literal">[LL_REPTAG_'' ADDINTEGERS:'x':'y' /]</TT> returns “* ADDINTEGERS: Parameters must be valid integers *”.</P></LI></OL><IMG title="Creating a custom sub-tag" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWFW100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webwork">
+<META mancondkey="lleswfp-cwm -- lleswfp-h-ugd -- llesfrm-cwm -- llesfrm-h-ugd -- lleswbn-h-ugd -- lleseps-h-ugd -- lleseps-h-agd -- llesesn-h-ugd -- llesfwf-h-ugd -- llesrt-h-ugd -- lleselk-h-ugd"><title>Utilisation du générateur d'expressions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-expression-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation des workflows';
+          header.title2 = 'Utilisation du générateur d\'expressions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1673"></A>Le générateur d'expressions vous permet de construire des expressions conditionnelles complexes pour restreindre l'affichage des workflows et des tâches assignées sur les pages <B CLASS="guilabel">Mes workflows</B> et <B CLASS="guilabel">Statut du workflow</B>. Vous pouvez utiliser le générateur d'expressions sur les pages <B CLASS="guilabel">Mes workflows</B>, <B CLASS="guilabel">Statut du workflow</B> et <B CLASS="guilabel">Paramètres du workflow</B> pour modifier les workflows et les tâches assignées qui s'affichent sur les pages. Pour plus d'informations sur les pages <B CLASS="guilabel">Mes workflows</B> et <B CLASS="guilabel">Statut du workflow</B>, voir <span><A HREF="wf-status-bg.htm">Gestion des workflows et des tâches assignées</A></span>.</P>
+<P><A NAME="TMPID1682"></A>Une fois l'expression créée, la syntaxe de l'expression s'affiche sur la page et prend effet jusqu'à ce que vous la supprimiez.</P>
+<P class="before-ul"><A NAME="TMPID1683"></A>Le générateur d'expressions vous permet d'indiquer des expressions basées sur les critères suivants :</P><A NAME="AEN1676"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1677"></A><A NAME="TMPID1686"></A>le nom du workflow ;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1679"></A><A NAME="TMPID1688"></A>Initiateur</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1681"></A><A NAME="TMPID1690"></A>Date</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1683"></A><A NAME="TMPID1692"></A>le statut (pour les workflows non archivés uniquement).</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID1693"></A>Les valeurs de statut de workflow valables sont :</P><A NAME="AEN1686"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1687"></A><A NAME="TMPID1696"></A>En cours d'exécution, qui se rapporte à tous les workflows en cours d'exécution</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1689"></A><A NAME="TMPID1698"></A>OK, qui se rapporte aux workflows et aux sous-workflows en cours d'exécution qui n'ont pas dépassé leur date d'échéance assignée</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1691"></A><A NAME="TMPID1700"></A>En retard, qui se rapporte aux workflows et aux sous-workflows en cours d'exécution qui ont dépassé leur date d'échéance</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1693"></A><A NAME="TMPID1702"></A>En retard par rapport au point de repère</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1695"></A><A NAME="TMPID1704"></A>L'étape présente un retard</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1697"></A><A NAME="TMPID1706"></A>Workflow en retard</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1699"></A><A NAME="TMPID1708"></A>Achevé</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1701"></A><A NAME="TMPID1710"></A>Arrêté(e)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1703"></A><A NAME="TMPID1712"></A>Interrompu(e)</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WF-CREATINGCOMPLEXEXP">Création d'expressions complexes</A></P>
+<P><A NAME="TMPID1715"></A>Vous pouvez définir des expressions complexes à l'aide d'éléments de recherche. Par exemple, vous pouvez créer l'expression complexe qui suit pour afficher les workflows actifs et achevés (mais pas les interrompus) dont la date d'échéance est postérieure au 05.07.13.</P><A NAME="AEN1707"></A>
+<PRE 
+CLASS="programlisting"
+>  1&nbsp; ("Status = OK" OR "Status = Completed") AND "Due Date &gt; 07/05/2013"</PRE
+>
+<P class="before-ul"><A NAME="TMPID1717"></A>Les éléments de recherche que vous pouvez utiliser sont :</P><A NAME="AEN1709"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1710"></A><A NAME="TMPID1720"></A>Les parenthèses droite et gauche</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1712"></A><A NAME="TMPID1722"></A>Les délimiteurs </P><A NAME="AEN1714"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1715"></A><A NAME="TMPID1725"></A><TT CLASS="literal">=</TT> (Egal à)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1718"></A><A NAME="TMPID1728"></A><TT CLASS="literal">&lt;&gt;</TT>(Différent de)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1721"></A><A NAME="TMPID1731"></A><TT CLASS="literal">&lt;</TT> (Inférieur à)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1724"></A><A NAME="TMPID1734"></A><TT CLASS="literal">&gt;</TT> (Supérieur à)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1727"></A><A NAME="TMPID1737"></A><TT CLASS="literal">commence par</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1730"></A><A NAME="TMPID1740"></A><TT CLASS="literal">finit par</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1733"></A><A NAME="TMPID1743"></A><TT CLASS="literal">contient</TT></P></LI></UL></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN1736"></A><A NAME="TMPID1746"></A>Les relations de recherche </P><A NAME="AEN1738"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1739"></A><A NAME="TMPID1749"></A><TT CLASS="literal">ET</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1742"></A><A NAME="TMPID1752"></A><TT CLASS="literal">OR</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1745"></A><A NAME="TMPID1755"></A><TT CLASS="literal">AND NOT</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1748"></A><A NAME="TMPID1758"></A><TT CLASS="literal">OR NOT</TT></P></LI></UL></LI></UL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wf-expression-create-p.htm" revision="">Pour créer une expression</A></p></li>
+<li><p><A  HREF="wf-expression-delete-p.htm" revision="">Pour supprimer une expression</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

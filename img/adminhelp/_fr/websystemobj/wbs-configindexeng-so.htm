@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Configuration des processus d'indexation</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-configindexeng-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion de la recherche';
+          header.title2 = 'Configuration des processus d\'indexation';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID7291"></A>Les <I CLASS="emphasis">moteurs d'indexation</I> et les <I CLASS="emphasis">processus Distributeur de mise à jour</I> sont les processus d'indexation dans les systèmes d'indexation et de recherche. Un moteur d'indexation est un processus qui indexe les données pour la <I CLASS="emphasis">partition</I> à laquelle il appartient de manière à permettre aux moteurs de recherche d'effectuer des recherches dans les données et aux utilisateurs de récupérer des informations dans Content Server. Une partition est une portion d'un index complet de données. Le processus Distributeur de mise à jour est également un processus de flux de données d'indexation qui gère et transmet les données aux moteurs d'indexation. Le processus Distributeur de mise à jour lit les données extraites par le processus Conversion de documents à partir d'un IPool, puis distribue ces données aux moteurs d'indexation dans leurs partitions respectives. Cela permet d'équilibrer la charge de données à indexer dans les partitions. Le processus Distributeur de mise à jour distribue également les requêtes de mise à jour d'index aux moteurs d'indexation afin d'assurer la mise à jour de toutes les données indexées dans chaque partition. Pour ce faire, le processus Distributeur de mise à jour communique avec les moteurs d'indexation afin de déterminer si l'objet qu'il essaie de mettre à jour existe dans l'index de sa partition. Une fois l'objet localisé, le processus Distributeur de mise à jour envoie les données mises à jour à ce moteur d'indexation pour qu'elles y soient indexées.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF139">Ajout de processus d'indexation</A></P>
+<P><A NAME="TMPID7297"></A>Lors de l'ajout d'une partition à votre système d'indexation et de recherche, un moteur d'indexation est également ajouté à la partition et le moteur d'indexation est associé automatiquement au processus Distributeur de mise à jour. Pour créer un processus Distributeur de mise à jour, ajoutez-le à un flux de données d'indexation. Le processus de création d'un index implique l'ajout de partitions aux systèmes d'indexation et de recherche et l'ajout de distributeurs de mise à jour aux flux de données d'indexation. Vous pouvez supprimer des processus d'indexation, mais la suppression d'un processus de distributeur de mise à jour entraîne l'arrêt de l'indexation pour un système d'indexation et de recherche. La suppression d'un moteur d'indexation peut aussi entraîner l'arrêt de l'indexation pour un index de partition ou un système d'indexation et de recherche. OpenText vous recommande de ne pas supprimer les processus d'indexation.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF140">Configuration des processus d'indexation</A></P>
+<P><A NAME="TMPID7300"></A>Après l'ajout d'un moteur d'indexation ou d'un processus Distributeur de mise à jour, vous pouvez le configurer pour qu'il 	contrôle son mode de fonctionnement. Les valeurs par défaut sont configurées automatiquement pour certains paramètres lors de l'ajout de processus d'indexation, mais vous devrez peut-être changer ces valeurs. Lors de la configuration d'un moteur d'indexation, vous pouvez générer un résumé des événements enregistrés dans le fichier journal d'un moteur d'indexation. Le résumé du fichier journal contient les statistiques relatives à l'index de la partition à laquelle appartient le moteur d'indexation. Pour plus d'informations sur les données incluses dans les résumés de fichier journal d'un index, contactez le service d'assistance clientèle d'OpenText. Avant de configurer des processus, vous devez les arrêter. Vous pouvez arrêter un processus individuel ou tous les processus d'indexation à la fois. Que vous en arrêtiez un processus d'indexation ou tous les processus d'indexation à la fois, l'indexation du système d'indexation et de recherche auquel appartiennent les processus s'arrête complètement.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF141">Validation d'un index</A></P>
+<P><A NAME="TMPID7303"></A>Lors de la configuration d'un moteur d'indexation, vous pouvez également valider l'index de la partition à laquelle appartient le moteur d'indexation. Lorsque vous validez l'index d'une partition, il est analysé afin d'identifier les problèmes éventuels. Lors de la validation d'un index, le processus Distributeur de mise à jour détermine si les structures de données sont synchronisées. Une fois que Content Server a terminé de valider un index de partition, un fichier journal de validation s'affiche contenant le pourcentage d'objets et de mots supprimés en cas de réussite de la validation. En cas d'échec de la validation, le fichier journal contient des informations de diagnostic à utiliser avec le service d'assistance clientèle d'OpenText.</P>
+<P class="before-ul"><A NAME="TMPID7306"></A>Lorsque vous validez un index de partition, des vérifications internes de la structure de l'index sont effectuées, en fonction du niveau spécifié. Les niveaux 1 à 5 sont cumulatifs :</P><A NAME="AEN6593"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6594"></A><A NAME="TMPID7309"></A><I CLASS="emphasis">Niveau 1</I> : identifie les incohérences si les données dans les fichiers <TT CLASS="filename">otadmin.cfg</TT> et <TT CLASS="filename"> search.ini</TT> ne sont pas identiques aux informations correspondantes dans la base de données Content Server. Si ces informations sont incohérentes, par exemple si les données enregistrées dans le fichier sont soit supprimées soit corrompues, il est possible que vous deviez resynchroniser les processus d'indexation.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6600"></A><A NAME="TMPID7315"></A><I CLASS="emphasis">Niveau 2</I> : vérifie également la somme de contrôle du fichier de point de vérification. Un fichier de point de vérification stocke en mémoire les métadonnées de partition. Une somme de contrôle de l'intégrité des métadonnées est utilisée pour vérifier que les données dans le fichier de point de vérification ne sont pas corrompues.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6603"></A><A NAME="TMPID7318"></A><I CLASS="emphasis">Niveau 3</I> : vérifie également que le point de vérification peut être chargé en mémoire. Les moteurs de recherche chargent leur statut depuis les derniers point de vérification actuel et fichiers d'index actuels puis appliquent des modifications incrémentielles depuis les fichiers <TT CLASS="filename">accumlog</TT> et <TT CLASS="filename">metalog</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6608"></A><A NAME="TMPID7323"></A><I CLASS="emphasis">Niveau 4</I> : vérifie également la somme de contrôle de tous les fichiers d'index en texte intégral dans la région OTChecksum pour s'assurer que les données ne sont pas corrompues.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6611"></A><A NAME="TMPID7326"></A><I CLASS="emphasis">Niveau 5</I> : vérifie également si les pointeurs de mots dans le contenu des index sont cohérents. Les fichiers Offset contiennent des pointeurs pour les listes d'emplacement de mots, utilisés pour les recherches en texte intégral et qui indiquent au moteur de recherche la position relative d'un mot dans un objet indexé.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6614"></A><A NAME="TMPID7329"></A><I CLASS="emphasis">Niveau 10</I> : vérifie si les pointeurs de mots dans les index de métadonnées sont présents. Ce niveau de vérification ne dépend pas des niveaux inférieurs. Les fichiers d'index de métadonnées sont identiques aux fichiers d'index en texte intégral, sauf qu'ils contiennent des données d'index pour les régions de métadonnées de texte.</P></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF142">Resynchronisation</A></P>
+<P><A NAME="TMPID7332"></A>Un serveur d'administration enregistre les informations dans un fichier <TT CLASS="filename">otadmin.cfg</TT> et un fichier <TT CLASS="filename">search.ini</TT> afin de représenter les modifications apportées à la base de données Content Server (par exemple, si une partition a été configurée ou supprimée). Les fichiers <TT CLASS="filename">otadmin.cfg</TT> et <TT CLASS="filename"> search.ini</TT> sont des fichiers de configuration qui stockent des informations sur les objets système associés aux sources de données. Plus spécifiquement, le fichier <TT CLASS="filename">search.ini</TT> contient des paramètres définis par défaut lors de la création des composants des systèmes d'indexation et de recherche (par exemple, partitions, moteurs d'indexation et moteurs de recherche). OpenText vous recommande vivement de ne pas modifier les paramètres du fichier <TT CLASS="filename">search.ini</TT>. Les informations contenues dans les fichiers <TT CLASS="filename">otadmin.cfg</TT> et <TT CLASS="filename">search.ini</TT> doivent toujours être identiques aux informations correspondantes dans la base de données Content Server. Il arrive cependant que ces informations divergent (par exemple, si les informations enregistrées dans le fichier sont supprimées ou endommagées). Dans ce cas, il peut être nécessaire de <I CLASS="emphasis">resynchroniser</I> les processus d'indexation. La resynchronisation des processus d'indexation modifie les fichiers <TT CLASS="filename">otadmin.cfg</TT> et <TT CLASS="filename">search.ini</TT> pour refléter les informations relatives aux processus actuellement stockées dans la base de données Content Server.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-toconfigupdist-bg.htm" revision="">Configuration d'un processus Distributeur de mise à jour</A></p></li>
+<li><p><A  href="../websystemobj/wbs-toconfigadvupdist-bg.htm" revision="">Définition des paramètres avancés du distributeur de mise à jour</A></p></li>
+<li><p><A  href="../websystemobj/wbs-specindx-bg.htm" revision="">Configuration d'un moteur d'indexation</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

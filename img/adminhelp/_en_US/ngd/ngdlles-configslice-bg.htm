@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="NGDLLES100502-H-AGD-EN-1">
+<META name="pvScheme" content="010203">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="ngd">
+<title>Configuring Search Profiles</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/websystemobj/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'ngdlles-configslice-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring OpenText Enterprise Connect Search Settings';
+          header.title2 = 'Configuring Search Profiles';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1987"></A>You can create search profiles to enable users to apply predefined search criteria when they perform searches in the Enterprise Connect Easy Access pane. In the <B CLASS="guilabel">Search Profile Configuration</B> area, you can create, update, and delete search profiles. You can also set the order in which search profiles are matched against the email subject.</P>
+<P><A NAME="TMPID1990"></A>The search profile consists of a location and search slice, as well as a name. Optionally, you can include pattern-matching criteria that can extract search terms that can in turn be used to form search criteria. You can also use prefixes and suffixes to further refine the extracted search criteria.</P>
+<P><A NAME="TMPID1991"></A>Users can work with search profiles in several ways. In the Easy Access pane, users can select a search profile from the <B CLASS="guilabel">Search Profile</B> list, enter a search term in the <B CLASS="guilabel">Search</B> box, and then launch a search. Another way to use search profiles is to generate search criteria by matching an email subject to a search profile and then optionally adding a prefix or suffix to enhance the search. For example, consider a situation where a user has an email in their Inbox that they would like to copy to Enterprise Connect. However, they are not sure which folder to copy it to. If the user clicks the email, Enterprise Connect will find a search profile that matches the subject, extracts search criteria, and adds it to the <B CLASS="guilabel">Search</B> box in the Easy Access pane. If you are using a suffix or prefix, this is also added to the search criteria in the <B CLASS="guilabel">Search</B> box, with the extracted text. When the search is complete, the user can review the search result list for a suitable location, and copy or move the email as required. For more information about using search profiles in the Easy Access pane, see <span><XPROC NAME="ExtXrefStart" HREF="ngdcore-ugd.-" FMT="" NO1ST><i>OpenText Enterprise Connect - User Getting Started Guide (NGDCORE-UGD)</i><XPROC NAME="ExtXrefEnd" HREF="ngdcore-ugd.-" FMT=""></span>.</P>
+<P><A NAME="TMPID1999"></A>To set up search profiles, you may be able to use existing search slices, or you may need to set up search slices in Content Server. For more information about working with search slices, see <span><XPROC NAME="ExtXrefStart" HREF="lleswbs-h-agd.wbs-sysobjsl-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/websystemobj/wbs-sysobjsl-bg.htm">Creating Slices</A><XPROC NAME="ExtXrefEnd" HREF="lleswbs-h-agd.wbs-sysobjsl-bg" FMT=""></span>. You should also be comfortable working with regular expressions (regex). Your search profiles will be unique to your organization, and there are many ways to set them up. The following examples demonstrate some simple regular expressions.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF28">Creating Regular Expressions</A></P>
+<P class="before-ul"><A NAME="TMPID2003"></A>This example demonstrates how to set up a regular expression when there is a constant string that identifies possible matches, followed by variable text that you want to return. Assume that you have emails with the following subject lines:</P><A NAME="AEN1846"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1847"></A><A NAME="TMPID2006"></A>Reference Active 69582: Smith Contract Negotiation Meeting Notes</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1849"></A><A NAME="TMPID2008"></A>Reference Archive 958: Jones Contract Termination Notes</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID2009"></A>You could create the following regular expressions:</P><A NAME="AEN1852"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1853"></A><A NAME="TMPID2012"></A><TT CLASS="literal">Reference\s?([a-z]+\s\d+)</TT> would return both examples, because it matches the constant <I CLASS="emphasis">reference</I> and the variables <I CLASS="emphasis">archive</I> and <I CLASS="emphasis">active</I>. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1859"></A><A NAME="TMPID2018"></A><TT CLASS="literal">Reference\s?(active+\s\d+)</TT> would only return the first example, because it matches the constant <I CLASS="emphasis">reference</I> and the variable <I CLASS="emphasis">active</I>.</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF29"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID2023"></A><B CLASS="note">Note: </B><BR>Only the text that matches the part of the expression that resides inside the parentheses is added to the <B CLASS="guilabel">Search</B> box in the Easy Access Pane. If you do not use parentheses in the regular expression, all of the matched text is added to the <B CLASS="guilabel">Search</B> box.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID2026"></A>This example demonstrates a case where there are no constant strings used to identify matches, and you are only using variable text only. For example, assume that you have emails with the following subject lines:</P><A NAME="AEN1869"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1870"></A><A NAME="TMPID2029"></A>Reference 69582: Smith Contract Negotiation Meeting Notes</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1872"></A><A NAME="TMPID2031"></A>Invoice 958: Jones Contract Termination Notes</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID2032"></A>You could create the following regular expressions:</P><A NAME="AEN1875"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1876"></A><A NAME="TMPID2035"></A><TT CLASS="literal">[a-z]\s?\d+</TT> would return both examples, because it matches both <I CLASS="emphasis">reference</I> and <I CLASS="emphasis">invoice</I>, as well as the numeric ID.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1881"></A><A NAME="TMPID2040"></A><TT CLASS="literal">Reference\s?\d+</TT> would return only the first example, because it matches <I CLASS="emphasis">reference</I>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF30"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID2044"></A><B CLASS="note">Note: </B><BR>In this case, including parentheses around <TT CLASS="literal">Reference\s?\d+</TT> is optional.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF31">Working with Prefixes and Suffixes</A></P>
+<P><A NAME="TMPID2047"></A>Optionally, you can add a prefix or suffix to a search profile to further refine the search. If specified, the prefix or suffix is added to the <B CLASS="guilabel">Search</B> box with the extracted search term. When a user performs the search, the results reflect the extracted search term as well as the prefix or suffix.</P>
+<P><A NAME="TMPID2049"></A>For example, assume that you have selected an email with the subject line "Reference Active 69582: Smith Contract Negotiation Meeting Notes". If you have a search profile that consists of a regular expression of <TT CLASS="literal">Active\s?(\d+:\s?[a-z]+)</TT>, and a prefix of <TT CLASS="literal">Customer</TT> and a suffix of <TT CLASS="literal">Notes</TT>, the <B CLASS="guilabel">Search</B> box will be populated with the search term <TT CLASS="literal">Customer 69582:Smith Notes</TT>. By further refining the search criteria in this way, the search results will be more precise.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="ngdlles-configslice-p.htm" revision="">To Configure Search Profiles</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

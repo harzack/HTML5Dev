@@ -1,0 +1,1 @@
+{"cancelAction":"Cancel","editorLabel":"Edit Additional Languages","nextButton":"Next","okAction":"OK","prevButton":"Previous"}

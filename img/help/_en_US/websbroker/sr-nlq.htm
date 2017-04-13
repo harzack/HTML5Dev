@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBB100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websbroker">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llesrcs-h-ugd -- ngdlles-h-ugd -- llespob-h-ugd -- llesrec-h-ugd -- lleswat-h-ugd -- llesapp-h-ugd -- llesprj-h-ugd -- llesrt-h-ugd -- llescl-h-ugd -- llesrcm-h-ugd"><title>Searching with Natural Language Queries</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'sr-nlq.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Searching Content Server';
+          header.title2 = 'Searching with Natural Language Queries';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID687"></A>You can search Content Server with a Natural Language Query, which you enter as a question or one or more lines of text. Content Server then determines from your Query what criteria and keywords to search for, and runs the search. When you create a Natural Language Query, you can save it for reuse like any other Query. For information about saving Queries, see <span><A HREF="sr-workingwsvq.htm">Working with Saved Searches</A></span>.</P>
+<P><A NAME="TMPID691"></A>You can search for OpenText Enterprise Library items with a Natural Language Query.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SR-UNDERSTANDNLQ">Understanding Natural Language Queries</A></P>
+<P class="before-ul"><A NAME="TMPID696"></A>There are two types of Natural Language Queries: Content Server Aware and Keyword Extraction:</P><A NAME="AEN701"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN702"></A><A NAME="TMPID700"></A>Content Server Aware: Is best used for Queries that involve people, dates, and Content Server item types, such as Documents and Folders. Content Server Aware uses a rule set to determine this context by retrieving information about file types and attributes from the entered text. For example, if you ask <I CLASS="emphasis">Where are the Word documents for the Chicago conference?</I>, Content Server Aware recognizes <I CLASS="emphasis">Word</I> as the Microsoft Word MIME type and narrows the search to look for <I CLASS="emphasis">Chicago</I> and <I CLASS="emphasis">conference</I> in Microsoft Word documents only.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN712"></A><A NAME="TMPID710"></A>Keyword Extraction: If no specific information about people, dates, or Content Server item types is available, Keyword Extraction is the best way to issue a Natural Language Query. It identifies the top five words or phrases from the Query that are not <I CLASS="emphasis">stop words</I>. Stop words are words that add no semantic value to a sentence, such as <I CLASS="emphasis">a</I>, <I CLASS="emphasis">and</I>, and <I CLASS="emphasis">the</I>. Next, it searches for items that contain some or all of those five words or phrases. For example, if your Query is <I CLASS="emphasis">Where can I find a presentation about collaboration software?</I>, Content Server returns a list of items that contain some or all of the following words: <I CLASS="emphasis">presentation</I>, <I CLASS="emphasis">collaboration</I>, and <I CLASS="emphasis">software</I>.</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF15"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P CLASS="note" ALIGN="LEFT"><B>Notes: </B></P><A NAME="AEN725"></A>
+<UL class="note">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN726"></A><A NAME="TMPID724"></A>Content Server Aware only functions within the Enterprise Data Source. If Content Server aware is specified for a Query involving another data source, or a Query that does not include people, dates, or Content Server item types, Content Server automatically reissues the Query in keyword extraction mode.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN732"></A><A NAME="TMPID730"></A>Content Server Aware does not support OpenText Enterprise Library items.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN737"></A><A NAME="TMPID735"></A>Content Server Keyword supports OpenText Enterprise Library items.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID739"></A>Both types of Natural Language Queries treat Queries surrounded by quotation marks as exact phrase searches. This means that Content Server searches with the exact Query you type in quotation marks and does not apply standard Natural Language Query rules, such as eliminating stop words from the search. If you want to search for a document that has a multi-word title, you must type quotation marks around all the words for Content Server to recognize them as a single title. Multi-word summaries and descriptions also use this principle.</P>
+<P><A NAME="TMPID742"></A>Some Natural Language Queries, such as those involving dates, use additional logic when forming and running searches. When you search for documents created approximately two weeks ago, Content Server creates an intelligent date range and uses it to run the search. For example, searching for <I CLASS="emphasis">documents about dogs created two weeks ago</I> searches a date range that includes the day before the date that falls exactly two weeks ago, and the two days that fall after it. In this way, Content Server creates a four-day date range in which to run the search. The same logic applies to searches that refer to months and years, with the date ranges increasing, depending on the time frame you search.</P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="sr-tosrchnlq.htm" revision="">To Search Using a Natural Language Query</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

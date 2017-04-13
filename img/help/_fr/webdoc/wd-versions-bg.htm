@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBD100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webdoc">
+<title>Utilisation des versions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/root/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wd-versions-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion des versions et des générations';
+          header.title2 = 'Utilisation des versions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID658"></A>Dans Content Server, l'objectif de la création de versions est de conserver un élément existant lorsqu'il est amené à être modifié. Etant donné que la création de versions est régie par des autorisations, seuls les utilisateurs disposant des autorisations appropriées peuvent ajouter manuellement une version à un élément. Pour de plus amples informations sur les autorisations, reportez-vous à la section <span><XPROC NAME="ExtXrefStart" HREF="../webdoc/llesrt-h-ugd.perms-managing-bg" FMT="" NO1ST><A  HREF="../../../help/_fr/root/perms-managing-bg.htm">Gestion des autorisations</A><XPROC NAME="ExtXrefEnd" HREF="../webdoc/llesrt-h-ugd.perms-managing-bg" FMT=""></span>. </P>
+<P class="before-ul"><A NAME="TMPID661"></A>Les éléments pouvant être enregistrés sous plusieurs versions sont appelés éléments <I CLASS="glossterm">multi-versions</I>. Content Server gère les versions des types d'éléments suivants :</P><A NAME="AEN684"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN685"></A><A NAME="TMPID666"></A>Documents</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN687"></A><A NAME="TMPID668"></A>Documents composites</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN689"></A><A NAME="TMPID670"></A>Documents texte</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN691"></A><A NAME="TMPID672"></A>Catégories</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN693"></A><A NAME="TMPID674"></A>Schémas de workflow</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN695"></A><A NAME="TMPID676"></A>Modèles de projet</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN697"></A><A NAME="TMPID678"></A>Documents DTD (Document Type Definitions) XML (Extensible Markup Language)</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN699"></A><A NAME="TMPID680"></A>Affichages personnalisés</P></LI></UL>
+<P><A NAME="TMPID681"></A>Content Server utilise deux types de systèmes de création de versions : <I CLASS="glossterm">création de versions standard</I> et <I CLASS="glossterm">création de versions avancée</I>. La création de versions standard est utilisée pour tous les types d'éléments Content Server versionnables ; la création de versions avancée est utilisée pour les documents et documents texte. La création de versions avancée est activée par défaut mais peut être désactivée par votre administrateur. Si la création de versions avancée est désactivée, la création de versions standard sera utilisée pour tous les éléments Content Server, y compris les documents et documents texte. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF18"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID688"></A><B CLASS="note">Note : </B><BR>Les documents composites possèdent leur propre type de versions appelées <I CLASS="glossterm">versions</I> et <I CLASS="glossterm">révisions</I>. Pour en savoir plus, voir <span><A href="../webdoc/wd-releases-bg.htm">Utilisation des versions et des révisions</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WD-USE-STAND">Utilisation de la création de versions standard</A></P>
+<P><A NAME="TMPID694"></A>La création de versions standard, également appelée <I CLASS="emphasis">création de versions linéaire</I>, affiche les versions à l'aide de nombres entiers. Par exemple : 1, 2, 3, 4. Lorsque vous ajoutez un élément versionnable à Content Server, celui-ci devient <I CLASS="emphasis">à la fois</I> un objet du système et la version de cet élément. Si vous ajoutez ensuite une version à l'élément, celle-ci devient la version actuelle et représente l'objet dans Content Server. Par exemple, lorsque vous ajoutez une feuille de calcul à Content Server, celle-ci existe en tant que document <I CLASS="emphasis">et</I> première version de ce document. Si vous ajoutez une version modifiée de la feuille de calcul, celle-ci devient à la fois le document objet et la deuxième version. La feuille de calcul d'origine est conservée dans Content Server en tant que première version du document. </P>
+<P><A NAME="TMPID702"></A>Lorsque des changements sont apportés à un élément, Content Server ajoute automatiquement une nouvelle version. Vous pouvez également ajouter une nouvelle version d'un élément lorsque vous annulez sa réservation. Pour plus d'informations sur la réservation et l'annulation de la réservation d'éléments Content Server, consultez la rubrique <span><XPROC NAME="ExtXrefStart" HREF="../webdoc/llesrt-h-ugd.ll-gen-items-bg" FMT="" NO1ST><A  HREF="../../../help/_fr/root/ll-gen-items-bg.htm">Utilisation des éléments généraux</A><XPROC NAME="ExtXrefEnd" HREF="../webdoc/llesrt-h-ugd.ll-gen-items-bg" FMT=""></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF19"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID707"></A><B CLASS="note">Note : </B><BR>Les versions d'un élément ou d'un document ne peuvent pas être réservées. Si vous souhaitez empêcher que les autres utilisateurs de modifier ou télécharger une version d'un élément ou d'un document, vous devez la <I CLASS="emphasis">verrouiller</I>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading3"><A NAME="WD-ACCESS-STAND">Accès aux versions standard</A></P>
+<P><A NAME="TMPID711"></A>Vous pouvez rapidement ouvrir et utiliser les versions précédentes d'un élément contenant plusieurs versions à partir de l'onglet <B CLASS="guilabel">Versions</B> de la page <B CLASS="guilabel">Propriétés</B> de l'élément. Chaque version a sa propre icône <B CLASS="guilabel">Fonctions</B> que vous pouvez utiliser pour ouvrir, visualiser, télécharger, supprimer, verrouiller ou déverrouiller une version. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF20"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID716"></A><B CLASS="note">Note : </B><BR>Lorsque vous supprimez un élément qui dispose d'une version standard, vous supprimez la version actuelle <I CLASS="emphasis">et</I> toutes les versions précédentes.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID718"></A>Par défaut, Content Server conserve un nombre illimité de versions précédentes, mais vous pouvez limiter le nombre de versions individuellement pour chaque élément. Lorsque la <I CLASS="glossterm">limite de version</I> est atteinte, Content Server élimine automatiquement une ancienne version de l'élément lorsqu'une nouvelle version est ajoutée. Vous pouvez également éliminer des versions manuellement. </P>
+<P><A NAME="TMPID722"></A>Vous pouvez verrouiller une version pour qu'elle ne soit ni modifiée ni éliminée. Content Server n'inclut pas les versions verrouillées dans le nombre maximum de versions à conserver. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WD-USE-ADV-VERS">Utilisation de la création de versions avancée</A></P>
+<P><A NAME="TMPID726"></A>La <I CLASS="emphasis">création de versions avancée</I> permet aux utilisateurs d'ajouter un document ou un sous-type de document, tel qu'un document texte, à Content Server en tant que <I CLASS="emphasis">version principale</I> ou <I CLASS="emphasis">secondaire</I> lors de la création du document. L'onglet <B CLASS="guilabel">Version</B> de la page <B CLASS="guilabel">Propriétés</B> d'un document affiche les versions principales à l'aide de nombres entiers et les versions secondaires à l'aide de décimales. Par exemple, les versions principales s'affichent sous la forme 1.0, 2.0 et 3.0 ; les versions secondaires s'affichent sous la forme 0.1, 0.2 et 0.3. Lorsque vous ajoutez un document, celui-ci est ajouté en tant que version secondaire et porte le nombre 0.1. Si une version est ajoutée à un document existant, le numéro de sa version sera le numéro de version secondaire suivant. Par exemple, si le dernier numéro de version d'un document est 1.2 et qu'une version est ajoutée, la nouvelle version portera le numéro 1.3. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF21"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID734"></A><B CLASS="note">Note : </B><BR>La création de versions avancée est activée par défaut ; cependant, l'administrateur peut la désactiver.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID735"></A>Si la création de versions avancée n'est pas activée, les versions sont automatiquement ajoutées à l'aide de la création de versions standard. Lorsque la création de versions avancée est désactivée sur un élément existant auquel est associée une version principale ou secondaire, les numéros des versions seront affichés à l'aide de la numérotation utilisée pour la création de versions standard. Par exemple, 1, 2, 3 et 4. Cependant, les numéros des versions principales ou secondaires existants sont conservés dans le cas où la création de versions avancée serait réactivée plus tard. </P>
+<P CLASS="bridgehead-subheading3"><A NAME="WD-ACCESS-ADV-VERS">Accès aux versions avancées</A></P>
+<P><A NAME="TMPID738"></A>Les fonctions exécutées dans une version avancée dépendent des autorisations dont vous disposez pour cet élément particulier. Tout comme les versions standard, chaque version principale ou secondaire d'un document a sa propre icône <B CLASS="guilabel">Fonctions</B> que vous pouvez utiliser pour ouvrir, visualiser, télécharger, supprimer ou verrouiller les versions. Si un document est réservé, vous pouvez ajouter une version principale ou secondaire lorsque vous annulez la réservation. Le tableau suivant décrit les autorisations requises pour exécuter certaines fonctions sur des versions. </P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN756"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Autorisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Fonctions disponibles</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Voir le contenu</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Voir les versions principales</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Réserver</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Voir les versions principales et secondaires<BR>Ajouter des versions secondaires</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Supprimer les versions</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Voir les versions principales et secondaires<BR>Supprimer les versions secondaires</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Supprimer</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Voir les versions principales et secondaires<BR>Supprimer les versions principales et secondaires</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Modifier les autorisations</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Ajouter les versions principales et secondaires<BR>Transformer des versions<BR>Modifier les paramètres de contrôle de version (modification entre la création de versions standard et avancée)</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID764"></A>Les utilisateurs ayant l'autorisation de modifier un dossier ou un projet peut forcer l'ensemble des documents ajoutés au recueil d'utiliser la création de versions avancée. Si cette option est sélectionnée, l'option permettant de choisir un type de création de versions pour un document que vous ajoutez n'apparaît pas. L'option qui permet de forcer la création de versions avancée peut être appliquée à un élément spécifique, uniquement à des dossiers ou projets dans l'élément ou à l'élément spécifique et aux dossiers et projets dans l'élément. De plus, les utilisateurs ayant l'autorisation de modification peuvent transformer les versions secondaires et principales d'un document en version principale supérieure. Les versions principales ne peuvent pas « devenir » des versions secondaires. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF22"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID767"></A><B CLASS="note">Note : </B><BR>Un document qui a été ajouté à Content Server en tant que version secondaire apparaît dans Content Server avec une icône de document générique et son type MIME n'est pas spécifié jusqu'à ce qu'une version principale du document soit ajoutée ou que celui-ci soit transformé en version principale.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID770"></A>Vous pouvez afficher les versions d'un élément dans l'onglet <B CLASS="guilabel">Version</B> de la page <B CLASS="guilabel">Propriétés</B> de l'élément. Les informations affichées sur cette page dépendent de vos autorisations. Si vous avez :</P><A NAME="AEN789"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN790"></A><A NAME="TMPID775"></A>Un <B CLASS="highlight">Accès complet</B>, ce qui signifie que l'utilisateur est autorisé à modifier un élément, l'onglet <B CLASS="guilabel">Version</B> de la page <B CLASS="guilabel">Propriétés</B> de l'élément affiche toutes les versions principales et secondaires.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN795"></A><A NAME="TMPID780"></A>Un <B CLASS="highlight">Accès limité</B>, ce qui signifie que l'utilisateur est autorisé à voir le contenu un élément, l'onglet <B CLASS="guilabel">Version</B> de la page <B CLASS="guilabel">Propriétés</B> de l'élément affiche uniquement les versions principales.</P></LI></UL>
+<P><A NAME="TMPID784"></A>L'administrateur a également la possibilité d'autoriser les utilisateurs à ne voir que les versions principales d'un document. Si cette option est activée et qu'aucune version secondaire n'existe, vous pourrez soit voir les documents sans pouvoir y accéder, soit ne pas les voir car ces derniers seront masqués. Par défaut, les utilisateurs n'ayant accès qu'aux versions principales peuvent voir que les versions secondaires existent mais ne peuvent pas les visualiser, les ouvrir, les télécharger ou y exécuter des fonctions. </P>
+<P><A NAME="TMPID789"></A>Comme pour la création de versions standard, Content Server conserve un nombre illimité de versions précédentes mais vous pouvez limiter le nombre de versions qui sont conservées pour chaque élément. Lorsqu'un document ayant des versions principales et secondaires atteint la limite maximum de versions, Content Server élimine automatiquement la version secondaire la plus ancienne. Vous pouvez éliminer manuellement et de la même façon des versions secondaires et principales. Vous devez disposer des autorisations appropriées pour pouvoir supprimer ou éliminer les versions secondaires ou pour pouvoir supprimer les versions principales. Pour supprimer les versions secondaires, vous devez disposer de l'autorisation Supprimer les versions pour un document. Pour supprimer des versions principales d'un document, vous devez disposer de l'autorisation Supprimer. </P>
+<P><A NAME="TMPID792"></A>Etant donné que les versions <I CLASS="emphasis">verrouillées</I> ne peuvent pas être supprimées, vous pouvez empêcher que des versions principales et secondaires ne soient supprimées en les verrouillant. Verrouiller des versions secondaires permet également d'empêcher qu'elles ne soient éliminées. Les versions principales ne peuvent pas être éliminées, qu'elles soient verrouillées ou non ; elles ne peuvent être que supprimées. </P>
+<P><A NAME="TMPID794"></A>Le fonctionnement de certaines fonctions dans Content Server, comme la copie et le déplacement d'un élément, est affecté par la création de versions avancée. Pour plus d'informations sur les fonctions affectées par la création de versions avancée, reportez-vous à la rubrique <span><A href="../webdoc/fn-advanced-version-behavior-rt.htm">Fonctionnement de la création de versions avancée pour les fonctions de Content Server</A></span>. </P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webdoc/fn-add-version-p.htm" revision="">Pour ajouter une version</A></p></li>
+<li><p><A  href="../webdoc/fn-unreserve-add-version-p.htm" revision="">Pour annuler la réservation d'un document et ajouter une version</A></p></li>
+<li><p><A  href="../webdoc/fn-work-versions-p.htm" revision="">Pour utiliser des versions</A></p></li>
+<li><p><A  href="../webdoc/fn-set-version-limit-p.htm" revision="">Pour configurer une limite de version</A></p></li>
+<li><p><A  href="../webdoc/fn-purge-version-p.htm" revision="">Pour éliminer des versions</A></p></li>
+<li><p><A  href="../webdoc/fn-convert-version-p.htm" revision="">Pour convertir une version standard ou avancée</A></p></li>
+<li><p><A  href="../webdoc/fn-promote-version-to-major-p.htm" revision="">Pour transformer une version en version principale</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

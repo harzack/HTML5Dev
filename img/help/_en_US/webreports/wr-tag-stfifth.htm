@@ -1,0 +1,484 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>EACH, EMAILINFO, ENCSTR, ESCAPECSV, ESCAPEHTML, ESCAPESTR, ESCAPEURL, ESCAPEWR, ESCAPEXML, EVAL, EVEN, EXCLUDE</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-tag-stfifth.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Sub-Tags';
+          header.title2 = 'EACH, EMAILINFO, ENCSTR, ESCAPECSV, ESCAPEHTML, ESCAPESTR, ESCAPEURL, ESCAPEWR, ESCAPEXML, EVAL, EVEN, EXCLUDE';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID7214"></A>This section details the sub-tags: <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STEACH">EACH</A></span>, <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STEMAILINFO">EMAILINFO</A></span>, <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STENCSTR">ENCSTR</A></span>, <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STESCAPECSV">ESCAPECSV</A></span>, <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STESCAPEHTML">ESCAPEHTML</A></span>, <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STESCAPESTR">ESCAPESTR</A></span>, <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STESCAPEURL">ESCAPEURL</A></span>, <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STESCAPEWR">ESCAPEWR</A></span>, <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STESCAPEXML">ESCAPEXML</A></span>, <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STEVAL">EVAL</A></span>, <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STEVEN">EVEN</A></span>, and <span><A HREF="wr-tag-stfifth.htm#WR-TAG-STEXCLUDE">EXCLUDE</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STEACH">EACH</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEACH-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGEACH"></A><B CLASS="highlight">EACH:&lt;<I CLASS="varname">sub-tags</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEACH-DESC">Description</A></P>
+<P><A NAME="TMPID7236"></A>The <TT CLASS="literal">EACH</TT> sub-tag operates on an iterable data type, such as a <TT CLASS="literal">List</TT> or <TT CLASS="literal">RecArray</TT>. The sub-tag accepts a single parameter containing a sub-tag chain to apply to each item in the iterable data. The results are returned as a <TT CLASS="literal">List</TT>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEACH-EXAMPL">Examples</A></P>
+<P><A NAME="TMPID7243"></A>For example, <TT CLASS="literal">[LL_REPTAG_"{'one','two'}" EACH:"UPPER" /]</TT> returns <TT CLASS="literal">{'ONE','TWO'}</TT>.</P>
+<P><A NAME="TMPID7246"></A>Sub-tags can also be chained, <TT CLASS="literal">[LL_REPTAG_"{2000,2001}" EACH:"NODEINFO:NAME UPPER" /]</TT> returns <TT CLASS="literal">{'ENTERPRISE','LIVELINK SYSTEM'}</TT>.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEACH-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID7251"></A>For more information, see <span><A HREF="wr-tag-sttenth.htm#WR-TAG-STLIST">LIST</A></span> and <span><A HREF="wr-tag-stfifteenth.htm#WR-TAG-STRECARRAY">RECARRAY</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STEMAILINFO">EMAILINFO</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEMAILINFO-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGEMAILINFO"></A><B CLASS="highlight">EMAILINFO:&lt;<I CLASS="varname">property</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEMAILINFO-DESC">Description</A></P>
+<P><A NAME="TMPID7277"></A>Expects a valid <TT CLASS="literal">dataID</TT> for an email message and returns email data for that node, similar to the view in an Email Folder. The email needs to have been uploaded through the Content Server Explorer/Outlook plugin in order to make use of this tag.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEMAILINFO-PARAM">Parameters</A></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN6547"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Format</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EMAILINFO:ATTACHMENT</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns True or False based on the “Attachments” field of the email. If the email has an attachment “true” is returned; if the email does not have an attachment “false” is returned.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EMAILINFO:BCC</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the “BCC” field of the email.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EMAILINFO:CC</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the “CC” field of the email.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EMAILINFO:FROM</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the “From” field of the email.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EMAILINFO:ONBEHALF</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the “On Behalf Of” field of the email.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EMAILINFO:RECDATE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the “Received Date” field of the email.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EMAILINFO:SENTDATE</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the “Sent Date” field of the email.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">EMAILINFO:TO</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Returns the “To” field of the email.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STENCSTR">ENCSTR</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STENCSTR-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGENCSTR"></A><B CLASS="highlight">ENCSTR:&lt;<I CLASS="varname">format</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STENCSTR-DESC">Description</A></P>
+<P><A NAME="TMPID7358"></A>This sub-tag can encrypt a string to a hex-encoded string for various hash types, or return a base64-encoded string encrypted using a key and a specified encryption type.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STENCSTR-PARAM">Parameters</A></P>
+<P><A NAME="TMPID7361"></A>Supported encoding types are:</P>
+<DIV title="Supported Encoding Types" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="WR-TAG-STFIFTH-T"></A><B>Table 1-10: Supported Encoding Types</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Action</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ENCSTR:&lt;<I CLASS="varname">hash type</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Encodes the string in the main tag to the specified hash type. Supported hash types are:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN6643"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Hash Type</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Base64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Base64 string</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">MD4</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit MD4 hash</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">MD5</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit MD5 hash</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SHA</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">160-bit SHA-0 hash</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SHA1</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">160-bit SHA-1 hash</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SHA224</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">224-bit SHA-2 hash</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SHA256</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">256-bit SHA-2 hash</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SHA384</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">384-bit SHA-2 hash</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">SHA512</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">512-bit SHA-2 hash</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RIPEMD160</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">160-bit RIPEMD hash</TD></TR></TABLE>
+</DIV></P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">ENCSTR:&lt;<I CLASS="varname">encryption type</I>>:&lt;<I CLASS="varname">key</I>></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Encrypts the string in the main tag into a base-64 encrypted string using the specified encryption type and key. For example, <TT CLASS="literal">[LL_REPTAG_'&lt;<I CLASS="varname">string</I>>' ENCSTR:RC2_ECB:"EncryptionKey" /]</TT> will encrypt the string in the main tag using the RC2_ECB encryption type and the encryption key “EncryptionKey”. Encrypted strings can be decoded using <TT CLASS="literal">ENCSTR</TT>. Supported encryption types are:</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN6697"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Encryption Type</B></TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RC2 Family</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RC2_ECB</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit RC2 in ECB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RC2_CBC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit RC2 in CBC mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RC2_CFB64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit RC2 in CFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RC2_OFB64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit RC2 in OFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RC2_40_CBC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">40-bit RC2 in CBC mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RC2_64_CBC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">64-bit RC2 in CBC mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">RC4 Family</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RC4</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit RC4</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">RC4_40</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">40-bit RC4</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">DES Family</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_ECB</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">56-bit DES in ECB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_CBC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">56-bit DES in CBC mode </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_CFB8</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">56-bit DES in 8-bit CFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_CFB64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">56-bit DES in 64-bit CFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_OFB64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">56-bit DES in 64-bit OFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_EDE_ECB</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">112-bit 2 key triple DES in ECB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_EDE_CBC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">112-bit 2 key triple DES in CBC mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_EDE_CFB64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">112-bit 2 key triple DES in 64-bit CFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_EDE_OFB64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">112-bit 2 key triple DES in 64-bit OFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DESX_CBC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">56-bit DESX in CBC mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">TripleDES Family</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_EDE3_ECB</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">168-bit 3DES in EBC mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_EDE3_CBC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">168-bit 3DES in CBC mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_EDE3_CFB64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">168-bit 3DES in 64-bit CFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">DES_EDE3_OFB64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">168-bit 3DES in 64-bit OFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">Blowfish Family</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">BF_ECB</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit blowfish in ECB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">BF_CBC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit blowfish in CBC mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">BF_CFB64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit blowfish in 64-bit CFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">BF_OFB64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit blowfish in 64-bit OFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">CAST5 Family</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAST5_ECB</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit CAST5 in ECB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAST5_CBC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit CAST5 in CBC mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAST5_CFB64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit CAST5 in 64-bit CFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">CAST5_OFB64</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit CAST5 in 64-bit OFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="highlight">AES/Rijndael Family</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_128_ECB</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit AES in ECB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_128_CBC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit AES in CBC mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_128_OFB128</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit AES in 128-bit OFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_128_CFB128</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit AES in 128-bit CFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_192_ECB</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">192-bit AES in ECB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_192_CBC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">192-bit AES in CBC mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_192_OFB128</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">192-bit AES in 128-bit OFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_192_CFB128</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">192-bit AES in 128-bit CFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_256_ECB</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">256-bit AES in ECB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_256_CBC</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">256-bit AES in CBC mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_256_OFB128</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">256-bit AES in 128-bit OFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_256_CFB128</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">256-bit AES in 128-bit CFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"> AES_128_CFB8</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">128-bit AES in 8-bit CFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_192_CFB8</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">192-bit AES in 8-bit CFB mode</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">AES_256_CFB8</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">256-bit AES in 8-bit CFB mode</TD></TR></TABLE>
+</DIV></P></TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P CLASS="bridgehead-subheading3"><A NAME="STENCSTR-RELINFO">Related Information</A></P>
+<P><A NAME="TMPID7614"></A>For more information, see <span><A HREF="wr-tag-stfourth.htm#WR-TAG-STDECSTR">DECSTR</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STESCAPECSV">ESCAPECSV</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPECSV-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGESCAPECSV"></A><B CLASS="highlight">ESCAPECSV</B></P>
+<P><A NAME="TMPID7622"></A>or</P>
+<P><A NAME="TMPID7623"></A><B CLASS="highlight">ESCAPECSV:ALLCELLS</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPECSV-DESC">Description</A></P>
+<P class="before-ul"><A NAME="TMPID7627"></A>Converts text characters so that they are appropriate to use as a cell of data in a CSV export. This means that the following rules are followed:</P><A NAME="AEN6885"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6886"></A><A NAME="TMPID7630"></A>If a comma exists in the text then the group of characters is enclosed in double quotes.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6888"></A><A NAME="TMPID7632"></A>If an end of line character exists in the text then the group of characters is enclosed in double quotes.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6890"></A><A NAME="TMPID7634"></A>If a double quote character exists in the text then it is converted to two double quotes and the whole group of characters is enclosed in double quotes.</P></LI></UL>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPECSV-EXAMP">Example</A></P>
+<P><A NAME="TMPID7637"></A>For example, if <TT CLASS="literal">[LL_REPTAG_1 /]</TT> normally returns <TT CLASS="literal">one "two", three</TT>, then <TT CLASS="literal">[LL_REPTAG_1 ESCAPECSV /]</TT> would return: <TT CLASS="literal">"one ""two"", three"</TT>. If the optional parameter: <TT CLASS="literal">ALLCELLS</TT> is specified then all cells will be quoted regardless of the contents of the data cell.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STESCAPEHTML">ESCAPEHTML</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPEHTML-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGESCAPEHTML"></A><B CLASS="highlight">ESCAPEHTML</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPEHTML-DESC">Description</A></P>
+<P><A NAME="TMPID7651"></A>Converts characters such as less than or greater than to HTML escape syntax.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPEHTML-EXAMP">Example</A></P>
+<P><A NAME="TMPID7654"></A>For example, if <TT CLASS="literal">[LL_REPTAG_1 /]</TT> normally returns &lt;<I CLASS="varname">hello</I>>, then <TT CLASS="literal">[LL_REPTAG_1 ESCAPEHTML /]</TT> will return: <TT CLASS="literal">&amp;lt;Hello&amp;gt;</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STESCAPESTR">ESCAPESTR</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPESTR-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGESCAPESTR"></A><B CLASS="highlight">ESCAPESTR</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPESTR-DESC">Description</A></P>
+<P><A NAME="TMPID7667"></A>Converts characters such as line feeds, carriage returns, and quotes to the standard C language syntax, for example, <TT CLASS="literal">\r</TT> for carriage returns. This sub-tag is essential for any script variable assignments as carriage returns and other characters like quotes will cause an error.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPESTR-EXAMP">Example</A></P>
+<P><A NAME="TMPID7671"></A>For example, <TT CLASS="literal">Rows[x] = "[LL_REPTAG_1 ESCAPESTR /]";</TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STESCAPEURL">ESCAPEURL</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPEURL-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGESCAPEURL"></A><B CLASS="highlight">ESCAPEURL</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPEURL-DESC">Description</A></P>
+<P><A NAME="TMPID7681"></A>Converts non-alphanumeric characters into URL hexadecimal sequences, and converts spaces into the plus-sign, +, character.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPEURL-EXAMP">Example</A></P>
+<P><A NAME="TMPID7684"></A>For example, if a tag normally returns the string: “http://www.bogus.com/somefile”, then <TT CLASS="literal">[LL_REPTAG_1 ESCAPEURL /]</TT> will return: “http%3A%2F%2Fwww%2Ebogus%2Ecom%2Fsomefile”</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STESCAPEWR">ESCAPEWR</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPEWR-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGESCAPEWR"></A><B CLASS="highlight">ESCAPEWR</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPEWR-DESC">Description</A></P>
+<P><A NAME="TMPID7696"></A>Prevents any WebReport's tag syntax that may be included in the data from being interpreted as valid tag syntax.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STESCAPEXML">ESCAPEXML</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPEXML-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGESCAPEXML"></A><B CLASS="highlight">ESCAPEXML</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STESCAPEXML-DESC">Description</A></P>
+<P><A NAME="TMPID7705"></A>Converts data to XML compatible format by escaping special characters, such as greater-than, &gt;, less-than, &lt;, ampersand, &amp;, and apostrophe, '.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STEVAL">EVAL</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEVAL-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGEVAL"></A><B CLASS="highlight">EVAL</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEVAL-DESC">Description</A></P>
+<P><A NAME="TMPID7714"></A>Processes any Webreport tags found in the main tag.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEVAL-EXAMP">Example</A></P>
+<P><A NAME="TMPID7717"></A>The following example:</P><A NAME="AEN6952"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_&amp;p /] // with &amp;p=[LL_REPTAG_'uppercase' UPPER /]</PRE
+>
+<P><A NAME="TMPID7719"></A>will return “[LL_REPTAG_'uppercase' UPPER /]”</P>
+<P><A NAME="TMPID7721"></A>Adding the <TT CLASS="literal">EVAL</TT> sub-tag will evaluate any sub-tags found in the data. In other words,</P><A NAME="AEN6957"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_&amp;p EVAL /] // with &amp;p=[LL_REPTAG_'uppercase' UPPER /]</PRE
+>
+<P><A NAME="TMPID7724"></A>will return “UPPERCASE”.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STEVEN">EVEN</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEVEN-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGEVEN"></A><B CLASS="highlight">EVEN</B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEVEN-DESC">Description</A></P>
+<P><A NAME="TMPID7734"></A>Returns true if the data returned by the main tag is an even number. Returns false otherwise. This can be used with a <span><A HREF="wr-tag-cdtwelfth.htm#WR-TAG-CDROWNUM">ROWNUM</A></span> tag to create code that can alternate from row to row, for example, row colour.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEVEN-EXAMP">Example</A></P><A NAME="AEN6968"></A>
+<PRE 
+CLASS="screen"
+>[LL_WEBREPORT_IF "TRUE" == "[LL_REPTAG_ROWNUM ODD /]" /]
+   &lt;<I
+CLASS="varname"
+>TR class=oddrow</I
+>>
+[LL_WEBREPORT_ENDIF /]
+[LL_WEBREPORT_IF "TRUE" == "[LL_REPTAG_ROWNUM EVEN /]" /]
+   &lt;<I
+CLASS="varname"
+>TR class=evenrow</I
+>>
+[LL_WEBREPORT_ENDIF /]</PRE
+>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-TAG-STEXCLUDE">EXCLUDE</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEXCLUDE-NAME">Syntax</A></P>
+<P><A NAME="SUBTAGEXCLUDE"></A><B CLASS="highlight">EXCLUDE:&lt;<I CLASS="varname">condition</I>></B></P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEXCLUDE-DESC">Description</A></P>
+<P><A NAME="TMPID7750"></A>This sub-tag operates on a RecArray and returns a new RecArray with the records removed that meet the condition. An exclude condition must contain a column name, operator, and value, and takes the form: “&lt;<I CLASS="varname">column_name</I>> &lt;<I CLASS="varname">operator</I>> &lt;<I CLASS="varname">value</I>>”. Spaces are required between the column_name, operator, and value.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEXCLUDE-EXAMP">Example</A></P>
+<P><A NAME="TMPID7757"></A>For example, a RecArray containing a <TT CLASS="literal">USERID</TT> column could be filtered to exclude the current user with:</P><A NAME="AEN6985"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG_DATASOURCE EXCLUDE:'"USERID" == "[LL_REPTAG_USERID /]"' /]</PRE
+>
+<P><A NAME="TMPID7760"></A>This sub-tag is similar to the <span><A HREF="wr-tag-stsixth.htm#WR-TAG-STFILTER">FILTER</A></span> sub-tag, except that it <I CLASS="emphasis">excludes</I> records meeting the condition instead of including them.</P>
+<P CLASS="bridgehead-subheading3"><A NAME="STEXCLUDE-RELINFO">Related Informtion</A></P>
+<P class="before-ul"><A NAME="TMPID7765"></A>For more information, see:</P><A NAME="AEN6991"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6992"></A><A NAME="TMPID7768"></A>The list of <span><A HREF="wr-logicexpression-info.htm#OPERATORS">Operators</A></span> under <span><A HREF="wr-logicexpression-info.htm">Logical Expressions</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN6996"></A><A NAME="TMPID7772"></A>The <span><A HREF="wr-tag-stsixth.htm#WR-TAG-STFILTER">FILTER</A></span> sub-tag.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

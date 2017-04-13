@@ -1,0 +1,176 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<title>Utilisation des fichiers de contrôle Importateur d'objet</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Object Importer: <NOBR>OpenText Content Server Aide en ligne administrateur</NOBR>';
+          header.title2 = 'Utilisation des fichiers de contrôle Importateur d\'objet';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID759"></A>Importateur d'objet permet de créer, mettre à jour ou supprimer des objets dans Content Server sur la base d'instructions provenant d'un fichier de contrôle d'importation. Le fichier de contrôle d'importation contient des métadonnées fournies par l'utilisateur. Il s'agit d'un fichier XML ; il doit de ce fait contenir du code XML valide. Le fichier de contrôle d'importation peut porter un nom et une extension ASCII quelconques, par exemple : <TT CLASS="filename">import.txt</TT>. </P>
+<P><A NAME="TMPID764"></A>Les fichiers de contrôle doivent être placés dans le répertoire des fichiers de contrôle, où ils sont traités individuellement par l'importateur d'objet. Avant que l'importateur d'objet ne commence à traiter un fichier de contrôle, chaque fichier est déplacé du répertoire des fichiers de contrôle dans le répertoire de travail. Une fois les fichier traités (c.-à-d. une fois l'importation terminée), le fichier de contrôle peut être supprimé du répertoire de travail, suivant la manière dont vous avez configuré l'importateur d'objet. Les fichiers de contrôle d'importation peuvent être ajoutés au répertoire des fichiers de contrôle ou en être supprimés à tout moment. Pour plus d'informations sur la création et la configuration du répertoire de travail et du répertoire des fichiers de contrôle, consultez la section <span><A HREF="llesoi-cfg-p.htm">Configurer l'importateur d'objet</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF6"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID767"></A><B CLASS="note">Note : </B><BR>Pour éviter toute perte de données, vous devez arrêter toute importation en cours avant d'arrêter ou de redémarrer le serveur.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<table CLASS="warning">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="center" VALIGN="top" CLASS="iconcell">
+<P CLASS="warning" ALIGN="CENTER"><IMG ALT="Avertissement" SRC="../../images/pi_warning.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID769"></A><B CLASS="warning">Avertissement</B><BR>Il est primordial que le fichier de contrôle soit bien formaté. L'importation échoue si la totalité du fichier de contrôle d'importation, y compris les commentaires, n'est pas insérée à l'intérieur des balises d'importation <TT CLASS="literal">&lt;import&gt;&lt;/import&gt;</TT>. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-CFILE-ICF">Jeu de caractères des fichiers de contrôle d'importation</A></P>
+<P><A NAME="TMPID773"></A>Par défaut, le fichier de contrôle d'importation s'appuie sur le jeu de caractères ANSI. Vous pouvez utiliser d'autres jeux de caractères, par exemple UTF-8, à condition que l'en-tête XML fournisse le codage approprié. Pour plus d'informations sur l'utilisation d'UTF-8 avec le fichier de contrôle d'importation, consultez la section <span><A HREF="llesoi-cfile-so.htm#LLESOI-UNICODE">Importateur d'objet et UTF-8</A></span>.   </P>
+<P><A NAME="TMPID780"></A>Lorsque vous utilisez le fichier de contrôle d'importation avec le jeu de caractères ANSI, les caractères spéciaux suivants doivent être codés en tant qu'entités.</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN756"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Caractère</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Valeur codée</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&lt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&amp;lt;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&gt;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&amp;gt;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">'</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&amp;apos;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">"</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&amp;quot;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&amp;</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&amp;amp;</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID806"></A>L'analyseur XML offre une plus grande souplesse pour les caractères nécessitant d'être placés dans une séquence d'échappement, tels que « &lt; », « &gt; »et « &amp; ».</P>
+<DIV title="La balise 'CDATA' peut être utilisée pour inclure dans une enveloppe les données que vous souhaitez exclure du processus de traitement par le moteur XML :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF7"></A><B><IMG title="La balise 'CDATA' peut être utilisée pour inclure dans une enveloppe les données que vous souhaitez exclure du processus de traitement par le moteur XML :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 3-1 : La balise <NOBR>CDATA</NOBR> peut être utilisée pour inclure dans une enveloppe les données que vous souhaitez exclure du processus de traitement par le moteur XML :</B></P><A NAME="AEN788"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;node action="create" type="folder"&gt;
+  &lt;location&gt;Enterprise:OI&lt;/location&gt;
+  &lt;title language="en"&gt;&lt;![CDATA[Anything in here will not be processed such as &amp;lt;, &amp;gt;, &amp;amp;.]]&gt;&lt;/title&gt;
+&lt;/node&gt;</PRE
+><IMG title="La balise 'CDATA' peut être utilisée pour inclure dans une enveloppe les données que vous souhaitez exclure du processus de traitement par le moteur XML :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="'CDATA' ne fonctionne pas avec les valeurs d'attribut ; ainsi, certains caractères doivent parfois être placés dans une séquence d'échappement : '&lt;', '&gt;', '&apos;', '&quot;' et '&amp;' :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF8"></A><B><IMG title="'CDATA' ne fonctionne pas avec les valeurs d'attribut ; ainsi, certains caractères doivent parfois être placés dans une séquence d'échappement : '&lt;', '&gt;', '&apos;', '&quot;' et '&amp;' :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 3-2 : <NOBR>CDATA</NOBR> ne fonctionne pas avec les valeurs d'attribut ; ainsi, certains caractères doivent parfois être placés dans une séquence d'échappement : « &amp;lt; », « &amp;gt; », « &amp;apos; », « &amp;quot; » et « &amp;amp; » :</B></P><A NAME="AEN797"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;node action="create" type="folder"&gt;
+  &lt;location&gt;Enterprise:OI&lt;/location&gt;
+  &lt;title language="en"&gt;&lt;![CDATA[Anything in here will not be processed such as &amp;lt;, &amp;gt;, &amp;amp;.]]&gt;&lt;/title&gt;
+  &lt;category name="Content Server Categories:Test"&gt;
+    &lt;attribute name="Height &amp;amp; Width"&gt;&lt;![CDATA[2'x2"]]&gt;&lt;/attribute&gt;
+  &lt;/category&gt;
+&lt;/node&gt;</PRE
+><IMG title="'CDATA' ne fonctionne pas avec les valeurs d'attribut ; ainsi, certains caractères doivent parfois être placés dans une séquence d'échappement : '&lt;', '&gt;', '&apos;', '&quot;' et '&amp;' :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-MULTI01">Importation de métadonnées multilingues à l'aide de l'importateur d'objet</A></P>
+<P><A NAME="TMPID826"></A>L'importateur d'objet prend en charge les fonctions multilingues disponibles dans Content Server. Lorsqu'une nouvelle instance de Content Server est installée, l'administrateur choisit la langue qui sera définie par défaut pour le système. Vous pouvez afficher la langue par défaut de votre système, ainsi que toutes les langues qui ont été installées et activées pour les métadonnées dans la section <B CLASS="guilabel">Métadonnées</B> de la page d'administration de Content Server. Cliquez sur le lien <B CLASS="guilabel">Configurer les métadonnées multilingues</B>. Pour plus d'informations sur la configuration des métadonnées multilingues sur Content Server, consultez la rubrique <I CLASS="emphasis">Configuration de métadonnées multilingues</I> dans <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-multilingual-metadata-config-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webadmin/wba-multilingual-metadata-config-bg.htm">Configuration de métadonnées multilingues</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-multilingual-metadata-config-bg" FMT=""></span>.   </P>
+<P><A NAME="TMPID840"></A>Les utilisateurs de l'Importateur d'objet peuvent désormais importer des métadonnées multilingues dans Content Server, pourvu que les langues référencées dans le fichier de contrôle d'importation soient installées et activées dans le système. La prise en charge de l'importation de métadonnées multilingue s'appuie sur l'utilisation de <span><A HREF="llesoi-cfile-desc-rf.htm">Syntaxe du fichier de contrôle de la balise description</A></span> et de <span><A HREF="llesoi-cfile-title-rf.htm">Syntaxe du fichier de contrôle de la balise title</A></span>. </P>
+<P><A NAME="TMPID844"></A>Auparavant, une seule balise <TT CLASS="literal">&lt;description&gt;</TT> et une seule balise <TT CLASS="literal">&lt;title&gt;</TT> étaient autorisées par paragraphe de nœud. Chaque paragraphe de nœud détaille une action à entreprendre sur un objet unique. Avec la prise en charge des métadonnées multilingues, vous pouvez appliquer plusieurs balises <TT CLASS="literal">&lt;description&gt;</TT> et plusieurs balises <TT CLASS="literal">&lt;title&gt;</TT> par paragraphe de nœud. Chaque balise <TT CLASS="literal">&lt;description&gt;</TT> doit contenir un seul attribut <TT CLASS="literal">language="&lt;<I CLASS="varname">language_code</I>>"</TT> et chaque balise <TT CLASS="literal">&lt;title&gt;</TT> doit contenir un seul attribut <TT CLASS="literal">language="&lt;<I CLASS="varname">language_code</I>>"</TT> . </P>
+<table CLASS="important">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="important"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID856"></A><B CLASS="important">Important : </B><BR>Toutes les langues référencées dans le fichier de contrôle d'importation doivent être installées et activées dans Content Server. Si vous essayez d'importer des objets pour lesquels plusieurs langues ont été définies pour les titres et descriptions dans un environnement Content Server unilingue, l'importation de ces objets échoue. Si vous cochez la case <B CLASS="guilabel">Arrêter le traitement en cas d'erreur</B> sur la page <B CLASS="guilabel">Configurer l'importateur d'objet</B>, votre importation s'arrêtera après la première erreur.</P>
+<P><A NAME="TMPID861"></A>Les échecs sont consignés dans le fichier journal de l'importateur d'objet situé sous : <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/logs</TT> ou sous <TT CLASS="filename">&lt;<I CLASS="varname">Content Server_home</I>>/objectimporter</TT>, selon la manière dont vous avez configuré Importateur d'objet. Pour plus d'informations sur la configuration des fichiers journaux de l'importateur d'objet, consultez la section <span><A HREF="llesoi-cfg-p.htm">Configurer l'importateur d'objet</A></span>. Pour plus d'informations sur l'affichage des fichiers journaux de l'importateur d'objet, consultez la section <span><A HREF="llesoi-viewlog-p.htm">Afficher ou supprimer des fichiers journaux</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="Fichier de contrôle d'importation important des données multilingues pour un dossier" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF9"></A><B><IMG title="Fichier de contrôle d'importation important des données multilingues pour un dossier" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 3-3 : Fichier de contrôle d'importation important des données multilingues pour un dossier</B></P>
+<P class="nr1"><A NAME="TMPID872"></A>Le fichier de contrôle d'importation suivant créée un dossier nommé « Projet » dans l'espace de travail Enterprise. Le dossier « Projet » est doté d'un second titre en allemand, « Projekte ». Le fait que le dossier créé sera nommé « Projet »et non « Projekte »vient du fait que la langue par défaut du système pour cette installation Content Server est définie sur anglais. Ce dossier disposera de titres et de descriptions en anglais et en allemand. </P><A NAME="AEN853"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node action="create" type="folder"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="de"&gt;Projekte&lt;/title&gt;
+    &lt;title language="en"&gt;Project&lt;/title&gt;
+    &lt;description language="de"&gt;Projektdaten&lt;/description&gt;
+    &lt;description language="en"&gt;Project Data&lt;/description&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Fichier de contrôle d'importation important des données multilingues pour un dossier" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<DIV title="Fichier de contrôle d'importation important des données multilingues pour un projet" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF10"></A><B><IMG title="Fichier de contrôle d'importation important des données multilingues pour un projet" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 3-4 : Fichier de contrôle d'importation important des données multilingues pour un projet</B></P>
+<P class="nr1"><A NAME="TMPID882"></A>Le fichier de contrôle d'importation suivant met à jour un projet nommé « projects_list » dans l'espace de travail Enterprise. Les descriptions de ce projet sont mises à jour en allemand et en anglais. Le titre de ce projet est mis à jour en anglais, tandis que le titre allemand est supprimé. Il sera toutefois possible d'ajouter un titre allemand ultérieurement.</P><A NAME="AEN858"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;import&gt;
+  &lt;node action="update" type="project"&gt;
+    &lt;description language="de"&gt;eine Liste aller Projekte&lt;/description&gt;
+    &lt;description language="en"&gt;a list of all projects&lt;/description&gt;
+    &lt;location&gt;Enterprise:Projects&lt;/location&gt;
+    &lt;title clear="true" language="de"&gt;&lt;/title&gt;
+    &lt;title language="en"&gt;projects_list&lt;/title&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Fichier de contrôle d'importation important des données multilingues pour un projet" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P><A NAME="TMPID885"></A>Pour plus d'informations sur l'importation de métadonnées multilingues dans Importateur d'objet, consultez les sections <span><A HREF="llesoi-cfile-desc-rf.htm">Syntaxe du fichier de contrôle de la balise description</A></span> et <span><A HREF="llesoi-cfile-title-rf.htm">Syntaxe du fichier de contrôle de la balise title</A></span>. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-UNICODE">Importateur d'objet et UTF-8</A></P>
+<P><A NAME="TMPID890"></A>Si le fichier de contrôle comporte des caractères non-ASCII, ajoutez la ligne suivante, <TT CLASS="literal">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</TT>, en haut du fichier de contrôle et enregistrez ce dernier avec le codage UTF-8.   </P>
+<DIV title="Voici un exemple de fichier de contrôle de l'importation pouvant contenir des caractères non-ASCII :" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="TMP4REF11"></A><B><IMG title="Voici un exemple de fichier de contrôle de l'importation pouvant contenir des caractères non-ASCII :" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 3-5 : Voici un exemple de fichier de contrôle de l'importation pouvant contenir des caractères non-ASCII :</B></P><A NAME="AEN872"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;import&gt;
+  &lt;node action="create" type="document"&gt;
+    &lt;location&gt;Enterprise&lt;/location&gt;
+    &lt;title language="en"&gt;New Document&lt;/title&gt;
+    &lt;file&gt;c:\readme.txt&lt;/file&gt;
+  &lt;/node&gt;
+&lt;/import&gt;</PRE
+><IMG title="Voici un exemple de fichier de contrôle de l'importation pouvant contenir des caractères non-ASCII :" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF12"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID901"></A><B CLASS="note">Note : </B><BR>Les documents du système de fichiers à importer dans Content Server doivent être composés de caractères ASCII ou ISO-8859-1. Ces documents sont spécifiés entre les balises <TT CLASS="literal">&lt;file&gt;&lt;/file&gt;</TT> du fichier de contrôle d'importation. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LLESOI-REMCONFI">Suppression du contenu de champs associés aux fichiers de contrôle de l'importateur d'objet</A></P>
+<P><A NAME="TMPID906"></A>Lors de la spécification de fichiers de contrôle pour l'importation d'objets, il est possible dans certains cas d'utiliser l'attribut <TT CLASS="literal">clear="true"</TT> pour supprimer certains types de données spécifiques de champs contenant actuellement des données. Ces champs incluent les catégories et les attributs, les descriptions et les projets. Pour obtenir un exemple de l'attribut <TT CLASS="literal"> clear="true"</TT> , consultez la section <span><A HREF="llesoi-cfile-desc-rf.htm">Syntaxe du fichier de contrôle de la balise description</A></span>.   </P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

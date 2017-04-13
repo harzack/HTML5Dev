@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBB100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websbroker">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llesrcs-h-ugd -- ngdlles-h-ugd -- llespob-h-ugd -- llesrec-h-ugd -- lleswat-h-ugd -- llesapp-h-ugd -- llesprj-h-ugd -- llesrt-h-ugd -- llescl-h-ugd -- llesrcm-h-ugd"><title>Understanding LQL Conventions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'sr-lqlconv.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Searching Content Server';
+          header.title2 = 'Understanding LQL Conventions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1689"></A>Content Server Query Language, LQL, conventions help define the syntax of a complex Query. For more information about using complex Queries, see <span><A HREF="sr-lql.htm">Searching with Complex Queries</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SR-USEPHRASES">Using Phrases</A></P>
+<P><A NAME="TMPID1694"></A>A phrase is a fixed sequence of one or more words that is enclosed in double quotation marks, “&nbsp;”. For example, “good” and “for better or for worse” are phrases. You can, however, omit the double quotation marks around one-word phrases, for example, rice.</P>
+<P class="before-ul"><A NAME="TMPID1698"></A>When you construct phrases, the following rules apply:</P><A NAME="AEN1681"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1682"></A><A NAME="TMPID1701"></A>A space character, for example, a tab, or a space, denotes the end of a word.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1684"></A><A NAME="TMPID1703"></A>Content Server interprets strings that include punctuation but no spaces as one phrase, for example, “www.opentext.com”.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1688"></A><A NAME="TMPID1707"></A>You can omit the double quotation marks around one-word phrases, for example, <TT CLASS="literal">rice</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1691"></A><A NAME="TMPID1710"></A>You cannot omit the double quotation marks around reserved keywords, for example, <TT CLASS="literal">near</TT> or <TT CLASS="literal">qlnear</TT>, when you want to treat the keywords as search criteria. For example, to search the Content Server Online Help system for information about the <TT CLASS="literal">qlnear</TT> keyword, you must specify <TT CLASS="command">"qlnear"</TT> as your Query and choose the appropriate help slice.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SR-USEWILDCARDS">Using Wildcards</A></P>
+<P><A NAME="TMPID1718"></A>Within a search term that is not contained within quotes, you can use the special characters <TT CLASS="literal">*</TT> or <TT CLASS="literal">?</TT> for pattern matching. The <TT CLASS="literal">*</TT> will match any number of characters, a <TT CLASS="literal">?</TT> will match 0 or 1 characters. Searches using wildcard operations are typically slower, especially when a <TT CLASS="literal">*</TT> wildcard is used in the first one or two characters. If the term is within quotes, it is treated as a phrase, and the only supported wildcard is <TT CLASS="literal">*</TT> in the first or last position.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SR-USEESCCHARS">Using Escape Characters</A></P>
+<P><A NAME="TMPID1727"></A>You can use escape characters to search for certain special characters in your query syntax. The single backlash (<TT CLASS="literal">\</TT>) is treated as the beginning of an escape sequence for certain special cases.</P>
+<P class="before-ul"><A NAME="TMPID1729"></A>Common and important special characters you can search for include:</P><A NAME="AEN1710"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1711"></A><A NAME="TMPID1732"></A>quotation mark <TT CLASS="literal">"</TT> use <TT CLASS="literal">\"</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1715"></A><A NAME="TMPID1736"></A>apostrophe <TT CLASS="literal">'</TT> use <TT CLASS="literal">\'</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1719"></A><A NAME="TMPID1740"></A>single backslash <TT CLASS="literal">\</TT> use <TT CLASS="literal">\\</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1723"></A><A NAME="TMPID1744"></A>double backslash <TT CLASS="literal">\\</TT> use <TT CLASS="literal">\\\\</TT></P></LI></UL>
+<P><A NAME="TMPID1747"></A>Other non-special characters are not affected by the backslash, so a query like: “\wheat” is still mapped to “\wheat”.</P>
+<P class="before-ul"><A NAME="TMPID1750"></A>A single backlash at the end of a query term is invalid syntax and will return an invalid syntax error message from the Search Engine. For example:</P><A NAME="AEN1731"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1732"></A><A NAME="TMPID1753"></A>invalid syntax: <TT CLASS="literal">select "OTName" where [region "OTName"]"C:\"</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1735"></A><A NAME="TMPID1756"></A>proper syntax: <TT CLASS="literal">select "OTName" where [region "OTName"]"C:\\"</TT></P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SR-UNDRSTNDORDERPROCESSING">Understanding the Order of Processing</A></P>
+<P><A NAME="TMPID1760"></A>By default, Content Server processes Query terms from left to right. Use parentheses <TT CLASS="literal">()</TT> to override the default order, and have Content Server evaluate the expressions within parentheses first. For example, type <TT CLASS="literal">(grow OR farm) AND (wheat OR grain)</TT> to find Content Server items that contain at least one instance of the words <I CLASS="emphasis">grow</I> or <I CLASS="emphasis">farm</I> and at least one instance of the words <I CLASS="emphasis">wheat</I> or <I CLASS="emphasis">grain</I>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

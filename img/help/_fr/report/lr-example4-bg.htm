@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Autres fonctions du modèle</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-example4-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Exemples de modèles';
+          header.title2 = 'Autres fonctions du modèle';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1495"></A><B CLASS="highlight">Utilisation de modèles dans d'autres modèles</B> : Outre la définition de modèles à inclure dans le champ SQL principal, il est également possible d'utiliser des modèles dans d'autres modèles. La syntaxe est la même, par exemple « ~2 » ; toutefois, un modèle ne peut utiliser qu'un modèle présentant un numéro inférieur. Par exemple, le modèle ~2 peut inclure une référence au modèle ~1, mais pas à lui-même ni au modèle ~3, ni à un numéro supérieur à 2. </P>
+<P><A NAME="TMPID1498"></A><B CLASS="highlight">Utilisation de l'icône Vue du modèle</B> : Chaque modèle comprend une icône spéciale qui permet d'<B CLASS="guilabel">Afficher le comportement du modèle</B>. Cliquez sur cette icône pour ouvrir une fenêtre qui contient une série d'instructions sur le modèle en question. Ces instructions tentent de clarifier le comportement de chaque modèle en fonction de la condition sélectionnée et de la source spécifiée. L'icône <B CLASS="guilabel">Afficher le comportement du modèle</B> se trouve à la fin de chaque ligne du modèle. </P>
+<DIV title="Affichage du comportement pour la condition : Certaines entrées ne sont pas définies sur l'indicateur" CLASS="example">
+<P CLASS="example" ALIGN="LEFT"><A NAME="LR-EXCONDBE-EX"></A><B><IMG title="Affichage du comportement pour la condition : Certaines entrées ne sont pas définies sur l'indicateur" SRC="../../images/pi_objstart.gif" ALIGN="MIDDLE"> Exemple 2-8 : Affichage du comportement pour la condition : Certaines entrées ne sont pas définies sur l'indicateur</B></P>
+<P class="nr1"><A NAME="TMPID1504"></A>Les conditions <B CLASS="guilabel">Certaines entrées ne sont pas définies sur l'indicateur</B> et <B CLASS="guilabel">Aucune entrée définie sur l'indicateur</B> comprennent un tableau de conditions qui permet de comprendre l'effet des paramètres d'entrée utilisateur sur l'inclusion ou l'exclusion du modèle. Dans l'exemple ci-dessous, le tableau montre que si tous les paramètres d'entrée utilisateur sont définis sur une chaîne vide, le modèle est exclu, mais si un paramètre d'entrée utilisateur n'est pas défini sur une chaîne vide, le modèle est inclus. </P>
+<P class="before-ul"><A NAME="TMPID1507"></A>Dans <B CLASS="guilabel">Configuration du modèle</B>, dans la zone <B CLASS="guilabel">Modèles</B>, définissez <B CLASS="guilabel">~1</B> :</P><A NAME="AEN1513"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1514"></A><A NAME="TMPID1513"></A>Ne sélectionnez pas la case <B CLASS="guilabel">Auto-Where</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1517"></A><A NAME="TMPID1516"></A>Dans le champ <B CLASS="guilabel">Source SQL</B>, saisissez : « %1,%2,%3 » </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1521"></A><A NAME="TMPID1520"></A>Sélectionnez la case <B CLASS="guilabel">Auto-Comma</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1524"></A><A NAME="TMPID1523"></A>Dans la liste <B CLASS="guilabel">Inclure IF</B>, sélectionnez « Aucune entrée définie sur l'indicateur ».</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1528"></A><A NAME="TMPID1527"></A>Dans le champ <B CLASS="guilabel">Options</B>, assurez-vous que le champ <B CLASS="guilabel">Valeur d'indicateur</B> est vide.</P></LI></UL>
+<P><A NAME="TMPID1530"></A>Si vous cliquez sur l'icône <B CLASS="guilabel">Afficher le comportement du modèle</B> située à la fin de la ligne du modèle <B CLASS="guilabel">~1</B>, une page contenant les informations suivantes apparaît :</P>
+<P class="before-ul"><A NAME="TMPID1533"></A><B>Fenêtre d'explication –  </B>La combinaison des champs de cette ligne est interprétée comme suit :</P><A NAME="AEN1537"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1538"></A><A NAME="TMPID1537"></A>Les paramètres : <B CLASS="highlight">%1,%2,%3</B> ont été trouvés dans le champ source SQL de ce modèle.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1541"></A><A NAME="TMPID1540"></A>Le type de condition est défini sur <B CLASS="highlight">« Aucune entrée définie sur l'indicateur »</B>. Autrement dit : ces paramètres vont être testés pour déterminer si l'indicateur <B CLASS="highlight">(Une chaîne vide)</B> a été transmis en tant que valeur.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1546"></A><A NAME="TMPID1545"></A>Si aucun des paramètres du champ source SQL n'est défini sur <B CLASS="highlight">Une chaîne vide</B>, le modèle est inséré dans la requête SQL là où le symbole <B CLASS="highlight">~1</B> se trouve.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1550"></A><A NAME="TMPID1549"></A>A l'inverse, si <B CLASS="highlight">L'UN</B> des paramètres du champ source (<B CLASS="highlight">%1,%2,%3</B>) est défini sur l'indicateur (<B CLASS="highlight">Une chaîne vide</B>), le modèle <B CLASS="highlight">~1</B> est exclu de la source SQL.</P></LI></UL>
+<P><A NAME="TMPID1554"></A>Le tableau suivant indique les résultats attendus pour les différents réglages des paramètres :</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1557"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Parm 1</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Parm 2 etc.</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Résultat</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Une chaîne vide</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Une chaîne vide</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EXCLUDE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">(toute autre valeur)</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Une chaîne vide</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">EXCLUDE</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">(toute autre valeur)</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">(toute autre valeur)</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">INCLUDE</TD></TR></TABLE>
+</DIV></P>
+<P><A NAME="TMPID1578"></A>Cliquez sur <B CLASS="guilabel">Fermer</B> pour fermer cette fenêtre d'explication.</P><IMG title="Affichage du comportement pour la condition : Certaines entrées ne sont pas définies sur l'indicateur" SRC="../../images/pi_objend.gif" ALIGN="MIDDLE"></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

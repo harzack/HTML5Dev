@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Structure of the Reportview</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-reportviews-structrep.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Reportview File';
+          header.title2 = 'Structure of the Reportview';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID21164"></A>The reportview consists of the following:</P>
+<A NAME="AEN19887"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19888"></A><A NAME="TMPID21167"></A><B CLASS="highlight">Header Section</B>: this section is used to provide any code that should be executed at the beginning of the WebReport. It is only output once regardless of how many report rows are being read from the underlying data source. For example if producing an HTML document any opening tags like &lt;<I CLASS="varname">TABLE</I>> should be in this section; however, it is not necessary to include &lt;<I CLASS="varname">HTML</I>> or &lt;<I CLASS="varname">BODY</I>> if the standard Content Server header is being included. The Content Server header is included by default unless the <TT CLASS="literal">[LL_WEBREPORT_EXCLUDEHEADER /]</TT> tag is used.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19897"></A><A NAME="TMPID21176"></A><B CLASS="highlight">[LL_WEBREPORT_STARTROW /]</B>: in the online editor this line cannot be edited. It is only provided to show where the start row tag will be inserted so that users do not try to add another one.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19900"></A><A NAME="TMPID21179"></A><B CLASS="highlight">Row Section</B>: this section is used to define any code that should be applied to all data rows. Any tags that are used to refer to data source column data will only work in this section. It is important to note that anything in this section will be repeated for every row of the data source. For example, if there are 10 rows of report data to be returned, everything in this section will appear 10 times in the output of the WebReport. The only exception to this is if conditional tags are used to exclude some data from the output. For more information, see <span><A HREF="wr-tag-syntax.htm">Reportview Tags</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19904"></A><A NAME="TMPID21183"></A><B CLASS="highlight">[LL_WEBREPORT_ENDROW /]</B>: in the online editor this line cannot be edited. It is only provided to show where the end row tag will be inserted so that users do not try to add another one.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN19907"></A><A NAME="TMPID21186"></A><B CLASS="highlight">Footer Section</B>: this section is used to provide any code that should be executed at the end of the WebReport. It is only output once regardless of how many report rows are being read from the underlying data source. Any closing HTML tags like &lt;<I CLASS="varname">/TABLE</I>> would normally be in this section.</P></LI></OL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

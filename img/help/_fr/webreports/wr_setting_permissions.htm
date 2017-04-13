@@ -1,0 +1,78 @@
+<!-- wr_setting_permissions.htm -->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+	<TITLE>Setting Permissions</TITLE>
+	<LINK REL="stylesheet" HREF="../../ix21.css">
+	<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+
+<BODY ONLOAD="checkFrame('wr_setting_permissions.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+
+<SCRIPT LANGUAGE="JavaScript">
+        var header = new AdminHeader();
+        header.title1 = 'Working With WebReports';
+        header.title2 = 'Setting Permissions';
+		header.draw();
+</SCRIPT>
+
+<p class="body">
+WebReport permissions have some unique considerations. WebReports are effectively an amalgamation of three
+different object types in Content Server:
+</p>
+
+<ul class="body">
+  <li>Documents (used to store and manage the reportviews)</li>
+  <li>Text Documents (used to support online reportview editing)</li>
+  <li>LiveReports (used to produce the report output)</li>
+</ul>
+
+<p class="body">
+The following table indicates the most common roles for WebReport users and what the recommended permissions should be.
+</p>
+<table border="1" bgcolor="#FFFFFF" class="Body">
+	<tr bgcolor="#CCCCCC">
+		<td width=70% align="center"><B>WebReport User Role</B></td>
+		<td width=10% align="center"><B>Minimum Permissions</B></td>
+		<td width=20% align="center"><B>Associated Commands</B></td>
+	</tr>
+	<tr>
+		<td CLASS="body">General users who are not allowed to run or edit a report</td>
+		<td CLASS="body">See</td>
+		<td CLASS="body">Make Shortcut</td>
+	</tr>
+	<tr>
+		<td CLASS="body">General end user that is allowed to run the WebReport. This will be the main permissions
+		setting for all end users of WebReports. This differs from normal documents where
+		end users would need to View, Open, or Download. With WebReports these commands are only
+		used for the users who actually create or edit the reportviews. </td>
+		<td CLASS="body">See Contents</td>
+		<td CLASS="body">RunReport, (also standard See Contents commands such as Set Notification, Add to Favorites etc.)</td>
+	</tr>
+	<tr>
+		<td CLASS="body">Users who might create or edit other WebReports but who are not allowed or required to have
+		access to this specific WebReport.</td>
+		<td CLASS="body">Modify</td>
+		<td CLASS="body">Copy, Open, Download, View</td>
+	</tr>
+	<tr>
+		<td CLASS="body">Users who are responsible for modifying the reportviews and or selecting different
+		associated data sources.  These are typically the WebReport owners and administrators; however, they do not
+		necessarily need to have delete and or permissions access. </td>
+		<td CLASS="body">Reserve</td>
+		<td CLASS="body">Add Reportview Version,<br> Edit Reportview,<br> Properties->Specific</td>
+	</tr>
+	<tr>
+		<td CLASS="body">Administrative users</td>
+		<td CLASS="body">As Required (normal permissions behavior)</td>
+		<td CLASS="body">E.g. Delete, Permissions, etc.</td>
+	</tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+
+
+</body>
+</HTML>

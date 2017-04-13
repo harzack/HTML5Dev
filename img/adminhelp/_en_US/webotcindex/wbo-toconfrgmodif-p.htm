@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="llesels-h-ugd -- lleselv-h-agd -- llescor-igd -- lleswbb-h-ugd -- llescf-cfp -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-agd -- lleswbo-h-agd -- lleswbb-h-agd -- lleswba-h-agd -- llesrec-h-agd"><title>To Configure Region Modifiers for Index Regions</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbo-toconfrgmodif-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuring Index Regions';
+          header.title2 = 'To Configure Region Modifiers for Index Regions';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID14693"></A>The Search Engine supports a region modifier for search queries, the “like” operator. When applied to regions of type <TT CLASS="literal">PartNum</TT>, this operator will perform aggressive tokenization to try and match common patterns found in part numbers and file names.</P>
+<P><A NAME="TMPID14696"></A>The Search Engine also has the ability to create search regions comprised of the domain portions of email addresses, to support eDiscovery processes with email.</P>
+<P><A NAME="TMPID14697"></A>On new and upgraded installations of Content Server 10.5, or later, the Live Query Language (LQL) and OpenText Structured Query Language (OTSQL) support the “like” keyword in the Full Text search in Advanced Search. These languages will recognize the new <TT CLASS="literal">QLLIKE</TT> keyword, and will enable <B CLASS="guilabel">Complex Query</B> mode.</P>
+<P><A NAME="TMPID14703"></A>Regular “Text” type regions need to be explicitly configured for “like” support on the <B CLASS="guilabel">Region Modifiers</B> page.  On new installations, the <TT CLASS="literal">OTName</TT> region is configured for “like” support through default entries on the <B CLASS="guilabel">Region Modifiers</B> page of each Search Manager.</P>
+<P><A NAME="TMPID14710"></A>Any region declared as type <TT CLASS="literal">PartNum</TT> in the <TT CLASS="filename">LLFieldDefinitions.txt</TT> file, receives “like” support by definition. In Content Server 10.5 there are no <TT CLASS="literal">PartNum</TT> type regions by default.</P>
+<P><A NAME="TMPID14716"></A>The “like” keyword will function as a non-operator, performing a normal unmodified query of the region. If a region is not configured for “like”, it will operate as an <TT CLASS="literal">AND</TT> of terms in the expression.</P>
+<P><A NAME="TMPID14720"></A>If the region with part number properties is included in the list of default search regions, then the <TT CLASS="literal">QLLIKE</TT> operation will be used automatically for that region.</P><A NAME="PROC-TOCONFRGMODIF"></A>
+<DIV title="To configure region modifiers for  Index Regions:" CLASS="procedure">
+<P><B><A NAME="PROC-TOCONFRGMODIF"></A>To configure region modifiers for  Index Regions:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID14725"></A>On the Administration page, in the Search Administration section, click the <B CLASS="guilabel">Open the System Object Volume</B> link.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14728"></A>On the System Administration page, click the <B CLASS="guilabel">processes_prefix Data Source Folder</B> link of the data source containing the index regions that you want to apply region modifiers to.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14731"></A>Click the <B CLASS="guilabel">Functions</B> icon of the Search Manager, choose <B CLASS="guilabel">Properties</B>, and then choose <B CLASS="guilabel">Region Modifiers</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14736"></A>In the <B CLASS="guilabel">Like Modifier</B> area, in the first text box, enter a comma-separated list of search regions configured to use the “like” modifier.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14740"></A>In the second text box, enter a comma-separated list of search regions configured for default application of the “like” modifier.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14743"></A>In the <B CLASS="guilabel">E-mail Domains</B> area, enter a comma-separated list of regions containing email addresses.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID14746"></A>Restart the Index Engines for all Admin servers in the Content Server cluster for the modifications to take effect.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

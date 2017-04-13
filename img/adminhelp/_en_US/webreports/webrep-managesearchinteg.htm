@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-AGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<title>Manage Search Query Integration</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'webrep-managesearchinteg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'The WebReports Administration Section';
+          header.title2 = 'Manage Search Query Integration';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID329"></A>The WebReports module supports a search integration feature that provides the capability to launch one or more WebReports from the standard <B CLASS="guilabel">Advanced Search</B> screen.</P>
+<P><A NAME="TMPID333"></A>In order to enable this feature the following actions need to be taken:</P>
+<A NAME="AEN330"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN331"></A><A NAME="TMPID336"></A>You need to enable this feature on the <B CLASS="guilabel">Manage Search Query Integration</B> page and specify an appropriate name for the new search button.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN334"></A><A NAME="TMPID339"></A>You need to restart Content Server after the feature is enabled.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN337"></A><A NAME="TMPID342"></A>You need to set one, or more, WebReports to use “search launch” as a data source. You set this from the WebReport's <B CLASS="guilabel">Properties</B> page by selecting the <B CLASS="guilabel">Source</B> tab.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN343"></A><A NAME="TMPID348"></A>From the <B CLASS="guilabel">Manage Search Query Integration</B> page, WebReports with this data source can be enabled or disabled.</P>
+<P><A NAME="TMPID351"></A>WebReports with this data source have permissions set so that only appropriate users have access to them.</P></LI></OL>
+<P><A NAME="TMPID353"></A>Given the setup listed above, the <B CLASS="guilabel">Advanced Search</B> screen will include the custom search button. When selected, this custom search button will launch the search on the WebReports the user has the permission to run. In the event the user has permission to run search on multiple WebReports, selecting the custom search button will display a list of those WebReports and the user can select the one they want searched.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WEBR-TECHNTS">Technical Notes on Search Integration</A></P>
+<P><A NAME="TMPID360"></A>Where multiple instances of Content Server are being used, the following points should be noted:</P>
+<A NAME="AEN357"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN358"></A><A NAME="TMPID364"></A>The enable option is server specific and stored in the <TT CLASS="filename">opentext.ini</TT> file. As a result, this feature could be restricted to a specific Content Server instance. Conversely, if the same behavior is required for all servers in a cluster, the feature must be enabled, and the button text set, for all servers. This could also be achieved by copying the <TT CLASS="filename">opentext.ini</TT> file to each server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN363"></A><A NAME="TMPID369"></A>The activation or deactivation of individual WebReports is system wide, therefore any disabled WebReports will not be available on any Content Server instance.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN368"></A><A NAME="TMPID374"></A>If this page is being viewed on a server where the feature is disabled, the list of active and/or inactive WebReports is not visible. To make this list available:</P></LI></OL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="webr-msqi-p.htm" revision="">To Enable Search Integration</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

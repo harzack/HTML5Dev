@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="NGDLLES100502-H-UGD-ES-1">
+<META name="pvScheme" content="010203">
+<META name="verttl" content="10.5.2">
+<META name="PiXprocLocator" content="ngd">
+<META mancondkey="ngdcore-h-ugd -- lleswbb-h-ugd -- ngdcore-ugd -- lleswfp-h-ugd -- llescls-h-ugd -- llesrcm-igd -- lleswat-h-ugd -- llescl-h-ugd -- llesrt-h-ugd -- lleswbd-h-ugd"><title>Trabajo con expresiones regulares mediante el  Live Query Language  </title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ngdlles-lqlregex-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Búsquedas con consultas complejas';
+          header.title2 = 'Trabajo con expresiones regulares mediante el ';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID4640"></A>Puede utilizar las expresiones regulares en las consultas complejas si las incluye entre comillas&nbsp;(<TT CLASS="literal">""</TT>) y les antepone la palabra clave <TT CLASS="literal">QLREGEX</TT>.</P>
+<P><A NAME="TMPID4643"></A>Una expresión regular es un grupo de cadenas que coinciden con determinados patrones. Para especificar estos patrones, los caracteres especiales $, ^, ., *, +, ?, [, ], (, ), \, funcionan como operadores en todos los caracteres normales restantes. Un carácter normal es una expresión regular simple que coincide con un carácter y nada más (por ejemplo, <TT CLASS="literal">h</TT> corresponde con <I CLASS="emphasis">h</I> y nada más). Para representar un carácter especial como carácter normal, debe ir precedido de una barra diagonal inversa (\). Por ejemplo, <TT CLASS="literal">\$</TT> coincide con <I CLASS="emphasis">$</I>.</P>
+<P class="before-ul"><A NAME="TMPID4648"></A>Las directrices siguientes describen cómo utilizar expresiones regulares de forma más eficaz:</P><A NAME="AEN4354"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4355"></A><A NAME="TMPID4651"></A>Cuando se utiliza junto con la palabra clave <TT CLASS="literal">QLREGEX</TT> en una búsqueda, la expresión regular especificada se busca en cualquier parte de una palabra de un elemento. Por ejemplo, <TT CLASS="literal">QLREGEX "con"</TT> busca elementos que contengan al menos una palabra con <I CLASS="emphasis">con</I>, como <I CLASS="emphasis">con</I>, <I CLASS="emphasis">concatenar</I>, <I CLASS="emphasis">controversia</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4363"></A><A NAME="TMPID4659"></A>Puede enlazar dos expresiones regulares cualesquiera (<TT CLASS="literal"> &lt;<I CLASS="varname">x</I>></TT> e <TT CLASS="literal">&lt;<I CLASS="varname">y</I>></TT>) para formar una expresión regular que coincida con una cadena (si <TT CLASS="literal"> &lt;<I CLASS="varname">x</I>></TT> coincide con el principio de esta cadena e <TT CLASS="literal">&lt;<I CLASS="varname">y</I>></TT> coincide con el resto de la cadena). Por ejemplo, <TT CLASS="literal">h\$</TT> coincide con <I CLASS="emphasis">h$</I>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4375"></A><A NAME="TMPID4671"></A>El uso de la palabra clave <TT CLASS="literal">QLREGEX</TT> con expresiones regulares en consultas de frases es casi siempre menos eficaz que el uso de la palabra clave <TT CLASS="literal">OR</TT> para crear la misma consulta debido a las operaciones de procesamiento requeridas para las expresiones regulares.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4379"></A><A NAME="TMPID4675"></A>La restricción y la limitación de las búsquedas ahorran tiempo, especialmente en búsquedas de prefijos. Por ejemplo, para buscar 1995 números de parte que empiecen por <I CLASS="emphasis">d</I>, una búsqueda con <TT CLASS="literal">QLREGEX "^d"</TT> tarda más que una con <TT CLASS="literal">QLREGEX "^d1995"</TT>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4384"></A><A NAME="TMPID4680"></A>Evite las búsquedas de expresiones regulares con sufijos cortos como <I CLASS="emphasis">do</I> porque el motor de búsqueda debe analizar todas las palabras del índice de izquierda a derecha para buscar sufijos. En vez de ello, limite la búsqueda combinando sufijos con prefijos en expresiones regulares, o bien utilice el modificador <B CLASS="guilabel">La palabra termina con</B>.</P></LI></UL>
+<P><A NAME="TMPID4683"></A>Puede utilizar la siguiente lista de operadores dentro de expresiones regulares para describir grupos de cadenas:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN4389"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Operador</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Descripción</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">.</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Coincide con un único carácter.<BR>Por ejemplo, <TT CLASS="literal">\a.2</TT> coincide con cualquier palabra que contenga una cadena de tres caracteres que empiece por <I CLASS="emphasis">a</I> y finalice por <I CLASS="emphasis">2</I> (como por ejemplo, <I CLASS="emphasis">ab2z</I>, <I CLASS="emphasis">aa2</I> o <I CLASS="emphasis">aaa2zzz</I>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Incluye un conjunto de caracteres o un intervalo. Se aplican las reglas siguientes: <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4708"></A>Puede entremezclar intervalos y caracteres únicos.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4710"></A>En un conjunto de caracteres, <TT CLASS="literal">]</TT>, <TT CLASS="literal">-</TT> y <TT CLASS="literal">^</TT> tienen un significado especial; los demás caracteres se representan sólo a sí mismos.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4715"></A>El signo menos (<TT CLASS="literal">-</TT>) es operador de intervalo entre dos caracteres.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID4718"></A><A NAME="AEN4344">El símbolo de intercalación (<TT CLASS="literal">^</TT>) se puede utilizar solamente en la primera posición de un conjunto de caracteres.</P></TD></TR></TABLE>  Por ejemplo, <TT CLASS="literal">[abc]</TT> coincide con <I CLASS="emphasis">a</I>, <I CLASS="emphasis">b</I> o <I CLASS="emphasis">c</I>. <TT CLASS="literal">[a-z]</TT> coincide con cualquier carácter en minúscula. <TT CLASS="literal">[-$a0-9]</TT> coincide con <I CLASS="emphasis">-</I>, <I CLASS="emphasis">$</I>, <I CLASS="emphasis">a</I> o cualquier dígito único.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">[^]</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Inicia un conjunto de caracteres que complementa el conjunto de caracteres especificado (coincide con cualquier carácter excepto los especificados). Si <TT CLASS="literal">-</TT> o <TT CLASS="literal">]</TT> sigue a <TT CLASS="literal">[^</TT>, <TT CLASS="literal">-</TT> o <TT CLASS="literal">]</TT> se trata como el primer carácter. <BR>Por ejemplo, <TT CLASS="literal">[^a-z]</TT> coincide con cualquier carácter excepto las letras del alfabeto. <TT CLASS="literal">[^]^a-z0-9]</TT> coincide con cualquier carácter excepto <I CLASS="emphasis">]</I>, <I CLASS="emphasis">^</I> o caracteres alfanuméricos.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">^</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Coincide con la cadena vacía al principio de una palabra.<BR>Por ejemplo, <TT CLASS="literal">^sp</TT> coincide con cualquier aparición de <I CLASS="emphasis">sp</I> al principio de una palabra únicamente (como, por ejemplo, <I CLASS="emphasis">spa</I> pero no <I CLASS="emphasis">especial</I>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">*</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Coincide con la expresión regular precedente más pequeña cero o más veces. Sin embargo, el operador <TT CLASS="literal">*</TT> detrás de una expresión regular que tenga <TT CLASS="literal">^</TT> como principio de una palabra se interpreta como expresión con cualquier terminación (como un comodín [*] en las consultas).<BR>Por ejemplo, <TT CLASS="literal">ad*</TT> coincide con <I CLASS="emphasis">a</I>, <I CLASS="emphasis">ad</I>, <I CLASS="emphasis">adición</I>, etc.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">+</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Coincide con la expresión regular precedente más pequeña cuando la expresión regular precedente se produce al menos una vez.<BR>Por ejemplo, <TT CLASS="literal">tr[ei]+</TT> coincide con <I CLASS="emphasis">tre</I>, <I CLASS="emphasis">tri</I>, <I CLASS="emphasis">tres</I>, <I CLASS="emphasis">trie</I>, <I CLASS="emphasis">triie</I>, etc. No coincide con <I CLASS="emphasis">tr</I>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">?</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Coincide con la expresión regular precedente más pequeña cuando la expresión regular precedente se produce una vez o ninguna. Por ejemplo, <TT CLASS="literal">se[ea]?</TT> coincide sólo con <I CLASS="emphasis">se</I>, <I CLASS="emphasis">sea</I> y <I CLASS="emphasis">see</I>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">$</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Coincide con la cadena vacía al final de una palabra.<BR>Por ejemplo, <TT CLASS="literal">los$</TT> coincide con los caracteres <I CLASS="emphasis">los</I> cuando aparecen al final de una palabra o una línea.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">|</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Separa dos alternativas. Si <TT CLASS="literal">x</TT> e <TT CLASS="literal">y</TT> son expresiones regulares, <TT CLASS="literal">x|y</TT> coincide con cualquier cosa con la que coincida <TT CLASS="literal">x</TT> o <TT CLASS="literal">y</TT>.<BR>Por ejemplo, <TT CLASS="literal">mar|lago</TT> coincide con <I CLASS="emphasis">mar</I> y <I CLASS="emphasis">lago</I> solamente. <TT CLASS="literal">[abc]</TT> también se puede escribir como <TT CLASS="literal">a|b|c</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="literal">()</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Agrupa elementos (como alternativas o expresiones regulares complejas) para que pueda combinarlas con otras expresiones regulares y operadores.<BR>Por ejemplo, <TT CLASS="literal">(ro)?(co)+</TT> coincide con cualquier número distinto de cero de cadenas <I CLASS="emphasis">co</I> que no vayan precedidas por nada o que vayan precedidas por <I CLASS="emphasis">ro</I> (como, por ejemplo, <I CLASS="emphasis">co</I>, <I CLASS="emphasis">coco</I>, <I CLASS="emphasis">rococó</I>, y así sucesivamente).</TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

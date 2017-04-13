@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>WR Power View</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-powerview-info.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'WebReports Advanced Information';
+          header.title2 = 'WR Power View';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID19839"></A>WR Power View is an option available in form templates that allows developers of WebForms to quickly leverage WebReports' unique ability to lookup and manipulate data from different sources but in the context of a form.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WR-PRVW-TECHNOTE">WR Power View Technical Notes</A></P>
+<P class="before-ul"><A NAME="TMPID19842"></A>A WR Power View is designed to combine normal WebForms processing features along with WebReports tag processing. It is designed to allow either of the following:</P><A NAME="AEN18577"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18578"></A><A NAME="TMPID19845"></A>To allow WebForms tags to provide text that can be used in WebReports tags and/or sub-tags.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18580"></A><A NAME="TMPID19847"></A>To allow WebReports tags to return text that might affect WebForms tags.</P></LI></UL>
+<P><A NAME="TMPID19848"></A>To achieve these aims a WR Power View is processed as follows:</P>
+<A NAME="AEN18583"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18584"></A><A NAME="TMPID19851"></A>A simple parse of the WebForm's tags is performed by the WebReports processing engine. This involves any WebForms tag that can be simply substituted, for example <TT CLASS="literal">[LL_FormTag_1_1_2_1 /]</TT>. This simple parsing will not resolve any WebForms <TT CLASS="literal">LOOP</TT> sections and will not resolve any tags that are dependent on the <TT CLASS="literal">LOOP</TT> structure. This simple parsing also does not manage any HTML changes such as insertion of <TT CLASS="literal">SELECTED</TT> for the correct item in a <TT CLASS="literal">SELECT</TT> statement.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18591"></A><A NAME="TMPID19858"></A>Normal WebReports parsing is performed, and all normal WebReports tag substitution is completed.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN18593"></A><A NAME="TMPID19860"></A>A simple parse is performed again by WebReports to resolve any form's tags that remain and / or that might have been created as a result of the first processing by WebReports.</P></LI></OL>
+<P><A NAME="TMPID19861"></A>A specialized content control tag called <span><A HREF="wr-tag-ccfourth.htm#WR-TAG-CCFORMPARSEOFF">FORMPARSEOFF</A></span> has been provided for certain situations where the standard WebForms processing is not desirable. Because WebForms attempts to interpret some form fields, for example <TT CLASS="literal">SELECT</TT> fields, any changes to these fields, or the addition of fields that are not in an expected format, may cause the WebForms code to break or malfunction.</P>
+<P><A NAME="TMPID19864"></A>In these cases, a developer can use the <span><A HREF="wr-tag-ccfourth.htm#WR-TAG-CCFORMPARSEOFF">FORMPARSEOFF</A></span> tag to disable the standard WebForms processing. When standard WebForms processing is disabled, any WebForms tags are processed using the “simple parsing” provided by WebReports.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF61"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID19868"></A><B CLASS="note">Note: </B><BR>In addition to ignoring all HTML syntax, this simple parsing does not handle any WebForms looping structures. Another benefit of using the <span><A HREF="wr-tag-ccfourth.htm#WR-TAG-CCFORMPARSEOFF">FORMPARSEOFF</A></span> tag is that it will normally improve performance for rendering a WR Power View.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="wr-powerview-creatfor.htm" revision="">Creating Forms with WR Power View</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

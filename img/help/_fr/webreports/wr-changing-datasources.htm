@@ -1,0 +1,199 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Configuration de la source de données</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-changing-datasources.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Utilisation du module WebReports';
+          header.title2 = 'Configuration de la source de données';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID327"></A>Le module WebReports prend en charge plusieurs types de sources de données. Ces sources de données fournissent un WebReport avec ensemble de données lors de son exécution. Par exemple, vous pouvez utiliser une recherche Content Server. Lors de l'exécution du WebReport donné, celui-ci effectue la requête de recherche associée puis utilise ces résultats pour fournir les données sous-jacentes traitées par l'affichage de rapport afin de créer la sortie visible par l'utilisateur final. </P>
+<P><A NAME="TMPID329"></A>Pour configurer la source de données pour un WebReport, choisissez <B CLASS="guilabel">Propriétés</B>, puis <B CLASS="guilabel">Source</B> à partir du menu Fonctions. </P>
+<DIV title="Types de source de données" CLASS="table">
+<P CLASS="table" ALIGN="LEFT"><A NAME="WR-CHANGE-DATSRC-T"></A><B>Tableau 1-1 : Types de source de données</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="table">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Type de source de données</B></TD></TR></TABLE></TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Description</B></TD></TR></TABLE></TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Content Server Requête</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Elle est utilisée pour tous les objets Content Server qui fournissent des données à partir de requêtes SQL ou de requêtes d'index de recherche. Les exemples les plus courants sont les rapports LiveReport, les requêtes enregistrées, les modèles de formulaires, les objets WebForms, les dossiers, les documents composites, les listes de tâches, les groupes de tâches, les chaînes et les discussions. Il vous faut uniquement rechercher l'objet source à utiliser.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Content Server Fichier</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Il permet l'utilisation de fichiers dans Content Server, dotés de tables HTML ou de données délimitées, en tant que sources de données. Il fournit certains paramètres de configuration permettant l'interprétation correcte du fichier de données. Ces paramètres sont les suivants :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID362"></A><B CLASS="highlight">Emplacement du fichier statique</B> : il permet à l'utilisateur de rechercher un document dans Content Server qui sera utilisé en tant que source de données.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID366"></A><B CLASS="highlight">Type de fichier</B> : ce paramètre permet à l'utilisateur de sélectionner le type de fichier utilisé en tant que source de données. Actuellement, les deux possibilités sont : valeurs séparées (CSV, délimitée par des tabulations, etc.) et table HTML.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID369"></A><B CLASS="highlight">Type de contenu</B> : ce paramètre n'est visible que lorsque le type de fichier <B CLASS="highlight">Valeurs séparées</B> a été sélectionné. Il permet d'analyser la source de données à optimiser selon le contenu du fichier. Par exemple, la plupart des formats délimités comme le format CSV ont besoin de moyens pour permettre le stockage du délimiteur dans les données sans interférer avec le logiciel d'analyse. Dans l'exemple du format CSV, les produits comme Microsoft Excel placent toutes les cellules de données comportant des virgules entre guillemets. Si vous savez que les cellules d'un fichier donné ne sont pas délimitées par des guillemets, sélectionnez l'option <B CLASS="highlight">Aucune cellule entre guillemets</B> qui offre les performances les plus rapides. Si vous savez que toutes les cellules d'un fichier donné sont entre guillemets, l'option <B CLASS="highlight">Toutes les cellules sont entre guillemets</B> doit être utilisée. L'option <B CLASS="highlight">Certaines cellules sont entre guillemets</B> est l'option la plus solide (ainsi que la meilleure pour exporter les données Excel). Il est à noter que cette option est plus lente que les deux premières options.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID376"></A><B CLASS="highlight">Supposer une syntaxe stricte</B> : ce paramètre permet à l'utilisateur de spécifier si la source de données a une syntaxe stricte et prévisible. Par exemple, dans un fichier de valeurs séparées par une virgule, la virgule entre chaque cellule ne sera normalement pas précédée ou suivie d'une espace. Si c'est le cas, cette option doit être cochée. Pour les types de fichier de valeurs séparées (par exemple CSV), cette option n'est disponible que pour <B CLASS="highlight">Toutes les cellules sont entre guillemets</B> et <B CLASS="highlight">Certaines cellules sont entre guillemets</B>. Avec les fichiers HTML, la syntaxe stricte indique que toutes les balises de table/ligne/cellule seront formées sans attribut et sans espace. Par exemple : &lt;<I CLASS="varname">TABLE</I>>, &lt;<I CLASS="varname">TR</I>>, &lt;<I CLASS="varname">TD</I>>. Quel que soit le type de fichier sélectionné, cette option ne doit pas être utilisée lorsque la syntaxe n'est pas prévisible ou connue.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID384"></A><B CLASS="highlight">Séparateur de colonne</B> : ce paramètre n'est visible que lorsque le type de fichier <B CLASS="highlight">Valeurs séparées</B> a été sélectionné. Il est utilisé pour indiquer le caractère qui va séparer chaque cellule de données. Pour les fichiers CSV, ce caractère est toujours une virgule. Pour les fichiers délimités par des tabulations, ce caractère serait une tabulation. Le lien tabulation, situé en regard de ce champ, peut être utilisé pour insérer automatiquement une balise (<B CLASS="highlight">\t</B>).</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID389"></A><B CLASS="highlight">Séparateur de ligne</B> : ce paramètre n'est visible que lorsque le type de fichier <B CLASS="highlight">Valeurs séparées</B> a été sélectionné. Il est utilisé pour indiquer le caractère qui va séparer chaque ligne de données. Pour les fichiers CSV, ce caractère est toujours un retour chariot (parfois appelé fin de ligne) ou une combinaison d'un retour chariot et d'un saut de ligne. Divers systèmes d'exploitation peuvent utiliser différentes variations de ces caractères. Les liens situés en regard de ce champ peuvent être utilisés pour insérer automatiquement des caractères qui ne peuvent pas être saisis sur le clavier. La convention suivante est utilisée : <B CLASS="highlight">\t</B> pour une tabulation, <B CLASS="highlight">\r</B> pour un retour chariot/une fin de ligne et <B CLASS="highlight">\n</B> pour une nouvelle ligne/un saut de ligne.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID396"></A><B CLASS="highlight">Guillemet</B> : ce paramètre n'est visible que lorsque le type de fichier <B CLASS="highlight">Valeurs séparées</B> a été sélectionné. Il est utilisé pour indiquer le caractère pour appliquer des guillemets dans les cellules. Les cellules sont habituellement placées entre guillemets lorsque les données des cellules contiennent des caractères généralement utilisés pour séparer les cellules de données Par exemple, avec les fichiers CSV, si les données de cellules contiennent une virgule, des « guillemets doubles » sont placés au début et à la fin des données. Les guillemets doubles sont probablement les caractères les plus utilisés pour les citations, mais ce paramètre donne la possibilité d'utiliser un autre caractère.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID401"></A><B CLASS="highlight">Guillemets d'échappement</B> : ce paramètre n'est visible que lorsque le type de fichier <B CLASS="highlight">Valeurs séparées</B> a été sélectionné. Il est utilisé pour indiquer les caractères qui représentent un guillemet dans un cellule entre guillemets. Par exemple, dans les fichiers CSV, si une cellule de données est placée entre guillemets et que des guillemets doubles sont nécessaires dans la cellule entre guillemets, alors ces guillemets seront représentés par «  ». Doubler les guillemets représente le moyen le plus courant d'insérer des guillemets dans une cellule. Mais ce paramètre constitue une autre méthode.</P></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">En-têtes de colonne inclus</B> : ce paramètre est utilisé pour la <B CLASS="highlight">Table HTML</B>, ainsi que pour les <B CLASS="highlight">Valeurs séparées</B>. Il est sélectionné lorsque les en-têtes sont inclus dans la première ligne de la source de données. Lorsqu'il n'est pas sélectionné, des noms de colonne génériques sont utilisés (Colonne1, colonne2, etc.).</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Content Server Catégorie</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Elle permet aux <B CLASS="highlight">Catégories Content Server</B> d'être utilisées en tant que sources de données. Une ou plusieurs catégories Content Server peuvent être sélectionnées. Le nombre de catégories Content Server pouvant être sélectionnées est limité par l'administrateur Content Server. Lorsqu'une catégorie Content Server a été sélectionnée, la page est actualisée et tous les <B CLASS="highlight">Attributs d'une catégorie</B> s'affichent sur la page. Utilisez les cases à cocher pour sélectionner un ou plusieurs <B CLASS="highlight">Attributs</B> à inclure dans les résultats du rapport. Chaque enregistrement dans les données du rapport va inclure l'ID de données de l'élément, le sous-type, ainsi qu'une valeur pour chaque catégorie/attribut sélectionné. Les attributs à valeurs multiples seront concaténés à l'aide d'un délimiteur de valeur, tel que défini par l'administrateur Content Server. Sélectionnez la case à cocher <B CLASS="highlight">Filtrer les autorisations</B> si vous souhaitez que les résultats du rapport soient limités en fonction des autorisations de l'utilisateur pour VOIR chaque élément de nœud. Utilisez le menu Fonctions en regard de chaque catégorie/attribut sélectionné pour choisir un <B CLASS="highlight">Opérateur de requête</B>. La sélection d'un opérateur de requête va activer la catégorie/l'attribut spécifié pour qu'il soit utilisé comme <B CLASS="highlight">Paramètre WebReport</B>. Sélectionnez le bouton <B CLASS="highlight">Afficher SQL</B> pour afficher la requête SQL à exécuter pour récupérer les données de la catégorie/de l'attribut.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Fichier externe</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Il permet l'utilisation de fichiers en dehors de Content Server (en général, dans un dossier visible pour Content Server) en tant que sources de données. Ces fichiers doivent contenir des données tabulaires ou délimitées conformément au type de source de données <B CLASS="highlight">Fichier Content Server</B>, et les mêmes options de configuration sont disponibles.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">FTP</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Il permet d'accéder aux fichiers via un serveur ftp. Les options de configuration sont les mêmes que celles du type de source de données <B CLASS="highlight">Fichier Content Server</B> avec des paramètres supplémentaires afin de déterminer les détails du serveur ftp. Les paramètres pris en charge sont :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID436"></A><B CLASS="highlight">Serveur FTP</B> : le nom de domaine ou de serveur à utiliser pour accéder au ftp.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID439"></A><B CLASS="highlight">Chemin d'accès au fichier FTP</B> : le chemin d'accès au fichier de la source de données relatif au dossier racine FTP. Par exemple <B CLASS="highlight"> /data.txt</B>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID443"></A><B CLASS="highlight">Port FTP</B> : le port de serveur configuré pour accéder au FTP (la configuration standard est le port 21).</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID446"></A><B CLASS="highlight">Connexion utilisateur anonyme</B> : sélectionnez cette case à cocher pour utiliser l'authentification utilisateur <B CLASS="highlight">Anonyme</B>. Avec cette option, l'<B CLASS="highlight">Adresse e-mail de l'utilisateur du rapport</B> sera utilisée comme mot de passe d'authentification. Vous devez vous assurer que le serveur ftp est configuré de manière à autoriser l'accès utilisateur anonyme avant d'utiliser cette option. Décochez la case pour afficher les champs d'entrée de données <B CLASS="highlight">Nom d'utilisateur FTP</B> et <B CLASS="highlight">Mot de passe de l'utilisateur FTP</B>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID453"></A><B CLASS="highlight">Nom d'utilisateur FTP</B> : le nom d'utilisateur FTP pour l'authentification sur le serveur FTP. Utilisez cette option lorsque vous n'utilisez pas l'option Connexion utilisateur anonyme.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID456"></A><B CLASS="highlight">Mot de passe de l'utilisateur FTP</B> : le mot de passe de l'utilisateur FTP pour l'authentification sur le serveur FTP. Utilisez cette option lorsque vous n'utilisez pas l'option Connexion utilisateur anonyme.</P></TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP"><B CLASS="highlight">Remarques importantes :</B> Le serveur ftp doit permettre d'accéder à un fichier au bon format. Selon le système d'exploitation source et le type de fichiers transférés, la valeur du séparateur de ligne peut varier entre « r\n » et « \n » pour permettre le bon affichage des résultats. Le transfert de fichiers FTP est effectué en <B CLASS="highlight"><I CLASS="emphasis"> Mode Binaire</I></B> à l'aide de la <B CLASS="highlight"><I CLASS="emphasis">Connexion FTP passive</I></B>. Contactez un administrateur système pour déterminer si une configuration Serveur FTP ou Pare-feu est nécessaire.</TD></TR></TABLE> </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Application externe</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Elle permet d'accéder aux fichiers via un serveur externe (en général un serveur Web). Les options de configuration sont les mêmes que celles du type de source de données <B CLASS="highlight">Fichier Content Server</B> avec des paramètres supplémentaires afin de déterminer les détails du serveur externe. Le serveur externe doit permettre d'accéder à un fichier au bon format, ou bien à un script côté serveur approprié pour appeler le logiciel nécessaire afin de renvoyer un fichier au bon format. Les paramètres pris en charge sont :</TD></TR></TABLE> <TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID474"></A><B CLASS="highlight">Serveur </B> : le nom de domaine ou de serveur à utiliser pour accéder à l'application externe.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID477"></A><B CLASS="highlight">Chemin d'accès au serveur</B> : le chemin d'accès au fichier complet (peut inclure les paramètres URL) pour accéder à l'application</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID480"></A><B CLASS="highlight">Port</B><B CLASS="highlight"> du serveur</B> : le port utilisé pour accéder au serveur</P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Lancement de la requête de recherche</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Cette fonction est utilisée pour définir les WebReports susceptibles d'être appelés à partir de l'écran standard de lancement de la recherche Content Server. Il s'agit de l'écran que les utilisateurs voient généralement lorsqu'ils sélectionnent la recherche avancée dans Content Server. Les WebReports qui utilisent le lancement de la requête de recherche seront disponibles et répertoriés pour tous les utilisateurs qui disposent des autorisations appropriées. Aucun paramètre supplémentaire n'est requis.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Aucune</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Ce critère est sélectionné lorsqu'aucune source de données n'est requise. Aucun paramètre n'est requis.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Source de données requête</TD></TR></TABLE></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Elle ne peut pas être sélectionnée à partir de l'onglet Source. Sa mise en œuvre est effectuée grâce aux données fournies dans les paramètres prédéterminés lorsqu'un WebReport est appelé.</TD></TR></TABLE></TD></TR></TABLE></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

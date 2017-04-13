@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Gestion des flux de données</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wbs-datafwfd-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Gestion de la recherche';
+          header.title2 = 'Gestion des flux de données';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3182"></A>Un flux de données est un ensemble de processus liés qui traitent les données à partir d'une seule source dans Content Server. Content Server vous permet de créer un flux de données qui indexe les données d'une source spécifique afin de pouvoir y effectuer des recherches. Vous créez des flux de données d'indexation lorsque vous créez des index. Les processus de flux de données d'un flux de données d'indexation incluent les processus, qui localisent ou extraient les données (par exemple, le processus Extracteur Entreprise, Directory Walker ou XML Activator), le processus Conversion de documents, qui convertit les données de leur format natif au format HTML ou texte brut et le processus Distributeur de mise à jour, qui transmet les données aux moteurs d'indexation pour qu'elles y soient indexées.</P>
+<P><A NAME="TMPID3185"></A>Après avoir ajouté les processus qui constituent un flux de données, vous pouvez gérer celui-ci (par exemple, le reprendre, l'interrompre ou le resynchroniser).</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF73">Affichage des images de flux de données</A></P>
+<P><A NAME="TMPID3187"></A>La navigation, méthode d'affichage par défaut des flux de données, permet d'afficher des listes de processus et d'IPools dans un flux de données. Lorsque vous affichez une image de flux de données, vous pouvez voir une représentation graphique du mode de liaison entre les processus et les IPools dans un flux de données. Pour plus d'informations sur l'affichage d'une image de flux de données, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-dfpics-bg.htm">Affichage des images de flux de données</A></span>.</P>
+<P CLASS="bridgehead-boldpara"><A NAME="TMP4REF74">Surveillance du statut des flux de données</A></P>
+<P class="before-ul"><A NAME="TMPID3190"></A>Vous pouvez surveiller le statut d'un flux de données dans un dossier source de données. Un flux de données peut avoir les statuts suivants :</P><A NAME="AEN2560"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2561"></A><A NAME="TMPID3193"></A><B CLASS="guilabel">Actif</B>, qui indique que tous les processus du flux de données sont en cours d'exécution ou programmés pour être exécutés.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2564"></A><A NAME="TMPID3196"></A><B CLASS="guilabel">Inactif : n exécutés</B>, qui indique qu'un processus au moins du flux de données est inactif. La valeur <TT CLASS="literal">n</TT> indique le nombre de processus en cours d'exécution ou dont l'exécution est programmée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2568"></A><A NAME="TMPID3200"></A><B CLASS="guilabel">Inactif</B>, qui indique que tous les processus du flux de données sont inactifs.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2571"></A><A NAME="TMPID3203"></A><B CLASS="guilabel">Problème : n exécutés</B>, qui indique qu'au moins un processus du flux de données renvoie un message d'erreur. La valeur <TT CLASS="literal">n</TT> indique le nombre de processus en cours d'exécution ou dont l'exécution est programmée.</P></LI></UL>
+<P class="before-ul"><A NAME="TMPID3206"></A>Lorsque vous naviguez dans le gestionnaire de flux de données ou que vous affichez une image de flux de données, vous pouvez surveiller le statut de chaque processus dans un flux de données. Un processus de flux de données peut avoir les statuts suivants :</P><A NAME="AEN2576"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2577"></A><A NAME="TMPID3209"></A><B CLASS="guilabel">En cours d'exécution</B>, qui indique que le processus est en cours d'exécution.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2580"></A><A NAME="TMPID3212"></A><B CLASS="guilabel">Programmé</B>, qui indique que le processus est programmé pour être exécuté, mais qu'il n'exécute pas de nouveaux statuts.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2583"></A><A NAME="TMPID3215"></A><B CLASS="guilabel">Contact des moteurs d'indexation</B>, qui indique que le processus a terminé l'initialisation et tente de contacter les processus du moteur d'indexation. Ce statut apparaît uniquement pour le processus du distributeur de mise à jour.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2586"></A><A NAME="TMPID3218"></A><B CLASS="guilabel">En attente des moteurs d'indexation</B>, qui indique que le processus n'a pas encore pu contacter de processus du moteur d'indexation.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2589"></A><A NAME="TMPID3221"></A><B CLASS="guilabel">Recherche du distributeur de mise à jour</B>, qui indique que le processus tente de contacter le serveur d'échange afin de déterminer le port utilisé par le processus Distributeur de mise à jour. Ce statut apparaît uniquement pour le processus du moteur d'indexation.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2592"></A><A NAME="TMPID3224"></A><B CLASS="guilabel">Contact du distributeur de mise à jour</B>, qui indique que le processus a trouvé le port du processus du distributeur de mise à jour et a terminé l'initialisation et tente actuellement de contacter le processus. Ce statut apparaît uniquement pour le processus du moteur d'indexation.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2595"></A><A NAME="TMPID3227"></A><B CLASS="guilabel">Création d'un index vide</B>, qui indique que le processus crée l'index pour la première fois. Ce statut apparaît uniquement pour le processus du moteur d'indexation.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2598"></A><A NAME="TMPID3230"></A><B CLASS="guilabel">Chargement de l'index</B>, qui indique que le processus charge un index dans la mémoire. Ce statut, disponible principalement lorsque l'index est volumineux, apparaît uniquement pour les processus du moteur d'indexation et du moteur de recherche.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2601"></A><A NAME="TMPID3233"></A><B CLASS="guilabel">Restauration de l'index</B>, qui indique que le processus charge un index restauré dans la mémoire. Ce statut, disponible principalement lorsque l'index est volumineux, apparaît uniquement pour le processus du moteur d'indexation.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2604"></A><A NAME="TMPID3236"></A><B CLASS="guilabel">En attente des moteurs de recherche</B>, qui indique que le processus attend d'être contacté par un processus du moteur d'indexation. Ce statut apparaît uniquement pour le processus du fédérateur de recherche.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2607"></A><A NAME="TMPID3239"></A><B CLASS="guilabel">En attente de l'index initial</B>, qui indique que le processus attend qu'un processus du moteur d'indexation crée un index initial. Ce statut apparaît uniquement pour le processus du moteur de recherche.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2610"></A><A NAME="TMPID3242"></A><B CLASS="guilabel">Inscription avec le fédérateur de recherche</B>, qui indique que le processus contacte un fédérateur de recherche. Ce statut apparaît uniquement pour le processus du moteur de recherche.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2613"></A><A NAME="TMPID3245"></A><B CLASS="guilabel">Inactif</B>, qui indique que le processus est arrêté et qu'il n'est pas programmé pour être exécuté.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2616"></A><A NAME="TMPID3248"></A><B CLASS="guilabel">Erreur</B> &lt;<I CLASS="varname"><B CLASS="guilabel">n</B></I>>, qui indique que le processus renvoie un message d'erreur. Cliquez sur le message d'erreur pour afficher l'onglet <B CLASS="guilabel">Infos spécifiques</B> de la page Propriétés du processus de flux de données. Vous pouvez alors modifier le paramètre du processus.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2622"></A><A NAME="TMPID3254"></A><B CLASS="guilabel">Inconnu</B>, qui indique que Content Server a pu communiquer avec le serveur d'administration, mais que ce dernier n'a pas pu consigner le statut du processus. Cela peut se produire si le fichier <TT CLASS="filename">otadmin.cfg</TT> du serveur d'administration est endommagé, manquant ou s'il n'est pas synchronisé avec la base de données Content Server.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2628"></A><A NAME="TMPID3260"></A><B CLASS="guilabel">Admin N/A</B>, qui indique que le serveur d'administration n'est pas disponible, ce qui signifie qu'il ne peut pas consigner le statut du processus. Si le serveur d'administration n'est pas disponible, il est possible qu'il n'existe pas.</P></LI></UL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../websystemobj/wbs-specdflw-bg.htm" revision="">Maintenance des flux de données</A></p></li>
+<li><p><A  href="../websystemobj/wbs-movedflw-bg.htm" revision="">Pour déplacer des composants de flux de données</A></p></li>
+<li><p><A  href="../websystemobj/wbs-configdflwstrt-bg.htm" revision="">Configuration des options de lancement d'un processus de flux de données</A></p></li>
+<li><p><A  href="../websystemobj/wbs-configdflwstp-bg.htm" revision="">Configuration des options d'arrêt d'un processus de flux de données</A></p></li>
+<li><p><A  href="../websystemobj/wbs-dfpics-bg.htm" revision="">Affichage des images de flux de données</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

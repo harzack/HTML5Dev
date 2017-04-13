@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>WebReports DSstartrow et DSendrow</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-pagdsds-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Pagination dans WebReports';
+          header.title2 = 'WebReports DSstartrow et DSendrow';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID19056"></A>Lorsqu'il s'agit de gérer des ensembles de résultats de taille modérée ou des sources de données autres que des rapports LiveReport, les paramètres des sources de données DSstartrow, DSendrow et DSmaxrows fournissent un moyen relativement simple pour mettre en œuvre un mécanisme de pagination (ce qui signifie que les performances du réseau pourraient être un facteur dans le temps de réponse global). En utilisant cette méthode, la totalité de l'ensemble de résultats sera transmise de la base de données au serveur Livelink. WebReports utilise alors les paramètres DSstartrow et DSendrow pour prendre une vue de recherche de l'ensemble avant de le remettre au client. </P>
+<P><A NAME="TMPID19057"></A>En utilisant cette méthode, nous n'avons pas à nous soucier des mécanismes de pagination dans la requête SQL actuelle. Cela signifie que si nous travaillions avec le même ensemble de résultats que dans le premier exemple, nous n'avons besoin que de la requête la plus centrale select * from DTree. La méthode est alors parfaitement adaptée aux bases de données SQL Server qui ne prennent pas en charge rownum. </P>
+<P><A NAME="TMPID19058"></A>Si l'on utilise le même affichage de rapport que ci-dessus, il est nécessaire de modifier les paramètres. A retenir : les valeurs par défaut doivent être définies dans l'onglet Paramètres de WebReports lors de la première exécution du rapport : </P><A NAME="AEN18294"></A>
+<PRE 
+CLASS="screen"
+>var p1 = [LL_REPTAG_&amp;DSstartrow /];
+var p2 = [LL_REPTAG_&amp;DSendrow /];</PRE
+>
+<P><A NAME="TMPID19060"></A>Les boutons doivent également être modifiés de façon à ce que la fonction getPage() soit transmise aux nouveaux paramètres qui représentent les noms des paramètres de contrôle de la pagination : </P><A NAME="AEN18296"></A>
+<PRE 
+CLASS="screen"
+>&lt;INPUT TYPE=BUTTON ID=FIRST VALUE=&lt;&lt; ONCLICK="getPage(wrurl, 'first', myCnt, pageSize, p1, p2, 'DSstartrow', 'DSendrow');"&gt;
+&lt;INPUT TYPE=BUTTON ID=PREVIOUS VALUE=&lt; ONCLICK="getPage(wrurl, 'prev', myCnt, pageSize, p1, p2, 'DSstartrow', 'DSendrow' );"&gt;
+&lt;INPUT TYPE=BUTTON ID=NEXT VALUE=&gt; ONCLICK="getPage(wrurl, 'next', myCnt, pageSize, p1, p2, 'DSstartrow', 'DSendrow' );"&gt;
+&lt;INPUT TYPE=BUTTON ID=LAST VALUE=&gt;&gt; ONCLICK="getPage(wrurl, 'last', myCnt, pageSize, p1, p2, 'DSstartrow', 'DSendrow' );"&gt;</PRE
+>
+<P><A NAME="TMPID19062"></A>Si nous utilisions une source de données de recherche avec DSstartrow et DSendrow, nous devrions utiliser une méthode légèrement différente pour rechercher le nombre total de résultats. En utilisant la balise spécifique à la source de données de recherche INDEXTOTALHITS, nous pouvons obtenir la même chose que le sous-rapport WebReport qui réalise l'opération de comptage : <TT CLASS="literal">var myCnt = [LL_REPTAG_INDEXTOTALHITS /];</TT> </P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

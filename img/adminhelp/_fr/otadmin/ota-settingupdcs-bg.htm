@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBS100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="websystemobj">
+<META mancondkey="lleswbb-h-ugd -- lleswbb-h-agd -- llesels-h-ugd -- llesrec-h-agd -- llesels-h-agd -- llesrt-h-ugd -- llesapp-h-ugd -- lleswba-h-agd -- llescor-igd -- lleselv-h-agd -- lleswbo-h-agd -- llescl-h-agd"><title>Configuration du service de conversion de documents</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'ota-settingupdcs-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des processus de flux de données';
+          header.title2 = 'Configuration du service de conversion de documents';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID5139"></A>Le service de conversion de documents (DCS) est un processus qui convertit des documents au format HTML ou au format de texte simple. Dans Content Server, le DCS est géré par les serveurs d'administration. Il fournit deux services dans Content Server : il convertit des éléments pour que les utilisateurs puissent les mettre en évidence ou les afficher dans Content Server ; il convertit les données lorsqu'elles sont transmises via un flux de données d'indexation. Dans les flux de données, le DCS est appelé « processus de conversion de documents ». Lorsque vous configurez le DCS, vous déterminez son fonctionnement lors de la conversion d'éléments pour des opérations Content Server, telles que la mise en évidence des résultats et l'affichage. Pour plus d'informations sur la configuration du DCS pour la conversion de données dans des flux de données, reportez-vous à la rubrique <span><A href="../websystemobj/wbs-spechtml-bg.htm">Configuration des processus Conversion de documents</A></span>. La configuration du DCS comprend son activation, sa configuration proprement dite et le contrôle de son statut.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF104">Activation du DCS</A></P>
+<P><A NAME="TMPID5146"></A>Lorsque vous installez ou mettez à niveau Content Server, vous pouvez activer le DCS qui sera géré par votre serveur d'administration par défaut. A chaque fois que vous ajoutez un nouveau serveur d'administration ou configurez un serveur d'administration existant, vous pouvez également activer un DCS qui sera géré par chaque serveur. Chaque serveur d'administration ne peut gérer qu'un seul DCS. En activant plusieurs DCS, vous avez la possibilité de répartir la charge de conversion de documents sur plusieurs serveurs d'administration, ce qui vous permet d'améliorer les performances générales de votre système. Si un serveur d'administration devient indisponible, le DCS qu'il gère est également indisponible ; cependant, si d'autres serveurs d'administration sont disponibles et qu'ils gèrent un DCS, ces DCS peuvent se charger de la conversion de documents. Vous pouvez à tout moment désactiver un DCS sur votre site ; cependant, au moins un DCS doit être activé pour que la conversion de documents puisse avoir lieu.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF105">Configuration des paramètres DCS</A></P>
+<P><A NAME="TMPID5149"></A>Après avoir activé les DCS, vous pouvez les configurer. Chaque DCS dispose de son propre fichier de configuration qui prend en compte les paramètres que vous configurez.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF106"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID5151"></A><B CLASS="note">Note : </B><BR>Le fichier de configuration DCS est stocké dans le répertoire config d'une installation Content Server principale.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID5153"></A>Lorsque vous activez un DCS, Content Server configure pour vous la plupart des paramètres DCS. Vous pouvez à tout moment modifier ces paramètres pour personnaliser le fonctionnement du DCS. Les numéros de port sont l'un des paramètres que Content Server configure automatiquement. Content Server sélectionne les ports disponibles pour le DCS et configure le numéro de port DCS et Admin. Le numéro de port Admin est le numéro du port sur lequel le DCS est en réception pour les informations provenant du serveur d'administration ; le numéro de port DCS est le numéro du port que les opérations Content Server utilisent pour communiquer avec le DCS. Les autres paramètres que Content Server peut configurer automatiquement comprennent le fichier journal, à savoir l'emplacement du fichier enregistrant les informations de journalisation pour le DCS que vous configurez ; le répertoire de lancement et le chemin de filtre, à savoir les emplacements de stockage des filtres de conversion de documents ; le fichier de règles, à savoir l'emplacement de stockage du fichier de règles de conversion de documents. Le fichier de règles de conversion de documents est un fichier utilisé par le DCS pour déterminer les filtres de conversion à utiliser.</P>
+<P><A NAME="TMPID5159"></A>Le répertoire des fichiers temporaires est un paramètre qui n'est pas configuré automatiquement ; vous devez donc le spécifier. Le répertoire des fichiers temporaires est un emplacement de stockage temporaire dont ont besoin les filtres de conversion.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF107"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID5161"></A><B CLASS="note">Note : </B><BR>Content Server ajoute le numéro du port Admin au nom des fichiers journaux du DCS à leur création. Par exemple, le nom du fichier journal correspondant à un DCS dont le numéro du port Admin est 5868 est dcs_5868.log. L'emplacement du répertoire de lancement et le chemin de filtre devraient correspondre ; cependant, sur les systèmes d'exploitation Windows, ils doivent impérativement correspondre.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID5163"></A>Content Server configure également les valeurs par défaut des paramètres suivants :</P><A NAME="AEN4534"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4535"></A><A NAME="TMPID5167"></A>Niveau de consignation : cette option permet de spécifier le type d'informations de consignation qui sont enregistrées (par exemple, <B CLASS="guilabel">0</B> indique qu'aucune consignation n'aura lieu ; <B CLASS="guilabel">1</B> indique que seuls les erreurs et les documents qui n'ont pas pu être indexés sont enregistrés ; <B CLASS="guilabel">2</B> indique que les erreurs et les événements de conversion de documents, tels que les informations de chargement des filtres, sont enregistrés ; <B CLASS="guilabel">3</B> indique que les erreurs, les événements de conversion de documents et les statistiques de performance sont enregistrés ; <B CLASS="guilabel">4</B> indique que les erreurs, les statistiques de performance et les événements d'IPool sont enregistrés).</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4542"></A><A NAME="TMPID5174"></A>Délai d'attente de la conversion : cette option permet de spécifier le nombre maximal de secondes pendant lesquelles Content Server attend avant de retourner une erreur lorsqu'il essaye d'afficher des documents convertis.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4545"></A><A NAME="TMPID5177"></A>Nombre de threads : cette option permet de spécifier le nombre de demandes de conversion de documents que le DCS peut traiter simultanément.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4547"></A><A NAME="TMPID5179"></A>Taille de la file d'attente : cette option permet de spécifier le nombre maximal de documents que le DCS peut mettre en attente avant la conversion.</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF108"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID5181"></A><B CLASS="note">Note : </B><BR>Les valeurs que vous indiquez pour le nombre de threads et la taille de la file d'attente dépendent des variables de votre site Content Server, y compris le nombre d'utilisateurs, le nombre d'ordinateurs consacrés aux DCS et la quantité de ressources système disponibles.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TMP4REF109">Suivi du statut du DCS</A></P>
+<P class="before-ul"><A NAME="TMPID5184"></A>Le suivi du statut d'un DCS vous permet de gérer ses performances. Les DCS peuvent avoir les statuts suivants :</P><A NAME="AEN4554"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4555"></A><A NAME="TMPID5187"></A><B CLASS="guilabel">En cours d'exécution</B> : le DCS est en cours d'exécution.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4558"></A><A NAME="TMPID5190"></A><B CLASS="guilabel">Pas en cours d'exécution</B> : le DCS est arrêté et n'est pas programmé pour être exécuté.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4561"></A><A NAME="TMPID5193"></A><B CLASS="guilabel">Désactivé</B> : le DCS a été manuellement désactivé. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4564"></A><A NAME="TMPID5196"></A><B CLASS="guilabel">Manquant dans le serveur d'administration</B> : le serveur d'administration qui gère le DCS ne peut pas trouver la configuration de celui-ci. Vous devez resynchroniser le serveur d'administration pour recréer le DCS. Pour plus d'informations sur la resynchronisation des serveurs d'administration, reportez-vous à la rubrique <span><A href="../otadmin/ota-resynchlladminserver-bg.htm">Resynchronisation des serveurs d'administration</A></span>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4568"></A><A NAME="TMPID5200"></A><B CLASS="guilabel">Erreur renvoyée</B> : une erreur DCS s'est produite.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4571"></A><A NAME="TMPID5203"></A><B CLASS="guilabel">Erreur du serveur d'administration renvoyée</B> : une erreur s'est produite avec le serveur d'administration lors de la récupération du processus DCS. Dans ce cas, le serveur d'administration est peut-être arrêté.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN4574"></A><A NAME="TMPID5206"></A><B CLASS="guilabel">Etat inconnu</B> : le DCS ne peut pas communiquer avec le serveur d'administration.</P></LI></UL>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../otadmin/ota-toconfigdcs-p.htm" revision="">Pour configurer le service de conversion de documents</A></p></li>
+<li><p><A  href="../websystemobj/wbs-spechtmlrf-p.htm" revision="">Pour configurer les paramètres de conversion de documents</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

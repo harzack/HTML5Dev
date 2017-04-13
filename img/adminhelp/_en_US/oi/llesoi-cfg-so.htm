@@ -1,0 +1,191 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESSOI100500-H-AGD-EN-1">
+<META PiXprocLocator="objectimporter">
+<title>Configuring Object Importer</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webnotify/condstyles.css">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webadmin/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfg-so.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'OpenText Object Importer: <NOBR>OpenText Content Server Admin Online Help</NOBR>';
+          header.title2 = 'Configuring Object Importer';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID53"></A>OpenText Object Importer enables the automatic import of any number of objects from the local file system into Content Server. The control file that manages the process is configurable. Within the control file, you specify where in Content Server to upload the objects, and where the objects to be uploaded are located on the file system. You also have full control over each object's permissions, title, attributes, and other object metadata within Content Server. You can import the following Content Server object types: &#13;</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN65"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Object Type</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Object Importer Syntax</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Alias</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">alias</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Compound Document</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">compounddoc <I CLASS="EMPHASIS">or</I> cd<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">OpenText recommends that you use <TT CLASS="LITERAL">compounddoc</TT>.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Custom View</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">customview</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Discussion</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">discussion</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Document</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">document</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Folder</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">folder</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Project</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">project</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Reply</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">reply</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Task</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">task</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Task Group</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">taskgroup</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Task List</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">tasklist</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Task Milestone</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">taskmilestone</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Topic</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">topic</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">URL</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">url</TD></TR></TABLE>
+</DIV></P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-CFG-BG">Working with Object Importer Configuration</A></P>
+<P class="before-ul"><A NAME="TMPID125"></A>From the <B CLASS="GUILABEL">Configure Object Importer</B> page, you define how the object import processes occur. You must specify the full paths to the control file, working, and log directories on the <B CLASS="GUILABEL">Configure Object Importer</B> page. First, you must create the three directories and ensure that they are visible to Content Server: &#13;</P><A NAME="AEN145"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN146"></A><A NAME="TMPID150"></A>The control file directory is the location where Object Importer looks for import files. An example of a valid control file directory is:  <TT CLASS="FILENAME">C:\OPENTEXT\object_importer\controlfile</TT>, where <TT CLASS="FILENAME">C:\OPENTEXT</TT> is the default install path for Content Server.&#13;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN154"></A><A NAME="TMPID158"></A>The working directory is the location where Object Importer processes the import. An example of a valid working directory is:  <TT CLASS="FILENAME">C:\OPENTEXT\object_importer\working</TT>, where <TT CLASS="FILENAME">C:\OPENTEXT</TT> is the default install path for Content Server.&#13;</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN162"></A><A NAME="TMPID166"></A>The log directory is the location where Object Importer writes log files. In order to view and delete log files from the Object Importer <B CLASS="GUILABEL">View Import Log Files</B> page, this directory must be located in either <TT CLASS="FILENAME">&lt;<I CLASS="VARNAME">Content Server_home</I>>\logs</TT> or <TT CLASS="FILENAME">&lt;<I CLASS="VARNAME">Content Server_home</I>>\object_importer</TT>. An example of a valid log directory is:  <TT CLASS="FILENAME">C:\OPENTEXT\object_importer\logfiles</TT>, where <TT CLASS="FILENAME">C:\OPENTEXT</TT> is the default install path for Content Server.&#13;</P></LI></UL>
+<table CLASS="IMPORTANT">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="IMPORTANT"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID182"></A><B CLASS="IMPORTANT">Important: </B><BR>The control file, working, and log directories must be created, visible to Content Server, and specified on the <B CLASS="GUILABEL">Configure Object Importer</B> page, otherwise imports will not proceed.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P class="before-ul"><A NAME="TMPID186"></A>In addition to creating the Object Importer-specific configuration detailed above, you must also:</P><A NAME="AEN185"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN186"></A><A NAME="TMPID190"></A>Ensure the Admin user's email address is set in the Admin user's account page. This page is accessed by selecting <B CLASS="GUILABEL">Users &amp; Groups</B> from the <B CLASS="GUILABEL">Enterprise</B> menu. Search for the Admin user on the <B CLASS="GUILABEL">Users &amp; Groups</B> page, then click <B CLASS="GUILABEL">Edit</B> next to the Admin user's name. Enter an email address for the Admin user.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN192"></A><A NAME="TMPID196"></A>Fill in the <B CLASS="GUILABEL">Notifications</B> page. The <B CLASS="GUILABEL">Notifications</B> page does not need to be enabled. For more information about the <B CLASS="GUILABEL">Notifications</B> page, see <I CLASS="EMPHASIS">Configuring Notifications, Reports, Events, and Settings</I> in the <span><XPROC NAME="ExtXrefStart" HREF="lleswbn-h-agd.wbn-config-report-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webnotify/wbn-config-report-bg.htm">Clearing Outstanding Events</A><XPROC NAME="ExtXrefEnd" HREF="lleswbn-h-agd.wbn-config-report-bg" FMT=""></span>.</P></LI></UL>
+<table CLASS="IMPORTANT">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="IMPORTANT"><IMG ALT="Important" SRC="../../images/pi_important.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID203"></A><B CLASS="IMPORTANT">Important: </B><BR>If the Admin user's email address is not set, or the <B CLASS="GUILABEL">Notifications</B> page is not filled in, imports will not proceed.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-DB-BG">Working with Object Importer Database Administration</A></P>
+<P><A NAME="TMPID208"></A>From the <B CLASS="GUILABEL">Database Administration</B> page, you maintain the database schema required for this application.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-IMPSTAT-BG">Working with the Import Status</A></P>
+<P><A NAME="TMPID216"></A>From the <B CLASS="GUILABEL">Import Status</B>  page, you can check the status of the currently running import threads. If no import threads are running when you click the <B CLASS="GUILABEL">Import Status</B> link, Content Server will display an empty status list.&#13;</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-MANIMPORT-BG">Working with Object Importer Manual Object Import</A></P>
+<P><A NAME="TMPID225"></A>From the <B CLASS="GUILABEL">Manual Object Import</B> page, you can import documents into Content Server manually, rather than on a scheduled basis. Manual imports are primarily used in test environments. The control files used during a manual import are never deleted.</P>
+<P><A NAME="TMPID228"></A>When performing a manual object import, it is not necessary for the control file to exist on the machine on which Content Server is installed.&#13;</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF0"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID233"></A><B CLASS="NOTE">Note: </B><BR>During a large manual import, when adding many objects to Content Server, the browser may report an error, or appear to hang; however, this does not mean that the import has failed.</P><A NAME="AEN227"></A>
+<UL class="NOTE">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN228"></A><A NAME="TMPID237"></A>If an error dialog appears, click <B CLASS="GUILABEL">OK</B> and then click the <B CLASS="GUILABEL">Admin Home</B> link. On the <B CLASS="GUILABEL">Object Importer Administration</B> page, click the <B CLASS="GUILABEL">Show Import Status</B> link to view the status of the import.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN235"></A><A NAME="TMPID244"></A>If the browser appears to hang and no error message is generated, on the <B CLASS="GUILABEL">Object Importer Administration</B> page, click the <B CLASS="GUILABEL">Show Import Status</B> link to view the status of the import.</P></LI></UL></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-SCHED-BG">Working with the Object Importer Schedule</A></P>
+<P><A NAME="TMPID251"></A>Use the <B CLASS="GUILABEL">Schedule Import Tasks</B> page to set which scheduling agents are enabled and to set their respective schedules. Content Server Notifications needs to be configured before scheduling automatic imports. For more information, see <span><A HREF="llesoi-cfg-so.htm#LLESOI-CFG-BG">Working with Object Importer Configuration</A></span>.&#13;</P>
+<P><A NAME="TMPID258"></A>The Object Importer runs on a single thread and therefore only one instance of the importer can run per Content Server install. Object Importer can be installed on multiple machines connected to the same Content Server database, to reduce the time required to import large amounts of data. The data on the <B CLASS="GUILABEL">Schedule Import Tasks</B> page applies to all instances of Content Server connected to the same database. Each instance of Content Server, up to a maximum of ten, can run its own unique import agent.&#13;</P>
+<P><A NAME="TMPID269"></A>If you are running more than one instance of Content Server, you will need to add the following to the [scheduleactivity] section in the <TT CLASS="FILENAME">opentext.ini</TT> file for each server:</P>
+<P><A NAME="TMPID272"></A><TT CLASS="LITERAL">2990=0</TT> <BR><TT CLASS="LITERAL">2991=0</TT> <BR><TT CLASS="LITERAL">2992=0</TT> <BR><TT CLASS="LITERAL">2993=0</TT> <BR><TT CLASS="LITERAL">2994=0</TT> <BR><TT CLASS="LITERAL">2995=0</TT> <BR><TT CLASS="LITERAL">2996=0</TT> <BR><TT CLASS="LITERAL">2997=0</TT> <BR><TT CLASS="LITERAL">2998=0</TT> <BR><TT CLASS="LITERAL">2999=0</TT></P>
+<P><A NAME="TMPID283"></A>Restart each server after editing and saving the <TT CLASS="FILENAME">opentext.ini</TT> file. Note the machine name and agent ID for future reference.</P>
+<P><A NAME="TMPID285"></A>Enable a different agent per machine by setting the agent ID equal to one, for example <TT CLASS="LITERAL">2991=1</TT>. Normally, if multiple instances of Content Server are being deployed, the scheduling agents are disabled on all but one machine. Object Importer requires that scheduling agents are enabled on all machines that will be importing objects. Other agent IDs can be disabled by setting their value to zero.</P>
+<P><A NAME="TMPID289"></A>The following should be added to the <TT CLASS="FILENAME">opentext.ini</TT> file on all machines except for the one acting as the agent: &#13;</P>
+<P><A NAME="TMPID297"></A><TT CLASS="LITERAL">[options]</TT> <BR><TT CLASS="LITERAL">EnableAgents=TRUE</TT> <BR> <BR><TT CLASS="LITERAL">[loader]</TT> <BR><TT CLASS="LITERAL">load=sockserv;agents</TT> <BR> <BR><TT CLASS="LITERAL">[scheduleactivity]</TT> <BR><TT CLASS="LITERAL">1000=0</TT> <BR><TT CLASS="LITERAL">4000=0</TT> <BR><TT CLASS="LITERAL">8900=0</TT> <BR><TT CLASS="LITERAL">8999=0</TT> <BR><TT CLASS="LITERAL">9000=0</TT> <BR><TT CLASS="LITERAL">3502=0</TT></P>
+<P><A NAME="TMPID309"></A>Restart each server after editing and saving the <TT CLASS="FILENAME">opentext.ini</TT> file. Note the machine name and agent ID for future reference.</P>
+<P><A NAME="TMPID311"></A>For more information about editing the <TT CLASS="FILENAME">opentext.ini</TT> file, see <I CLASS="EMPHASIS">Understanding the opentext.ini file</I> in the <span><XPROC NAME="ExtXrefStart" HREF="lleswba-h-agd.wba-ini-intro-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_en_US/webadmin/wba-ini-intro-bg.htm">Understanding the opentext.ini file</A><XPROC NAME="ExtXrefEnd" HREF="lleswba-h-agd.wba-ini-intro-bg" FMT=""></span>.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-VALID-BG">Working with Object Importer Validation</A></P>
+<P><A NAME="TMPID318"></A>From the <B CLASS="GUILABEL">Validation</B> page, you can run an import control file through a validation tool to check for errors. In particular, this validation tool checks for import errors relating to the import of multilingual metadata.&#13;</P>
+<P><A NAME="TMPID323"></A>Object Importer processes the import control file to validate that specific requirements are met. The actual import of data will not occcur.</P>
+<P><A NAME="TMPID325"></A>Once you select an import control file, and run the validation tool against that import control file, Content Server displays a new page showing the results of the validation. This new page will include a link to the <B CLASS="GUILABEL">Manual Object Import</B> page.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID329"></A><B CLASS="NOTE">Note: </B><BR>The validation tool will not catch all serious errors your import control file can encounter. Even after running this tool, and clearing all errors generated by this tool, your import can fail.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="LLESOI-VIEWLOGS-BG">Working with Object Importer Log Files</A></P>
+<P><A NAME="TMPID333"></A>The <B CLASS="GUILABEL">View Import Log Files</B> page lists the files located in the logs directory for a particular instance of Content Server.&#13;</P>
+<P><A NAME="TMPID338"></A>The <B CLASS="GUILABEL">View Import Log Files</B> page lists the name of the temporary file on the server, and not the name of the control file. Each import creates up to three associated files:</P>
+<A NAME="AEN326"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN327"></A><A NAME="TMPID342"></A>Any files with the <TT CLASS="FILENAME">.log</TT> extension are the actual log files. They report any errors during the import process.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN330"></A><A NAME="TMPID345"></A>Any files ending in <TT CLASS="FILENAME">_uncreated.xml</TT> contain data from the control file that could not be created.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN333"></A><A NAME="TMPID348"></A>Any files ending in <TT CLASS="FILENAME">_unprocessed.xml</TT> contain data from the control file that was never processed as a result of stopping the import.</P></LI></OL>
+<P><A NAME="TMPID350"></A>Log files generated by Object Importer are opened in append mode to prevent any accidental overwrites.</P>
+<P><A NAME="TMPID352"></A>Any log files in use by Object Importer will not be visible on the Object Importer <B CLASS="GUILABEL">View Import Log Files</B> page.</P>
+<P><A NAME="TMPID356"></A>You may wish to rename any unprocessed or uncreated XML files before reuse to prevent odd naming conventions such as: <TT CLASS="FILENAME">test_unprocessed_unprocessed.xml</TT></P>
+<DIV CLASS="LOCALTOC">
+<h2 CLASS="LOCALTOC BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="llesoi-cfg-p.htm" revision="">To Configure Object Importer</A></p></li>
+<li><p><A  HREF="llesoi-db-p.htm" revision="">To Administer the Object Importer Database</A></p></li>
+<li><p><A  HREF="llesoi-impstat-p.htm" revision="">To View Import Status Information</A></p></li>
+<li><p><A  HREF="llesoi-manimport-p.htm" revision="">To Manually Import a Document</A></p></li>
+<li><p><A  HREF="llesoi-sched-p.htm" revision="">To Configure or Disable Import Schedules</A></p></li>
+<li><p><A  HREF="llesoi-valid-p.htm" revision="">To Validate an Import Control File</A></p></li>
+<li><p><A  HREF="llesoi-viewlog-p.htm" revision="">To View or Delete Log Files</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

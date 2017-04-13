@@ -1,0 +1,119 @@
+<!-- wr_pdf_info.htm -->
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=utf-8">
+	<TITLE>PDF Conversion</TITLE>
+	<LINK REL="stylesheet" HREF="../../ix21.css">
+	<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+
+<BODY ONLOAD="checkFrame('wr_pdf_info.htm')" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#003399" background="../../images/pattern.gif">
+
+<SCRIPT LANGUAGE="JavaScript">
+        var header = new AdminHeader();
+        header.title1 = 'Advanced Information';
+        header.title2 = 'PDF Conversion';
+        header.draw();
+</SCRIPT>
+
+<p class="body">
+Several of the WebReports destinations support document conversion which we can use to create PDF formatted reports.  The destinations are
+<ul>
+	<li>Email
+	<li>Livelink Node
+	<li>Livelink Version
+	<li>Server
+</ul>
+</p>
+
+<p class="body">
+In earlier versions of WebReports PDF conversion was supported in a slightly different form.  The user had the option of selecting a PDF MIME type which,
+upon it's selection, caused the reportview to be converted into a PDF format.  This had limitations in that the reportview being converted to PDF could
+only be in HTML format.
+<br><br>
+From WebReports 4.0 the MIME Type and conversion process have been completely decoupled.  This means the user can use WebReports to create a document of any type
+e.g. WordML or SpreadsheetML and then perform the conversion process on this document.  This brings much more flexibility to the look of the document being
+converted.
+
+
+<p class="body">
+In order to convert a document, all a user needs to do is check the <b>Use External Conversion Engine</b> on the destination tab of any WebReport and it will be converted
+into PDF format.
+<br><br>
+Note that PDF conversion is not instantaneous.  The user may need to wait for several minutes for a report to appear at the destination location.
+<br><br>
+Before PDF conversion can be used your Livelink administrator must configure options on the admin pages.  If you are an administrator, see the <b>Manage WebReports Conversion</b>
+section in the admin help.
+</p>
+
+<p class="body"><u><SPAN class="gui">XML Job Ticket Feature</SPAN></u>
+<p class="body">XML Job Tickets can be a very useful tool for users using Adlib Express for file conversion.  A job ticket allows a user to specify many different aspects to how a
+document will be converted by Adlib, such as page formatting for example.  This feature allows users to select a custom job ticket they have created, and have it applied to a WebReport
+when it is being converted by Adlib Express.  Currently, this feature is only able to be used with Adlib&#146;s Express conversion software, as XML Job Tickets are a feature of that software.</p>
+
+
+<p class="body">
+<b><U>Creating an XML Job Ticket</U></b>
+<ul>
+<li>XML Job Tickets must be valid in order to be used.  The following rules must apply to each job ticket in order to be valid:</li>
+<ul><li>Must contain an XML header at the very top, similar to <em>&lt?xml version="1.0" encoding="ISO-8859-1" ?&gt</em></li>
+<li>The XML header must be followed by the Adlib header tag containing version of Adlib the ticket conforms to, such as <em>&lt?AdLibeXpress applanguage="USA" appversion="2.7.0" dtdversion="1.8" ?&gt</em></li>
+<li>Must contain a <em>&ltJOBS&gt</em> tag</li>
+<li>Has to contain only one <em>&ltJOB&gt</em> tag.  Although Adlib supports multiple jobs in one ticket, this is not practical with WebReports conversion.  Each converted document will have its own job ticket</li>
+<li>Must contain a <em>&ltJOB:DOCINPUTS&gt</em> tag with a <em>&ltJOB:DOCINPUT .../&gt</em> tag nested inside of it.  This contains information about where Adlib can find the file to be converted.  Similarily, <em>&ltJOB:DOCOUTPUTS&gt</em>
+must exist with a <em>&ltJOB:DOCINPUT .../&gt</em> tag nested inside, as this contains information for Adlib regarding where to place the converted file</li>
+<li>Although many attributes can be added to the <em>&ltJOB:DOCINPUT .../&gt</em> and <em>&ltJOB:DOCOUTPUT .../&gt</em> tags, they must contain the <em>FOLDER</em> attribute to be valid</li>
+</ul></li>
+<li>Any <em>FILENAME</em> attribute found in the <em>JOB:DOCINPUT/ JOB:DOCOUTPUT</em> tags will be replaced with a dynamically generated filename, so this attribute, although optional, is not necessary and has no effect on the processing of the file to be converted.</li>
+<li>The <em>FOLDER</em> attribute needs to contain a valid file path in order for the files to be processed and delivered properly.  The only exception to using a valid file path is using the new <em>$DEFAULT_PATH</em> term.</li>
+<li>This feature also supports the use of WebReports tags within the job ticket file.</li>
+<li>More information regarding Job Ticket features can be found with Adlib Express documentation, as feature availability depends on version of Adlib Express being used.</li>
+</ul>
+</p>
+
+<p class="body">
+<b><U>The $DEFAULT_PATH Feature</U></b>
+<ul>
+<li>When used as part of a Job Ticket file in the <em>FOLDER</em> attribute, this will dynamically insert the appropriate file path as specified in the <em>Manage WebReports Conversion</em> administration page.</li>
+<li>As mentioned previously, there are two sets of directories that can be specified in the administration page, and if the set of directories for use with XML Job Tickets has been specified, the $DEFAULT_PATH term will return those file paths; otherwise,
+if not specified, it will return the first set of conversion directories specified for conversion.</li>
+<li>Because this is not a constant, you can use this term as part of the <em>FOLDER</em> attribute in both <em>DOCINPUT</em> and <em>DOCOUTPUT</em> tags.  Using this will return the proper file path where used.</li>
+</ul>
+</p>
+
+<p class="body">
+<b><U>Selecting a Job Ticket</U></b>
+<ul>
+<li>The interface for selecting a Job Ticket to be used when sending a file for conversion is found alongside the &#145;Use External Conversion Engine&#146; check box in the destination tab for any WebReport.  The interface will only be displayed if the &#145;Use External Conversion Engine&#146;
+checkbox is checked and XML Job Tickets have been enabled in the admin pages as described above.</li>
+<li>To select a Job Ticket to use during conversion, just click the &#145;Browse Livelink...&#146; button, and browse for a job ticket file that a user has created and placed in Livelink.</li>
+<li>If you would like to change a WebReport&#146;s settings so it is still sent for conversion, but not use a job ticket anymore, simply press the clear button and update the page.</li>
+<li>If a job ticket has been selected and the destination page has been updated, there is a function menu available to access the functions available to the job ticket file selected.</li>
+</ul>
+</p>
+
+<p class="body">
+<b><U>Example Job Ticket</U></b>
+<br>
+<br>
+&lt;?xml&nbsp;version=&quot;1.0&quot;&nbsp;encoding=&quot;ISO-8859-1&quot;&nbsp;?&gt;&nbsp;
+<br />&nbsp;&nbsp;&lt;?AdLibeXpress&nbsp;applanguage=&quot;USA&quot;&nbsp;appversion=&quot;2.7.0&quot;&nbsp;dtdversion=&quot;1.8&quot;&nbsp;?&gt;&nbsp;
+<br />&nbsp;&nbsp;&lt;!DOCTYPE&nbsp;JOBS&nbsp;SYSTEM &quot;C:\AdLib eXpress\DTD\AdLibeXpress.dtd&quot;&gt;&nbsp;
+<br />	&lt;JOBS&nbsp;xmlns:JOBS=&quot;http://www.adlibsys.com&quot;&nbsp;xmlns:JOB=&quot;http://www.adlibsys.com&quot;&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;JOB&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;JOB:DOCINPUTS&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;JOB:DOCINPUT&nbsp;FILENAME=&quot;&quot;&nbsp;FOLDER=&quot;$DEFAULT_PATH&quot;&nbsp;/&gt;&nbsp;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/JOB:DOCINPUTS&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;JOB:DOCOUTPUTS&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;JOB:DOCOUTPUT&nbsp;FILENAME=&quot;&quot;&nbsp;FOLDER=&quot;$DEFAULT_PATH&quot;&nbsp;DOCTYPE=&quot;PDF&quot;&nbsp;/&gt;&nbsp;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/JOB:DOCOUTPUTS&gt;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/JOB&gt;
+<br />&nbsp;&nbsp;&lt;/JOBS&gt;
+</p>
+
+<SCRIPT LANGUAGE="JavaScript">
+	new AdminFooter().draw();
+</SCRIPT>
+
+</body>
+</HTML>

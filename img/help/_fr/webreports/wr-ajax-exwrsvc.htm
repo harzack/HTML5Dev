@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-H-UGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>executeWRService( serviceType, responseTarget, parmList, responseType, getPost, secure )</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="4">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-ajax-exwrsvc.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Guide de référence des fonctions AJAX';
+          header.title2 = 'executeWRService( serviceType, responseTarget, parmList, responseType, getPost, secure )';
+           header.draw();
+  </script>
+  <A NAME="AEN12680"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12681"></A><A NAME="TMPID13405"></A>Fonction servant à exécuter un service WR et qui permet de récupérer des informations à partir du moteur WebReports. Par exemple, elle fournit les balises ou les sous-balises d'une requête et renvoie les données résultantes.</P></LI>
+<LI class="vlli">
+<P class="before-ul nr1"><A NAME="AEN12683"></A><A NAME="TMPID13407"></A>Traite les arguments suivants : serviceType, responseTarget, parmList, responseType, getPost, secure</P><A NAME="AEN12685"></A>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN12686"></A><A NAME="TMPID13410"></A><B CLASS="highlight">serviceType</B> : paramètre obligatoire. Ce paramètre attend une chaîne avec l'un des types de services pris en charge pour exécuter un service WR. Par exemple, <TT CLASS="literal">gettagdata</TT>, <TT CLASS="literal">getstatictags</TT> ou <TT CLASS="literal">liststatictags</TT>. Pour en savoir plus, voir <span><A HREF="wr-services-info.htm">Services WR</A></span>.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN12693"></A><A NAME="TMPID13417"></A><B CLASS="highlight">responseTarget</B> : paramètre obligatoire. Ce paramètre attend une fonction JavaScript créée par le développeur ou une chaîne représentant l'ID d'un objet HTML dans lequel les données renvoyées doivent être insérées. Si une fonction JavaScript est créée (et transmise à ce paramètre), elle doit être écrite pour accepter http_request comme paramètre. Par exemple :</P><A NAME="AEN12696"></A>
+<PRE 
+CLASS="screen"
+>function myHandlerFunction(httpRequest) {
+	alert('the response was: '+ httpRequest.responseText);
+}
+executeWRService( 'gettagdata', myHandlerFunction, "&amp;statictag=userid &amp;subtags=USERINFO:GROUPID", 'json')</PRE
+></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN12697"></A><A NAME="TMPID13421"></A><B CLASS="highlight">parmList (String)</B> : paramètre facultatif. Ce paramètre permet de spécifier une chaîne contenant d'autres paramètres à ajouter à l'URL conformément à chaque type de service. Par exemple, le type de service gettagdata utilise une combinaison de <TT CLASS="literal">&amp;tagdata</TT>, <TT CLASS="literal">&amp;statictag</TT> ou <TT CLASS="literal">&amp;subtags</TT> comme indiqué dans la syntaxe décrite dans la section <span><A HREF="wr-services-info.htm">Services WR</A></span>. Les paramètres doivent être spécifiés dans le format de type <TT CLASS="literal">&amp;name=value</TT>. Par exemple, <TT CLASS="literal">&amp;tagdata=12345&amp;subtags=CAT:myCategory:attr1:display</TT> </P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN12706"></A><A NAME="TMPID13430"></A><B CLASS="highlight">responseType ('string','json','xml')</B> : paramètre facultatif. Ce paramètre attend une chaîne avec l'un des types de réponses pris en charge pour les services WR. Par exemple, 'string', 'json', 'xml', comme décrit dans <span><A HREF="wr-services-info.htm">Services WR</A></span>. Sinon, la valeur par défaut est json.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN12710"></A><A NAME="TMPID13434"></A><B CLASS="highlight">getPost ('GET','POST')</B> : paramètre facultatif. Ce paramètre permet de spécifier si la requête AJAX doit être GET ou POST. S'il est omis, la méthode POST est utilisée.</P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN12713"></A><A NAME="TMPID13437"></A><B CLASS="highlight">secure - (true/false)</B> : paramètre facultatif. Ce paramètre permet d'indiquer si un jeton sécurisé doit être demandé en premier, puis ajouté à la requête réelle. S'il est omis, cette fonction n'est pas utilisée.</P></LI></UL></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12716"></A><A NAME="TMPID13440"></A>En cas d'erreur, un message d'alerte descriptif apparaît dans le navigateur. </P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN12718"></A><A NAME="TMPID13442"></A>Pour plus d'exemples, voir <span><A HREF="wr-ajax-exampl.htm#WR-EXECWRSVC-EX">Exemple d'utilisation de la fonction executeWRService( serviceType, responseTarget, parmList, responseType, getPost )</A></span> et <span><A HREF="wr-ajax-exampl.htm#WR-EXEC2WRSVC-EX">Exemple d'utilisation de la fonction executeWRService( serviceType, responseTarget, parmList, responseType, getPost )</A></span>.</P></LI></UL>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

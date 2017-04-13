@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWEBR100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="webreports">
+<META mancondkey="lleswebr-igd -- lleswebr-h-agd"><title>Caching Results with WebReports</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="3">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wr-catcacheres-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Categories and Attributes';
+          header.title2 = 'Caching Results with WebReports';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID23779"></A>Even with the most appropriate method from above, it is possible that performance will still be an issue. In the case of a performance issue, we can look at “caching” the raw data into a new table. WebReports can write the results of any query into a dedicated SQL table by using the WebForm export destination. If we do this for the super-set of results then we have a much smaller data set to work with and therefore improved performance.</P>
+<P><A NAME="TMPID23781"></A>Create a new Form Template and give it fields that you wish to display in the final WebReport output. In our case these relate directly to our Category so we create a Template with six fields, each of which reflect the types that we have in the Category itself. We are going to use SQL table storage for the form so remember to give the fields names that will be valid database columns, for example, no spaces. Once the template is completed, create a SQL table with a name of your choice and then create a Form from the template. At this point, the “cache” is complete, all we need to do is write into it.</P>
+<P><A NAME="TMPID23783"></A>It is worth noting that if we wish to permission check the final results and/or provide hyperlinks back to the original data we will need to cache the dataid as well as the category fields we're interested in.</P>
+<P><A NAME="TMPID23784"></A>Take the WebReport created in any of the methods above and modify it so that it uses the <span><A HREF="wr-tag-stsixteenth.htm#WR-TAG-SUBSETFORM">SETFORM</A></span> sub-tag to map data from the source tag to the destination field. If we take the example from the CAT reportview we should end up with something like this in the row section:</P><A NAME="AEN22462"></A>
+<PRE 
+CLASS="screen"
+>[LL_REPTAG=DATAID CAT:"Test Category":"Trial Name":DISPLAY SETFORM:TRIAL /]
+[LL_REPTAG=DATAID CAT:"Test Category":"Number of Failures":DISPLAY SETFORM:FAILURES /]
+[LL_REPTAG=DATAID CAT:"Test Category":"Assignee":DISPLAY SETFORM:ASSIGN /]
+[LL_REPTAG=DATAID CAT:"Test Category":"Start Date":DISPLAY SETFORM:STDT /]
+[LL_REPTAG=DATAID CAT:"Test Category":"End Date":DISPLAY SETFORM:EDDT /]
+[LL_REPTAG=DATAID CAT:"Test Category":"Complete":DISPLAY SETFORM:STATUS /]</PRE
+>
+<P><A NAME="TMPID23787"></A>Now set the destination tab of the WebReport to export to Form and browse for the Form we have just created. Set the <B CLASS="guilabel">Append Results</B> field to “Overwrite Existing Data”. Next, set a schedule appropriate to your user needs and processing availability. As an example, you might set this to run at the end of each month for payroll processing because the data isn't required at any other time. In some cases it might need to run hourly, the specific need will need to be determined by the WebReport developer and the end user.</P>
+<P><A NAME="TMPID23790"></A>The final step is to create a LiveReport/WebReport to report on the data in the new table containing the cached data. If at this point performance is an issue the WebReport developer should consider paginating the data before delivery to the browser.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

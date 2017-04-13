@@ -1,0 +1,270 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESCLS100500-H-AGD-EN">
+<META PiXprocLocator="classification">
+<META mancondkey="llesrcm-h-agd -- llesrcm-igd -- lleswbs-h-agd -- llescls-h-ugd -- lleswat-h-ugd -- llesrt-h-ugd -- llesapp-h-ugd -- llescl-h-ugd -- llesrcm-h-ugd -- llescls-h-ggd -- llescor-pgd -- lleswba-h-agd"><title>Constructing and Importing an XML Taxonomy</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="2">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'c-constxml-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Creating Classifications and Classification Trees';
+          header.title2 = 'Constructing and Importing an XML Taxonomy';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID147"></A>If you want to construct a hierarchy of Classifications without having to add each Classification to the Classification Workspace individually, you can write an XML file that defines a hierarchy of Classifications (an XML classification taxonomy), and then import it.</P>
+<P CLASS="BRIDGEHEAD-BOLDPARA"><A NAME="TMP4REF2">Constructing an XML Taxonomy</A></P>
+<P><A NAME="TMPID149"></A>XML Classification Taxonomies are composed of a series of XML tags that define a hierarchy of Classifications, including the names of all the Classifications and their profile information. When you construct an XML Classification taxonomy manually, its structure, tags, and values must meet certain requirements to import properly into Content Server.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF3">Header Section</A></P>
+<P><A NAME="TMPID152"></A>The first part of an XML Classification taxonomy is a header section that defines the XML file and the Classification Tree in general. This section begins with the following XML declaration, which defines the XML version and the character encoding used in the file:</P>
+<P><A NAME="TMPID153"></A><TT CLASS="LITERAL">&lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;ISO-8859-1&amp;quot;?&gt;</TT></P>
+<P><A NAME="TMPID155"></A>Next, the Classification Tree must be defined with the <TT CLASS="LITERAL">importexport</TT> start tag:</P>
+<P><A NAME="TMPID157"></A><TT CLASS="LITERAL">&lt;importexport applanguage='USA' appname='ContentServer' appversion='9.1.0' dtdversion='2.5' exportdate='&lt;<I CLASS="VARNAME">date_and_time</I>>'&gt;</TT></P>
+<P><A NAME="TMPID160"></A><span><A HREF="c-constxml-bg.htm#TAB-AID12"><NOBR>Table&nbsp;1-1</NOBR></A></span> describes the attributes of the <TT CLASS="LITERAL">importexport</TT> start tag:</P>
+<DIV title="Attributes of the 'importexport' Start Tag" CLASS="TABLE">
+<P CLASS="TABLE" ALIGN="LEFT"><A NAME="TAB-AID12"></A><B>Table 1-1: Attributes of the <NOBR>importexport</NOBR> Start Tag</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="TABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Attribute</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Value</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">applanguage</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The language of the application, for example, <TT CLASS="LITERAL">USA</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">appname</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The name of the application, for example, <TT CLASS="LITERAL">Content Server</TT>. This is a required attribute.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">appversion</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The version number of the application, for example, <TT CLASS="LITERAL">9.5.0</TT>. This is a required attribute.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">dtdversion</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The version number of the DTD that defines XML Classification taxonomies. The only valid value is <TT CLASS="LITERAL">2.5</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">exportdate</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The date and time that the Classification Tree was exported from Content Server. The format of this attribute is <TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">yyyy</I>>-&lt;<I CLASS="VARNAME">mm</I>>-&lt;<I CLASS="VARNAME">dd</I>>T&lt;<I CLASS="VARNAME">hh</I>>:&lt;<I CLASS="VARNAME">nn</I>>:&lt;<I CLASS="VARNAME">ss</I>></TT> (for example, <TT CLASS="LITERAL">2002-04-12T21:31:48</TT>), where: <BR>&lt;<I CLASS="VARNAME">yyyy</I>> is the year, <BR>&lt;<I CLASS="VARNAME">mm</I>> is the month, <BR>&lt;<I CLASS="VARNAME">dd</I>> is the day, <BR>&lt;<I CLASS="VARNAME">hh</I>> is the hour, <BR>&lt;<I CLASS="VARNAME">nn</I>> is the number of minutes, <BR>and &lt;<I CLASS="VARNAME">ss</I>> is the number of seconds. <BR>This attribute is optional. When you construct an XML Classification taxonomy manually, you do not need to include this attribute.</TD></TR></TABLE></DIV>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF4">Classification Hierarchy Section</A></P>
+<P><A NAME="TMPID215"></A>The second part of an XML Classification taxonomy defines the hierarchy of Classifications and their settings. This section occurs between the start and end tags of the <TT CLASS="LITERAL">importexport</TT> element, and consists of one or more <TT CLASS="LITERAL">classificationtree</TT> elements that contain one or more <TT CLASS="LITERAL">classification</TT> elements.</P>
+<P><A NAME="TMPID219"></A>The <TT CLASS="LITERAL">classification</TT> elements define Classifications as follows:</P>
+<P><A NAME="TMPID221"></A><TT CLASS="LITERAL">&lt;classification managementtype='&lt;<I CLASS="VARNAME">type</I>>' name='&lt;<I CLASS="VARNAME">name</I>>' selectable='&lt;<I CLASS="VARNAME">boolean</I>>' subtype='&lt;<I CLASS="VARNAME">n</I>>'&gt;</TT><TT CLASS="LITERAL">&lt;query&gt;SELECT &amp;quot;OTObject&amp;quot; ,&amp;quot;OTScore&amp;quot; WHERE "test" ORDEREDBY RankingExpression &amp;quot;test&amp;quot;&lt;/query&gt;</TT><TT CLASS="LITERAL">&lt;/classification&gt;</TT></P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF5"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID231"></A><B CLASS="NOTE">Note: </B><BR><TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">n</I>></TT> in <TT CLASS="LITERAL">subtype='</TT><TT CLASS="LITERAL">&lt;<I CLASS="VARNAME">n</I>></TT><TT CLASS="LITERAL">'</TT> represents a valid subtype number.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID238"></A><span><A HREF="c-constxml-bg.htm#TAB-AID13"><NOBR>Table&nbsp;1-2</NOBR></A></span> describes the <TT CLASS="LITERAL">classificationtree</TT>, <TT CLASS="LITERAL">classification</TT>, and <TT CLASS="LITERAL">query</TT> tags:</P>
+<DIV title="The 'classificationtree', 'classification', and 'query' Tags" CLASS="TABLE">
+<P CLASS="TABLE" ALIGN="LEFT"><A NAME="TAB-AID13"></A><B>Table 1-2: The <NOBR>classificationtree</NOBR>, <NOBR>classification</NOBR>, and <NOBR>query</NOBR> Tags</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="TABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Tag</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">classificationtree</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Defines a list of Classifications. Its attributes contain settings for the list of Classifications.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">classification</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Defines a Classification. Its attributes contain all of the Classification's settings.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">query</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Defines the Profile Query for a Classification when it has been exported from Content Server. Do not enter a value in this field.</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID269"></A><span><A HREF="c-constxml-bg.htm#TAB-AID14"><NOBR>Table&nbsp;1-3</NOBR></A></span> describes the attributes of the <TT CLASS="LITERAL">classificationtree</TT> and <TT CLASS="LITERAL">classification</TT> start tags:</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF6"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID274"></A><B CLASS="NOTE">Note: </B><BR>When defining the Classification Tree or Classification name attribute, you cannot use the colon (<TT CLASS="LITERAL">:</TT>) character.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV title="Attributes of the 'classificationtree' and 'classification' Tags" CLASS="TABLE">
+<P CLASS="TABLE" ALIGN="LEFT"><A NAME="TAB-AID14"></A><B>Table 1-3: Attributes of the <NOBR>classificationtree</NOBR> and <NOBR>classification</NOBR> Tags</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="TABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Attribute</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Value</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">managementtype</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The management type of the Classification Tree or Classification. Valid values are <TT CLASS="LITERAL">manual</TT>, <TT CLASS="LITERAL">automatic</TT>, and <TT CLASS="LITERAL">assisted</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">name</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The name of the Classification Tree or Classification. This value is a string (for example, <TT CLASS="LITERAL">Annual Reports</TT>).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">selectable</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Whether or not the Classification Tree or Classification is selectable. Valid values are <TT CLASS="LITERAL">true</TT> and <TT CLASS="LITERAL">false</TT>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">subtype</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The subtype number of the Content Server object. Valid values are <TT CLASS="LITERAL">196</TT> for the Classification Tree tags and <TT CLASS="LITERAL">199</TT> for the Classification tags.</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID313"></A><span><A HREF="c-constxml-bg.htm#TAB-AID15"><NOBR>Table&nbsp;1-4</NOBR></A></span> describes the optional attributes of the <TT CLASS="LITERAL">classificationtree</TT> and <TT CLASS="LITERAL">classification</TT> start tags:</P>
+<DIV title="Optional Attributes of the 'classificationtree' and 'classification' Tags" CLASS="TABLE">
+<P CLASS="TABLE" ALIGN="LEFT"><A NAME="TAB-AID15"></A><B>Table 1-4: Optional Attributes of the <NOBR>classificationtree</NOBR> and <NOBR>classification</NOBR> Tags</B></P>
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="TABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Attribute</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Value</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">score</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The number entered by the user. Valid values are 1-100 (inclusive).</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><TT CLASS="LITERAL">description</TT></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The node description entered by the user.</TD></TR></TABLE></DIV>
+<P><A NAME="TMPID337"></A>In this section, the hierarchy of Classifications is defined by embedding <TT CLASS="LITERAL">classification</TT> elements within other <TT CLASS="LITERAL">classification</TT> elements. For example, if a Classification named <I CLASS="EMPHASIS">Classification1</I> contains another Classification named <I CLASS="EMPHASIS">Classification2</I>, then <I CLASS="EMPHASIS">Classification2</I> would be embedded within <I CLASS="EMPHASIS">Classification1</I> as follows:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN346"></A><TT
+CLASS="LITERAL"
+>&lt;classification managementtype='manual' name='Classification1' selectable='true' subtype='199'&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&lt;classification managementtype='manual' name='Classification2' selectable='true' subtype='199'&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&lt;/classification&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&lt;/classification&gt;</TT
+></PRE
+>
+<P><A NAME="TMPID349"></A>The following are rules regarding how the hierarchy is defined:</P>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN353"></A><A NAME="TMPID352"></A>At the root level of the hierarchy, there can be no more than one <TT CLASS="LITERAL">classificationtree</TT> element.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN356"></A><A NAME="TMPID355"></A>Each <TT CLASS="LITERAL">classificationtree</TT> and <TT CLASS="LITERAL">classification</TT> element can contain other <TT CLASS="LITERAL">classification</TT> elements.</P></LI></OL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF7"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID360"></A><B CLASS="NOTE">Note: </B><BR>A <TT CLASS="LITERAL">query</TT> element is optional in each <TT CLASS="LITERAL">classification</TT> and <TT CLASS="LITERAL">classificationtree</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID364"></A>At the end of this section, you must include the end tag <TT CLASS="LITERAL">&lt;/classificationtree&gt;</TT> for the <TT CLASS="LITERAL">classificationtree</TT> element .</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="TMP4REF8">Example Files</A></P>
+<P><A NAME="TMPID368"></A>The following example is an empty Classification Tree named <I CLASS="EMPHASIS"><TT CLASS="LITERAL">Test Classification Tree</TT></I>. It is selectable and its management type is set to automatic:</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN373"></A><TT
+CLASS="LITERAL"
+>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&lt;importexport applanguage='USA' appname='ContentServer' appversion='9.5.0' dtdversion='2.5' exportdate='2003-07-22T17:34:07'&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&lt;classificationtree managementtype="automatic" name="Test Classification Tree" selectable="true" subtype='196'&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;SELECT "OTObject" ,"OTScore" WHERE "test" ORDEREDBY RankingExpression "test"&lt;/query&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&lt;/classificationtree&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&lt;/importexport&gt;</TT
+></PRE
+>
+<P><A NAME="TMPID378"></A>The following example is a more typical Classification Tree. The name of the tree is <TT CLASS="LITERAL">Corporate Information</TT>, and it contains three Classifications: <I CLASS="EMPHASIS">About Us</I>, <I CLASS="EMPHASIS">Annual Reports</I>, and <I CLASS="EMPHASIS">News</I>. Inside <I CLASS="EMPHASIS">News</I>, there are two further Classifications: <I CLASS="EMPHASIS">Press Releases</I> and <I CLASS="EMPHASIS">Newsletters</I>. At the root level, <I CLASS="EMPHASIS">Corporate Information</I> is non-selectable and its management type is set to manual, while all the Classifications it contains are selectable with their management types set to assisted.</P>
+<PRE 
+CLASS="SCREEN"
+><A NAME="AEN389"></A><TT
+CLASS="LITERAL"
+>&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&lt;importexport dtdversion='2.5' appname='ContentServer' appversion='9.5.0' applanguage='USA'&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&lt;classificationtree managementtype='manual' name='Corporate Information' selectable='false' subtype='196'&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;&lt;/query&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;classification managementtype='assisted' name='About Us' selectable='true' subtype='199'&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;&lt;/query&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/classification&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;classification managementtype='assisted' name='Annual Reports' selectable='true' subtype='199'&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;&lt;/query&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/classification&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;classification managementtype='assisted' name='News' selectable='true' subtype='199'&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;&lt;/query&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;classification managementtype='assisted' name='Press Releases' selectable='true' subtype='199'&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;&lt;/query&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/classification&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;classification managementtype='assisted' name='Newsletters' selectable='true' subtype='199'&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;query&gt;&lt;/query&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/classification&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/classification&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&nbsp;&nbsp;&nbsp;&lt;/classificationtree&gt;</TT
+><BR><TT
+CLASS="LITERAL"
+>&lt;/importexport&gt;</TT
+></PRE
+>
+<P CLASS="BRIDGEHEAD-BOLDPARA"><A NAME="TMP4REF9">Importing an XML Taxonomy</A></P>
+<P><A NAME="TMPID410"></A>Once you have created an XML Taxonomy, you can import the XML file to Content Server and the Classifications are created automatically. Fore more information on importing classification taxonomies, see <span><A HREF="c-expimpclass-bg.htm">Exporting and Importing Classification Taxonomies</A></span>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF10"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID414"></A><B CLASS="NOTE">Note: </B><BR>If you have not enabled the Intelligent Classification functionality, when you import any Classification Trees, the management type is set to manual. For more information on Intelligent Classification, see <span><A HREF="c-enableic-bg.htm">Enabling Intelligent Classification Functionality</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

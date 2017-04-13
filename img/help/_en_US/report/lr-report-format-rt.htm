@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESREP100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="report">
+<META mancondkey="llesrt-h-ugd -- lleswba-h-agd -- lleswbu-h-ugd"><title>Understanding LiveReport Formats</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'lr-report-format-rt.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Working with LiveReports';
+          header.title2 = 'Understanding LiveReport Formats';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID529"></A>It is important to consider how you want to present your results when creating a LiveReport. If you want the results to appear in a list, you can use a LiveReport or Auto LiveReport format; if you want the results to appear as a graphical statement, consider using a Pie chart, a Bar chart, or a Line chart. For more information about LiveReport or Auto LiveReport, see <span><A HREF="lr-report-format-rt.htm#LIVEREPORT">LiveReports and Auto LiveReports</A></span>. For more information about graphical statements, see <span><A HREF="lr-report-format-rt.htm#PIECHART">Pie Charts</A></span>, <span><A HREF="lr-report-format-rt.htm#BARCHART">Bar Charts</A></span> and <span><A HREF="lr-report-format-rt.htm#LINECHART">Line Charts</A></span>.  </P>
+<P><A NAME="TMPID537"></A>When you create a LiveReport, you select a format, and then you modify the format to customize how the results appear. The customizations you can make depend on the format you choose. In general, you can customize the color scheme for LiveReports and Auto LiveReports, and the foreground, background, title style, and color for pie, bar, and line charts. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LIVEREPORT">LiveReports and Auto LiveReports</A></P>
+<P><A NAME="TMPID540"></A>LiveReports, the default, and Auto LiveReports display results in a tabular format. The LiveReport format is used for lists of items, and requires certain  columns in the SQL <TT CLASS="literal">SELECT</TT> statement. You must select the <B CLASS="guilabel">Report Fields</B> parameter type to meet the requirements of this format, unless your SQL statement contains the statement <TT CLASS="literal">SELECT * FROM DTree</TT>. Type, Name, Info, and Actions appear in the LiveReport result table by default.  </P>
+<P><A NAME="TMPID547"></A>A blank field, or the error message “An unknown feature was specified”, appears if a required column is not selected by a LiveReport. </P>
+<P><A NAME="TMPID549"></A>You can add different columns of retrieved data to a LiveReport result by specifying the corresponding fields and column titles in the <B CLASS="guilabel">Display Columns</B> section of the report's Edit page. You do not need to display all of the columns included in your <TT CLASS="literal">SELECT</TT> statement; these columns can be used to pass information to a sub-report, if one is specified. </P>
+<P><A NAME="TMPID552"></A>The Auto LiveReport format works with any SQL statement. Each selected column appears under its original name on the Auto LiveReport's result page. To rename a column, you must assign it a new name in the SQL statement. When you create a LiveReport, it is helpful to inspect your results in the Auto LiveReport format first, and then adapt your SQL statement to produce a more customized format. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PIECHART">Pie Charts</A></P>
+<P><A NAME="TMPID555"></A>A pie chart displays database information as segments of a circle. This report format is useful in cases where the focus is on specific portions of the results and the data does not need to be ordered.  </P>
+<P><IMG SRC="pie_chart.gif"></P>
+<P><A NAME="TMPID560"></A>You can easily change the appearance of a pie chart using your mouse or keyboard. If a Subreport is attached, use the keyboard to avoid opening the Subreport. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SQL-PIE-CHART-LIVEREP">SQL Statements and Pie Charts</A></P>
+<P><A NAME="TMPID563"></A>If you present a LiveReport's results in a pie chart, make sure that the statement in the <B CLASS="guilabel">SQL</B> field extracts data that lends itself to such a format. If you use aggregate functions like <TT CLASS="literal">COUNT</TT> or <TT CLASS="literal">SUM</TT> for the pie segments, include a <TT CLASS="literal">SELECT</TT> statement, as well as a <TT CLASS="literal">GROUP BY</TT> clause. </P>
+<P><A NAME="TMPID569"></A>For each pie chart, one slice is created for each value from the first column you select. If a <TT CLASS="literal">GROUP BY</TT> clause is present, its argument must be in the same column. The size of a pie segment corresponds to the value of the second selected column. Placing your cursor over one segment of a pie chart causes the value pair represented by that segment to appear. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="BARCHART">Bar Charts</A></P>
+<P><A NAME="TMPID573"></A>A bar chart displays database information as vertical or horizontal bars in a rectangular coordinate system. This report format is useful for comparing the absolute size of data represented by the bars, especially if the data can be grouped into a small number of bars.  </P>
+<P><IMG SRC="bar_chart.gif"></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SQL-BAR-CHART-LIVEREP">SQL Statements and Bar Charts</A></P>
+<P><A NAME="TMPID580"></A>If you present a LiveReport's results in a bar chart, make sure that the statement in the <B CLASS="guilabel">SQL</B> field extracts data that lends itself to such a format. If you use aggregate functions like <TT CLASS="literal">COUNT</TT> or <TT CLASS="literal">SUM</TT> for the bars, include a <TT CLASS="literal">SELECT</TT> statement, as well as a <TT CLASS="literal">GROUP BY</TT> clause. </P>
+<P><A NAME="TMPID586"></A>One bar appears for each value from the first column you select. If a <TT CLASS="literal">GROUP BY</TT> clause is present, its argument must be in the same column. The size of a bar corresponds to the value of the second selected column. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="LINECHART">Line Charts</A></P>
+<P><A NAME="TMPID590"></A>Line charts display database information as connected points in a rectangular coordinate system. This report format is useful for illustrating changes between data points, for example, server activity over the month of June.  </P>
+<P><IMG SRC="line_chart.gif"></P>
+<P><A NAME="TMPID595"></A>Each point on a line chart is characterized by one vertical and one horizontal coordinate. The vertical coordinate is taken from the first column you select, and the horizontal from the second. The second argument must be the same as that of the <TT CLASS="literal">GROUP BY</TT> and <TT CLASS="literal">ORDER BY</TT> clauses. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="SQL-LIVEREP">SQL Statements and Line Charts</A></P>
+<P><A NAME="TMPID600"></A>If you plan to present the results of a LiveReport as a line chart, make sure that the SQL statement extracts data that lends itself to such a format. If you use aggregate functions like <TT CLASS="literal">COUNT</TT> or <TT CLASS="literal">SUM</TT>, include a <TT CLASS="literal">SELECT</TT> statement, as well as a <TT CLASS="literal">GROUP BY</TT> clause. </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF5"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID606"></A><B CLASS="note">Note: </B><BR>If you choose to display the results of a LiveReport as a line chart, you cannot open sub-reports anywhere on the chart.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="lr-format-pie-chart-p.htm" revision="">To Modify a Pie Chart</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

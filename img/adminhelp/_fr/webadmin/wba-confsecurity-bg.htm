@@ -1,0 +1,201 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESWBA100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0">
+<META name="PiXprocLocator" content="webadmin">
+<title>Configuration des paramètres de sécurité</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL_WPARTS" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../adminhelp/_en_US/webnotify/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'wba-confsecurity-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Configuration des paramètres et réglages du serveur';
+          header.title2 = 'Configuration des paramètres de sécurité';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID3290"></A>Vous pouvez définir des options conçues pour rendre Content Server plus sûr. Pour accéder à la page <B CLASS="guilabel">Configurer les paramètres de sécurité</B>, sur la page Administration Content Server, sélectionnez <B CLASS="guilabel">Configuration du serveur</B>. Cliquez sur <B CLASS="guilabel">Configuration des paramètres de sécurité</B>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF41"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3297"></A><B CLASS="note">Note : </B><BR>Pour des fonctions de sécurité Content Server supplémentaires, reportez-vous aux rubriques <span><A href="../webadmin/wba-limit-ip-bg.htm">Limitation des connexions du compte administrateur par adresse IP</A></span> et <span><XPROC NAME="ExtXrefStart" HREF="../webadmin/lleswbn-h-agd.wbn-config-report-bg" FMT="" NO1ST><A  HREF="../../../adminhelp/_fr/webnotify/wbn-config-report-bg.htm">Suppression des événements en suspens</A><XPROC NAME="ExtXrefEnd" HREF="../webadmin/lleswbn-h-agd.wbn-config-report-bg" FMT=""></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-HTTP">Cookies HTTP uniquement</A></P>
+<P><A NAME="TMPID3307"></A>La section <B CLASS="guilabel">Cookies HTTP uniquement</B> vous permet de définir si l'attribut <B CLASS="guilabel">httpOnly</B> doit être ajouté à tous les cookies Content Server. Le cas échéant, tous les cookies seront identifiés par l'attribut <B CLASS="guilabel">httpOnly</B>. Dans les navigateurs qui le prennent en charge, cet attribut indique qu'un cookie ne doit pas être rendu disponible pour le script. Par défaut, cette option est désactivée.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF43"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3313"></A><B CLASS="note">Note : </B><BR>L'activation de l'option Cookies HTTP uniquement désactive l'éditeur de workflow et l'éditeur de texte.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-COOKIEKEY">Clé de codage des cookies</A></P>
+<P><A NAME="TMPID3316"></A>Content Server génère un cookie d'authentification à l'aide de l'ID numérique de l'utilisateur et d'autres valeurs que vous pouvez définir. Les valeurs que vous sélectionnez sont nécessaires pour l'authentification des requêtes après la connexion. La <B CLASS="guilabel">clé de codage des cookies</B> vous permet de générer une chaîne de texte à utiliser comme clé pour crypter un cookie d'authentification Content Server. Si aucune clé n'est définie dans ce champ, Content Server utilise une clé par défaut. Toutefois, OpenText vous recommande vivement de modifier cette valeur et d'utiliser une clé unique.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-DATAKEY">Clé de codage des données</A></P>
+<P><A NAME="TMPID3324"></A>Content Server utilise également une <B CLASS="guilabel">clé de codage des données</B>, qui vous permet de générer une chaîne de texte à utiliser comme clé pour crypter le mot de passe de l'administrateur de la base de données lorsqu'il est inclus dans une requête Content Server. Si aucune clé n'est définie dans ce champ, Content Server utilise une clé par défaut. Toutefois, OpenText vous recommande vivement de modifier cette valeur et d'utiliser une clé unique.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-COOKIEAUTHEN">Informations relatives à l'authentification des cookies</A></P>
+<P><A NAME="TMPID3332"></A>Lors de la configuration du cookie d'authentification, vous pouvez inclure l'adresse IP du client en tant que valeur. La liste <B CLASS="guilabel">Adresse IP client</B> vous permet d'appliquer un masque de bits lors de la comparaison des adresses IP de différentes requêtes. Le masque de bits indique la portion de l'adresse IP à comparer. Les éléments non nuls de l'adresse IP sont comparés à l'adresse IP placée dans le cookie lors de la connexion. Par exemple, si vous sélectionnez <TT CLASS="literal">255.255.0.0</TT>, seuls les deux premiers caractères sont comparés. Ceci permet de vérifier que les requêtes proviennent du même réseau, sans nécessiter d'adresses IP identiques. Par défaut, ce champ est défini sur <TT CLASS="literal">255.255.255.255 (Compare Entire IP Address)</TT>.</P>
+<P><A NAME="TMPID3336"></A>Vous pouvez choisir les attributs d'utilisateur pour les inclure dans le cookie d'authentification. Les options incluent l'<B CLASS="guilabel">ID de propriétaire</B>, qui est l'ID de l'utilisateur qui a créé l'utilisateur, la <B CLASS="guilabel">Date d'expiration du mot de passe</B> et le <B CLASS="guilabel">Mot de passe codé dans un sens</B>.</P>
+<P><A NAME="TMPID3340"></A>Vous pouvez également définir un délai d'expiration pour les cookies d'authentification. Après avoir défini l'intervalle, il est nécessaire de se connecter à nouveau. L'expiration des cookies impliquant une interaction supplémentaire avec la base de données, elle peut avoir un impact sur les performances. Par défaut, les cookies sont définis pour expirer 30 minutes après la réalisation de la dernière action.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-COOKIEEXPIR">Date d'expiration des cookies de connexion</A></P>
+<P><A NAME="TMPID3343"></A>Vous pouvez définir la date d'expiration des cookies pour les gérer dans la page de connexion Content Server. Ce paramètre contrôle l'affichage de la langue lorsque des utilisateurs ont installé plusieurs lots de langue. Un cookie sur la page de connexion Content Server retient la sélection de langues d'un utilisateur jusqu'à son authentification. Il utilise ensuite sa langue préférée.</P>
+<P><A NAME="TMPID3346"></A>La date d'expiration des cookies est calculée en fonction de la date et de l'heure de l'ordinateur de l'utilisateur et non de la date et de l'heure de Content Server. Le nombre de jours doit être un entier positif compris entre 1 et 999. Par défaut, les cookies de connexion sont définis pour expirer après 8 jours.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-LOGINPOL">Stratégies de connexion</A></P>
+<P class="before-ul"><A NAME="TMPID3350"></A>Cette section aide à sécuriser Content Server contre les échecs répétés de tentative de connexion utilisateur, l'ouverture de plusieurs sessions simultanément et par le même utilisateur et la falsification de requêtes intersites.</P><A NAME="AEN2963"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2964"></A><A NAME="TMPID3354"></A>Activer <B CLASS="guilabel">Désactiver les sessions simultanées depuis plusieurs ordinateurs</B>, qui empêche les utilisateurs d'accéder simultanément à Content Server à partir de plusieurs ordinateurs. Si vous activez cette fonction, les utilisateurs peuvent se connecter à Content Server à partir d'un ordinateur, mais s'ils se connectent une seconde fois à partir d'une autre machine, la première session Content Server est interrompue.</P>
+<P><A NAME="TMPID3359"></A>Dans le champ <B CLASS="guilabel">excepté pour les hôtes</B>, vous pouvez fournir une liste d'adresses IP séparées par des virgules pour les ordinateurs auxquels cette fonction ne s'applique pas. De plus, vous pouvez spécifier un caractère générique unique * pour indiquer plusieurs ordinateurs. Par exemple, l'entrée suivante est valide : <TT CLASS="literal">123.45.*,192.*,123.99.2.51</TT>. Par défaut, cette option est désactivée.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2973"></A><A NAME="TMPID3363"></A>Le paramètre <B CLASS="guilabel">Autoriser la connexion par requête HTTP</B> spécifie le comportement de connexion par défaut. Lorsque cette option est activée, les utilisateurs sont autorisés à se connecter à Content Server à l'aide d'une <I CLASS="emphasis">requête HTTP</I>, qui stocke leurs informations d'authentification dans un signet. Lorsque cette option est désactivée, les utilisateurs doivent se connecter à nouveau lorsque les cookies de cette session expirent. Cette option est désactivée par défaut.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2978"></A><A NAME="TMPID3368"></A>Lorsqu'il est activé, le paramètre <B CLASS="guilabel">Nécessite un jeton de requête sécurisé</B> permet d'empêcher la falsification de requêtes intersites : une attaque par l'intermédiaire de laquelle un utilisateur lance involontairement une action dans un logiciel auquel se dernier est déjà connecté. Le jeton de requête sécurisé est une valeur partagée entre le serveur et le navigateur lorsque l'utilisateur réalise certaines actions. Cette valeur doit accompagner les requêtes pour d'autres actions. Si la valeur n'est pas présente, l'action demandée n'est pas valide. Cette option est désactivée par défaut.</P></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-PWDRETRIES">Nouvelles tentatives de saisie du mot de passe</A></P>
+<P><A NAME="TMPID3372"></A>Cette section définit le nombre de fois où un mot de passe incorrect peut être saisi par un <B CLASS="guilabel">Utilisateur</B>, <B CLASS="guilabel">Administrateur Web</B> et <B CLASS="guilabel">Administrateur</B> Content Server avant que la connexion ne soit désactivée et s'il faut envoyer un e-mail à l'administrateur. Par défaut, ces options sont activées.</P>
+<P class="before-ul"><A NAME="TMPID3377"></A>Les stratégies de connexion comprennent des options pour alerter par e-mail les administrateurs au sujet d'exceptions de stratégie, comme spécifié sur la page <B CLASS="guilabel">Configurer les paramètres du serveur</B>. Si cette adresse n'est pas spécifiée, le message de notification n'est pas envoyé. Pour plus d'informations sur la spécification de l'adresse e-mail de l'administrateur, reportez-vous à la rubrique <span><A href="../webadmin/wba-confserver-params-bg.htm">Configuration des paramètres de base du serveur</A></span>.</P><A NAME="AEN2990"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN2991"></A><B>Utilisateur</B></P>
+<P class="before-ul nr1"><A NAME="TMPID3383"></A>Un compte utilisateur peut être désactivé lorsque trop de tentatives de connexion sont effectuées. La fonction de compte désactivé ne s'applique pas à l'accès Directory Services au système car des services de déverrouillage sont disponibles dans la plupart des mises en œuvre Directory Services. Dans ce cas, le compte Content Server n'est pas désactivé, mais le compte Directory Service ou système est verrouillé.</P><A NAME="AEN2995"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2996"></A><A NAME="TMPID3387"></A><B CLASS="guilabel">Désactiver la connexion en cas de saisie d'un mot de passe incorrect</B>, qui vous permet de spécifier les actions à effectuer lors de l'échec de la connexion d'un utilisateur.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2999"></A><A NAME="TMPID3390"></A><B CLASS="guilabel">Nombre de tentatives de connexion autorisées</B> avant que le compte ne soit désactivé. Par défaut, ce paramètre est activé et le nombre d'échecs de tentatives de connexion est défini sur <B CLASS="guilabel">5</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3003"></A><A NAME="TMPID3394"></A><B CLASS="guilabel">Envoyer un e-mail à l'administrateur lorsque la connexion est désactivée</B>, qui vous permet de spécifier si l'administrateur Content Server reçoit un e-mail dès que le nombre spécifié de tentatives de connexion est dépassé.</P></LI></UL></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN3007"></A><B>Administrateur Web</B></P>
+<P class="before-ul nr1"><A NAME="TMPID3399"></A>Si trop de tentatives de connexion infructueuses sont effectuées pour saisir le mot de passe de l'administrateur Web, la saisie de ce dernier peut être désactivée pendant un certain temps afin de diminuer les risques de découverte de mot de passe via une attaque en force brute.</P><A NAME="AEN3010"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3011"></A><A NAME="TMPID3402"></A><B CLASS="guilabel">Désactiver la connexion en cas de saisie d'un mot de passe incorrect</B>, qui vous permet de spécifier les actions à effectuer lors de l'échec de la connexion d'un administrateur Web.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3014"></A><A NAME="TMPID3405"></A><B CLASS="guilabel">Nombre de tentatives de connexion autorisées</B> avant que le compte ne soit désactivé. Par défaut, ce paramètre est activé et le nombre d'échecs de tentatives de connexion est défini sur <B CLASS="guilabel">5</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3018"></A><A NAME="TMPID3409"></A><B CLASS="guilabel">Nombre de minutes de désactivation de la connexion</B>, qui vous permet de spécifier combien de temps l'administrateur Web doit attendre avant de tenter de se connecter à nouveau. Par défaut, ce paramètre est activé et le nombre de minutes est défini sur <B CLASS="guilabel">5</B>.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3022"></A><A NAME="TMPID3413"></A><B CLASS="guilabel">Envoyer un e-mail à l'administrateur lorsque la connexion est désactivée</B>, qui vous permet de spécifier si l'administrateur Content Server doit recevoir un e-mail dès que le nombre spécifié de tentatives de connexion est dépassé.</P></LI></UL></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN3026"></A><B>Admin</B></P>
+<P class="before-ul nr1"><A NAME="TMPID3418"></A>Le compte administrateur est essentiel et ne peut pas être désactivé sans affecter le système. Cette stratégie vous permet d'alerter les administrateurs lorsqu'une personne tenterait de deviner le mot de passe.</P><A NAME="AEN3029"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3030"></A><A NAME="TMPID3421"></A><B CLASS="guilabel">Envoyer un e-mail à l'administrateur en cas d'échecs de saisie du mot de passe excessifs</B>, qui vous permet de spécifier si l'administrateur Content Server doit recevoir un e-mail dès que le nombre spécifié de tentatives de connexion est dépassé.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3034"></A><A NAME="TMPID3425"></A><B CLASS="guilabel">Maximum d'échecs de saisie du mot de passe</B>, qui vous permet de spécifier le nombre de fois où un administrateur peut tenter de se connecter à Content Server avant l'envoi d'un e-mail. Par défaut, ce paramètre est activé et le nombre d'échecs de tentatives de connexion est défini sur <TT CLASS="literal">5</TT>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF44"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3430"></A><B CLASS="note">Note : </B><BR>La fonction de désactivation de connexion ne s'applique pas au compte Admin Content Server. Vous pouvez protéger le compte administrateur Content Server en autorisant uniquement l'accès à certaines adresses IP client. Pour plus d'informations sur la limitation des tentatives de connexion du compte Admin Content Server par adresse IP, reportez-vous à la rubrique <span><A href="../webadmin/wba-limit-ip-bg.htm">Limitation des connexions du compte administrateur par adresse IP</A></span>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-LOGINCONFIG">Configuration de la page Connexion</A></P>
+<P class="before-ul"><A NAME="TMPID3437"></A>Cette section permet de s'assurer de la sécurité de la connexion de l'utilisateur. Par défaut, cette option est désactivée. La section <B CLASS="guilabel">Configuration de la page de connexion</B> comprend les paramètres suivants :</P><A NAME="AEN3048"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3049"></A><A NAME="TMPID3441"></A>La case à cocher <B CLASS="guilabel">Désactiver l'exécution automatique du navigateur</B>, qui vous permet d'ajouter un attribut à la page Identification de l'utilisateur afin de demander aux navigateurs Web clients de ne pas stocker ni exécuter de manière automatique les informations relatives à l'identification de l'utilisateur pour Content Server. Par défaut, cette option est activée, ce qui signifie que les utilisateurs doivent saisir leurs informations d'authentification complètes à chaque fois qu'ils se connectent à Content Server.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF45"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3446"></A><B CLASS="note">Note : </B><BR>Certains navigateurs risquent de ne pas interpréter correctement cet attribut.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN3056"></A><A NAME="TMPID3448"></A>Le champ <B CLASS="guilabel">Nombre de jours d'utilisation du mot de passe</B>, qui vous permet d'activer les cookies d'authentification permanents et de définir leur délai d'expiration. Ce paramètre ajoute une case à cocher <B CLASS="guilabel">Retenir le mot de passe</B> sur la page Identification de l'utilisateur. Un cookie d'authentification permanent sera enregistré pendant le nombre de jours défini sur l'ordinateur des utilisateurs qui activent cette case à cocher lors de la connexion.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF46"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3452"></A><B CLASS="note">Note : </B><BR>La désactivation de ce paramètre ne supprime <I CLASS="emphasis">pas</I> le cookie d'authentification permanent des navigateurs clients qui en sont déjà pourvus. Les cookies existants sont conservés jusqu'à leur expiration. D'ici là, ils permettent l'accès à Content Server. Pensez-y quand vous devrez décider de la durée des cookies d'authentification.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></LI></UL>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-ARGFILTER">Filtrage des arguments de requête</A></P>
+<P><A NAME="TMPID3457"></A>Lorsque le <B CLASS="guilabel">filtrage des arguments de requête</B> est activé, toutes les requêtes client de Content Server sont comparées aux valeurs du champ <B CLASS="guilabel">Filtrer la chaîne</B>. Par défaut, ces champs sont vides. En cas de correspondance, la requête est rejetée.</P>
+<P><A NAME="TMPID3461"></A>La liste de filtres est délimitée par un séparateur à définir. Si le séparateur utilisé est une virgule (<TT CLASS="literal">,</TT>) par exemple, saisissez trois filtres comme suit :</P>
+<P><A NAME="TMPID3463"></A><TT CLASS="literal">&lt;<I CLASS="varname">Filtre_A</I>>,&lt;<I CLASS="varname">Filtre_B</I>> ,&lt;<I CLASS="varname">Filtre_C</I>></TT></P>
+<P><A NAME="TMPID3468"></A>Le séparateur peut être configuré de manière à prévenir tout conflit avec les filtres souhaités. Par exemple, si vous souhaitez utiliser une barre oblique inverse comme séparateur, saisissez :</P>
+<P><A NAME="TMPID3469"></A><TT CLASS="literal">&lt;<I CLASS="varname">Filtre_A</I>>\&lt;<I CLASS="varname">Filtre_B</I>> \&lt;<I CLASS="varname">Filtre_C</I>></TT></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-CONSIZE">Affichage de la taille du recueil</A></P>
+<P><A NAME="TMPID3476"></A>La case à cocher <B CLASS="guilabel">Masquer le nombre d'éléments</B> dans le champ <B CLASS="guilabel">Affichage de la taille du recueil</B> empêche les utilisateurs d'afficher le nombre d'éléments contenus dans un recueil.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF47"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3480"></A><B CLASS="note">Note : </B><BR>Ce paramètre s'applique également aux prospecteurs. Lorsque ce paramètre est défini, les nœuds prospecteurs affichent une valeur vide pour la taille.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-SECREQ">Expiration du jeton de requête sécurisée</A></P>
+<P><A NAME="TMPID3483"></A>Le champ <B CLASS="guilabel">Expiration du jeton de requête sécurisée</B> fait partie du cadre de sécurité améliorée qui permet aux requêtes d'accéder à la fonctionnalité de génération et de vérification des jetons d'authentification (cookie). Un jeton peut être passé sur des requêtes séquentielles et assurer que les vérifications de sécurité appropriées ont lieu. Le paramètre par défaut est une expiration du délai après 300 secondes. </P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-CLIENTHOST">Hôtes client Content Server</A></P>
+<P><A NAME="TMPID3488"></A>Le champ <B CLASS="guilabel">Hôtes client Content Server</B> contient les adresses IP des serveurs à partir desquels les requêtes doivent être acceptées. Par défaut, ce champ est vide et toutes les connexions client sont acceptées.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-TRUSTREF">Sites Web de référence sécurisés</A></P>
+<P><A NAME="TMPID3493"></A>Le paramètre de <B CLASS="guilabel">Sites Web de référence sécurisés</B> est une mesure de sécurité permettant d'empêcher les autres utilisateurs d'exploiter votre site Web. Les sites dans cette liste apparaissent dans un en-tête de référence HTTP qui valide les requêtes HTTP provenant d'un autre site Web. Si une requête provient d'un site Web non autorisé, l'action n'est pas autorisée et un message d'erreur s'affiche.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF48"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3496"></A><B CLASS="note">Note : </B><BR>Pour Enterprise Process Services Integration, vous devez saisir le paramètre <B CLASS="guilabel">Sites Web de référence sécurisés</B> au format suivant : <TT CLASS="parameter"><I>http://&lt;<I CLASS="varname">Serveur PW</I>></I></TT>, où &lt;<I CLASS="varname">Serveur PW</I>> est l'ordinateur où Process Workplace (le serveur Web faisant partie des services de processus Entreprise) est exécuté.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-DOCFUNC">Fonctions des documents</A></P>
+<P><A NAME="TMPID3504"></A>La zone <B CLASS="guilabel">Fonctions des documents</B> contient des boutons radio permettant d'activer ou de désactiver les fonctions d'ouverture et d'affichage en tant que page Web dans Content Server. Lorsque ces fonctions sont activées, les utilisateurs peuvent ouvrir un document dans son application native, ou les afficher en tant que pages Web, en cliquant sur le lien du document. Lorsqu'elle est désactivée, l'option <B CLASS="guilabel">Ouvrir</B> n'apparaît pas dans le menu <B CLASS="guilabel">Fonctions</B> d'un document ou sur la page Vue d'ensemble. La fonction Ouvrir document est désactivée par défaut.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="WBA-TRUSTCROSS">Interdomaines sécurisés</A></P>
+<P><A NAME="TMPID3511"></A>Le champ <B CLASS="guilabel">Inter-domaines sécurisés</B> vous permet de gérer Content Server et des intégrations d'applications Web tierces. Vous enregistrez des pairs <TT CLASS="literal">&lt;<I CLASS="varname">clé</I>> ; &lt;<I CLASS="varname">cible</I>> </TT> où <TT CLASS="literal">&lt;<I CLASS="varname">clé</I>></TT> est une valeur devant être transmise sous forme de paramètre d'URL et qui exécutera la recherche d'enregistrement et <TT CLASS="literal">&lt;<I CLASS="varname">cible</I>></TT> est un chemin d'URL enregistré pointant vers une ressource cible (application Web tierce). </P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF49"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID3522"></A><B CLASS="note">Note : </B><BR>Pour Enterprise Process Services Integration, vous devez saisir le paramètre <B CLASS="guilabel">Inter-domaines sécurisés</B> au format suivant : <TT CLASS="parameter"><I>pw;http://&lt;<I CLASS="varname"> serveur PW</I>>/pw/client/csbrowse.htm</I></TT>, où &lt;<I CLASS="varname">Serveur PW</I>> est l'ordinateur où Process Workplace (le serveur Web faisant partie des services de processus Entreprise) est exécuté.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table des matières&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  href="../webadmin/wba-confsecurity-p.htm" revision="">Pour configurer les paramètres de sécurité</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

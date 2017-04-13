@@ -1,0 +1,297 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESCL100500-1409-H-UGD-EN-01">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.5.0 Update 2014-09">
+<META name="PiXprocLocator" content="collections">
+<title>Creating and Working with Disk Images</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../../help/_en_US/elsearch/condstyles.css">
+
+</HEAD>
+<body ONLOAD="checkFrame( 'cl-makediskimage-bg.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Using Collections';
+          header.title2 = 'Creating and Working with Disk Images';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID1492"></A>Once a Collection has been created, and items have been collected, you can create a Disk Image of the Collection. A Disk Image enables you to copy all or specific items in a Collection to disk. This can be used to share content in a Collection with individuals or groups outside the Content Server environment.</P>
+<P><A NAME="TMPID1494"></A>You can specify settings to control what items are collected, the size of the Disk Image, and the output format. You can also configure email notification to notify interested parties that the Disk Image has been created and provide details about the Disk Image, including how to locate the Disk Image output files.</P>
+<P><A NAME="TMPID1495"></A>After the Disk Image has been created, you can browse to the Disk Image location to access the files and to view the Disk Image Manifest file, which provides detailed information about the Disk Collection. For more information about viewing the Disk Image Manifest file, see <span><A HREF="cl-indexmap-bg.htm">Reading a Disk Image Manifest File</A></span>.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF24"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1498"></A><B CLASS="note">Note: </B><BR>The <B CLASS="guilabel">Make Disk Image</B> option depends on the privileges assigned by your administrator and may not be available.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID1500"></A>Each time a Disk Image is created, information is recorded in the <B CLASS="guilabel">Collection Items Audit</B> tab for the Collection so that you can view all past events that have occurred with the Collection, including the items that have been included in the current and past Disk Image creations. For more information about the Collection Items Audit, see <span><A HREF="cl-auditrecord-bg.htm">Reviewing the Collection Items Audit</A></span>.</P>
+<P CLASS="otModuleHide if-llesels-h-ugd-showblock" id="TMPID1503"><A NAME="TMPID1503"></A>You can also create a Disk Image for OpenText Enterprise Library items you collected. The metadata of OpenText Enterprise Library Items and the content for OpenText Enterprise Library Variants will be written to the disk.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CL-CREATEIMAGE-BG">Creating a Disk Image</A></P>
+<P><A NAME="TMPID1512"></A>You can create a Disk Image of specific collected items or of an entire Collection. Depending on settings configured by your administrator, when you create a Disk Image, you can control the amount and type of information included in the Disk Image by setting specific Disk Image settings on the Make Disk Image page.</P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF25"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1514"></A><B CLASS="note">Note: </B><BR>Your administrator must have configured the <B CLASS="guilabel">Disk Image Creation Settings</B> from the <B CLASS="guilabel">Collections Administration</B> area of the administration page before you can create a disk image. If you are not able to create a disk image, contact your administrator.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P><A NAME="TMPID1517"></A>The following settings and information appear on the <B CLASS="guilabel">Make Disk Image</B> page:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1531"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Setting</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Description</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Summary</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">A list of the item types included in the Disk Image and a count of each item type. </TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Notes</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Information to include with the Disk Image.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Destination Path</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The path where the Disk Image will be created. This setting is configured by your administrator.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Zip Disk Image</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Compress the Disk Image. This is enabled by default to simplify downloading.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Available Disk Sizes</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Select the expected size of the disk output. If the Collection size exceeds the size you specify from this list, an additional Disk Image is created.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Disk File System Format</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Select the ISO Format for the outputted information. For more information about file system formats, see <span><A HREF="cl-makediskimage-bg.htm#CL-DISKIMOUTPUT-BG">Disk File System Formats</A></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Sort Order</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">How item types are sorted:<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1559"></A><B CLASS="guilabel">Create Date</B></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1562"></A><B CLASS="guilabel">DataID</B></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1565"></A><B CLASS="guilabel">Owner</B></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1568"></A><B CLASS="guilabel">Name</B></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1571"></A><B CLASS="guilabel">Parent DataID</B></P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">&#8226;</TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID1574"></A><B CLASS="guilabel">Parent Name</B></P></TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Include Custody Details</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Provide information in the <B CLASS="guilabel">Chain of Custody Notes</B> section of the Disk Image Manifest File about the Content Server software environment, when the Collection was created, completeness details, etc. For details, see <span><A HREF="cl-indexmap-bg.htm">Reading a Disk Image Manifest File</A></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Include EDRM XML 1.2</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Provide a description of the disk image in the manifest using the Electronic Discovery Reference Model standard.<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF26"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1588"></A><B CLASS="note">Note: </B><BR>The number of items described in the EDRM may be significantly less than the number of items in the Disk Image. Only versioned objects with content stored in Content Server are represented in an EDRM description. Content Server objects such as folders, Categories, and Classifications and many other object types are not files, and therefore are not included in the EDRM description.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Version Handling</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">How document versions in the Collection should be handled during the Disk Image creation. For more information, see <span><A HREF="cl-workitems-bg.htm#CL-COLLECTFRMSR-BG">Collecting Items from the Search Results Page</A></span>.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Collection</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The Content Server information about the Collection that you want included in the Disk Image.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This option will only appear if your administrator marked it as user configurable.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Content</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The Content Server information about the items in the Collection that you want included in the Disk Image.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This option will only appear if your administrator marked it as user configurable.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Max Objects per Image</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">The number of distinct objects you want included in each image. If the Collection contains more items than the number entered here, an additional Disk Image is created.</TD></TR></TABLE>
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">This option will only appear if your administrator selected the appropriate check box.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Metadata Language</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The metadata information retrieved for the disk image will be in the language you select.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Notification</B> area:</TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">&nbsp;</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">When</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The time in the Disk Image creation process that email notification should be sent.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Recipient</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The email address of the User creating the Disk Image. If an email address has not been configured for you in Content Server, you can type in your email address. This is a required field.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Message Subject</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The text that appears in the <B CLASS="guilabel">Subject</B> field of the email notification message. This is a required field.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">3rd Party Notifications</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The additional Content Server Users, Groups, and external email addresses that email notification should be sent to, if any. </TD></TR></TABLE>
+</DIV></P>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF27"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1644"></A><B CLASS="note">Note: </B><BR>Depending on the settings specified by your administrator, some of the settings above may not appear, or be configurable, on the <B CLASS="guilabel">Make Disk Image</B> page.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CL-DISKIMOUTPUT-BG">Disk File System Formats</A></P>
+<P class="before-ul"><A NAME="TMPID1648"></A>The Disk File System Format determines the folder structure of the outputted Collection information. Each of the Disk Image formats have limitations on the amount of information that can be written to them, and each format has a different limitation. Regardless of the Disk File System Format that you select, Content Server creates additional output directories with additional Disk Images when:</P><A NAME="AEN1661"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1662"></A><A NAME="TMPID1652"></A>The output content size exceeds the disk size selected in the <B CLASS="guilabel">Available Disk Sizes</B> list on the Make Disk Image page.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1665"></A><A NAME="TMPID1655"></A>The <B CLASS="guilabel">Max Objects per Image</B> setting on the <B CLASS="guilabel">Make Disk Image</B> page is set and is exceeded.</P></LI></UL>
+<P><A NAME="TMPID1658"></A>Before you select an option in the <B CLASS="guilabel">Disk File System Format</B> setting on the <B CLASS="guilabel">Make Disk Image</B> page, you should view the Collection and determine which of the output formats you require.</P>
+<P><A NAME="TMPID1661"></A>The available Disk File System Formats are:  <TT CLASS="literal">ISO 9660: 1999</TT>, <TT CLASS="literal">ISO 9660 Level 2</TT> and <TT CLASS="literal">Joliet</TT>. The following sections describe the available Disk File System Formats and the limitations of each:</P>
+<P CLASS="bridgehead-subheading3"><A NAME="CL-DFSF01">ISO 9660: 1999</A></P><A NAME="AEN1677"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1678"></A><B>Directory Name Limitations:</B></P>
+<P class="nr1"><A NAME="TMPID1670"></A>103 characters</P>
+<P><A NAME="TMPID1671"></A>Longer names are converted to the format &lt;<I CLASS="varname">X</I>>.&lt;<I CLASS="varname">Y</I>>, where &lt;<I CLASS="varname">X</I>> is the first 50 characters of the directory name and &lt;<I CLASS="varname">Y</I>> is the Content Server data ID.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1687"></A><B>Normalization to Alphanumeric Characters:</B></P>
+<P class="nr1"><A NAME="TMPID1679"></A>Yes – directory and file names.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1690"></A><B>Maximum Path String Length:</B></P>
+<P class="nr1"><A NAME="TMPID1682"></A>Less than 255 characters</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1693"></A><B>Maximum Directory Depth:</B></P>
+<P class="nr1"><A NAME="TMPID1685"></A>22 levels</P></LI></UL>
+<P CLASS="bridgehead-subheading3"><A NAME="CL-DFSF02">ISO 9660 Level 2</A></P><A NAME="AEN1697"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1698"></A><B>Directory Name Limitations:</B></P>
+<P class="nr1"><A NAME="TMPID1691"></A>8 characters</P>
+<P><A NAME="TMPID1692"></A>Characters out of that range are replaced with an underscore character (_).</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1702"></A><B>Normalization to Alphanumeric Characters:</B></P>
+<P class="nr1"><A NAME="TMPID1695"></A>Yes – directory and file names</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1705"></A><B>Maximum Path String Length:</B></P>
+<P class="nr1"><A NAME="TMPID1698"></A>Less than 255 characters</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1708"></A><B>Maximum Directory Depth:</B></P>
+<P class="nr1"><A NAME="TMPID1701"></A>8 levels</P></LI></UL>
+<P CLASS="bridgehead-subheading3"><A NAME="CL-DFSF03">Joliet</A></P><A NAME="AEN1712"></A>
+<UL>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1713"></A><B>Directory Name Limitations:</B></P>
+<P class="nr1"><A NAME="TMPID1707"></A>128 characters</P>
+<P><A NAME="TMPID1708"></A>Longer names are converted to the format &lt;<I CLASS="varname">X</I>>.&lt;<I CLASS="varname">Y</I>>, where &lt;<I CLASS="varname">X</I>> is the first 50 characters of the directory name and &lt;<I CLASS="varname">Y</I>> is the Content Server data ID.</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1722"></A><B>Normalization to Alphanumeric Characters:</B></P>
+<P class="nr1"><A NAME="TMPID1716"></A>Yes – directory and file names</P>
+<P><A NAME="TMPID1717"></A>If a directory contains the following characters, they are replaced with tilde (~) characters:  <TT CLASS="literal"> [@@*:&lt;&gt;?\|.]</TT></P>
+<P><A NAME="TMPID1719"></A>If a file name contains the following characters, they are replaced with underscore (_) characters:  <TT CLASS="literal"> [@@*/:&lt;&gt;?\|] </TT></P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1729"></A><B>Maximum Path String Length:</B></P>
+<P class="nr1"><A NAME="TMPID1723"></A>Less than 255 characters</P></LI>
+<LI class="vlli">
+<P CLASS="ttl"><A NAME="AEN1732"></A><B>Maximum Directory Depth:</B></P>
+<P class="nr1"><A NAME="TMPID1726"></A>22 levels</P></LI></UL>
+<table CLASS="note">
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="iconcell">
+<P CLASS="note"><A NAME="TMP4REF28"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="percontscell">
+<P><A NAME="TMPID1728"></A><B CLASS="note">Note: </B><BR>When calculating the path string length and the maximum directory depth, the <B CLASS="guilabel">Destination Path</B> is included. For each format, if these limitations are exceed, the directory path is truncated and upper level directory levels are replaced with a directory named NORMALIZED.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="tabverspace" COLSPAN="2">&nbsp;</TD></TR></table>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="CL-DISKIMNOT-BG">Understanding Disk Image Creation Notification</A></P>
+<P class="before-ul"><A NAME="TMPID1732"></A>When you create a Disk Image, you can select one of two options for the type of email notification that you want to be sent:</P><A NAME="AEN1740"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1741"></A><A NAME="TMPID1735"></A>An <B CLASS="guilabel">Image Report</B> that is sent with the completion of every Disk Image, including when additional Disk Images are created because a value is exceeded.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN1744"></A><A NAME="TMPID1738"></A>A <B CLASS="guilabel">Completion Report</B> that is sent at the completion of the final Disk Image.</P></LI></UL>
+<P><A NAME="TMPID1740"></A>During the Disk Image creation, you can also specify which Content Server Users, Groups, or third party individuals receive this notification. For example, if you are creating a Disk Image for a team project, you can notify members of the team that the Disk Image was created.</P>
+<P><A NAME="TMPID1742"></A>In addition to receiving notification of the Disk Image creation, the first sentence of the email message body contains a URL to the Disk Image for easy access. The following information is also included in the notification email message:</P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN1750"></A>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Initiated by</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The login ID of the User who performed the Disk Image creation.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Collection Name</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The name of the Collection the Disk Image creation was initiated from.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Started at</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The day, month, year and time that the Disk Image creation was initiated.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Completed at</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The day, month, year and time that the Disk Image creation completed.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Image Size</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">A count of items collected. This is included in every <B CLASS="guilabel">Image Report</B> message. It appears in the <B CLASS="guilabel">Completion Report</B> email messages only when a single Disk Image is created.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Image Number</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The index number of the Disk Image. This is only included in <B CLASS="guilabel">Image Report</B> email messages.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Total Images</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The total number of Disk Images created for this Make Disk operation. This is only included in <B CLASS="guilabel">Completion Report</B> email messages.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">Total Objects Exported</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">The total number of objects output in all Disk Images for this Make Disk operation. Objects are defined as items with distinct Data IDs. This is only included in Completion Report email messages.</TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP"><B CLASS="guilabel">The Collection may be accessed here</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">A URL which links to the Collection in Content Server.</TD></TR></TABLE>
+</DIV></P>
+<DIV CLASS="localtoc">
+<h2 CLASS="localtoc BH1SEP pagehd"><A NAME="LOCALTOC"></A>Table of Contents&nbsp;&nbsp;</h2>
+<ul>
+<li><p><A  HREF="cl-tocreateim-p.htm" revision="">To Create a Disk Image</A></p></li></ul></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

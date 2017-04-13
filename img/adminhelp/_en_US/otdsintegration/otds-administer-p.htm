@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESDSI100500-H-AGD-EN-1">
+<META PiXprocLocator="otds">
+<META mancondkey="otds-agd"><title>To Configure Directory Services Integration Administration</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'otds-administer-p.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Administering Directory Services Integration';
+          header.title2 = 'To Configure Directory Services Integration Administration';
+           header.draw();
+  </script>
+  <A NAME="OTDSADMINISTER"></A>
+<DIV title="To configure 'Directory Services' integration administration:" CLASS="PROCEDURE">
+<P><B>To configure Directory Services integration administration:</B></P>
+<OL TYPE="1">
+<LI>
+<P class="nr1"><A NAME="TMPID142"></A>On the <B CLASS="GUILABEL">Content Server Administration</B> page, in the <B CLASS="GUILABEL">Directory Services Integration Administration</B> section, click the <B CLASS="GUILABEL">Configure Integration Settings</B> link.</P>
+<table CLASS="TIP">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="TIP"><IMG ALT="Tip" SRC="../../images/pi_tip.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID149"></A><B CLASS="TIP">Tip: </B><BR>You can use a shortcut to access this page directly, <TT CLASS="LITERAL">http://&lt;<I CLASS="VARNAME">fully_qualified_server_name</I>>/OTCS/livelink.exe?func=otdsintegration.settings</TT>.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID153"></A><SPAN class="boxed-optional">Optional</SPAN> Select <B CLASS="GUILABEL">Web Server Authentication</B> to retrieve authenticated user information directly from your Web Server.</P>
+<OL CLASS="SUBSTEPS" TYPE="a">
+<LI>
+<P class="nr1"><A NAME="TMPID157"></A>In the <B CLASS="GUILABEL">Environment Variable</B> area, enter the variable used to validate user credentials or leave the default, <TT CLASS="LITERAL">REMOTE_USER</TT>.</P>
+<P><A NAME="TMPID160"></A>The <B CLASS="GUILABEL">Environment Variable</B> parameter allows you to choose which variable to use for determining the user name. By default, this will be set to <TT CLASS="LITERAL">REMOTE_USER</TT>. Other authentication schemes may set Environment Variable to a different value, such as Siteminder, which uses the value <TT CLASS="LITERAL">HTTP_SM_USER</TT>.</P></LI>
+<LI>
+<P class="before-ul nr1"><A NAME="TMPID165"></A>In the <B CLASS="GUILABEL">Username Format in Content Server</B> area, select the option that corresponds to the format of users' Log-in names in Content Server:</P>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN168"></A><A NAME="TMPID171"></A><B CLASS="GUILABEL">Username Only</B></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN171"></A><A NAME="TMPID174"></A><B CLASS="GUILABEL">NT-style username</B></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN174"></A><A NAME="TMPID177"></A><B CLASS="GUILABEL">Resolve through OTDS</B></P></LI></UL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID181"></A>In the <B CLASS="GUILABEL">Username Case Sensitivity</B> area, click <B CLASS="GUILABEL">Preserve Case</B> to preserve the user name when the user signs in to Content Server or click <B CLASS="GUILABEL">Lowercase</B> to change the user name to all lowercase letters when the user signs in to Content Server.</P></LI></OL></LI>
+<LI>
+<P class="nr1"><A NAME="ST-CHOOSEAUTH"></A><A NAME="TMPID188"></A>Choose an authentication method to use if <B CLASS="GUILABEL">Web Server Authentication</B> is not selected or if the user credentials cannot be authenticated using the Web server. Choose one of:</P>
+<P>
+<DIV CLASS="INFORMALTABLE">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="INFORMALTABLE">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN188"></A>
+<TD SCOPE="COL" WIDTH="192" ALIGN="LEFT" VALIGN="TOP"><B CLASS="GUILABEL">Content Server Authentication</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Choose this method if you want Content Server to authenticate only internal users.</TD></TR></TABLE></TD></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" WIDTH="192" ALIGN="LEFT" VALIGN="TOP"><B CLASS="GUILABEL">OTDS Authentication</B></TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="LIDIST">
+<TR CLASS="LIDIST">
+<TD VALIGN="TOP">Choose this method if you want OpenText Directory Services to authenticate internal and external users for single sign on.</TD></TR></TABLE></TD></TR></TABLE>
+</DIV></P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID207"></A>If you chose <B CLASS="GUILABEL">OTDS Authentication</B> in <span><A HREF="otds-administer-p.htm#ST-CHOOSEAUTH"><NOBR>step&nbsp;3</NOBR></A></span>, configure your Directory Services integration parameters.</P>
+<OL CLASS="SUBSTEPS" TYPE="a">
+<LI>
+<P class="nr1"><A NAME="ST-OTDSNAME"></A><A NAME="TMPID214"></A>In the <B CLASS="GUILABEL">OTDS Server URL</B> field, enter the URL of the Directory Services server.</P>
+<P class="before-ul"><A NAME="TMPID218"></A>The URL must include the fully-qualified domain and port number of the Directory Services server. For example, the URL would be one of:</P>
+<UL COMPACT="COMPACT" class="cmpct">
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN223"></A><A NAME="TMPID222"></A><TT CLASS="LITERAL">http://&lt;<I CLASS="VARNAME">server_name</I>>:&lt;<I CLASS="VARNAME">port_number</I>></TT></P></LI>
+<LI class="compact">
+<P class="compact nr1"><A NAME="AEN228"></A><A NAME="TMPID227"></A><TT CLASS="LITERAL">https://&lt;<I CLASS="VARNAME">server_name</I>>:&lt;<I CLASS="VARNAME">port_number</I>></TT></P></LI></UL>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF1"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID232"></A><B CLASS="NOTE">Note: </B><BR>If your Directory Services server has been installed in a cluster, you must enter the fully-qualified domain and port number of the load balancer in the <B CLASS="GUILABEL">OTDS Server URL</B> field. </P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID237"></A>In the <B CLASS="GUILABEL">OTDS Sign In URL</B> field, enter the URL to sign in to OTDS.</P>
+<P><A NAME="TMPID241"></A>For an example of the URL convention, see <span><A HREF="otds-administer-p.htm#ST-OTDSNAME"><NOBR>step&nbsp;4.a</NOBR></A></span>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID244"></A>In the <B CLASS="GUILABEL">Resource Identifier</B> field, enter the unique ID that was generated when you created a synchronized Content Server resource in Directory Services.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID249"></A>In the <B CLASS="GUILABEL">Verify Connections</B> field, click <B CLASS="GUILABEL">Run Test</B> to confirm that the URL entered in the <B CLASS="GUILABEL">OTDS Server URL</B> field is valid. </P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF2"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID255"></A><B CLASS="NOTE">Note: </B><BR>The connection test does not check whether the <B CLASS="GUILABEL">OpenText Directory Server</B> is configured properly with Content Server. It only checks that the URL provided in the <B CLASS="GUILABEL">OTDS Server URL</B> field is valid.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI></OL></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID262"></A>Click <B CLASS="GUILABEL">Save</B>.</P>
+<table CLASS="NOTE">
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR>
+<TR FRAME="VOID">
+<TD ALIGN="LEFT" VALIGN="TOP" CLASS="ICONCELL">
+<P CLASS="NOTE"><A NAME="TMP4REF3"></A><IMG ALT="Note" SRC="../../images/pi_note.gif"></IMG></P></TD>
+<TD ALIGN="LEFT" CLASS="PERCONTSCELL">
+<P><A NAME="TMPID265"></A><B CLASS="NOTE">Note: </B><BR>Do not restart Content Server yet.</P></TD></TR>
+<TR>
+<TD FRAME="VOID" CLASS="TABVERSPACE" COLSPAN="2">&nbsp;</TD></TR></table></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID268"></A>On the <B CLASS="GUILABEL">Content Server Administration</B> page, in the<B CLASS="GUILABEL">Server Configuration</B> section, select <B CLASS="GUILABEL">Configure Security Parameters</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID274"></A>On the <B CLASS="GUILABEL">Configure Security Parameters</B> page, in the <B CLASS="GUILABEL">Trusted Referring Websites</B> box, ensure that the <B CLASS="GUILABEL">OTDS Server</B> name from <span><A HREF="otds-administer-p.htm#ST-OTDSNAME"><NOBR>step&nbsp;4.a</NOBR></A></span> is listed.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID281"></A>Click <B CLASS="GUILABEL">Save Changes</B>.</P></LI>
+<LI>
+<P class="nr1"><A NAME="TMPID284"></A>Restart Content Server.</P></LI></OL></DIV>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

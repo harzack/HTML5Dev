@@ -1,0 +1,444 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META NAME="bookrevnum" CONTENT="LLESSOI100500-H-AGD-FR-1">
+<META name="pvScheme" content="010203-yymm">
+<META name="verttl" content="10.0.5">
+<META name="PiXprocLocator" content="objectimporter">
+<META mancondkey="lleswbn-h-agd -- lleswba-h-agd"><title>Syntaxe du fichier de contrôle des tâches</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'llesoi-cfile-task-rf.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="pagecontent" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Syntaxe du fichier de contrôle Importateur d\'objet';
+          header.title2 = 'Syntaxe du fichier de contrôle des tâches';
+           header.draw();
+  </script>
+
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="TASKTAG01">task</A></P>
+<P CLASS="bridgehead-subheading3"><A NAME="TASKTAG02">Description</A></P>
+<P class="nr1"><A NAME="TMPID2263"></A>Utilisez <TT CLASS="literal">type="task"</TT> sur la balise <TT CLASS="literal">node</TT> pour créer, mettre à jour ou supprimer une tâche.  </P>
+<P CLASS="bridgehead-subheading3"><A NAME="TASKTAG03">Syntaxe</A></P><A NAME="AEN2175"></A>
+<PRE 
+CLASS="screen"
+>&lt;node type="task" action="create"&gt;&lt;/node&gt;</PRE
+>
+<P CLASS="bridgehead-subheading3"><A NAME="TASKTAG04">Utilisation</A></P>
+<A NAME="AEN2177"></A>
+<OL TYPE="1">
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2178"></A><A NAME="TMPID2276"></A>La création ou la mise à jour d'une tâche peut inclure un certain nombre de balises subordonnées : <span><A HREF="llesoi-cfile-task-rf.htm#ASSGTAG01">Balise assigned</A></span>, <span><A HREF="llesoi-cfile-task-rf.htm#COMMTAG1">Balise comments</A></span>, <span><A HREF="llesoi-cfile-task-rf.htm#DUEDTAG1">Balise duedate</A></span>, <span><A HREF="llesoi-cfile-task-rf.htm#INSTRTAG1">Balise instructions</A></span>, <span><A HREF="llesoi-cfile-task-rf.htm#MILSTTAG1">Balise milestone</A></span>, <span><A HREF="llesoi-cfile-task-rf.htm#PRIORTAG1">Balise priority</A></span>, <span><A HREF="llesoi-cfile-task-rf.htm#STARTTAG1">Balise startdate</A></span> et <span><A HREF="llesoi-cfile-task-rf.htm#STATTAG1">Balise status</A></span>. Ces balises subordonnées sont détaillées ci-dessous.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2188"></A><A NAME="TMPID2286"></A>La création, mise à jour ou suppression d'une tâche peut également nécessiter un certain nombre de balises subordonnées, telles que la balise <TT CLASS="literal">location</TT> . Ces autres balises subordonnées sont détaillées dans <span><A HREF="llesoi-cfilesamp-bg.htm">Descriptions et syntaxe des balises Importateur d'objet</A></span>.</P></LI></OL>
+<P CLASS="bridgehead-subheading3"><A NAME="TASKTAG05">Exemple</A></P>
+<P><A NAME="TMPID2291"></A>Pour créer une tâche nommée « New Task »assignée à l'utilisateur « Admin » et la rattacher à la liste « New Task List » située dans l'espace de travail Enterprise :</P><A NAME="AEN2197"></A>
+<PRE 
+CLASS="screen"
+>&#13;&lt;node type="task" action="create"&gt;&lt;/node&gt;
+   &lt;location&gt;Enterprise:New Task List&lt;/location&gt;
+   &lt;title language="en"&gt;New Task&lt;/title&gt;
+   &lt;assigned&gt;Admin&lt;/assigned&gt;
+   &lt;comments clear="true"&gt;&lt;/comments&gt;
+   &lt;duedate&gt;20110715180000&lt;/duedate&gt;
+   &lt;instructions clear="true"&gt;&lt;/instructions&gt;
+   &lt;milestone&gt;Enterprise:New Task List:New Milestone&lt;/milestone&gt;
+   &lt;priority&gt;High&lt;/priority&gt;
+   &lt;startdate&gt;20110104&lt;/startdate&gt;
+   &lt;status&gt;In Process&lt;/status&gt;
+&lt;/node&gt;</PRE
+>
+<P><A NAME="TMPID2296"></A>Pour consulter d'autres exemples de balises <TT CLASS="literal">task</TT>, consultez la section <span><A HREF="llesoi-cfile-tasksamp-rf.htm">Exemples de fichier de contrôle d'importation de tâches</A></span>.</P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="ASSGTAG01">Balise assigned</A></P>
+<P><A NAME="TMPID2301"></A>La balise <TT CLASS="literal">assigned</TT> permet d'assigner un utilisateur ou un groupe à une tâche. La syntaxe de cette balise est la suivante : <A NAME="AEN2204"></A>
+<PRE 
+CLASS="screen"
+>&lt;assigned&gt;Admin&lt;/assigned&gt;</PRE
+> <A NAME="AEN2205"></A>
+<PRE 
+CLASS="screen"
+>&lt;assigned clear="true"&gt;&lt;/assigned&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2206"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2318"></A>La balise <TT CLASS="literal">assigned</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="task"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2322"></A>La balise <TT CLASS="literal">assigned</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2325"></A>La balise <TT CLASS="literal">assigned</TT> est facultative dans les cas suivants :</P><A NAME="AEN2228"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2229"></A><A NAME="TMPID2329"></A><TT CLASS="literal">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2232"></A><A NAME="TMPID2332"></A><TT CLASS="literal">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2235"></A><A NAME="TMPID2335"></A><TT CLASS="literal">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2340"></A>Si cette balise n'est pas spécifiée lors de la création de la tâche, la tâche n'est pas assignée.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2342"></A>Tout utilisateur ou groupe doit exister dans Content Server pour que vous puissiez y faire référence dans une balise <TT CLASS="literal">assigned</TT> . Les noms d'utilisateur et de groupe sont sensibles à la casse.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2346"></A>Seuls les utilisateurs et groupes disposant au moins d'une autorisation d'écriture sur la liste de tâches peuvent se voir assigner une tâche. Cependant, si, une fois assigné à une tâche, l'utilisateur ou le groupe concerné perd ses autorisations sur la liste de tâches, il demeure néanmoins assigné à la tâche. Ainsi, il est possible par le biais d'Importateur d'objet d'assigner un utilisateur ou un groupe à une tâche même si ce dernier ne dispose d'aucune autorisation d'écriture sur la liste de tâches associée. Dans ces conditions, les autorisations Content Server empêcheront l'utilisateur assigné d'afficher ou de modifier la tâche.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">4. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2349"></A>Pour supprimer l'utilisateur ou le groupe assigné, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="COMMTAG1">Balise comments</A></P>
+<P><A NAME="TMPID2353"></A>Utilisez la balise <TT CLASS="literal">comments</TT> pour ajouter un commentaire à une tâche ou mettre à jour les commentaires d'une tâche. La syntaxe de cette balise est la suivante : <A NAME="AEN2255"></A>
+<PRE 
+CLASS="screen"
+>&lt;comments&gt;&lt;![CDATA[Here is a comment.]]&gt;&lt;/comments&gt;
+&lt;comments clear="true"&gt;&lt;/comments&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2256"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2369"></A>La balise <TT CLASS="literal">comments</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="task"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2373"></A>La balise <TT CLASS="literal">comments</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2376"></A>La balise <TT CLASS="literal">comments</TT> est facultative dans les cas suivants :</P><A NAME="AEN2278"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2279"></A><A NAME="TMPID2380"></A><TT CLASS="literal">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2282"></A><A NAME="TMPID2383"></A><TT CLASS="literal">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2285"></A><A NAME="TMPID2386"></A><TT CLASS="literal">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour effacer la valeur de la balise, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="DUEDTAG1">Balise duedate</A></P>
+<P><A NAME="TMPID2393"></A>La balise <TT CLASS="literal">duedate</TT> permet d'ajouter ou de mettre à jour la date d'échéance d'une tâche. La syntaxe de cette balise est la suivante : <A NAME="AEN2294"></A>
+<PRE 
+CLASS="screen"
+>&lt;duedate&gt;20100601&lt;/duedate&gt;
+&lt;duedate&gt;20100601150000&lt;/duedate&gt;</PRE
+> <A NAME="AEN2295"></A>
+<PRE 
+CLASS="screen"
+>&lt;duedate clear="true"&gt;&lt;/duedate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2296"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2410"></A>La balise <TT CLASS="literal">duedate</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="task"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2414"></A>La balise <TT CLASS="literal">duedate</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2417"></A>La balise <TT CLASS="literal">duedate</TT> est facultative dans les cas suivants :</P><A NAME="AEN2318"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2319"></A><A NAME="TMPID2421"></A><TT CLASS="literal">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2322"></A><A NAME="TMPID2424"></A><TT CLASS="literal">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2325"></A><A NAME="TMPID2427"></A><TT CLASS="literal">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2432"></A>Les dates doivent être au format AAAAMMJJ ou AAAAMMJJHHMMSS, où la valeur HH se rapporte au format 24 heures et doit être comprise entre 01 et 24. Si le format AAAMMJJ est utilisé, l'heure prend par défaut la valeur 000000.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2434"></A>Pour effacer la valeur de la balise, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="INSTRTAG1">Balise instructions</A></P>
+<P><A NAME="TMPID2438"></A>La balise <TT CLASS="literal">instructions</TT> permet d'ajouter des instructions à une tâche ou de mettre à jour les instructions d'une tâche. La syntaxe de cette balise est la suivante : <A NAME="AEN2338"></A>
+<PRE 
+CLASS="screen"
+>&lt;instructions&gt;&lt;![CDATA[Here are some instructions.]]&gt;&lt;/instructions&gt;</PRE
+> <A NAME="AEN2339"></A>
+<PRE 
+CLASS="screen"
+>&lt;instructions clear="true"&gt;&lt;/instructions&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2340"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2455"></A>La balise <TT CLASS="literal">instructions</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="task"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2459"></A>La balise <TT CLASS="literal">instructions</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2462"></A>La balise <TT CLASS="literal">instructions</TT> est facultative dans les cas suivants :</P><A NAME="AEN2362"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2363"></A><A NAME="TMPID2466"></A><TT CLASS="literal">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2366"></A><A NAME="TMPID2469"></A><TT CLASS="literal">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2369"></A><A NAME="TMPID2472"></A><TT CLASS="literal">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD VALIGN="TOP">Pour effacer la valeur de la balise, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>.</TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="MILSTTAG1">Balise milestone</A></P>
+<P><A NAME="TMPID2479"></A>Utilisez la balise <TT CLASS="literal">milestone</TT> pour ajouter une étape clé à une tâche ou mettre à jour l'étape clé d'une tâche. La syntaxe de cette balise est la suivante : <A NAME="AEN2378"></A>
+<PRE 
+CLASS="screen"
+>&lt;milestone&gt;Enterprise:New Task List:New Milestone&lt;/milestone&gt;</PRE
+> <A NAME="AEN2379"></A>
+<PRE 
+CLASS="screen"
+>&lt;milestone clear="true"&gt;&lt;/milestone&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2380"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2496"></A>La balise <TT CLASS="literal">milestone</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="task"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2500"></A>La balise <TT CLASS="literal">milestone</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2503"></A>La balise <TT CLASS="literal">milestone</TT> est facultative dans les cas suivants :</P><A NAME="AEN2402"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2403"></A><A NAME="TMPID2507"></A><TT CLASS="literal">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2406"></A><A NAME="TMPID2510"></A><TT CLASS="literal">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2409"></A><A NAME="TMPID2513"></A><TT CLASS="literal">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2518"></A>L'étape clé doit exister dans Content Server pour pouvoir être assignée à une tâche. Si cette balise n'est pas spécifiée lors de la création, aucune étape clé n'est assignée à la tâche.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2521"></A>Pour désassigner l'étape clé, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="PRIORTAG1">Balise priority</A></P>
+<P><A NAME="TMPID2525"></A>La balise <TT CLASS="literal">priority</TT> permet d'ajouter ou de mettre à jour le niveau de priorité d'une tâche. La syntaxe de cette balise est la suivante : <A NAME="AEN2423"></A>
+<PRE 
+CLASS="screen"
+>&lt;priority&gt;High&lt;/priority&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2424"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2541"></A>La balise <TT CLASS="literal">priority</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="task"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2545"></A>La balise <TT CLASS="literal">priority</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2548"></A>La balise <TT CLASS="literal">priority</TT> est facultative dans les cas suivants :</P><A NAME="AEN2446"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2447"></A><A NAME="TMPID2552"></A><TT CLASS="literal">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2450"></A><A NAME="TMPID2555"></A><TT CLASS="literal">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2453"></A><A NAME="TMPID2558"></A><TT CLASS="literal">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2563"></A>Les valeurs autorisées pour la balise <TT CLASS="literal">priority</TT> sont les suivantes : <TT CLASS="literal">Basse</TT>, <TT CLASS="literal">Normale</TT> ou <TT CLASS="literal">Elevée</TT>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2569"></A>Si la balise <TT CLASS="literal">priority</TT> n'est pas spécifiée lors de la création de la tâche, la priorité est définie sur <TT CLASS="literal">Moyenne</TT>.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="STARTTAG1">Balise startdate</A></P>
+<P><A NAME="TMPID2574"></A>La balise <TT CLASS="literal">startdate</TT> permet d'ajouter ou de mettre à jour la date de début d'une tâche. La syntaxe de cette balise est la suivante : <A NAME="AEN2471"></A>
+<PRE 
+CLASS="screen"
+>&lt;startdate&gt;20100601&lt;/startdate&gt;
+&lt;startdate&gt;20100601150000&lt;/startdate&gt;</PRE
+> <A NAME="AEN2472"></A>
+<PRE 
+CLASS="screen"
+>&lt;startdate clear="true"&gt;&lt;/startdate&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2473"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2591"></A>La balise <TT CLASS="literal">startdate</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="task"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2595"></A>La balise <TT CLASS="literal">startdate</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2598"></A>La balise <TT CLASS="literal">startdate</TT> est facultative dans les cas suivants :</P><A NAME="AEN2495"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2496"></A><A NAME="TMPID2602"></A><TT CLASS="literal">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2499"></A><A NAME="TMPID2605"></A><TT CLASS="literal">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2502"></A><A NAME="TMPID2608"></A><TT CLASS="literal">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2613"></A>Les dates doivent être au format AAAAMMJJ ou AAAAMMJJHHMMSS, où la valeur HH se rapporte au format 24 heures et doit être comprise entre 01 et 24. Si le format AAAMMJJ est utilisé, l'heure prend par défaut la valeur 000000. Si la balise <TT CLASS="literal">startdate</TT> n'est pas spécifiée lors de la création, la date système actuelle est utilisée.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2616"></A>Pour effacer la valeur de la balise, utilisez l'attribut <TT CLASS="literal">clear="true"</TT>.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P CLASS="bridgehead-subheading2 BH2SEP"><A NAME="STATTAG1">Balise status</A></P>
+<P><A NAME="TMPID2620"></A>La balise <TT CLASS="literal">status</TT> permet d'ajouter ou de mettre à jour le statut d'une tâche. La syntaxe de cette balise est la suivante : <A NAME="AEN2516"></A>
+<PRE 
+CLASS="screen"
+>&lt;status&gt;On Hold&lt;/status&gt;</PRE
+></P>
+<P>
+<DIV CLASS="informaltable">
+<TABLE BORDER="1" CELLSPACING="0" CELLPADDING="4" CLASS="informaltable">
+<TR SCOPE="ROW" STYLE="CONTSROW"><A NAME="AEN2517"></A>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Utilisation</TH>
+<TH SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">Notes</TH></TR>
+<TR SCOPE="ROW" STYLE="CONTSROW">
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2636"></A>La balise <TT CLASS="literal">status</TT> ne peut exister seule et doit être utilisée en association avec la balise <TT CLASS="literal">&lt;node type="task"</TT> .</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2640"></A>La balise <TT CLASS="literal">status</TT> n'est pas obligatoire.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">3. </TD>
+<TD VALIGN="TOP">
+<P class="before-ul nr1"><A NAME="TMPID2643"></A>La balise <TT CLASS="literal">status</TT> est facultative dans les cas suivants :</P><A NAME="AEN2539"></A>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2540"></A><A NAME="TMPID2647"></A><TT CLASS="literal">&lt;node type="task" action="create"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2543"></A><A NAME="TMPID2650"></A><TT CLASS="literal">&lt;node type="task" action="update"&gt;</TT></P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN2546"></A><A NAME="TMPID2653"></A><TT CLASS="literal">&lt;node type="task" action="sync"&gt;</TT></P></LI></UL></TD></TR></TABLE> </TD>
+<TD SCOPE="COL" ALIGN="LEFT" VALIGN="TOP">
+<TABLE CLASS="lidist">
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">1. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2658"></A>Les valeurs autorisées pour la balise <TT CLASS="literal">status</TT> sont les suivantes : <TT CLASS="literal">Pending</TT>, <TT CLASS="literal">In Process</TT>, <TT CLASS="literal">Issue</TT>, <TT CLASS="literal">On Hold</TT>, <TT CLASS="literal">Completed</TT>ou <TT CLASS="literal">Cancelled</TT>.</P></TD></TR>
+<TR CLASS="lidist">
+<TD CLASS="lidist" VALIGN="TOP">2. </TD>
+<TD VALIGN="TOP">
+<P class="nr1"><A NAME="TMPID2667"></A>Si cette balise n'est pas spécifiée lors de la création de la tâche, le statut est défini sur <TT CLASS="literal">Pending</TT>.</P></TD></TR></TABLE> </TD></TR></TABLE>
+</DIV></P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>

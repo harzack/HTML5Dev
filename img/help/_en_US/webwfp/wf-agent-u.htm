@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+<META bookrevnum="LLESWFP100500-H-UGD-EN-1">
+<META PiXprocLocator="webwfp">
+<META mancondkey="llesesn-h-ugd -- llespob-h-ugd -- lleswfm-h-ugd -- lleswbd-h-ugd -- llesfwf-h-ugd -- llesfrm-h-ugd -- lleschn-h-ugd -- lleswfw-uqs -- lleswfp-cwm -- lleswat-h-ugd -- llesafm-h-ugd -- llesxwe-h-ugd -- llesrt-h-ugd -- lleslfm-h-ugd -- lleswfw-h-ugd -- llesrcm-h-ugd"><title>Understanding the Workflow Agent</title>
+<META NAME="GENERATOR" CONTENT="Modular DocBook HTML Stylesheet Version 1.44">
+<META NAME="SECTLVL" CONTENT="1">
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../../ix21.css">
+
+<script language="JavaScript" src="../../llhelp.js"></script>
+</HEAD>
+<body ONLOAD="checkFrame( 'wf-agent-u.htm' )" CLASS="Body" TEXT="#000000" BGCOLOR="#FFFFFF" link="#003366" alink="#3300FF" vlink="#660033" background="../../images/pattern.gif">
+
+<DIV ID="HL4SRCH">
+<DIV CLASS="PAGECONTENT" ID="PAGECONTENT">
+<!-- header -->
+  <script language="JavaScript">
+          var header = new AdminHeader("../../images/");
+          header.title1 = 'Understanding Steps and Links';
+          header.title2 = 'Understanding the Workflow Agent';
+           header.draw();
+  </script>
+
+<P class="nr1"><A NAME="TMPID830"></A>The tasks you define in a <B CLASS="GUILABEL">User</B>, <B CLASS="GUILABEL">Initiator</B>, <B CLASS="GUILABEL">Form Task</B>, or <B CLASS="GUILABEL">Item Handler</B> step can be performed by the Workflow Agent, which causes all step processing to be handled transparently (in the background), without user interaction. If you do not use the Workflow Agent, the step must be sent by the step assignee to complete step processing. By default, the Workflow Agent is configured to gather and perform background tasks every 10 minutes, but the administrator can specify a custom schedule that controls when the Workflow Agent runs. Depending on the configured processing order (FIFO), the Workflow Agent processes tasks or passes the tasks to the Distributed Agent.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-STEPSINBACKGROUND">Processing Steps in the Background</A></P>
+<P><A NAME="TMPID847"></A>If you are designing a complex Workflow Map or a step that requires a large amount of non-interactive Content Server processing, step assignees may experience a delay before the next page is displayed after sending the step. If you want to prevent users from having to wait for processing to complete after sending a step, you can specify that the step be processed in the background. When a step is processed in the background, the system sends the step and immediately returns control to the assignee, as well as sets the step status to <B CLASS="GUILABEL">Ready</B> for Workflow Agent. The Workflow Agent is a Workflow feature that transparently (in the background) processes Workflow tasks and sends the Workflow on to the next step.</P>
+<P><A NAME="TMPID856"></A>By default, the Workflow Agent is configured to gather and perform background tasks every 10 minutes, but the administrator can schedule when it should run.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-VIEWERRORS">Viewing Error Reports</A></P>
+<P class="before-ul"><A NAME="TMPID861"></A>If the Workflow Agent encounters an error during processing, it sends the step to the <B CLASS="GUILABEL">Assignments</B> page of the user assigned to the step. Content Server also attempts to send an email message that alerts Workflow managers and the step assignee that outlines the error and requests action to correct the problem. In order to send error messages, the Workflow Agent requires the following:</P>
+<UL>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN730"></A><A NAME="TMPID870"></A>The administrator must specify the email server's SMTP settings and the sender's email address.</P></LI>
+<LI class="vlli">
+<P class="nr1"><A NAME="AEN732"></A><A NAME="TMPID872"></A>Workflow managers and step assignees must specify their email address in their Content Server profiles.</P></LI></UL>
+<P><A NAME="TMPID874"></A>When steps are processed, locks are set on the Workflow instance. For parallel paths or sub Workflows, this can lead to contention issues. If the Workflow Agent or the Distributed Agent encounter a lock contention issue, the process will retry during the next run. The step will not be sent to the <B CLASS="GUILABEL">Assignments</B> page or sent an email message.</P>
+<P CLASS="BRIDGEHEAD-SUBHEADING2 BH2SEP"><A NAME="WF-STEPASSIGNEE">Specifying the Step Assignee</A></P>
+<P><A NAME="TMPID880"></A>When the Workflow Agent processes a step, it impersonates the user assigned to the step. The audit path for all items affected by the step will show the user's name even though the user does not initiate the Content Server operations. Also, you must be sure that the step assignee has the required privileges to complete all requests defined in the step or else errors will occur. For example, if you create an <B CLASS="GUILABEL">Item Handler</B> step that moves a document from one folder to another folder that the user does not have privileges to update, the move document request fails.</P>
+<P><A NAME="TMPID885"></A>The administrator must grant the Agent Performers permission to Workflow Map users in order to be assigned steps that are to be processed in the background. If a user account assigned to a step to be executed in the background does not have Agent Performers permission, the step will not be executed automatically. The user must manually send on the step to process it.</P>
+<P><A NAME="TMPID888"></A>For more information about configuring access to the <B CLASS="GUILABEL">Item Handler</B> step and Workflow Agent, contact your administrator or see “Administer Access to the Workflow Agent and Item Handler Step” in the <I CLASS="EMPHASIS">Content Server Admin Online Help</I>.</P>
+<P ALIGN="RIGHT"></P></DIV></DIV>
+
+  <script language="JavaScript">
+       new AdminFooter("../../images/").draw();
+  </script>
+</body></HTML>
