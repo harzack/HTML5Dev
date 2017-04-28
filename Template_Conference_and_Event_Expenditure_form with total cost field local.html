@@ -13,9 +13,6 @@
  .topSection { text-align: right; }
 </STYLE>
 
-<TITLE>Form</TITLE>
-</HEAD>
-
 <LINK REL="stylesheet" TYPE="text/css" HREF="img/style/jquery-ui-1.9.2.custom.min.css">
 <script type="text/javascript" src="img/core/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="img/core/jquery-ui-1.9.2.custom.min.js"></script>
@@ -36,69 +33,71 @@
 // this function is called when the page loads, and hide the detail blocks by default
 function init() { 
     // get the blocks with class starting by detail and hide them
-    $('[class^="detail"]').hide();
-    /*
-    var l;
-    var m;
-    for (l = 1; l < 6; l++) {
-    	var detailClass = "detail"+l;
-    	var detailBlocks = document.getElementsByClassName(detailClass);
-    	for (m = 0; m < detailBlocks.length; m++) {
-    		detailBlocks[m].style.display = "none";
+    var icheck; // iteration of main check boxes
+    var icheckh; // iteration of hospitality checkboxes
+    var iclass;
+    $checkboxes = $('[ID^="checkbox"]');
+    $hospitalityClasses = $('[class^="hospitality"]');
+    for (icheck = 0; icheck < 5; icheck++) {
+    	var detailClass = ".detail" + (icheck + 1);
+    	if ($checkboxes[icheck].checked === false) {
+    		$(detailClass).hide();
+    		}
+    	else {
+    		$(detailClass).show();
+    		}
+    	// hide/show hospitality details if hospitality is checked 
+    	// icheck == 1 means checkbox2
+    	if (icheck == 1){
+    		if ($checkboxes[icheck].checked === true) {
+    			for (icheckh = 5; icheckh < 12; icheckh++) {
+    				// substract 4 to the index to get the corresponding hospitality class
+    				var detailhosp = ".hospitality" + (icheck - 4);
+    				if ($checkboxes[icheckh].checked === false) {
+						$(detailhosp).hide();
+						}
+					else {
+						$(detailhosp).show();
+						}
+    			}
+    		}    		
     	}
-     }
-     */
-  }  
+    	}
+    }  
 
 
 // this function show or hide the various detail blocks of the form
 // it is called by each checks boxes for the 5 parts of the form
-
  function toggleblock(nBlock) {
-	// get the block class name and checkbox ID based on the passed value of 1 to 5
+// get the block class name and checkbox ID based on the passed value of 1 to 5
 	// block have classes as one class can be set to multiple blocks,
 	// in this case we hide or show both the title and the detail block together
 	var classNumb = "detail" + nBlock;
 	var checkBoxNum = "checkbox" + nBlock;
-	// get the exact block based on its class and number (i.e. class1)
-	var tBlock = document.getElementsByClassName(classNumb);
-	var i;
-	var j;
+	// get the exact block based on its class and number (i.e. detail1)
+	var $tBlock = $('[class^="' + classNumb + '"]');
+	var k;
 	
 	// get the status of the checkbox based on its ID (i.e. checkbox1)
-	var checkbox = document.getElementById(checkBoxNum);
+	var $checkbox = $('[ID^="' + checkBoxNum + '"]');
 	var className = "";
 	
 	// now toggle the visibility of the blocks based on the checkbox status
-	 if (checkbox.checked) {
-	 	for (i = 0; i < tBlock.length; i++) {
-        	tBlock[i].style.display = "table-row";
-    		}
+	if ($checkbox[0].checked === true) {
+	 	$tBlock.show();
     	// if hospitality details is displayed (#2), hide hospitality details fields when unchecked
-    	if ( nBlock === 2) {
+    	if (nBlock === 2) {
     			$checkboxh = $('[ID^="checkboxh"]');
 				for (k = 1; k < $checkboxh.length+1; k++) {
 					if ($checkboxh[k-1].checked === false) {
-    /*		for (n = 1; n < 8; n++) {
-    			checkNum = "checkboxh" + n;
-    			console.log(checkNum);
-				checkboxh = document.getElementById(checkNum);
-				for (k = 1; k < checkboxh.length+1; k++) {
-					if (checkboxh[k-1].checked === false) {  */
-						className = "hospitality"+k;
-						hospitalityd = document.getElementsByClassName(className);
-						for (j = 0; j < hospitalityd.length; j++) {
-        					hospitalityd[j].style.display = "none";
-    						}
+						className = ".hospitality" + k;
+						$(className).hide();
 					}
 				}
-		/*	  } */
 			} 
-	 	 }
-	 else {
-	 	for (i = 0; i < tBlock.length; i++) {
-        	tBlock[i].style.display = "none";
-    		}
+		}
+	else {
+		$tBlock.hide();
 	 	 }
 	 }
 	 
@@ -158,6 +157,10 @@ function init() {
   
 // END OF THE CUSTOM SCRIPTS
 </script>
+
+
+<TITLE>Form</TITLE>
+</HEAD>
 
 <BODY Class="pageBody">
 <FORM NAME="myForm" ACTION="[LL_CGIPATH /]" ENCTYPE="multipart/form-data" METHOD="POST">
@@ -747,7 +750,7 @@ nextText: "Next"
 <INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_57_1" TITLE="Travel Costs (A)" ID="_1_1_46_57_1" VALUE="[LL_FormTag_1_1_46_57_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider detail1" >
+<TR CLASS="detail1 horizontalCellDivider" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -767,7 +770,7 @@ nextText: "Next"
 <INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_58_1" TITLE="Hospitality Costs (B)" ID="_1_1_46_58_1" VALUE="[LL_FormTag_1_1_46_58_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider detail2" >
+<TR CLASS="detail2 horizontalCellDivider" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -787,7 +790,7 @@ nextText: "Next"
 <INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_59_1" TITLE="Training Costs (C)" ID="_1_1_46_59_1" VALUE="[LL_FormTag_1_1_46_59_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider detail3" >
+<TR CLASS="detail3 horizontalCellDivider" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -807,7 +810,7 @@ nextText: "Next"
 <INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_60_1" TITLE="Conference Costs (D)" ID="_1_1_46_60_1" VALUE="[LL_FormTag_1_1_46_60_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider detail4" >
+<TR CLASS="detail4 horizontalCellDivider" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>
@@ -827,7 +830,7 @@ nextText: "Next"
 <INPUT CLASS="costsVal valueEditable" TYPE="text" NAME="_1_1_46_61_1" TITLE="Event Costs (E)" ID="_1_1_46_61_1" VALUE="[LL_FormTag_1_1_46_61_1 /]" SIZE="20" MAXLENGTH="20" ONCHANGE="totalCost();">
 </TD>
 </TR>
-<TR CLASS="horizontalCellDivider detail5" >
+<TR CLASS="detail5 horizontalCellDivider" >
 <TD CLASS="labelHorizontalDivider" COLSPAN="1"><IMG HEIGHT="1" ALT="" SRC="img/spacer.gif" WIDTH="1" BORDER="0"></TD>
 <TD CLASS="valueHorizontalDivider" COLSPAN="2"><IMG HEIGHT="1" ALT="" SRC="img/tbl-divider-hor.gif" WIDTH="3" BORDER="0"></TD>
 </TR>

@@ -15,5 +15,5 @@ function convertC2F() {
 function convertF2C() {
 	var cTemp = document.getElementById("celcius");
 	var fTemp = document.getElementById("fahrenheit").value;
-	cTemp.value = (fTemp - 32) * (5 / 9).toFixed(1);	
+	cTemp.value = ((fTemp - 32) * (5 / 9)).toFixed(1);	
 }
