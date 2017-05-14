@@ -13,6 +13,39 @@
  .topSection { text-align: right; }
 </STYLE>
 
+<style>
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: left;
+    padding: 3px;
+    border-radius: 6px;
+    white-space: normal;
+ 
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+	top: 100%;
+    left: 100%; 
+    margin-left: -100%;
+	font-weight: initial;
+
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+</style>
+
 <LINK REL="stylesheet" TYPE="text/css" HREF="img/style/jquery-ui-1.9.2.custom.min.css">
 <script type="text/javascript" src="img/core/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="img/core/jquery-ui-1.9.2.custom.min.js"></script>
@@ -257,19 +290,20 @@ function init() {
 [LL_LOOP_BEGIN_1_1_46 /]
 <TR>
 
-
-
 <TD CLASS="label" NOWRAP VALIGN="TOP">
 &nbsp;Description:
 &nbsp;
 </TD>
 
-
-
 <TD NOWRAP>
-
-<TEXTAREA CLASS="valueEditable multiline" ID="_1_1_46_47_1" NAME="_1_1_46_47_1" TITLE="Description" WRAP="soft" ROWS="5" COLS="80" ONFOCUS="" ONCHANGE="markDirty();">[LL_FormTag_1_1_46_47_1 /]</TEXTAREA>
-
+<div class="tooltip">
+	<TEXTAREA CLASS="valueEditable multiline" ID="_1_1_46_47_1" NAME="_1_1_46_47_1" TITLE="Description" WRAP="soft" ROWS="5" COLS="80" ONFOCUS="" ONCHANGE="markDirty();">[LL_FormTag_1_1_46_47_1 /]</TEXTAREA>
+	<span class="tooltiptext">
+	Describe the event (in both official languages for senior departmental managers), its location and duration. If applicable, provide the name of traveler(s). If available, print and attach the event's web page and/or agenda, and any other pertinent information. Enter the date of the event and required timeframe for approval if applicable.
+Recurring event<br />
+Provide the list of dates. The expected dates for a recurring event range from the current date to the last date of the fiscal year (March 31). The form cannot cover more than one fiscal year. Should the specific dates be not known at the time of the plan, a general statement such as "once a month", "quarterly", etc, will suffice.
+	</span>
+</div>
 
 
 </TD>
@@ -1010,8 +1044,10 @@ savedValue.value = nameField.value;
 
 <TD NOWRAP>
 
-<TEXTAREA CLASS="valueEditable multiline" ID="_1_1_46_56_1" NAME="_1_1_46_56_1" TITLE="Justification" WRAP="soft" ROWS="5" COLS="80" ONFOCUS="" ONCHANGE="markDirty();">[LL_FormTag_1_1_46_56_1 /]</TEXTAREA>
-
+<div class="tooltip"><TEXTAREA CLASS="valueEditable multiline" ID="_1_1_46_56_1" NAME="_1_1_46_56_1" TITLE="Justification" WRAP="soft" ROWS="5" COLS="80" ONFOCUS="" ONCHANGE="markDirty();">[LL_FormTag_1_1_46_56_1 /]</TEXTAREA>
+  <span class="tooltiptext">(Explain how travel, hospitality, training, conference and event expenditures incurred are necessary to achieve departmental mandate and priorities. Also include remarks pertaining to value for money, government facility not being used, teleconference/videoconference not feasible, etc...)<br />
+(Expliquer comment les dépenses engagées relatives aux voyages, à l'accueil, à la formation, aux conférences et aux événements sont nécessaires à la réalisation du mandat et des priorités du ministère. Inclure également les commentaires à l'égard de l'optimisation des ressources, des installations du gouvernement non utilisées, si l'utilisation de la téléconférence/vidéoconférence est impossible, etc...)</span>
+</div>
 
 
 </TD>
@@ -1795,7 +1831,12 @@ savedValue.value = nameField.value;
 <TR>
 <TD WIDTH="1%"><IMG SRC="img/spacer.gif" ALT="" HEIGHT="28" WIDTH="1"></TD>
 <TD CLASS="browseBoxHeader">
+<div class="tooltip">
 &nbsp;C) Training
+	<span class="tooltiptext">
+	Select if this is required training, job specific training, or for career development. Select the service provider and the time of training.
+	</span>
+</div>
 </TD>
 </TR>
 </TABLE>
