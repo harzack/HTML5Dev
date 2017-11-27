@@ -1,29 +1,50 @@
 <!DOCTYPE=html>
 <html>
-	<head>
-		<title>Celcius and Fahrenheit converter</title>
-		<!--[if lt IE 9]>
-			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<link rel="stylesheet" href="css/style.css"/>
-		<meta charset="utf-8">
-	</head>
-	<body>
-		<div class="container">
-			<header>
-				<div>Celcius <-> Fahrenheit conversion<br></div>
-			</header>
-			<section>
-				<label class="field" for="celcius">&#176;C:</label>
-				<input type="number" class="temperature" name="celcius" id="celcius" value="0" min="-270" step="1" onkeyup="convertC2F();" onclick="convertC2F();">
-				<label class="field" for="fahrenheit">&#176;F:</label>
-				<input type="number" class="temperature" name="fahrenheit" id="fahrenheit" value="32" min="-270" step="1" onkeyup="convertF2C();" onclick="convertF2C();">
-			</section>
-			<footer>
-				&copy; 2017 Pierrekiroule Inc.
-			</footer>
-		</div>
-		<script src="js/jquery-3.2.0.min.js"></script>
-		<script src="js/index.js"></script>
-	</body>
+    <head>
+        <title>Conversions</title>
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" href="css/style.css"/>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div>Celcius <-> Fahrenheit conversion<br></div>
+            </header>
+            <section>
+                <input type="number" class="temperature" name="celcius" id="celcius" value="0" min="-270" step="1" inputmode="numeric" pattern="\d*" onkeyup="convertC2F();" onclick="convertC2F();">
+                <label class="field" for="celcius"> &#176;C</label>
+                &nbsp;=&nbsp;
+                <input type="number" class="temperature" name="fahrenheit" id="fahrenheit" value="32" min="-454" step="1" inputmode="numeric" pattern="\d*" onkeyup="convertF2C();" onclick="convertF2C();">
+                <label class="field" for="fahrenheit"> &#176;F</label>
+            </section>
+            <header>
+                <div>Kilograms <-> Pounds conversion<br></div>
+            </header>
+            <section>
+                <input type="number" class="weight" name="kilogram" id="kilogram" value="0" min="0" step="1" inputmode="numeric" pattern="[0-9]*" onkeyup="convertK2P();" onclick="convertK2P();">
+                <label class="field" for="kilogram"> Kg</label>
+                 &nbsp;=&nbsp;
+                <input type="number" class="pound" name="pound" id="pound" value="0" min="0" step="1" inputmode="numeric" pattern="[0-9]*" onkeyup="convertP2K();" onclick="convertP2K();">
+                <label class="field" for="pound"> Lb</label>
+            </section>
+            <header>
+                <div>Km/h <-> Noeuds (knots)<br></div>
+            </header>
+            <section>
+                <input type="number" class="speed" name="kmh" id="kmh" value="0" min="0" step="1" inputmode="numeric" pattern="[0-9]*" onkeyup="convertK2N();" onclick="convertK2N();">
+                <label class="field" for="kmh"> Km/h</label>
+                 &nbsp;=&nbsp;
+                <input type="number" class="speed" name="neuds" id="noeuds" value="0" min="0" step="1" inputmode="numeric" pattern="[0-9]*" onkeyup="convertN2K();" onclick="convertN2K();">
+                <label class="field" for="noeuds"> Nds</label>
+            </section>
+            <footer>
+                &copy; 2017 Pierrekiroule Inc.
+            </footer>
+        </div>
+        <script src="js/jquery-3.2.0.min.js"></script>
+        <script src="js/index.js"></script>
+    </body>
 </html>
