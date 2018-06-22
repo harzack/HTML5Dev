@@ -1,0 +1,76 @@
+<!DOCTYPE=html>
+<html>
+	<head>
+		<title>Form tests</title>
+		<!--[if lt IE 9]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" href="css/style.css"/>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<nav>
+					<ul>
+					  <li><a href="index.html">Home</a></li>
+					  <li><a href="contacts.html">Contacts</a></li>
+					  <li><a href="about.html">About</a></li>
+					</ul>
+				</nav>
+				<div>Template</br></br></div>
+
+			</header>
+			<section>
+    			<form>
+        			<select name="formType" id="formtype" onchange="togglelong();">
+                      <option value="simple" selected>Simple form</option>
+                      <option value="long">Long form</option>
+                    </select>
+                    <fieldset>
+                        <legend>Personal information:</legend>
+            			First name:<br>
+                        <input type="text" name="firstname" autofocus><br>
+                        Last name:<br>
+                        <input type="text" name="lastname"><br>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Genre:</legend>
+                        <input type="radio" name="gender" value="male" checked> Male<br>
+                        <input type="radio" name="gender" value="female"> Female<br>
+                        <input type="radio" name="gender" value="other"> Other<br>
+                    </fieldset>
+                    <div id="longform" style="display: none;">
+                        <fieldset>
+                            <legend>Age:</legend>
+                			Age decades:<br>
+                            <input type="number" id="numb1" name="Age decades" min="0" max="12" onkeyup="calcAge(); toggleAdult();" onclick="calcAge(); toggleAdult();"><br>
+                            Age units:<br>
+                            <input type="number" id="numb2" name="Age units" min="0" max="9" onkeyup="calcAge(); toggleAdult();" onclick="calcAge(); toggleAdult();"><br>
+                            Age:<br>
+                            <input type="text" id="total" name="Age" readonly><br>
+                        </fieldset>
+                        <div id="adult" style="display: none;">
+                            <fieldset>
+                                <legend>Number of kids:</legend>
+                    			Boys:<br>
+                                <input type="number" id="boys" name="nboys" value="0" min="0" onkeyup="total2numb();" onclick="total2numb();"><br>
+                                Girls:<br>
+                                <input type="number" id="girls" name="ngirls" value="0" min="0" onkeyup="total2numb();" onclick="total2numb();"><br>
+                                Total kids:<br>
+                                <input type="text" id="totalkids" name="totalkids" readonly><br>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <textarea name="comment" rows="4" cols="32" placeholder="Add your comments here..."></textarea>
+                   <input type="submit" value="Submit">
+    			</form>
+			</section>
+			<footer>
+				&copy; 2017 Pierrekiroule Inc.
+			</footer>
+		</div>
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<script src="js/index.js"></script>
+	</body>
+</html>

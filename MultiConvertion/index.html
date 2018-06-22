@@ -1,0 +1,57 @@
+<!DOCTYPE=html>
+<html>
+	<head>
+		<title>Conversions</title>
+		<!--[if lt IE 9]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" href="css/style.css"/>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<nav>
+					<ul>
+					  <li><a href="index.html">Home</a></li>
+					</ul>
+				</nav>
+				<div class="title" id="mainTitle">
+					Select a Conversion Type below...</br></br>
+				</div>
+			</header>
+			<section>
+				Conversion type:
+				<select id="convertType" onchange="getType(this)">
+					<option value="Select a ">Select a conversion type...</option>
+					<option value="length">Length</option>
+					<option value="temperature">Temperature</option>
+					<option value="areas">Area</option>
+					<option value="volumes">Volume</option>
+					<option value="weight">Weight</option>
+					<option value="speed">Speed</option>
+					<option value="consumption">Consumption</option>
+				</select>
+				<br>
+				<section>
+					<input type="number" class="inputBox" id="fromValue" value="0" step="1" inputmode="numeric" pattern="[0-9]*" onkeyup="convert('valFrom');" onclick="convert('valFrom');">&nbsp;
+					<select id = "fromSelector" onchange="convert('selFrom')">
+						<option id="fromMeasure" value="from">from...</option>
+					</select>
+					&nbsp;=&nbsp;
+					<input type="number" class="inputBox" id="toValue" value="0" step="1" inputmode="numeric" pattern="[0-9]*" onkeyup="convert('valTo');" onclick="convert('valTo');">&nbsp;
+					<select id = "toSelector" onchange="convert('selTo')">
+						<option id="toMeasure" value="to">to...</option>
+					</select>
+				</section>
+				<br>
+			</section>
+			<footer>
+				&copy; 2018 Pierrekiroule Inc.
+			</footer>
+		</div>
+		<script src="js/jquery-3.2.0.min.js"></script>
+		<script src="js/conversionFunctions.js"></script>
+		<script src="js/index.js"></script>
+	</body>
+</html>

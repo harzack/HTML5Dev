@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$("button").click(function(){
+			var values = [];
+			tabSize = $("ul.cs-tabrow li").length;
+			for (var i = 0; i < tabSize; i++) {
+			 console.log($("ul.cs-tabrow li:eq(" + i + ")").text());
+			 values[i] = $("ul.cs-tabrow li:eq(" + i + ")").text();
+				}
+			$("#myResult").val(values[0]);
+		});
+	});
+	</script>
+</head>
+<body>
+
+<p>List 1:</p>
+<ul class="cs-tabrow">
+  <li>Coffee</li>
+  <li>Milk</li>
+  <li>Tea</li>
+</ul>
+
+<input type="text" id="myResult" size="25" value="I hope to be able to put text here"><br>
+
+<button>Click me</button>
+
+</body>
+</html>
+
