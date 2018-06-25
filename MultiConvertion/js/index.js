@@ -57,7 +57,7 @@ function getType(selectObject) {
         };
         break;
     case "areas":
-        var allOptions = {sqm : "Square Meter", sqkm : "Square Kilometer", sqcm : "Square Centimeter", sqmm : "Square millimeter", hctr: "Hectare", acre : "Acre", sqmile : "Square miles", sqyrd : "Square Yard", sqft : "Square foot", sqin : "Square Inch"};
+        var allOptions = {sqm : "Square Meter", hctr: "Hectare", acre : "Acre", sqmile : "Square miles", sqft : "Square foot", sqin : "Square Inch"};
     	currentLfrom = fromSelector.length;
         for (i = 0; i < currentLfrom; i++) {
 		  fromSelector.remove(fromSelector.options[i]);
@@ -72,7 +72,7 @@ function getType(selectObject) {
         };
     	break;
     case "volumes":
-        var allOptions = {cbmeter : "Cubic Meter", cbkm : "Cubic Kilometer", cbcm : "Cubic Centimeter", cbmm : "Cubic Milimeter", liter : "Liter", mliter : "Milliliter", usgallon : "US Gallon", usquart : "US Quart", uspint : "US Pint", uscup : "US Cup", usfloz : "US Fluid Ounce", ustbsp : "US Table Spoon", ustsp : "US Tea Spoon", impgallon : "Imperial Gallon", impquart : "Imperial Quart", imppint : "Imperial Pint", impfloz : "Imperial Fluid Ounce", imptbsp : "Imperial Table Spoon", imptsp : "Imperial Tea Spoon", cbmile : "Cubic Mile", cbyrd : "Cubic Yard", cbft : "Cubic Foot", cbin : "Cubic Inch"};
+        var allOptions = {cbmeter : "Cubic Meter", liter : "Liter", dliter : "Deciliter", cliter : "Centiliter", mliter : "Milliliter", usgallon : "US Gallon", uspint : "US Pint", uscup : "US Cup", usfloz : "US Fluid Ounce", ustbsp : "US Table Spoon", ustsp : "US Tea Spoon", cbyrd : "Cubic Yard", cbft : "Cubic Foot"};
     	currentLfrom = fromSelector.length;
         for (i = 0; i < currentLfrom; i++) {
 		  fromSelector.remove(fromSelector.options[i]);
@@ -87,7 +87,7 @@ function getType(selectObject) {
         };
     	break;
     case "weight":
-        var allOptions = {kg : "Kilogram", gr : "Gram", mg : "Milligram", mton : "Metric Ton", lton : "Long Ton", ston : "Short Ton", lbs : "Pound", oz : "Ounce", carrat : "Carrat", amu : "Atomic Mass Unit"};
+        var allOptions = {kg : "Kilogram", gr : "Gram", mg : "Milligram", lbs : "Pound", oz : "Ounce"};
     	currentLfrom = fromSelector.length;
         for (i = 0; i < currentLfrom; i++) {
 		  fromSelector.remove(fromSelector.options[i]);

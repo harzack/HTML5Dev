@@ -1,7 +1,7 @@
 var lengths = ["meter", "kilometer", "centimeter", "millimeter", "mile", "yard", "foot", "inch"];
 var temperatures = ["celcius", "kelvin", "fahrenheit"];
-var areas = ["sqm", "sqkm", "sqcm", "sqmm", "hctr", "acre", "sqmile", "sqyrd", "sqft", "sqin"];
-var volumes = ["cbmeter", "cbkm", "cbcm", "cbmm", "liter", "mliter", "usgallon", "usquart", "uspint", "uscup", "usfloz", "ustbsp", "ustsp", "impgallon", "impquart", "imppint", "impfloz", "imptbsp", "imptsp", "cbmile", "cbyrd", "cbft", "cbin"];
+var areas = ["sqm", "hctr", "acre", "sqmile", "sqft", "sqin"];
+var volumes = ["cbmeter", "liter", "dliter", "cliter", "mliter", "usgallon", "uspint", "uscup", "usfloz", "ustbsp", "ustsp", "cbyrd", "cbft"];
 var weights = ["kg", "gr", "mg", "mton", "lton", "ston", "lbs", "oz", "carrat", "amu"];
 var speeds = ["ms", "kmh", "knots", "mph"];
 var consumptions = ["lp100", "mpg"];
