@@ -287,64 +287,64 @@ var ConversionFunc = {
 	// Volumes functions: 
 
 	'cbmeterliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 1000).toFixed(2);
 	 },
 	'cbmeterdliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 10000).toFixed(2);
 	 },
 	'cbmetercliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 100000).toFixed(2);
 	 },
 	'cbmetermliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 1000000).toFixed(2);
 	 },
 	'cbmeterusgallon': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 264.172).toFixed(2);
 	 },
 	'cbmeteruspint': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 2113.38).toFixed(2);
 	 },
 	'cbmeteruscup': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 4226.7528).toFixed(2);
 	 },
 	'cbmeterusfloz': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 33814.023).toFixed(2);
 	 },
 	'cbmeterustbsp': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 67628.045).toFixed(2);
 	 },
 	'cbmeterustsp': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 202884.14).toFixed(2);
 	 },
 	'cbmetercbyrd': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 1.30795).toFixed(2);
 	 },
 	'cbmetercbft': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 35.314667).toFixed(2);
 	 },
 	'litercbmeter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 1000).toFixed(2);
 	 },
 	'literdliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 10).toFixed(2);
 	 },
 	'litercliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 100).toFixed(2);
 	 },
 	'litermliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 1000).toFixed(2);
 	 },
 	'literusgallon': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 3.78541).toFixed(2);
 	 },
 	'literuspint': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 2.11338).toFixed(2);
 	 },
 	'literuscup': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 4.22675).toFixed(2);
 	 },
 	'literusfloz': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 33.814).toFixed(2);
 	 },
 	'literustbsp': function (value) {
 	   return (Number(value)).toFixed(2);
@@ -359,28 +359,28 @@ var ConversionFunc = {
 	   return (Number(value)).toFixed(2);
 	 },
 	'dlitercbmeter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 10000).toFixed(2);
 	 },
 	'dliterliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 10).toFixed(2);
 	 },
 	'dlitercliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 10).toFixed(2);
 	 },
 	'dlitermliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 100).toFixed(2);
 	 },
 	'dliterusgallon': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 37.8541).toFixed(2);
 	 },
 	'dliteruspint': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 21.1338).toFixed(2);
 	 },
 	'dliteruscup': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 42.2675).toFixed(2);
 	 },
 	'dliterusfloz': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 3.3814).toFixed(2);
 	 },
 	'dliterustbsp': function (value) {
 	   return (Number(value)).toFixed(2);
@@ -395,28 +395,28 @@ var ConversionFunc = {
 	   return (Number(value)).toFixed(2);
 	 },
 	'clitercbmeter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 100000 ).toFixed(2);
 	 },
 	'cliterliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 100).toFixed(2);
 	 },
 	'cliterdliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 10).toFixed(2);
 	 },
 	'clitermliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 1000).toFixed(2);
 	 },
 	'cliterusgallon': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 378.541).toFixed(2);
 	 },
 	'cliteruspint': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 211.338).toFixed(2);
 	 },
 	'cliteruscup': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 422.675).toFixed(2);
 	 },
 	'cliterusfloz': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 0.33814).toFixed(2);
 	 },
 	'cliterustbsp': function (value) {
 	   return (Number(value)).toFixed(2);
@@ -431,28 +431,28 @@ var ConversionFunc = {
 	   return (Number(value)).toFixed(2);
 	 },
 	'mlitercbmeter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 1000000).toFixed(2);
 	 },
 	'mliterliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 1000).toFixed(2);
 	 },
 	'mliterdliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 100).toFixed(2);
 	 },
 	'mlitercliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 10).toFixed(2);
 	 },
 	'mliterusgallon': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 3785.41).toFixed(2);
 	 },
 	'mliteruspint': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 2113.38).toFixed(2);
 	 },
 	'mliteruscup': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 4226.75).toFixed(2);
 	 },
 	'mliterusfloz': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 0.033814).toFixed(2);
 	 },
 	'mliterustbsp': function (value) {
 	   return (Number(value)).toFixed(2);
@@ -467,25 +467,25 @@ var ConversionFunc = {
 	   return (Number(value)).toFixed(2);
 	 },
 	'usgalloncbmeter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 264.172).toFixed(2);
 	 },
 	'usgallonliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 3.78541).toFixed(2);
 	 },
 	'usgallondliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value)  * 37.8541).toFixed(2);
 	 },
 	'usgalloncliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 378.541).toFixed(2);
 	 },
 	'usgallonmliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value)  * 3785.41).toFixed(2);
 	 },
 	'usgallonuspint': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 8).toFixed(2);
 	 },
 	'usgallonuscup': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 16).toFixed(2);
 	 },
 	'usgallonusfloz': function (value) {
 	   return (Number(value)).toFixed(2);
@@ -503,28 +503,28 @@ var ConversionFunc = {
 	   return (Number(value)).toFixed(2);
 	 },
 	'uspintcbmeter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 2113.38).toFixed(2);
 	 },
 	'uspintliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 2.11338).toFixed(2);
 	 },
 	'uspintdliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 21.1338).toFixed(2);
 	 },
 	'uspintcliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 211.338).toFixed(2);
 	 },
 	'uspintmliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 2113.38).toFixed(2);
 	 },
 	'uspintusgallon': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 8).toFixed(2);
 	 },
 	'uspintuscup': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 2).toFixed(2);
 	 },
 	'uspintusfloz': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 16).toFixed(2);
 	 },
 	'uspintustbsp': function (value) {
 	   return (Number(value)).toFixed(2);
@@ -539,28 +539,28 @@ var ConversionFunc = {
 	   return (Number(value)).toFixed(2);
 	 },
 	'uscupcbmeter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 4226.7528).toFixed(2);
 	 },
 	'uscupliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 4.22675).toFixed(2);
 	 },
 	'uscupdliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 42.2675).toFixed(2);
 	 },
 	'uscupcliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 422.675).toFixed(2);
 	 },
 	'uscupmliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 4226.75).toFixed(2);
 	 },
 	'uscupusgallon': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 16).toFixed(2);
 	 },
 	'uscupuspint': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 2).toFixed(2);
 	 },
 	'uscupusfloz': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) * 8).toFixed(2);
 	 },
 	'uscupustbsp': function (value) {
 	   return (Number(value)).toFixed(2);
@@ -575,28 +575,28 @@ var ConversionFunc = {
 	   return (Number(value)).toFixed(2);
 	 },
 	'usflozcbmeter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 33814.023).toFixed(2);
 	 },
 	'usflozliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 33.814).toFixed(2);
 	 },
 	'usflozdliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 3.3814).toFixed(2);
 	 },
 	'usflozcliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 0.33814).toFixed(2);
 	 },
 	'usflozmliter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 33.814).toFixed(2);
 	 },
 	'usflozusgallon': function (value) {
 	   return (Number(value)).toFixed(2);
 	 },
 	'usflozuspint': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 16).toFixed(2);
 	 },
 	'usflozuscup': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 8).toFixed(2);
 	 },
 	'usflozustbsp': function (value) {
 	   return (Number(value)).toFixed(2);
@@ -611,7 +611,7 @@ var ConversionFunc = {
 	   return (Number(value)).toFixed(2);
 	 },
 	'ustbspcbmeter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 67628.045).toFixed(2);
 	 },
 	'ustbspliter': function (value) {
 	   return (Number(value)).toFixed(2);
@@ -647,7 +647,7 @@ var ConversionFunc = {
 	   return (Number(value)).toFixed(2);
 	 },
 	'ustspcbmeter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 202884.14).toFixed(2);
 	 },
 	'ustspliter': function (value) {
 	   return (Number(value)).toFixed(2);
@@ -683,7 +683,7 @@ var ConversionFunc = {
 	   return (Number(value)).toFixed(2);
 	 },
 	'cbyrdcbmeter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 1.30795).toFixed(2);
 	 },
 	'cbyrdliter': function (value) {
 	   return (Number(value)).toFixed(2);
@@ -719,7 +719,7 @@ var ConversionFunc = {
 	   return (Number(value)).toFixed(2);
 	 },
 	'cbftcbmeter': function (value) {
-	   return (Number(value)).toFixed(2);
+	   return (Number(value) / 35.314667).toFixed(2);
 	 },
 	'cbftliter': function (value) {
 	   return (Number(value)).toFixed(2);
